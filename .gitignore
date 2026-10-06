@@ -1,0 +1,34 @@
+# Credentials and machine settings
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.idea/
+.vscode/
+# Datasets, model weights and experiment artifacts
+data/
+datasets/
+checkpoints/
+weights/
+runs/
+artifacts/
+*.pt
+*.pth
+*.safetensors
+*.bin
+*.sqlite*
+*.db
+*.log
+# Local document QA and caches
+.qa/
+.cache/
+~$*.docx
+Thumbs.db
+.DS_Store
