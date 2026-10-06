@@ -2,7 +2,7 @@
 
 ## 当前仓库
 
-独立仓库位于 `E:\agent项目\trainpilot`，默认分支为 `main`。origin 已配置为 `https://github.com/CHT-1026/TrainPilot.git`；首次推送因当前执行环境缺少可用的 GitHub 身份认证而未完成。通过 `git log --oneline` 查看实际提交。
+默认分支为 `main`，origin 已配置为 `https://github.com/CHT-1026/TrainPilot.git`。上传由仓库作者在 VS Code 中完成，具体步骤见 [上传清单](upload-checklist.md)。通过 `git log --oneline` 查看实际提交。
 
 ## 提交方式
 
@@ -27,7 +27,7 @@ git remote -v
 git push -u origin main
 ```
 
-首次只读检查未发现远程分支；这不代表后续推送时远程仍为空。若远程已有提交，先 fetch 并比较历史，再决定合并方式；不要直接 force push。远程公开性、项目许可证和作者邮箱公开方式由所有者决定。
+若远程已有提交，先 fetch 并比较历史，再决定合并方式；不要直接 force push。远程公开性、项目许可证和作者邮箱公开方式由所有者决定。
 
 ## 双人协作
 

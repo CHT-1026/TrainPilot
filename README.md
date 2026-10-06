@@ -2,7 +2,7 @@
 
 轻量语言模型训练实验与诊断 Agent。项目通过小模型训练、性能测量和受约束的工具调用，探索训练算法、AI Infra 与 Agent 工程。
 
-GitHub 仓库：[CHT-1026/TrainPilot](https://github.com/CHT-1026/TrainPilot)。本地已配置 origin；首次推送尚未完成，需要可用的 GitHub 身份认证。
+GitHub 仓库：[CHT-1026/TrainPilot](https://github.com/CHT-1026/TrainPilot)。
 
 **当前状态：方案与 Git 管理已建立，训练端、实验后端和 Agent 尚未实现。没有已测得的性能提升或模型效果数据。**
 
@@ -14,6 +14,7 @@ GitHub 仓库：[CHT-1026/TrainPilot](https://github.com/CHT-1026/TrainPilot)。
 - [学习与实施路线](docs/roadmap.md)：相对启动日的关键节点和可勾选任务。
 - [开源来源与贡献边界](THIRD_PARTY_NOTICES.md)：区分 MiniMind 原有能力与项目自研工作。
 - [变更记录](CHANGELOG.md)。
+- [本版本上传清单与 VS Code 操作](docs/upload-checklist.md)。
 
 ## 计划架构
 
@@ -46,7 +47,7 @@ flowchart LR
 
 目前可以直接阅读 docs 下的方案。应用尚无可运行入口，不提供虚构的安装或启动命令。
 
-文档生成脚本为 `scripts/build_project_doc.py`，依赖 `python-docx`。它仅生成文档，不安装应用依赖、不调用模型 API、不租用 GPU。
+文档生成脚本为 `scripts/build_project_doc.py`，依赖 `python-docx` 与 `Pillow`。它仅生成文档，不安装应用依赖、不调用模型 API、不租用 GPU。生成与排版检查方法见 [文档生成说明](docs/document-build.md)。
 
 ## 预算与成果
 
