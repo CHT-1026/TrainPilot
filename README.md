@@ -2,6 +2,8 @@
 
 轻量语言模型训练实验与诊断 Agent。项目通过小模型训练、性能测量和受约束的工具调用，探索训练算法、AI Infra 与 Agent 工程。
 
+GitHub 仓库：[CHT-1026/TrainPilot](https://github.com/CHT-1026/TrainPilot)。本地已配置 origin；首次推送尚未完成，需要可用的 GitHub 身份认证。
+
 **当前状态：方案与 Git 管理已建立，训练端、实验后端和 Agent 尚未实现。没有已测得的性能提升或模型效果数据。**
 
 ## 阅读入口

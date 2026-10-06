@@ -2,7 +2,7 @@
 
 ## 当前仓库
 
-独立仓库位于 `E:\agent项目\trainpilot`，默认分支为 `main`。当前不预设 GitHub 用户名或远程地址。完成本地初始化后，通过 `git log --oneline` 查看实际提交。
+独立仓库位于 `E:\agent项目\trainpilot`，默认分支为 `main`。origin 已配置为 `https://github.com/CHT-1026/TrainPilot.git`；首次推送因当前执行环境缺少可用的 GitHub 身份认证而未完成。通过 `git log --oneline` 查看实际提交。
 
 ## 提交方式
 
@@ -20,15 +20,20 @@
 
 ## 远程仓库
 
-仓库所有者提供实际地址后再设置 origin。若新建空的 GitHub 仓库，可按以下流程同步，URL 必须替换为自己的地址：
+远程地址已经设置。完成 GitHub 身份认证后可同步：
 
 ```bash
 git remote -v
-git remote add origin <你的实际仓库地址>
 git push -u origin main
 ```
 
-这些是使用说明，不代表已经执行远程操作。若远程已有提交，先 fetch 并比较历史，再决定合并方式；不要直接 force push。远程公开性、项目许可证和作者邮箱公开方式由所有者决定。
+首次只读检查未发现远程分支；这不代表后续推送时远程仍为空。若远程已有提交，先 fetch 并比较历史，再决定合并方式；不要直接 force push。远程公开性、项目许可证和作者邮箱公开方式由所有者决定。
+
+## 双人协作
+
+所有者在 GitHub 仓库 Settings → Collaborators → Add people 中按对方 GitHub 用户名发送邀请，对方接受后取得协作者访问权限。个人仓库的协作者具有读写权限。
+
+建议每个任务先建 Issue，各自在功能分支开发，通过 Pull Request 请另一人检查后合并 main。提交使用各自身份，避免共享账号；具体模块分工由双方讨论确定。
 
 ## 面试官阅读路径
 
