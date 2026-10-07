@@ -1,0 +1,66 @@
+{
+  "schema_version": "0.1",
+  "run_id": "2026-10-08-minimind-gpu-smoke-01",
+  "run_id_source": "assigned_for_report_import",
+  "status": "completed",
+  "record_source": "manual_transcription_of_user_terminal_output",
+  "task": "fixed_batch_pretrain_smoke",
+  "provenance": {
+    "upstream_sha": "f659b55761b754d306bd140573493a6543cafd7f",
+    "project_sha": null,
+    "project_worktree_dirty": null,
+    "data_sha256": "f6543daaad396effef8374e22aba6aa19ac2206c2170d9bb0bee908bf7ca2511",
+    "data_source": "two_original_fixture_texts",
+    "tokenizer_source": "model_directory_at_upstream_sha"
+  },
+  "environment": {
+    "device": "cuda",
+    "dtype": "float32",
+    "gpu_name": null,
+    "driver_version": null,
+    "cpu_threads": 2
+  },
+  "config": {
+    "seed": 42,
+    "batch_size": 2,
+    "sequence_length": 32,
+    "optimizer": {"name": "AdamW", "learning_rate": 0.001, "weight_decay": 0.01},
+    "model": {
+      "vocab_size": 6400,
+      "hidden_size": 128,
+      "num_hidden_layers": 2,
+      "num_attention_heads": 4,
+      "num_key_value_heads": 2,
+      "head_dim": 32,
+      "intermediate_size": 512,
+      "max_position_embeddings": 64,
+      "use_moe": false,
+      "dropout": 0.0,
+      "flash_attn": false
+    }
+  },
+  "measurements": {
+    "parameter_count": 1311488,
+    "steps": 100,
+    "valid_targets_per_step": 28,
+    "initial_train_loss": 8.846292,
+    "final_train_loss": 0.106011,
+    "loop_elapsed_seconds": 2.531,
+    "loop_peak_allocated_mib": 48.19,
+    "peak_includes_verification_weight_snapshot": true
+  },
+  "checks": {
+    "independent_loss_match": true,
+    "gradients_finite": true,
+    "gradient_tensor_count": 24,
+    "embedding_weight_max_change": 0.07612416
+  },
+  "limitations": [
+    "fixed_two_text_batch_repeated_without_validation_split",
+    "single_unwarmed_run",
+    "loop_time_includes_logging_and_synchronization",
+    "loop_time_excludes_data_preparation_and_evaluation",
+    "peak_memory_includes_verification_weight_snapshot",
+    "unknown_metadata_remains_null"
+  ]
+}
