@@ -1,0 +1,27 @@
+{
+  "model": {
+    "vocab_size": 6400,
+    "hidden_size": 128,
+    "num_layers": 2,
+    "num_heads": 4,
+    "num_kv_heads": 2,
+    "intermediate_size": 512,
+    "max_seq_len": 128
+  },
+  "data": {
+    "tokenizer_path": "assets/tokenizer.json",
+    "train_path": "data/train.jsonl",
+    "val_path": "data/val.jsonl"
+  },
+  "training": {
+    "device": "cuda",
+    "dtype": "float32",
+    "epochs": 1,
+    "batch_size": 4,
+    "learning_rate": 0.001,
+    "weight_decay": 0.01,
+    "seed": 42,
+    "num_workers": 0,
+    "output_dir": "runs/pretrain"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "model": {
+    "vocab_size": 6400,
+    "hidden_size": 64,
+    "num_layers": 2,
+    "num_heads": 4,
+    "num_kv_heads": 2,
+    "intermediate_size": 256,
+    "max_seq_len": 32
+  },
+  "data": {
+    "tokenizer_path": "assets/tokenizer.json",
+    "train_path": "tests/fixtures/train.jsonl",
+    "val_path": "tests/fixtures/val.jsonl"
+  },
+  "training": {
+    "device": "cpu",
+    "dtype": "float32",
+    "epochs": 1,
+    "batch_size": 2,
+    "learning_rate": 0.001,
+    "weight_decay": 0.01,
+    "seed": 42,
+    "num_workers": 0,
+    "output_dir": "runs/smoke"
+  }
+}

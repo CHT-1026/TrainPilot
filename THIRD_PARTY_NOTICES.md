@@ -1,27 +1,23 @@
-# 开源来源与贡献边界
+# Third-party sources
+
+TrainPilot is a project-owned PyTorch Dense pretraining implementation. Model layers, the Dataset, next-token loss and single-step training are implemented. Epoch training, validation and training-state checkpoints are still pending. Source study and rewriting retain the obligation to acknowledge reference work and preserve applicable notices.
 
 ## MiniMind
 
-上游地址：https://github.com/jingyaogong/minimind
+- Source: https://github.com/jingyaogong/minimind
+- Pinned revision: f659b55761b754d306bd140573493a6543cafd7f
+- Code license: Apache-2.0; retain its notices and license when adapting source.
+- Studied files: model/model_minimind.py, dataset/lm_dataset.py, trainer/train_pretrain.py, trainer/trainer_utils.py.
+- Scope: Dense, RMSNorm, RoPE, GQA, Q/K Norm and SwiGLU. Runtime uses this project's modules.
+- Tokenizer: the 6400-token vocabulary is stored as assets/tokenizer.json and loaded via tokenizers. It was downloaded from model/tokenizer.json at the pinned revision through https://cdn.jsdelivr.net/gh/jingyaogong/minimind@f659b55761b754d306bd140573493a6543cafd7f/model/tokenizer.json.
+- Tokenizer SHA256: 71f32c68cf63a15355a8fc171b7594b3d41870fe0ddb54fc6aefa55f73a4a668.
+- Original upstream LICENSE: assets/minimind.LICENSE, downloaded from the same pinned revision; SHA256 c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4.
+- Code licensing does not establish the license of every dataset or weight file.
 
-用途：计划作为小模型结构、预训练与 SFT 的参考或复现基线。当前仓库尚未包含其代码、数据或权重。
+## Corpus and fixtures
 
-上游已提供模型结构、预训练、SFT、梯度累积、混合精度、训练日志、断点续训与分布式训练等能力。复用这些能力时必须在说明和简历中标明来源，不能列为从零原创成果。
+The existing server experiment uses pretrain_t2t_mini.jsonl from jingyaogong/minimind_dataset at revision 312afb4f76391145c6902f765bb51691c09a12f5. Its card lists Apache-2.0 and CC-BY-NC-2.0 without a per-record mapping. Keep attribution and applicable restrictions. Raw corpus is outside this repository.
 
-引入前记录上游 commit SHA、所用文件、许可证路径、数据和权重的许可与来源。优先将外部 checkout 放在忽略的 `.cache/` 下，记录版本；如果复制或修改源文件，保留版权与许可证并记录修改。
+Source SHA256: 6dd6716c84ab36897bdbfc7f88e04f4441c48c1ab7ecee88ce0b0e7d4685560c.
 
-## 计划中的自主贡献
-
-- 标准化实验协议，记录数据指纹、配置、环境与代码 SHA。
-- 增加训练阶段测量、性能分析与可复现对照报告。
-- 检查断点恢复一致性，按检查结果实现必要的修复或增强。
-- 实现实验执行后端、结构化工具和诊断 Agent。
-- 构建并评测可复现诊断案例，公开失败案例与适用边界。
-
-上述工作当前均为计划，完成后需附代码提交和验证证据。
-
-## 其他依赖
-
-计划使用 PyTorch、Transformers、LangGraph、FastAPI、Pydantic、HTTPX、uv 与 pytest。依赖采用各自许可证。引入后以锁文件和许可证记录为准。
-
-仓库自身许可证尚未选定。不得因依赖采用宽松许可证就直接推断全部数据、权重和项目文件均可任意再分发。
+The texts under tests/fixtures are self-authored pipeline checks, not a language-model benchmark. PyTorch and tokenizers retain their respective licenses. The project's own license has not been selected by its owner.

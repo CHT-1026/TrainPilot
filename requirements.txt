@@ -1,0 +1,2 @@
+torch>=2.2,<3.0
+tokenizers==0.22.1
