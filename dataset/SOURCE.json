@@ -1,0 +1,10 @@
+{
+  "upstream_repository": "https://huggingface.co/datasets/jingyaogong/minimind_dataset",
+  "revision": "312afb4f76391145c6902f765bb51691c09a12f5",
+  "filename": "pretrain_t2t_mini.jsonl",
+  "bytes": 1241043656,
+  "sha256": "6dd6716c84ab36897bdbfc7f88e04f4441c48c1ab7ecee88ce0b0e7d4685560c",
+  "upstream_card_license_tags": ["apache-2.0", "cc-by-nc-2.0"],
+  "license_note": "The upstream card lists both licenses without a per-record mapping. Preserve upstream attribution and applicable license restrictions. The corpus is not authored by TrainPilot.",
+  "storage": "Git LFS"
+}

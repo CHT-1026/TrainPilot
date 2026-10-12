@@ -19,7 +19,7 @@ TrainPilot is a project-owned PyTorch Dense pretraining implementation. It suppo
 
 ## Corpus and fixtures
 
-The existing server experiment uses pretrain_t2t_mini.jsonl from jingyaogong/minimind_dataset at revision 312afb4f76391145c6902f765bb51691c09a12f5. Its card lists Apache-2.0 and CC-BY-NC-2.0 without a per-record mapping. Keep attribution and applicable restrictions. Raw corpus is outside this repository.
+The pretraining corpus is pretrain_t2t_mini.jsonl from jingyaogong/minimind_dataset at revision 312afb4f76391145c6902f765bb51691c09a12f5. Its card lists Apache-2.0 and CC-BY-NC-2.0 without a per-record mapping. Keep attribution and applicable restrictions. A copy is stored at dataset/pretrain_t2t_mini.jsonl through Git LFS; dataset/SOURCE.json records its source, checksum and license tags.
 
 Source SHA256: 6dd6716c84ab36897bdbfc7f88e04f4441c48c1ab7ecee88ce0b0e7d4685560c.
 
