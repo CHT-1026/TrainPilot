@@ -1,5 +1,6 @@
 """编码边界、JSONL 随机访问、默认组批及数据到模型的连接检查。"""
 import json
+import hashlib
 from pathlib import Path
 import tempfile
 import unittest
@@ -9,7 +10,7 @@ import torch.nn.functional as F
 from torch.utils.data import DataLoader
 
 from trainpilot.config import TrainPilotconfig
-from trainpilot.data import IGNORE_INDEX, PretrainDataset, TrainPilotTokenizer
+from trainpilot.data import IGNORE_INDEX, PretrainDataset, TrainPilotTokenizer, prepare_pretrain_data
 from trainpilot.model import TrainPilotForCausalLM
 
 
@@ -134,6 +135,46 @@ class DataChecks(unittest.TestCase):
         self.assertTrue(torch.isfinite(loss))
         loss.backward()
         self.assertTrue(torch.isfinite(model.model.embed_tokens.weight.grad).all())
+
+
+class FullCorpusPreparationChecks(unittest.TestCase):
+    def test_full_stream_split_is_deterministic_and_duplicate_groups_are_disjoint(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "source.jsonl"
+            texts = [f"中文预训练样本 {index}" for index in range(100)]
+            texts += [texts[0], f"  {texts[1]}  ", " "]
+            source.write_text("\n".join(json.dumps({"text": text}, ensure_ascii=False) for text in texts) + "\n\n", encoding="utf-8")
+            expected_hash = hashlib.sha256(source.read_bytes()).hexdigest()
+            first = prepare_pretrain_data(source, root / "first", 0.2, 43, expected_hash)
+            second = prepare_pretrain_data(source, root / "second", 0.2, 43, expected_hash)
+            self.assertEqual(first["counts"], second["counts"])
+            self.assertEqual(first["counts"]["train"] + first["counts"]["val"], 102)
+            self.assertEqual(first["counts"]["empty_texts"], 1)
+            self.assertEqual(first["counts"]["blank_lines"], 1)
+            sets = {}
+            for name in ("train", "val"):
+                actual_bytes = (root / "first" / f"{name}.jsonl").read_bytes()
+                self.assertEqual(actual_bytes, (root / "second" / f"{name}.jsonl").read_bytes())
+                self.assertEqual(hashlib.sha256(actual_bytes).hexdigest(), first["outputs"][name]["sha256"])
+                sets[name] = {json.loads(line)["text"].strip() for line in actual_bytes.splitlines()}
+            self.assertFalse(sets["train"] & sets["val"])
+            self.assertEqual(sets["train"] | sets["val"], {text.strip() for text in texts if text.strip()})
+            with self.assertRaises(FileExistsError):
+                prepare_pretrain_data(source, root / "first", 0.2)
+
+    def test_bad_hash_or_record_does_not_publish_split_files(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "source.jsonl"
+            source.write_text("\n".join(json.dumps({"text": f"语料 {index}"}, ensure_ascii=False) for index in range(100)), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "SHA256"):
+                prepare_pretrain_data(source, root / "bad_hash", 0.2, expected_sha256="0" * 64)
+            self.assertEqual(list((root / "bad_hash").iterdir()), [])
+            source.write_text('{"text": "正常"}\n{"wrong": "格式"}\n', encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "第 2 行"):
+                prepare_pretrain_data(source, root / "bad_record", 0.2)
+            self.assertEqual(list((root / "bad_record").iterdir()), [])
 
 
 if __name__ == "__main__":

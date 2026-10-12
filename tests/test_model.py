@@ -1,5 +1,6 @@
 """骨干模型检查：独立层、RoPE buffer、梯度、因果性与权重重载。"""
 import io
+import math
 import unittest
 from dataclasses import replace
 
@@ -78,6 +79,15 @@ class BackboneChecks(unittest.TestCase):
         with self.assertRaises(ValueError):
             model(too_long)
 
+    def test_rotary_limit_can_exceed_training_sample_length(self):
+        model = TrainPilotModel(replace(self.config, max_position_embeddings=10)).eval()
+        self.assertEqual(model.freqs_cos.shape[0], 10)
+        with torch.no_grad():
+            hidden, _ = model(torch.zeros(1, 9, dtype=torch.long))
+        self.assertEqual(hidden.shape, (1, 9, 16))
+        with self.assertRaises(ValueError):
+            model(torch.zeros(1, 11, dtype=torch.long))
+
 
 class LanguageModelChecks(unittest.TestCase):
     def setUp(self):
@@ -88,6 +98,20 @@ class LanguageModelChecks(unittest.TestCase):
             max_seq_len=7, dropout=0.0,
         )
         self.tokens = torch.randint(0, 32, (2, 7))
+
+    def test_initialization_scale_keeps_initial_loss_near_uniform_prediction(self):
+        config = replace(self.config, vocab_size=6400, hidden_size=64, intermediate_size=128)
+        model = TrainPilotForCausalLM(config).eval()
+        self.assertIs(model.lm_head.weight, model.model.embed_tokens.weight)
+        self.assertAlmostEqual(model.model.embed_tokens.weight.std().item(), 0.02, delta=0.001)
+        for module in model.modules():
+            if isinstance(module, torch.nn.Linear):
+                self.assertAlmostEqual(module.weight.std().item(), 0.02, delta=0.002)
+        tokens = torch.tensor([[1, 30, 50, 70, 2]])
+        with torch.no_grad():
+            logits = model(tokens)
+            loss = F.cross_entropy(logits[:, :-1].reshape(-1, 6400), tokens[:, 1:].reshape(-1))
+        self.assertLess(abs(loss.item() - math.log(6400)), 0.5)
 
     def test_logits_and_next_token_loss_gradients(self):
         for tied in (False, True):

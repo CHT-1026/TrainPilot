@@ -2,25 +2,19 @@
 
 本文件只提供这两个函数，没有 main 或命令行入口。
 数据端 labels 尚未移位；本文件在计算损失时统一移位一次。
-第一版使用普通 float32 训练，不包含混合精度、完整 epoch 或验证循环。
+支持 float32 或 BF16 autocast；epoch 组织、梯度累积与调度由 trainer.py 负责。
 """
 import torch
+from contextlib import nullcontext
 from torch import nn
 import torch.nn.functional as F
 
 from trainpilot.data import IGNORE_INDEX
 
-
+# 计算下一个token的损失，需要进行labels和logits的移位
 def next_token_loss(
     logits: torch.Tensor, labels: torch.Tensor,
 ) -> tuple[torch.Tensor, int]:
-    """返回有效监督位置上的平均交叉熵，以及这些位置的数量。
-
-    logits: [B,T,V]，模型输出的原始分数，不需要先做 softmax。
-    labels: [B,T]，与输入同位置的整数标签，padding 位置为 -100。
-    第 t 个 logit 预测第 t+1 个标签；最后一个 logit 不参与本次损失。
-    返回的 loss 保留计算图，供调用者执行 backward。
-    """
     if logits.ndim != 3:
         raise ValueError("logits 必须为 [B,T,V] 三维张量")
     batch_size, seq_len, vocab_size = logits.shape
@@ -53,18 +47,19 @@ def next_token_loss(
     return loss, valid_tokens
 
 
+# 一个简单的训练步。
 def train_step(
     model: nn.Module,
     optimizer: torch.optim.Optimizer,
     batch: dict[str, torch.Tensor],
     device: str | torch.device,
+    *,
+    zero_grad: bool = True,
+    update_parameters: bool = True,
+    loss_weight: float = 1.0,
+    amp_dtype: torch.dtype | None = None,
+    grad_clip: float | None = None,
 ) -> dict[str, float | int]:
-    """执行一次训练，返回更新前的 loss 数值与有效监督 token 数。
-
-    batch 必须包含 input_ids、attention_mask、labels，形状均为 [B,T]。
-    调用者负责事先把模型放到 device，并创建对应的优化器。
-    本函数只迁移 batch，不修改原 batch 字典，也不保存计算图到记录中。
-    """
     # 1. 开启训练模式；它控制 Dropout 等模块的行为。
     model.train()
     input_ids = batch["input_ids"].to(device)
@@ -72,17 +67,27 @@ def train_step(
     labels = batch["labels"].to(device)
 
     # 2. 清除上一步梯度，防止本次 backward 与旧梯度累加。
-    optimizer.zero_grad(set_to_none=True)
+    if zero_grad:
+        optimizer.zero_grad(set_to_none=True)
 
     # 3. 前向传播：模型返回 logits，损失由上面的函数计算。
-    logits = model(input_ids, attention_mask=attention_mask)
-    loss, valid_tokens = next_token_loss(logits, labels)
+    autocast = (
+        torch.autocast(device_type=torch.device(device).type, dtype=amp_dtype)
+        if amp_dtype is not None else nullcontext()
+    )
+    with autocast:
+        logits = model(input_ids, attention_mask=attention_mask)
+        loss, valid_tokens = next_token_loss(logits, labels)
     if not torch.isfinite(loss).item():
         raise FloatingPointError("训练损失出现 NaN 或 Inf，本次不执行参数更新")
 
     # 4. backward 计算梯度；step 才真正修改可训练参数。
-    loss.backward()
-    optimizer.step()
+    # 每个 micro-batch 按其有效 token 占比累积梯度。
+    (loss * loss_weight).backward()
+    if update_parameters:
+        if grad_clip is not None:
+            torch.nn.utils.clip_grad_norm_(model.parameters(), grad_clip, error_if_nonfinite=True)
+        optimizer.step()
 
     # 5. 返回 Python 数值，避免日志记录意外持有整个计算图。
     # 注意：这是刚才前向得到的损失，不是更新参数后重新计算的损失。

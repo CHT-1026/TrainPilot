@@ -1,5 +1,6 @@
 """Configuration boundary for the project-owned pretraining implementation."""
 from dataclasses import dataclass
+import math
 
 
 @dataclass
@@ -11,11 +12,13 @@ class TrainPilotconfig:
     num_kv_heads: int = 2
     intermediate_size: int = 512
     max_seq_len: int = 128
+    max_position_embeddings: int | None = None
     dropout: float = 0.0
     flash_attn: bool = False
     rms_norm_eps: float = 1e-6
     rope_theta: float = 1e6
     tie_word_embeddings: bool = True
+    initializer_range: float = 0.02
 
     @property
     def head_dim(self) -> int:
@@ -36,3 +39,8 @@ class TrainPilotconfig:
             raise ValueError("dropout must be in [0, 1)")
         if self.rms_norm_eps <= 0 or self.rope_theta <= 0:
             raise ValueError("rms_norm_eps and rope_theta must be positive")
+        if not math.isfinite(self.initializer_range) or self.initializer_range <= 0:
+            raise ValueError("initializer_range must be finite and positive")
+        if self.max_position_embeddings is not None:
+            if type(self.max_position_embeddings) is not int or self.max_position_embeddings < self.max_seq_len:
+                raise ValueError("max_position_embeddings must be an integer >= max_seq_len")

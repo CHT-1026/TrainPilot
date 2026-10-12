@@ -65,7 +65,7 @@ class TrainPilotModel(nn.Module):
         # 4. 预计算 RoPE，注册为 buffer
         freqs_cos, freqs_sin = precompute_freqs_cis(
             dim=config.head_dim,
-            end=config.max_seq_len,                       # ← 改
+            end=config.max_position_embeddings or config.max_seq_len,
             rope_base=config.rope_theta,
             rope_scaling=getattr(config, "rope_scaling", None),
         )
@@ -92,11 +92,12 @@ class TrainPilotModel(nn.Module):
         )
 
         # ---- 位置范围检查 ----
-        if start_pos + T > self.config.max_seq_len:
+        position_limit = self.config.max_position_embeddings or self.config.max_seq_len
+        if start_pos + T > position_limit:
             raise ValueError(
                 f"Sequence position out of range: "
                 f"start_pos({start_pos}) + T({T}) = {start_pos + T} "
-                f"> max_seq_len({self.config.max_seq_len})"
+                f"> position_limit({position_limit})"
             )
 
         # ---- Embedding + dropout ----
@@ -106,7 +107,7 @@ class TrainPilotModel(nn.Module):
         if self.freqs_cos[0, 0] == 0:
             freqs_cos, freqs_sin = precompute_freqs_cis(
                 dim=self.config.head_dim,
-                end=self.config.max_seq_len,              # ← 改
+                end=self.config.max_position_embeddings or self.config.max_seq_len,
                 rope_base=self.config.rope_theta,
                 rope_scaling=getattr(self.config, "rope_scaling", None),
             )
@@ -149,9 +150,19 @@ class TrainPilotForCausalLM(nn.Module):
         # 2. LM Head：hidden_size → vocab_size
         self.lm_head = nn.Linear(config.hidden_size, config.vocab_size, bias=False)
 
+        # MiniMind 的 post_init 隐含完成初始化；原生 nn.Module 需要显式实现。
+        # 先初始化再共享，避免同一个 Parameter 被初始化两遍。
+        self.apply(self._init_weights)
+
         # 3. 权重共享（tie_word_embeddings=True 时）
         if getattr(config, "tie_word_embeddings", False):
             self.lm_head.weight = self.model.embed_tokens.weight
+
+    def _init_weights(self, module):
+        if isinstance(module, (nn.Linear, nn.Embedding)):
+            nn.init.normal_(module.weight, mean=0.0, std=self.config.initializer_range)
+            if isinstance(module, nn.Linear) and module.bias is not None:
+                nn.init.zeros_(module.bias)
 
     def forward(self, input_ids, attention_mask=None):
         # 调用骨干，解包得到隐藏表示

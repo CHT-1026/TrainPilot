@@ -1,12 +1,15 @@
 {
   "model": {
     "vocab_size": 6400,
-    "hidden_size": 128,
-    "num_layers": 2,
-    "num_heads": 4,
-    "num_kv_heads": 2,
-    "intermediate_size": 512,
-    "max_seq_len": 128
+    "hidden_size": 768,
+    "num_layers": 8,
+    "num_heads": 8,
+    "num_kv_heads": 4,
+    "intermediate_size": 2432,
+    "max_seq_len": 340,
+    "max_position_embeddings": 32768,
+    "initializer_range": 0.02,
+    "flash_attn": true
   },
   "data": {
     "tokenizer_path": "assets/tokenizer.json",
@@ -15,10 +18,15 @@
   },
   "training": {
     "device": "cuda",
-    "dtype": "float32",
-    "epochs": 1,
-    "batch_size": 4,
-    "learning_rate": 0.001,
+    "dtype": "bfloat16",
+    "epochs": 2,
+    "batch_size": 32,
+    "accumulation_steps": 8,
+    "grad_clip": 1.0,
+    "lr_schedule": "cosine",
+    "log_interval": 20,
+    "save_interval": 100,
+    "learning_rate": 0.0005,
     "weight_decay": 0.01,
     "seed": 42,
     "num_workers": 0,

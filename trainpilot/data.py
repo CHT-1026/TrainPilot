@@ -11,7 +11,10 @@ labels 与 input_ids 保持同位置；padding 标签为 -100。
 import argparse
 from array import array
 import json
+import hashlib
+import os
 from pathlib import Path
+from tempfile import NamedTemporaryFile
 
 import torch
 from torch.utils.data import DataLoader, Dataset
@@ -126,3 +129,92 @@ class PretrainDataset(Dataset):
             raw_line = source.readline()
         text = self._read_text(raw_line, f"字节偏移 {offset}")
         return self.tokenizer.encode_sample(text)
+
+
+def prepare_pretrain_data(
+    source_path: str | Path,
+    output_dir: str | Path,
+    val_fraction: float = 0.01,
+    seed: int = 43,
+    expected_sha256: str | None = None,
+) -> dict:
+    """流式划分完整 JSONL，归一化后相同文本必定进入同一个集合。
+
+    通过 seed 与 strip 后文本的 SHA256 分桶，不把全文装进内存。
+    不移除集合内重复文本，不检查近似重复；验证比例是近似值。
+    原文写入输出文件，strip 仅用于划分；空白文本跳过。
+    """
+    if not 0 < val_fraction < 1:
+        raise ValueError("val_fraction 必须在 0 与 1 之间")
+    if type(seed) is not int or seed < 0:
+        raise ValueError("seed 必须为非负整数")
+    source_path = Path(source_path).expanduser().resolve(strict=True)
+    output_dir = Path(output_dir).expanduser().resolve()
+    output_dir.mkdir(parents=True, exist_ok=True)
+    targets = {name: output_dir / f"{name}.jsonl" for name in ("train", "val")}
+    manifest_path = output_dir / "manifest.json"
+    if any(path.exists() for path in (*targets.values(), manifest_path)):
+        raise FileExistsError("输出目录已有训练/验证数据或 manifest，请使用新的目录")
+    counts = {"source_lines": 0, "blank_lines": 0, "empty_texts": 0, "train": 0, "val": 0}
+    source_digest = hashlib.sha256()
+    output_digests = {name: hashlib.sha256() for name in targets}
+    threshold = int(val_fraction * (1 << 64))
+    temporary_paths = {}
+    temporary_files = {}
+    try:
+        for name in targets:
+            temporary = NamedTemporaryFile(dir=output_dir, prefix=f".{name}.", suffix=".tmp", delete=False)
+            temporary_paths[name] = Path(temporary.name)
+            temporary_files[name] = temporary
+        with source_path.open("rb") as source:
+            for raw_line in source:
+                source_digest.update(raw_line)
+                counts["source_lines"] += 1
+                if not raw_line.strip():
+                    counts["blank_lines"] += 1
+                    continue
+                try:
+                    record = json.loads(raw_line)
+                except (json.JSONDecodeError, UnicodeDecodeError) as error:
+                    raise ValueError(f"语料第 {counts['source_lines']} 行不是有效 JSON") from error
+                if not isinstance(record, dict) or not isinstance(record.get("text"), str):
+                    raise ValueError(f"语料第 {counts['source_lines']} 行缺少字符串 text")
+                text = record["text"]
+                normalized = text.strip()
+                if not normalized:
+                    counts["empty_texts"] += 1
+                    continue
+                bucket_hash = hashlib.sha256(f"{seed}\0{normalized}".encode("utf-8")).digest()
+                name = "val" if int.from_bytes(bucket_hash[:8], "big") < threshold else "train"
+                encoded = (json.dumps({"text": text}, ensure_ascii=False) + "\n").encode("utf-8")
+                temporary_files[name].write(encoded)
+                output_digests[name].update(encoded)
+                counts[name] += 1
+        actual_sha256 = source_digest.hexdigest()
+        if expected_sha256 is not None and actual_sha256 != expected_sha256.lower():
+            raise ValueError("原始语料 SHA256 与预期不一致，未发布划分结果")
+        if counts["train"] == 0 or counts["val"] == 0:
+            raise ValueError("划分后训练集或验证集为空，请增加数据量或调整比例")
+        for name, temporary in temporary_files.items():
+            temporary.flush()
+            os.fsync(temporary.fileno())
+            temporary.close()
+            os.replace(temporary_paths[name], targets[name])
+        manifest = {
+            "source": {"path": str(source_path), "bytes": source_path.stat().st_size, "sha256": actual_sha256},
+            "preparation": {
+                "split": "sha256_bucket_by_seed_and_stripped_text", "seed": seed,
+                "val_fraction_requested": val_fraction, "within_split_deduplicated": False,
+                "exact_normalized_text_groups_disjoint": True, "near_duplicate_checked": False,
+                "tokenized_overlap_checked": False,
+            },
+            "counts": counts,
+            "outputs": {name: {"path": str(path), "sha256": output_digests[name].hexdigest()} for name, path in targets.items()},
+        }
+        manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        return manifest
+    finally:
+        for temporary in temporary_files.values():
+            temporary.close()
+        for path in temporary_paths.values():
+            path.unlink(missing_ok=True)
