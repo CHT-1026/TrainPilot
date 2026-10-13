@@ -1,0 +1,110 @@
+{
+  "greedy": {
+    "function": "int add(int a, int b) {\n    return a + b;\n}",
+    "cases": [
+      [
+        1,
+        2,
+        3
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        -1,
+        1,
+        0
+      ],
+      [
+        -2,
+        -3,
+        -5
+      ],
+      [
+        100,
+        -50,
+        50
+      ],
+      [
+        123,
+        456,
+        579
+      ],
+      [
+        -1000,
+        1000,
+        0
+      ]
+    ],
+    "compiler": "E:/Mingw/bin/g++.exe",
+    "compile_command": [
+      "E:/Mingw/bin/g++.exe",
+      "-std=c++17",
+      "-O2",
+      "E:\\agent项目\\trainpilot\\runs\\base-eval-20261013\\generated_add_greedy.cpp",
+      "-o",
+      "E:\\agent项目\\trainpilot\\runs\\base-eval-20261013\\generated_add_greedy.exe"
+    ],
+    "compile_returncode": 0,
+    "compile_stderr": "",
+    "executed": true,
+    "passed_cases": 7,
+    "run_returncode": 0,
+    "run_stderr": ""
+  },
+  "sample": {
+    "function": "int add(int a, int b) {return a + b + c;}",
+    "cases": [
+      [
+        1,
+        2,
+        3
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        -1,
+        1,
+        0
+      ],
+      [
+        -2,
+        -3,
+        -5
+      ],
+      [
+        100,
+        -50,
+        50
+      ],
+      [
+        123,
+        456,
+        579
+      ],
+      [
+        -1000,
+        1000,
+        0
+      ]
+    ],
+    "compiler": "E:/Mingw/bin/g++.exe",
+    "compile_command": [
+      "E:/Mingw/bin/g++.exe",
+      "-std=c++17",
+      "-O2",
+      "E:\\agent项目\\trainpilot\\runs\\base-eval-20261013\\generated_add_sample.cpp",
+      "-o",
+      "E:\\agent项目\\trainpilot\\runs\\base-eval-20261013\\generated_add_sample.exe"
+    ],
+    "compile_returncode": 1,
+    "compile_stderr": "E:\\agent项目\\trainpilot\\runs\\base-eval-20261013\\generated_add_sample.cpp: In function 'int add(int, int)':\nE:\\agent项目\\trainpilot\\runs\\base-eval-20261013\\generated_add_sample.cpp:2:39: error: 'c' was not declared in this scope\n    2 | int add(int a, int b) {return a + b + c;}\n      |                                       ^\n",
+    "executed": false,
+    "passed_cases": 0
+  }
+}

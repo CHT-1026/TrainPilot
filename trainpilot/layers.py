@@ -1,8 +1,3 @@
-"""Dense Transformer 基础层：RMSNorm、SwiGLU、RoPE 与带 Q/K Norm 的 GQA。
-
-运行时只依赖本项目模块与 PyTorch。
-参考提交：f659b55761b754d306bd140573493a6543cafd7f。
-"""
 import torch
 from torch import nn
 import torch.nn.functional as F
