@@ -359,8 +359,6 @@ class SFTDataset(Dataset):
         input_ids += [self.tokenizer.pad_token_id] * (self.max_length - len(input_ids))
         attention_mask = [1] * valid_length + [0] * (self.max_length - valid_length)
         labels = self.generate_labels(input_ids, attention_mask)
-        if not any(label != IGNORE_INDEX for label in labels[1:]):
-            raise ValueError(f"样本 {index} 截断后没有 assistant 监督目标，请在训练前过滤或调整 max_length")
         return {
             'input_ids': torch.tensor(input_ids, dtype=torch.long),
             'attention_mask': torch.tensor(attention_mask, dtype=torch.long),

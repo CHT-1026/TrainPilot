@@ -80,15 +80,12 @@ def main():
 
     def truncated():
         short=SFTDataset(str(fixture),tokenizer,max_length=16)
-        try:
-            with patch('dataset.dataset.random.random',return_value=1.0):
-                ids,labels=unpack(short[2])
-        except ValueError:
-            return 'Explicitly rejects sample without valid supervised targets'
+        with patch('dataset.dataset.random.random',return_value=1.0):
+            ids,labels=unpack(short[2])
         count=int((labels[1:]!=-100).sum())
-        assert count>0,f'All labels are -100 after truncation; valid_targets={count}'
-        return dict(valid_targets=count)
-    record('truncation_without_assistant_targets',truncated)
+        assert count==0 and labels.eq(-100).all()
+        return 'Truncated sample is retained with ignored labels; batch loss uses other supervised samples'
+    record('truncation_retains_ignored_sample',truncated)
 
     def literal_marker():
         try:

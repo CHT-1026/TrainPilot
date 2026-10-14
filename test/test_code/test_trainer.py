@@ -67,6 +67,24 @@ class TrainerChecks(unittest.TestCase):
         self.assertIsInstance(record["valid_tokens"], int)
         self.assertTrue(all(mode == (True, True) for mode in model.forward_modes))
 
+    def test_sft_train_and_evaluate_accept_ignored_sample_in_mixed_batch(self):
+        from trainer.SFTtrain import train_step, next_token_loss
+        ignored = {"input_ids": torch.tensor([1, 1, 1, 1]),
+                   "attention_mask": torch.ones(4, dtype=torch.long),
+                   "labels": torch.full((4,), -100, dtype=torch.long)}
+        loader = DataLoader([ignored] + self.samples, batch_size=3)
+        model = FixedScoresModel()
+        before = model.scores.detach().clone()
+        optimizer = torch.optim.SGD(model.parameters(), lr=0.01)
+        record = train_one_epoch(model, optimizer, loader, "cpu", train_step_fn=train_step)
+        self.assertEqual(record["valid_tokens"], 4)
+        self.assertEqual(record["steps"], 1)
+        self.assertAlmostEqual(record["loss"], self.expected_loss, places=6)
+        self.assertFalse(torch.equal(model.scores, before))
+        validation = evaluate(model, loader, "cpu", loss_fn=next_token_loss)
+        self.assertEqual(validation["valid_tokens"], 4)
+        self.assertTrue(torch.isfinite(torch.tensor(validation["loss"])))
+
     def test_epoch_updates_model_and_keeps_last_partial_batch(self):
         config = TrainPilotconfig(
             vocab_size=3, hidden_size=16, num_layers=1, num_heads=4,

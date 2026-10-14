@@ -10,7 +10,7 @@ import torch.nn.functional as F
 from torch.utils.data import DataLoader
 
 from config.config import TrainPilotconfig
-from dataset.dataset import IGNORE_INDEX, PretrainDataset, TrainPilotTokenizer, prepare_pretrain_data, prepare_sft_data
+from dataset.dataset import IGNORE_INDEX, PretrainDataset, SFTDataset, TrainPilotTokenizer, post_processing_chat, prepare_pretrain_data, prepare_sft_data
 from model.model import TrainPilotForCausalLM
 
 
@@ -236,6 +236,57 @@ class SFTPreparationChecks(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "验证集为空"):
                 prepare_sft_data(source, root / "split", self.tokenizer, 128, 0.2)
             self.assertEqual(list((root / "split").iterdir()), [])
+
+    def test_system_augmentation_keeps_truncation_behavior_without_rejection(self):
+        from unittest.mock import patch
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "boundary.jsonl"
+            conversations = [{"role": "user", "content": "这是一个长问题。" * 100},
+                             {"role": "assistant", "content": "回答。"}]
+            source.write_text(json.dumps({"conversations": conversations}, ensure_ascii=False), encoding="utf-8")
+            full = SFTDataset(source, self.tokenizer, max_length=4096)
+            prompt = full.create_chat_prompt(conversations)
+            prompt = post_processing_chat(prompt, remove_empty_think=True)
+            original_ids = self.tokenizer(prompt, add_special_tokens=False).input_ids
+            original_labels = full.generate_labels(original_ids)
+            first_target = next(i for i, label in enumerate(original_labels) if label != IGNORE_INDEX)
+            dataset = SFTDataset(source, self.tokenizer, max_length=first_target + 1)
+            augmented = [{'role': 'system', 'content': '你是一个知识丰富的AI，尽力为用户提供准确的信息。'}] + conversations
+            prompt = post_processing_chat(dataset.create_chat_prompt(augmented), remove_empty_think=True)
+            expected_ids = self.tokenizer(prompt, add_special_tokens=False).input_ids[:first_target + 1]
+            with patch('dataset.dataset.pre_processing_chat', return_value=augmented), \
+                 patch('dataset.dataset.random.random', return_value=1.0) as random_call:
+                actual = dataset[0]
+            random_call.assert_called_once()
+            self.assertEqual(actual['input_ids'].tolist(), expected_ids)
+            self.assertTrue(actual['labels'].eq(IGNORE_INDEX).all())
+
+    def test_ignored_sample_can_share_a_batch_with_supervised_samples(self):
+        from unittest.mock import patch
+        from trainer.SFTtrain import next_token_loss
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "invalid.jsonl"
+            conversations = [{"role": "user", "content": "只有问题，没有答案。"}]
+            source.write_text(json.dumps({"conversations": conversations}, ensure_ascii=False), encoding="utf-8")
+            dataset = SFTDataset(source, self.tokenizer, max_length=32)
+            with patch('dataset.dataset.random.random', return_value=1.0):
+                self.assertTrue(dataset[0]['labels'].eq(IGNORE_INDEX).all())
+        torch.manual_seed(42)
+        logits = torch.randn(2, 4, 5, requires_grad=True)
+        labels = torch.tensor([[-100, -100, -100, -100], [-100, 1, 2, -100]])
+        loss, valid_tokens = next_token_loss(logits, labels)
+        # 与 MiniMind 的整个 batch 交叉熵，以及只看有效样本的结果均一致。
+        upstream_loss = F.cross_entropy(logits[:, :-1].reshape(-1, 5), labels[:, 1:].reshape(-1), ignore_index=-100)
+        valid_only_loss = F.cross_entropy(logits[1:2, :-1].reshape(-1, 5), labels[1:2, 1:].reshape(-1), ignore_index=-100)
+        torch.testing.assert_close(loss, upstream_loss)
+        torch.testing.assert_close(loss, valid_only_loss)
+        self.assertEqual(valid_tokens, 2)
+        loss.backward()
+        self.assertTrue(logits.grad[0].eq(0).all())
+        self.assertTrue(torch.isfinite(logits.grad).all())
+        self.assertGreater(logits.grad[1].abs().sum().item(), 0)
+        with self.assertRaisesRegex(ValueError, "没有有效监督"):
+            next_token_loss(logits, torch.full_like(labels, -100))
 
 
 if __name__ == "__main__":
