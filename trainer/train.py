@@ -2,18 +2,20 @@ import argparse
 from dataclasses import asdict
 import hashlib
 import json
-import math
 from pathlib import Path
 import random
 import sys
 import time
 
+import datasets  # Windows 下先加载 pyarrow，再加载 torch。
 import torch
 from torch.utils.data import DataLoader
+from transformers import AutoTokenizer
 
 from config.config import TrainPilotconfig
-from dataset.dataset import PretrainDataset, TrainPilotTokenizer, prepare_pretrain_data
+from dataset.dataset import PretrainDataset, SFTDataset, TrainPilotTokenizer, prepare_pretrain_data, prepare_sft_data
 from model.model import TrainPilotForCausalLM
+from trainer import pretrain, SFTtrain
 from trainer.trainer import evaluate, load_checkpoint, save_checkpoint, train_one_epoch
 
 
@@ -34,42 +36,59 @@ def file_sha256(path: Path) -> str:
 
 
 def main(argv: list[str] | None = None) -> None:
-    parser = argparse.ArgumentParser(description="TrainPilot Dense 单卡预训练")
+    parser = argparse.ArgumentParser(description="TrainPilot Dense 单卡预训练 / SFT")
     parser.add_argument("--config", default="config/smoke.json", help="JSON 配置文件")
+    parser.add_argument("--stage", choices=("pretrain", "sft"), help="覆盖配置中的训练阶段")
+    parser.add_argument("--base-checkpoint", help="首次 SFT 的基础权重，和 --resume 区分")
     parser.add_argument("--resume", help="从参数更新后的 checkpoint 恢复")
     parser.add_argument("--epochs", type=int, help="目标总轮数，包含 checkpoint 已完成的轮数")
     parser.add_argument("--device", help="覆盖配置的设备，例如 cpu、cuda 或 cuda:0")
+    parser.add_argument("--dtype", choices=("float32", "bfloat16"), help="覆盖训练精度")
     parser.add_argument("--output-dir", help="覆盖结果目录；相对路径基于仓库根目录")
     parser.add_argument("--max-updates", type=int, help="本次最多更新多少次，用于服务器短试跑；保留原调度总长度")
     parser.add_argument("--batch-size", type=int, help="覆盖 micro-batch 大小")
     parser.add_argument("--prepare-data", help="只划分原始 JSONL 语料，不启动训练")
-    parser.add_argument("--data-output-dir", default="dataset/processed", help="划分结果目录")
-    parser.add_argument("--val-fraction", type=float, default=0.01, help="按文本分组划分的验证比例")
+    parser.add_argument("--data-output-dir", help="划分结果目录")
+    parser.add_argument("--val-fraction", type=float, default=0.01, help="分组划分的验证比例")
     parser.add_argument("--split-seed", type=int, default=43)
     parser.add_argument("--source-sha256", help="下载文件应具有的 SHA256")
     args = parser.parse_args(argv)
-    if args.prepare_data is not None:
-        manifest = prepare_pretrain_data(
-            resolve_path(args.prepare_data), resolve_path(args.data_output_dir),
-            args.val_fraction, args.split_seed, args.source_sha256,
-        )
-        print(json.dumps(manifest, ensure_ascii=False, indent=2))
-        return
-
-    # 1. 读取配置与覆盖项。第一版只实现 float32，不隐式切换精度。
     config_path = resolve_path(args.config)
     with config_path.open(encoding="utf-8") as source:
         config = json.load(source)
+    stage = args.stage or config.get("stage", "pretrain")
+    config["stage"] = stage
+    if stage not in ("pretrain", "sft"):
+        raise ValueError("stage 必须为 pretrain 或 sft")
+    if args.base_checkpoint is not None:
+        config["base_checkpoint"] = args.base_checkpoint
+    functions = SFTtrain if stage == "sft" else pretrain
+
+    if args.prepare_data is not None:
+        source_path = resolve_path(args.prepare_data)
+        output_dir = resolve_path(args.data_output_dir or (
+            "dataset/datasets/processed/sft" if stage == "sft" else "dataset/datasets/processed"
+        ))
+        if stage == "sft":
+            tokenizer = AutoTokenizer.from_pretrained(resolve_path(config["data"]["tokenizer_path"]), local_files_only=True)
+            if args.source_sha256 and file_sha256(source_path) != args.source_sha256.lower():
+                raise ValueError("SFT 原始语料 SHA256 与预期不一致")
+            manifest = prepare_sft_data(
+                source_path, output_dir, tokenizer, config["model"]["max_seq_len"],
+                args.val_fraction, args.split_seed,
+            )
+        else:
+            manifest = prepare_pretrain_data(source_path, output_dir, args.val_fraction, args.split_seed, args.source_sha256)
+        print(json.dumps(manifest, ensure_ascii=False, indent=2))
+        return
+
+    # 1. 读取训练配置与命令行覆盖项。
     model_config = TrainPilotconfig(**config["model"])
     training = config["training"]
-    if args.epochs is not None:
-        training["epochs"] = args.epochs
-    if args.device is not None:
-        training["device"] = args.device
-    if args.output_dir is not None:
-        training["output_dir"] = args.output_dir
-    if args.batch_size is not None:
-        training["batch_size"] = args.batch_size
+    for name in ("epochs", "device", "dtype", "output_dir", "batch_size"):
+        value = getattr(args, name)
+        if value is not None:
+            training[name] = value
     training.setdefault("cpu_threads", 2)
     training.setdefault("accumulation_steps", 1)
     training.setdefault("grad_clip", None)
@@ -82,22 +101,6 @@ def main(argv: list[str] | None = None) -> None:
         raise ValueError("lr_schedule 必须为 constant 或 cosine")
     if args.max_updates is not None and args.max_updates <= 0:
         raise ValueError("max-updates 必须为正整数")
-    for name in ("epochs", "batch_size", "cpu_threads", "accumulation_steps", "log_interval", "save_interval"):
-        if type(training[name]) is not int or training[name] <= 0:
-            raise ValueError(f"{name} 必须是正整数")
-    for name in ("seed", "num_workers"):
-        if type(training[name]) is not int or training[name] < 0:
-            raise ValueError(f"{name} 必须是非负整数")
-    for name in ("learning_rate", "weight_decay"):
-        value = training[name]
-        if not isinstance(value, (int, float)) or isinstance(value, bool) or not math.isfinite(value):
-            raise ValueError(f"{name} 必须是有限数值")
-        if value < 0 or (name == "learning_rate" and value == 0):
-            raise ValueError(f"{name} 数值范围不合法")
-    if training["grad_clip"] is not None:
-        clip = training["grad_clip"]
-        if not isinstance(clip, (int, float)) or not math.isfinite(clip) or clip <= 0:
-            raise ValueError("grad_clip 必须为正的有限数值或 null")
 
     device = torch.device(training["device"])
     if device.type not in ("cpu", "cuda"):
@@ -119,16 +122,28 @@ def main(argv: list[str] | None = None) -> None:
     if device.type == "cuda":
         torch.cuda.manual_seed_all(training["seed"])
     paths = {name: resolve_path(value) for name, value in config["data"].items()}
-    fingerprints = {name: file_sha256(path) for name, path in paths.items()}
+    fingerprints = {name: file_sha256(paths[name]) for name in ("train_path", "val_path")}
+    if stage == "sft":
+        for name in ("tokenizer.json", "tokenizer_config.json"):
+            fingerprints[name] = file_sha256(paths["tokenizer_path"] / name)
+    else:
+        fingerprints["tokenizer_path"] = file_sha256(paths["tokenizer_path"])
     if paths["train_path"] == paths["val_path"] or fingerprints["train_path"] == fingerprints["val_path"]:
         raise ValueError("训练集与验证集不能是同一个文件或内容完全相同的文件")
 
     # 3. DataLoader 负责组 batch；只打乱训练集，保留最后一个不足整批的 batch。
-    tokenizer = TrainPilotTokenizer(paths["tokenizer_path"], model_config.max_seq_len)
-    if tokenizer.vocab_size != model_config.vocab_size:
+    if stage == "sft":
+        tokenizer = AutoTokenizer.from_pretrained(paths["tokenizer_path"], local_files_only=True)
+        train_data = SFTDataset(paths["train_path"], tokenizer, max_length=model_config.max_seq_len)
+        val_data = SFTDataset(paths["val_path"], tokenizer, max_length=model_config.max_seq_len)
+        vocab_size = len(tokenizer)
+    else:
+        tokenizer = TrainPilotTokenizer(paths["tokenizer_path"], model_config.max_seq_len)
+        train_data = PretrainDataset(paths["train_path"], tokenizer)
+        val_data = PretrainDataset(paths["val_path"], tokenizer)
+        vocab_size = tokenizer.vocab_size
+    if vocab_size != model_config.vocab_size:
         raise ValueError("模型 vocab_size 与实际 tokenizer 词表长度不一致")
-    train_data = PretrainDataset(paths["train_path"], tokenizer)
-    val_data = PretrainDataset(paths["val_path"], tokenizer)
     loader_options = {
         "batch_size": training["batch_size"],
         "num_workers": training["num_workers"],
@@ -141,6 +156,15 @@ def main(argv: list[str] | None = None) -> None:
 
     # 4. 先将模型放到设备，再创建优化器。恢复必须在模型初始化之后。
     model = TrainPilotForCausalLM(model_config).to(device=device, dtype=torch.float32)
+    if stage == "sft" and args.resume is None:
+        # 只载入基础模型权重；SFT 新建优化器，不继承预训练进度。
+        base = torch.load(resolve_path(config["base_checkpoint"]), map_location="cpu", weights_only=True)
+        base_config = dict(base["model_config"])
+        base_config["max_seq_len"] = model_config.max_seq_len
+        if TrainPilotconfig(**base_config) != model_config:
+            raise ValueError("SFT 模型配置与基础权重不一致（允许更改 max_seq_len）")
+        model.load_state_dict(base["model_state_dict"], strict=True)
+        del base
     optimizer = torch.optim.AdamW(
         model.parameters(), lr=training["learning_rate"], weight_decay=training["weight_decay"],
     )
@@ -154,6 +178,8 @@ def main(argv: list[str] | None = None) -> None:
         # 路径可以从本机迁移到服务器；核对内容摘要而不是绝对路径。
         with (resume_path.parent / "run_manifest.json").open(encoding="utf-8") as source:
             previous = json.load(source)
+        if previous["config"].get("stage", "pretrain") != stage:
+            raise ValueError("--resume 必须恢复同一训练阶段；首次 SFT 使用 base_checkpoint")
         if previous["data_sha256"] != fingerprints:
             raise ValueError("续训所用 tokenizer 或训练/验证数据与原运行不一致")
         for name in ("batch_size", "num_workers", "dtype", "seed", "cpu_threads", "accumulation_steps", "grad_clip", "lr_schedule"):
@@ -173,7 +199,7 @@ def main(argv: list[str] | None = None) -> None:
         training["weight_decay"] = optimizer.param_groups[0]["weight_decay"]
         print(f"恢复完成：已训练 {completed_epochs} 个 epoch，global_step={global_step}")
 
-    print(f"设备={device}; dtype={training['dtype']}; 参数数目={sum(p.numel() for p in model.parameters())}")
+    print(f"阶段={stage}; 设备={device}; dtype={training['dtype']}; 参数数目={sum(p.numel() for p in model.parameters())}")
     print(f"训练样本={len(train_data)}; 验证样本={len(val_data)}; batch_size={training['batch_size']}")
     print(f"CPU threads={torch.get_num_threads()}; 目标总 epoch={training['epochs']}")
     print(f"梯度累积={training['accumulation_steps']}; 有效 batch≈{training['batch_size'] * training['accumulation_steps']}")
@@ -185,10 +211,11 @@ def main(argv: list[str] | None = None) -> None:
     # 5. 保存实际配置与数据来源。运行产物位于被 Git 忽略的 runs/ 下。
     output_dir.mkdir(parents=True, exist_ok=True)
     manifest = {
-        "config": {"model": asdict(model_config), "data": {k: str(v) for k, v in paths.items()}, "training": training},
+        "config": {"stage": stage, "model": asdict(model_config), "data": {k: str(v) for k, v in paths.items()}, "training": training},
         "data_sha256": fingerprints,
         "environment": {"python": sys.version.split()[0], "torch": torch.__version__, "cuda_build": torch.version.cuda},
         "resume_from": str(resolve_path(args.resume)) if args.resume else None,
+        "base_checkpoint": str(resolve_path(config["base_checkpoint"])) if stage == "sft" else None,
     }
     (output_dir / "run_manifest.json").write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8",
@@ -196,7 +223,7 @@ def main(argv: list[str] | None = None) -> None:
     metrics_path = output_dir / "metrics.jsonl"
     # 续训时不额外跑初始验证：DataLoader 迭代本身会消耗随机数。
     if args.resume is None:
-        initial_val = evaluate(model, val_loader, device, amp_dtype=amp_dtype)
+        initial_val = evaluate(model, val_loader, device, amp_dtype=amp_dtype, loss_fn=functions.next_token_loss)
         print(f"训练前验证 loss={initial_val['loss']:.6f}")
         with metrics_path.open("w", encoding="utf-8") as log:
             log.write(json.dumps({"event": "initial_validation", "global_step": 0, "validation": initial_val}) + "\n")
@@ -234,6 +261,7 @@ def main(argv: list[str] | None = None) -> None:
             base_lr=training["learning_rate"] if training["lr_schedule"] == "cosine" else None,
             total_micro_steps=training["epochs"] * len(train_loader),
             start_state=epoch_state, on_update=on_update, limit_updates=args.max_updates,
+            train_step_fn=functions.train_step,
         )
         updates_this_call = train_record["steps"] - prior_steps
         global_step = epoch_global_base + train_record["steps"]
@@ -249,7 +277,7 @@ def main(argv: list[str] | None = None) -> None:
             if device.type == "cuda":
                 print(f"峰值已分配显存 MiB={torch.cuda.max_memory_allocated(device) / 1024**2:.2f}")
             return
-        val_record = evaluate(model, val_loader, device, amp_dtype=amp_dtype)
+        val_record = evaluate(model, val_loader, device, amp_dtype=amp_dtype, loss_fn=functions.next_token_loss)
         if device.type == "cuda":
             torch.cuda.synchronize(device)
         elapsed = time.perf_counter() - started

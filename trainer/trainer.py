@@ -29,6 +29,7 @@ def train_one_epoch(
     start_state: dict | None = None,
     on_update=None,
     limit_updates: int | None = None,
+    train_step_fn=train_step,
 ) -> dict:
     """按有效 token 加权累积梯度，更新后可记录日志或保存 checkpoint。
 
@@ -45,9 +46,12 @@ def train_one_epoch(
     if base_lr is not None and (total_micro_steps is None or total_micro_steps <= 0):
         raise ValueError("余弦调度需要正的 total_micro_steps")
     iterator = iter(loader)
-    # 数据端无随机变换；入口用独立 generator 重建同一 epoch 的数据顺序。
+    # 入口重建同一数据顺序。跳过旧 batch 后还原 Python RNG，
+    # 让 SFT 的随机数据处理从 checkpoint 的随机状态继续。
+    python_rng = random.getstate()
     for _ in range(state["micro_steps"]):
         next(iterator)
+    random.setstate(python_rng)
     updates_this_call = 0
     while True:
         group = list(islice(iterator, accumulation_steps))
@@ -64,7 +68,7 @@ def train_one_epoch(
             for param_group in optimizer.param_groups:
                 param_group["lr"] = lr
         for index, (batch, count) in enumerate(zip(group, counts)):
-            record = train_step(
+            record = train_step_fn(
                 model, optimizer, batch, device,
                 zero_grad=index == 0, update_parameters=index == len(group) - 1,
                 loss_weight=count / group_tokens, amp_dtype=amp_dtype, grad_clip=grad_clip,
@@ -96,6 +100,7 @@ def evaluate(
     device: str | torch.device,
     *,
     amp_dtype: torch.dtype | None = None,
+    loss_fn=next_token_loss,
 ) -> dict[str, float | int]:
     was_training = model.training
     total_loss_sum = 0.0
@@ -117,7 +122,7 @@ def evaluate(
                 )
                 with autocast:
                     logits = model(input_ids, attention_mask=attention_mask)
-                    loss, valid_tokens = next_token_loss(logits, labels)
+                    loss, valid_tokens = loss_fn(logits, labels)
                 if not torch.isfinite(loss).item():
                     raise FloatingPointError("验证损失出现 NaN 或 Inf")
 

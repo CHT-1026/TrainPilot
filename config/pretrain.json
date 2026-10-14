@@ -13,8 +13,8 @@
   },
   "data": {
     "tokenizer_path": "dataset/tokenizer.json",
-    "train_path": "dataset/processed/train.jsonl",
-    "val_path": "dataset/processed/val.jsonl"
+    "train_path": "dataset/datasets/processed/train.jsonl",
+    "val_path": "dataset/datasets/processed/val.jsonl"
   },
   "training": {
     "device": "cuda",

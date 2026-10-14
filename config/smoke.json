@@ -10,8 +10,8 @@
   },
   "data": {
     "tokenizer_path": "dataset/tokenizer.json",
-    "train_path": "dataset/fixtures/train.jsonl",
-    "val_path": "dataset/fixtures/val.jsonl"
+    "train_path": "dataset/datasets/fixtures/train.jsonl",
+    "val_path": "dataset/datasets/fixtures/val.jsonl"
   },
   "training": {
     "device": "cpu",

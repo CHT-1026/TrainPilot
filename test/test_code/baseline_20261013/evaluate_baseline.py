@@ -53,7 +53,7 @@ def sync():
 
 def prepare_subset(manifest):
     """Reproduce full validation-file digest, reservoir-sample its records."""
-    source = ROOT / 'dataset/pretrain_t2t_mini.jsonl'
+    source = ROOT / 'dataset/datasets/pretrain_t2t_mini.jsonl'
     source_meta = json.loads((ROOT / 'dataset/SOURCE.json').read_text(encoding='utf-8'))
     raw_hash, val_hash = hashlib.sha256(), hashlib.sha256()
     rng = random.Random(20261013)

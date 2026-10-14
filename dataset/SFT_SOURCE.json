@@ -1,0 +1,37 @@
+{
+  "upstream_repository": "https://huggingface.co/datasets/jingyaogong/minimind_dataset",
+  "revision": "312afb4f76391145c6902f765bb51691c09a12f5",
+  "filename": "sft_t2t_mini.jsonl",
+  "relative_path": "datasets/sft_t2t_mini.jsonl",
+  "download_url": "https://huggingface.co/datasets/jingyaogong/minimind_dataset/resolve/312afb4f76391145c6902f765bb51691c09a12f5/sft_t2t_mini.jsonl",
+  "bytes": 1739201170,
+  "sha256": "abb1e76b2056e14728beb78db96b7b3c491a0bef1ed3e34a9b381b28f29fa518",
+  "upstream_card_license_tags": [
+    "apache-2.0",
+    "cc-by-nc-2.0"
+  ],
+  "license_note": "The upstream card lists both licenses without per-record mapping; preserve attribution and applicable restrictions.",
+  "verified_at": "2026-10-14T17:00:29.936034+08:00",
+  "validation": {
+    "records": 905718,
+    "scan_complete": true,
+    "jsonl_and_basic_message_schema_checked": true,
+    "role_counts": {
+      "user": 1172003,
+      "assistant": 1249691,
+      "system": 84832,
+      "tool": 77784
+    },
+    "message_key_counts": {
+      "role": 2584310,
+      "content": 2584310,
+      "reasoning_content": 1657872,
+      "tools": 84832,
+      "tool_calls": 77784
+    },
+    "records_with_tools": 84832,
+    "records_with_tool_calls": 76574,
+    "records_with_reasoning_content": 273823,
+    "train_val_split_created": false
+  }
+}

@@ -335,8 +335,8 @@ class TrainingEntryChecks(unittest.TestCase):
             },
             "data": {
                 "tokenizer_path": str(root / "dataset" / "tokenizer.json"),
-                "train_path": str(root / "dataset" / "fixtures" / "train.jsonl"),
-                "val_path": str(root / "dataset" / "fixtures" / "val.jsonl"),
+                "train_path": str(root / "dataset" / "datasets" / "fixtures" / "train.jsonl"),
+                "val_path": str(root / "dataset" / "datasets" / "fixtures" / "val.jsonl"),
             },
             "training": {
                 "device": "cpu", "dtype": "float32", "epochs": 1,
@@ -432,3 +432,119 @@ class TrainingEntryChecks(unittest.TestCase):
             manifest = json.loads((output / "manifest.json").read_text(encoding="utf-8"))
             self.assertEqual(manifest["counts"]["train"] + manifest["counts"]["val"], 100)
             self.assertFalse((output / "checkpoint.pt").exists())
+
+
+class SFTEntryChecks(unittest.TestCase):
+    def make_config(self, directory):
+        root = Path(directory)
+        torch.manual_seed(7)
+        base_config = TrainPilotconfig(
+            vocab_size=6400, hidden_size=16, num_layers=1, num_heads=4,
+            num_kv_heads=2, intermediate_size=32, max_seq_len=32,
+            max_position_embeddings=256, dropout=0.2,
+        )
+        model = TrainPilotForCausalLM(base_config)
+        optimizer = torch.optim.AdamW(model.parameters(), lr=0.003)
+        model(torch.tensor([[1, 3, 4, 2]])).square().mean().backward()
+        optimizer.step()
+        base_path = root / "base.pt"
+        save_checkpoint(base_path, model, optimizer, completed_epochs=7, global_step=77)
+        for name, count in (("train", 4), ("val", 2)):
+            rows = [
+                {"conversations": [{"role": "user", "content": f"{name}问题 {i}"},
+                                   {"role": "assistant", "content": "回答。"}]}
+                for i in range(count)
+            ]
+            (root / f"{name}.jsonl").write_text(
+                "\n".join(json.dumps(row, ensure_ascii=False) for row in rows) + "\n", encoding="utf-8",
+            )
+        from dataclasses import asdict
+        config = {
+            "stage": "sft", "base_checkpoint": str(base_path),
+            "model": asdict(replace(base_config, max_seq_len=128)),
+            "data": {"tokenizer_path": str(Path(__file__).resolve().parents[2] / "dataset"),
+                     "train_path": str(root / "train.jsonl"), "val_path": str(root / "val.jsonl")},
+            "training": {
+                "device": "cpu", "dtype": "float32", "epochs": 2, "batch_size": 1,
+                "accumulation_steps": 2, "learning_rate": 1e-5, "weight_decay": 0.01,
+                "seed": 42, "num_workers": 0, "output_dir": str(root / "sft"),
+                "lr_schedule": "cosine", "grad_clip": 1.0, "save_interval": 1,
+            },
+        }
+        path = root / "sft.json"
+        path.write_text(json.dumps(config), encoding="utf-8")
+        return path, config
+
+    def test_sft_loads_base_weights_with_new_optimizer_and_progress(self):
+        from trainer.SFTtrain import train_step, next_token_loss
+        with TemporaryDirectory() as directory, redirect_stdout(io.StringIO()):
+            path, config = self.make_config(directory)
+            base_path = Path(config["base_checkpoint"])
+            before = base_path.read_bytes()
+            base = torch.load(base_path, map_location="cpu", weights_only=True)
+
+            def inspect_epoch(model, optimizer, *args, **kwargs):
+                self.assertFalse(optimizer.state)
+                self.assertEqual(kwargs["train_step_fn"], train_step)
+                self.assertEqual(optimizer.param_groups[0]["lr"], 1e-5)
+                for name, value in model.state_dict().items():
+                    torch.testing.assert_close(value, base["model_state_dict"][name], rtol=0, atol=0)
+                return train_one_epoch(model, optimizer, *args, **kwargs)
+
+            with patch("trainer.train.train_one_epoch", side_effect=inspect_epoch), \
+                 patch("trainer.train.evaluate", wraps=evaluate) as evaluation:
+                train_main(["--config", str(path), "--max-updates", "1"])
+            self.assertEqual(evaluation.call_args.kwargs["loss_fn"], next_token_loss)
+            checkpoint = torch.load(Path(directory) / "sft/checkpoint.pt", weights_only=True)
+            self.assertEqual(checkpoint["global_step"], 1)
+            self.assertEqual(checkpoint["completed_epochs"], 0)
+            self.assertEqual(base_path.read_bytes(), before)
+            manifest = json.loads((Path(directory) / "sft/run_manifest.json").read_text(encoding="utf-8"))
+            self.assertEqual(manifest["config"]["stage"], "sft")
+            self.assertIn("tokenizer_config.json", manifest["data_sha256"])
+
+    def test_random_sft_mid_epoch_resume_matches_continuous_run(self):
+        with TemporaryDirectory() as directory, redirect_stdout(io.StringIO()):
+            path, _ = self.make_config(directory)
+            root = Path(directory)
+            train_main(["--config", str(path), "--output-dir", str(root / "continuous")])
+            train_main(["--config", str(path), "--output-dir", str(root / "resumed"), "--max-updates", "1"])
+            train_main([
+                "--config", str(path), "--output-dir", str(root / "resumed"),
+                "--resume", str(root / "resumed/checkpoint.pt"),
+            ])
+            expected = torch.load(root / "continuous/checkpoint.pt", weights_only=True)
+            actual = torch.load(root / "resumed/checkpoint.pt", weights_only=True)
+            self.assertEqual(actual["global_step"], 4)
+            self.assertEqual(actual["completed_epochs"], 2)
+            self.assertEqual(actual["rng_state"]["python"], expected["rng_state"]["python"])
+            for name, value in expected["model_state_dict"].items():
+                torch.testing.assert_close(actual["model_state_dict"][name], value, rtol=0, atol=0)
+            for name in ("continuous", "resumed"):
+                records = [json.loads(line) for line in (root / name / "metrics.jsonl").read_text().splitlines()]
+                epochs = [record for record in records if record["event"] == "epoch"]
+                if name == "continuous":
+                    expected_epochs = epochs
+                else:
+                    for result, reference in zip(epochs, expected_epochs):
+                        self.assertEqual(result["train"], reference["train"])
+                        self.assertEqual(result["validation"], reference["validation"])
+
+    def test_sft_prepare_entry_and_model_config_match(self):
+        with TemporaryDirectory() as directory, redirect_stdout(io.StringIO()):
+            path, config = self.make_config(directory)
+            root = Path(directory)
+            source = root / "raw_sft.jsonl"
+            rows = [{"conversations": [{"role": "user", "content": f"问题 {i}"},
+                                       {"role": "assistant", "content": "回答。"}]} for i in range(100)]
+            source.write_text("\n".join(json.dumps(row, ensure_ascii=False) for row in rows), encoding="utf-8")
+            with patch("trainer.train.torch.load") as load:
+                train_main(["--config", str(path), "--prepare-data", str(source),
+                            "--data-output-dir", str(root / "processed"), "--val-fraction", "0.2"])
+                load.assert_not_called()
+            manifest = json.loads((root / "processed/manifest.json").read_text(encoding="utf-8"))
+            self.assertEqual(manifest["counts"]["train"] + manifest["counts"]["val"], 100)
+            config["model"]["rope_theta"] = 10000.0
+            path.write_text(json.dumps(config), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "基础权重不一致"):
+                train_main(["--config", str(path)])

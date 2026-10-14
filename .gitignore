@@ -14,9 +14,11 @@ __pycache__/
 .vscode/
 # Datasets, model weights and experiment artifacts
 data/
-dataset/processed/
+dataset/datasets/processed/
 dataset/cache/
-datasets/
+dataset/datasets/cache/
+dataset/datasets/sft_t2t_mini.jsonl
+/datasets/
 checkpoints/
 weights/
 runs/
@@ -34,3 +36,6 @@ artifacts/
 ~$*.docx
 Thumbs.db
 .DS_Store
+
+# Interrupted corpus downloads
+dataset/datasets/*.part

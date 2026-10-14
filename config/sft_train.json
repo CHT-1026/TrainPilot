@@ -1,0 +1,38 @@
+{
+  "stage": "sft",
+  "base_checkpoint": "runs/pre_train1-20261012/checkpoint.pt",
+  "model": {
+    "vocab_size": 6400,
+    "hidden_size": 768,
+    "num_layers": 8,
+    "num_heads": 8,
+    "num_kv_heads": 4,
+    "intermediate_size": 2432,
+    "max_seq_len": 768,
+    "max_position_embeddings": 32768,
+    "initializer_range": 0.02,
+    "flash_attn": true
+  },
+  "data": {
+    "tokenizer_path": "dataset",
+    "train_path": "dataset/datasets/processed/sft/train.jsonl",
+    "val_path": "dataset/datasets/processed/sft/val.jsonl"
+  },
+  "training": {
+    "device": "cuda",
+    "dtype": "bfloat16",
+    "epochs": 2,
+    "batch_size": 16,
+    "accumulation_steps": 1,
+    "grad_clip": 1.0,
+    "lr_schedule": "cosine",
+    "log_interval": 100,
+    "save_interval": 1000,
+    "learning_rate": 0.00001,
+    "weight_decay": 0.01,
+    "seed": 42,
+    "num_workers": 0,
+    "cpu_threads": 2,
+    "output_dir": "runs/sft"
+  }
+}
