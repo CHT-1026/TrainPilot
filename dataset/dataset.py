@@ -21,6 +21,7 @@ from torch.utils.data import DataLoader, Dataset
 from tokenizers import Tokenizer
 import random
 from datasets import load_dataset, Features, Value
+from tqdm.auto import tqdm
 
 IGNORE_INDEX = -100
 
@@ -300,11 +301,15 @@ class SFTDataset(Dataset):
     # BOS 本身由各个角色共用；这里匹配的是 BOS + assistant + 换行。
     # labels 保持同位置，只有 assistant 正文及结束标记参与监督，不在此移位。
     def generate_labels(self, input_ids, attention_mask=None):
+        # HF 的特殊 token ID 是动态属性；一次取出，避免每个 token 都查询。
+        pad_token_id = self.tokenizer.pad_token_id
+        eos_token_id = self.tokenizer.eos_token_id
+        bos_token_id = self.tokenizer.bos_token_id
         labels = [IGNORE_INDEX] * len(input_ids)
         if attention_mask is None:
             # 兼容单独调用本函数：只将右侧连续 PAD 视为 padding。
             valid_length = len(input_ids)
-            while valid_length and input_ids[valid_length - 1] == self.tokenizer.pad_token_id:
+            while valid_length and input_ids[valid_length - 1] == pad_token_id:
                 valid_length -= 1
             attention_mask = [1] * valid_length + [0] * (len(input_ids) - valid_length)
         else:
@@ -320,9 +325,9 @@ class SFTDataset(Dataset):
                 start = i + len(self.bos_id)
                 end = start
                 while end < valid_length:
-                    if input_ids[end] == self.tokenizer.eos_token_id:
+                    if input_ids[end] == eos_token_id:
                         break
-                    if input_ids[end] == self.tokenizer.bos_token_id:
+                    if input_ids[end] == bos_token_id:
                         raise ValueError("assistant 消息缺少结束标记，不能跨角色监督")
                     end += 1
                 stop = end
@@ -404,7 +409,7 @@ def prepare_sft_data(
             temporary_paths[name] = Path(temporary.name)
             temporary_files[name] = temporary
 
-        for sample in dataset.samples:
+        for sample in tqdm(dataset.samples, total=len(dataset), desc="SFT 模板编码、过滤与划分", unit="条"):
             conversations = sample["conversations"]
             if not conversations or any(not isinstance(message, dict) for message in conversations):
                 counts["invalid_chat"] += 1
