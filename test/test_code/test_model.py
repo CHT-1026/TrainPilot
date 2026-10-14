@@ -7,8 +7,8 @@ from dataclasses import replace
 import torch
 import torch.nn.functional as F
 
-from trainpilot.config import TrainPilotconfig
-from trainpilot.model import TrainPilotModel, TrainPilotForCausalLM
+from config.config import TrainPilotconfig
+from model.model import TrainPilotModel, TrainPilotForCausalLM
 
 
 class BackboneChecks(unittest.TestCase):

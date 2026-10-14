@@ -9,9 +9,9 @@
     "max_seq_len": 32
   },
   "data": {
-    "tokenizer_path": "assets/tokenizer.json",
-    "train_path": "tests/fixtures/train.jsonl",
-    "val_path": "tests/fixtures/val.jsonl"
+    "tokenizer_path": "dataset/tokenizer.json",
+    "train_path": "dataset/fixtures/train.jsonl",
+    "val_path": "dataset/fixtures/val.jsonl"
   },
   "training": {
     "device": "cpu",

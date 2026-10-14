@@ -4,8 +4,8 @@
 下一 token loss 在训练端统一计算，数据端保留未移位 labels。
 基于 nn.Module，不导入外部 MiniMind 或 Hugging Face 模型类。
 """
-from trainpilot.layers import RMSNorm, FFN_SWiGLU, Attention, precompute_freqs_cis
-from trainpilot.config import TrainPilotconfig
+from model.layers import RMSNorm, FFN_SWiGLU, Attention, precompute_freqs_cis
+from config.config import TrainPilotconfig
 import torch
 from torch import nn
 

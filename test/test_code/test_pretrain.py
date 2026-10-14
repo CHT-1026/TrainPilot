@@ -6,9 +6,9 @@ from unittest.mock import patch
 import torch
 from torch import nn
 
-from trainpilot.config import TrainPilotconfig
-from trainpilot.model import TrainPilotForCausalLM
-from trainpilot.pretrain import next_token_loss, train_step
+from config.config import TrainPilotconfig
+from model.model import TrainPilotForCausalLM
+from trainer.pretrain import next_token_loss, train_step
 
 
 class NonFiniteModel(nn.Module):

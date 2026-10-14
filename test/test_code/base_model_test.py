@@ -4,15 +4,15 @@ import math
 from pathlib import Path
 import sys
 
-# 支持直接运行 python test/base_model_test.py。
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
+# 支持直接运行 python test/test_code/base_model_test.py。
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 
 import torch
 from tokenizers import Tokenizer
 
-from trainpilot.config import TrainPilotconfig
-from trainpilot.model import TrainPilotForCausalLM
+from config.config import TrainPilotconfig
+from model.model import TrainPilotForCausalLM
 
 
 def resolve_path(value: str | Path) -> Path:
@@ -97,7 +97,7 @@ def generate_text(
 def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(description="循环输入文本，测试预训练基础模型的续写")
     parser.add_argument("--checkpoint", default="runs/pre_train1-20261012/checkpoint.pt")
-    parser.add_argument("--tokenizer", default="assets/tokenizer.json")
+    parser.add_argument("--tokenizer", default="dataset/tokenizer.json")
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     parser.add_argument("--max-new-tokens", type=int, default=128)
     parser.add_argument("--temperature", type=float, default=0.8)

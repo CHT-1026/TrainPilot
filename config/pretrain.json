@@ -12,9 +12,9 @@
     "flash_attn": true
   },
   "data": {
-    "tokenizer_path": "assets/tokenizer.json",
-    "train_path": "data/train.jsonl",
-    "val_path": "data/val.jsonl"
+    "tokenizer_path": "dataset/tokenizer.json",
+    "train_path": "dataset/processed/train.jsonl",
+    "val_path": "dataset/processed/val.jsonl"
   },
   "training": {
     "device": "cuda",

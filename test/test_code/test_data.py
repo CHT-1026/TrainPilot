@@ -9,13 +9,13 @@ import torch
 import torch.nn.functional as F
 from torch.utils.data import DataLoader
 
-from trainpilot.config import TrainPilotconfig
-from trainpilot.data import IGNORE_INDEX, PretrainDataset, TrainPilotTokenizer, prepare_pretrain_data
-from trainpilot.model import TrainPilotForCausalLM
+from config.config import TrainPilotconfig
+from dataset.dataset import IGNORE_INDEX, PretrainDataset, TrainPilotTokenizer, prepare_pretrain_data
+from model.model import TrainPilotForCausalLM
 
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
-TOKENIZER_PATH = PROJECT_ROOT / "assets/tokenizer.json"
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+TOKENIZER_PATH = PROJECT_ROOT / "dataset/tokenizer.json"
 
 
 class DataChecks(unittest.TestCase):
@@ -121,7 +121,7 @@ class DataChecks(unittest.TestCase):
 
     def test_real_tokenizer_batch_connects_to_model_and_loss(self):
         torch.manual_seed(42)
-        dataset = PretrainDataset(PROJECT_ROOT / "tests/fixtures/train.jsonl", self.encoder)
+        dataset = PretrainDataset(PROJECT_ROOT / "dataset/fixtures/train.jsonl", self.encoder)
         batch = next(iter(DataLoader(dataset, batch_size=2, num_workers=0)))
         model = TrainPilotForCausalLM(TrainPilotconfig(
             vocab_size=self.encoder.vocab_size, hidden_size=16, num_layers=1,

@@ -5,8 +5,8 @@ from unittest.mock import patch
 import torch
 import torch.nn.functional as F
 
-from trainpilot.config import TrainPilotconfig
-from trainpilot.layers import Attention, precompute_freqs_cis, repeat_kv
+from config.config import TrainPilotconfig
+from model.layers import Attention, precompute_freqs_cis, repeat_kv
 
 
 class AttentionChecks(unittest.TestCase):

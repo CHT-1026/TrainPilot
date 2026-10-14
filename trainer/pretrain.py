@@ -9,7 +9,7 @@ from contextlib import nullcontext
 from torch import nn
 import torch.nn.functional as F
 
-from trainpilot.data import IGNORE_INDEX
+from dataset.dataset import IGNORE_INDEX
 
 # 计算下一个token的损失，需要进行labels和logits的移位
 def next_token_loss(

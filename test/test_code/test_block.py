@@ -4,9 +4,9 @@ import unittest
 import torch
 from torch import nn
 
-from trainpilot.config import TrainPilotconfig
-from trainpilot.layers import precompute_freqs_cis
-from trainpilot.model import TrainPilotBlock
+from config.config import TrainPilotconfig
+from model.layers import precompute_freqs_cis
+from model.model import TrainPilotBlock
 
 
 class ConstantAttention(nn.Module):

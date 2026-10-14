@@ -11,13 +11,13 @@ import time
 import torch
 from torch.utils.data import DataLoader
 
-from trainpilot.config import TrainPilotconfig
-from trainpilot.data import PretrainDataset, TrainPilotTokenizer, prepare_pretrain_data
-from trainpilot.model import TrainPilotForCausalLM
-from trainpilot.trainer import evaluate, load_checkpoint, save_checkpoint, train_one_epoch
+from config.config import TrainPilotconfig
+from dataset.dataset import PretrainDataset, TrainPilotTokenizer, prepare_pretrain_data
+from model.model import TrainPilotForCausalLM
+from trainer.trainer import evaluate, load_checkpoint, save_checkpoint, train_one_epoch
 
 
-PROJECT_ROOT = Path(__file__).resolve().parent
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 
 def resolve_path(value: str | Path) -> Path:
@@ -35,7 +35,7 @@ def file_sha256(path: Path) -> str:
 
 def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(description="TrainPilot Dense 单卡预训练")
-    parser.add_argument("--config", default="configs/smoke.json", help="JSON 配置文件")
+    parser.add_argument("--config", default="config/smoke.json", help="JSON 配置文件")
     parser.add_argument("--resume", help="从参数更新后的 checkpoint 恢复")
     parser.add_argument("--epochs", type=int, help="目标总轮数，包含 checkpoint 已完成的轮数")
     parser.add_argument("--device", help="覆盖配置的设备，例如 cpu、cuda 或 cuda:0")
@@ -43,7 +43,7 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument("--max-updates", type=int, help="本次最多更新多少次，用于服务器短试跑；保留原调度总长度")
     parser.add_argument("--batch-size", type=int, help="覆盖 micro-batch 大小")
     parser.add_argument("--prepare-data", help="只划分原始 JSONL 语料，不启动训练")
-    parser.add_argument("--data-output-dir", default="data", help="划分结果目录")
+    parser.add_argument("--data-output-dir", default="dataset/processed", help="划分结果目录")
     parser.add_argument("--val-fraction", type=float, default=0.01, help="按文本分组划分的验证比例")
     parser.add_argument("--split-seed", type=int, default=43)
     parser.add_argument("--source-sha256", help="下载文件应具有的 SHA256")

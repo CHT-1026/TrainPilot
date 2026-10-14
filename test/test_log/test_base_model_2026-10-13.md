@@ -448,24 +448,26 @@ error: 'c' was not declared in this scope
 
 ~~~~powershell
 cd E:\agent项目\trainpilot
-& .\.venv\Scripts\python.exe -u test/baseline_20261013/evaluate_baseline.py
-& .\.venv\Scripts\python.exe test/baseline_20261013/check_generated_cpp.py
-& .\.venv\Scripts\python.exe test/baseline_20261013/write_report.py
+& .\.venv\Scripts\python.exe -u test/test_code/baseline_20261013/evaluate_baseline.py
+& .\.venv\Scripts\python.exe test/test_code/baseline_20261013/check_generated_cpp.py
+& .\.venv\Scripts\python.exe test/test_code/baseline_20261013/write_report.py
 ~~~~
 
 第一次完整验证使用 `complete_full_validation.py` 对已完成的生成实验追加验证；当前 `evaluate_baseline.py` 已包含同一完整验证流程，复现无需重复运行补充脚本。耗时与吞吐受GPU负载、驱动和温度影响，不承诺重新运行数值完全相同。
 
 已提交的原始记录：[results.json](base_model_20261013/results.json) 与 [code_results.json](base_model_20261013/code_results.json)。文件内保留的是当时测量的配置、路径和结果。
 
-可执行的复现脚本放在 `test/baseline_20261013/`；从原本本地实验脚本整理而来，路径定位及编译器查找方式已调整，未重新测量或替换已记录结果。原始本地产物位于 `runs/base-eval-20261013/`（runs按仓库规则忽略）：
+可执行的复现脚本放在 `test/test_code/baseline_20261013/`；从原本本地实验脚本整理而来，路径定位及编译器查找方式已调整，未重新测量或替换已记录结果。原始本地产物位于 `runs/base-eval-20261013/`（runs按仓库规则忽略）：
 
 - `results.json`：配置、环境、原始生成token ID/文本、loss/PPL、延迟、显存、SHA及停止原因。
 - `code_results.json`：编译命令、编译/执行返回码、stderr和断言用例。
 - `validation_full.jsonl` / `validation_subset.jsonl`：用于今天验证的重建数据。
 - `generated_add_greedy.cpp` / `generated_add_sample.cpp`：提取函数及断言入口。
-- 原运行脚本保留在 runs；仓库复现入口位于 `test/baseline_20261013/`。
+- 原运行脚本保留在 runs；仓库复现入口位于 `test/test_code/baseline_20261013/`。
 
-该Markdown可以单独阅读；完整复现实验还需本地权重、语料和上述原始产物。GitHub仅保存日志、原始结果JSON和复现代码，不保存本次权重、验证文本或二进制程序。用户指定的本地文件名 `test_base_model_10.13,md` 保留；GitHub阅读版本为 `test_base_model_2026-10-13.md`。
+该Markdown可以单独阅读；完整复现实验还需本地权重、语料和上述原始产物。GitHub仅保存日志、原始结果JSON和复现代码，不保存本次权重、验证文本或二进制程序。原逗号文件名副本已在2026-10-14按用户要求移到仓库外备份；GitHub阅读版本为 `test_base_model_2026-10-13.md`。
+
+以下文件指纹保留2026-10-13测量时的原路径和SHA256；2026-10-14仅更新了可执行脚本、文档链接和目录位置，没有重新测量或改写历史数值。
 
 运行代码的文件指纹（日志生成时读取）：
 

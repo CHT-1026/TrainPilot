@@ -5,7 +5,7 @@ import re
 import subprocess
 import shutil
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[3]
 OUT = ROOT / 'runs/base-eval-20261013'
 compiler = shutil.which('g++')
 if compiler is None:

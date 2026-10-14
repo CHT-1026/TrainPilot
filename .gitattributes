@@ -4,6 +4,7 @@
 .gitignore text eol=lf
 .env.example text eol=lf
 *.md text eol=lf
+*.LICENSE text eol=lf
 *.py text eol=lf
 *.toml text eol=lf
 *.yaml text eol=lf

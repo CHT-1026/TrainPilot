@@ -12,12 +12,12 @@ import torch
 from torch import nn
 from tokenizers import Tokenizer, models, pre_tokenizers
 
-from trainpilot.config import TrainPilotconfig
-from trainpilot.model import TrainPilotForCausalLM
-from trainpilot.trainer import save_checkpoint
+from config.config import TrainPilotconfig
+from model.model import TrainPilotForCausalLM
+from trainer.trainer import save_checkpoint
 
 # Python 自身可能安装名为 test 的包，按文件路径加载这个交互脚本。
-entry_path = Path(__file__).resolve().parents[1] / "test" / "base_model_test.py"
+entry_path = Path(__file__).resolve().parents[2] / "test" / "test_code" / "base_model_test.py"
 entry_spec = importlib.util.spec_from_file_location("trainpilot_interactive_entry", entry_path)
 entry = importlib.util.module_from_spec(entry_spec)
 entry_spec.loader.exec_module(entry)

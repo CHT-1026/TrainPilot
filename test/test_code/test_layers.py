@@ -1,8 +1,8 @@
 """固定数值与梯度检查；先完成 layers.py 再运行。"""
 import unittest
 import torch
-from trainpilot.config import TrainPilotconfig
-from trainpilot.layers import (
+from config.config import TrainPilotconfig
+from model.layers import (
     RMSNorm, FFN_SWiGLU, precompute_freqs_cis, apply_rotary_pos_emb,
 )
 

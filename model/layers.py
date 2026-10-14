@@ -1,7 +1,7 @@
 import torch
 from torch import nn
 import torch.nn.functional as F
-from trainpilot.config import TrainPilotconfig
+from config.config import TrainPilotconfig
 import math
 
 

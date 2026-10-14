@@ -11,7 +11,7 @@ import torch
 from torch import nn
 from torch.utils.data import DataLoader
 
-from trainpilot.pretrain import next_token_loss, train_step
+from trainer.pretrain import next_token_loss, train_step
 
 
 def train_one_epoch(

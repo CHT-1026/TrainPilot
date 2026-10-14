@@ -14,10 +14,10 @@ from torch import nn
 import torch.nn.functional as F
 from torch.utils.data import DataLoader
 
-from trainpilot.config import TrainPilotconfig
-from trainpilot.model import TrainPilotForCausalLM
-from trainpilot.trainer import evaluate, load_checkpoint, save_checkpoint, train_one_epoch
-from train import main as train_main
+from config.config import TrainPilotconfig
+from model.model import TrainPilotForCausalLM
+from trainer.trainer import evaluate, load_checkpoint, save_checkpoint, train_one_epoch
+from trainer.train import main as train_main
 
 
 class FixedScoresModel(nn.Module):
@@ -307,7 +307,7 @@ class CheckpointChecks(unittest.TestCase):
             path = Path(directory) / "checkpoint.pt"
             save_checkpoint(path, model, optimizer, 0, 0)
             before = path.read_bytes()
-            with patch("trainpilot.trainer.torch.save", side_effect=OSError("模拟写入失败")):
+            with patch("trainer.trainer.torch.save", side_effect=OSError("模拟写入失败")):
                 with self.assertRaises(OSError):
                     save_checkpoint(path, model, optimizer, 1, 2)
             self.assertEqual(path.read_bytes(), before)
@@ -326,7 +326,7 @@ class CheckpointChecks(unittest.TestCase):
 
 class TrainingEntryChecks(unittest.TestCase):
     def make_config(self, directory):
-        root = Path(__file__).resolve().parents[1]
+        root = Path(__file__).resolve().parents[2]
         config = {
             "model": {
                 "vocab_size": 6400, "hidden_size": 16, "num_layers": 1,
@@ -334,9 +334,9 @@ class TrainingEntryChecks(unittest.TestCase):
                 "max_seq_len": 8, "dropout": 0.2,
             },
             "data": {
-                "tokenizer_path": str(root / "assets" / "tokenizer.json"),
-                "train_path": str(root / "tests" / "fixtures" / "train.jsonl"),
-                "val_path": str(root / "tests" / "fixtures" / "val.jsonl"),
+                "tokenizer_path": str(root / "dataset" / "tokenizer.json"),
+                "train_path": str(root / "dataset" / "fixtures" / "train.jsonl"),
+                "val_path": str(root / "dataset" / "fixtures" / "val.jsonl"),
             },
             "training": {
                 "device": "cpu", "dtype": "float32", "epochs": 1,

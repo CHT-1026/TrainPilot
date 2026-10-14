@@ -6,10 +6,10 @@ from pathlib import Path
 import statistics
 import subprocess
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[3]
 OUT = ROOT / 'runs/base-eval-20261013'
-RAW = ROOT / 'test_log/base_model_20261013'
-TARGET = ROOT / 'test_log/test_base_model_10.13,md'
+RAW = ROOT / 'test/test_log/base_model_20261013'
+TARGET = ROOT / 'test/test_log/test_base_model_2026-10-13.md'
 r = json.loads(((OUT/'results.json') if (OUT/'results.json').is_file() else (RAW/'results.json')).read_text(encoding='utf-8'))
 c = json.loads(((OUT/'code_results.json') if (OUT/'code_results.json').is_file() else (RAW/'code_results.json')).read_text(encoding='utf-8'))
 full = r['full_validation']
@@ -223,35 +223,34 @@ error: 'c' was not declared in this scope
 
 ~~~~powershell
 cd E:\\agent项目\\trainpilot
-& .\\.venv\\Scripts\\python.exe -u test/baseline_20261013/evaluate_baseline.py
-& .\\.venv\\Scripts\\python.exe test/baseline_20261013/check_generated_cpp.py
-& .\\.venv\\Scripts\\python.exe test/baseline_20261013/write_report.py
+& .\\.venv\\Scripts\\python.exe -u test/test_code/baseline_20261013/evaluate_baseline.py
+& .\\.venv\\Scripts\\python.exe test/test_code/baseline_20261013/check_generated_cpp.py
+& .\\.venv\\Scripts\\python.exe test/test_code/baseline_20261013/write_report.py
 ~~~~
 
 第一次完整验证使用 `complete_full_validation.py` 对已完成的生成实验追加验证；当前 `evaluate_baseline.py` 已包含同一完整验证流程，复现无需重复运行补充脚本。耗时与吞吐受GPU负载、驱动和温度影响，不承诺重新运行数值完全相同。
 
 已提交的原始记录：[results.json](base_model_20261013/results.json) 与 [code_results.json](base_model_20261013/code_results.json)。文件内保留的是当时测量的配置、路径和结果。
 
-可执行的复现脚本放在 `test/baseline_20261013/`；从原本本地实验脚本整理而来，路径定位及编译器查找方式已调整，未重新测量或替换已记录结果。原始本地产物位于 `runs/base-eval-20261013/`（runs按仓库规则忽略）：
+可执行的复现脚本放在 `test/test_code/baseline_20261013/`；从原本本地实验脚本整理而来，路径定位及编译器查找方式已调整，未重新测量或替换已记录结果。原始本地产物位于 `runs/base-eval-20261013/`（runs按仓库规则忽略）：
 
 - `results.json`：配置、环境、原始生成token ID/文本、loss/PPL、延迟、显存、SHA及停止原因。
 - `code_results.json`：编译命令、编译/执行返回码、stderr和断言用例。
 - `validation_full.jsonl` / `validation_subset.jsonl`：用于今天验证的重建数据。
 - `generated_add_greedy.cpp` / `generated_add_sample.cpp`：提取函数及断言入口。
-- 原运行脚本保留在 runs；仓库复现入口位于 `test/baseline_20261013/`。
+- 原运行脚本保留在 runs；仓库复现入口位于 `test/test_code/baseline_20261013/`。
 
-该Markdown可以单独阅读；完整复现实验还需本地权重、语料和上述原始产物。GitHub仅保存日志、原始结果JSON和复现代码，不保存本次权重、验证文本或二进制程序。用户指定的本地文件名 `test_base_model_10.13,md` 保留；GitHub阅读版本为 `test_base_model_2026-10-13.md`。
+该Markdown可以单独阅读；完整复现实验还需本地权重、语料和上述原始产物。GitHub仅保存日志、原始结果JSON和复现代码，不保存本次权重、验证文本或二进制程序。原逗号文件名的副本已按用户要求移到仓库外备份；GitHub阅读版本为 `test_base_model_2026-10-13.md`。
 
 运行代码的文件指纹（日志生成时读取）：
 
 ''' + table(['文件','SHA256'], [[str(p.relative_to(ROOT)).replace('\\','/'),digest(p)] for p in [
-    ROOT/'test/base_model_test.py',ROOT/'trainpilot/config.py',ROOT/'trainpilot/model.py',
-    ROOT/'trainpilot/layers.py',ROOT/'trainpilot/data.py',ROOT/'trainpilot/pretrain.py',
-    ROOT/'trainpilot/trainer.py',ROOT/'test/baseline_20261013/evaluate_baseline.py',ROOT/'test/baseline_20261013/check_generated_cpp.py'
+    ROOT/'test/test_code/base_model_test.py',ROOT/'config/config.py',ROOT/'model/model.py',
+    ROOT/'model/layers.py',ROOT/'dataset/dataset.py',ROOT/'trainer/pretrain.py',
+    ROOT/'trainer/trainer.py',ROOT/'test/test_code/baseline_20261013/evaluate_baseline.py',ROOT/'test/test_code/baseline_20261013/check_generated_cpp.py'
 ]]) + '\n')
 
 TARGET.parent.mkdir(parents=True, exist_ok=True)
 TARGET.write_text(''.join(parts), encoding='utf-8')
-TARGET.with_name('test_base_model_2026-10-13.md').write_text(''.join(parts), encoding='utf-8')
 assert '\ufffd' not in TARGET.read_text(encoding='utf-8'), 'replacement characters found'
 print('report saved; bytes=',TARGET.stat().st_size)

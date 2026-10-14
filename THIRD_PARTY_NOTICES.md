@@ -12,9 +12,9 @@ TrainPilot is a project-owned PyTorch Dense pretraining implementation. It suppo
 - The pretrain configuration targets the pinned MiniMind-3 Dense architecture: hidden_size=768, layers=8, Q heads=8, KV heads=4, FFN width=2432, vocabulary=6400. This is approximately 64M parameters; it is a reproduction target, not a claim of matching the upstream released model's quality.
 - Initialization is implemented explicitly with normal-distribution standard deviation 0.02, matching the default initialization used through MiniMind's post_init and transformers 4.57.6. The runtime does not depend on transformers.
 - Training differences: a separate validation split is retained, and gradient accumulation is weighted by valid supervised tokens rather than a simple average of micro-batch means. Batch size and speed still require GPU measurement.
-- Tokenizer: the 6400-token vocabulary is stored as assets/tokenizer.json and loaded via tokenizers. It was downloaded from model/tokenizer.json at the pinned revision through https://cdn.jsdelivr.net/gh/jingyaogong/minimind@f659b55761b754d306bd140573493a6543cafd7f/model/tokenizer.json.
+- Tokenizer: the 6400-token vocabulary is stored as dataset/tokenizer.json and loaded via tokenizers. It was downloaded from model/tokenizer.json at the pinned revision through https://cdn.jsdelivr.net/gh/jingyaogong/minimind@f659b55761b754d306bd140573493a6543cafd7f/model/tokenizer.json.
 - Tokenizer SHA256: 71f32c68cf63a15355a8fc171b7594b3d41870fe0ddb54fc6aefa55f73a4a668.
-- Original upstream LICENSE: assets/minimind.LICENSE, downloaded from the same pinned revision; SHA256 c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4.
+- Original upstream LICENSE: model/minimind.LICENSE, downloaded from the same pinned revision; SHA256 c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4.
 - Code licensing does not establish the license of every dataset or weight file.
 
 ## Corpus and fixtures
@@ -23,4 +23,4 @@ The pretraining corpus is pretrain_t2t_mini.jsonl from jingyaogong/minimind_data
 
 Source SHA256: 6dd6716c84ab36897bdbfc7f88e04f4441c48c1ab7ecee88ce0b0e7d4685560c.
 
-The texts under tests/fixtures are self-authored pipeline checks, not a language-model benchmark. PyTorch and tokenizers retain their respective licenses. The project's own license has not been selected by its owner.
+The texts under dataset/fixtures are self-authored pipeline checks, not a language-model benchmark. PyTorch and tokenizers retain their respective licenses. The project's own license has not been selected by its owner.

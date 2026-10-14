@@ -12,16 +12,16 @@ import warnings
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
 import torch
 import tokenizers
 from torch.utils.data import DataLoader
 from tokenizers import Tokenizer
-from trainpilot.data import TrainPilotTokenizer, PretrainDataset
-from trainpilot.trainer import evaluate
+from dataset.dataset import TrainPilotTokenizer, PretrainDataset
+from trainer.trainer import evaluate
 
-spec = importlib.util.spec_from_file_location('base_entry', ROOT / 'test/base_model_test.py')
+spec = importlib.util.spec_from_file_location('base_entry', ROOT / 'test/test_code/base_model_test.py')
 entry = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(entry)
 OUT = ROOT / 'runs/base-eval-20261013'
@@ -174,14 +174,14 @@ def main():
     if not torch.cuda.is_available():
         raise RuntimeError('This recorded experiment requires CUDA')
     manifest = json.loads(MANIFEST.read_text(encoding='utf-8'))
-    assert sha256(ROOT / 'assets/tokenizer.json') == manifest['data_sha256']['tokenizer_path']
+    assert sha256(ROOT / 'dataset/tokenizer.json') == manifest['data_sha256']['tokenizer_path']
     before = sha256(CHECKPOINT)
     subset, split = prepare_subset(manifest)
     captured = []
     with warnings.catch_warnings(record=True) as ws:
         warnings.simplefilter('always')
         model = entry.load_base_model(CHECKPOINT, torch.device('cuda'))
-        tokenizer = Tokenizer.from_file(str(ROOT / 'assets/tokenizer.json'))
+        tokenizer = Tokenizer.from_file(str(ROOT / 'dataset/tokenizer.json'))
         tokenizer.no_padding()
         tokenizer.no_truncation()
         # Check instrumentation preserves the interactive entry's greedy output.
@@ -189,7 +189,7 @@ def main():
         actual = generation(model, tokenizer, PROMPTS[0][2], 'greedy')['output']
         assert expected == actual, 'generation differs from existing entry'
         print('greedy instrumentation matches interactive entry', flush=True)
-        enc = TrainPilotTokenizer(ROOT / 'assets/tokenizer.json', model.config.max_seq_len)
+        enc = TrainPilotTokenizer(ROOT / 'dataset/tokenizer.json', model.config.max_seq_len)
         ds = PretrainDataset(subset, enc)
         loader = DataLoader(ds, batch_size=8, shuffle=False, num_workers=0)
         sync()
@@ -233,7 +233,7 @@ def main():
     print('saved', OUT/'results.json', flush=True)
 
 def full_eval(model):
-    enc = TrainPilotTokenizer(ROOT / 'assets/tokenizer.json', model.config.max_seq_len)
+    enc = TrainPilotTokenizer(ROOT / 'dataset/tokenizer.json', model.config.max_seq_len)
     ds = PretrainDataset(OUT / 'validation_full.jsonl', enc)
     loader = DataLoader(ds, batch_size=8, shuffle=False, num_workers=0)
     model.eval()
@@ -241,7 +241,7 @@ def full_eval(model):
     torch.cuda.reset_peak_memory_stats()
     started = time.perf_counter()
     loss_sum, tokens = 0.0, 0
-    from trainpilot.pretrain import next_token_loss
+    from trainer.pretrain import next_token_loss
     with torch.inference_mode():
         for i, batch in enumerate(loader, 1):
             logits = model(batch['input_ids'].to('cuda'), attention_mask=batch['attention_mask'].to('cuda'))
