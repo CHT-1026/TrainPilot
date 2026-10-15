@@ -250,7 +250,7 @@ def post_processing_chat(prompt_content, empty_think_ratio=0.2, remove_empty_thi
 
 # SFT数据集对象
 class SFTDataset(Dataset):
-    def __init__(self, jsonl_path, tokenizer, max_length=1024, *, cache_dir=None):
+    def __init__(self, jsonl_path, tokenizer, max_length=1024, *, cache_dir=None, streaming=False):
         super().__init__()
         if type(max_length) is not int or max_length < 2:
             raise ValueError("max_length 必须是至少为 2 的整数")
@@ -261,7 +261,8 @@ class SFTDataset(Dataset):
         self.cache_dir = Path(cache_dir) if cache_dir is not None else Path(__file__).resolve().parent / 'datasets' / 'cache'
         # 从huggingface解析对象的参数
         features = Features({'conversations': [{'role': Value('string'), 'content': Value('string'), 'reasoning_content': Value('string'), 'tools': Value('string'), 'tool_calls': Value('string')}]})
-        self.samples = load_dataset('json', data_files=str(jsonl_path), split='train', features=features, cache_dir=str(self.cache_dir))
+        self.samples = load_dataset('json', data_files=str(jsonl_path), split='train', features=features,
+                                    cache_dir=str(self.cache_dir), streaming=streaming)
         self.bos_id = tokenizer(f'{tokenizer.bos_token}assistant\n', add_special_tokens=False).input_ids
         self.eos_id = tokenizer(f'{tokenizer.eos_token}\n', add_special_tokens=False).input_ids
 
@@ -389,10 +390,11 @@ def prepare_sft_data(
     if any(path.exists() for path in (*targets.values(), manifest_path)):
         raise FileExistsError("输出目录已有划分结果，请使用新的目录")
 
-    # HF 读取结果为 Arrow 数据集；遍历时复用现有模板与标签函数。
-    dataset = SFTDataset(source_path, tokenizer, max_length=max_length)
+    # 准备阶段只顺序遍历，不为原始语料生成一整份 Arrow 磁盘缓存。
+    # 正式训练仍使用默认的可随机索引数据集。
+    dataset = SFTDataset(source_path, tokenizer, max_length=max_length, streaming=True)
     counts = {
-        "source_records": len(dataset), "invalid_chat": 0,
+        "source_records": 0, "invalid_chat": 0,
         "reserved_markers": 0, "no_supervised_targets": 0,
         "train": 0, "val": 0,
     }
@@ -407,7 +409,8 @@ def prepare_sft_data(
             temporary_paths[name] = Path(temporary.name)
             temporary_files[name] = temporary
 
-        for sample in tqdm(dataset.samples, total=len(dataset), desc="SFT 模板编码、过滤与划分", unit="条"):
+        for sample in tqdm(dataset.samples, desc="SFT 模板编码、过滤与划分", unit="条"):
+            counts["source_records"] += 1
             conversations = sample["conversations"]
             if not conversations or any(not isinstance(message, dict) for message in conversations):
                 counts["invalid_chat"] += 1
