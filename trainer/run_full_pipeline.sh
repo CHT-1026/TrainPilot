@@ -72,8 +72,20 @@ for stage in pretrain sft; do
         continue
     fi
     if [[ ! -f "$split_dir/manifest.json" ]]; then
-        hf download jingyaogong/minimind_dataset "${stage}_t2t.jsonl" \
-            --repo-type dataset --revision "$revision" --local-dir dataset/datasets
+        # 网络中断时重新调用 HF CLI，复用同一路径中的 .incomplete 断点。
+        for attempt in {1..10}; do
+            echo "$stage 数据下载：第 $attempt/10 次尝试"
+            if hf download jingyaogong/minimind_dataset "${stage}_t2t.jsonl" \
+                --repo-type dataset --revision "$revision" --local-dir dataset/datasets; then
+                break
+            fi
+            if [[ "$attempt" == 10 ]]; then
+                echo "下载连续失败，流水线停止；保留断点，可稍后重启。" >&2
+                exit 1
+            fi
+            echo "下载中断，30 秒后重试。"
+            sleep 30
+        done
         if [[ "$stage" == pretrain ]]; then
             source_sha=31efc9a6fa7430769c0e78cde1c8ec0273ac7bbad20614c0ee58bccef327cc9d
         else
