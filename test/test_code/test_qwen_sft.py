@@ -14,7 +14,7 @@ from peft import LoraConfig, TaskType, get_peft_model, get_peft_model_state_dict
 
 from dataset.dataset import QwenSFTEncoder
 from trainer.SFTtrain import next_token_loss, train_step
-from trainer.qwen_full_sft import QwenLogitsModel, build_parser, run_training, save_training_state
+from trainer.qwen_full_sft import QwenLogitsModel, build_optimizer, build_parser, run_training, save_training_state
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -82,6 +82,40 @@ class QwenSFTChecks(unittest.TestCase):
         for actual, expected in zip(ours_grad, official_grad):
             torch.testing.assert_close(actual, expected)
 
+    @unittest.skipUnless(torch.cuda.is_available(), "8-bit AdamW 检查需要 CUDA")
+    def test_full_8bit_optimizer_updates_and_resume_on_gpu(self):
+        try:
+            import bitsandbytes
+        except ImportError:
+            self.skipTest("未安装可选 CUDA 依赖 bitsandbytes")
+        args = build_parser("full").parse_args([])
+        model = tiny_model(vocab_size=6400).cuda()
+        model.gradient_checkpointing_enable(gradient_checkpointing_kwargs={"use_reentrant": False})
+        optimizer = build_optimizer(model, args)
+        self.assertTrue(all(p.requires_grad and p.dtype == torch.float32 for p in model.parameters()))
+        batch = {"input_ids": torch.tensor([[1, 5, 6, 2]]),
+                 "attention_mask": torch.ones(1, 4, dtype=torch.long),
+                 "labels": torch.tensor([[-100, -100, 6, 2]])}
+        before = model.model.embed_tokens.weight.detach().clone()
+        train_step(QwenLogitsModel(model), optimizer, batch, "cuda", amp_dtype=torch.bfloat16)
+        self.assertFalse(torch.equal(before, model.model.embed_tokens.weight))
+        self.assertTrue(any(state["state1"].dtype == torch.uint8 for state in optimizer.state.values()))
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "checkpoint.pt"
+            save_training_state(path, model, optimizer,
+                                {"completed_epochs": 0, "global_step": 1}, {}, "full")
+            state = torch.load(path, map_location="cpu", weights_only=True)
+            restored = tiny_model(vocab_size=6400).cuda()
+            restored.gradient_checkpointing_enable(gradient_checkpointing_kwargs={"use_reentrant": False})
+            restored.load_state_dict(state["weights"])
+            resumed_optimizer = build_optimizer(restored, args)
+            resumed_optimizer.load_state_dict(state["optimizer"])
+            self.assertTrue(any(s["state1"].dtype == torch.uint8 for s in resumed_optimizer.state.values()))
+            train_step(QwenLogitsModel(model), optimizer, batch, "cuda", amp_dtype=torch.bfloat16)
+            train_step(QwenLogitsModel(restored), resumed_optimizer, batch, "cuda", amp_dtype=torch.bfloat16)
+            for actual, expected in zip(model.parameters(), restored.parameters()):
+                torch.testing.assert_close(actual, expected, rtol=0, atol=0)
+
     def test_lora_only_updates_adapter_and_checkpoint_reloads(self):
         torch.manual_seed(0)
         base = tiny_model()
@@ -134,6 +168,7 @@ class QwenSFTChecks(unittest.TestCase):
                 return [
                     "--model", str(model_dir), "--data-path", str(source),
                     "--device", "cpu", "--dtype", "float32", "--batch-size", "2",
+                    "--optimizer", "adamw",
                     "--accumulation-steps", "2", "--max-length", "64",
                     "--val-fraction", "0.3", "--output-dir", str(output),
                     "--save-training-state", "--no-gradient-checkpointing", *extra,

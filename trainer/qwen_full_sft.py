@@ -79,6 +79,9 @@ def build_parser(method="full"):
     parser.add_argument("--max-length", type=int, default=512)
     parser.add_argument("--learning-rate", type=float, default=1e-5 if method == "full" else 1e-4)
     parser.add_argument("--weight-decay", type=float, default=0.01)
+    parser.add_argument("--optimizer", choices=("adamw", "adamw8bit"),
+                        default="adamw8bit" if method == "full" else "adamw",
+                        help="24GB 全参数训练使用 adamw8bit；模型参数仍为 FP32")
     parser.add_argument("--grad-clip", type=float, default=1.0)
     parser.add_argument("--device", default="cuda")
     parser.add_argument("--dtype", choices=("float32", "bfloat16"), default="bfloat16")
@@ -97,6 +100,17 @@ def build_parser(method="full"):
     parser.add_argument("--prepare-only", action="store_true", help="只下载 tokenizer 并准备数据，不加载模型权重")
     parser.add_argument("--no-gradient-checkpointing", action="store_true")
     return parser
+
+
+def build_optimizer(model, args):
+    parameters = [p for p in model.parameters() if p.requires_grad]
+    if args.optimizer == "adamw8bit":
+        if parameters[0].device.type != "cuda":
+            raise ValueError("adamw8bit 需要 CUDA；CPU 检查请指定 --optimizer adamw")
+        from bitsandbytes.optim import AdamW8bit
+        return AdamW8bit(parameters, lr=args.learning_rate, weight_decay=args.weight_decay)
+    return torch.optim.AdamW(parameters, lr=args.learning_rate,
+                             weight_decay=args.weight_decay, foreach=False)
 
 
 def prepare_data(args, tokenizer):
@@ -200,10 +214,7 @@ def run_training(args, lora_config=None):
     if not args.no_gradient_checkpointing:
         causal_lm.gradient_checkpointing_enable(gradient_checkpointing_kwargs={"use_reentrant": False})
     model = QwenLogitsModel(causal_lm).to(device)
-    optimizer = torch.optim.AdamW(
-        [p for p in model.parameters() if p.requires_grad],
-        lr=args.learning_rate, weight_decay=args.weight_decay,
-    )
+    optimizer = build_optimizer(model, args)
     signature = {k: v for k, v in vars(args).items() if k not in {
         "output_dir", "model_cache", "data_path", "resume", "prepare_only", "max_updates", "log_steps", "save_steps",
     }}
@@ -244,6 +255,7 @@ def run_training(args, lora_config=None):
                 "torch": str(torch.__version__)}
     (output / "run_manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"model={args.model}; method={args.method}; trainable={trainable}/{total}; device={device}", flush=True)
+    print(f"optimizer={args.optimizer}; parameters=FP32; compute={args.dtype}; gradient_checkpointing={not args.no_gradient_checkpointing}")
     print(f"batch={args.batch_size}; accumulation={args.accumulation_steps}; max_length={args.max_length}; epochs={args.epochs}")
     print("结果目录:", output, flush=True)
     metrics = output / "metrics.jsonl"
