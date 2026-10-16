@@ -20,6 +20,7 @@ dataset/datasets/cache/
 dataset/datasets/sft_t2t_mini.jsonl
 dataset/datasets/pretrain_t2t.jsonl
 dataset/datasets/sft_t2t.jsonl
+dataset/datasets/alpaca_gpt4_zh/
 /datasets/
 checkpoints/
 weights/

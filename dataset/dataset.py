@@ -20,10 +20,81 @@ import torch
 from torch.utils.data import DataLoader, Dataset
 from tokenizers import Tokenizer
 import random
+import re
 from datasets import load_dataset, Features, Value
 from tqdm.auto import tqdm
 
 IGNORE_INDEX = -100
+
+
+class QwenSFTEncoder:
+    """按 Qwen 原始聊天模板编码；只监督 assistant 正文和结束标记。
+
+    支持 Alpaca 的 instruction/input/output，以及 messages/conversations。
+    使用字符偏移对齐标签，不依赖 BOS 存在，也不沿用 MiniMind 随机增强。
+    """
+
+    def __init__(self, tokenizer, max_length=512, split_seed=43, val_fraction=0.02):
+        self.tokenizer = tokenizer
+        self.max_length = max_length
+        self.split_seed = split_seed
+        self.val_fraction = val_fraction
+
+    def __call__(self, record):
+        if "instruction" in record:
+            query = record["instruction"]
+            if record.get("input"):
+                query += "\n" + record["input"]
+            messages = [{"role": "user", "content": query},
+                        {"role": "assistant", "content": record["output"]}]
+            if record.get("system"):
+                messages.insert(0, {"role": "system", "content": record["system"]})
+        else:
+            messages = record.get("messages", record.get("conversations"))
+        if not messages:
+            raise ValueError("样本需要 instruction/input/output 或 messages/conversations")
+
+        messages = [{k: v for k, v in message.items() if v is not None} for message in messages]
+        tools = record.get("tools")
+        if isinstance(tools, str):
+            tools = json.loads(tools)
+        for message in messages:
+            if message["role"] not in {"system", "user", "assistant", "tool"}:
+                raise ValueError(f"不支持的角色：{message['role']}")
+            # 正文不能伪造模板边界，否则无法可靠确定监督所属角色。
+            body = json.dumps({k: v for k, v in message.items() if k != "role"}, ensure_ascii=False)
+            if any(marker in body for marker in ("<|im_start|>", "<|im_end|>", "<|endoftext|>")):
+                raise ValueError("消息正文含 Qwen 保留标记，请先清洗数据")
+            if message.get("tools"):
+                tools = message.pop("tools")
+                if isinstance(tools, str):
+                    tools = json.loads(tools)
+            if isinstance(message.get("tool_calls"), str):
+                message["tool_calls"] = json.loads(message["tool_calls"])
+
+        text = self.tokenizer.apply_chat_template(
+            messages, tokenize=False, add_generation_prompt=False, tools=tools,
+            enable_thinking=False,
+        )
+        encoded = self.tokenizer(
+            text, add_special_tokens=False, truncation=True, max_length=self.max_length,
+            return_offsets_mapping=True,
+        )
+        spans = [
+            (match.start(1), match.end())
+            for match in re.finditer(r"<\|im_start\|>assistant\n(.*?)<\|im_end\|>", text, re.DOTALL)
+        ]
+        labels = [
+            token if end > start and any(left <= start and end <= right for left, right in spans)
+            else IGNORE_INDEX
+            for token, (start, end) in zip(encoded["input_ids"], encoded["offset_mapping"])
+        ]
+        # 相同问题（包括不同参考答案）放进同一分桶，避免跨划分泄露。
+        prompts = [m for m in messages if m["role"] in {"system", "user"}]
+        group = json.dumps({"messages": prompts, "tools": tools}, ensure_ascii=False, sort_keys=True)
+        bucket = hashlib.sha256(f"{self.split_seed}\0{group}".encode("utf-8")).digest()
+        validation = int.from_bytes(bucket[:8], "big") < int(self.val_fraction * (1 << 64))
+        return {"input_ids": encoded["input_ids"], "labels": labels, "validation": validation}
 
 class TrainPilotTokenizer:
 
