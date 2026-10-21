@@ -144,7 +144,15 @@ def reasoning_plan(question: str) -> dict:
     temporal = bool(re.search(r"成立|创立|创办|年前|当前年份", question))
     numeric = bool(re.search(r"合计|相差|差额|多多少|少多少|相隔|自然日", question))
     bridge = "负责人" in question and "部门" in question
-    complex_query = count or temporal or numeric or bridge or len(years) > 1
+    comparison = bool(re.search(
+        r"相比|对比|比较|区别|差异|变化|演进|变更|升级|新旧|旧版|新版|旧架构|新架构|上一版|历史版本"
+        r"|缩短|增加|减少|提升|降低|扩大|缩小|拉长",
+        question,
+    ))
+    reporting = bool(
+        re.search(r"的上级|的直属上级|的下属|直接下属|下属有(?:哪些|谁)|下属是谁|向谁汇报|汇报给谁|汇报关系|什么关系|关系是什么", question)
+    )
+    complex_query = count or temporal or numeric or bridge or comparison or reporting or len(years) > 1
     queries = [question]
     if count:
         queries += [question + " 组织清单 部门名称", question + " 部门职责 组织架构"]
@@ -153,15 +161,32 @@ def reasoning_plan(question: str) -> dict:
                     "当前年份记录 今年 本年"]
     if bridge:
         queries.append(question + " 负责人 员工 部门归属")
+    if comparison:
+        queries += [
+            question + " 旧版 新版 版本差异 变更说明",
+            "旧版 历史版本 原架构 变更内容",
+            "新版 当前版本 升级内容 新增能力",
+        ]
+        if "架构" in question:
+            queries += [
+                "控制系统架构 旧版 v2.4 CANopen LT-C600 伺服",
+                "控制系统架构 新版 v3.3 EtherCAT LT-C800 版本演进",
+            ]
+    if reporting:
+        queries += [
+            question + " 员工汇报关系 直接上级 下属",
+            "汇报链 上级 下属 组织架构",
+        ]
     if len(years) > 1:
         queries += [re.sub(r"(?:19|20)\d{2}\s*年", "", question) + f" {year}年" for year in years]
     # A period in a financial comparison must not discard older facts.
     # A report's 2025 figures can be published in 2026. Only policy/effectivity
     # questions implicitly apply an effective-date snapshot; explicit as_of wins.
     policy_time = bool(re.search(r"制度|标准|政策|办法|规章|差旅|考勤|折扣|服务等级|SLA|有效|生效", question, re.I))
-    policy_as_of = not (len(years) > 1 or temporal or numeric)
+    policy_as_of = not (comparison or len(years) > 1 or temporal or numeric)
     return {"complex": complex_query, "enumeration": count, "temporal": temporal,
-            "bridge": bridge, "queries": list(dict.fromkeys(queries))[:5], "policy_as_of": policy_as_of,
+            "bridge": bridge, "comparison": comparison, "reporting": reporting,
+            "queries": list(dict.fromkeys(queries))[:10], "policy_as_of": policy_as_of,
             "strict_effective_date": policy_time}
 
 

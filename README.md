@@ -10,6 +10,8 @@
 
 本轮“公司名称/业务问法”的专项根因、代码修改与 62 题动态文档验收见 [推理能力修复与动态验收报告](推理能力修复与动态验收报告_20261021.md)。当前模型：`qwen3.8-flash`。
 
+架构对比修复、多跳关系推理、114 条规模测试与 GraphRAG 优化规划见 [澜图智能推理能力与GraphRAG优化规划](澜图智能推理能力与GraphRAG优化规划_20261021.md)。
+
 完整架构、模块衔接、数据设计、接口、测试方法与评审指南见 [PROJECT_TECHNICAL_DOCUMENT.md](PROJECT_TECHNICAL_DOCUMENT.md)。
 
 ## 一、快速开始
@@ -29,7 +31,7 @@
 1. 检查/创建本机 Python 3.12 虚拟环境 `.venv312` 并安装依赖；
 2. 启动本机 WSL 中的 MySQL 与 Redis；
 3. 建表并执行 `sql/apply_migrations.py`；
-4. 检查并自动入库企业语料（134 篇）与 OA 制度库（14 篇）；
+4. 检查并自动入库企业语料（136 篇）与 OA 制度库（14 篇）；
 5. 启动 FastAPI 服务并打开操作台。
 
 首次启动需要几分钟；之后再次启动会复用环境和数据。
@@ -70,10 +72,11 @@ Invoke-RestMethod -Method Post -Uri http://127.0.0.1:8080/api/rag/query `
 
 ## 四、数据与评测
 
-- 语料：134 篇文档、603 个文本块、12 类、5 种格式（md/docx/pdf/csv/xlsx）。
-- 版本冲突：6 组同族多版本；默认最新版，问题含时间时按生效日期回退。
-- 评测集：74 条，覆盖单文档、多文档、跨部门、冲突、时间范围、模糊、跨格式、拒答，并包含公司名称/简介/总部/使命身份类问题。
+- 语料：136 篇文档、616 个文本块、12 类、5 种格式（md/docx/pdf/csv/xlsx）。
+- 版本冲突：7 组同族多版本；默认最新版，问题含时间时按生效日期回退。
+- 评测集：74 条固定用例 + 40 条新增推理用例（版本对比、跨版本冲突、多跳汇报关系），合计 114 条；覆盖单文档、多文档、跨部门、冲突、时间范围、模糊、跨格式、拒答、版本对比与多跳关系。
 - 原固定题集的关键词命中、文档命中与引用指标不能证明推理或语义正确。本次另建 20 条推理用例与 13 条独立变式，保留修复前后实际回答，详见上方报告及 `audit_artifacts/reasoning/`。
+- 114 条规模测试报告见 `audit_artifacts/reasoning_suite/`；`qwen3.8-flash` 与 `qwen3.7-plus` 均为 113/114（99.12%），多跳与版本类用例均 100%。
 
 重新评测：
 
@@ -89,6 +92,9 @@ Invoke-RestMethod -Method Post -Uri http://127.0.0.1:8080/api/rag/query `
 .\.venv312\Scripts\python.exe scripts/evaluate_reasoning.py --phase regression --gate
 .\.venv312\Scripts\python.exe scripts/evaluate_reasoning.py --phase regression --fixtures audit_artifacts/reasoning/holdout_cases.jsonl --output-name holdout_regression --gate
 .\.venv312\Scripts\python.exe scripts/audit_http.py --phase regression
+
+# 114 条规模测试（版本对比 / 多跳关系 / 冲突 / 原有八类）
+.\.venv312\Scripts\python.exe scripts/run_reasoning_suite.py --label current --model-hint qwen3.8-flash
 ```
 
 知识回答通过校验后发送 `streaming_mode=verified` 的完整文本；普通对话使用模型实际 token 流，标记为 `model`。`buffered` 表示模板整段输出，不再拆字模拟模型流式。

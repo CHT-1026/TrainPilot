@@ -377,6 +377,13 @@ def _llm_answer(question: str, chunks: list[dict]) -> tuple[str, list[int], floa
         max_retries=config.LLM_MAX_RETRIES,
     )
     context = build_context(chunks)
+    comparison = reasoning_plan(question)["comparison"]
+    comparison_rule = ""
+    if comparison:
+        comparison_rule = (
+            "10. 这是版本对比问题：必须同时使用旧版与新版资料，按总线、控制器、伺服、软件、可靠性等维度"
+            "逐项说明变化并分别引用；如果上下文中只有一版，明确说明缺少哪一版，不得把单版内容描述为“变化”。\n"
+        )
     prompt = (
         "你是澜图智能装备股份有限公司的企业知识库问答助手。只能依据【资料】回答，禁止使用资料外的知识。\n"
         "规则：\n"
@@ -392,7 +399,8 @@ def _llm_answer(question: str, chunks: list[dict]) -> tuple[str, list[int], floa
         "每条 claim 只写一个事实或含简短算式的推导，sources 必须包括全部前提来源；text 不要自行写引用编号。\n"
         "只保留直接回答问题的 claims，不要为了凑引用而加入无关资料。\n"
         "无充分依据或冲突时只输出 {\"refused\":true,\"claims\":[]}；无需额外前言或重复总结。\n"
-        f"【资料】\n{context}\n\n【问题】\n{question}\n\n【回答】"
+        + comparison_rule
+        + f"【资料】\n{context}\n\n【问题】\n{question}\n\n【回答】"
     )
     response = client.chat.completions.create(
         model=config.LLM_MODEL,
@@ -502,6 +510,30 @@ def generate_answer(question: str, chunks: list[dict], use_llm: bool | None = No
     method = "extractive"
     chunks, context_truncated = select_context(chunks)
     best_score = chunks[0].get("score", 0.0) if chunks else 0.0
+    plan = reasoning_plan(question)
+    comparison = plan["comparison"]
+    version_comparison = (
+        bool(re.search(r"新旧|相比|对比|比较|变化|差异|区别|演进", question))
+        and bool(re.search(r"架构|版本|版|系统|方案|设计", question))
+    ) or (
+        bool(re.search(r"旧版|旧架构", question)) and bool(re.search(r"新版|新架构", question))
+    )
+    if version_comparison and chunks:
+        families: dict[str, set[str]] = {}
+        for chunk in chunks:
+            family = chunk.get("doc_family")
+            if family:
+                families.setdefault(family, set()).add(chunk.get("doc_id"))
+        if not any(len(doc_ids) >= 2 for doc_ids in families.values()):
+            missing = "旧版或新版"
+            return {
+                "answer": f"当前检索到的资料只包含该主题的一个版本，缺少{missing}资料，无法进行版本变化对比。",
+                "citations": [], "grounded": False, "refused": True,
+                "method": "evidence_check", "confidence": 0.0,
+                "reasoning": {"operation": "version_pair_check", "refused": True},
+                "context_truncated": context_truncated,
+                "context_chunk_ids": [chunk.get("chunk_id") for chunk in chunks],
+            }
     answer = ""
     indices: list[int] = []
     confidence = 0.0
@@ -540,7 +572,8 @@ def generate_answer(question: str, chunks: list[dict], use_llm: bool | None = No
                 answer, indices, confidence = "现有企业资料不足以完成该推断，生成服务暂时不可用，请稍后重试。", [], 0.0
 
     refused = False
-    if not answer or not indices or best_score < config.MIN_SCORE:
+    min_score = config.MIN_SCORE_COMPARISON if comparison else config.MIN_SCORE
+    if not answer or not indices or best_score < min_score:
         answer = REFUSAL_TEXT
         indices = []
         refused = True
@@ -548,7 +581,7 @@ def generate_answer(question: str, chunks: list[dict], use_llm: bool | None = No
         answer = REFUSAL_TEXT
         indices = []
         refused = True
-    elif derived is None and not _focus_supported(question, chunks):
+    elif derived is None and not version_comparison and not _focus_supported(question, chunks):
         answer = REFUSAL_TEXT
         indices = []
         refused = True

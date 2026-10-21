@@ -1,7 +1,7 @@
 """混合检索：BM25 + 向量 RRF 融合 → 权限/版本过滤 → 特征重排 → 文档去重。"""
 import logging
 import re
-from collections import defaultdict
+from collections import Counter, defaultdict
 
 from app.domain.user.models import UserContext
 from enterprise_rag import config
@@ -75,6 +75,7 @@ def _rerank(
     table_query: bool,
     question: str,
 ) -> list[dict]:
+    comparison = reasoning_plan(question)["comparison"]
     term_weights = {
         term: max(index.term_idf.get(term, 1.0), 0.8) * (1.25 if term.isascii() else 1.0)
         for term in terms
@@ -148,7 +149,7 @@ def _rerank(
             date_bonus = 0.16
         latest_bonus = 0.0
         family = chunk.get("doc_family")
-        if family and family in index.versioned_families and not as_of:
+        if not comparison and family and family in index.versioned_families and not as_of:
             latest_doc = max(
                 index.family_docs[family],
                 key=lambda item: (item["doc_updated_at"], item["version"]),
@@ -200,6 +201,49 @@ def _diversify(chunks: list[dict], top_k: int) -> list[dict]:
     return selected
 
 
+def _ensure_version_pair(selected: list[dict], reranked: list[dict], index: RagIndex) -> tuple[list[dict], str]:
+    """Comparison questions need both sides of the same document family.
+
+    Pick the versioned family that dominates the top ranked evidence, then make
+    sure every document of that family contributes at least one chunk.
+    """
+    counts = Counter(
+        chunk.get("doc_family")
+        for chunk in reranked[:12]
+        if chunk.get("doc_family") in index.versioned_families
+    )
+    if not counts:
+        return selected, ""
+    family = counts.most_common(1)[0][0]
+    docs = index.family_docs.get(family, [])
+    if len(docs) < 2:
+        return selected, ""
+    best_by_doc: dict[str, dict] = {}
+    for chunk in reranked:
+        if chunk.get("doc_family") == family:
+            best_by_doc.setdefault(chunk["doc_id"], chunk)
+    if len(best_by_doc) < 2:
+        return selected, family
+    selected = list(selected)
+    for doc_id, chunk in best_by_doc.items():
+        if any(item["doc_id"] == doc_id for item in selected):
+            continue
+        replace_at = next(
+            (
+                position
+                for position in range(len(selected) - 1, -1, -1)
+                if selected[position].get("doc_family") != family
+            ),
+            len(selected) - 1,
+        )
+        if replace_at >= 0:
+            selected[replace_at] = chunk
+        else:
+            selected.append(chunk)
+    return selected, family
+
+
+
 def retrieve(
     question: str,
     user: UserContext | None = None,
@@ -211,7 +255,8 @@ def retrieve(
     top_k = top_k or config.TOP_K
     plan = reasoning_plan(question)
     if plan["complex"]:
-        top_k = max(top_k, config.REASONING_TOP_K)
+        # Comparison needs both versions of one family, not the whole corpus.
+        top_k = max(top_k, 12 if plan["comparison"] or plan["reporting"] else config.REASONING_TOP_K)
     index = load_index(namespace=namespace)
     rewritten = rewrite_query(question)
     effective_as_of = as_of or (rewritten["as_of"] if plan["policy_as_of"] else None)
@@ -223,7 +268,8 @@ def retrieve(
     # Otherwise inaccessible records can crowd all readable evidence out of top K.
     def eligible(hits):
         hits = [c for c in hits if _allowed_rag(c, user)]
-        hits = _family_filter(hits, index, effective_as_of)
+        if not plan["comparison"]:
+            hits = _family_filter(hits, index, effective_as_of)
         if effective_as_of and (as_of or plan["strict_effective_date"]):
             hits = [c for c in hits if not c.get("effective_date") or str(c["effective_date"]) <= effective_as_of]
         return hits[:config.CANDIDATE_K]
@@ -265,7 +311,8 @@ def retrieve(
                 if len(bridge_queries) >= 3:
                     break
     fused = list(merged.values())
-    fused = _family_filter(fused, index, effective_as_of)
+    if not plan["comparison"]:
+        fused = _family_filter(fused, index, effective_as_of)
     reranked = _rerank(fused, terms, index, effective_as_of, wants_table(question), question)
     if plan["enumeration"]:
         # One chunk per document first, then fill spare budget with other sections.
@@ -278,6 +325,9 @@ def retrieve(
                 seen.add(chunk["doc_id"])
         reranked = first + rest
     selected = _diversify(reranked, top_k)
+    comparison_family = ""
+    if plan["comparison"]:
+        selected, comparison_family = _ensure_version_pair(selected, reranked, index)
     relevant_ids = {c["chunk_id"] for c in reranked if c.get("score", 0) >= config.MIN_SCORE}
     selected_ids = {c["chunk_id"] for c in selected}
 
@@ -299,6 +349,8 @@ def retrieve(
             "reranked": len(reranked),
             "top_score": selected[0]["score"] if selected else 0.0,
             "versioned_families": sorted(index.versioned_families),
+            "comparison_mode": plan["comparison"],
+            "comparison_family": comparison_family,
             "plan": {**plan, "bridge_queries": bridge_queries, "semantic_queries": semantic_queries},
             "queries_used": queries,
             "evidence_budget_complete": relevant_ids <= selected_ids,

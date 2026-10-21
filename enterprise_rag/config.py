@@ -20,6 +20,8 @@ RRF_K = int(os.getenv("RAG_RRF_K", "60"))
 BM25_WEIGHT = float(os.getenv("RAG_BM25_WEIGHT", "1.0"))
 VECTOR_WEIGHT = float(os.getenv("RAG_VECTOR_WEIGHT", "1.0"))
 MIN_SCORE = float(os.getenv("RAG_MIN_SCORE", "0.18"))
+# 版本对比问题需要同时召回旧版与新版，单块分数通常低于事实型问题。
+MIN_SCORE_COMPARISON = float(os.getenv("RAG_MIN_SCORE_COMPARISON", "0.12"))
 MAX_CHUNKS_PER_DOC = int(os.getenv("RAG_MAX_CHUNKS_PER_DOC", "4"))
 
 # 向量

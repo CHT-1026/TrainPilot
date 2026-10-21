@@ -5,6 +5,7 @@ missing operands or conflicting facts produce a refusal rather than a guessed to
 Every result includes source indices and a concise, reproducible calculation.
 """
 import re
+from collections import defaultdict
 from datetime import date
 from decimal import Decimal, InvalidOperation
 
@@ -12,6 +13,7 @@ from enterprise_rag.citations import chunk_body
 
 CN = "零〇一二两三四五六七八九十百千万亿点"
 NUMBER = rf"(?:\d[\d,]*(?:\.\d+)?|[{CN}]+)"
+NAME = r"[\u4e00-\u9fff]{2,4}"
 
 
 def number(text: str) -> Decimal:
@@ -125,6 +127,214 @@ def _operator_intent(question):
     )
 
 
+def _reporting_intent(question):
+    return bool(re.search(
+        r"(?:的上级|的直属上级|的上级的上级|的下属|直接下属|下属有(?:哪些|谁)|下属是谁|"
+        r"向谁汇报|汇报给谁|汇报关系|什么关系|关系是什么|谁管理|归谁管理)",
+        question,
+    ))
+
+
+def _reporting_relation(question, bodies, chunks):
+    """Resolve explicit 上级/下属 edges into a bounded reporting chain.
+
+    Facts are only those sentences that explicitly state a reporting edge.
+    Missing or conflicting edges produce a refusal, never a guessed relation.
+    """
+    manager: dict[str, tuple[str, int]] = {}
+    reports: dict[str, set[str]] = defaultdict(set)
+    conflicts: set[str] = set()
+    for index, text in bodies:
+        for sentence in re.split(r"[。；\n]", text):
+            for pattern, direction in (
+                (rf"({NAME})(?:是|为)({NAME})的(?:直属)?上级", "down"),
+                (rf"({NAME})的(?:直属)?上级(?:是|为)({NAME})", "up"),
+                (rf"({NAME})(?:直接)?(?:向|对)({NAME})汇报", "up"),
+                (rf"({NAME})(?:管理|带领|领导)({NAME})", "down"),
+            ):
+                for match in re.finditer(pattern, sentence):
+                    first, second = match.group(1), match.group(2)
+                    if first == second:
+                        continue
+                    person, boss = (first, second) if direction == "up" else (second, first)
+                    if person in manager and manager[person][0] != boss:
+                        conflicts.add(person)
+                    manager.setdefault(person, (boss, index))
+                    reports[boss].add(person)
+    if not manager:
+        return None
+    if conflicts:
+        return _refuse("汇报关系存在冲突记录，无法确定唯一上级。",
+                       [manager[name][1] for name in conflicts])
+
+    names = sorted(set(manager) | set(reports), key=len, reverse=True)
+    mentioned = []
+    for name in names:
+        if name in question and name not in mentioned:
+            mentioned.append(name)
+    if not mentioned:
+        return None
+
+    def chain(person, limit=8):
+        path = []
+        current = person
+        for _ in range(limit):
+            if current not in manager:
+                break
+            boss, edge_index = manager[current]
+            path.append((boss, edge_index, current))
+            current = boss
+        return path
+
+    def descendants(person, limit=3):
+        found = []
+        frontier = [(person, 0)]
+        seen = {person}
+        while frontier:
+            current, depth = frontier.pop(0)
+            if depth >= limit:
+                continue
+            for subordinate in sorted(reports.get(current, ())):
+                if subordinate in seen:
+                    continue
+                seen.add(subordinate)
+                found.append((subordinate, depth + 1))
+                frontier.append((subordinate, depth + 1))
+        return found
+
+    if "下属" in question and len(mentioned) == 1 and "负责" in question:
+        person = mentioned[0]
+        people = descendants(person)
+        if people:
+            from app.capabilities.retrieval.tokenizer import tokenize
+
+            stop = {"下属", "上级", "负责", "什么", "哪些", "哪个", "谁", "谁负责", "关系", "中谁"}
+            terms = [term for term in tokenize(question)
+                     if len(term) >= 2 and term not in stop and term != person]
+            matches = []
+            for subordinate, depth in people:
+                for index, text in bodies:
+                    for sentence in re.split(r"[。；\n]", text):
+                        if subordinate in sentence and "负责" in sentence:
+                            hits = sum(1 for term in terms if term in sentence)
+                            if hits >= 2:
+                                matches.append((hits, -depth, subordinate, sentence.strip(), index))
+            if matches:
+                matches.sort(reverse=True)
+                hits, negative_depth, subordinate, sentence, index = matches[0]
+                return _result(
+                    f"{person}的第{-negative_depth}级下属中，{subordinate}负责相关业务："
+                    f"{sentence} [{index}]。",
+                    [index], "reporting_descendant_responsibility",
+                )
+
+    if "下属" in question and len(mentioned) == 1:
+        person = mentioned[0]
+        direct = sorted(reports.get(person, set()))
+        if not direct:
+            return _refuse(f"资料中没有{person}的下属记录。")
+        segments = []
+        citations = []
+        for subordinate in direct:
+            if subordinate not in manager:
+                continue
+            segments.append(f"{subordinate} [{manager[subordinate][1]}]")
+            citations.append(manager[subordinate][1])
+        if not segments:
+            return _refuse(f"资料中没有{person}的下属记录。")
+        return _result(
+            f"{person}的直接下属有{len(segments)}人：{'、'.join(segments)}。",
+            citations, "reporting_subordinates",
+        )
+
+    if "上级" in question and len(mentioned) == 1:
+        person = mentioned[0]
+        hops = min(question.count("上级"), 6)
+        path = chain(person, hops)
+        if not path:
+            return _refuse(f"资料中没有{person}的上级记录。")
+        if len(path) < hops:
+            return _refuse(f"资料只记录到{person}的第{len(path)}级上级，无法确定更高层级。",
+                           [item[1] for item in path])
+        segments = []
+        citations = []
+        for boss, edge_index, subordinate in path[:hops]:
+            segments.append(f"{subordinate}的上级是{boss} [{edge_index}]")
+            citations.append(edge_index)
+        final = path[hops - 1][0]
+        if hops == 1:
+            return _result(f"{person}的上级是{final} [{citations[0]}]。", citations,
+                           "reporting_1_hop")
+        return _result(
+            "；".join(segments) + f"。因此{person}的上级" + ("的上级" * (hops - 1)) + f"是{final}。",
+            citations, f"reporting_{hops}_hop",
+        )
+
+    if len(mentioned) == 2 and ("关系" in question or "汇报" in question):
+        first, second = mentioned[0], mentioned[1]
+        path_first = chain(first)
+        path_second = chain(second)
+        distance_first = next(
+            (position + 1 for position, (boss, _, _) in enumerate(path_first) if boss == second), None
+        )
+        distance_second = next(
+            (position + 1 for position, (boss, _, _) in enumerate(path_second) if boss == first), None
+        )
+        if distance_first:
+            citations = [item[1] for item in path_first[:distance_first]]
+            if distance_first == 1:
+                text = f"{second}是{first}的直属上级"
+            elif distance_first == 2:
+                text = f"{second}是{first}的上级的上级（中间隔一级）"
+            else:
+                text = f"{second}是{first}的向上第{distance_first}级上级"
+            evidence = "；".join(
+                f"{subordinate}的上级是{boss} [{edge_index}]"
+                for boss, edge_index, subordinate in path_first[:distance_first]
+            )
+            return _result(f"{text}。依据：{evidence}。", citations, "reporting_relation")
+        if distance_second:
+            citations = [item[1] for item in path_second[:distance_second]]
+            if distance_second == 1:
+                text = f"{first}是{second}的直属上级"
+            elif distance_second == 2:
+                text = f"{first}是{second}的上级的上级（中间隔一级）"
+            else:
+                text = f"{first}是{second}的向上第{distance_second}级上级"
+            evidence = "；".join(
+                f"{subordinate}的上级是{boss} [{edge_index}]"
+                for boss, edge_index, subordinate in path_second[:distance_second]
+            )
+            return _result(f"{text}。依据：{evidence}。", citations, "reporting_relation")
+
+        first_managers = {
+            boss: (position, edge_index)
+            for position, (boss, edge_index, _) in enumerate(path_first)
+        }
+        second_managers = {
+            boss: (position, edge_index)
+            for position, (boss, edge_index, _) in enumerate(path_second)
+        }
+        common = set(first_managers) & set(second_managers)
+        if common:
+            nearest = min(common, key=lambda boss: first_managers[boss][0] + second_managers[boss][0])
+            first_position, first_index = first_managers[nearest]
+            second_position, second_index = second_managers[nearest]
+            if first_position == 0 and second_position == 0:
+                return _result(
+                    f"{first}和{second}是平级同事，均向{nearest}汇报 [{first_index}][{second_index}]。",
+                    [first_index, second_index], "reporting_siblings",
+                )
+            return _result(
+                f"{first}和{second}同属{nearest}管辖，但不是直接上下级关系 "
+                f"[{first_index}][{second_index}]。",
+                [first_index, second_index], "reporting_common_manager",
+            )
+        return _refuse("资料没有给出两人的汇报关系。")
+    return None
+
+
+
 def _company_founded(text):
     """Only a company's explicit founding statement, never an institute's date."""
     patterns = [
@@ -139,6 +349,10 @@ def infer(question: str, chunks: list[dict], complete: bool = True) -> dict | No
     bodies = [(i, _body(chunk)) for i, chunk in enumerate(chunks, 1)]
     if not bodies:
         return None
+    if _reporting_intent(question):
+        result = _reporting_relation(question, bodies, chunks)
+        if result is not None:
+            return result
     if not _operator_intent(question):
         return None
     scoped, targets = _scoped(question, bodies, chunks)

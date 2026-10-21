@@ -1,0 +1,40 @@
+{"id":"A01","category":"version_comparison","question":"相比旧架构图，新架构有哪些变化？","expected_doc_ids":["lantu_tech_control_architecture","lantu_tech_control_architecture_v2"],"keywords":["CANopen","EtherCAT","LT-C600","LT-C800"],"answer_keywords":["CANopen","EtherCAT","LT-C600","LT-C800"]}
+{"id":"A02","category":"version_comparison","question":"新旧控制系统的总线周期分别是多少，缩短了多少？","expected_doc_ids":["lantu_tech_control_architecture","lantu_tech_control_architecture_v2"],"keywords":["2 ms","1 ms"],"answer_keywords":["2 ms","1 ms"]}
+{"id":"A03","category":"version_comparison","question":"新架构相比旧架构，联动轴数增加了多少？","expected_doc_ids":["lantu_tech_control_architecture","lantu_tech_control_architecture_v2"],"keywords":["4 轴","8 轴"],"answer_keywords":["4 轴","8 轴"]}
+{"id":"A04","category":"version_comparison","question":"新架构相比旧架构，插补周期缩短了多少？","expected_doc_ids":["lantu_tech_control_architecture","lantu_tech_control_architecture_v2"],"keywords":["1 ms","0.5 ms"],"answer_keywords":["1 ms","0.5 ms"]}
+{"id":"A05","category":"version_comparison","question":"旧架构使用什么现场总线，新架构呢？","expected_doc_ids":["lantu_tech_control_architecture","lantu_tech_control_architecture_v2"],"keywords":["CANopen","EtherCAT"],"answer_keywords":["CANopen","EtherCAT"]}
+{"id":"A06","category":"version_comparison","question":"新旧架构的控制器型号分别是什么？","expected_doc_ids":["lantu_tech_control_architecture","lantu_tech_control_architecture_v2"],"keywords":["LT-C600","LT-C800"],"answer_keywords":["LT-C600","LT-C800"]}
+{"id":"A07","category":"version_comparison","question":"新架构的伺服采样频率比旧架构提高了多少？","expected_doc_ids":["lantu_tech_control_architecture","lantu_tech_control_architecture_v2"],"keywords":["8 kHz","16 kHz"],"answer_keywords":["8 kHz","16 kHz"]}
+{"id":"A08","category":"version_comparison","question":"新旧架构的编码器位数分别是多少？","expected_doc_ids":["lantu_tech_control_architecture","lantu_tech_control_architecture_v2"],"keywords":["17 位","23 位"],"answer_keywords":["17 位","23 位"]}
+{"id":"A09","category":"version_comparison","question":"旧架构的实时操作系统是什么，新架构呢？","expected_doc_ids":["lantu_tech_control_architecture","lantu_tech_control_architecture_v2"],"keywords":["Windows","RTX","PREEMPT_RT"],"answer_keywords":["Windows","PREEMPT_RT"]}
+{"id":"A10","category":"version_comparison","question":"新架构的 MTBF 比旧架构提高了多少？","expected_doc_ids":["lantu_tech_control_architecture","lantu_tech_control_architecture_v2"],"keywords":["30,000 小时","50,000 小时"],"answer_keywords":["30,000","50,000"]}
+{"id":"A11","category":"version_comparison","question":"旧架构的工作温度范围是多少，新架构呢？","expected_doc_ids":["lantu_tech_control_architecture","lantu_tech_control_architecture_v2"],"keywords":["0℃","45℃","-10℃","55℃"],"answer_keywords":["0℃","45℃","-10℃","55℃"]}
+{"id":"A12","category":"version_comparison","question":"新旧架构的 EMC 等级分别是多少？","expected_doc_ids":["lantu_tech_control_architecture","lantu_tech_control_architecture_v2"],"keywords":["EMC 3 级","EMC 4 级"],"answer_keywords":["3 级","4 级"]}
+{"id":"A13","category":"version_comparison","question":"旧架构支持几轴联动，新架构支持几轴？","expected_doc_ids":["lantu_tech_control_architecture","lantu_tech_control_architecture_v2"],"keywords":["4 轴","8 轴"],"answer_keywords":["4 轴","8 轴"]}
+{"id":"A14","category":"version_comparison","question":"新架构相对旧架构新增了哪些软件能力？","expected_doc_ids":["lantu_tech_control_architecture","lantu_tech_control_architecture_v2"],"keywords":["RRT*","Python/C++","ROS2"],"answer_keywords":["RRT*","ROS2"]}
+{"id":"A15","category":"version_comparison","question":"旧架构的安全功能有什么不足，新架构如何改进？","expected_doc_ids":["lantu_tech_control_architecture","lantu_tech_control_architecture_v2"],"keywords":["外部安全继电器","碰撞检测"],"answer_keywords":["外部安全继电器","碰撞检测"]}
+{"id":"H01","category":"multi_hop_relation","question":"赵一鸣的上级的上级是谁？","expected_doc_ids":["lantu_org_reporting_lines"],"keywords":["周启航"],"answer_keywords":["周启航"]}
+{"id":"H02","category":"multi_hop_relation","question":"赵一鸣和沈亦舟是什么关系？","expected_doc_ids":["lantu_org_reporting_lines"],"keywords":["沈亦舟","第4级"],"answer_keywords":["沈亦舟"]}
+{"id":"H03","category":"multi_hop_relation","question":"林晓的上级的上级是谁？","expected_doc_ids":["lantu_org_reporting_lines"],"keywords":["程知远"],"answer_keywords":["程知远"]}
+{"id":"H04","category":"multi_hop_relation","question":"陈璐和罗嘉树是什么关系？","expected_doc_ids":["lantu_org_reporting_lines"],"keywords":["罗嘉树","第3级"],"answer_keywords":["罗嘉树"]}
+{"id":"H05","category":"multi_hop_relation","question":"郭涛的上级是谁？","expected_doc_ids":["lantu_org_reporting_lines"],"keywords":["方磊"],"answer_keywords":["方磊"]}
+{"id":"H06","category":"multi_hop_relation","question":"方磊的直接下属有哪些？","expected_doc_ids":["lantu_org_reporting_lines"],"keywords":["郭涛"],"answer_keywords":["郭涛"]}
+{"id":"H07","category":"multi_hop_relation","question":"唐婧的下属中谁负责上海区域客户？","expected_doc_ids":["lantu_org_reporting_lines"],"keywords":["陈璐"],"answer_keywords":["陈璐"]}
+{"id":"H08","category":"multi_hop_relation","question":"许博的上级的上级是谁？","expected_doc_ids":["lantu_org_reporting_lines"],"keywords":["罗嘉树"],"answer_keywords":["罗嘉树"]}
+{"id":"H09","category":"multi_hop_relation","question":"周启航的上级的上级是谁？","expected_doc_ids":["lantu_org_reporting_lines"],"keywords":["沈亦舟"],"answer_keywords":["沈亦舟"]}
+{"id":"H10","category":"multi_hop_relation","question":"顾承澜和邵岚是什么关系？","expected_doc_ids":["lantu_org_reporting_lines"],"keywords":["顾承澜","直属上级"],"answer_keywords":["顾承澜","直属上级"]}
+{"id":"H11","category":"multi_hop_relation","question":"蒋雯的上级的上级是谁？","expected_doc_ids":["lantu_org_reporting_lines"],"keywords":["顾承澜"],"answer_keywords":["顾承澜"]}
+{"id":"H12","category":"multi_hop_relation","question":"赵一鸣的上级是谁？","expected_doc_ids":["lantu_org_reporting_lines"],"keywords":["林晓"],"answer_keywords":["林晓"]}
+{"id":"H13","category":"multi_hop_relation","question":"程知远的直接下属是谁？","expected_doc_ids":["lantu_org_reporting_lines"],"keywords":["周启航"],"answer_keywords":["周启航"]}
+{"id":"H14","category":"multi_hop_relation","question":"罗嘉树的上级是谁？","expected_doc_ids":["lantu_org_reporting_lines"],"keywords":["顾承澜"],"answer_keywords":["顾承澜"]}
+{"id":"H15","category":"multi_hop_relation","question":"陈璐的上级的上级的上级是谁？","expected_doc_ids":["lantu_org_reporting_lines"],"keywords":["罗嘉树"],"answer_keywords":["罗嘉树"]}
+{"id":"H16","category":"multi_hop_relation","question":"韩立恒和郭涛是什么关系？","expected_doc_ids":["lantu_org_reporting_lines"],"keywords":["韩立恒","第2级"],"answer_keywords":["韩立恒"]}
+{"id":"H17","category":"multi_hop_relation","question":"唐婧和罗嘉树是什么关系？","expected_doc_ids":["lantu_org_reporting_lines"],"keywords":["罗嘉树","直属上级"],"answer_keywords":["罗嘉树","直属上级"]}
+{"id":"H18","category":"multi_hop_relation","question":"林晓和程知远是什么关系？","expected_doc_ids":["lantu_org_reporting_lines"],"keywords":["程知远","第2级"],"answer_keywords":["程知远"]}
+{"id":"H19","category":"multi_hop_relation","question":"方磊和韩立恒是什么关系？","expected_doc_ids":["lantu_org_reporting_lines"],"keywords":["韩立恒","直属上级"],"answer_keywords":["韩立恒","直属上级"]}
+{"id":"H20","category":"multi_hop_relation","question":"蒋雯和陈依然是什么关系？","expected_doc_ids":["lantu_org_reporting_lines"],"keywords":["陈依然","直属上级"],"answer_keywords":["陈依然","直属上级"]}
+{"id":"V01","category":"version_conflict","question":"2024年控制系统架构的控制器型号是什么？","expected_doc_ids":["lantu_tech_control_architecture_v2"],"keywords":["LT-C600"],"answer_keywords":["LT-C600"],"as_of":"2024-12-31"}
+{"id":"V02","category":"version_conflict","question":"2025年10月20日之后控制系统架构的控制器型号是什么？","expected_doc_ids":["lantu_tech_control_architecture"],"keywords":["LT-C800"],"answer_keywords":["LT-C800"],"as_of":"2025-12-31"}
+{"id":"V03","category":"version_conflict","question":"旧版控制系统架构的 MTBF 是多少？","expected_doc_ids":["lantu_tech_control_architecture_v2"],"keywords":["30,000 小时"],"answer_keywords":["30,000"]}
+{"id":"V04","category":"version_conflict","question":"新版控制系统架构的 MTBF 是多少？","expected_doc_ids":["lantu_tech_control_architecture"],"keywords":["50,000 小时"],"answer_keywords":["50,000"]}
+{"id":"V05","category":"version_conflict","question":"2024年旧版架构和2025年新版架构的联动轴数分别是多少？","expected_doc_ids":["lantu_tech_control_architecture","lantu_tech_control_architecture_v2"],"keywords":["4 轴","8 轴"],"answer_keywords":["4 轴","8 轴"],"as_of":"2025-12-31"}
