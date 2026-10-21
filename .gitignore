@@ -28,6 +28,8 @@ htmlcov/
 local_runtime/logs/
 local_runtime/originals/
 local_runtime/model_check.json
+local_runtime/github_token.txt
+*.token
 local_runtime/processes.json
 *.log
 
