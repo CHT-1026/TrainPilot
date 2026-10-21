@@ -1,0 +1,3555 @@
+{
+  "summary": {
+    "label": "deepseek_v41_hybrid",
+    "model_hint": "deepseek-v4.1-flash",
+    "base_url": "http://127.0.0.1:8080",
+    "use_llm": true,
+    "top_k": 10,
+    "retrieval_mode": "hybrid",
+    "started_at": "2026-10-22T02:20:26.156235+08:00",
+    "elapsed_seconds": 516.0,
+    "total": 114,
+    "passed": 114,
+    "failed": 0,
+    "pass_rate": 1.0,
+    "categories": {
+      "conflict": {
+        "total": 8,
+        "passed": 8,
+        "pass_rate": 1.0
+      },
+      "cross_department": {
+        "total": 8,
+        "passed": 8,
+        "pass_rate": 1.0
+      },
+      "cross_format": {
+        "total": 8,
+        "passed": 8,
+        "pass_rate": 1.0
+      },
+      "fuzzy": {
+        "total": 8,
+        "passed": 8,
+        "pass_rate": 1.0
+      },
+      "multi_doc": {
+        "total": 10,
+        "passed": 10,
+        "pass_rate": 1.0
+      },
+      "multi_hop_relation": {
+        "total": 20,
+        "passed": 20,
+        "pass_rate": 1.0
+      },
+      "refusal": {
+        "total": 8,
+        "passed": 8,
+        "pass_rate": 1.0
+      },
+      "single_doc": {
+        "total": 16,
+        "passed": 16,
+        "pass_rate": 1.0
+      },
+      "time_range": {
+        "total": 8,
+        "passed": 8,
+        "pass_rate": 1.0
+      },
+      "version_comparison": {
+        "total": 15,
+        "passed": 15,
+        "pass_rate": 1.0
+      },
+      "version_conflict": {
+        "total": 5,
+        "passed": 5,
+        "pass_rate": 1.0
+      }
+    },
+    "failure_types": {},
+    "avg_latency_ms": 4525.9
+  },
+  "records": [
+    {
+      "id": "S01",
+      "category": "single_doc",
+      "question": "澜图智能成立于哪一年，总部在哪里？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_company_profile"
+      ],
+      "answer": "澜图智能装备股份有限公司成立于2011年6月18日 [1][2]。\n公司总部位于江苏省苏州市工业园区星澜路88号 [1][3]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_company_history",
+        "lantu_company_profile"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.56777,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 2453,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "S02",
+      "category": "single_doc",
+      "question": "公司2025年机器人出货量和累计交付量是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_company_profile"
+      ],
+      "answer": "2025年机器人出货量为21,400台 [1][2]。\n截至2025年，公司累计交付突破10万台，第10万台机器人于2025年9月12日下线 [1][2]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_company_milestones_2025",
+        "lantu_company_profile"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.68097,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 1687,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "S03",
+      "category": "single_doc",
+      "question": "LT-R20 的负载、臂展和重复定位精度是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_product_r_series"
+      ],
+      "answer": "LT-R20 的负载为 20 kg [1][2][3]。\nLT-R20 的臂展为 1,700 mm [1][2][3]。\nLT-R20 的重复定位精度为 ±0.03 mm [1][2][3]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_product_matrix",
+        "lantu_product_r_series"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.79185,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 1640,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "S04",
+      "category": "single_doc",
+      "question": "LT-C800 控制器支持几轴联动，EtherCAT 总线周期是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_product_controller"
+      ],
+      "answer": "LT-C800 控制器支持 8 轴联动 [1][2]。\nLT-C800 控制器的 EtherCAT 总线周期为 1 ms [1][3]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_product_controller",
+        "lantu_product_r_series",
+        "lantu_tech_control_architecture"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.857761,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 2265,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "S05",
+      "category": "single_doc",
+      "question": "员工年假按工龄分别是多少天？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_policy_employee_handbook"
+      ],
+      "answer": "根据企业知识库资料：年假按工龄 5/10/15 天，入职满一年起享受；每年另享 1 天健康关怀假。 [1]；员工享有法定节假日、年假、病假、事假、婚假、产假、陪产假、丧假与育儿假。 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "extractive_fallback",
+      "cited_doc_ids": [
+        "lantu_policy_employee_handbook"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.755167,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 2656,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "S06",
+      "category": "single_doc",
+      "question": "2025年7月版差旅标准中，一线城市住宿和餐饮补贴是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_policy_travel_2025h2"
+      ],
+      "answer": "2025年7月版差旅标准中，一线城市（北京、上海、广州、深圳）住宿标准为600元/晚 [1]。\n2025年7月版差旅标准中，出差期间餐饮补贴为150元/天，按自然日计算 [2]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_policy_travel_2025h2"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.9322,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 3108,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "S07",
+      "category": "single_doc",
+      "question": "2025年公司营业收入和归母净利润是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_finance_annual_2025"
+      ],
+      "answer": "2025年公司营业收入为42.63亿元 [1][2][3][4]。\n2025年公司归母净利润为4.12亿元 [1][2][3]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_company_milestones_2025",
+        "lantu_company_profile",
+        "lantu_finance_annual_2025",
+        "lantu_investor_overview"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.790222,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 1562,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "S08",
+      "category": "single_doc",
+      "question": "P1 故障的响应时间和到场时间分别是多久？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_support_sla_2025"
+      ],
+      "answer": "P1 故障的响应时间为 30 分钟内 [1]。\nP1 故障的到场时间为 12 小时内 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_support_sla_2025"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.927958,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 1203,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "S09",
+      "category": "single_doc",
+      "question": "LT-R20 的减速器 RV-40E 备件价格是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_support_spare_parts_price"
+      ],
+      "answer": "根据企业知识库资料：LT-R20，减速器 RV-40E，12,800，48 小时，12 个月 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "extractive_fallback",
+      "cited_doc_ids": [
+        "lantu_support_spare_parts_price"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 1.150163,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 2718,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "S10",
+      "category": "single_doc",
+      "question": "销售合同标准模板的预付款比例和质保期是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_legal_sales_contract_template"
+      ],
+      "answer": "销售合同标准模板的预付款比例为30% [1][2]。\n销售合同标准模板的质保期为验收合格之日起24个月或6,000小时，以先到者为准 [3]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_legal_sales_contract_template",
+        "lantu_sales_policy"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.687239,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 2375,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "S11",
+      "category": "single_doc",
+      "question": "员工账号密码的更换周期是多久？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_policy_infosec"
+      ],
+      "answer": "员工账号密码每 90 天更换一次 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_policy_infosec"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.789199,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 1797,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "S12",
+      "category": "single_doc",
+      "question": "2025年华南大区销售完成率是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_org_sales_regions"
+      ],
+      "answer": "2025年华南大区销售完成率为108% [1][2]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_meeting_sales",
+        "lantu_org_sales_regions"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 1.01881,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 1655,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "S13",
+      "category": "single_doc",
+      "question": "公司叫什么名字？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_company_profile"
+      ],
+      "answer": "公司叫澜图智能装备股份有限公司 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_company_profile"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.536977,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 3203,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "S14",
+      "category": "single_doc",
+      "question": "澜图智能是一家什么公司？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_company_profile"
+      ],
+      "answer": "澜图智能装备股份有限公司成立于2011年6月18日，总部位于江苏省苏州市工业园区星澜路88号，注册资本6.8亿元，2023年在上海证券交易所科创板上市，股票代码688719 [1]。\n公司专注工业机器人、智能产线与工业软件，为汽车、锂电、光伏、3C、半导体等行业提供智能制造整体解决方案 [1]。\n公司产品覆盖六轴工业机器人、SCARA机器人、自主移动机器人（AMR）、机器视觉、运动控制器、数字孪生平台与行业工作站，形成“本体+控制器+视觉+软件+工艺”的一体化方案 [2]。\n公司掌握控制器、伺服驱动、机器视觉、运动规划与数字孪生五大核心技术 [3]。\n公司拥有苏州、东莞、成都三大制造基地，总产能30,000台/年，在德国斯图加特设有欧洲技术中心，在越南、墨西哥、匈牙利设有服务网点，业务覆盖32个国家和地区 [4]。\n公司定位为“可信赖的智能制造伙伴”，核心传播主张为“稳、准、快” [5]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_company_brand",
+        "lantu_company_profile",
+        "lantu_product_overview"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.622406,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 4078,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "S15",
+      "category": "single_doc",
+      "question": "公司总部在哪里？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_company_profile"
+      ],
+      "answer": "公司总部位于江苏省苏州市工业园区星澜路88号 [1][2]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_company_profile"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.622566,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 1952,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "S16",
+      "category": "single_doc",
+      "question": "公司的使命是什么？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_company_mission"
+      ],
+      "answer": "公司的使命是：让每一座工厂拥有可靠、易用、可进化的智能生产力 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_company_mission"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.444195,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 3172,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "M01",
+      "category": "multi_doc",
+      "question": "2025年公司研发投入和研发人员数量分别是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_finance_annual_2025",
+        "lantu_org_rd_system"
+      ],
+      "answer": "2025年公司研发投入为5.87亿元 [1][2][3][4]。\n2025年研发人员数量为1,286人 [1][2][5][4][6]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_company_profile",
+        "lantu_finance_investor_qa",
+        "lantu_investor_overview",
+        "lantu_org_chart_2025",
+        "lantu_org_headcount",
+        "lantu_org_rd_system"
+      ],
+      "missing_expected_doc_ids": [
+        "lantu_finance_annual_2025"
+      ],
+      "expected_docs_cited": false,
+      "missing_keywords": [],
+      "top_score": 0.665398,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 2062,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "M02",
+      "category": "multi_doc",
+      "question": "恒芯动力电池项目使用了哪些机器人，项目成效如何？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_case_01_hengxin",
+        "lantu_meeting_case_review"
+      ],
+      "answer": "项目使用了186台LT-R20六轴机器人和24台LT-AMR-1000移动机器人 [1][2][3]。\n项目产线节拍提升42% [4]。\n叠片良率由98.1%提升至99.3% [4][3]。\n项目投资回收期为18个月 [4][3]。\n项目通过客户验收，并获得客户年度优秀供应商提名 [4]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_case_01_hengxin",
+        "lantu_meeting_case_review",
+        "lantu_solution_lithium"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.48817,
+      "comparison_mode": false,
+      "graph_entities": [
+        "恒芯动力电池项目",
+        "恒芯动力电池"
+      ],
+      "graph_paths": [],
+      "latency_ms": 3750,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "M03",
+      "category": "multi_doc",
+      "question": "锂电叠片方案的良率目标和标杆客户是谁？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_case_01_hengxin",
+        "lantu_solution_lithium"
+      ],
+      "answer": "锂电叠片方案的单条叠片线良率目标为99.5% [1]。\n锂电叠片方案的标杆客户是恒芯动力电池 [2][3]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_case_01_hengxin",
+        "lantu_solution_lithium"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.6182,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 1750,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "M04",
+      "category": "multi_doc",
+      "question": "半导体晶圆搬运方案的洁净等级和标杆客户是谁？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_case_06_jingtuo",
+        "lantu_solution_semiconductor"
+      ],
+      "answer": "半导体晶圆搬运方案的洁净等级为 Class 10，颗粒物控制 0.1 μm，防静电等级 <35 V，定位精度 ±5 mm [1]。\n该方案的标杆客户是晶拓微电子，其 2 座 8 英寸晶圆厂部署了 48 台 LT-AMR-500 [2]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_solution_semiconductor"
+      ],
+      "missing_expected_doc_ids": [
+        "lantu_case_06_jingtuo"
+      ],
+      "expected_docs_cited": false,
+      "missing_keywords": [],
+      "top_score": 0.809022,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 2062,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "M05",
+      "category": "multi_doc",
+      "question": "2025年海外营业收入是多少，欧洲技术中心设在哪里？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_company_global",
+        "lantu_finance_annual_2025"
+      ],
+      "answer": "2025年海外营业收入为4.86亿元 [1]。\n欧洲技术中心设在德国斯图加特 [2]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_company_global"
+      ],
+      "missing_expected_doc_ids": [
+        "lantu_finance_annual_2025"
+      ],
+      "expected_docs_cited": false,
+      "missing_keywords": [],
+      "top_score": 0.693204,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 4437,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "M06",
+      "category": "multi_doc",
+      "question": "售后服务团队有多少人，全国服务网点多少个？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_org_department_duties",
+        "lantu_support_system"
+      ],
+      "answer": "售后服务团队有412人 [1][2][3]。\n全国服务网点有68个 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_org_department_duties",
+        "lantu_org_headcount",
+        "lantu_support_system"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.66707,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 3467,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "M07",
+      "category": "multi_doc",
+      "question": "2026年营业收入目标、研发投入预算和资本开支分别是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_finance_budget_2026",
+        "lantu_strategy_2026"
+      ],
+      "answer": "2026年营业收入目标为52亿元 [1][2][3]。\n2026年研发投入预算为7.2亿元 [4][5]。\n2026年资本开支为3.8亿元 [4][5]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_finance_budget_2026",
+        "lantu_meeting_strategy",
+        "lantu_strategy_2026"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.63315,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 3157,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "M08",
+      "category": "multi_doc",
+      "question": "销售折扣 15%-25% 由谁审批，项目毛利率底线是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_sales_discount_2025",
+        "lantu_sales_policy"
+      ],
+      "answer": "销售折扣 15%-25%（含）由总经理审批 [1]。\n项目毛利率底线为不得低于 28%，低于 28% 须由 CFO 出具专项意见 [2]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_sales_discount_2025"
+      ],
+      "missing_expected_doc_ids": [
+        "lantu_sales_policy"
+      ],
+      "expected_docs_cited": false,
+      "missing_keywords": [],
+      "top_score": 0.740761,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 3264,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "M09",
+      "category": "multi_doc",
+      "question": "LT-R20 Pro 计划何时量产，额定负载是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_meeting_product_review",
+        "lantu_product_r20_pro_whitepaper"
+      ],
+      "answer": "LT-R20 Pro 计划于 2026 年第二季度量产 [1][2][3][4]。\nLT-R20 Pro 的额定负载为 22 kg [5][6]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_company_milestones_2025",
+        "lantu_meeting_product_review",
+        "lantu_product_r20_pro_whitepaper",
+        "lantu_strategy_2026"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.754948,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 3344,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "M10",
+      "category": "multi_doc",
+      "question": "2025年客户投诉目标是多少起，一次交检合格率目标是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_company_profile",
+        "lantu_strategy_quality_system"
+      ],
+      "answer": "2025年客户投诉目标是不超过6起 [1][2]。\n2025年一次交检合格率目标是不低于98.5% [1][2]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_meeting_quality",
+        "lantu_strategy_quality_system"
+      ],
+      "missing_expected_doc_ids": [
+        "lantu_company_profile"
+      ],
+      "expected_docs_cited": false,
+      "missing_keywords": [],
+      "top_score": 0.832809,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 2828,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "X01",
+      "category": "cross_department",
+      "question": "研发人员占员工总数比例和研发投入占营业收入比例分别是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_finance_annual_2025",
+        "lantu_org_rd_system"
+      ],
+      "answer": "研发人员占员工总数比例为33.3% [1][2]。\n研发投入占营业收入比例为13.8% [1][3][4]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_company_profile",
+        "lantu_investor_overview",
+        "lantu_org_headcount",
+        "lantu_org_rd_system"
+      ],
+      "missing_expected_doc_ids": [
+        "lantu_finance_annual_2025"
+      ],
+      "expected_docs_cited": false,
+      "missing_keywords": [],
+      "top_score": 0.583447,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 3343,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "X02",
+      "category": "cross_department",
+      "question": "新员工入职培训需要几天，试用期一般多长？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_hr_new_hire_training",
+        "lantu_policy_employee_handbook"
+      ],
+      "answer": "新员工入职培训共 5 天，第 1 天公司介绍与企业文化，第 2 天制度与信息安全，第 3 天产品与业务，第 4 天质量意识与安全生产，第 5 天岗位实践与导师见面 [1]。\n试用期为 3-6 个月 [2]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_hr_new_hire_training",
+        "lantu_policy_employee_handbook"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.606129,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 2766,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "X03",
+      "category": "cross_department",
+      "question": "员工出差一线城市住宿上限和费用报销时限分别是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_policy_reimbursement",
+        "lantu_policy_travel_2025h2"
+      ],
+      "answer": "员工出差一线城市（北京、上海、广州、深圳）住宿标准为600元/晚，超标部分由个人承担 [1]。\n费用报销时限为费用发生后30个自然日内提交，跨年度费用须在次年1月15日前完成，逾期需财务总监审批 [2]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_policy_reimbursement",
+        "lantu_policy_travel_2025h2"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.662263,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 2562,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "X04",
+      "category": "cross_department",
+      "question": "采购标准供应商的付款账期和销售合同预付款比例分别是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_legal_sales_contract_template",
+        "lantu_policy_purchase_2025"
+      ],
+      "answer": "采购标准供应商的付款账期为月结90天 [1][2]。\n销售合同预付款比例不低于30% [3][4]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_legal_purchase_contract_template",
+        "lantu_legal_sales_contract_template",
+        "lantu_policy_purchase_2025",
+        "lantu_sales_policy"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.717045,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 3125,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "X05",
+      "category": "cross_department",
+      "question": "公司数据分为几个等级，L3 数据访问需要谁审批？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_policy_data_classification",
+        "lantu_policy_infosec"
+      ],
+      "answer": "公司数据分为 L1 公开、L2 内部、L3 机密、L4 绝密四级 [1]。\nL3 数据访问须部门负责人审批 [2]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_policy_data_classification"
+      ],
+      "missing_expected_doc_ids": [
+        "lantu_policy_infosec"
+      ],
+      "expected_docs_cited": false,
+      "missing_keywords": [],
+      "top_score": 0.71447,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 3250,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "X06",
+      "category": "cross_department",
+      "question": "2025年人均培训学时和2026届校招计划人数是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_hr_campus",
+        "lantu_hr_training_system"
+      ],
+      "answer": "2025年人均培训学时为32小时 [1][2]。\n2026届校招计划人数为120人 [3]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_hr_campus",
+        "lantu_hr_training_system",
+        "lantu_strategy_esg"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.576519,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 4405,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "X07",
+      "category": "cross_department",
+      "question": "海外项目需要遵守哪些出口管制和数据合规要求？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_legal_data_compliance",
+        "lantu_legal_export_control"
+      ],
+      "answer": "出口业务须执行两用物项筛查，涉及加密、视觉算法等敏感技术的项目须经法务合规部审批 [1]。\n欧盟项目须满足 CE 与 GDPR 要求 [1]。\n向境外提供个人信息或重要数据须开展安全评估或签订标准合同，涉及研发数据的须经信息安全委员会审批 [2]。\n处理个人信息须遵守《个人信息保护法》《数据安全法》《网络安全法》及欧盟 GDPR，并遵循最小必要与告知同意原则 [3]。\n交易前须对客户、最终用户与最终用途进行筛查，核对制裁名单与两用物项清单 [4]。\n涉及加密、视觉算法与高精度伺服的项目须专项审批 [4]。\n出口管制合规要求覆盖中国、欧盟、美国，适用于所有跨境销售、技术许可、境外投资与人员出境技术服务 [5]。\n产品须按 ECCN/出口管制编码分类，需许可证的项目须提前 60 日申请，且禁止向受制裁国家或军事最终用户出口 [6]。\n发生数据泄露的，应在 24 小时内上报监管机构，并通知受影响个人 [7]。\n出口管制、数据出境等事项由合规委员会审查，重大事项报董事会 [8]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_company_global",
+        "lantu_legal_data_compliance",
+        "lantu_legal_export_control",
+        "lantu_org_committees"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.389886,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 9844,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "X08",
+      "category": "cross_department",
+      "question": "新员工安全培训不少于多少小时，2025年安全投入是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_meeting_safety",
+        "lantu_strategy_safety"
+      ],
+      "answer": "新员工三级安全教育不少于24小时 [1]。\n2025年安全投入为1,200万元 [2][3]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_meeting_safety",
+        "lantu_strategy_esg",
+        "lantu_strategy_safety"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.620772,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 2655,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "C01",
+      "category": "conflict",
+      "question": "一线城市出差住宿标准是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_policy_travel_2025h2"
+      ],
+      "answer": "一线城市（北京、上海、广州、深圳）出差住宿标准为600元/晚，超标部分由个人承担 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_policy_travel_2025h2"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.812405,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 4828,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "C02",
+      "category": "conflict",
+      "question": "销售折扣审批权限如何划分？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_sales_discount_2025"
+      ],
+      "answer": "标准价折扣8%以内（含）由销售经理审批 [1]。\n标准价折扣8%-15%（含）由销售副总裁审批 [1]。\n标准价折扣15%-25%（含）由总经理审批 [1]。\n标准价折扣超过25%必须提交董事会审议 [1]。\n项目毛利率不得低于28%，低于28%须由CFO出具专项意见 [2]。\n折扣申请须附客户分级、竞品报价、项目毛利测算与回款计划 [3]。\n该审批权限版本自2025年1月1日起生效，2024版同时废止 [4]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_sales_discount_2025"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.602163,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 10000,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "C03",
+      "category": "conflict",
+      "question": "售后服务 P1 的响应时效是多久？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_support_sla_2025"
+      ],
+      "answer": "售后服务 P1 的响应时效为 30 分钟内响应、12 小时内到场 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_support_sla_2025"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.856445,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 2609,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "C04",
+      "category": "conflict",
+      "question": "公司研发中心下设几个研究所？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_org_chart_2025"
+      ],
+      "answer": "研发中心下设 5 个研究所 [1][2][3]。\n5 个研究所分别为：机器人本体研究所、控制器研究所、机器视觉研究所、工艺应用研究所、具身智能研究所 [1][2]。\n具身智能研究所于 2025 年 5 月成立，成立后研发中心下属研究所增至 5 个 [1][4]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_company_milestones_2025",
+        "lantu_org_chart_2025",
+        "lantu_org_department_duties",
+        "lantu_org_rd_system"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.639664,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 4047,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "C05",
+      "category": "conflict",
+      "question": "员工每月可以申请远程办公几天？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_policy_attendance_2025"
+      ],
+      "answer": "员工每月可申请远程办公4天 [1]。\n研发与售后岗位员工每月可申请远程办公6天 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_policy_attendance_2025"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.644288,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 3264,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "C06",
+      "category": "conflict",
+      "question": "采购标准供应商的付款账期是多少天？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_policy_purchase_2025"
+      ],
+      "answer": "采购标准供应商的付款账期为月结90天 [1][2]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_legal_purchase_contract_template",
+        "lantu_policy_purchase_2025"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.788668,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 2719,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "C07",
+      "category": "conflict",
+      "question": "销售折扣超过 25% 由谁审批？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_sales_discount_2025"
+      ],
+      "answer": "销售折扣超过25%必须提交董事会审议 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_sales_discount_2025"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.717378,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 2608,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "C08",
+      "category": "conflict",
+      "question": "2025版销售折扣制度规定的项目毛利率底线是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_sales_discount_2025"
+      ],
+      "answer": "2025版销售折扣制度规定的项目毛利率底线是不得低于28% [1]。\n若项目毛利率低于28%，须由CFO出具专项意见 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_sales_discount_2025"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.791819,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 3984,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "T01",
+      "category": "time_range",
+      "question": "2024年一线城市出差住宿标准是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_policy_travel_2024"
+      ],
+      "answer": "2024年一线城市（北京、上海、广州、深圳）出差住宿标准为450元/晚，超标部分由个人承担 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_policy_travel_2024"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.832461,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 2234,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "T02",
+      "category": "time_range",
+      "question": "2025年1月版差旅标准中一线城市住宿上限是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_policy_travel_2025"
+      ],
+      "answer": "2025年1月版差旅标准中一线城市（北京、上海、广州、深圳）住宿上限为550元/晚 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_policy_travel_2025"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.747583,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 3359,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "T03",
+      "category": "time_range",
+      "question": "2025年7月修订后二线城市住宿标准是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_policy_travel_2025h2"
+      ],
+      "answer": "2025年7月修订后，二线城市住宿标准为450元/晚 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_policy_travel_2025h2"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 1.144289,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 3405,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "T04",
+      "category": "time_range",
+      "question": "2024年公司营业收入和归母净利润是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_finance_annual_2024"
+      ],
+      "answer": "2024年公司实现营业收入35.80亿元 [1][2][3][4]。\n2024年公司归母净利润为3.26亿元 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_company_history",
+        "lantu_finance_annual_2024"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.657155,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 3250,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "T05",
+      "category": "time_range",
+      "question": "2025年第三季度单季营业收入是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_finance_q3_2025"
+      ],
+      "answer": "2025年第三季度单季营业收入为11.52亿元 [1][2]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_finance_q3_2025",
+        "lantu_meeting_ops_2025q3"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 1.013776,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 2734,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "T06",
+      "category": "time_range",
+      "question": "2024年研发投入占营业收入比例是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_finance_annual_2024"
+      ],
+      "answer": "2024年研发投入占营业收入比例为12.9% [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_finance_annual_2024"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.610725,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 2843,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "T07",
+      "category": "time_range",
+      "question": "2025年上半年新签订单金额是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_finance_h1_2025"
+      ],
+      "answer": "2025年上半年新签订单金额为22.7亿元 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_finance_h1_2025"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.844526,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 2453,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "T08",
+      "category": "time_range",
+      "question": "2024年末公司员工总数是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_org_chart_2024"
+      ],
+      "answer": "2024年末公司员工总数为3,280人 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_org_chart_2024"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.668483,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 3203,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "F01",
+      "category": "fuzzy",
+      "question": "出差住宿报销上限怎么算？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_policy_travel_2025h2"
+      ],
+      "answer": "住宿报销上限按出差城市分档：一线城市（北京、上海、广州、深圳）600元/晚，二线城市450元/晚，其他城市380元/晚 [1]。\n住宿费超标部分由个人承担，即报销金额不超过对应城市档位的每晚标准 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_policy_travel_2025h2"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.528726,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 9952,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "F02",
+      "category": "fuzzy",
+      "question": "机器人本体保修多久？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_support_warranty"
+      ],
+      "answer": "机器人本体保修 24 个月或 6,000 小时，以先到者为准 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_support_warranty"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.648854,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 3282,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "F03",
+      "category": "fuzzy",
+      "question": "公司去年赚了多少钱？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_finance_annual_2025"
+      ],
+      "answer": "2025年归母净利润为4.12亿元 [1][2][3]。\n2025年归母净利润同比增长26.4% [3]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_company_profile",
+        "lantu_finance_annual_2025",
+        "lantu_investor_overview"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.766289,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 2592,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "F04",
+      "category": "fuzzy",
+      "question": "售后工程师多久能到现场处理停机？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_support_sla_2025"
+      ],
+      "answer": "P1（产线停机或安全风险）故障：30 分钟内响应、12 小时内到场 [1][2]。\nP2（单机停机但产线可降级运行）故障：4 小时内响应、48 小时内到场 [1][2]。\nP3（一般故障或咨询）故障：12 小时内响应、3 个工作日内处理，未约定到场时限 [1][2]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_support_sla_2025"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.527768,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 3172,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "F05",
+      "category": "fuzzy",
+      "question": "买机器人最多能打几折，找谁批？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_sales_discount_2025"
+      ],
+      "answer": "折扣按标准价折扣区间分级审批：8%以内（含）由销售经理审批，8%-15%（含）由销售副总裁审批，15%-25%（含）由总经理审批，超过25%必须提交董事会审议 [1]。\n因此单笔折扣最高可申请超过25%，但该档必须提交董事会审议，即最高审批层级为董事会 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_sales_discount_2025"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.456794,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 3468,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "F06",
+      "category": "fuzzy",
+      "question": "新来的员工要培训几天？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_hr_new_hire_training"
+      ],
+      "answer": "新员工入职培训共 5 天：第 1 天公司介绍与企业文化，第 2 天制度与信息安全，第 3 天产品与业务，第 4 天质量意识与安全生产，第 5 天岗位实践与导师见面 [1]。\n培训目标是在 30 天内完成从入职到独立工作的过渡，但入职培训课程本身为 5 天 [1][2]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_hr_new_hire_training"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.539083,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 2608,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "F07",
+      "category": "fuzzy",
+      "question": "公司有哪些移动机器人产品？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_product_amr"
+      ],
+      "answer": "公司移动机器人产品线为 LT-AMR-500、LT-AMR-1000、LT-AMR-2000，负载覆盖 500-2,000 kg，典型行业为物流、半导体 [1]。\nLT-AMR-500 负载 500 kg、速度 1.8 m/s、续航 8 小时 [2]。\nLT-AMR-1000 负载 1,000 kg、速度 1.5 m/s、续航 8 小时 [2]。\nLT-AMR-2000 负载 2,000 kg、速度 1.2 m/s、续航 10 小时 [2]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_product_amr",
+        "lantu_product_overview"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.554828,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 8157,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "F08",
+      "category": "fuzzy",
+      "question": "客户投诉怎么处理，多久闭环？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_support_complaint"
+      ],
+      "answer": "客户可通过400热线、服务邮箱、客户门户或销售转达投诉，受理后1小时内录入系统 [1]。\n一般投诉需24小时内响应、3个工作日内闭环 [2]。\n重大投诉需2小时内上报总经理并成立专项小组 [2]。\n重大投诉须在7个工作日内提交8D报告，包含临时措施、根因、永久措施与预防措施 [3]。\n投诉闭环后7日内回访，回访率100%，投诉处理满意度纳入服务考核 [4]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_support_complaint"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.585161,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 6905,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "CF01",
+      "category": "cross_format",
+      "question": "2025年12月的营业收入是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_finance_monthly_2025"
+      ],
+      "answer": "根据企业知识库资料：2025年12月，4.90，4.76，2,520 [1]；截至 2025 年 12 月 31 日，公司员工 3,860 人，2025 年营业收入 42.63 亿元，同比增长 19.1%，归母净利润4.12 亿元。 [2]；产品线，工业软件与服务，5.21，12.2%，+26.8% [3]；行业，半导体，5.12，12.0%，+38.6% [3]。",
+      "refused": false,
+      "grounded": true,
+      "method": "extractive_fallback",
+      "cited_doc_ids": [
+        "lantu_company_profile",
+        "lantu_finance_monthly_2025",
+        "lantu_finance_revenue_breakdown"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.864459,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 4328,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "CF02",
+      "category": "cross_format",
+      "question": "LT-AMR-1000 的负载和续航分别是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_product_amr",
+        "lantu_product_matrix"
+      ],
+      "answer": "LT-AMR-1000 的负载为 1,000 kg [1][2]。\nLT-AMR-1000 的续航为 8 小时 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_product_amr",
+        "lantu_product_matrix"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.787604,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 2844,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "CF03",
+      "category": "cross_format",
+      "question": "2025年收入构成中机器人本体占比是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_finance_revenue_breakdown"
+      ],
+      "answer": "2025年收入构成中机器人本体占比为46.5% [1][2]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_finance_annual_2025",
+        "lantu_finance_revenue_breakdown"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.852832,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 2875,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "CF04",
+      "category": "cross_format",
+      "question": "LT-AMR-1000 锂电池组备件的价格和质保期是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_support_spare_parts_price"
+      ],
+      "answer": "根据企业知识库资料：LT-AMR-1000，锂电池组 48V/40Ah，4,800，72 小时，12 个月 [1]；澜图智能提供 186 台 LT-R20 六轴机器人 + 24 台 LT-AMR-1000，配套 LT-C800 控制器、LT-V3D 视觉与 LantuTwin 数字孪生仿真，整线合同金额 2.16 亿元。 [2]；单条叠片线配置 15-16 台 LT-R20、2 台 AMR，节拍 0.12 秒/片，良率 99.5%，支持 12 条线集群调度。 [3]。",
+      "refused": false,
+      "grounded": true,
+      "method": "extractive_fallback",
+      "cited_doc_ids": [
+        "lantu_case_01_hengxin",
+        "lantu_solution_lithium",
+        "lantu_support_spare_parts_price"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.724882,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 5483,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "CF05",
+      "category": "cross_format",
+      "question": "2025年末员工总数和苏州基地人数分别是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_org_headcount"
+      ],
+      "answer": "根据企业知识库资料：苏州总部，2,450，1,120，310，560，250，210 [1]；2025 年末员工 3,860 人，其中研发 1,286 人、销售 620 人、制造 980 人、服务 412 人、职能 562 人。 [2]；苏州基地光伏装机 6.2MW，绿电占比 28%；全年安全培训 4,120 人次，未发生重伤事故。 [3]；2025 年安全投入 1,200 万元，用于安全光栅、消防设施与培训；苏州基地 7 月完成消防演练。 [4]。",
+      "refused": false,
+      "grounded": true,
+      "method": "extractive_fallback",
+      "cited_doc_ids": [
+        "lantu_company_milestones_2025",
+        "lantu_meeting_safety",
+        "lantu_org_chart_2025",
+        "lantu_org_headcount"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.581087,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 5530,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "CF06",
+      "category": "cross_format",
+      "question": "2025年第三季度的订单金额是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_finance_monthly_2025"
+      ],
+      "answer": "2025年第三季度新签订单金额为13.6亿元 [1][2]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_finance_q3_2025",
+        "lantu_meeting_ops_2025q3"
+      ],
+      "missing_expected_doc_ids": [
+        "lantu_finance_monthly_2025"
+      ],
+      "expected_docs_cited": false,
+      "missing_keywords": [],
+      "top_score": 1.107622,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 3344,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "CF07",
+      "category": "cross_format",
+      "question": "2025年公司毛利率和经营活动现金流净额是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_finance_annual_2025"
+      ],
+      "answer": "2025年公司综合毛利率为31.6% [1][2][3]。\n2025年公司经营活动现金流净额为5.34亿元 [1][4][5]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_finance_annual_2025",
+        "lantu_finance_cashflow",
+        "lantu_finance_gross_margin",
+        "lantu_investor_overview"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.736943,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 3843,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "CF08",
+      "category": "cross_format",
+      "question": "2025年4月董事会通过的2024年度利润分配方案是什么？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_meeting_board"
+      ],
+      "answer": "2025年4月25日召开的2025年第二次临时董事会审议通过了《2024年度利润分配方案》 [1][2]。\n该2024年度利润分配方案为：每10股派发现金红利3.0元（含税），合计派现1.26亿元，占2024年归母净利润38.7% [3]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_meeting_board"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.794925,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 4812,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "R01",
+      "category": "refusal",
+      "question": "公司食堂今天中午的菜单是什么？",
+      "as_of": null,
+      "expected_doc_ids": [],
+      "answer": "现有企业资料未覆盖该问题，建议联系对应业务部门确认。",
+      "refused": true,
+      "grounded": false,
+      "method": "llm",
+      "cited_doc_ids": [],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.302264,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 6719,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "R02",
+      "category": "refusal",
+      "question": "创始人顾承澜的生日是哪一天？",
+      "as_of": null,
+      "expected_doc_ids": [],
+      "answer": "现有企业资料未覆盖该问题，建议联系对应业务部门确认。",
+      "refused": true,
+      "grounded": false,
+      "method": "llm",
+      "cited_doc_ids": [],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.42481,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 4530,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "R03",
+      "category": "refusal",
+      "question": "澜图智能在印度的工厂地址是什么？",
+      "as_of": null,
+      "expected_doc_ids": [],
+      "answer": "现有企业资料未覆盖该问题，建议联系对应业务部门确认。",
+      "refused": true,
+      "grounded": false,
+      "method": "llm",
+      "cited_doc_ids": [],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.604883,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 7016,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "R04",
+      "category": "refusal",
+      "question": "公司是否提供员工宠物保险？",
+      "as_of": null,
+      "expected_doc_ids": [],
+      "answer": "现有企业资料未覆盖该问题，建议联系对应业务部门确认。",
+      "refused": true,
+      "grounded": false,
+      "method": "llm",
+      "cited_doc_ids": [],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.310937,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 3016,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "R05",
+      "category": "refusal",
+      "question": "2026年世界杯冠军是谁？",
+      "as_of": null,
+      "expected_doc_ids": [],
+      "answer": "现有企业资料未覆盖该问题，建议联系对应业务部门确认。",
+      "refused": true,
+      "grounded": false,
+      "method": "llm",
+      "cited_doc_ids": [],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.387986,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 2280,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "R06",
+      "category": "refusal",
+      "question": "请推荐适合澜图智能的并购标的并给出估值。",
+      "as_of": null,
+      "expected_doc_ids": [],
+      "answer": "现有企业资料未覆盖该问题，建议联系对应业务部门确认。",
+      "refused": true,
+      "grounded": false,
+      "method": "llm",
+      "cited_doc_ids": [],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.457281,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 2453,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "R07",
+      "category": "refusal",
+      "question": "公司股票明天的收盘价会是多少？",
+      "as_of": null,
+      "expected_doc_ids": [],
+      "answer": "现有企业资料未覆盖该问题，建议联系对应业务部门确认。",
+      "refused": true,
+      "grounded": false,
+      "method": "llm",
+      "cited_doc_ids": [],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.583495,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 2656,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "R08",
+      "category": "refusal",
+      "question": "LT-R20 的 Python SDK 源码在哪里下载？",
+      "as_of": null,
+      "expected_doc_ids": [],
+      "answer": "现有企业资料未覆盖该问题，建议联系对应业务部门确认。",
+      "refused": true,
+      "grounded": false,
+      "method": "llm",
+      "cited_doc_ids": [],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.434425,
+      "comparison_mode": false,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 3218,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "A01",
+      "category": "version_comparison",
+      "question": "相比旧架构图，新架构有哪些变化？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_tech_control_architecture",
+        "lantu_tech_control_architecture_v2"
+      ],
+      "answer": "总线由 CANopen 升级为 EtherCAT，总线周期由 2 ms 缩短到 1 ms [1][2]。\n控制器由 LT-C600 单核 ARM + 4 轴运动控制卡升级为 LT-C800 双核 ARM + FPGA [1][3][4]。\n联动轴数由 4 轴增加到 8 轴 [1][3][4]。\n插补周期由 1 ms 缩短到 0.5 ms [1][3][4]。\n伺服采样频率由 8 kHz 提升到 16 kHz [1]。\n编码器由 17 位增量式升级为 23 位绝对值 [1]。\n速度环带宽由 600 Hz 提升到 1.2 kHz [1]。\n软件栈由 Windows + RTX 迁移到 PREEMPT_RT [1][5]。\n新增 RRT* 规划、Python/C++ SDK 与 ROS2 驱动 [1][5]。\n可靠性由 MTBF 30,000 小时、0℃ 至 45℃、EMC 3 级提升到 50,000 小时、-10℃ 至 55℃、EMC 4 级 [1]。\n安全功能由依赖外部安全继电器、未内置安全限速与碰撞检测，升级为内置安全限速与碰撞检测 [3][4]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_tech_control_architecture",
+        "lantu_tech_control_architecture_v2"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.795592,
+      "comparison_mode": true,
+      "graph_entities": [
+        "澜图智能机器人控制系统架构",
+        "澜图智能机器人控制系统架构（旧版 v2.4）",
+        "澜图智能组织架构（2024版）",
+        "澜图智能组织架构（2025版）"
+      ],
+      "graph_paths": [
+        "澜图智能机器人控制系统架构 -[属于]-> 研发中心（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[替代]-> 澜图智能机器人控制系统架构（旧版 v2.4）（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[版本属于]-> control_architecture（lantu_tech_control_architecture / 一、总体架构）"
+      ],
+      "latency_ms": 11358,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "A02",
+      "category": "version_comparison",
+      "question": "新旧控制系统的总线周期分别是多少，缩短了多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_tech_control_architecture",
+        "lantu_tech_control_architecture_v2"
+      ],
+      "answer": "旧版 v2.4 的总线周期为 2 ms [1][2]。\n新版 v3.3 的总线周期为 1 ms [1][3]。\n总线周期由 2 ms 缩短到 1 ms，缩短了 1 ms（2 ms − 1 ms = 1 ms） [1][2][3]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_tech_control_architecture",
+        "lantu_tech_control_architecture_v2"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.625353,
+      "comparison_mode": true,
+      "graph_entities": [],
+      "graph_paths": [],
+      "latency_ms": 5000,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "A03",
+      "category": "version_comparison",
+      "question": "新架构相比旧架构，联动轴数增加了多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_tech_control_architecture",
+        "lantu_tech_control_architecture_v2"
+      ],
+      "answer": "旧版 v2.4 主控 LT-C600 配置 4 轴运动控制卡，支持 4 轴联动 [1]。\n新版 v3.3 控制器升级为 LT-C800 双核 ARM + FPGA，联动轴数由 4 轴增加到 8 轴 [2]。\n联动轴数增加量为 8 - 4 = 4 轴 [2][1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_tech_control_architecture",
+        "lantu_tech_control_architecture_v2"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.963898,
+      "comparison_mode": true,
+      "graph_entities": [
+        "澜图智能机器人控制系统架构",
+        "澜图智能机器人控制系统架构（旧版 v2.4）",
+        "澜图智能组织架构（2024版）",
+        "澜图智能组织架构（2025版）"
+      ],
+      "graph_paths": [
+        "澜图智能机器人控制系统架构 -[属于]-> 研发中心（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[替代]-> 澜图智能机器人控制系统架构（旧版 v2.4）（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[版本属于]-> control_architecture（lantu_tech_control_architecture / 一、总体架构）"
+      ],
+      "latency_ms": 7125,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "A04",
+      "category": "version_comparison",
+      "question": "新架构相比旧架构，插补周期缩短了多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_tech_control_architecture",
+        "lantu_tech_control_architecture_v2"
+      ],
+      "answer": "旧版 v2.4 插补周期为 1 ms [1]。\n新版 v3.3 插补周期为 0.5 ms [2][3]。\n插补周期缩短了 0.5 ms，即缩短 50%（1 ms − 0.5 ms = 0.5 ms [2][1][3]。\n0.5/1 = 50%） [2][1][3]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_tech_control_architecture",
+        "lantu_tech_control_architecture_v2"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.93705,
+      "comparison_mode": true,
+      "graph_entities": [
+        "澜图智能机器人控制系统架构",
+        "澜图智能机器人控制系统架构（旧版 v2.4）",
+        "澜图智能组织架构（2024版）",
+        "澜图智能组织架构（2025版）"
+      ],
+      "graph_paths": [
+        "澜图智能机器人控制系统架构 -[属于]-> 研发中心（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[替代]-> 澜图智能机器人控制系统架构（旧版 v2.4）（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[版本属于]-> control_architecture（lantu_tech_control_architecture / 一、总体架构）"
+      ],
+      "latency_ms": 7860,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "A05",
+      "category": "version_comparison",
+      "question": "旧架构使用什么现场总线，新架构呢？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_tech_control_architecture",
+        "lantu_tech_control_architecture_v2"
+      ],
+      "answer": "旧架构（v2.4）现场总线采用 CANopen，总线周期 2 ms，单条总线最多连接 16 个从站，未使用 EtherCAT [1]。\n新架构（v3.3）现场总线由 CANopen 升级为 EtherCAT，总线周期由 2 ms 缩短到 1 ms [2]。\n新架构（v3.3）采用 EtherCAT 总线连接伺服与 I/O，总线周期 1 ms [3]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_tech_control_architecture",
+        "lantu_tech_control_architecture_v2"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.825065,
+      "comparison_mode": true,
+      "graph_entities": [
+        "澜图智能机器人控制系统架构",
+        "澜图智能机器人控制系统架构（旧版 v2.4）",
+        "澜图智能组织架构（2024版）",
+        "澜图智能组织架构（2025版）"
+      ],
+      "graph_paths": [
+        "澜图智能机器人控制系统架构 -[属于]-> 研发中心（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[替代]-> 澜图智能机器人控制系统架构（旧版 v2.4）（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[版本属于]-> control_architecture（lantu_tech_control_architecture / 一、总体架构）"
+      ],
+      "latency_ms": 10702,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "A06",
+      "category": "version_comparison",
+      "question": "新旧架构的控制器型号分别是什么？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_tech_control_architecture",
+        "lantu_tech_control_architecture_v2"
+      ],
+      "answer": "旧版架构的控制器型号为 LT-C600 工控机 [1]。\n新版架构的控制器型号为 LT-C800 [2][3]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_tech_control_architecture",
+        "lantu_tech_control_architecture_v2"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.814307,
+      "comparison_mode": true,
+      "graph_entities": [
+        "澜图智能机器人控制系统架构",
+        "澜图智能机器人控制系统架构（旧版 v2.4）",
+        "澜图智能组织架构（2024版）",
+        "澜图智能组织架构（2025版）"
+      ],
+      "graph_paths": [
+        "澜图智能机器人控制系统架构 -[属于]-> 研发中心（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[替代]-> 澜图智能机器人控制系统架构（旧版 v2.4）（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[版本属于]-> control_architecture（lantu_tech_control_architecture / 一、总体架构）"
+      ],
+      "latency_ms": 12390,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "A07",
+      "category": "version_comparison",
+      "question": "新架构的伺服采样频率比旧架构提高了多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_tech_control_architecture",
+        "lantu_tech_control_architecture_v2"
+      ],
+      "answer": "新架构伺服采样频率为16 kHz，旧架构为8 kHz，提高8 kHz [1][2][3]。\n按倍数计，新架构伺服采样频率是旧架构的2倍（16÷8=2） [1][2][3]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_tech_control_architecture",
+        "lantu_tech_control_architecture_v2"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.957895,
+      "comparison_mode": true,
+      "graph_entities": [
+        "澜图智能机器人控制系统架构",
+        "澜图智能机器人控制系统架构（旧版 v2.4）",
+        "澜图智能组织架构（2024版）",
+        "澜图智能组织架构（2025版）"
+      ],
+      "graph_paths": [
+        "澜图智能机器人控制系统架构 -[属于]-> 研发中心（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[替代]-> 澜图智能机器人控制系统架构（旧版 v2.4）（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[版本属于]-> control_architecture（lantu_tech_control_architecture / 一、总体架构）"
+      ],
+      "latency_ms": 7078,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "A08",
+      "category": "version_comparison",
+      "question": "新旧架构的编码器位数分别是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_tech_control_architecture",
+        "lantu_tech_control_architecture_v2"
+      ],
+      "answer": "旧版 v2.4 编码器为 17 位增量式 [1]。\n新版 v3.3 编码器为 23 位绝对值 [2][3]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_tech_control_architecture",
+        "lantu_tech_control_architecture_v2"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.90144,
+      "comparison_mode": true,
+      "graph_entities": [
+        "澜图智能机器人控制系统架构",
+        "澜图智能机器人控制系统架构（旧版 v2.4）",
+        "澜图智能组织架构（2024版）",
+        "澜图智能组织架构（2025版）"
+      ],
+      "graph_paths": [
+        "澜图智能机器人控制系统架构 -[属于]-> 研发中心（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[替代]-> 澜图智能机器人控制系统架构（旧版 v2.4）（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[版本属于]-> control_architecture（lantu_tech_control_architecture / 一、总体架构）"
+      ],
+      "latency_ms": 6953,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "A09",
+      "category": "version_comparison",
+      "question": "旧架构的实时操作系统是什么，新架构呢？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_tech_control_architecture",
+        "lantu_tech_control_architecture_v2"
+      ],
+      "answer": "旧架构 v2.4 的上位机运行 Windows + RTX 实时扩展 [1]。\n新架构 v3.3 的软件栈由 Windows + RTX 迁移到 PREEMPT_RT [2]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_tech_control_architecture",
+        "lantu_tech_control_architecture_v2"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.782618,
+      "comparison_mode": true,
+      "graph_entities": [
+        "澜图智能机器人控制系统架构",
+        "澜图智能机器人控制系统架构（旧版 v2.4）",
+        "澜图智能组织架构（2024版）",
+        "澜图智能组织架构（2025版）"
+      ],
+      "graph_paths": [
+        "澜图智能机器人控制系统架构 -[属于]-> 研发中心（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[替代]-> 澜图智能机器人控制系统架构（旧版 v2.4）（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[版本属于]-> control_architecture（lantu_tech_control_architecture / 一、总体架构）"
+      ],
+      "latency_ms": 10858,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "A10",
+      "category": "version_comparison",
+      "question": "新架构的 MTBF 比旧架构提高了多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_tech_control_architecture",
+        "lantu_tech_control_architecture_v2"
+      ],
+      "answer": "新架构 MTBF 为 50,000 小时，旧架构为 30,000 小时 [1][2]。\n新架构 MTBF 比旧架构提高 20,000 小时，算式：50,000 − 30,000 = 20,000 [1][2]。\n按旧架构为基准，MTBF 提升幅度为 66.7%，算式：(50,000 − 30,000) ÷ 30,000 ≈ 66.7% [1][2]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_tech_control_architecture",
+        "lantu_tech_control_architecture_v2"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.892266,
+      "comparison_mode": true,
+      "graph_entities": [
+        "澜图智能机器人控制系统架构",
+        "澜图智能机器人控制系统架构（旧版 v2.4）",
+        "澜图智能组织架构（2024版）",
+        "澜图智能组织架构（2025版）"
+      ],
+      "graph_paths": [
+        "澜图智能机器人控制系统架构 -[属于]-> 研发中心（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[替代]-> 澜图智能机器人控制系统架构（旧版 v2.4）（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[版本属于]-> control_architecture（lantu_tech_control_architecture / 一、总体架构）"
+      ],
+      "latency_ms": 8593,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "A11",
+      "category": "version_comparison",
+      "question": "旧架构的工作温度范围是多少，新架构呢？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_tech_control_architecture",
+        "lantu_tech_control_architecture_v2"
+      ],
+      "answer": "旧架构（v2.4）控制器工作温度范围为 0℃ 至 45℃ [1]。\n新架构（v3.3）控制器工作温度范围为 -10℃ 至 55℃ [2]。\n工作温度范围由旧版 0℃ 至 45℃ 提升到新版 -10℃ 至 55℃ [3][1][2]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_tech_control_architecture",
+        "lantu_tech_control_architecture_v2"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.823461,
+      "comparison_mode": true,
+      "graph_entities": [
+        "澜图智能机器人控制系统架构",
+        "澜图智能机器人控制系统架构（旧版 v2.4）",
+        "澜图智能组织架构（2024版）",
+        "澜图智能组织架构（2025版）"
+      ],
+      "graph_paths": [
+        "澜图智能机器人控制系统架构 -[属于]-> 研发中心（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[替代]-> 澜图智能机器人控制系统架构（旧版 v2.4）（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[版本属于]-> control_architecture（lantu_tech_control_architecture / 一、总体架构）"
+      ],
+      "latency_ms": 8859,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "A12",
+      "category": "version_comparison",
+      "question": "新旧架构的 EMC 等级分别是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_tech_control_architecture",
+        "lantu_tech_control_architecture_v2"
+      ],
+      "answer": "旧版 v2.4 的 EMC 等级为 3 级 [1]。\n新版 v3.3 的 EMC 等级为 4 级 [2][3]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_tech_control_architecture",
+        "lantu_tech_control_architecture_v2"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.860765,
+      "comparison_mode": true,
+      "graph_entities": [
+        "澜图智能机器人控制系统架构",
+        "澜图智能机器人控制系统架构（旧版 v2.4）",
+        "澜图智能组织架构（2024版）",
+        "澜图智能组织架构（2025版）"
+      ],
+      "graph_paths": [
+        "澜图智能机器人控制系统架构 -[属于]-> 研发中心（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[替代]-> 澜图智能机器人控制系统架构（旧版 v2.4）（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[版本属于]-> control_architecture（lantu_tech_control_architecture / 一、总体架构）"
+      ],
+      "latency_ms": 9671,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "A13",
+      "category": "version_comparison",
+      "question": "旧架构支持几轴联动，新架构支持几轴？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_tech_control_architecture",
+        "lantu_tech_control_architecture_v2"
+      ],
+      "answer": "旧架构（v2.4）主控为 LT-C600 工控机，配置 4 轴运动控制卡，支持 4 轴联动 [1]。\n新架构（v3.3）控制器升级为 LT-C800 双核 ARM + FPGA，联动轴数由 4 轴增加到 8 轴 [2]。\n新架构 LT-C800 支持 8 轴联动 [3]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_tech_control_architecture",
+        "lantu_tech_control_architecture_v2"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.79786,
+      "comparison_mode": true,
+      "graph_entities": [
+        "澜图智能机器人控制系统架构",
+        "澜图智能机器人控制系统架构（旧版 v2.4）",
+        "澜图智能组织架构（2024版）",
+        "澜图智能组织架构（2025版）"
+      ],
+      "graph_paths": [
+        "澜图智能机器人控制系统架构 -[属于]-> 研发中心（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[替代]-> 澜图智能机器人控制系统架构（旧版 v2.4）（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[版本属于]-> control_architecture（lantu_tech_control_architecture / 一、总体架构）"
+      ],
+      "latency_ms": 6905,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "A14",
+      "category": "version_comparison",
+      "question": "新架构相对旧架构新增了哪些软件能力？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_tech_control_architecture"
+      ],
+      "answer": "软件栈由 Windows + RTX 迁移到 PREEMPT_RT [1][2]。\n新增 RRT* 规划能力 [1][2]。\n新增 Python/C++ SDK（旧版仅提供 C# SDK，未提供 Python/C++ SDK） [1][2]。\n新增 ROS2 驱动（旧版未提供 ROS2 驱动） [1][2]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_tech_control_architecture",
+        "lantu_tech_control_architecture_v2"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.864698,
+      "comparison_mode": true,
+      "graph_entities": [
+        "澜图智能机器人控制系统架构",
+        "澜图智能机器人控制系统架构（旧版 v2.4）",
+        "澜图智能组织架构（2024版）",
+        "澜图智能组织架构（2025版）"
+      ],
+      "graph_paths": [
+        "澜图智能机器人控制系统架构 -[属于]-> 研发中心（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[替代]-> 澜图智能机器人控制系统架构（旧版 v2.4）（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[版本属于]-> control_architecture（lantu_tech_control_architecture / 一、总体架构）"
+      ],
+      "latency_ms": 10000,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "A15",
+      "category": "version_comparison",
+      "question": "旧架构的安全功能有什么不足，新架构如何改进？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_tech_control_architecture",
+        "lantu_tech_control_architecture_v2"
+      ],
+      "answer": "旧版安全功能依赖外部安全继电器，未内置安全限速与碰撞检测 [1]。\n新版 LT-C800 控制器内置安全限速与碰撞检测 [2]。\n新版 LT-C800 符合 PL d 安全等级，支持安全限速、安全停止与区域监控，可选安全 PLC 模块 [3]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_product_controller",
+        "lantu_tech_control_architecture",
+        "lantu_tech_control_architecture_v2"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.699829,
+      "comparison_mode": true,
+      "graph_entities": [
+        "澜图智能机器人控制系统架构",
+        "澜图智能机器人控制系统架构（旧版 v2.4）",
+        "澜图智能组织架构（2024版）",
+        "澜图智能组织架构（2025版）"
+      ],
+      "graph_paths": [
+        "澜图智能机器人控制系统架构 -[属于]-> 研发中心（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[替代]-> 澜图智能机器人控制系统架构（旧版 v2.4）（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[版本属于]-> control_architecture（lantu_tech_control_architecture / 一、总体架构）"
+      ],
+      "latency_ms": 10812,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "H01",
+      "category": "multi_hop_relation",
+      "question": "赵一鸣的上级的上级是谁？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "answer": "赵一鸣的上级是林晓 [1]；林晓的上级是周启航 [1]。因此赵一鸣的上级的上级是周启航。",
+      "refused": false,
+      "grounded": true,
+      "method": "deterministic_reasoning",
+      "cited_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.805771,
+      "comparison_mode": false,
+      "graph_entities": [
+        "赵一鸣"
+      ],
+      "graph_paths": [
+        "林晓 -[汇报/管理]-> 赵一鸣（lantu_org_reporting_lines / 一、研发体系汇报链）",
+        "周启航 -[汇报/管理]-> 林晓（lantu_org_reporting_lines / 一、研发体系汇报链）"
+      ],
+      "latency_ms": 2078,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "H02",
+      "category": "multi_hop_relation",
+      "question": "赵一鸣和沈亦舟是什么关系？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "answer": "沈亦舟是赵一鸣的向上第4级上级。依据：赵一鸣的上级是林晓 [1]；林晓的上级是周启航 [1]；周启航的上级是程知远 [1]；程知远的上级是沈亦舟 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "deterministic_reasoning",
+      "cited_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.773064,
+      "comparison_mode": false,
+      "graph_entities": [
+        "沈亦舟",
+        "赵一鸣"
+      ],
+      "graph_paths": [
+        "沈亦舟 -[汇报/管理]-> 程知远（lantu_org_reporting_lines / 一、研发体系汇报链）",
+        "顾承澜 -[汇报/管理]-> 沈亦舟（lantu_org_reporting_lines / 一、研发体系汇报链）",
+        "林晓 -[汇报/管理]-> 赵一鸣（lantu_org_reporting_lines / 一、研发体系汇报链）"
+      ],
+      "latency_ms": 6437,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "H03",
+      "category": "multi_hop_relation",
+      "question": "林晓的上级的上级是谁？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "answer": "林晓的上级是周启航 [1]；周启航的上级是程知远 [1]。因此林晓的上级的上级是程知远。",
+      "refused": false,
+      "grounded": true,
+      "method": "deterministic_reasoning",
+      "cited_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.843327,
+      "comparison_mode": false,
+      "graph_entities": [
+        "林晓"
+      ],
+      "graph_paths": [
+        "林晓 -[汇报/管理]-> 赵一鸣（lantu_org_reporting_lines / 一、研发体系汇报链）",
+        "周启航 -[汇报/管理]-> 林晓（lantu_org_reporting_lines / 一、研发体系汇报链）",
+        "周启航 -[负责]-> 控制器研究所（lantu_org_reporting_lines / 一、研发体系汇报链）"
+      ],
+      "latency_ms": 2453,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "H04",
+      "category": "multi_hop_relation",
+      "question": "陈璐和罗嘉树是什么关系？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "answer": "罗嘉树是陈璐的向上第3级上级。依据：陈璐的上级是许博 [1]；许博的上级是唐婧 [1]；唐婧的上级是罗嘉树 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "deterministic_reasoning",
+      "cited_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.758075,
+      "comparison_mode": false,
+      "graph_entities": [
+        "罗嘉树",
+        "陈璐"
+      ],
+      "graph_paths": [
+        "罗嘉树 -[汇报/管理]-> 唐婧（lantu_org_reporting_lines / 二、销售与客户成功汇报链）",
+        "顾承澜 -[汇报/管理]-> 罗嘉树（lantu_org_reporting_lines / 二、销售与客户成功汇报链）",
+        "许博 -[汇报/管理]-> 陈璐（lantu_org_reporting_lines / 二、销售与客户成功汇报链）"
+      ],
+      "latency_ms": 6842,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "H05",
+      "category": "multi_hop_relation",
+      "question": "郭涛的上级是谁？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "answer": "郭涛的上级是方磊 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "deterministic_reasoning",
+      "cited_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.854603,
+      "comparison_mode": false,
+      "graph_entities": [
+        "郭涛"
+      ],
+      "graph_paths": [
+        "郭涛 -[负责]-> 苏州工厂（lantu_org_reporting_lines / 三、供应链与制造汇报链）",
+        "方磊 -[汇报/管理]-> 郭涛（lantu_org_reporting_lines / 三、供应链与制造汇报链）",
+        "方磊 -[负责]-> 制造中心（lantu_org_reporting_lines / 三、供应链与制造汇报链）"
+      ],
+      "latency_ms": 2547,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "H06",
+      "category": "multi_hop_relation",
+      "question": "方磊的直接下属有哪些？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "answer": "方磊的直接下属有1人：郭涛 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "deterministic_reasoning",
+      "cited_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.724442,
+      "comparison_mode": false,
+      "graph_entities": [
+        "方磊"
+      ],
+      "graph_paths": [
+        "方磊 -[汇报/管理]-> 郭涛（lantu_org_reporting_lines / 三、供应链与制造汇报链）",
+        "方磊 -[负责]-> 制造中心（lantu_org_reporting_lines / 三、供应链与制造汇报链）",
+        "韩立恒 -[汇报/管理]-> 方磊（lantu_org_reporting_lines / 三、供应链与制造汇报链）"
+      ],
+      "latency_ms": 6155,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "H07",
+      "category": "multi_hop_relation",
+      "question": "唐婧的下属中谁负责上海区域客户？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "answer": "唐婧的第2级下属中，陈璐负责相关业务：陈璐担任上海客户经理，负责上海区域重点客户 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "deterministic_reasoning",
+      "cited_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.882714,
+      "comparison_mode": false,
+      "graph_entities": [
+        "唐婧"
+      ],
+      "graph_paths": [
+        "唐婧 -[汇报/管理]-> 许博（lantu_org_reporting_lines / 二、销售与客户成功汇报链）",
+        "唐婧 -[负责]-> 销售中心（lantu_org_reporting_lines / 二、销售与客户成功汇报链）",
+        "罗嘉树 -[汇报/管理]-> 唐婧（lantu_org_reporting_lines / 二、销售与客户成功汇报链）"
+      ],
+      "latency_ms": 2250,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "H08",
+      "category": "multi_hop_relation",
+      "question": "许博的上级的上级是谁？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "answer": "许博的上级是唐婧 [1]；唐婧的上级是罗嘉树 [1]。因此许博的上级的上级是罗嘉树。",
+      "refused": false,
+      "grounded": true,
+      "method": "deterministic_reasoning",
+      "cited_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.847693,
+      "comparison_mode": false,
+      "graph_entities": [
+        "许博"
+      ],
+      "graph_paths": [
+        "许博 -[汇报/管理]-> 陈璐（lantu_org_reporting_lines / 二、销售与客户成功汇报链）",
+        "许博 -[负责]-> 华东大区（lantu_org_reporting_lines / 二、销售与客户成功汇报链）",
+        "唐婧 -[汇报/管理]-> 许博（lantu_org_reporting_lines / 二、销售与客户成功汇报链）"
+      ],
+      "latency_ms": 2296,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "H09",
+      "category": "multi_hop_relation",
+      "question": "周启航的上级的上级是谁？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "answer": "周启航的上级是程知远 [1]；程知远的上级是沈亦舟 [1]。因此周启航的上级的上级是沈亦舟。",
+      "refused": false,
+      "grounded": true,
+      "method": "deterministic_reasoning",
+      "cited_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.849021,
+      "comparison_mode": false,
+      "graph_entities": [
+        "周启航"
+      ],
+      "graph_paths": [
+        "周启航 -[汇报/管理]-> 林晓（lantu_org_reporting_lines / 一、研发体系汇报链）",
+        "周启航 -[负责]-> 控制器研究所（lantu_org_reporting_lines / 一、研发体系汇报链）",
+        "程知远 -[汇报/管理]-> 周启航（lantu_org_reporting_lines / 一、研发体系汇报链）"
+      ],
+      "latency_ms": 2312,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "H10",
+      "category": "multi_hop_relation",
+      "question": "顾承澜和邵岚是什么关系？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "answer": "顾承澜是邵岚的直属上级。依据：邵岚的上级是顾承澜 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "deterministic_reasoning",
+      "cited_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.78072,
+      "comparison_mode": false,
+      "graph_entities": [
+        "顾承澜",
+        "邵岚"
+      ],
+      "graph_paths": [
+        "顾承澜 -[汇报/管理]-> 周敏仪（lantu_org_reporting_lines / 四、职能体系汇报链）",
+        "顾承澜 -[汇报/管理]-> 邵岚（lantu_org_reporting_lines / 四、职能体系汇报链）",
+        "顾承澜 -[汇报/管理]-> 陈依然（lantu_org_reporting_lines / 四、职能体系汇报链）"
+      ],
+      "latency_ms": 8531,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "H11",
+      "category": "multi_hop_relation",
+      "question": "蒋雯的上级的上级是谁？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "answer": "蒋雯的上级是陈依然 [1]；陈依然的上级是顾承澜 [1]。因此蒋雯的上级的上级是顾承澜。",
+      "refused": false,
+      "grounded": true,
+      "method": "deterministic_reasoning",
+      "cited_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.800092,
+      "comparison_mode": false,
+      "graph_entities": [
+        "蒋雯"
+      ],
+      "graph_paths": [
+        "陈依然 -[汇报/管理]-> 蒋雯（lantu_org_reporting_lines / 四、职能体系汇报链）",
+        "顾承澜 -[汇报/管理]-> 陈依然（lantu_org_reporting_lines / 四、职能体系汇报链）",
+        "陈依然 -[属于]-> 人力资源部（lantu_hr_campus / 一、招聘计划）"
+      ],
+      "latency_ms": 2343,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "H12",
+      "category": "multi_hop_relation",
+      "question": "赵一鸣的上级是谁？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "answer": "赵一鸣的上级是林晓 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "deterministic_reasoning",
+      "cited_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.805031,
+      "comparison_mode": false,
+      "graph_entities": [
+        "赵一鸣"
+      ],
+      "graph_paths": [
+        "林晓 -[汇报/管理]-> 赵一鸣（lantu_org_reporting_lines / 一、研发体系汇报链）",
+        "周启航 -[汇报/管理]-> 林晓（lantu_org_reporting_lines / 一、研发体系汇报链）"
+      ],
+      "latency_ms": 2234,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "H13",
+      "category": "multi_hop_relation",
+      "question": "程知远的直接下属是谁？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "answer": "程知远的直接下属有1人：周启航 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "deterministic_reasoning",
+      "cited_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.844466,
+      "comparison_mode": false,
+      "graph_entities": [
+        "程知远"
+      ],
+      "graph_paths": [
+        "程知远 -[汇报/管理]-> 周启航（lantu_org_reporting_lines / 一、研发体系汇报链）",
+        "程知远 -[负责]-> 研发中心（lantu_org_reporting_lines / 一、研发体系汇报链）",
+        "沈亦舟 -[汇报/管理]-> 程知远（lantu_org_reporting_lines / 一、研发体系汇报链）"
+      ],
+      "latency_ms": 2234,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "H14",
+      "category": "multi_hop_relation",
+      "question": "罗嘉树的上级是谁？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "answer": "罗嘉树的上级是顾承澜 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "deterministic_reasoning",
+      "cited_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.850059,
+      "comparison_mode": false,
+      "graph_entities": [
+        "罗嘉树"
+      ],
+      "graph_paths": [
+        "罗嘉树 -[汇报/管理]-> 唐婧（lantu_org_reporting_lines / 二、销售与客户成功汇报链）",
+        "顾承澜 -[汇报/管理]-> 罗嘉树（lantu_org_reporting_lines / 二、销售与客户成功汇报链）",
+        "唐婧 -[负责]-> 销售中心（lantu_org_reporting_lines / 二、销售与客户成功汇报链）"
+      ],
+      "latency_ms": 2312,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "H15",
+      "category": "multi_hop_relation",
+      "question": "陈璐的上级的上级的上级是谁？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "answer": "陈璐的上级是许博 [1]；许博的上级是唐婧 [1]；唐婧的上级是罗嘉树 [1]。因此陈璐的上级的上级的上级是罗嘉树。",
+      "refused": false,
+      "grounded": true,
+      "method": "deterministic_reasoning",
+      "cited_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.840591,
+      "comparison_mode": false,
+      "graph_entities": [
+        "陈璐"
+      ],
+      "graph_paths": [
+        "许博 -[汇报/管理]-> 陈璐（lantu_org_reporting_lines / 二、销售与客户成功汇报链）",
+        "许博 -[负责]-> 华东大区（lantu_org_reporting_lines / 二、销售与客户成功汇报链）",
+        "唐婧 -[汇报/管理]-> 许博（lantu_org_reporting_lines / 二、销售与客户成功汇报链）"
+      ],
+      "latency_ms": 2266,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "H16",
+      "category": "multi_hop_relation",
+      "question": "韩立恒和郭涛是什么关系？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "answer": "韩立恒是郭涛的上级的上级（中间隔一级）。依据：郭涛的上级是方磊 [1]；方磊的上级是韩立恒 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "deterministic_reasoning",
+      "cited_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.769619,
+      "comparison_mode": false,
+      "graph_entities": [
+        "韩立恒",
+        "郭涛"
+      ],
+      "graph_paths": [
+        "韩立恒 -[汇报/管理]-> 方磊（lantu_org_reporting_lines / 三、供应链与制造汇报链）",
+        "顾承澜 -[汇报/管理]-> 韩立恒（lantu_org_reporting_lines / 三、供应链与制造汇报链）",
+        "郭涛 -[负责]-> 苏州工厂（lantu_org_reporting_lines / 三、供应链与制造汇报链）"
+      ],
+      "latency_ms": 6092,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "H17",
+      "category": "multi_hop_relation",
+      "question": "唐婧和罗嘉树是什么关系？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "answer": "罗嘉树是唐婧的直属上级。依据：唐婧的上级是罗嘉树 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "deterministic_reasoning",
+      "cited_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.767196,
+      "comparison_mode": false,
+      "graph_entities": [
+        "罗嘉树",
+        "唐婧"
+      ],
+      "graph_paths": [
+        "罗嘉树 -[汇报/管理]-> 唐婧（lantu_org_reporting_lines / 二、销售与客户成功汇报链）",
+        "顾承澜 -[汇报/管理]-> 罗嘉树（lantu_org_reporting_lines / 二、销售与客户成功汇报链）",
+        "唐婧 -[汇报/管理]-> 许博（lantu_org_reporting_lines / 二、销售与客户成功汇报链）"
+      ],
+      "latency_ms": 7828,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "H18",
+      "category": "multi_hop_relation",
+      "question": "林晓和程知远是什么关系？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "answer": "程知远是林晓的上级的上级（中间隔一级）。依据：林晓的上级是周启航 [1]；周启航的上级是程知远 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "deterministic_reasoning",
+      "cited_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.746736,
+      "comparison_mode": false,
+      "graph_entities": [
+        "程知远",
+        "林晓"
+      ],
+      "graph_paths": [
+        "程知远 -[汇报/管理]-> 周启航（lantu_org_reporting_lines / 一、研发体系汇报链）",
+        "程知远 -[负责]-> 研发中心（lantu_org_reporting_lines / 一、研发体系汇报链）",
+        "沈亦舟 -[汇报/管理]-> 程知远（lantu_org_reporting_lines / 一、研发体系汇报链）"
+      ],
+      "latency_ms": 6342,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "H19",
+      "category": "multi_hop_relation",
+      "question": "方磊和韩立恒是什么关系？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "answer": "韩立恒是方磊的直属上级。依据：方磊的上级是韩立恒 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "deterministic_reasoning",
+      "cited_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.77265,
+      "comparison_mode": false,
+      "graph_entities": [
+        "韩立恒",
+        "方磊"
+      ],
+      "graph_paths": [
+        "韩立恒 -[汇报/管理]-> 方磊（lantu_org_reporting_lines / 三、供应链与制造汇报链）",
+        "顾承澜 -[汇报/管理]-> 韩立恒（lantu_org_reporting_lines / 三、供应链与制造汇报链）",
+        "方磊 -[汇报/管理]-> 郭涛（lantu_org_reporting_lines / 三、供应链与制造汇报链）"
+      ],
+      "latency_ms": 6594,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "H20",
+      "category": "multi_hop_relation",
+      "question": "蒋雯和陈依然是什么关系？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "answer": "陈依然是蒋雯的直属上级。依据：蒋雯的上级是陈依然 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "deterministic_reasoning",
+      "cited_doc_ids": [
+        "lantu_org_reporting_lines"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.731753,
+      "comparison_mode": false,
+      "graph_entities": [
+        "陈依然",
+        "蒋雯"
+      ],
+      "graph_paths": [
+        "陈依然 -[汇报/管理]-> 蒋雯（lantu_org_reporting_lines / 四、职能体系汇报链）",
+        "顾承澜 -[汇报/管理]-> 陈依然（lantu_org_reporting_lines / 四、职能体系汇报链）",
+        "顾承澜 -[汇报/管理]-> 周敏仪（lantu_org_reporting_lines / 四、职能体系汇报链）"
+      ],
+      "latency_ms": 6250,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "V01",
+      "category": "version_conflict",
+      "question": "2024年控制系统架构的控制器型号是什么？",
+      "as_of": "2024-12-31",
+      "expected_doc_ids": [
+        "lantu_tech_control_architecture_v2"
+      ],
+      "answer": "2024年控制系统架构（旧版 v2.4）的控制器型号为 LT-C600 工控机 [1][2]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_tech_control_architecture_v2"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.839554,
+      "comparison_mode": false,
+      "graph_entities": [
+        "澜图智能机器人控制系统架构",
+        "澜图智能机器人控制系统架构（旧版 v2.4）",
+        "澜图智能组织架构（2024版）",
+        "澜图智能组织架构（2025版）"
+      ],
+      "graph_paths": [
+        "澜图智能机器人控制系统架构 -[属于]-> 研发中心（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[替代]-> 澜图智能机器人控制系统架构（旧版 v2.4）（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[版本属于]-> control_architecture（lantu_tech_control_architecture / 一、总体架构）"
+      ],
+      "latency_ms": 5468,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "V02",
+      "category": "version_conflict",
+      "question": "2025年10月20日之后控制系统架构的控制器型号是什么？",
+      "as_of": "2025-12-31",
+      "expected_doc_ids": [
+        "lantu_tech_control_architecture"
+      ],
+      "answer": "2025年10月20日之后控制系统架构的控制器型号是 LT-C800 [1][2][3]。\n依据：v3.3 架构更新时间为 2026-10-22，晚于 2025-10-20，其控制器由旧版 v2.4 的 LT-C600 升级为 LT-C800 [1][2]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_tech_control_architecture"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.742732,
+      "comparison_mode": false,
+      "graph_entities": [
+        "澜图智能机器人控制系统架构",
+        "澜图智能机器人控制系统架构（旧版 v2.4）",
+        "澜图智能组织架构（2024版）",
+        "澜图智能组织架构（2025版）"
+      ],
+      "graph_paths": [
+        "澜图智能机器人控制系统架构 -[属于]-> 研发中心（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[替代]-> 澜图智能机器人控制系统架构（旧版 v2.4）（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[版本属于]-> control_architecture（lantu_tech_control_architecture / 一、总体架构）"
+      ],
+      "latency_ms": 3390,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "V03",
+      "category": "version_conflict",
+      "question": "旧版控制系统架构的 MTBF 是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_tech_control_architecture_v2"
+      ],
+      "answer": "旧版控制系统架构的控制器 MTBF 为 30,000 小时 [1]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_tech_control_architecture_v2"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.947362,
+      "comparison_mode": true,
+      "graph_entities": [
+        "澜图智能机器人控制系统架构",
+        "澜图智能机器人控制系统架构（旧版 v2.4）",
+        "澜图智能组织架构（2024版）",
+        "澜图智能组织架构（2025版）"
+      ],
+      "graph_paths": [
+        "澜图智能机器人控制系统架构 -[属于]-> 研发中心（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[替代]-> 澜图智能机器人控制系统架构（旧版 v2.4）（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[版本属于]-> control_architecture（lantu_tech_control_architecture / 一、总体架构）"
+      ],
+      "latency_ms": 7094,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "V04",
+      "category": "version_conflict",
+      "question": "新版控制系统架构的 MTBF 是多少？",
+      "as_of": null,
+      "expected_doc_ids": [
+        "lantu_tech_control_architecture"
+      ],
+      "answer": "新版控制系统架构（v3.3）的控制器 MTBF 为 50,000 小时 [1][2]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_tech_control_architecture"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.950392,
+      "comparison_mode": true,
+      "graph_entities": [
+        "澜图智能机器人控制系统架构",
+        "澜图智能机器人控制系统架构（旧版 v2.4）",
+        "澜图智能组织架构（2024版）",
+        "澜图智能组织架构（2025版）"
+      ],
+      "graph_paths": [
+        "澜图智能机器人控制系统架构 -[属于]-> 研发中心（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[替代]-> 澜图智能机器人控制系统架构（旧版 v2.4）（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[版本属于]-> control_architecture（lantu_tech_control_architecture / 一、总体架构）"
+      ],
+      "latency_ms": 6952,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    },
+    {
+      "id": "V05",
+      "category": "version_conflict",
+      "question": "2024年旧版架构和2025年新版架构的联动轴数分别是多少？",
+      "as_of": "2025-12-31",
+      "expected_doc_ids": [
+        "lantu_tech_control_architecture",
+        "lantu_tech_control_architecture_v2"
+      ],
+      "answer": "2024年旧版架构（v2.4）的联动轴数为4轴，主控为LT-C600工控机，搭载单核ARM Cortex-A9处理器，配置4轴运动控制卡 [1]。\n2025年新版架构（v3.3）的联动轴数为8轴，控制器由LT-C600单核ARM+4轴运动控制卡升级为LT-C800双核ARM+FPGA，联动轴数由4轴增加到8轴 [2]。",
+      "refused": false,
+      "grounded": true,
+      "method": "llm",
+      "cited_doc_ids": [
+        "lantu_tech_control_architecture",
+        "lantu_tech_control_architecture_v2"
+      ],
+      "missing_expected_doc_ids": [],
+      "expected_docs_cited": true,
+      "missing_keywords": [],
+      "top_score": 0.840265,
+      "comparison_mode": true,
+      "graph_entities": [
+        "澜图智能机器人控制系统架构",
+        "澜图智能机器人控制系统架构（旧版 v2.4）",
+        "澜图智能组织架构（2024版）",
+        "澜图智能组织架构（2025版）"
+      ],
+      "graph_paths": [
+        "澜图智能机器人控制系统架构 -[属于]-> 研发中心（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[替代]-> 澜图智能机器人控制系统架构（旧版 v2.4）（lantu_tech_control_architecture / 一、总体架构）",
+        "澜图智能机器人控制系统架构 -[版本属于]-> control_architecture（lantu_tech_control_architecture / 一、总体架构）"
+      ],
+      "latency_ms": 10266,
+      "error": "",
+      "passed": true,
+      "failure_type": ""
+    }
+  ]
+}
