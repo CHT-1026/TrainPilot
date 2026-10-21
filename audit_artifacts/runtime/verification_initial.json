@@ -1,0 +1,71 @@
+{
+  "checked_at": "2026-10-21T18:12:01.305803+08:00",
+  "kind": "synthetic_local_leave_workflow_with_confirmation",
+  "steps": [
+    {
+      "name": "employee_and_manager_login",
+      "result": "pass"
+    },
+    {
+      "name": "leave_draft_requires_confirmation",
+      "result": "pass",
+      "elapsed_seconds": 3.52
+    },
+    {
+      "name": "submit_leave_confirmed_and_persisted",
+      "result": "pass",
+      "application_id": "leave_09c743dda470",
+      "status": "pending",
+      "elapsed_seconds": 1.73
+    },
+    {
+      "name": "cancel_confirmed",
+      "result": "pass",
+      "status": "cancelled",
+      "elapsed_seconds": 2.5
+    },
+    {
+      "name": "second_leave_confirmed",
+      "result": "pass",
+      "application_id": "leave_189aaf4029ff",
+      "status": "pending",
+      "elapsed_seconds": 5.06
+    },
+    {
+      "name": "employee_approval_blocked",
+      "result": "pass",
+      "elapsed_seconds": 1.88
+    },
+    {
+      "name": "pending_list_visible",
+      "result": "pass",
+      "application_visible": true,
+      "elapsed_seconds": 1.58
+    },
+    {
+      "name": "approval_draft_requires_confirmation",
+      "result": "pass",
+      "elapsed_seconds": 3.12
+    },
+    {
+      "name": "manager_approval_confirmed_and_persisted",
+      "result": "pass",
+      "status": "approved",
+      "elapsed_seconds": 2.06
+    },
+    {
+      "name": "employee_reads_approved_record",
+      "result": "pass",
+      "elapsed_seconds": 6.83
+    },
+    {
+      "name": "redis_history_roundtrip",
+      "result": "pass",
+      "message_count": 16
+    }
+  ],
+  "employee_thread": "chat_c29629036651",
+  "manager_thread": "chat_131fcdec1861",
+  "application_id": "leave_189aaf4029ff",
+  "result": "pass"
+}

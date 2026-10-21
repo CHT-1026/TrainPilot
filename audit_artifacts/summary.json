@@ -1,0 +1,217 @@
+{
+  "generated_at": "2026-10-21T18:22:25.331130+08:00",
+  "unit_tests": 148,
+  "reasoning_before": {
+    "total": 20,
+    "strict_passed": 6,
+    "answer_correct": 6,
+    "all_evidence_recalled": 19
+  },
+  "reasoning_after": {
+    "total": 20,
+    "strict_passed": 20,
+    "answer_correct": 20,
+    "all_evidence_recalled": 20
+  },
+  "holdout_before": {
+    "total": 13,
+    "strict_passed": 2,
+    "answer_correct": 2,
+    "all_evidence_recalled": 13
+  },
+  "holdout_after": {
+    "total": 13,
+    "strict_passed": 13,
+    "answer_correct": 13,
+    "all_evidence_recalled": 13
+  },
+  "http_before": {
+    "passed": 12,
+    "total": 18
+  },
+  "http_after": {
+    "passed": 18,
+    "total": 18
+  },
+  "model_generation": {
+    "passed": 4,
+    "total": 4
+  },
+  "runtime": {
+    "cases": [
+      {
+        "script": "tests/smoke_service.py",
+        "passed": true,
+        "exit_code": 0,
+        "seconds": 0.75,
+        "log": "audit_artifacts\\runtime\\smoke_service.txt"
+      },
+      {
+        "script": "tests/smoke_hr.py",
+        "passed": true,
+        "exit_code": 0,
+        "seconds": 0.735,
+        "log": "audit_artifacts\\runtime\\smoke_hr.txt"
+      },
+      {
+        "script": "tests/smoke_reporting_line.py",
+        "passed": true,
+        "exit_code": 0,
+        "seconds": 0.718,
+        "log": "audit_artifacts\\runtime\\smoke_reporting_line.txt"
+      },
+      {
+        "script": "tests/smoke_api_phase2.py",
+        "passed": true,
+        "exit_code": 0,
+        "seconds": 1.219,
+        "log": "audit_artifacts\\runtime\\smoke_api_phase2.txt"
+      },
+      {
+        "script": "tests/smoke_suggestion_chat.py",
+        "passed": true,
+        "exit_code": 0,
+        "seconds": 3.906,
+        "log": "audit_artifacts\\runtime\\smoke_suggestion_chat.txt"
+      },
+      {
+        "script": "tests/smoke_manager_snapshot.py",
+        "passed": true,
+        "exit_code": 0,
+        "seconds": 5.907,
+        "log": "audit_artifacts\\runtime\\smoke_manager_snapshot.txt"
+      },
+      {
+        "script": "tests/smoke_user_admin.py",
+        "passed": true,
+        "exit_code": 0,
+        "seconds": 0.781,
+        "log": "audit_artifacts\\runtime\\smoke_user_admin.txt"
+      },
+      {
+        "script": "tests/smoke_kb_admin.py",
+        "passed": true,
+        "exit_code": 0,
+        "seconds": 1.359,
+        "log": "audit_artifacts\\runtime\\smoke_kb_admin.txt"
+      },
+      {
+        "script": "tests/smoke_rag.py",
+        "passed": true,
+        "exit_code": 0,
+        "seconds": 17.985,
+        "log": "audit_artifacts\\runtime\\smoke_rag.txt"
+      },
+      {
+        "script": "tests/smoke_guard.py",
+        "passed": true,
+        "exit_code": 0,
+        "seconds": 0.515,
+        "log": "audit_artifacts\\runtime\\smoke_guard.txt"
+      },
+      {
+        "script": "local_runtime/verify_kb.py",
+        "passed": true,
+        "exit_code": 0,
+        "seconds": 9.813,
+        "log": "audit_artifacts\\runtime\\verify_kb.txt"
+      },
+      {
+        "script": "local_runtime/verify_flow.py",
+        "passed": true,
+        "exit_code": 0,
+        "seconds": 34.047,
+        "log": "audit_artifacts\\runtime\\verify_flow.txt"
+      }
+    ],
+    "passed": 12,
+    "total": 12
+  },
+  "legacy_metrics": {
+    "total_cases": 74,
+    "retrieval_cases": 66,
+    "recall@5": 0.9697,
+    "recall@10": 1.0,
+    "any_expected_doc_hit@5": 0.9697,
+    "any_expected_doc_hit@10": 1.0,
+    "all_expected_docs_in_top10": 0.9848,
+    "all_expected_docs_recalled@10": 0.9848,
+    "mrr": 0.8494,
+    "ndcg@10": 0.8764,
+    "answer_accuracy": 1.0,
+    "keyword_accuracy": 1.0,
+    "citation_coverage": 0.9394,
+    "all_expected_citation_coverage": 0.7879,
+    "valid_citation_marker_rate": 1.0,
+    "grounded_rate": 1.0,
+    "false_refusal_rate": 0.0,
+    "refusal_accuracy": 1.0,
+    "avg_latency_ms": 15.9
+  },
+  "legacy_gate": {
+    "passed": true,
+    "failures": [],
+    "thresholds": {
+      "recall@5": 0.85,
+      "answer_accuracy": 0.75,
+      "citation_coverage": 0.85,
+      "refusal_accuracy": 0.85
+    }
+  },
+  "oa_golden": {
+    "golden_total": 54,
+    "retrieval": {
+      "total": 54,
+      "recall_at_5": 1.0,
+      "top1_doc_hit": 1.0,
+      "mrr": 1.0,
+      "keyword_coverage": 1.0,
+      "failures": []
+    },
+    "answers": {
+      "total": 5,
+      "citation_coverage": 1.0,
+      "items": [
+        {
+          "id": "g001",
+          "question": "入职满5年有几天年假？",
+          "grounded": true,
+          "citations": 1,
+          "answer_preview": "入职满 5 年享有 15 天年假 [1]。该年假按司龄累计计算，当年有效，经直属主管审批后可在 OA 系统申请 [1]。未休部分可结转至次年一季度末，逾期将清零 [1]。年假不可折现，若离职时仍有未休年假，将按法定标准折算工资 [1]。\n\n来源：\n- [1] 澜图智能员工手册(2026版) · 二、年假制度（2026）"
+        },
+        {
+          "id": "g002",
+          "question": "年假没休完可以结转到什么时候？",
+          "grounded": true,
+          "citations": 1,
+          "answer_preview": "未休年假可结转至次年一季度末 [1]。逾期将自动清零，不可继续保留 [1]。\n\n来源：\n- [1] 澜图智能员工手册(2026版) · 二、年假制度（2026）"
+        },
+        {
+          "id": "g003",
+          "question": "年假可以折现吗？",
+          "grounded": true,
+          "citations": 1,
+          "answer_preview": "年假不可以折现 [1]。根据澜图智能员工手册规定，年假不可折现 [1]。若员工离职时有未休的年假，公司将按照法定标准折算为工资发放，而非直接对年假进行折现处理 [1]。\n\n来源：\n- [1] 澜图智能员工手册(2026版) · 二、年假制度（2026）"
+        },
+        {
+          "id": "g004",
+          "question": "社招和校招的试用期分别是多久？",
+          "grounded": true,
+          "citations": 2,
+          "answer_preview": "社招岗位试用期为 3 个月，校招岗位试用期为 6 个月 [1]。试用期满前 15 天，由直属主管与 HR 共同完成转正评估，通过后自动转正 [1]。表现优秀者可申请提前转正，但最长不超过 1 个月 [1]。入职当天签订的劳动合同期限为 3 年，其中包含 3-6 个月的试用期 [2]。\n\n来源：\n- [1] 澜图智能员工"
+        },
+        {
+          "id": "g005",
+          "question": "周末加班按几倍计算？",
+          "grounded": true,
+          "citations": 1,
+          "answer_preview": "周末加班按 2 倍计算调休或加班费 [1]。该规定要求加班必须经直属主管事先审批，未经审批的自行延时不算加班 [1]。\n\n来源：\n- [1] 澜图智能员工手册(2026版) · 三、加班认定与补偿（2026）"
+        }
+      ]
+    },
+    "gate": {
+      "passed": true,
+      "failures": []
+    }
+  }
+}

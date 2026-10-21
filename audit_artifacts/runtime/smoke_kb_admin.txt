@@ -1,0 +1,8 @@
+employee documents blocked
+documents list ok 149
+active doc retrievable
+superseded doc hidden
+visibility manager enforced
+department filter enforced
+KB_ADMIN_PASS
+

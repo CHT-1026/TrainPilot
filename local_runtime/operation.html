@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>澜图智能企业智能体平台 · 本机操作台</title>
+<style>
+:root{font-family:"Microsoft YaHei","Segoe UI",sans-serif;color:#19283b;background:#f3f6fa;font-size:15px}
+*{box-sizing:border-box}body{margin:0}button,input,select,textarea{font:inherit}
+button{cursor:pointer;border:1px solid #cbd6e3;border-radius:9px;padding:9px 14px;background:#fff;color:#263e5c}
+button:hover:enabled{background:#eef4ff;border-color:#7397c9}button:disabled{opacity:.45;cursor:not-allowed}
+.primary{background:#245bcb;color:white;border-color:#245bcb}.primary:hover:enabled{background:#174aa9}
+header{height:74px;background:white;border-bottom:1px solid #dde4ee;display:flex;justify-content:space-between;align-items:center;padding:0 30px}
+.brand{font-size:21px;font-weight:700}.small{font-size:13px;color:#60718a}.badge{background:#edf4ff;border-radius:6px;padding:5px 9px;font-size:13px}
+#status{margin:18px auto 0;max-width:1200px;border:1px solid #e6c276;background:#fff6e3;color:#73521d;padding:13px 17px;border-radius:10px;line-height:1.7}
+#status.good{background:#ecf7f0;border-color:#a6d9b8;color:#24643a}
+.login{width:min(480px,calc(100% - 32px));margin:45px auto;background:white;border:1px solid #dee5ef;border-radius:16px;padding:30px}
+h1{font-size:25px;margin:0 0 9px}h2{font-size:17px;margin:0 0 14px}p{line-height:1.8}
+label{display:block;margin:20px 0 7px;font-weight:600}input,select,textarea{width:100%;padding:12px;border:1px solid #ccd6e4;border-radius:8px;color:#1c2c43;background:#fff}
+input:focus,select:focus,textarea:focus{outline:2px solid #bcd0fb;border-color:#668bd4}
+.note{font-size:13px;color:#66768b;line-height:1.8}.login .primary{width:100%;margin-top:23px}
+#workspace{max-width:1200px;margin:18px auto;display:grid;grid-template-columns:250px 1fr;gap:18px}
+aside,.chat{background:white;border:1px solid #dce4ee;border-radius:12px;overflow:hidden}
+aside{padding:18px}.session{display:block;width:100%;text-align:left;font-size:13px;margin-top:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.session.active{background:#eaf1ff;border-color:#94b1e4}.toolbar{display:flex;flex-wrap:wrap;gap:8px;padding:15px;border-bottom:1px solid #e6ebf2}
+#messages{height:48vh;min-height:260px;overflow:auto;padding:22px;background:#fbfcfe}
+.message{margin-bottom:18px;max-width:92%;line-height:1.85}.message.user{margin-left:auto}
+.who{font-size:12px;color:#74849b;margin-bottom:5px}.bubble{white-space:pre-wrap;overflow-wrap:anywhere;background:white;border:1px solid #e1e7ef;border-radius:11px;padding:13px 16px}
+.user .bubble{background:#edf3ff;border-color:#d9e4fc}.empty{text-align:center;color:#8390a2;padding:50px 12px;line-height:2}
+.composer{padding:16px;border-top:1px solid #e3e9f1}textarea{resize:vertical;min-height:96px;max-height:260px}.compose-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px}
+#identity{display:flex;align-items:center;gap:12px}.hidden{display:none!important}#toast{max-width:1200px;margin:10px auto;color:#a23b36;white-space:pre-wrap;font-size:14px;line-height:1.6}
+summary{font-size:17px;font-weight:600;cursor:pointer}details[open] summary{margin-bottom:14px}
+@media(max-width:760px){header{padding:0 15px}.brand{font-size:18px}#workspace{grid-template-columns:1fr;margin:12px}aside{max-height:190px;overflow:auto}#status{margin:12px}#messages{height:43vh}.compose-bottom{align-items:flex-start}.toolbar button{font-size:13px;padding:8px}.message{max-width:100%}#toast{margin:12px}}
+@media(max-width:760px){header{height:auto;min-height:74px;flex-direction:column;align-items:stretch;gap:12px;padding:14px 16px}.brand{white-space:nowrap}#identity{justify-content:space-between;gap:8px}#identity button{flex-shrink:0}aside{max-height:150px}aside .note{display:none}.compose-bottom{flex-direction:column;align-items:stretch}.compose-bottom button{width:100%}.toolbar button{flex:1 1 calc(50% - 8px)}}
+@media(max-width:760px){.login{margin:18px auto;padding:20px}.login h1{font-size:22px}aside{padding:14px}}
+</style>
+</head>
+<body>
+<header><div><div class="brand">澜图智能企业智能体平台</div><div class="small">企业知识问答 / 制度检索 / 请假审批</div></div><div id="identity"><span class="badge">本机运行</span><span id="userLabel" class="small"></span><button id="logout" class="hidden">退出账号</button></div></header>
+<div id="status">正在检查运行环境……</div>
+<div id="toast" role="alert"></div>
+<section id="loginPanel" class="login">
+<h1>先选择一个演示账号</h1><p class="small">可以询问公司介绍、产品与制度，也可以提交请假、查看审批。所有演示账号的初始密码均为 admin123。</p>
+<form id="loginForm">
+<label for="username">账号</label><select id="username">
+<option value="employee_zhao">employee_zhao · 赵工（技术部员工）</option>
+<option value="employee_qian">employee_qian · 钱工（技术部员工）</option>
+<option value="manager_zhang">manager_zhang · 张主管（技术部主管）</option>
+<option value="manager_li">manager_li · 李经理（财务部主管）</option>
+<option value="admin">admin · 系统管理员</option>
+<option value="finance_wang">finance_wang · 王财务</option>
+<option value="hr_liu">hr_liu · 刘HR</option></select>
+<label for="password">密码</label><input id="password" type="password" value="admin123" autocomplete="current-password" required>
+<button class="primary" id="loginButton" type="submit">登录并开始</button>
+</form><p class="note">试试问“公司叫什么名字？”，或登录员工账号提交一张请假单。</p>
+</section>
+<main id="workspace" class="hidden">
+<aside><details id="sessionGroup" open><summary>我的会话</summary><button id="newSession" style="width:100%">＋ 新建会话</button><div id="sessions"></div><p class="note">点击会话可继续聊天。切换账号不会删除已经保存的申请。</p></details></aside>
+<section class="chat">
+<div class="toolbar"><button id="askCompany">问公司信息</button><button id="queryMine">查询我的申请</button><button id="pending">查看待审批</button><button id="leaveTemplate">填写请假模板</button><button id="refreshStatus">检查运行状态</button></div>
+<div id="messages"><div class="empty">可以问“公司叫什么名字？”，也可以从“查询我的申请”开始。</div></div>
+<div class="composer"><textarea id="message" maxlength="6000" placeholder="例如：公司叫什么名字？或：查询我的请假申请。"></textarea><div class="compose-bottom"><div class="note">企业知识问题会检索公司语料并给出引用；请假信息发送后会先生成确认草稿，回复“确认”才会提交。</div><button id="send" class="primary">发送消息</button></div><div id="conversationId" class="small" style="margin-top:10px"></div></div>
+</section></main>
+<script>
+"use strict";
+const $=id=>document.getElementById(id);
+if(window.matchMedia("(max-width:760px)").matches)$("sessionGroup").open=false;
+let token="",currentUser=null,threadId="",busy=false,modelReady=false;
+function toast(text){$("toast").textContent=text||"";}
+function lock(value){busy=value;["send","newSession","queryMine","askCompany","leaveTemplate","logout"].forEach(id=>$(id).disabled=value);$("send").disabled=value||!modelReady;$("pending").disabled=value||!currentUser||!["admin","manager"].includes(currentUser.role);document.querySelectorAll(".session").forEach(b=>b.disabled=value);}
+async function api(path,options){
+ const opts=Object.assign({},options||{});opts.headers=Object.assign({},opts.headers||{},token?{"Authorization":"Bearer "+token}:{});
+ if(opts.body&&typeof opts.body!=="string"){opts.headers["Content-Type"]="application/json";opts.body=JSON.stringify(opts.body);}
+ const r=await fetch(path,opts);let data;
+ try{data=await r.json();}catch(e){throw new Error("服务返回了无法解析的内容，请查看服务日志。");}
+ if(!r.ok)throw new Error(typeof data.detail==="string"?data.detail:(data.message||"请求失败（HTTP "+r.status+"）"));
+ return data;
+}
+async function status(){
+ try{
+ const data=await api("/local/status");modelReady=data.model_ready;$("status").className=modelReady?"good":"";
+ $("status").textContent=modelReady?"服务与模型已就绪，可以开始使用。":
+ "后端已运行；"+data.model_message+" 请在项目的 .env.local 填写有效密钥，保存后重新运行“启动本地服务.py”或“启动服务.cmd”。";
+ lock(busy);
+ }catch(e){modelReady=false;$("status").className="";$("status").textContent="无法连接后端。请先运行“启动服务.cmd”。";lock(busy);}
+}
+function message(role,text){
+ const wrap=document.createElement("div");wrap.className="message "+(role==="user"?"user":"assistant");
+ const name=document.createElement("div");name.className="who";name.textContent=role==="user"?"你":"澜图智能助手";
+ const bubble=document.createElement("div");bubble.className="bubble";bubble.textContent=text;
+ wrap.append(name,bubble);$("messages").append(wrap);$("messages").scrollTop=$("messages").scrollHeight;return bubble;
+}
+function setThread(id){threadId=id;$("conversationId").textContent="当前会话："+id;}
+async function sessions(){
+ const data=await api("/api/chat/sessions");$("sessions").replaceChildren();
+ data.data.forEach(s=>{const b=document.createElement("button");b.className="session"+(s.thread_id===threadId?" active":"");b.textContent=s.title||s.thread_id;b.title=s.thread_id;b.onclick=()=>loadHistory(s.thread_id);$("sessions").append(b);});
+}
+async function createSession(){
+ const result=await api("/api/chat/session",{method:"POST"});setThread(result.data.thread_id);
+ $("messages").replaceChildren();await sessions();
+}
+async function loadHistory(id){
+ if(busy)return;lock(true);toast("");
+ try{const data=await api("/api/chat/history?thread_id="+encodeURIComponent(id));setThread(id);$("messages").replaceChildren();data.data.messages.forEach(m=>message(m.role,m.content));await sessions();}
+ catch(e){toast(e.message);}finally{lock(false);}
+}
+$("loginForm").onsubmit=async event=>{
+ event.preventDefault();$("loginButton").disabled=true;toast("");
+ try{
+ const data=await api("/api/auth/login",{method:"POST",body:{username:$("username").value,password:$("password").value}});
+ token=data.data.token;currentUser=data.data;$("userLabel").textContent=data.data.name+" · "+data.data.department;
+ $("loginPanel").classList.add("hidden");$("workspace").classList.remove("hidden");$("logout").classList.remove("hidden");
+ await createSession();await status();
+ }catch(e){token="";currentUser=null;$("loginPanel").classList.remove("hidden");$("workspace").classList.add("hidden");$("logout").classList.add("hidden");toast("登录或会话创建失败："+e.message);}
+ finally{$("loginButton").disabled=false;lock(false);}
+};
+$("logout").onclick=()=>{token="";currentUser=null;threadId="";$("messages").replaceChildren();$("sessions").replaceChildren();$("userLabel").textContent="";$("loginPanel").classList.remove("hidden");$("workspace").classList.add("hidden");$("logout").classList.add("hidden");toast("");};
+$("newSession").onclick=async()=>{lock(true);toast("");try{await createSession();}catch(e){toast(e.message);}finally{lock(false);}};
+async function send(text){
+ if(busy||!text.trim())return;if(!modelReady){toast("模型接口尚未就绪，请先更新密钥并重启服务。");return;}
+ lock(true);toast("");const outgoing=text.trim();$("message").value="";message("user",outgoing);const answer=message("assistant","正在处理，请稍候……");
+ let accumulated="",complete=false;
+ try{
+ const r=await fetch("/api/chat/stream",{method:"POST",headers:{"Content-Type":"application/json","Authorization":"Bearer "+token},body:JSON.stringify({thread_id:threadId,user_message:outgoing})});
+ if(!r.ok){const data=await r.json();throw new Error(data.detail||data.message||"请求失败");}
+ const reader=r.body.getReader(),decoder=new TextDecoder("utf-8");let buffer="";
+ function handle(block){
+  let event="message";const lines=[];
+  block.split("\n").forEach(line=>{if(line.startsWith("event:"))event=line.slice(6).trim();if(line.startsWith("data:"))lines.push(line.slice(5).trimStart());});
+  if(!lines.length)return;const data=JSON.parse(lines.join("\n"));
+  if(event==="start")setThread(data.thread_id);
+  else if(event==="token"){accumulated+=data.token||"";answer.textContent=accumulated;}
+  else if(event==="replace"){accumulated=data.response||"";answer.textContent=accumulated;}
+  else if(event==="complete"){complete=true;answer.textContent=data.response||accumulated||"本次回复为空。";}
+  else if(event==="error")throw new Error(data.error||"对话处理出错。");
+  $("messages").scrollTop=$("messages").scrollHeight;
+ }
+ while(true){const result=await reader.read();buffer+=decoder.decode(result.value||new Uint8Array(),{stream:!result.done});buffer=buffer.replace(/\r\n/g,"\n");let boundary;while((boundary=buffer.indexOf("\n\n"))>=0){handle(buffer.slice(0,boundary));buffer=buffer.slice(boundary+2);}if(result.done)break;}
+ if(buffer.trim())handle(buffer);
+ if(!complete)throw new Error("连接已结束，但未收到完整结果。若刚才提交或审批，请先查询记录再决定是否重试。");
+ await sessions();
+ }catch(e){if(!accumulated&&!complete)answer.textContent="本次请求未完成。";toast(e.message+" 若刚才提交或审批过，请先核对申请状态。");}
+ finally{lock(false);}
+}
+$("send").onclick=()=>send($("message").value);
+$("message").addEventListener("keydown",e=>{if(e.ctrlKey&&e.key==="Enter"){e.preventDefault();send($("message").value);}});
+$("queryMine").onclick=()=>send("查询我的请假申请。");
+$("askCompany").onclick=()=>send("公司叫什么名字？");
+$("pending").onclick=()=>send("查看待审批申请。");
+$("leaveTemplate").onclick=()=>{
+ const start=new Date();start.setDate(start.getDate()+7);
+ while([0,6].includes(start.getDay()))start.setDate(start.getDate()+1);
+ const end=new Date(start);end.setDate(end.getDate()+1);
+ while([0,6].includes(end.getDay()))end.setDate(end.getDate()+1);
+ const fmt=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+ $("message").value="我要提交请假申请。请假类型：事假；开始日期："+fmt(start)+"；结束日期："+fmt(end)+"；请假原因：处理家庭事务。";$("message").focus();
+};
+$("refreshStatus").onclick=status;
+status();
+</script>
+</body></html>
+

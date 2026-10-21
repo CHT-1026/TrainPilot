@@ -1,0 +1,5 @@
+submit snapshot manager_id manager_li
+same-department non-direct manager blocked
+direct manager approved approved
+REPORTING_LINE_PASS
+

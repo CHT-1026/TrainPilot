@@ -1,0 +1,26 @@
+﻿{"id": "R01_four_departments", "strict_passed": true, "all_evidence_recalled": true, "method": "deterministic_reasoning", "latency_ms": 0, "failure_reasons": []}
+{"id": "R02_duplicate_department", "strict_passed": true, "all_evidence_recalled": true, "method": "deterministic_reasoning", "latency_ms": 0, "failure_reasons": []}
+{"id": "R03_foundation_cn", "strict_passed": true, "all_evidence_recalled": true, "method": "deterministic_reasoning", "latency_ms": 16, "failure_reasons": []}
+{"id": "R04_foundation_arabic", "strict_passed": true, "all_evidence_recalled": true, "method": "deterministic_reasoning", "latency_ms": 0, "failure_reasons": []}
+{"id": "R05_missing_year_anchor", "strict_passed": true, "all_evidence_recalled": true, "method": "evidence_check", "latency_ms": 0, "failure_reasons": []}
+{"id": "R06_conflicting_year_anchor", "strict_passed": true, "all_evidence_recalled": true, "method": "evidence_check", "latency_ms": 0, "failure_reasons": []}
+{"id": "R07_person_department", "strict_passed": true, "all_evidence_recalled": true, "method": "deterministic_reasoning", "latency_ms": 0, "failure_reasons": []}
+{"id": "R08_sum_money_units", "strict_passed": true, "all_evidence_recalled": true, "method": "deterministic_reasoning", "latency_ms": 0, "failure_reasons": []}
+{"id": "R09_difference_money", "strict_passed": true, "all_evidence_recalled": true, "method": "deterministic_reasoning", "latency_ms": 0, "failure_reasons": []}
+{"id": "R10_sum_cn_numbers", "strict_passed": true, "all_evidence_recalled": true, "method": "deterministic_reasoning", "latency_ms": 0, "failure_reasons": []}
+{"id": "R11_date_exclusive", "strict_passed": true, "all_evidence_recalled": true, "method": "deterministic_reasoning", "latency_ms": 0, "failure_reasons": []}
+{"id": "R12_date_inclusive", "strict_passed": true, "all_evidence_recalled": true, "method": "deterministic_reasoning", "latency_ms": 0, "failure_reasons": []}
+{"id": "R13_twelve_evidence", "strict_passed": true, "all_evidence_recalled": true, "method": "deterministic_reasoning", "latency_ms": 0, "failure_reasons": []}
+{"id": "R14_employee_denied", "strict_passed": true, "all_evidence_recalled": true, "method": "extractive", "latency_ms": 15, "failure_reasons": []}
+{"id": "R15_finance_allowed", "strict_passed": true, "all_evidence_recalled": true, "method": "extractive", "latency_ms": 516, "failure_reasons": []}
+{"id": "R16_before_first_effective", "strict_passed": true, "all_evidence_recalled": true, "method": "extractive", "latency_ms": 0, "failure_reasons": []}
+{"id": "R17_missing_join_target", "strict_passed": true, "all_evidence_recalled": true, "method": "evidence_check", "latency_ms": 0, "failure_reasons": []}
+{"id": "R18_no_scope_total", "strict_passed": true, "all_evidence_recalled": true, "method": "evidence_check", "latency_ms": 0, "failure_reasons": []}
+{"id": "R19_employee_after_finance", "strict_passed": true, "all_evidence_recalled": true, "method": "extractive", "latency_ms": 0, "failure_reasons": []}
+{"id": "R20_unrelated_year_anchor", "strict_passed": true, "all_evidence_recalled": true, "method": "evidence_check", "latency_ms": 0, "failure_reasons": []}
+{"report": "<PROJECT_ROOT>\\audit_artifacts\\reasoning\\regression.md", "metrics": {"total": 20, "strict_passed": 20, "answer_correct": 20, "all_evidence_recalled": 20}}
+
+Building prefix dict from the default dictionary ...
+Loading model from cache <USER_HOME>\AppData\Local\Temp\jieba.cache
+Loading model cost 0.337 seconds.
+Prefix dict has been built successfully.

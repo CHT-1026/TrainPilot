@@ -1,0 +1,15 @@
+﻿{"id": "H01_three_departments", "strict_passed": true, "all_evidence_recalled": true, "method": "deterministic_reasoning", "latency_ms": 0, "failure_reasons": []}
+{"id": "H02_changed_years", "strict_passed": true, "all_evidence_recalled": true, "method": "deterministic_reasoning", "latency_ms": 16, "failure_reasons": []}
+{"id": "H03_equal_contract_amounts", "strict_passed": true, "all_evidence_recalled": true, "method": "deterministic_reasoning", "latency_ms": 0, "failure_reasons": []}
+{"id": "H04_large_unit_sum", "strict_passed": true, "all_evidence_recalled": true, "method": "deterministic_reasoning", "latency_ms": 0, "failure_reasons": []}
+{"id": "H05_reversed_difference", "strict_passed": true, "all_evidence_recalled": true, "method": "deterministic_reasoning", "latency_ms": 0, "failure_reasons": []}
+{"id": "H06_cross_year_date", "strict_passed": true, "all_evidence_recalled": true, "method": "deterministic_reasoning", "latency_ms": 0, "failure_reasons": []}
+{"id": "H07_leap_day_inclusive", "strict_passed": true, "all_evidence_recalled": true, "method": "deterministic_reasoning", "latency_ms": 0, "failure_reasons": []}
+{"id": "H08_invalid_date_refusal", "strict_passed": true, "all_evidence_recalled": true, "method": "evidence_check", "latency_ms": 0, "failure_reasons": []}
+{"id": "H09_missing_operand", "strict_passed": true, "all_evidence_recalled": true, "method": "evidence_check", "latency_ms": 0, "failure_reasons": []}
+{"id": "H10_unrelated_anchor", "strict_passed": true, "all_evidence_recalled": true, "method": "evidence_check", "latency_ms": 0, "failure_reasons": []}
+{"id": "H11_partial_registry", "strict_passed": true, "all_evidence_recalled": true, "method": "evidence_check", "latency_ms": 0, "failure_reasons": []}
+{"id": "H12_three_hop_join", "strict_passed": true, "all_evidence_recalled": true, "method": "deterministic_reasoning", "latency_ms": 0, "failure_reasons": []}
+{"id": "H13_unrelated_amount_distractor", "strict_passed": true, "all_evidence_recalled": true, "method": "deterministic_reasoning", "latency_ms": 0, "failure_reasons": []}
+{"report": "<PROJECT_ROOT>\\audit_artifacts\\reasoning\\holdout_regression.md", "metrics": {"total": 13, "strict_passed": 13, "answer_correct": 13, "all_evidence_recalled": 13}}
+

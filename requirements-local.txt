@@ -1,0 +1,17 @@
+# Local compatibility set for Python 3.12 and this course's APIs.
+# Keep the original requirements.txt intact.
+-r requirements.txt
+langchain==1.0.7
+langchain-core==1.0.7
+langchain-openai==1.0.0
+langchain-community==0.4.1
+langchain-classic==1.0.0
+langchain-text-splitters==1.0.0
+langsmith==0.8.0
+langgraph-checkpoint==3.0.1
+langgraph-prebuilt==1.0.7
+langgraph-sdk==0.3.0
+redis==6.4.0
+redisvl==0.11.0
+openai==1.109.1
+pydantic-settings==2.10.1

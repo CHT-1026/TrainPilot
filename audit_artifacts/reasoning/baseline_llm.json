@@ -1,0 +1,750 @@
+{
+  "phase": "baseline",
+  "generated_at": "2026-10-21T17:55:31.509229+08:00",
+  "use_llm": true,
+  "fixtures_sha256": "9a23819fd877a08bd3aac824847d632b6b880d0c07b919e64672798e58b5bc8c",
+  "source_hashes_at_start": {
+    "enterprise_rag/answer.py": "04f04a8820d1d4cb77f42eb54393dab61985b98ad605f8befac2070d527b0e5c",
+    "enterprise_rag/retrieval.py": "7136656c366a233ac31e21af5ced3f1091f9c803bb04437e0523466db26ea618",
+    "enterprise_rag/store.py": "6b4d77c8bd167d295d0644a6ef7a9dab58d1cf4dc9ac6770447067d35ec75e7e",
+    "enterprise_rag/query.py": "8d8af84b6e15a0d2a4ba64d1441c6fd870bcc5e394cb799ad9ed426bfc24e615",
+    "enterprise_rag/citations.py": "85c6ed743d13b3591f5c6d1c5822a4c5f7cfbc537838d9c75fab0d1914ac4c7c",
+    "enterprise_rag/pipeline.py": "f5fa88f322e6c0dc79f930145bb1458f34b07c20cae117fad511a73d3e323d37"
+  },
+  "source_hashes_at_end": {
+    "enterprise_rag/answer.py": "04f04a8820d1d4cb77f42eb54393dab61985b98ad605f8befac2070d527b0e5c",
+    "enterprise_rag/retrieval.py": "7136656c366a233ac31e21af5ced3f1091f9c803bb04437e0523466db26ea618",
+    "enterprise_rag/store.py": "b8e308a2438567d62a1b4e6fa295674b289f6bac843e41dad34f6faaef13b42a",
+    "enterprise_rag/query.py": "8d8af84b6e15a0d2a4ba64d1441c6fd870bcc5e394cb799ad9ed426bfc24e615",
+    "enterprise_rag/citations.py": "85c6ed743d13b3591f5c6d1c5822a4c5f7cfbc537838d9c75fab0d1914ac4c7c",
+    "enterprise_rag/pipeline.py": "f5fa88f322e6c0dc79f930145bb1458f34b07c20cae117fad511a73d3e323d37"
+  },
+  "config": {
+    "llm_model": "qwen3.5-plus",
+    "llm_temperature": 0.2,
+    "embedding_provider": "hash",
+    "top_k": 8
+  },
+  "metrics": {
+    "total": 4,
+    "strict_passed": 0,
+    "answer_correct": 0,
+    "all_evidence_recalled": 4
+  },
+  "cases": [
+    {
+      "id": "R01_four_departments",
+      "category": "set_count",
+      "question": "星槐公司的组织清单中共有多少个不同部门？请列出部门并给出总数。",
+      "expected": "四个不同部门，列全四个部门，引用四份记录",
+      "answer": "现有企业资料未覆盖该问题，建议联系对应业务部门确认。",
+      "strict_passed": false,
+      "answer_correct": false,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": false,
+      "expected_docs": [
+        "dept_1",
+        "dept_2",
+        "dept_3",
+        "dept_4"
+      ],
+      "retrieved_docs": [
+        "dept_1",
+        "dept_2",
+        "dept_3",
+        "dept_4"
+      ],
+      "cited_docs": [],
+      "pattern_hits": {
+        "(?:4|四)\\s*个": false,
+        "星河研究部": false,
+        "赤峰制造部": false,
+        "远帆销售部": false,
+        "青禾财务部": false
+      },
+      "negative_pattern_hits": {},
+      "refused": true,
+      "method": "extractive",
+      "llm_requested": true,
+      "failure_reasons": [
+        "生成未给出预期推断结论",
+        "有足够依据但误拒答",
+        "引用未覆盖推断所需全部来源"
+      ],
+      "error": null,
+      "latency_ms": 123266,
+      "result": {
+        "question": "星槐公司的组织清单中共有多少个不同部门？请列出部门并给出总数。",
+        "answer": "现有企业资料未覆盖该问题，建议联系对应业务部门确认。",
+        "grounded": false,
+        "refused": true,
+        "method": "extractive",
+        "confidence": 0.4403,
+        "citations": [],
+        "query_rewrite": {
+          "original": "星槐公司的组织清单中共有多少个不同部门？请列出部门并给出总数。",
+          "rewritten": "星槐公司的组织清单中共有多少个不同部门？请列出部门并给出总数。",
+          "matched_synonyms": [],
+          "expansions": [],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "星槐",
+            "槐公",
+            "组织",
+            "织清",
+            "清单",
+            "单中",
+            "中共",
+            "共有",
+            "有多",
+            "少个",
+            "个不",
+            "不同",
+            "同部",
+            "部门",
+            "请列",
+            "列出",
+            "出部",
+            "门并",
+            "并给",
+            "给出",
+            "出总",
+            "总数"
+          ],
+          "candidate_count": 4,
+          "top_score": 0.32287,
+          "debug": {
+            "bm25_hits": 4,
+            "vector_hits": 4,
+            "fused": 4,
+            "reranked": 4,
+            "top_score": 0.32287,
+            "versioned_families": []
+          },
+          "chunks": [
+            {
+              "doc_id": "dept_1",
+              "title": "星槐组织记录1",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.32287,
+              "rrf_score": 0.032787,
+              "bm25_rank": 1,
+              "vector_rank": 1,
+              "vector_score": 0.344298,
+              "features": {
+                "coverage": 0.2308,
+                "vector": 0.3443,
+                "title": 0.1818,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "dept_3",
+              "title": "星槐组织记录3",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.318232,
+              "rrf_score": 0.032002,
+              "bm25_rank": 3,
+              "vector_rank": 2,
+              "vector_score": 0.328839,
+              "features": {
+                "coverage": 0.2308,
+                "vector": 0.3288,
+                "title": 0.1818,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "dept_2",
+              "title": "星槐组织记录2",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.31194,
+              "rrf_score": 0.032002,
+              "bm25_rank": 2,
+              "vector_rank": 3,
+              "vector_score": 0.307865,
+              "features": {
+                "coverage": 0.2308,
+                "vector": 0.3079,
+                "title": 0.1818,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "dept_4",
+              "title": "星槐组织记录4",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.311911,
+              "rrf_score": 0.03125,
+              "bm25_rank": 4,
+              "vector_rank": 4,
+              "vector_score": 0.30777,
+              "features": {
+                "coverage": 0.2308,
+                "vector": 0.3078,
+                "title": 0.1818,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            }
+          ]
+        },
+        "latency_ms": 123266
+      }
+    },
+    {
+      "id": "R03_foundation_cn",
+      "category": "year_inference",
+      "question": "槐序公司的成立年份是哪一年？请根据当前年份记录和公司沿革记录计算。",
+      "expected": "2026 - 70 = 1956 年；两份依据均需引用",
+      "answer": "根据企业知识库资料：槐序公司的当前年份记录：今年是2026年。 [1]；槐序公司沿革记录：本公司于七十年前创立。 [2]。",
+      "strict_passed": false,
+      "answer_correct": false,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": true,
+      "expected_docs": [
+        "clock",
+        "history"
+      ],
+      "retrieved_docs": [
+        "clock",
+        "history"
+      ],
+      "cited_docs": [
+        "clock",
+        "history"
+      ],
+      "pattern_hits": {
+        "1956\\s*年": false
+      },
+      "negative_pattern_hits": {},
+      "refused": false,
+      "method": "extractive",
+      "llm_requested": true,
+      "failure_reasons": [
+        "生成未给出预期推断结论"
+      ],
+      "error": null,
+      "latency_ms": 1516,
+      "result": {
+        "question": "槐序公司的成立年份是哪一年？请根据当前年份记录和公司沿革记录计算。",
+        "answer": "根据企业知识库资料：槐序公司的当前年份记录：今年是2026年。 [1]；槐序公司沿革记录：本公司于七十年前创立。 [2]。",
+        "grounded": true,
+        "refused": false,
+        "method": "extractive",
+        "confidence": 0.5167,
+        "citations": [
+          {
+            "index": 1,
+            "doc_id": "clock",
+            "chunk_id": "clock#0",
+            "title": "槐序年份记录",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R03_foundation_cn/clock",
+            "snippet": "槐序公司的当前年份记录：今年是2026年。",
+            "score": 0.423739,
+            "vector_score": 0.497976
+          },
+          {
+            "index": 2,
+            "doc_id": "history",
+            "chunk_id": "history#0",
+            "title": "槐序沿革记录",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R03_foundation_cn/history",
+            "snippet": "槐序公司沿革记录：本公司于七十年前创立。",
+            "score": 0.343396,
+            "vector_score": 0.382082
+          }
+        ],
+        "query_rewrite": {
+          "original": "槐序公司的成立年份是哪一年？请根据当前年份记录和公司沿革记录计算。",
+          "rewritten": "槐序公司的成立年份是哪一年？请根据当前年份记录和公司沿革记录计算。",
+          "matched_synonyms": [],
+          "expansions": [],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "槐序",
+            "序公",
+            "成立",
+            "立年",
+            "年份",
+            "哪一",
+            "一年",
+            "请根",
+            "根据",
+            "据当",
+            "当前",
+            "前年",
+            "份记",
+            "记录",
+            "司沿",
+            "沿革",
+            "革记",
+            "录计",
+            "计算"
+          ],
+          "candidate_count": 2,
+          "top_score": 0.423739,
+          "debug": {
+            "bm25_hits": 2,
+            "vector_hits": 2,
+            "fused": 2,
+            "reranked": 2,
+            "top_score": 0.423739,
+            "versioned_families": []
+          },
+          "chunks": [
+            {
+              "doc_id": "clock",
+              "title": "槐序年份记录",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.423739,
+              "rrf_score": 0.032787,
+              "bm25_rank": 1,
+              "vector_rank": 1,
+              "vector_score": 0.497976,
+              "features": {
+                "coverage": 0.3405,
+                "vector": 0.498,
+                "title": 0.4211,
+                "phrase": 0.75,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "history",
+              "title": "槐序沿革记录",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.343396,
+              "rrf_score": 0.032258,
+              "bm25_rank": 2,
+              "vector_rank": 2,
+              "vector_score": 0.382082,
+              "features": {
+                "coverage": 0.289,
+                "vector": 0.3821,
+                "title": 0.4211,
+                "phrase": 0.5,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            }
+          ]
+        },
+        "latency_ms": 1516
+      }
+    },
+    {
+      "id": "R06_conflicting_year_anchor",
+      "category": "uncertainty",
+      "question": "竹汀公司的成立年份是哪一年？请核对所有当前年份记录。",
+      "expected": "相同权威的年份记录2026与2025冲突，拒绝给出唯一成立年",
+      "answer": "根据企业知识库资料：竹汀公司当前年份记录甲：今年是2026年。 [1]；竹汀公司当前年份记录乙：今年是2025年。 [2]。",
+      "strict_passed": false,
+      "answer_correct": false,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": false,
+      "expected_docs": [
+        "clock_a",
+        "clock_b",
+        "history"
+      ],
+      "retrieved_docs": [
+        "clock_a",
+        "clock_b",
+        "history"
+      ],
+      "cited_docs": [
+        "clock_a",
+        "clock_b"
+      ],
+      "pattern_hits": {},
+      "negative_pattern_hits": {
+        "(?:成立于|成立年份.{0,3})(?:1955|1956)": false
+      },
+      "refused": false,
+      "method": "extractive",
+      "llm_requested": true,
+      "failure_reasons": [
+        "应拒答而未拒答"
+      ],
+      "error": null,
+      "latency_ms": 1375,
+      "result": {
+        "question": "竹汀公司的成立年份是哪一年？请核对所有当前年份记录。",
+        "answer": "根据企业知识库资料：竹汀公司当前年份记录甲：今年是2026年。 [1]；竹汀公司当前年份记录乙：今年是2025年。 [2]。",
+        "grounded": true,
+        "refused": false,
+        "method": "extractive",
+        "confidence": 0.5994,
+        "citations": [
+          {
+            "index": 1,
+            "doc_id": "clock_a",
+            "chunk_id": "clock_a#0",
+            "title": "竹汀年份甲",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R06_conflicting_year_anchor/clock_a",
+            "snippet": "竹汀公司当前年份记录甲：今年是2026年。",
+            "score": 0.462537,
+            "vector_score": 0.58236
+          },
+          {
+            "index": 2,
+            "doc_id": "clock_b",
+            "chunk_id": "clock_b#0",
+            "title": "竹汀年份乙",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R06_conflicting_year_anchor/clock_b",
+            "snippet": "竹汀公司当前年份记录乙：今年是2025年。",
+            "score": 0.447499,
+            "vector_score": 0.532235
+          }
+        ],
+        "query_rewrite": {
+          "original": "竹汀公司的成立年份是哪一年？请核对所有当前年份记录。",
+          "rewritten": "竹汀公司的成立年份是哪一年？请核对所有当前年份记录。",
+          "matched_synonyms": [],
+          "expansions": [],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "竹汀",
+            "汀公",
+            "成立",
+            "立年",
+            "年份",
+            "哪一",
+            "一年",
+            "请核",
+            "核对",
+            "对所",
+            "所有",
+            "有当",
+            "当前",
+            "前年",
+            "份记",
+            "记录"
+          ],
+          "candidate_count": 3,
+          "top_score": 0.462537,
+          "debug": {
+            "bm25_hits": 3,
+            "vector_hits": 3,
+            "fused": 3,
+            "reranked": 3,
+            "top_score": 0.462537,
+            "versioned_families": []
+          },
+          "chunks": [
+            {
+              "doc_id": "clock_a",
+              "title": "竹汀年份甲",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.462537,
+              "rrf_score": 0.032787,
+              "bm25_rank": 1,
+              "vector_rank": 1,
+              "vector_score": 0.58236,
+              "features": {
+                "coverage": 0.3914,
+                "vector": 0.5824,
+                "title": 0.375,
+                "phrase": 0.75,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "clock_b",
+              "title": "竹汀年份乙",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.447499,
+              "rrf_score": 0.032258,
+              "bm25_rank": 2,
+              "vector_rank": 2,
+              "vector_score": 0.532235,
+              "features": {
+                "coverage": 0.3914,
+                "vector": 0.5322,
+                "title": 0.375,
+                "phrase": 0.75,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "history",
+              "title": "竹汀沿革记录",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.217269,
+              "rrf_score": 0.031746,
+              "bm25_rank": 3,
+              "vector_rank": 3,
+              "vector_score": 0.216188,
+              "features": {
+                "coverage": 0.1623,
+                "vector": 0.2162,
+                "title": 0.25,
+                "phrase": 0.5,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            }
+          ]
+        },
+        "latency_ms": 1375
+      }
+    },
+    {
+      "id": "R08_sum_money_units",
+      "category": "numeric_sum",
+      "question": "苔原项目甲合同与乙合同的金额合计多少元？请统一金额单位。",
+      "expected": "1.2万元+8000元=20000元",
+      "answer": "现有企业资料未覆盖该问题，建议联系对应业务部门确认。",
+      "strict_passed": false,
+      "answer_correct": false,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": false,
+      "expected_docs": [
+        "contract_a",
+        "contract_b"
+      ],
+      "retrieved_docs": [
+        "contract_a",
+        "contract_b"
+      ],
+      "cited_docs": [],
+      "pattern_hits": {
+        "(?:20[ ,，]?000\\s*元|2(?:\\.0)?\\s*万元|二万\\s*元)": false
+      },
+      "negative_pattern_hits": {},
+      "refused": true,
+      "method": "extractive",
+      "llm_requested": true,
+      "failure_reasons": [
+        "生成未给出预期推断结论",
+        "有足够依据但误拒答",
+        "引用未覆盖推断所需全部来源"
+      ],
+      "error": null,
+      "latency_ms": 61875,
+      "result": {
+        "question": "苔原项目甲合同与乙合同的金额合计多少元？请统一金额单位。",
+        "answer": "现有企业资料未覆盖该问题，建议联系对应业务部门确认。",
+        "grounded": false,
+        "refused": true,
+        "method": "extractive",
+        "confidence": 0.7286,
+        "citations": [],
+        "query_rewrite": {
+          "original": "苔原项目甲合同与乙合同的金额合计多少元？请统一金额单位。",
+          "rewritten": "苔原项目甲合同与乙合同的金额合计多少元？请统一金额单位。",
+          "matched_synonyms": [],
+          "expansions": [],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "苔原",
+            "原项",
+            "项目",
+            "目甲",
+            "甲合",
+            "合同",
+            "乙合",
+            "金额",
+            "额合",
+            "合计",
+            "计多",
+            "少元",
+            "请统",
+            "统一",
+            "一金",
+            "额单",
+            "单位"
+          ],
+          "candidate_count": 2,
+          "top_score": 0.533699,
+          "debug": {
+            "bm25_hits": 2,
+            "vector_hits": 2,
+            "fused": 2,
+            "reranked": 2,
+            "top_score": 0.533699,
+            "versioned_families": []
+          },
+          "chunks": [
+            {
+              "doc_id": "contract_a",
+              "title": "苔原甲合同",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.533699,
+              "rrf_score": 0.032787,
+              "bm25_rank": 1,
+              "vector_rank": 1,
+              "vector_score": 0.508728,
+              "features": {
+                "coverage": 0.3703,
+                "vector": 0.5087,
+                "title": 0.3529,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.08,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "contract_b",
+              "title": "苔原乙合同",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.486482,
+              "rrf_score": 0.032258,
+              "bm25_rank": 2,
+              "vector_rank": 2,
+              "vector_score": 0.428911,
+              "features": {
+                "coverage": 0.3122,
+                "vector": 0.4289,
+                "title": 0.3529,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.08,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            }
+          ]
+        },
+        "latency_ms": 61875
+      }
+    }
+  ]
+}

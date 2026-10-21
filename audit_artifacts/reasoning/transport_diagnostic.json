@@ -1,0 +1,74 @@
+{
+  "endpoint": {
+    "scheme": "https",
+    "host": "dashscope.aliyuncs.com",
+    "port": null,
+    "path": "/compatible-mode/v1"
+  },
+  "model": "qwen3.5-plus",
+  "key_present": true,
+  "sdk": "1.109.1",
+  "httpx": "0.28.1",
+  "proxy": {
+    "HTTP_PROXY": {
+      "scheme": "",
+      "host": null,
+      "port": null,
+      "path": ""
+    },
+    "HTTPS_PROXY": {
+      "scheme": "",
+      "host": null,
+      "port": null,
+      "path": ""
+    },
+    "ALL_PROXY": {
+      "scheme": "",
+      "host": null,
+      "port": null,
+      "path": ""
+    },
+    "NO_PROXY": {
+      "set": false
+    }
+  },
+  "attempts": [
+    {
+      "mode": "default",
+      "succeeded": true,
+      "answer": "根据资料 [1]，今年是 2026 年；根据资料 [2]，槐序公司于七十年前创立。通过计算（2026 - 70），可得出该公司成立于 1956 年。\n\n来源编号：[1], [2]",
+      "model": "qwen3.5-plus",
+      "latency_ms": 2625
+    },
+    {
+      "mode": "trust_env_false",
+      "succeeded": true,
+      "answer": "根据资料 [1] 可知今年是 2026 年，结合资料 [2] 指出该公司于七十年前创立，通过计算（2026 - 70）可得出成立年份为 1956 年。\n\n答案：1956 年\n来源编号：[1], [2]",
+      "model": "qwen3.5-plus",
+      "latency_ms": 3250
+    },
+    {
+      "mode": "original_thinking_setting",
+      "succeeded": false,
+      "exception_chain": [
+        {
+          "type": "APITimeoutError",
+          "message": "Request timed out."
+        },
+        {
+          "type": "ReadTimeout",
+          "message": "The read operation timed out"
+        },
+        {
+          "type": "ReadTimeout",
+          "message": "The read operation timed out"
+        },
+        {
+          "type": "TimeoutError",
+          "message": "The read operation timed out"
+        }
+      ],
+      "latency_ms": 12406
+    }
+  ]
+}

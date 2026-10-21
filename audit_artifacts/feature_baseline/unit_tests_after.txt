@@ -1,0 +1,90 @@
+﻿test_prefers_server_user_and_keeps_manager_id (tests.test_phase0.ActorFromStateTest.test_prefers_server_user_and_keeps_manager_id) ... ok
+test_admin_can_approve (tests.test_phase0.ApprovalPermissionTest.test_admin_can_approve) ... ok
+test_already_approved_is_conflict (tests.test_phase0.ApprovalPermissionTest.test_already_approved_is_conflict) ... ok
+test_direct_manager_can_approve_by_manager_id (tests.test_phase0.ApprovalPermissionTest.test_direct_manager_can_approve_by_manager_id) ... ok
+test_employee_cannot_approve (tests.test_phase0.ApprovalPermissionTest.test_employee_cannot_approve) ... ok
+test_hr_can_approve_hr_step (tests.test_phase0.ApprovalPermissionTest.test_hr_can_approve_hr_step) ... ok
+test_hr_cannot_approve_manager_step (tests.test_phase0.ApprovalPermissionTest.test_hr_cannot_approve_manager_step) ... ok
+test_manager_can_approve_same_department (tests.test_phase0.ApprovalPermissionTest.test_manager_can_approve_same_department) ... ok
+test_manager_cannot_approve_other_department (tests.test_phase0.ApprovalPermissionTest.test_manager_cannot_approve_other_department) ... ok
+test_manager_cannot_approve_self (tests.test_phase0.ApprovalPermissionTest.test_manager_cannot_approve_self) ... ok
+test_manager_id_null_falls_back_to_department (tests.test_phase0.ApprovalPermissionTest.test_manager_id_null_falls_back_to_department) ... ok
+test_same_department_non_direct_manager_is_blocked (tests.test_phase0.ApprovalPermissionTest.test_same_department_non_direct_manager_is_blocked) ... ok
+test_cannot_cancel_approved (tests.test_phase0.CancelPermissionTest.test_cannot_cancel_approved) ... ok
+test_other_user_cannot_cancel (tests.test_phase0.CancelPermissionTest.test_other_user_cannot_cancel) ... ok
+test_owner_can_cancel_pending (tests.test_phase0.CancelPermissionTest.test_owner_can_cancel_pending) ... ok
+test_annual_leave_over_three_days_requires_hr (tests.test_phase0.PolicyEngineTest.test_annual_leave_over_three_days_requires_hr) ... ok
+test_end_before_start_is_blocked (tests.test_phase0.PolicyEngineTest.test_end_before_start_is_blocked) ... ok
+test_valid_draft (tests.test_phase0.PolicyEngineTest.test_valid_draft) ... ok
+test_weekend_only_is_blocked (tests.test_phase0.PolicyEngineTest.test_weekend_only_is_blocked) ... ok
+test_working_days_excludes_weekend (tests.test_phase0.PolicyEngineTest.test_working_days_excludes_weekend) ... ok
+test_success_and_failure (tests.test_phase0.ToolResultTest.test_success_and_failure) ... ok
+test_cancel_transition (tests.test_phase0.TransitionTest.test_cancel_transition) ... ok
+test_hr_approve_completes (tests.test_phase0.TransitionTest.test_hr_approve_completes) ... ok
+test_manager_approve_long_annual_goes_to_hr (tests.test_phase0.TransitionTest.test_manager_approve_long_annual_goes_to_hr) ... ok
+test_manager_approve_short_leave_completes (tests.test_phase0.TransitionTest.test_manager_approve_short_leave_completes) ... ok
+test_reject_ends_flow (tests.test_phase0.TransitionTest.test_reject_ends_flow) ... ok
+test_invalid_citation_becomes_refusal (tests.test_phase1.AnswerVerifyTest.test_invalid_citation_becomes_refusal) ... ok
+test_refusal_is_accepted (tests.test_phase1.AnswerVerifyTest.test_refusal_is_accepted) ... ok
+test_uncited_answer_becomes_refusal (tests.test_phase1.AnswerVerifyTest.test_uncited_answer_becomes_refusal) ... ok
+test_valid_citation (tests.test_phase1.AnswerVerifyTest.test_valid_citation) ... ok
+test_search_empty_query (tests.test_phase1.BM25Test.test_search_empty_query) ... ok
+test_search_prefers_matching_doc (tests.test_phase1.BM25Test.test_search_prefers_matching_doc) ... ok
+test_chunk_document_prefix (tests.test_phase1.ChunkerTest.test_chunk_document_prefix) ... ok
+test_split_sections (tests.test_phase1.ChunkerTest.test_split_sections) ... ok
+test_allows_normal_business (tests.test_phase1.PromptInjectionGuardTest.test_allows_normal_business) ... ok
+test_blocks_approve_all (tests.test_phase1.PromptInjectionGuardTest.test_blocks_approve_all) ... ok
+test_blocks_sql_injection_phrase (tests.test_phase1.PromptInjectionGuardTest.test_blocks_sql_injection_phrase) ... ok
+test_blocks_system_prompt_probe (tests.test_phase1.PromptInjectionGuardTest.test_blocks_system_prompt_probe) ... ok
+test_ascii_words (tests.test_phase1.TokenizerTest.test_ascii_words) ... ok
+test_chinese_bigrams (tests.test_phase1.TokenizerTest.test_chinese_bigrams) ... ok
+test_node_compresses_old_messages (tests.test_summary.SummaryTest.test_node_compresses_old_messages) ... ok
+17:57:59 app.workflows.chat_nodes.summarize INFO   会话摘要完成: 6 条消息 -> 21 字
+test_node_skips_when_below_threshold (tests.test_summary.SummaryTest.test_node_skips_when_below_threshold) ... ok
+test_threshold (tests.test_summary.SummaryTest.test_threshold) ... ok
+test_table_repeats_header (tests.test_enterprise_rag.ChunkingTest.test_table_repeats_header) ... ok
+test_text_chunks_have_title_prefix (tests.test_enterprise_rag.ChunkingTest.test_text_chunks_have_title_prefix) ... ok
+test_deterministic_and_normalized (tests.test_enterprise_rag.EmbeddingTest.test_deterministic_and_normalized) ... ok
+test_month_time (tests.test_enterprise_rag.QueryRewriteTest.test_month_time) ... ok
+test_possessive_noise_filtered (tests.test_enterprise_rag.QueryRewriteTest.test_possessive_noise_filtered) ... ok
+test_quarter_time (tests.test_enterprise_rag.QueryRewriteTest.test_quarter_time) ... ok
+test_synonyms (tests.test_enterprise_rag.QueryRewriteTest.test_synonyms) ... ok
+test_year_time (tests.test_enterprise_rag.QueryRewriteTest.test_year_time) ... ok
+test_company_identity_is_enterprise (tests.test_enterprise_rag.ScopeTest.test_company_identity_is_enterprise) ... ok
+test_leave_policy_keeps_oa_scope (tests.test_enterprise_rag.ScopeTest.test_leave_policy_keeps_oa_scope) ... ok
+test_as_of_uses_effective_version (tests.test_enterprise_rag.VersionResolutionTest.test_as_of_uses_effective_version) ... ok
+test_latest_version_default (tests.test_enterprise_rag.VersionResolutionTest.test_latest_version_default) ... ok
+test_mixed_invalid_number_is_rejected (tests.test_chat_features.CitationCoverageTest.test_mixed_invalid_number_is_rejected) ... ok
+test_original_source_numbers_survive_all_output_formats (tests.test_chat_features.CitationCoverageTest.test_original_source_numbers_survive_all_output_formats) ... ok
+test_section_labels_and_bullets_do_not_require_extra_markers (tests.test_chat_features.CitationCoverageTest.test_section_labels_and_bullets_do_not_require_extra_markers) ... ok
+test_source_marker_after_sentence_punctuation_is_supported (tests.test_chat_features.CitationCoverageTest.test_source_marker_after_sentence_punctuation_is_supported) ... ok
+test_uncited_second_fact_is_rejected (tests.test_chat_features.CitationCoverageTest.test_uncited_second_fact_is_rejected) ... ok
+test_new_turn_preserves_history_but_clears_previous_evidence_and_receipt (tests.test_chat_features.GraphFeatureTest.test_new_turn_preserves_history_but_clears_previous_evidence_and_receipt) ... ok
+test_normal_chat_emits_model_deltas_before_final_state (tests.test_chat_features.GraphFeatureTest.test_normal_chat_emits_model_deltas_before_final_state) ... ok
+17:58:00 app.workflows.chat_nodes.response ERROR   生成普通回复失败: provider internal secret
+Traceback (most recent call last):
+  File "<PROJECT_ROOT>\app\workflows\chat_nodes\response.py", line 60, in response_generator_node
+    async for delta in llm.astream(prompt):
+  File "<PROJECT_ROOT>\tests\test_chat_features.py", line 50, in astream
+    raise RuntimeError("provider internal secret")
+RuntimeError: provider internal secret
+test_provider_failure_yields_safe_final_reply (tests.test_chat_features.GraphFeatureTest.test_provider_failure_yields_safe_final_reply) ... ok
+test_legacy_keys_are_only_visible_to_original_user_and_operation (tests.test_chat_features.IdempotencyScopeTest.test_legacy_keys_are_only_visible_to_original_user_and_operation) ... ok
+test_same_key_is_independent_for_users_and_operations (tests.test_chat_features.IdempotencyScopeTest.test_same_key_is_independent_for_users_and_operations) ... ok
+test_blank_message_rejected_and_valid_message_trimmed (tests.test_chat_features.MessageValidationTest.test_blank_message_rejected_and_valid_message_trimmed) ... ok
+test_pending_list_and_count_follow_direct_manager_authorization (tests.test_chat_features.ReportingLineTest.test_pending_list_and_count_follow_direct_manager_authorization) ... ok
+17:58:00 app.routes.chat INFO   创建新会话: audit_user/chat_2d04f3dd0175
+17:58:00 httpx INFO   HTTP Request: POST http://testserver/api/chat/session "HTTP/1.1 200 OK"
+17:58:00 httpx INFO   HTTP Request: POST http://testserver/api/chat/stream "HTTP/1.1 200 OK"
+test_counts_actual_messages_and_buffered_reply_is_not_fake_character_stream (tests.test_chat_features.RouteFeatureTest.test_counts_actual_messages_and_buffered_reply_is_not_fake_character_stream) ... ok
+17:58:00 app.routes.chat INFO   创建新会话: audit_user/chat_276e6b2887a9
+17:58:00 httpx INFO   HTTP Request: POST http://testserver/api/chat/session "HTTP/1.1 200 OK"
+17:58:00 httpx INFO   HTTP Request: POST http://testserver/api/chat/stream "HTTP/1.1 200 OK"
+test_partial_provider_output_is_replaced_before_complete (tests.test_chat_features.RouteFeatureTest.test_partial_provider_output_is_replaced_before_complete) ... ok
+test_memory_fallback (tests.test_rate_limit.RateLimitTest.test_memory_fallback) ... ok
+test_disabled_limit (tests.test_rate_limit.RateLimitTest.test_disabled_limit) ... ok
+
+----------------------------------------------------------------------
+Ran 71 tests in 0.412s
+
+OK

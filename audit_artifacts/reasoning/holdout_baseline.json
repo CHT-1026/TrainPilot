@@ -1,0 +1,2053 @@
+{
+  "phase": "baseline",
+  "generated_at": "2026-10-21T17:54:59.959486+08:00",
+  "use_llm": false,
+  "fixtures_path": "audit_artifacts\\reasoning\\holdout_cases.jsonl",
+  "fixtures_sha256": "12edc4f79a689eab5b9fbc2604e1dc9404d4fdb07f570473cdad8895bc2b50b0",
+  "source_hashes_at_start": {
+    "enterprise_rag/answer.py": "04f04a8820d1d4cb77f42eb54393dab61985b98ad605f8befac2070d527b0e5c",
+    "enterprise_rag/retrieval.py": "7136656c366a233ac31e21af5ced3f1091f9c803bb04437e0523466db26ea618",
+    "enterprise_rag/store.py": "d3d0f2601c0085b62a8c5af20d6ad5b908300f865f5ab1896391c5f635e4998c",
+    "enterprise_rag/query.py": "8d8af84b6e15a0d2a4ba64d1441c6fd870bcc5e394cb799ad9ed426bfc24e615",
+    "enterprise_rag/citations.py": "85c6ed743d13b3591f5c6d1c5822a4c5f7cfbc537838d9c75fab0d1914ac4c7c",
+    "enterprise_rag/pipeline.py": "f5fa88f322e6c0dc79f930145bb1458f34b07c20cae117fad511a73d3e323d37"
+  },
+  "source_hashes_at_end": {
+    "enterprise_rag/answer.py": "04f04a8820d1d4cb77f42eb54393dab61985b98ad605f8befac2070d527b0e5c",
+    "enterprise_rag/retrieval.py": "7136656c366a233ac31e21af5ced3f1091f9c803bb04437e0523466db26ea618",
+    "enterprise_rag/store.py": "d3d0f2601c0085b62a8c5af20d6ad5b908300f865f5ab1896391c5f635e4998c",
+    "enterprise_rag/query.py": "8d8af84b6e15a0d2a4ba64d1441c6fd870bcc5e394cb799ad9ed426bfc24e615",
+    "enterprise_rag/citations.py": "85c6ed743d13b3591f5c6d1c5822a4c5f7cfbc537838d9c75fab0d1914ac4c7c",
+    "enterprise_rag/pipeline.py": "f5fa88f322e6c0dc79f930145bb1458f34b07c20cae117fad511a73d3e323d37"
+  },
+  "config": {
+    "llm_model": "qwen3.5-plus",
+    "llm_temperature": 0.2,
+    "embedding_provider": "hash",
+    "top_k": 8
+  },
+  "metrics": {
+    "total": 13,
+    "strict_passed": 2,
+    "answer_correct": 2,
+    "all_evidence_recalled": 13
+  },
+  "cases": [
+    {
+      "id": "H01_three_departments",
+      "category": "holdout_set",
+      "question": "望舒公司的组织清单共有多少个不同部门？请列出并计数。",
+      "expected": "去重后3个部门，不能把元数据里的审计部当正文部门",
+      "answer": "现有企业资料未覆盖该问题，建议联系对应业务部门确认。",
+      "strict_passed": false,
+      "answer_correct": false,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": false,
+      "expected_docs": [
+        "hr",
+        "ops",
+        "rd"
+      ],
+      "retrieved_docs": [
+        "dup",
+        "hr",
+        "ops",
+        "rd"
+      ],
+      "cited_docs": [],
+      "pattern_hits": {
+        "(?:3|三)\\s*个": false,
+        "绯云人力部": false,
+        "山岚运维部": false,
+        "沧澜研发部": false
+      },
+      "negative_pattern_hits": {},
+      "refused": true,
+      "method": "extractive",
+      "llm_requested": false,
+      "failure_reasons": [
+        "生成未给出预期推断结论",
+        "有足够依据但误拒答",
+        "引用未覆盖推断所需全部来源"
+      ],
+      "error": null,
+      "latency_ms": 562,
+      "result": {
+        "question": "望舒公司的组织清单共有多少个不同部门？请列出并计数。",
+        "answer": "现有企业资料未覆盖该问题，建议联系对应业务部门确认。",
+        "grounded": false,
+        "refused": true,
+        "method": "extractive",
+        "confidence": 0.4355,
+        "citations": [],
+        "query_rewrite": {
+          "original": "望舒公司的组织清单共有多少个不同部门？请列出并计数。",
+          "rewritten": "望舒公司的组织清单共有多少个不同部门？请列出并计数。",
+          "matched_synonyms": [],
+          "expansions": [],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "望舒",
+            "舒公",
+            "组织",
+            "织清",
+            "清单",
+            "单共",
+            "共有",
+            "有多",
+            "少个",
+            "个不",
+            "不同",
+            "同部",
+            "部门",
+            "请列",
+            "列出",
+            "出并",
+            "并计",
+            "计数"
+          ],
+          "candidate_count": 4,
+          "top_score": 0.364785,
+          "debug": {
+            "bm25_hits": 4,
+            "vector_hits": 4,
+            "fused": 4,
+            "reranked": 4,
+            "top_score": 0.364785,
+            "versioned_families": []
+          },
+          "chunks": [
+            {
+              "doc_id": "hr",
+              "title": "望舒组织清单人力",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.364785,
+              "rrf_score": 0.032787,
+              "bm25_rank": 1,
+              "vector_rank": 1,
+              "vector_score": 0.346668,
+              "features": {
+                "coverage": 0.2353,
+                "vector": 0.3467,
+                "title": 0.4444,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "rd",
+              "title": "望舒组织清单研发",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.364785,
+              "rrf_score": 0.032002,
+              "bm25_rank": 3,
+              "vector_rank": 2,
+              "vector_score": 0.346668,
+              "features": {
+                "coverage": 0.2353,
+                "vector": 0.3467,
+                "title": 0.4444,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "ops",
+              "title": "望舒组织清单运维",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.361676,
+              "rrf_score": 0.032002,
+              "bm25_rank": 2,
+              "vector_rank": 3,
+              "vector_score": 0.336304,
+              "features": {
+                "coverage": 0.2353,
+                "vector": 0.3363,
+                "title": 0.4444,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "dup",
+              "title": "望舒组织复核",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.312097,
+              "rrf_score": 0.03125,
+              "bm25_rank": 4,
+              "vector_rank": 4,
+              "vector_score": 0.282152,
+              "features": {
+                "coverage": 0.2353,
+                "vector": 0.2822,
+                "title": 0.2222,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            }
+          ]
+        },
+        "latency_ms": 562
+      }
+    },
+    {
+      "id": "H02_changed_years",
+      "category": "holdout_year",
+      "question": "沐川公司的成立年份是哪一年？",
+      "expected": "2027-88=1939年，避免固定1956",
+      "answer": "根据企业知识库资料：沐川公司当前年份记录：今年是2027年。 [1]；沐川公司沿革：本公司于八十八年前创立。 [2]。",
+      "strict_passed": false,
+      "answer_correct": false,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": true,
+      "expected_docs": [
+        "clock",
+        "history"
+      ],
+      "retrieved_docs": [
+        "clock",
+        "history"
+      ],
+      "cited_docs": [
+        "clock",
+        "history"
+      ],
+      "pattern_hits": {
+        "1939\\s*年": false
+      },
+      "negative_pattern_hits": {},
+      "refused": false,
+      "method": "extractive",
+      "llm_requested": false,
+      "failure_reasons": [
+        "生成未给出预期推断结论"
+      ],
+      "error": null,
+      "latency_ms": 0,
+      "result": {
+        "question": "沐川公司的成立年份是哪一年？",
+        "answer": "根据企业知识库资料：沐川公司当前年份记录：今年是2027年。 [1]；沐川公司沿革：本公司于八十八年前创立。 [2]。",
+        "grounded": true,
+        "refused": false,
+        "method": "extractive",
+        "confidence": 0.5754,
+        "citations": [
+          {
+            "index": 1,
+            "doc_id": "clock",
+            "chunk_id": "clock#0",
+            "title": "沐川年份",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://H02_changed_years/clock",
+            "snippet": "沐川公司当前年份记录：今年是2027年。",
+            "score": 0.419382,
+            "vector_score": 0.347355
+          },
+          {
+            "index": 2,
+            "doc_id": "history",
+            "chunk_id": "history#0",
+            "title": "沐川沿革",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://H02_changed_years/history",
+            "snippet": "沐川公司沿革：本公司于八十八年前创立。",
+            "score": 0.259704,
+            "vector_score": 0.228771
+          }
+        ],
+        "query_rewrite": {
+          "original": "沐川公司的成立年份是哪一年？",
+          "rewritten": "沐川公司的成立年份是哪一年？",
+          "matched_synonyms": [],
+          "expansions": [],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "沐川",
+            "川公",
+            "成立",
+            "立年",
+            "年份",
+            "哪一",
+            "一年"
+          ],
+          "candidate_count": 2,
+          "top_score": 0.419382,
+          "debug": {
+            "bm25_hits": 2,
+            "vector_hits": 2,
+            "fused": 2,
+            "reranked": 2,
+            "top_score": 0.419382,
+            "versioned_families": []
+          },
+          "chunks": [
+            {
+              "doc_id": "clock",
+              "title": "沐川年份",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.419382,
+              "rrf_score": 0.032787,
+              "bm25_rank": 1,
+              "vector_rank": 1,
+              "vector_score": 0.347355,
+              "features": {
+                "coverage": 0.3862,
+                "vector": 0.3474,
+                "title": 0.5714,
+                "phrase": 0.75,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "history",
+              "title": "沐川沿革",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.259704,
+              "rrf_score": 0.032258,
+              "bm25_rank": 2,
+              "vector_rank": 2,
+              "vector_score": 0.228771,
+              "features": {
+                "coverage": 0.2455,
+                "vector": 0.2288,
+                "title": 0.2857,
+                "phrase": 0.5,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            }
+          ]
+        },
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "H03_equal_contract_amounts",
+      "category": "holdout_money",
+      "question": "荒原项目甲合同与乙合同的金额合计多少元？",
+      "expected": "两个不同合同恰好同额，3500+3500=7000，金额不能作为去重键",
+      "answer": "现有企业资料未覆盖该问题，建议联系对应业务部门确认。",
+      "strict_passed": false,
+      "answer_correct": false,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": false,
+      "expected_docs": [
+        "contract_a",
+        "contract_b"
+      ],
+      "retrieved_docs": [
+        "contract_a",
+        "contract_b"
+      ],
+      "cited_docs": [],
+      "pattern_hits": {
+        "(?:7[ ,，]?000\\s*元|0\\.7\\s*万元|七千\\s*元)": false
+      },
+      "negative_pattern_hits": {},
+      "refused": true,
+      "method": "extractive",
+      "llm_requested": false,
+      "failure_reasons": [
+        "生成未给出预期推断结论",
+        "有足够依据但误拒答",
+        "引用未覆盖推断所需全部来源"
+      ],
+      "error": null,
+      "latency_ms": 0,
+      "result": {
+        "question": "荒原项目甲合同与乙合同的金额合计多少元？",
+        "answer": "现有企业资料未覆盖该问题，建议联系对应业务部门确认。",
+        "grounded": false,
+        "refused": true,
+        "method": "extractive",
+        "confidence": 0.9375,
+        "citations": [],
+        "query_rewrite": {
+          "original": "荒原项目甲合同与乙合同的金额合计多少元？",
+          "rewritten": "荒原项目甲合同与乙合同的金额合计多少元？",
+          "matched_synonyms": [],
+          "expansions": [],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "荒原",
+            "原项",
+            "项目",
+            "目甲",
+            "甲合",
+            "合同",
+            "乙合",
+            "金额",
+            "额合",
+            "合计",
+            "计多",
+            "少元"
+          ],
+          "candidate_count": 2,
+          "top_score": 0.640441,
+          "debug": {
+            "bm25_hits": 2,
+            "vector_hits": 2,
+            "fused": 2,
+            "reranked": 2,
+            "top_score": 0.640441,
+            "versioned_families": []
+          },
+          "chunks": [
+            {
+              "doc_id": "contract_a",
+              "title": "荒原甲合同",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.640441,
+              "rrf_score": 0.032787,
+              "bm25_rank": 1,
+              "vector_rank": 1,
+              "vector_score": 0.561306,
+              "features": {
+                "coverage": 0.5426,
+                "vector": 0.5613,
+                "title": 0.5,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.08,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "contract_b",
+              "title": "荒原乙合同",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.571013,
+              "rrf_score": 0.032258,
+              "bm25_rank": 2,
+              "vector_rank": 2,
+              "vector_score": 0.443539,
+              "features": {
+                "coverage": 0.4574,
+                "vector": 0.4435,
+                "title": 0.5,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.08,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            }
+          ]
+        },
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "H04_large_unit_sum",
+      "category": "holdout_money",
+      "question": "西岭项目甲合同与乙合同的金额合计多少元？",
+      "expected": "1.25万元+0.0075亿元=762500元",
+      "answer": "现有企业资料未覆盖该问题，建议联系对应业务部门确认。",
+      "strict_passed": false,
+      "answer_correct": false,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": false,
+      "expected_docs": [
+        "contract_a",
+        "contract_b"
+      ],
+      "retrieved_docs": [
+        "contract_a",
+        "contract_b"
+      ],
+      "cited_docs": [],
+      "pattern_hits": {
+        "(?:762[ ,，]?500\\s*元|76\\.25\\s*万元)": false
+      },
+      "negative_pattern_hits": {},
+      "refused": true,
+      "method": "extractive",
+      "llm_requested": false,
+      "failure_reasons": [
+        "生成未给出预期推断结论",
+        "有足够依据但误拒答",
+        "引用未覆盖推断所需全部来源"
+      ],
+      "error": null,
+      "latency_ms": 0,
+      "result": {
+        "question": "西岭项目甲合同与乙合同的金额合计多少元？",
+        "answer": "现有企业资料未覆盖该问题，建议联系对应业务部门确认。",
+        "grounded": false,
+        "refused": true,
+        "method": "extractive",
+        "confidence": 0.9351,
+        "citations": [],
+        "query_rewrite": {
+          "original": "西岭项目甲合同与乙合同的金额合计多少元？",
+          "rewritten": "西岭项目甲合同与乙合同的金额合计多少元？",
+          "matched_synonyms": [],
+          "expansions": [],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "西岭",
+            "岭项",
+            "项目",
+            "目甲",
+            "甲合",
+            "合同",
+            "乙合",
+            "金额",
+            "额合",
+            "合计",
+            "计多",
+            "少元"
+          ],
+          "candidate_count": 2,
+          "top_score": 0.633662,
+          "debug": {
+            "bm25_hits": 2,
+            "vector_hits": 2,
+            "fused": 2,
+            "reranked": 2,
+            "top_score": 0.633662,
+            "versioned_families": []
+          },
+          "chunks": [
+            {
+              "doc_id": "contract_a",
+              "title": "西岭甲合同",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.633662,
+              "rrf_score": 0.032787,
+              "bm25_rank": 1,
+              "vector_rank": 1,
+              "vector_score": 0.538709,
+              "features": {
+                "coverage": 0.5426,
+                "vector": 0.5387,
+                "title": 0.5,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.08,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "contract_b",
+              "title": "西岭乙合同",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.565656,
+              "rrf_score": 0.032258,
+              "bm25_rank": 2,
+              "vector_rank": 2,
+              "vector_score": 0.425683,
+              "features": {
+                "coverage": 0.4574,
+                "vector": 0.4257,
+                "title": 0.5,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.08,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            }
+          ]
+        },
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "H05_reversed_difference",
+      "category": "holdout_difference",
+      "question": "鹿鸣项目甲合同金额比乙合同金额多多少元？",
+      "expected": "按问题主宾顺序计算甲17500-乙9500=8000，不能按文档顺序相减",
+      "answer": "根据企业知识库资料：鹿鸣项目甲合同金额：1.75万元。 [1]；鹿鸣项目乙合同金额：9500元。 [2]。",
+      "strict_passed": false,
+      "answer_correct": false,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": true,
+      "expected_docs": [
+        "contract_a",
+        "contract_b"
+      ],
+      "retrieved_docs": [
+        "contract_a",
+        "contract_b"
+      ],
+      "cited_docs": [
+        "contract_a",
+        "contract_b"
+      ],
+      "pattern_hits": {
+        "(?:8[ ,，]?000\\s*元|0\\.8\\s*万元|八千\\s*元)": false
+      },
+      "negative_pattern_hits": {},
+      "refused": false,
+      "method": "extractive",
+      "llm_requested": false,
+      "failure_reasons": [
+        "生成未给出预期推断结论"
+      ],
+      "error": null,
+      "latency_ms": 0,
+      "result": {
+        "question": "鹿鸣项目甲合同金额比乙合同金额多多少元？",
+        "answer": "根据企业知识库资料：鹿鸣项目甲合同金额：1.75万元。 [1]；鹿鸣项目乙合同金额：9500元。 [2]。",
+        "grounded": true,
+        "refused": false,
+        "method": "extractive",
+        "confidence": 0.9321,
+        "citations": [
+          {
+            "index": 1,
+            "doc_id": "contract_a",
+            "chunk_id": "contract_a#0",
+            "title": "鹿鸣甲合同",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://H05_reversed_difference/contract_a",
+            "snippet": "鹿鸣项目甲合同金额：1.75万元。",
+            "score": 0.659186,
+            "vector_score": 0.678281
+          },
+          {
+            "index": 2,
+            "doc_id": "contract_b",
+            "chunk_id": "contract_b#0",
+            "title": "鹿鸣乙合同",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://H05_reversed_difference/contract_b",
+            "snippet": "鹿鸣项目乙合同金额：9500元。",
+            "score": 0.613299,
+            "vector_score": 0.622682
+          }
+        ],
+        "query_rewrite": {
+          "original": "鹿鸣项目甲合同金额比乙合同金额多多少元？",
+          "rewritten": "鹿鸣项目甲合同金额比乙合同金额多多少元？",
+          "matched_synonyms": [],
+          "expansions": [],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "鹿鸣",
+            "鸣项",
+            "项目",
+            "目甲",
+            "甲合",
+            "合同",
+            "同金",
+            "金额",
+            "额比",
+            "比乙",
+            "乙合",
+            "额多",
+            "多多",
+            "少元"
+          ],
+          "candidate_count": 2,
+          "top_score": 0.659186,
+          "debug": {
+            "bm25_hits": 2,
+            "vector_hits": 2,
+            "fused": 2,
+            "reranked": 2,
+            "top_score": 0.659186,
+            "versioned_families": []
+          },
+          "chunks": [
+            {
+              "doc_id": "contract_a",
+              "title": "鹿鸣甲合同",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.659186,
+              "rrf_score": 0.032787,
+              "bm25_rank": 1,
+              "vector_rank": 1,
+              "vector_score": 0.678281,
+              "features": {
+                "coverage": 0.5285,
+                "vector": 0.6783,
+                "title": 0.4286,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.08,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "contract_b",
+              "title": "鹿鸣乙合同",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.613299,
+              "rrf_score": 0.032258,
+              "bm25_rank": 2,
+              "vector_rank": 2,
+              "vector_score": 0.622682,
+              "features": {
+                "coverage": 0.4555,
+                "vector": 0.6227,
+                "title": 0.4286,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.08,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            }
+          ]
+        },
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "H06_cross_year_date",
+      "category": "holdout_date",
+      "question": "霜桥项目从开始日期到结束日期相隔多少天？按结束日减开始日。",
+      "expected": "2025-12-31到2026-01-01相隔1天",
+      "answer": "根据企业知识库资料：霜桥项目开始日期：2025年12月31日。 [1]；霜桥项目结束日期：2026年1月1日。 [2]。",
+      "strict_passed": false,
+      "answer_correct": false,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": true,
+      "expected_docs": [
+        "end",
+        "start"
+      ],
+      "retrieved_docs": [
+        "end",
+        "start"
+      ],
+      "cited_docs": [
+        "end",
+        "start"
+      ],
+      "pattern_hits": {
+        "(?:1|一)\\s*天": false
+      },
+      "negative_pattern_hits": {},
+      "refused": false,
+      "method": "extractive",
+      "llm_requested": false,
+      "failure_reasons": [
+        "生成未给出预期推断结论"
+      ],
+      "error": null,
+      "latency_ms": 16,
+      "result": {
+        "question": "霜桥项目从开始日期到结束日期相隔多少天？按结束日减开始日。",
+        "answer": "根据企业知识库资料：霜桥项目开始日期：2025年12月31日。 [1]；霜桥项目结束日期：2026年1月1日。 [2]。",
+        "grounded": true,
+        "refused": false,
+        "method": "extractive",
+        "confidence": 0.5345,
+        "citations": [
+          {
+            "index": 1,
+            "doc_id": "start",
+            "chunk_id": "start#0",
+            "title": "霜桥启动记录",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://H06_cross_year_date/start",
+            "snippet": "霜桥项目开始日期：2025年12月31日。",
+            "score": 0.339276,
+            "vector_score": 0.369358
+          },
+          {
+            "index": 2,
+            "doc_id": "end",
+            "chunk_id": "end#0",
+            "title": "霜桥结项记录",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://H06_cross_year_date/end",
+            "snippet": "霜桥项目结束日期：2026年1月1日。",
+            "score": 0.330383,
+            "vector_score": 0.339715
+          }
+        ],
+        "query_rewrite": {
+          "original": "霜桥项目从开始日期到结束日期相隔多少天？按结束日减开始日。",
+          "rewritten": "霜桥项目从开始日期到结束日期相隔多少天？按结束日减开始日。",
+          "matched_synonyms": [],
+          "expansions": [],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "霜桥",
+            "桥项",
+            "项目",
+            "目从",
+            "从开",
+            "开始",
+            "始日",
+            "日期",
+            "期到",
+            "到结",
+            "结束",
+            "束日",
+            "期相",
+            "相隔",
+            "隔多",
+            "少天",
+            "按结",
+            "日减",
+            "减开"
+          ],
+          "candidate_count": 2,
+          "top_score": 0.339276,
+          "debug": {
+            "bm25_hits": 2,
+            "vector_hits": 2,
+            "fused": 2,
+            "reranked": 2,
+            "top_score": 0.339276,
+            "versioned_families": []
+          },
+          "chunks": [
+            {
+              "doc_id": "start",
+              "title": "霜桥启动记录",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.339276,
+              "rrf_score": 0.032522,
+              "bm25_rank": 2,
+              "vector_rank": 1,
+              "vector_score": 0.369358,
+              "features": {
+                "coverage": 0.2817,
+                "vector": 0.3694,
+                "title": 0.1053,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "end",
+              "title": "霜桥结项记录",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.330383,
+              "rrf_score": 0.032522,
+              "bm25_rank": 1,
+              "vector_rank": 2,
+              "vector_score": 0.339715,
+              "features": {
+                "coverage": 0.2817,
+                "vector": 0.3397,
+                "title": 0.1053,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            }
+          ]
+        },
+        "latency_ms": 15
+      }
+    },
+    {
+      "id": "H07_leap_day_inclusive",
+      "category": "holdout_date",
+      "question": "涧雨项目从开始日期到结束日期共涉及多少个自然日？开始日和结束日都计入。",
+      "expected": "2024闰日2月29日到3月1日首尾计入共2个自然日",
+      "answer": "根据企业知识库资料：涧雨项目结束日期：2024年3月1日。 [1]；涧雨项目开始日期：2024年2月29日。 [2]。",
+      "strict_passed": false,
+      "answer_correct": false,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": true,
+      "expected_docs": [
+        "end",
+        "start"
+      ],
+      "retrieved_docs": [
+        "end",
+        "start"
+      ],
+      "cited_docs": [
+        "end",
+        "start"
+      ],
+      "pattern_hits": {
+        "(?:2|二|两)\\s*(?:个)?(?:自然日|天)": false
+      },
+      "negative_pattern_hits": {},
+      "refused": false,
+      "method": "extractive",
+      "llm_requested": false,
+      "failure_reasons": [
+        "生成未给出预期推断结论"
+      ],
+      "error": null,
+      "latency_ms": 0,
+      "result": {
+        "question": "涧雨项目从开始日期到结束日期共涉及多少个自然日？开始日和结束日都计入。",
+        "answer": "根据企业知识库资料：涧雨项目结束日期：2024年3月1日。 [1]；涧雨项目开始日期：2024年2月29日。 [2]。",
+        "grounded": true,
+        "refused": false,
+        "method": "extractive",
+        "confidence": 0.4732,
+        "citations": [
+          {
+            "index": 1,
+            "doc_id": "end",
+            "chunk_id": "end#0",
+            "title": "涧雨结项记录",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://H07_leap_day_inclusive/end",
+            "snippet": "涧雨项目结束日期：2024年3月1日。",
+            "score": 0.320919,
+            "vector_score": 0.386033
+          },
+          {
+            "index": 2,
+            "doc_id": "start",
+            "chunk_id": "start#0",
+            "title": "涧雨启动记录",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://H07_leap_day_inclusive/start",
+            "snippet": "涧雨项目开始日期：2024年2月29日。",
+            "score": 0.301155,
+            "vector_score": 0.320153
+          }
+        ],
+        "query_rewrite": {
+          "original": "涧雨项目从开始日期到结束日期共涉及多少个自然日？开始日和结束日都计入。",
+          "rewritten": "涧雨项目从开始日期到结束日期共涉及多少个自然日？开始日和结束日都计入。",
+          "matched_synonyms": [],
+          "expansions": [],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "涧雨",
+            "雨项",
+            "项目",
+            "目从",
+            "从开",
+            "开始",
+            "始日",
+            "日期",
+            "期到",
+            "到结",
+            "结束",
+            "束日",
+            "期共",
+            "共涉",
+            "涉及",
+            "及多",
+            "少个",
+            "个自",
+            "自然",
+            "然日",
+            "日都",
+            "都计",
+            "计入"
+          ],
+          "candidate_count": 2,
+          "top_score": 0.320919,
+          "debug": {
+            "bm25_hits": 2,
+            "vector_hits": 2,
+            "fused": 2,
+            "reranked": 2,
+            "top_score": 0.320919,
+            "versioned_families": []
+          },
+          "chunks": [
+            {
+              "doc_id": "end",
+              "title": "涧雨结项记录",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.320919,
+              "rrf_score": 0.032522,
+              "bm25_rank": 2,
+              "vector_rank": 1,
+              "vector_score": 0.386033,
+              "features": {
+                "coverage": 0.2302,
+                "vector": 0.386,
+                "title": 0.087,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "start",
+              "title": "涧雨启动记录",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.301155,
+              "rrf_score": 0.032522,
+              "bm25_rank": 1,
+              "vector_rank": 2,
+              "vector_score": 0.320153,
+              "features": {
+                "coverage": 0.2302,
+                "vector": 0.3202,
+                "title": 0.087,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            }
+          ]
+        },
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "H08_invalid_date_refusal",
+      "category": "holdout_invalid_date",
+      "question": "临溪项目从开始日期到结束日期相隔多少天？",
+      "expected": "2025年没有2月29日，必须拒绝确定计算且不抛未处理异常",
+      "answer": "根据企业知识库资料：临溪项目开始日期：2025年2月29日。 [1]；临溪项目结束日期：2025年3月1日。 [2]。",
+      "strict_passed": false,
+      "answer_correct": false,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": true,
+      "expected_docs": [
+        "end",
+        "start"
+      ],
+      "retrieved_docs": [
+        "end",
+        "start"
+      ],
+      "cited_docs": [
+        "end",
+        "start"
+      ],
+      "pattern_hits": {},
+      "negative_pattern_hits": {},
+      "refused": false,
+      "method": "extractive",
+      "llm_requested": false,
+      "failure_reasons": [
+        "应拒答而未拒答"
+      ],
+      "error": null,
+      "latency_ms": 0,
+      "result": {
+        "question": "临溪项目从开始日期到结束日期相隔多少天？",
+        "answer": "根据企业知识库资料：临溪项目开始日期：2025年2月29日。 [1]；临溪项目结束日期：2025年3月1日。 [2]。",
+        "grounded": true,
+        "refused": false,
+        "method": "extractive",
+        "confidence": 0.6112,
+        "citations": [
+          {
+            "index": 1,
+            "doc_id": "start",
+            "chunk_id": "start#0",
+            "title": "临溪启动记录",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://H08_invalid_date_refusal/start",
+            "snippet": "临溪项目开始日期：2025年2月29日。",
+            "score": 0.38925,
+            "vector_score": 0.450267
+          },
+          {
+            "index": 2,
+            "doc_id": "end",
+            "chunk_id": "end#0",
+            "title": "临溪结项记录",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://H08_invalid_date_refusal/end",
+            "snippet": "临溪项目结束日期：2025年3月1日。",
+            "score": 0.38925,
+            "vector_score": 0.450267
+          }
+        ],
+        "query_rewrite": {
+          "original": "临溪项目从开始日期到结束日期相隔多少天？",
+          "rewritten": "临溪项目从开始日期到结束日期相隔多少天？",
+          "matched_synonyms": [],
+          "expansions": [],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "临溪",
+            "溪项",
+            "项目",
+            "目从",
+            "从开",
+            "开始",
+            "始日",
+            "日期",
+            "期到",
+            "到结",
+            "结束",
+            "束日",
+            "期相",
+            "相隔",
+            "隔多",
+            "少天"
+          ],
+          "candidate_count": 2,
+          "top_score": 0.38925,
+          "debug": {
+            "bm25_hits": 2,
+            "vector_hits": 2,
+            "fused": 2,
+            "reranked": 2,
+            "top_score": 0.38925,
+            "versioned_families": []
+          },
+          "chunks": [
+            {
+              "doc_id": "start",
+              "title": "临溪启动记录",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.38925,
+              "rrf_score": 0.032787,
+              "bm25_rank": 1,
+              "vector_rank": 1,
+              "vector_score": 0.450267,
+              "features": {
+                "coverage": 0.3385,
+                "vector": 0.4503,
+                "title": 0.125,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "end",
+              "title": "临溪结项记录",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.38925,
+              "rrf_score": 0.032258,
+              "bm25_rank": 2,
+              "vector_rank": 2,
+              "vector_score": 0.450267,
+              "features": {
+                "coverage": 0.3385,
+                "vector": 0.4503,
+                "title": 0.125,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            }
+          ]
+        },
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "H09_missing_operand",
+      "category": "holdout_missing_operand",
+      "question": "青谷项目甲合同与乙合同的金额合计多少元？",
+      "expected": "乙金额未提供，不能把甲金额当合计",
+      "answer": "现有企业资料未覆盖该问题，建议联系对应业务部门确认。",
+      "strict_passed": true,
+      "answer_correct": true,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": false,
+      "expected_docs": [
+        "contract_a",
+        "contract_b"
+      ],
+      "retrieved_docs": [
+        "contract_a",
+        "contract_b"
+      ],
+      "cited_docs": [],
+      "pattern_hits": {},
+      "negative_pattern_hits": {},
+      "refused": true,
+      "method": "extractive",
+      "llm_requested": false,
+      "failure_reasons": [],
+      "error": null,
+      "latency_ms": 0,
+      "result": {
+        "question": "青谷项目甲合同与乙合同的金额合计多少元？",
+        "answer": "现有企业资料未覆盖该问题，建议联系对应业务部门确认。",
+        "grounded": false,
+        "refused": true,
+        "method": "extractive",
+        "confidence": 0.9375,
+        "citations": [],
+        "query_rewrite": {
+          "original": "青谷项目甲合同与乙合同的金额合计多少元？",
+          "rewritten": "青谷项目甲合同与乙合同的金额合计多少元？",
+          "matched_synonyms": [],
+          "expansions": [],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "青谷",
+            "谷项",
+            "项目",
+            "目甲",
+            "甲合",
+            "合同",
+            "乙合",
+            "金额",
+            "额合",
+            "合计",
+            "计多",
+            "少元"
+          ],
+          "candidate_count": 2,
+          "top_score": 0.640441,
+          "debug": {
+            "bm25_hits": 2,
+            "vector_hits": 2,
+            "fused": 2,
+            "reranked": 2,
+            "top_score": 0.640441,
+            "versioned_families": []
+          },
+          "chunks": [
+            {
+              "doc_id": "contract_a",
+              "title": "青谷甲合同",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.640441,
+              "rrf_score": 0.032787,
+              "bm25_rank": 1,
+              "vector_rank": 1,
+              "vector_score": 0.561306,
+              "features": {
+                "coverage": 0.5426,
+                "vector": 0.5613,
+                "title": 0.5,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.08,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "contract_b",
+              "title": "青谷乙合同",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.471582,
+              "rrf_score": 0.032258,
+              "bm25_rank": 2,
+              "vector_rank": 2,
+              "vector_score": 0.378769,
+              "features": {
+                "coverage": 0.4574,
+                "vector": 0.3788,
+                "title": 0.5,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            }
+          ]
+        },
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "H10_unrelated_anchor",
+      "category": "holdout_entity",
+      "question": "岚沂公司的成立年份是哪一年？",
+      "expected": "岚沂的八十年前不能与青池的今年2028相减",
+      "answer": "根据企业知识库资料：岚沂公司沿革：本公司于八十年前创立。 [1]。",
+      "strict_passed": false,
+      "answer_correct": false,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": true,
+      "expected_docs": [
+        "history"
+      ],
+      "retrieved_docs": [
+        "clock",
+        "history"
+      ],
+      "cited_docs": [
+        "history"
+      ],
+      "pattern_hits": {},
+      "negative_pattern_hits": {
+        "1948\\s*年": false
+      },
+      "refused": false,
+      "method": "extractive",
+      "llm_requested": false,
+      "failure_reasons": [
+        "应拒答而未拒答"
+      ],
+      "error": null,
+      "latency_ms": 0,
+      "result": {
+        "question": "岚沂公司的成立年份是哪一年？",
+        "answer": "根据企业知识库资料：岚沂公司沿革：本公司于八十年前创立。 [1]。",
+        "grounded": true,
+        "refused": false,
+        "method": "extractive",
+        "confidence": 0.3831,
+        "citations": [
+          {
+            "index": 1,
+            "doc_id": "history",
+            "chunk_id": "history#0",
+            "title": "岚沂沿革",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "",
+            "doc_updated_at": "",
+            "source_path": "synthetic://H10_unrelated_anchor/history",
+            "snippet": "岚沂公司沿革：本公司于八十年前创立。",
+            "score": 0.278129,
+            "vector_score": 0.25552
+          }
+        ],
+        "query_rewrite": {
+          "original": "岚沂公司的成立年份是哪一年？",
+          "rewritten": "岚沂公司的成立年份是哪一年？",
+          "matched_synonyms": [],
+          "expansions": [],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "岚沂",
+            "沂公",
+            "成立",
+            "立年",
+            "年份",
+            "哪一",
+            "一年"
+          ],
+          "candidate_count": 2,
+          "top_score": 0.278129,
+          "debug": {
+            "bm25_hits": 2,
+            "vector_hits": 2,
+            "fused": 2,
+            "reranked": 2,
+            "top_score": 0.278129,
+            "versioned_families": []
+          },
+          "chunks": [
+            {
+              "doc_id": "history",
+              "title": "岚沂沿革",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "",
+              "chunk_type": "text",
+              "score": 0.278129,
+              "rrf_score": 0.032787,
+              "bm25_rank": 1,
+              "vector_rank": 1,
+              "vector_score": 0.25552,
+              "features": {
+                "coverage": 0.2715,
+                "vector": 0.2555,
+                "title": 0.2857,
+                "phrase": 0.5,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "clock",
+              "title": "青池年份",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.175992,
+              "rrf_score": 0.032258,
+              "bm25_rank": 2,
+              "vector_rank": 2,
+              "vector_score": 0.179423,
+              "features": {
+                "coverage": 0.1358,
+                "vector": 0.1794,
+                "title": 0.2857,
+                "phrase": 0.25,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            }
+          ]
+        },
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "H11_partial_registry",
+      "category": "holdout_incomplete_set",
+      "question": "能否根据这些资料确定锦穗公司的所有部门总数？",
+      "expected": "局部摘要不支持公司总数，必须拒答或明确无法确定",
+      "answer": "现有企业资料未覆盖该问题，建议联系对应业务部门确认。",
+      "strict_passed": true,
+      "answer_correct": true,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": false,
+      "expected_docs": [
+        "partial"
+      ],
+      "retrieved_docs": [
+        "partial"
+      ],
+      "cited_docs": [],
+      "pattern_hits": {},
+      "negative_pattern_hits": {},
+      "refused": true,
+      "method": "extractive",
+      "llm_requested": false,
+      "failure_reasons": [],
+      "error": null,
+      "latency_ms": 0,
+      "result": {
+        "question": "能否根据这些资料确定锦穗公司的所有部门总数？",
+        "answer": "现有企业资料未覆盖该问题，建议联系对应业务部门确认。",
+        "grounded": false,
+        "refused": true,
+        "method": "extractive",
+        "confidence": 0.0,
+        "citations": [],
+        "query_rewrite": {
+          "original": "能否根据这些资料确定锦穗公司的所有部门总数？",
+          "rewritten": "能否根据这些资料确定锦穗公司的所有部门总数？",
+          "matched_synonyms": [],
+          "expansions": [],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "能否",
+            "否根",
+            "根据",
+            "据这",
+            "这些",
+            "些资",
+            "资料",
+            "料确",
+            "确定",
+            "定锦",
+            "锦穗",
+            "穗公",
+            "所有",
+            "有部",
+            "部门",
+            "门总",
+            "总数"
+          ],
+          "candidate_count": 1,
+          "top_score": 0.125228,
+          "debug": {
+            "bm25_hits": 1,
+            "vector_hits": 1,
+            "fused": 1,
+            "reranked": 1,
+            "top_score": 0.125228,
+            "versioned_families": []
+          },
+          "chunks": [
+            {
+              "doc_id": "partial",
+              "title": "锦穗部分摘要",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.125228,
+              "rrf_score": 0.032787,
+              "bm25_rank": 1,
+              "vector_rank": 1,
+              "vector_score": 0.16348,
+              "features": {
+                "coverage": 0.1463,
+                "vector": 0.1635,
+                "title": 0.1176,
+                "phrase": 0.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            }
+          ]
+        },
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "H12_three_hop_join",
+      "category": "holdout_three_hop",
+      "question": "云垂项目负责人的所属部门主管是谁？请连接项目、员工和部门记录。",
+      "expected": "云垂负责人夏闻溪 -> 山霁研究部 -> 主管时若尘，三份证据均需引用",
+      "answer": "现有企业资料未覆盖该问题，建议联系对应业务部门确认。",
+      "strict_passed": false,
+      "answer_correct": false,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": false,
+      "expected_docs": [
+        "department",
+        "project",
+        "staff"
+      ],
+      "retrieved_docs": [
+        "department",
+        "project",
+        "staff"
+      ],
+      "cited_docs": [],
+      "pattern_hits": {
+        "时若尘": false
+      },
+      "negative_pattern_hits": {},
+      "refused": true,
+      "method": "extractive",
+      "llm_requested": false,
+      "failure_reasons": [
+        "生成未给出预期推断结论",
+        "有足够依据但误拒答",
+        "引用未覆盖推断所需全部来源"
+      ],
+      "error": null,
+      "latency_ms": 0,
+      "result": {
+        "question": "云垂项目负责人的所属部门主管是谁？请连接项目、员工和部门记录。",
+        "answer": "现有企业资料未覆盖该问题，建议联系对应业务部门确认。",
+        "grounded": false,
+        "refused": true,
+        "method": "extractive",
+        "confidence": 0.5936,
+        "citations": [],
+        "query_rewrite": {
+          "original": "云垂项目负责人的所属部门主管是谁？请连接项目、员工和部门记录。",
+          "rewritten": "云垂项目负责人的所属部门主管是谁？请连接项目、员工和部门记录。",
+          "matched_synonyms": [],
+          "expansions": [],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "云垂",
+            "垂项",
+            "项目",
+            "目负",
+            "负责",
+            "责人",
+            "所属",
+            "属部",
+            "部门",
+            "门主",
+            "主管",
+            "请连",
+            "连接",
+            "接项",
+            "员工",
+            "门记",
+            "记录"
+          ],
+          "candidate_count": 3,
+          "top_score": 0.433686,
+          "debug": {
+            "bm25_hits": 3,
+            "vector_hits": 3,
+            "fused": 3,
+            "reranked": 3,
+            "top_score": 0.433686,
+            "versioned_families": []
+          },
+          "chunks": [
+            {
+              "doc_id": "project",
+              "title": "云垂负责人",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.433686,
+              "rrf_score": 0.032787,
+              "bm25_rank": 1,
+              "vector_rank": 1,
+              "vector_score": 0.38416,
+              "features": {
+                "coverage": 0.3696,
+                "vector": 0.3842,
+                "title": 0.4706,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "staff",
+              "title": "员工部门归属表",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.230374,
+              "rrf_score": 0.031746,
+              "bm25_rank": 3,
+              "vector_rank": 3,
+              "vector_score": 0.19715,
+              "features": {
+                "coverage": 0.1707,
+                "vector": 0.1971,
+                "title": 0.3529,
+                "phrase": 0.5,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "department",
+              "title": "部门主管名录",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.212476,
+              "rrf_score": 0.032258,
+              "bm25_rank": 2,
+              "vector_rank": 2,
+              "vector_score": 0.245334,
+              "features": {
+                "coverage": 0.1707,
+                "vector": 0.2453,
+                "title": 0.4706,
+                "phrase": 0.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            }
+          ]
+        },
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "H13_unrelated_amount_distractor",
+      "category": "holdout_entity_money",
+      "question": "璃河项目甲合同与乙合同的金额合计多少元？",
+      "expected": "璃河甲4000+乙6000=10000；不能加入无关青川合同9000",
+      "answer": "现有企业资料未覆盖该问题，建议联系对应业务部门确认。",
+      "strict_passed": false,
+      "answer_correct": false,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": false,
+      "expected_docs": [
+        "a",
+        "b"
+      ],
+      "retrieved_docs": [
+        "a",
+        "b",
+        "other"
+      ],
+      "cited_docs": [],
+      "pattern_hits": {
+        "(?:10[ ,，]?000\\s*元|1(?:\\.0)?\\s*万元|一万\\s*元)": false
+      },
+      "negative_pattern_hits": {
+        "19[ ,，]?000\\s*元": false
+      },
+      "refused": true,
+      "method": "extractive",
+      "llm_requested": false,
+      "failure_reasons": [
+        "生成未给出预期推断结论",
+        "有足够依据但误拒答",
+        "引用未覆盖推断所需全部来源"
+      ],
+      "error": null,
+      "latency_ms": 0,
+      "result": {
+        "question": "璃河项目甲合同与乙合同的金额合计多少元？",
+        "answer": "现有企业资料未覆盖该问题，建议联系对应业务部门确认。",
+        "grounded": false,
+        "refused": true,
+        "method": "extractive",
+        "confidence": 0.9369,
+        "citations": [],
+        "query_rewrite": {
+          "original": "璃河项目甲合同与乙合同的金额合计多少元？",
+          "rewritten": "璃河项目甲合同与乙合同的金额合计多少元？",
+          "matched_synonyms": [],
+          "expansions": [],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "璃河",
+            "河项",
+            "项目",
+            "目甲",
+            "甲合",
+            "合同",
+            "乙合",
+            "金额",
+            "额合",
+            "合计",
+            "计多",
+            "少元"
+          ],
+          "candidate_count": 3,
+          "top_score": 0.638671,
+          "debug": {
+            "bm25_hits": 3,
+            "vector_hits": 3,
+            "fused": 3,
+            "reranked": 3,
+            "top_score": 0.638671,
+            "versioned_families": []
+          },
+          "chunks": [
+            {
+              "doc_id": "a",
+              "title": "璃河甲合同",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.638671,
+              "rrf_score": 0.032522,
+              "bm25_rank": 2,
+              "vector_rank": 1,
+              "vector_score": 0.569952,
+              "features": {
+                "coverage": 0.5317,
+                "vector": 0.57,
+                "title": 0.5,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.08,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "b",
+              "title": "璃河乙合同",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.581794,
+              "rrf_score": 0.032522,
+              "bm25_rank": 1,
+              "vector_rank": 2,
+              "vector_score": 0.453346,
+              "features": {
+                "coverage": 0.477,
+                "vector": 0.4533,
+                "title": 0.5,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.08,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "other",
+              "title": "青川甲合同",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.503097,
+              "rrf_score": 0.031746,
+              "bm25_rank": 3,
+              "vector_rank": 3,
+              "vector_score": 0.408895,
+              "features": {
+                "coverage": 0.3761,
+                "vector": 0.4089,
+                "title": 0.3333,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.08,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            }
+          ]
+        },
+        "latency_ms": 0
+      }
+    }
+  ]
+}

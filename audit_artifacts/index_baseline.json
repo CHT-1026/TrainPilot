@@ -1,0 +1,66 @@
+{
+  "generated_at": "2026-10-21T09:52:26.578059+00:00",
+  "scope": "Read-only controlled unit probes; no network/model/database calls.",
+  "code_sha256": {
+    "enterprise_rag\\store.py": "6b4d77c8bd167d295d0644a6ef7a9dab58d1cf4dc9ac6770447067d35ec75e7e",
+    "enterprise_rag\\embedding.py": "26458a0fa72cebcecbf4f215183f96d7c6a73c91c2f6a0d1e1871f73101d6c59"
+  },
+  "checks": [
+    {
+      "id": "historical_future_version",
+      "expected": [],
+      "actual": [
+        "baseline2"
+      ],
+      "passed": false,
+      "failure_reason": "No effective version still falls back to all documents and picks a future document."
+    },
+    {
+      "id": "empty_matrix_shape",
+      "expected": [
+        0,
+        384
+      ],
+      "actual": [
+        0
+      ],
+      "passed": false,
+      "failure_reason": "Empty vector matrix has rank 1 instead of a stable 2D shape."
+    },
+    {
+      "id": "stored_dimension_mismatch",
+      "expected": "reject a vector outside configured dimension",
+      "actual": {
+        "accepted": true,
+        "matrix_shape": [
+          1,
+          2
+        ]
+      },
+      "passed": false,
+      "failure_reason": "Loaded stored vector dimension is not verified against configured embedding dimension."
+    },
+    {
+      "id": "stored_embedding_space_mismatch",
+      "expected": "reject a different embedding model or version",
+      "actual": {
+        "accepted": true
+      },
+      "passed": false,
+      "failure_reason": "Stored embedding model/version are ignored, so incompatible vector spaces are silently compared."
+    },
+    {
+      "id": "remote_embedding_outage",
+      "expected": "raise explicitly instead of returning hash embeddings",
+      "actual": {
+        "raised": false,
+        "returned_vectors": 1,
+        "dimension": 384
+      },
+      "passed": false,
+      "failure_reason": "Remote outage silently substitutes hash embeddings while caller still labels them with the configured remote model."
+    }
+  ],
+  "passed": 0,
+  "total": 5
+}

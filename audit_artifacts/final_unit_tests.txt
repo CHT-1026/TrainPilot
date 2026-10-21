@@ -1,0 +1,82 @@
+﻿18:20:06 app.workflows.chat_nodes.response ERROR   生成普通回复失败: provider internal secret
+Traceback (most recent call last):
+  File "<PROJECT_ROOT>\app\workflows\chat_nodes\response.py", line 60, in response_generator_node
+    async for delta in llm.astream(prompt):
+  File "<PROJECT_ROOT>\tests\test_chat_features.py", line 50, in astream
+    raise RuntimeError("provider internal secret")
+RuntimeError: provider internal secret
+18:20:06 app.routes.chat INFO   创建新会话: audit_user/chat_11a5486e78cc
+18:20:06 httpx INFO   HTTP Request: POST http://testserver/api/chat/session "HTTP/1.1 200 OK"
+18:20:06 httpx INFO   HTTP Request: POST http://testserver/api/chat/stream "HTTP/1.1 200 OK"
+18:20:06 app.routes.chat INFO   创建新会话: audit_user/chat_ae7ed7189608
+18:20:06 httpx INFO   HTTP Request: POST http://testserver/api/chat/session "HTTP/1.1 200 OK"
+18:20:06 httpx INFO   HTTP Request: POST http://testserver/api/chat/stream "HTTP/1.1 200 OK"
+18:20:06 app.workflows.chat_nodes.recognition INFO   意图识别: policy_qa | 槽位: {}
+18:20:06 app.workflows.chat_nodes.routing INFO   任务路由: intent=policy_qa task=policy_qa
+18:20:07 app.workflows.chat_nodes.recognition INFO   意图识别: policy_qa | 槽位: {}
+18:20:07 app.workflows.chat_nodes.routing INFO   任务路由: intent=policy_qa task=policy_qa
+18:20:07 app.workflows.chat_nodes.recognition INFO   意图识别: policy_qa | 槽位: {}
+18:20:07 app.workflows.chat_nodes.routing INFO   任务路由: intent=policy_qa task=policy_qa
+18:20:07 app.routes.chat ERROR   对话处理异常: DO_NOT_EXPOSE_ENGINE_INTERNAL
+Traceback (most recent call last):
+  File "<PROJECT_ROOT>\app\routes\chat.py", line 218, in event_generator
+    async for mode, chunk in graph.astream(
+  File "<PROJECT_ROOT>\.venv312\Lib\site-packages\langgraph\pregel\main.py", line 2974, in astream
+    async for _ in runner.atick(
+  File "<PROJECT_ROOT>\.venv312\Lib\site-packages\langgraph\pregel\_runner.py", line 410, in atick
+    _panic_or_proceed(
+  File "<PROJECT_ROOT>\.venv312\Lib\site-packages\langgraph\pregel\_runner.py", line 520, in _panic_or_proceed
+    raise exc
+  File "<PROJECT_ROOT>\.venv312\Lib\site-packages\langgraph\pregel\_retry.py", line 138, in arun_with_retry
+    return await task.proc.ainvoke(task.input, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<PROJECT_ROOT>\.venv312\Lib\site-packages\langgraph\_internal\_runnable.py", line 705, in ainvoke
+    input = await asyncio.create_task(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<PROJECT_ROOT>\.venv312\Lib\site-packages\langgraph\_internal\_runnable.py", line 473, in ainvoke
+    ret = await self.afunc(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<PROJECT_ROOT>\app\workflows\chat_nodes\policy_qa.py", line 44, in answer_node
+    generated = await asyncio.to_thread(generate_answer, question, chunks, None,
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<USER_HOME>\AppData\Roaming\uv\python\cpython-3.12.15-windows-x86_64-none\Lib\asyncio\threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<USER_HOME>\AppData\Roaming\uv\python\cpython-3.12.15-windows-x86_64-none\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<USER_HOME>\AppData\Roaming\uv\python\cpython-3.12.15-windows-x86_64-none\Lib\unittest\mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<USER_HOME>\AppData\Roaming\uv\python\cpython-3.12.15-windows-x86_64-none\Lib\unittest\mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<USER_HOME>\AppData\Roaming\uv\python\cpython-3.12.15-windows-x86_64-none\Lib\unittest\mock.py", line 1198, in _execute_mock_call
+    raise effect
+RuntimeError: DO_NOT_EXPOSE_ENGINE_INTERNAL
+During task with name 'answer' and id 'c480419d-1bb3-d761-7fd4-52be340c5404'
+18:20:07 enterprise_rag.answer WARNING   LLM 回答失败：RuntimeError
+18:20:07 app.workflows.chat_nodes.recognition INFO   意图识别: policy_qa | 槽位: {}
+18:20:07 app.workflows.chat_nodes.routing INFO   任务路由: intent=policy_qa task=policy_qa
+18:20:07 enterprise_rag.answer WARNING   LLM 回答失败：RuntimeError
+18:20:08 app.workflows.chat_nodes.recognition INFO   意图识别: policy_qa | 槽位: {}
+18:20:08 app.workflows.chat_nodes.routing INFO   任务路由: intent=policy_qa task=policy_qa
+18:20:08 app.workflows.chat_nodes.recognition INFO   意图识别: policy_qa | 槽位: {}
+18:20:08 app.workflows.chat_nodes.routing INFO   任务路由: intent=policy_qa task=policy_qa
+18:20:08 app.workflows.chat_nodes.recognition INFO   意图识别: general_chat | 槽位: {}
+18:20:08 app.workflows.chat_nodes.routing INFO   任务路由: intent=general_chat task=general_chat
+18:20:09 app.workflows.chat_nodes.recognition INFO   意图识别: policy_qa | 槽位: {}
+18:20:09 app.workflows.chat_nodes.routing INFO   任务路由: intent=policy_qa task=policy_qa
+18:20:09 app.workflows.chat_nodes.policy_qa WARNING   知识问答生成失败: RuntimeError
+18:20:09 app.workflows.chat_nodes.recognition INFO   意图识别: policy_qa | 槽位: {}
+18:20:09 app.workflows.chat_nodes.routing INFO   任务路由: intent=policy_qa task=policy_qa
+18:20:10 app.workflows.chat_nodes.recognition INFO   意图识别: confirm_action | 槽位: {}
+18:20:10 app.workflows.chat_nodes.routing INFO   任务路由: intent=confirm_action task=confirm_action
+18:20:12 app.database.connection INFO   Redis客户端初始化成功
+18:20:12 enterprise_rag.answer WARNING   LLM 回答失败：ModelAnswerValidationError
+18:20:12 app.workflows.chat_nodes.summarize INFO   会话摘要完成: 6 条消息 -> 21 字
+
+----------------------------------------------------------------------
+Ran 148 tests in 6.293s
+
+OK

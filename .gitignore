@@ -1,0 +1,53 @@
+# ---------------------------------------------
+# 密钥与本地配置：绝不提交
+# ---------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# ---------------------------------------------
+# 本地运行环境与运行时产物
+# ---------------------------------------------
+.venv/
+.venv312/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# 本机日志、进程状态、模型探测结果
+local_runtime/logs/
+local_runtime/originals/
+local_runtime/model_check.json
+local_runtime/processes.json
+*.log
+
+# ---------------------------------------------
+# 编辑器与操作系统
+# ---------------------------------------------
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---------------------------------------------
+# 打包与临时文件
+# ---------------------------------------------
+dist/
+build/
+*.zip
+*.7z
+*.tar.gz
+*.bak
+*.tmp
+~$*

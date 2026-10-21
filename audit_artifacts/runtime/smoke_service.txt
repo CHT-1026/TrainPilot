@@ -1,0 +1,12 @@
+submit ok leave_39b316ac6290
+idempotent submit ok
+employee approve blocked FORBIDDEN
+cross-department approve blocked FORBIDDEN
+suggestion ok 建议批准
+manager approve ok approved
+repeat approve blocked CONFLICT
+approved cancel blocked CONFLICT
+mine query ok 1
+audit rows 2
+SMOKE_PASS
+

@@ -1,0 +1,91 @@
+﻿18:02:37 app.workflows.chat_nodes.recognition INFO   意图识别: policy_qa | 槽位: {}
+18:02:37 app.workflows.chat_nodes.routing INFO   任务路由: intent=policy_qa task=policy_qa
+test_empty_enterprise_retrieval_never_falls_back_to_oa (tests.test_knowledge_flow.KnowledgeFlowTest.test_empty_enterprise_retrieval_never_falls_back_to_oa) ... ok
+18:02:37 app.workflows.chat_nodes.recognition INFO   意图识别: policy_qa | 槽位: {}
+18:02:37 app.workflows.chat_nodes.routing INFO   任务路由: intent=policy_qa task=policy_qa
+test_enterprise_api_and_chat_share_real_reasoning_and_citations (tests.test_knowledge_flow.KnowledgeFlowTest.test_enterprise_api_and_chat_share_real_reasoning_and_citations) ... ok
+18:02:38 app.workflows.chat_nodes.recognition INFO   意图识别: policy_qa | 槽位: {}
+18:02:38 app.workflows.chat_nodes.routing INFO   任务路由: intent=policy_qa task=policy_qa
+18:02:38 app.routes.chat ERROR   对话处理异常: DO_NOT_EXPOSE_ENGINE_INTERNAL
+Traceback (most recent call last):
+  File "<PROJECT_ROOT>\app\routes\chat.py", line 214, in event_generator
+    async for mode, chunk in graph.astream(
+  File "<PROJECT_ROOT>\.venv312\Lib\site-packages\langgraph\pregel\main.py", line 2974, in astream
+    async for _ in runner.atick(
+  File "<PROJECT_ROOT>\.venv312\Lib\site-packages\langgraph\pregel\_runner.py", line 410, in atick
+    _panic_or_proceed(
+  File "<PROJECT_ROOT>\.venv312\Lib\site-packages\langgraph\pregel\_runner.py", line 520, in _panic_or_proceed
+    raise exc
+  File "<PROJECT_ROOT>\.venv312\Lib\site-packages\langgraph\pregel\_retry.py", line 138, in arun_with_retry
+    return await task.proc.ainvoke(task.input, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<PROJECT_ROOT>\.venv312\Lib\site-packages\langgraph\_internal\_runnable.py", line 705, in ainvoke
+    input = await asyncio.create_task(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<PROJECT_ROOT>\.venv312\Lib\site-packages\langgraph\_internal\_runnable.py", line 473, in ainvoke
+    ret = await self.afunc(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<PROJECT_ROOT>\app\workflows\chat_nodes\policy_qa.py", line 44, in answer_node
+    generated = await asyncio.to_thread(generate_answer, question, chunks, None,
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<USER_HOME>\AppData\Roaming\uv\python\cpython-3.12.15-windows-x86_64-none\Lib\asyncio\threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<USER_HOME>\AppData\Roaming\uv\python\cpython-3.12.15-windows-x86_64-none\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<USER_HOME>\AppData\Roaming\uv\python\cpython-3.12.15-windows-x86_64-none\Lib\unittest\mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<USER_HOME>\AppData\Roaming\uv\python\cpython-3.12.15-windows-x86_64-none\Lib\unittest\mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<USER_HOME>\AppData\Roaming\uv\python\cpython-3.12.15-windows-x86_64-none\Lib\unittest\mock.py", line 1198, in _execute_mock_call
+    raise effect
+RuntimeError: DO_NOT_EXPOSE_ENGINE_INTERNAL
+During task with name 'answer' and id '439b8a9d-3774-fc10-bb04-71c70e2722e8'
+test_enterprise_generation_crash_returns_only_generic_sse_error (tests.test_knowledge_flow.KnowledgeFlowTest.test_enterprise_generation_crash_returns_only_generic_sse_error) ... ok
+18:02:38 enterprise_rag.answer WARNING   LLM 回答失败：RuntimeError
+18:02:38 app.workflows.chat_nodes.recognition INFO   意图识别: policy_qa | 槽位: {}
+18:02:38 app.workflows.chat_nodes.routing INFO   任务路由: intent=policy_qa task=policy_qa
+18:02:38 enterprise_rag.answer WARNING   LLM 回答失败：RuntimeError
+test_enterprise_model_failure_fallback_is_same_for_api_and_chat (tests.test_knowledge_flow.KnowledgeFlowTest.test_enterprise_model_failure_fallback_is_same_for_api_and_chat) ... ok
+18:02:38 app.workflows.chat_nodes.recognition INFO   意图识别: policy_qa | 槽位: {}
+18:02:38 app.workflows.chat_nodes.routing INFO   任务路由: intent=policy_qa task=policy_qa
+test_followup_context_uses_user_topic_but_never_assistant_claim_as_evidence (tests.test_knowledge_flow.KnowledgeFlowTest.test_followup_context_uses_user_topic_but_never_assistant_claim_as_evidence) ... ok
+18:02:39 app.workflows.chat_nodes.recognition INFO   意图识别: policy_qa | 槽位: {}
+18:02:39 app.workflows.chat_nodes.routing INFO   任务路由: intent=policy_qa task=policy_qa
+18:02:39 app.workflows.chat_nodes.recognition INFO   意图识别: general_chat | 槽位: {}
+18:02:39 app.workflows.chat_nodes.routing INFO   任务路由: intent=general_chat task=general_chat
+test_knowledge_then_chat_clears_every_current_turn_knowledge_field (tests.test_knowledge_flow.KnowledgeFlowTest.test_knowledge_then_chat_clears_every_current_turn_knowledge_field) ... FAIL
+18:02:40 app.workflows.chat_nodes.recognition INFO   意图识别: policy_qa | 槽位: {}
+18:02:40 app.workflows.chat_nodes.routing INFO   任务路由: intent=policy_qa task=policy_qa
+18:02:40 app.workflows.chat_nodes.policy_qa WARNING   知识问答生成失败: RuntimeError
+test_oa_provider_failure_does_not_stream_raw_exception (tests.test_knowledge_flow.KnowledgeFlowTest.test_oa_provider_failure_does_not_stream_raw_exception) ... ok
+18:02:40 app.workflows.chat_nodes.recognition INFO   意图识别: policy_qa | 槽位: {}
+18:02:40 app.workflows.chat_nodes.routing INFO   任务路由: intent=policy_qa task=policy_qa
+test_oa_verified_tokens_include_final_source_summary (tests.test_knowledge_flow.KnowledgeFlowTest.test_oa_verified_tokens_include_final_source_summary) ... ok
+18:02:40 app.workflows.chat_nodes.recognition INFO   意图识别: confirm_action | 槽位: {}
+18:02:40 app.workflows.chat_nodes.routing INFO   任务路由: intent=confirm_action task=confirm_action
+test_pending_confirmation_survives_turn_reset_and_executes_with_original_action_id (tests.test_knowledge_flow.KnowledgeFlowTest.test_pending_confirmation_survives_turn_reset_and_executes_with_original_action_id) ... ok
+
+======================================================================
+FAIL: test_knowledge_then_chat_clears_every_current_turn_knowledge_field (tests.test_knowledge_flow.KnowledgeFlowTest.test_knowledge_then_chat_clears_every_current_turn_knowledge_field)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Roaming\uv\python\cpython-3.12.15-windows-x86_64-none\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<USER_HOME>\AppData\Roaming\uv\python\cpython-3.12.15-windows-x86_64-none\Lib\asyncio\base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "<PROJECT_ROOT>\tests\test_knowledge_flow.py", line 226, in test_knowledge_then_chat_clears_every_current_turn_knowledge_field
+    self.assertEqual(state.values["retrieval_question"], "")
+AssertionError: '澜图公司共有几个部门？' != ''
+- 澜图公司共有几个部门？
+
+
+----------------------------------------------------------------------
+Ran 9 tests in 3.941s
+
+FAILED (failures=1)

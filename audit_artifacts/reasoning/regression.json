@@ -1,0 +1,4338 @@
+﻿{
+  "phase": "regression",
+  "generated_at": "2026-10-21T18:20:15.039274+08:00",
+  "use_llm": false,
+  "fixtures_path": "<PROJECT_ROOT>\\audit_artifacts\\reasoning\\cases.jsonl",
+  "fixtures_sha256": "b027933f81f2fc4f262dab85b52bd6843d56726ef5395f69dc60cf821565aee8",
+  "source_hashes_at_start": {
+    "enterprise_rag/answer.py": "582852f286b6ba95f7b406dbc923f954d17bbaeedc01d7bdcc669994de5190b6",
+    "enterprise_rag/retrieval.py": "e749f2ea369f307042bd88ac96bc6e234f38235a604c0426e4658ca25ab13e50",
+    "enterprise_rag/store.py": "b8e308a2438567d62a1b4e6fa295674b289f6bac843e41dad34f6faaef13b42a",
+    "enterprise_rag/query.py": "bcc725f2775c070c6fb589a563afdcb29e97f48b976865584f40917ea9a690a4",
+    "enterprise_rag/citations.py": "a91868f3e14e62a8549b9726a83fc503c0f6dd9d3ff1709790d4d9691bae6ab9",
+    "enterprise_rag/pipeline.py": "e8273c969f45eb090288000c69bd5c9d66640278068e72b8108f68e50d10ea78",
+    "enterprise_rag/reasoning.py": "c95348115663fe259e249d90e9e98b0bafe3b9703bf16bf9c2d40f76778e54ce",
+    "enterprise_rag/config.py": "e7430c51a5958a98022805e2d71017a31054651d707e44d8a912aea751630ac0"
+  },
+  "source_hashes_at_end": {
+    "enterprise_rag/answer.py": "582852f286b6ba95f7b406dbc923f954d17bbaeedc01d7bdcc669994de5190b6",
+    "enterprise_rag/retrieval.py": "e749f2ea369f307042bd88ac96bc6e234f38235a604c0426e4658ca25ab13e50",
+    "enterprise_rag/store.py": "b8e308a2438567d62a1b4e6fa295674b289f6bac843e41dad34f6faaef13b42a",
+    "enterprise_rag/query.py": "bcc725f2775c070c6fb589a563afdcb29e97f48b976865584f40917ea9a690a4",
+    "enterprise_rag/citations.py": "a91868f3e14e62a8549b9726a83fc503c0f6dd9d3ff1709790d4d9691bae6ab9",
+    "enterprise_rag/pipeline.py": "e8273c969f45eb090288000c69bd5c9d66640278068e72b8108f68e50d10ea78",
+    "enterprise_rag/reasoning.py": "c95348115663fe259e249d90e9e98b0bafe3b9703bf16bf9c2d40f76778e54ce",
+    "enterprise_rag/config.py": "e7430c51a5958a98022805e2d71017a31054651d707e44d8a912aea751630ac0"
+  },
+  "config": {
+    "llm_model": "qwen3.5-plus",
+    "llm_temperature": 0.2,
+    "embedding_provider": "hash",
+    "top_k": 8
+  },
+  "metrics": {
+    "total": 20,
+    "strict_passed": 20,
+    "answer_correct": 20,
+    "all_evidence_recalled": 20
+  },
+  "cases": [
+    {
+      "id": "R01_four_departments",
+      "category": "set_count",
+      "question": "星槐公司的组织清单中共有多少个不同部门？请列出部门并给出总数。",
+      "expected": "四个不同部门，列全四个部门，引用四份记录",
+      "answer": "在本次可见组织清单范围内，去重后共 4 个部门：星河研究部 [1]；远帆销售部 [2]；赤峰制造部 [3]；青禾财务部 [4]。",
+      "strict_passed": true,
+      "answer_correct": true,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": true,
+      "expected_docs": [
+        "dept_1",
+        "dept_2",
+        "dept_3",
+        "dept_4"
+      ],
+      "retrieved_docs": [
+        "dept_1",
+        "dept_2",
+        "dept_3",
+        "dept_4"
+      ],
+      "cited_docs": [
+        "dept_1",
+        "dept_2",
+        "dept_3",
+        "dept_4"
+      ],
+      "pattern_hits": {
+        "(?:4|四)\\s*个": true,
+        "星河研究部": true,
+        "赤峰制造部": true,
+        "远帆销售部": true,
+        "青禾财务部": true
+      },
+      "negative_pattern_hits": {},
+      "refused": false,
+      "method": "deterministic_reasoning",
+      "llm_requested": false,
+      "failure_reasons": [],
+      "error": null,
+      "latency_ms": 0,
+      "runtime_warnings": [],
+      "result": {
+        "question": "星槐公司的组织清单中共有多少个不同部门？请列出部门并给出总数。",
+        "answer": "在本次可见组织清单范围内，去重后共 4 个部门：星河研究部 [1]；远帆销售部 [2]；赤峰制造部 [3]；青禾财务部 [4]。",
+        "grounded": true,
+        "refused": false,
+        "method": "deterministic_reasoning",
+        "confidence": 1.0,
+        "model_error": null,
+        "reasoning": {
+          "answer": "在本次可见组织清单范围内，去重后共 4 个部门：星河研究部 [1]；远帆销售部 [2]；赤峰制造部 [3]；青禾财务部 [4]。",
+          "indices": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "confidence": 1.0,
+          "operation": "count_unique",
+          "facts": [
+            "星河研究部",
+            "远帆销售部",
+            "赤峰制造部",
+            "青禾财务部"
+          ],
+          "refused": false,
+          "source_chunk_ids": [
+            "dept_1#0",
+            "dept_3#0",
+            "dept_2#0",
+            "dept_4#0"
+          ]
+        },
+        "context_truncated": false,
+        "context_chunk_ids": [
+          "dept_1#0",
+          "dept_3#0",
+          "dept_2#0",
+          "dept_4#0"
+        ],
+        "citations": [
+          {
+            "index": 1,
+            "doc_id": "dept_1",
+            "chunk_id": "dept_1#0",
+            "title": "星槐组织记录1",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R01_four_departments/dept_1",
+            "snippet": "星槐公司组织清单第1项。星槐公司设有星河研究部，该部门参与联合运营。",
+            "score": 0.32287,
+            "vector_score": 0.344298
+          },
+          {
+            "index": 2,
+            "doc_id": "dept_3",
+            "chunk_id": "dept_3#0",
+            "title": "星槐组织记录3",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R01_four_departments/dept_3",
+            "snippet": "星槐公司组织清单第3项。星槐公司设有远帆销售部，该部门参与联合运营。",
+            "score": 0.318232,
+            "vector_score": 0.328839
+          },
+          {
+            "index": 3,
+            "doc_id": "dept_2",
+            "chunk_id": "dept_2#0",
+            "title": "星槐组织记录2",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R01_four_departments/dept_2",
+            "snippet": "星槐公司组织清单第2项。星槐公司设有赤峰制造部，该部门参与联合运营。",
+            "score": 0.31194,
+            "vector_score": 0.307865
+          },
+          {
+            "index": 4,
+            "doc_id": "dept_4",
+            "chunk_id": "dept_4#0",
+            "title": "星槐组织记录4",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R01_four_departments/dept_4",
+            "snippet": "星槐公司组织清单第4项。星槐公司设有青禾财务部，该部门参与联合运营。",
+            "score": 0.296151,
+            "vector_score": 0.255236
+          }
+        ],
+        "query_rewrite": {
+          "original": "星槐公司的组织清单中共有多少个不同部门？请列出部门并给出总数。",
+          "rewritten": "星槐公司的组织清单中共有多少个不同部门？请列出部门并给出总数。",
+          "matched_synonyms": [],
+          "expansions": [],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "星槐",
+            "槐公",
+            "组织",
+            "织清",
+            "清单",
+            "单中",
+            "中共",
+            "共有",
+            "有多",
+            "少个",
+            "个不",
+            "不同",
+            "同部",
+            "部门",
+            "请列",
+            "列出",
+            "出部",
+            "门并",
+            "并给",
+            "给出",
+            "出总",
+            "总数"
+          ],
+          "candidate_count": 4,
+          "top_score": 0.32287,
+          "debug": {
+            "bm25_hits": 12,
+            "vector_hits": 12,
+            "fused": 4,
+            "reranked": 4,
+            "top_score": 0.32287,
+            "versioned_families": [],
+            "plan": {
+              "complex": true,
+              "enumeration": true,
+              "temporal": false,
+              "bridge": false,
+              "queries": [
+                "星槐公司的组织清单中共有多少个不同部门？请列出部门并给出总数。",
+                "星槐公司的组织清单中共有多少个不同部门？请列出部门并给出总数。 组织清单 部门名称",
+                "星槐公司的组织清单中共有多少个不同部门？请列出部门并给出总数。 部门职责 组织架构"
+              ],
+              "policy_as_of": true,
+              "strict_effective_date": false,
+              "bridge_queries": []
+            },
+            "evidence_budget_complete": true,
+            "omitted_relevant_chunks": 0,
+            "vector_fallback": false,
+            "vector_errors": []
+          },
+          "chunks": [
+            {
+              "doc_id": "dept_1",
+              "title": "星槐组织记录1",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.32287,
+              "rrf_score": 0.032787,
+              "bm25_rank": 1,
+              "vector_rank": 1,
+              "vector_score": 0.344298,
+              "features": {
+                "coverage": 0.2308,
+                "vector": 0.3443,
+                "title": 0.1818,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "dept_3",
+              "title": "星槐组织记录3",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.318232,
+              "rrf_score": 0.032002,
+              "bm25_rank": 3,
+              "vector_rank": 2,
+              "vector_score": 0.328839,
+              "features": {
+                "coverage": 0.2308,
+                "vector": 0.3288,
+                "title": 0.1818,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "dept_2",
+              "title": "星槐组织记录2",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.31194,
+              "rrf_score": 0.032002,
+              "bm25_rank": 2,
+              "vector_rank": 3,
+              "vector_score": 0.307865,
+              "features": {
+                "coverage": 0.2308,
+                "vector": 0.3079,
+                "title": 0.1818,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "dept_4",
+              "title": "星槐组织记录4",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.296151,
+              "rrf_score": 0.031498,
+              "bm25_rank": 4,
+              "vector_rank": 3,
+              "vector_score": 0.255236,
+              "features": {
+                "coverage": 0.2308,
+                "vector": 0.2552,
+                "title": 0.1818,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            }
+          ]
+        },
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "R02_duplicate_department",
+      "category": "dedup_count",
+      "question": "星槐公司的组织清单中共有多少个不同部门？请去重后列出并给出总数。",
+      "expected": "重复记录不重复计数，四个不同部门",
+      "answer": "在本次可见组织清单范围内，去重后共 4 个部门：星河研究部 [1]；远帆销售部 [2]；赤峰制造部 [3]；青禾财务部 [4]。",
+      "strict_passed": true,
+      "answer_correct": true,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": true,
+      "expected_docs": [
+        "dept_1",
+        "dept_2",
+        "dept_3",
+        "dept_4"
+      ],
+      "retrieved_docs": [
+        "dept_1",
+        "dept_2",
+        "dept_3",
+        "dept_4",
+        "dept_repeat"
+      ],
+      "cited_docs": [
+        "dept_1",
+        "dept_2",
+        "dept_3",
+        "dept_4"
+      ],
+      "pattern_hits": {
+        "(?:4|四)\\s*个": true,
+        "星河研究部": true,
+        "赤峰制造部": true,
+        "远帆销售部": true,
+        "青禾财务部": true
+      },
+      "negative_pattern_hits": {},
+      "refused": false,
+      "method": "deterministic_reasoning",
+      "llm_requested": false,
+      "failure_reasons": [],
+      "error": null,
+      "latency_ms": 0,
+      "runtime_warnings": [],
+      "result": {
+        "question": "星槐公司的组织清单中共有多少个不同部门？请去重后列出并给出总数。",
+        "answer": "在本次可见组织清单范围内，去重后共 4 个部门：星河研究部 [1]；远帆销售部 [2]；赤峰制造部 [3]；青禾财务部 [4]。",
+        "grounded": true,
+        "refused": false,
+        "method": "deterministic_reasoning",
+        "confidence": 1.0,
+        "model_error": null,
+        "reasoning": {
+          "answer": "在本次可见组织清单范围内，去重后共 4 个部门：星河研究部 [1]；远帆销售部 [2]；赤峰制造部 [3]；青禾财务部 [4]。",
+          "indices": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "confidence": 1.0,
+          "operation": "count_unique",
+          "facts": [
+            "星河研究部",
+            "远帆销售部",
+            "赤峰制造部",
+            "青禾财务部"
+          ],
+          "refused": false,
+          "source_chunk_ids": [
+            "dept_1#0",
+            "dept_3#0",
+            "dept_2#0",
+            "dept_4#0"
+          ]
+        },
+        "context_truncated": false,
+        "context_chunk_ids": [
+          "dept_1#0",
+          "dept_3#0",
+          "dept_2#0",
+          "dept_4#0",
+          "dept_repeat#0"
+        ],
+        "citations": [
+          {
+            "index": 1,
+            "doc_id": "dept_1",
+            "chunk_id": "dept_1#0",
+            "title": "星槐组织记录1",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R02_duplicate_department/dept_1",
+            "snippet": "星槐公司组织清单第1项。星槐公司设有星河研究部，该部门参与联合运营。",
+            "score": 0.311863,
+            "vector_score": 0.342174
+          },
+          {
+            "index": 2,
+            "doc_id": "dept_3",
+            "chunk_id": "dept_3#0",
+            "title": "星槐组织记录3",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R02_duplicate_department/dept_3",
+            "snippet": "星槐公司组织清单第3项。星槐公司设有远帆销售部，该部门参与联合运营。",
+            "score": 0.311048,
+            "vector_score": 0.339459
+          },
+          {
+            "index": 3,
+            "doc_id": "dept_2",
+            "chunk_id": "dept_2#0",
+            "title": "星槐组织记录2",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R02_duplicate_department/dept_2",
+            "snippet": "星槐公司组织清单第2项。星槐公司设有赤峰制造部，该部门参与联合运营。",
+            "score": 0.30461,
+            "vector_score": 0.317998
+          },
+          {
+            "index": 4,
+            "doc_id": "dept_4",
+            "chunk_id": "dept_4#0",
+            "title": "星槐组织记录4",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R02_duplicate_department/dept_4",
+            "snippet": "星槐公司组织清单第4项。星槐公司设有青禾财务部，该部门参与联合运营。",
+            "score": 0.302643,
+            "vector_score": 0.31144
+          }
+        ],
+        "query_rewrite": {
+          "original": "星槐公司的组织清单中共有多少个不同部门？请去重后列出并给出总数。",
+          "rewritten": "星槐公司的组织清单中共有多少个不同部门？请去重后列出并给出总数。",
+          "matched_synonyms": [],
+          "expansions": [],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "星槐",
+            "槐公",
+            "组织",
+            "织清",
+            "清单",
+            "单中",
+            "中共",
+            "共有",
+            "有多",
+            "少个",
+            "个不",
+            "不同",
+            "同部",
+            "部门",
+            "请去",
+            "去重",
+            "重后",
+            "后列",
+            "列出",
+            "出并",
+            "并给",
+            "给出",
+            "出总",
+            "总数"
+          ],
+          "candidate_count": 5,
+          "top_score": 0.311863,
+          "debug": {
+            "bm25_hits": 15,
+            "vector_hits": 15,
+            "fused": 5,
+            "reranked": 5,
+            "top_score": 0.311863,
+            "versioned_families": [],
+            "plan": {
+              "complex": true,
+              "enumeration": true,
+              "temporal": false,
+              "bridge": false,
+              "queries": [
+                "星槐公司的组织清单中共有多少个不同部门？请去重后列出并给出总数。",
+                "星槐公司的组织清单中共有多少个不同部门？请去重后列出并给出总数。 组织清单 部门名称",
+                "星槐公司的组织清单中共有多少个不同部门？请去重后列出并给出总数。 部门职责 组织架构"
+              ],
+              "policy_as_of": true,
+              "strict_effective_date": false,
+              "bridge_queries": []
+            },
+            "evidence_budget_complete": true,
+            "omitted_relevant_chunks": 0,
+            "vector_fallback": false,
+            "vector_errors": []
+          },
+          "chunks": [
+            {
+              "doc_id": "dept_1",
+              "title": "星槐组织记录1",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.311863,
+              "rrf_score": 0.032787,
+              "bm25_rank": 1,
+              "vector_rank": 1,
+              "vector_score": 0.342174,
+              "features": {
+                "coverage": 0.2105,
+                "vector": 0.3422,
+                "title": 0.1667,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "dept_3",
+              "title": "星槐组织记录3",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.311048,
+              "rrf_score": 0.032002,
+              "bm25_rank": 3,
+              "vector_rank": 2,
+              "vector_score": 0.339459,
+              "features": {
+                "coverage": 0.2105,
+                "vector": 0.3395,
+                "title": 0.1667,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "dept_2",
+              "title": "星槐组织记录2",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.30461,
+              "rrf_score": 0.032002,
+              "bm25_rank": 2,
+              "vector_rank": 3,
+              "vector_score": 0.317998,
+              "features": {
+                "coverage": 0.2105,
+                "vector": 0.318,
+                "title": 0.1667,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "dept_4",
+              "title": "星槐组织记录4",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.302643,
+              "rrf_score": 0.03125,
+              "bm25_rank": 4,
+              "vector_rank": 4,
+              "vector_score": 0.31144,
+              "features": {
+                "coverage": 0.2105,
+                "vector": 0.3114,
+                "title": 0.1667,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "dept_repeat",
+              "title": "星槐组织复核记录",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.275317,
+              "rrf_score": 0.030769,
+              "bm25_rank": 5,
+              "vector_rank": 5,
+              "vector_score": 0.267139,
+              "features": {
+                "coverage": 0.1754,
+                "vector": 0.2671,
+                "title": 0.1667,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            }
+          ]
+        },
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "R03_foundation_cn",
+      "category": "year_inference",
+      "question": "槐序公司的成立年份是哪一年？请根据当前年份记录和公司沿革记录计算。",
+      "expected": "2026 - 70 = 1956 年；两份依据均需引用",
+      "answer": "按资料中的年份锚点计算，公司成立于 1956 年；2026 − 70 = 1956。[1][2]",
+      "strict_passed": true,
+      "answer_correct": true,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": true,
+      "expected_docs": [
+        "clock",
+        "history"
+      ],
+      "retrieved_docs": [
+        "clock",
+        "history"
+      ],
+      "cited_docs": [
+        "clock",
+        "history"
+      ],
+      "pattern_hits": {
+        "1956\\s*年": true
+      },
+      "negative_pattern_hits": {},
+      "refused": false,
+      "method": "deterministic_reasoning",
+      "llm_requested": false,
+      "failure_reasons": [],
+      "error": null,
+      "latency_ms": 16,
+      "runtime_warnings": [],
+      "result": {
+        "question": "槐序公司的成立年份是哪一年？请根据当前年份记录和公司沿革记录计算。",
+        "answer": "按资料中的年份锚点计算，公司成立于 1956 年；2026 − 70 = 1956。[1][2]",
+        "grounded": true,
+        "refused": false,
+        "method": "deterministic_reasoning",
+        "confidence": 1.0,
+        "model_error": null,
+        "reasoning": {
+          "answer": "按资料中的年份锚点计算，公司成立于 1956 年；2026 − 70 = 1956。[1][2]",
+          "indices": [
+            1,
+            2
+          ],
+          "confidence": 1.0,
+          "operation": "year_subtract",
+          "facts": [],
+          "refused": false,
+          "source_chunk_ids": [
+            "history#0",
+            "clock#0"
+          ]
+        },
+        "context_truncated": false,
+        "context_chunk_ids": [
+          "clock#0",
+          "history#0"
+        ],
+        "citations": [
+          {
+            "index": 1,
+            "doc_id": "history",
+            "chunk_id": "history#0",
+            "title": "槐序沿革记录",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R03_foundation_cn/history",
+            "snippet": "槐序公司沿革记录：本公司于七十年前创立。",
+            "score": 0.331222,
+            "vector_score": 0.377297
+          },
+          {
+            "index": 2,
+            "doc_id": "clock",
+            "chunk_id": "clock#0",
+            "title": "槐序年份记录",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R03_foundation_cn/clock",
+            "snippet": "槐序公司的当前年份记录：今年是2026年。",
+            "score": 0.421346,
+            "vector_score": 0.530292
+          }
+        ],
+        "query_rewrite": {
+          "original": "槐序公司的成立年份是哪一年？请根据当前年份记录和公司沿革记录计算。",
+          "rewritten": "槐序公司的成立年份是哪一年？请根据当前年份记录和公司沿革记录计算。 2024年",
+          "matched_synonyms": [],
+          "expansions": [
+            "2024年"
+          ],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "槐序",
+            "序公",
+            "成立",
+            "立年",
+            "年份",
+            "哪一",
+            "一年",
+            "请根",
+            "根据",
+            "据当",
+            "当前",
+            "前年",
+            "份记",
+            "记录",
+            "司沿",
+            "沿革",
+            "革记",
+            "录计",
+            "计算",
+            "2024"
+          ],
+          "candidate_count": 2,
+          "top_score": 0.421346,
+          "debug": {
+            "bm25_hits": 6,
+            "vector_hits": 6,
+            "fused": 2,
+            "reranked": 2,
+            "top_score": 0.421346,
+            "versioned_families": [],
+            "plan": {
+              "complex": true,
+              "enumeration": false,
+              "temporal": true,
+              "bridge": false,
+              "queries": [
+                "槐序公司的成立年份是哪一年？请根据当前年份记录和公司沿革记录计算。",
+                "槐序公司的成立年份是哪一年？请根据当前年份记录和公司沿革记录计算。 成立 创立 公司沿革",
+                "当前年份记录 今年 本年"
+              ],
+              "policy_as_of": false,
+              "strict_effective_date": false,
+              "bridge_queries": []
+            },
+            "evidence_budget_complete": true,
+            "omitted_relevant_chunks": 0,
+            "vector_fallback": false,
+            "vector_errors": []
+          },
+          "chunks": [
+            {
+              "doc_id": "clock",
+              "title": "槐序年份记录",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.421346,
+              "rrf_score": 0.032787,
+              "bm25_rank": 1,
+              "vector_rank": 1,
+              "vector_score": 0.530292,
+              "features": {
+                "coverage": 0.3181,
+                "vector": 0.5303,
+                "title": 0.4,
+                "phrase": 0.75,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "history",
+              "title": "槐序沿革记录",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.331222,
+              "rrf_score": 0.032258,
+              "bm25_rank": 2,
+              "vector_rank": 2,
+              "vector_score": 0.377297,
+              "features": {
+                "coverage": 0.2701,
+                "vector": 0.3773,
+                "title": 0.4,
+                "phrase": 0.5,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            }
+          ]
+        },
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "R04_foundation_arabic",
+      "category": "year_inference",
+      "question": "松原公司的成立年份是哪一年？请根据当前年份记录和公司沿革记录计算。",
+      "expected": "2026 - 70 = 1956 年",
+      "answer": "按资料中的年份锚点计算，公司成立于 1956 年；2026 − 70 = 1956。[1][2]",
+      "strict_passed": true,
+      "answer_correct": true,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": true,
+      "expected_docs": [
+        "clock",
+        "history"
+      ],
+      "retrieved_docs": [
+        "clock",
+        "history"
+      ],
+      "cited_docs": [
+        "clock",
+        "history"
+      ],
+      "pattern_hits": {
+        "1956\\s*年": true
+      },
+      "negative_pattern_hits": {},
+      "refused": false,
+      "method": "deterministic_reasoning",
+      "llm_requested": false,
+      "failure_reasons": [],
+      "error": null,
+      "latency_ms": 0,
+      "runtime_warnings": [],
+      "result": {
+        "question": "松原公司的成立年份是哪一年？请根据当前年份记录和公司沿革记录计算。",
+        "answer": "按资料中的年份锚点计算，公司成立于 1956 年；2026 − 70 = 1956。[1][2]",
+        "grounded": true,
+        "refused": false,
+        "method": "deterministic_reasoning",
+        "confidence": 1.0,
+        "model_error": null,
+        "reasoning": {
+          "answer": "按资料中的年份锚点计算，公司成立于 1956 年；2026 − 70 = 1956。[1][2]",
+          "indices": [
+            1,
+            2
+          ],
+          "confidence": 1.0,
+          "operation": "year_subtract",
+          "facts": [],
+          "refused": false,
+          "source_chunk_ids": [
+            "history#0",
+            "clock#0"
+          ]
+        },
+        "context_truncated": false,
+        "context_chunk_ids": [
+          "clock#0",
+          "history#0"
+        ],
+        "citations": [
+          {
+            "index": 1,
+            "doc_id": "history",
+            "chunk_id": "history#0",
+            "title": "松原沿革记录",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R04_foundation_arabic/history",
+            "snippet": "松原公司沿革记录：本公司于70年前创立。",
+            "score": 0.376491,
+            "vector_score": 0.528191
+          },
+          {
+            "index": 2,
+            "doc_id": "clock",
+            "chunk_id": "clock#0",
+            "title": "松原年份记录",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R04_foundation_arabic/clock",
+            "snippet": "松原公司的当前年份记录：今年是2026年。",
+            "score": 0.420483,
+            "vector_score": 0.527413
+          }
+        ],
+        "query_rewrite": {
+          "original": "松原公司的成立年份是哪一年？请根据当前年份记录和公司沿革记录计算。",
+          "rewritten": "松原公司的成立年份是哪一年？请根据当前年份记录和公司沿革记录计算。 2024年",
+          "matched_synonyms": [],
+          "expansions": [
+            "2024年"
+          ],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "松原",
+            "原公",
+            "成立",
+            "立年",
+            "年份",
+            "哪一",
+            "一年",
+            "请根",
+            "根据",
+            "据当",
+            "当前",
+            "前年",
+            "份记",
+            "记录",
+            "司沿",
+            "沿革",
+            "革记",
+            "录计",
+            "计算",
+            "2024"
+          ],
+          "candidate_count": 2,
+          "top_score": 0.420483,
+          "debug": {
+            "bm25_hits": 6,
+            "vector_hits": 6,
+            "fused": 2,
+            "reranked": 2,
+            "top_score": 0.420483,
+            "versioned_families": [],
+            "plan": {
+              "complex": true,
+              "enumeration": false,
+              "temporal": true,
+              "bridge": false,
+              "queries": [
+                "松原公司的成立年份是哪一年？请根据当前年份记录和公司沿革记录计算。",
+                "松原公司的成立年份是哪一年？请根据当前年份记录和公司沿革记录计算。 成立 创立 公司沿革",
+                "当前年份记录 今年 本年"
+              ],
+              "policy_as_of": false,
+              "strict_effective_date": false,
+              "bridge_queries": []
+            },
+            "evidence_budget_complete": true,
+            "omitted_relevant_chunks": 0,
+            "vector_fallback": false,
+            "vector_errors": []
+          },
+          "chunks": [
+            {
+              "doc_id": "clock",
+              "title": "松原年份记录",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.420483,
+              "rrf_score": 0.032787,
+              "bm25_rank": 1,
+              "vector_rank": 1,
+              "vector_score": 0.527413,
+              "features": {
+                "coverage": 0.3181,
+                "vector": 0.5274,
+                "title": 0.4,
+                "phrase": 0.75,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "history",
+              "title": "松原沿革记录",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.376491,
+              "rrf_score": 0.032522,
+              "bm25_rank": 2,
+              "vector_rank": 1,
+              "vector_score": 0.528191,
+              "features": {
+                "coverage": 0.2701,
+                "vector": 0.5282,
+                "title": 0.4,
+                "phrase": 0.5,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            }
+          ]
+        },
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "R05_missing_year_anchor",
+      "category": "uncertainty",
+      "question": "榆光公司的成立年份是哪一年？",
+      "expected": "缺少七十年前所相对的年份锚点，拒绝给出确定年份",
+      "answer": "现有企业资料不足以确定答案：“年前”缺少同一主体的明确年份锚点，不能默认使用系统年份。",
+      "strict_passed": true,
+      "answer_correct": true,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": false,
+      "expected_docs": [
+        "history"
+      ],
+      "retrieved_docs": [
+        "history"
+      ],
+      "cited_docs": [],
+      "pattern_hits": {},
+      "negative_pattern_hits": {
+        "(?:19|20)\\d{2}\\s*年": false
+      },
+      "refused": true,
+      "method": "evidence_check",
+      "llm_requested": false,
+      "failure_reasons": [],
+      "error": null,
+      "latency_ms": 0,
+      "runtime_warnings": [],
+      "result": {
+        "question": "榆光公司的成立年份是哪一年？",
+        "answer": "现有企业资料不足以确定答案：“年前”缺少同一主体的明确年份锚点，不能默认使用系统年份。",
+        "grounded": false,
+        "refused": true,
+        "method": "evidence_check",
+        "confidence": 0.0,
+        "model_error": null,
+        "reasoning": {
+          "answer": "现有企业资料不足以确定答案：“年前”缺少同一主体的明确年份锚点，不能默认使用系统年份。",
+          "indices": [],
+          "confidence": 1.0,
+          "operation": "insufficient_evidence",
+          "facts": [],
+          "refused": true
+        },
+        "context_truncated": false,
+        "context_chunk_ids": [],
+        "citations": [],
+        "query_rewrite": {
+          "original": "榆光公司的成立年份是哪一年？",
+          "rewritten": "榆光公司的成立年份是哪一年？",
+          "matched_synonyms": [],
+          "expansions": [],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "榆光",
+            "光公",
+            "成立",
+            "立年",
+            "年份",
+            "哪一",
+            "一年"
+          ],
+          "candidate_count": 1,
+          "top_score": 0.261746,
+          "debug": {
+            "bm25_hits": 3,
+            "vector_hits": 3,
+            "fused": 1,
+            "reranked": 1,
+            "top_score": 0.261746,
+            "versioned_families": [],
+            "plan": {
+              "complex": true,
+              "enumeration": false,
+              "temporal": true,
+              "bridge": false,
+              "queries": [
+                "榆光公司的成立年份是哪一年？",
+                "榆光公司的成立年份是哪一年？ 成立 创立 公司沿革",
+                "当前年份记录 今年 本年"
+              ],
+              "policy_as_of": false,
+              "strict_effective_date": false,
+              "bridge_queries": []
+            },
+            "evidence_budget_complete": true,
+            "omitted_relevant_chunks": 0,
+            "vector_fallback": false,
+            "vector_errors": []
+          },
+          "chunks": [
+            {
+              "doc_id": "history",
+              "title": "榆光沿革记录",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "",
+              "chunk_type": "text",
+              "score": 0.261746,
+              "rrf_score": 0.032787,
+              "bm25_rank": 1,
+              "vector_rank": 1,
+              "vector_score": 0.239731,
+              "features": {
+                "coverage": 0.2424,
+                "vector": 0.2397,
+                "title": 0.2857,
+                "phrase": 0.5,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            }
+          ]
+        },
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "R06_conflicting_year_anchor",
+      "category": "uncertainty",
+      "question": "竹汀公司的成立年份是哪一年？请核对所有当前年份记录。",
+      "expected": "相同权威的年份记录2026与2025冲突，拒绝给出唯一成立年",
+      "answer": "现有企业资料不足以确定答案：同一主体的年份锚点或年限存在冲突，请先核实版本。",
+      "strict_passed": true,
+      "answer_correct": true,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": false,
+      "expected_docs": [
+        "clock_a",
+        "clock_b",
+        "history"
+      ],
+      "retrieved_docs": [
+        "clock_a",
+        "clock_b",
+        "history"
+      ],
+      "cited_docs": [],
+      "pattern_hits": {},
+      "negative_pattern_hits": {
+        "(?:成立于|成立年份.{0,3})(?:1955|1956)": false
+      },
+      "refused": true,
+      "method": "evidence_check",
+      "llm_requested": false,
+      "failure_reasons": [],
+      "error": null,
+      "latency_ms": 0,
+      "runtime_warnings": [],
+      "result": {
+        "question": "竹汀公司的成立年份是哪一年？请核对所有当前年份记录。",
+        "answer": "现有企业资料不足以确定答案：同一主体的年份锚点或年限存在冲突，请先核实版本。",
+        "grounded": false,
+        "refused": true,
+        "method": "evidence_check",
+        "confidence": 0.0,
+        "model_error": null,
+        "reasoning": {
+          "answer": "现有企业资料不足以确定答案：同一主体的年份锚点或年限存在冲突，请先核实版本。",
+          "indices": [],
+          "confidence": 1.0,
+          "operation": "insufficient_evidence",
+          "facts": [],
+          "refused": true
+        },
+        "context_truncated": false,
+        "context_chunk_ids": [],
+        "citations": [],
+        "query_rewrite": {
+          "original": "竹汀公司的成立年份是哪一年？请核对所有当前年份记录。",
+          "rewritten": "竹汀公司的成立年份是哪一年？请核对所有当前年份记录。 2024年",
+          "matched_synonyms": [],
+          "expansions": [
+            "2024年"
+          ],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "竹汀",
+            "汀公",
+            "成立",
+            "立年",
+            "年份",
+            "哪一",
+            "一年",
+            "请核",
+            "核对",
+            "对所",
+            "所有",
+            "有当",
+            "当前",
+            "前年",
+            "份记",
+            "记录",
+            "2024"
+          ],
+          "candidate_count": 3,
+          "top_score": 0.455553,
+          "debug": {
+            "bm25_hits": 9,
+            "vector_hits": 9,
+            "fused": 3,
+            "reranked": 3,
+            "top_score": 0.455553,
+            "versioned_families": [],
+            "plan": {
+              "complex": true,
+              "enumeration": false,
+              "temporal": true,
+              "bridge": false,
+              "queries": [
+                "竹汀公司的成立年份是哪一年？请核对所有当前年份记录。",
+                "竹汀公司的成立年份是哪一年？请核对所有当前年份记录。 成立 创立 公司沿革",
+                "当前年份记录 今年 本年"
+              ],
+              "policy_as_of": false,
+              "strict_effective_date": false,
+              "bridge_queries": []
+            },
+            "evidence_budget_complete": true,
+            "omitted_relevant_chunks": 0,
+            "vector_fallback": false,
+            "vector_errors": []
+          },
+          "chunks": [
+            {
+              "doc_id": "clock_a",
+              "title": "竹汀年份甲",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.455553,
+              "rrf_score": 0.032787,
+              "bm25_rank": 1,
+              "vector_rank": 1,
+              "vector_score": 0.610784,
+              "features": {
+                "coverage": 0.3609,
+                "vector": 0.6108,
+                "title": 0.3529,
+                "phrase": 0.75,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "clock_b",
+              "title": "竹汀年份乙",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.441031,
+              "rrf_score": 0.032258,
+              "bm25_rank": 2,
+              "vector_rank": 2,
+              "vector_score": 0.562378,
+              "features": {
+                "coverage": 0.3609,
+                "vector": 0.5624,
+                "title": 0.3529,
+                "phrase": 0.75,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "history",
+              "title": "竹汀沿革记录",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.251847,
+              "rrf_score": 0.032266,
+              "bm25_rank": 1,
+              "vector_rank": 3,
+              "vector_score": 0.355666,
+              "features": {
+                "coverage": 0.1496,
+                "vector": 0.3557,
+                "title": 0.2353,
+                "phrase": 0.5,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            }
+          ]
+        },
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "R07_person_department",
+      "category": "relational_join",
+      "question": "云澈项目负责人的所属部门是什么？请连接项目负责人记录与员工部门记录。",
+      "expected": "负责人顾清岚 -> 顾清岚属于霜叶研究部，因此为霜叶研究部；须显式形成项目负责人所属部门结论，仅并列两句原文不通过",
+      "answer": "负责人是顾清岚 [1]；顾清岚所属部门为霜叶研究部 [2]，因此项目负责人的所属部门为霜叶研究部 [1][2]。",
+      "strict_passed": true,
+      "answer_correct": true,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": true,
+      "expected_docs": [
+        "project",
+        "staff"
+      ],
+      "retrieved_docs": [
+        "project",
+        "staff"
+      ],
+      "cited_docs": [
+        "project",
+        "staff"
+      ],
+      "pattern_hits": {
+        "霜叶研究部": true,
+        "(?:因此[^。]{0,70}霜叶研究部|云澈项目(?:的)?负责人[^。]{0,30}(?:所属部门|属于|隶属)[^。]{0,20}霜叶研究部)": true
+      },
+      "negative_pattern_hits": {},
+      "refused": false,
+      "method": "deterministic_reasoning",
+      "llm_requested": false,
+      "failure_reasons": [],
+      "error": null,
+      "latency_ms": 0,
+      "runtime_warnings": [],
+      "result": {
+        "question": "云澈项目负责人的所属部门是什么？请连接项目负责人记录与员工部门记录。",
+        "answer": "负责人是顾清岚 [1]；顾清岚所属部门为霜叶研究部 [2]，因此项目负责人的所属部门为霜叶研究部 [1][2]。",
+        "grounded": true,
+        "refused": false,
+        "method": "deterministic_reasoning",
+        "confidence": 1.0,
+        "model_error": null,
+        "reasoning": {
+          "answer": "负责人是顾清岚 [1]；顾清岚所属部门为霜叶研究部 [2]，因此项目负责人的所属部门为霜叶研究部 [1][2]。",
+          "indices": [
+            1,
+            2
+          ],
+          "confidence": 1.0,
+          "operation": "relational_join",
+          "facts": [],
+          "refused": false,
+          "source_chunk_ids": [
+            "project#0",
+            "staff#0"
+          ]
+        },
+        "context_truncated": false,
+        "context_chunk_ids": [
+          "project#0",
+          "staff#0"
+        ],
+        "citations": [
+          {
+            "index": 1,
+            "doc_id": "project",
+            "chunk_id": "project#0",
+            "title": "云澈项目负责人记录",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R07_person_department/project",
+            "snippet": "云澈项目负责人记录：云澈项目的负责人是顾清岚。",
+            "score": 0.592031,
+            "vector_score": 0.557316
+          },
+          {
+            "index": 2,
+            "doc_id": "staff",
+            "chunk_id": "staff#0",
+            "title": "员工部门归属表",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R07_person_department/staff",
+            "snippet": "员工部门记录：顾清岚所属部门为霜叶研究部。",
+            "score": 0.383741,
+            "vector_score": 0.342735
+          }
+        ],
+        "query_rewrite": {
+          "original": "云澈项目负责人的所属部门是什么？请连接项目负责人记录与员工部门记录。",
+          "rewritten": "云澈项目负责人的所属部门是什么？请连接项目负责人记录与员工部门记录。",
+          "matched_synonyms": [],
+          "expansions": [],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "云澈",
+            "澈项",
+            "项目",
+            "目负",
+            "负责",
+            "责人",
+            "所属",
+            "属部",
+            "部门",
+            "请连",
+            "连接",
+            "接项",
+            "人记",
+            "记录",
+            "员工",
+            "工部",
+            "门记"
+          ],
+          "candidate_count": 2,
+          "top_score": 0.592031,
+          "debug": {
+            "bm25_hits": 4,
+            "vector_hits": 4,
+            "fused": 2,
+            "reranked": 2,
+            "top_score": 0.592031,
+            "versioned_families": [],
+            "plan": {
+              "complex": true,
+              "enumeration": false,
+              "temporal": false,
+              "bridge": true,
+              "queries": [
+                "云澈项目负责人的所属部门是什么？请连接项目负责人记录与员工部门记录。",
+                "云澈项目负责人的所属部门是什么？请连接项目负责人记录与员工部门记录。 负责人 员工 部门归属"
+              ],
+              "policy_as_of": true,
+              "strict_effective_date": false,
+              "bridge_queries": [
+                "顾清岚 所属部门 员工 部门归属"
+              ]
+            },
+            "evidence_budget_complete": true,
+            "omitted_relevant_chunks": 0,
+            "vector_fallback": false,
+            "vector_errors": []
+          },
+          "chunks": [
+            {
+              "doc_id": "project",
+              "title": "云澈项目负责人记录",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.592031,
+              "rrf_score": 0.032787,
+              "bm25_rank": 1,
+              "vector_rank": 1,
+              "vector_score": 0.557316,
+              "features": {
+                "coverage": 0.4591,
+                "vector": 0.5573,
+                "title": 0.9412,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "staff",
+              "title": "员工部门归属表",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.383741,
+              "rrf_score": 0.032258,
+              "bm25_rank": 2,
+              "vector_rank": 2,
+              "vector_score": 0.342735,
+              "features": {
+                "coverage": 0.4008,
+                "vector": 0.3427,
+                "title": 0.4706,
+                "phrase": 0.5,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            }
+          ]
+        },
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "R08_sum_money_units",
+      "category": "numeric_sum",
+      "question": "苔原项目甲合同与乙合同的金额合计多少元？请统一金额单位。",
+      "expected": "1.2万元+8000元=20000元",
+      "answer": "统一单位后，12000 + 8000 = 20000 元。[1][2]",
+      "strict_passed": true,
+      "answer_correct": true,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": true,
+      "expected_docs": [
+        "contract_a",
+        "contract_b"
+      ],
+      "retrieved_docs": [
+        "contract_a",
+        "contract_b"
+      ],
+      "cited_docs": [
+        "contract_a",
+        "contract_b"
+      ],
+      "pattern_hits": {
+        "(?:20[ ,，]?000\\s*元|2(?:\\.0)?\\s*万元|二万\\s*元)": true
+      },
+      "negative_pattern_hits": {},
+      "refused": false,
+      "method": "deterministic_reasoning",
+      "llm_requested": false,
+      "failure_reasons": [],
+      "error": null,
+      "latency_ms": 0,
+      "runtime_warnings": [],
+      "result": {
+        "question": "苔原项目甲合同与乙合同的金额合计多少元？请统一金额单位。",
+        "answer": "统一单位后，12000 + 8000 = 20000 元。[1][2]",
+        "grounded": true,
+        "refused": false,
+        "method": "deterministic_reasoning",
+        "confidence": 1.0,
+        "model_error": null,
+        "reasoning": {
+          "answer": "统一单位后，12000 + 8000 = 20000 元。[1][2]",
+          "indices": [
+            1,
+            2
+          ],
+          "confidence": 1.0,
+          "operation": "sum",
+          "facts": [
+            {
+              "label": "苔原项目甲合同金额",
+              "yuan": "12000",
+              "citation": 1
+            },
+            {
+              "label": "苔原项目乙合同金额",
+              "yuan": "8000",
+              "citation": 2
+            }
+          ],
+          "refused": false,
+          "source_chunk_ids": [
+            "contract_a#0",
+            "contract_b#0"
+          ]
+        },
+        "context_truncated": false,
+        "context_chunk_ids": [
+          "contract_a#0",
+          "contract_b#0"
+        ],
+        "citations": [
+          {
+            "index": 1,
+            "doc_id": "contract_a",
+            "chunk_id": "contract_a#0",
+            "title": "苔原甲合同",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R08_sum_money_units/contract_a",
+            "snippet": "苔原项目甲合同金额：1.2万元。",
+            "score": 0.533699,
+            "vector_score": 0.508728
+          },
+          {
+            "index": 2,
+            "doc_id": "contract_b",
+            "chunk_id": "contract_b#0",
+            "title": "苔原乙合同",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R08_sum_money_units/contract_b",
+            "snippet": "苔原项目乙合同金额：8000元。",
+            "score": 0.486482,
+            "vector_score": 0.428911
+          }
+        ],
+        "query_rewrite": {
+          "original": "苔原项目甲合同与乙合同的金额合计多少元？请统一金额单位。",
+          "rewritten": "苔原项目甲合同与乙合同的金额合计多少元？请统一金额单位。",
+          "matched_synonyms": [],
+          "expansions": [],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "苔原",
+            "原项",
+            "项目",
+            "目甲",
+            "甲合",
+            "合同",
+            "乙合",
+            "金额",
+            "额合",
+            "合计",
+            "计多",
+            "少元",
+            "请统",
+            "统一",
+            "一金",
+            "额单",
+            "单位"
+          ],
+          "candidate_count": 2,
+          "top_score": 0.533699,
+          "debug": {
+            "bm25_hits": 2,
+            "vector_hits": 2,
+            "fused": 2,
+            "reranked": 2,
+            "top_score": 0.533699,
+            "versioned_families": [],
+            "plan": {
+              "complex": true,
+              "enumeration": false,
+              "temporal": false,
+              "bridge": false,
+              "queries": [
+                "苔原项目甲合同与乙合同的金额合计多少元？请统一金额单位。"
+              ],
+              "policy_as_of": false,
+              "strict_effective_date": false,
+              "bridge_queries": []
+            },
+            "evidence_budget_complete": true,
+            "omitted_relevant_chunks": 0,
+            "vector_fallback": false,
+            "vector_errors": []
+          },
+          "chunks": [
+            {
+              "doc_id": "contract_a",
+              "title": "苔原甲合同",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.533699,
+              "rrf_score": 0.032787,
+              "bm25_rank": 1,
+              "vector_rank": 1,
+              "vector_score": 0.508728,
+              "features": {
+                "coverage": 0.3703,
+                "vector": 0.5087,
+                "title": 0.3529,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.08,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "contract_b",
+              "title": "苔原乙合同",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.486482,
+              "rrf_score": 0.032258,
+              "bm25_rank": 2,
+              "vector_rank": 2,
+              "vector_score": 0.428911,
+              "features": {
+                "coverage": 0.3122,
+                "vector": 0.4289,
+                "title": 0.3529,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.08,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            }
+          ]
+        },
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "R09_difference_money",
+      "category": "numeric_difference",
+      "question": "苔原项目甲合同金额比乙合同金额多多少元？请统一金额单位后计算差额。",
+      "expected": "12000-8000=4000元",
+      "answer": "统一单位后，12000 − 8000 = 4000 元。[1][2]",
+      "strict_passed": true,
+      "answer_correct": true,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": true,
+      "expected_docs": [
+        "contract_a",
+        "contract_b"
+      ],
+      "retrieved_docs": [
+        "contract_a",
+        "contract_b"
+      ],
+      "cited_docs": [
+        "contract_a",
+        "contract_b"
+      ],
+      "pattern_hits": {
+        "(?:4[ ,，]?000\\s*元|0\\.4\\s*万元|四千\\s*元)": true
+      },
+      "negative_pattern_hits": {},
+      "refused": false,
+      "method": "deterministic_reasoning",
+      "llm_requested": false,
+      "failure_reasons": [],
+      "error": null,
+      "latency_ms": 0,
+      "runtime_warnings": [],
+      "result": {
+        "question": "苔原项目甲合同金额比乙合同金额多多少元？请统一金额单位后计算差额。",
+        "answer": "统一单位后，12000 − 8000 = 4000 元。[1][2]",
+        "grounded": true,
+        "refused": false,
+        "method": "deterministic_reasoning",
+        "confidence": 1.0,
+        "model_error": null,
+        "reasoning": {
+          "answer": "统一单位后，12000 − 8000 = 4000 元。[1][2]",
+          "indices": [
+            1,
+            2
+          ],
+          "confidence": 1.0,
+          "operation": "subtract",
+          "facts": [
+            {
+              "label": "苔原项目甲合同金额",
+              "yuan": "12000",
+              "citation": 1
+            },
+            {
+              "label": "苔原项目乙合同金额",
+              "yuan": "8000",
+              "citation": 2
+            }
+          ],
+          "refused": false,
+          "source_chunk_ids": [
+            "contract_a#0",
+            "contract_b#0"
+          ]
+        },
+        "context_truncated": false,
+        "context_chunk_ids": [
+          "contract_a#0",
+          "contract_b#0"
+        ],
+        "citations": [
+          {
+            "index": 1,
+            "doc_id": "contract_a",
+            "chunk_id": "contract_a#0",
+            "title": "苔原甲合同",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R09_difference_money/contract_a",
+            "snippet": "苔原项目甲合同金额：1.2万元。",
+            "score": 0.505277,
+            "vector_score": 0.567068
+          },
+          {
+            "index": 2,
+            "doc_id": "contract_b",
+            "chunk_id": "contract_b#0",
+            "title": "苔原乙合同",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R09_difference_money/contract_b",
+            "snippet": "苔原项目乙合同金额：8000元。",
+            "score": 0.489551,
+            "vector_score": 0.568829
+          }
+        ],
+        "query_rewrite": {
+          "original": "苔原项目甲合同金额比乙合同金额多多少元？请统一金额单位后计算差额。",
+          "rewritten": "苔原项目甲合同金额比乙合同金额多多少元？请统一金额单位后计算差额。",
+          "matched_synonyms": [],
+          "expansions": [],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "苔原",
+            "原项",
+            "项目",
+            "目甲",
+            "甲合",
+            "合同",
+            "同金",
+            "金额",
+            "额比",
+            "比乙",
+            "乙合",
+            "额多",
+            "多多",
+            "少元",
+            "请统",
+            "统一",
+            "一金",
+            "额单",
+            "单位",
+            "位后",
+            "后计",
+            "计算",
+            "算差",
+            "差额"
+          ],
+          "candidate_count": 2,
+          "top_score": 0.505277,
+          "debug": {
+            "bm25_hits": 2,
+            "vector_hits": 2,
+            "fused": 2,
+            "reranked": 2,
+            "top_score": 0.505277,
+            "versioned_families": [],
+            "plan": {
+              "complex": true,
+              "enumeration": false,
+              "temporal": false,
+              "bridge": false,
+              "queries": [
+                "苔原项目甲合同金额比乙合同金额多多少元？请统一金额单位后计算差额。"
+              ],
+              "policy_as_of": false,
+              "strict_effective_date": false,
+              "bridge_queries": []
+            },
+            "evidence_budget_complete": true,
+            "omitted_relevant_chunks": 0,
+            "vector_fallback": false,
+            "vector_errors": []
+          },
+          "chunks": [
+            {
+              "doc_id": "contract_a",
+              "title": "苔原甲合同",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.505277,
+              "rrf_score": 0.032522,
+              "bm25_rank": 1,
+              "vector_rank": 2,
+              "vector_score": 0.567068,
+              "features": {
+                "coverage": 0.2941,
+                "vector": 0.5671,
+                "title": 0.25,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.08,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "contract_b",
+              "title": "苔原乙合同",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.489551,
+              "rrf_score": 0.032522,
+              "bm25_rank": 2,
+              "vector_rank": 1,
+              "vector_score": 0.568829,
+              "features": {
+                "coverage": 0.2535,
+                "vector": 0.5688,
+                "title": 0.25,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.08,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            }
+          ]
+        },
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "R10_sum_cn_numbers",
+      "category": "numeric_sum",
+      "question": "银柳项目甲合同与乙合同的金额合计多少元？请统一金额单位。",
+      "expected": "一万二千元+八千元=20000元",
+      "answer": "统一单位后，12000 + 8000 = 20000 元。[1][2]",
+      "strict_passed": true,
+      "answer_correct": true,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": true,
+      "expected_docs": [
+        "contract_a",
+        "contract_b"
+      ],
+      "retrieved_docs": [
+        "contract_a",
+        "contract_b"
+      ],
+      "cited_docs": [
+        "contract_a",
+        "contract_b"
+      ],
+      "pattern_hits": {
+        "(?:20[ ,，]?000\\s*元|2(?:\\.0)?\\s*万元|二万\\s*元)": true
+      },
+      "negative_pattern_hits": {},
+      "refused": false,
+      "method": "deterministic_reasoning",
+      "llm_requested": false,
+      "failure_reasons": [],
+      "error": null,
+      "latency_ms": 0,
+      "runtime_warnings": [],
+      "result": {
+        "question": "银柳项目甲合同与乙合同的金额合计多少元？请统一金额单位。",
+        "answer": "统一单位后，12000 + 8000 = 20000 元。[1][2]",
+        "grounded": true,
+        "refused": false,
+        "method": "deterministic_reasoning",
+        "confidence": 1.0,
+        "model_error": null,
+        "reasoning": {
+          "answer": "统一单位后，12000 + 8000 = 20000 元。[1][2]",
+          "indices": [
+            1,
+            2
+          ],
+          "confidence": 1.0,
+          "operation": "sum",
+          "facts": [
+            {
+              "label": "银柳项目甲合同金额",
+              "yuan": "12000",
+              "citation": 1
+            },
+            {
+              "label": "银柳项目乙合同金额",
+              "yuan": "8000",
+              "citation": 2
+            }
+          ],
+          "refused": false,
+          "source_chunk_ids": [
+            "contract_a#0",
+            "contract_b#0"
+          ]
+        },
+        "context_truncated": false,
+        "context_chunk_ids": [
+          "contract_a#0",
+          "contract_b#0"
+        ],
+        "citations": [
+          {
+            "index": 1,
+            "doc_id": "contract_a",
+            "chunk_id": "contract_a#0",
+            "title": "银柳甲合同",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R10_sum_cn_numbers/contract_a",
+            "snippet": "银柳项目甲合同金额：一万二千元。",
+            "score": 0.440976,
+            "vector_score": 0.466318
+          },
+          {
+            "index": 2,
+            "doc_id": "contract_b",
+            "chunk_id": "contract_b#0",
+            "title": "银柳乙合同",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R10_sum_cn_numbers/contract_b",
+            "snippet": "银柳项目乙合同金额：八千元。",
+            "score": 0.392203,
+            "vector_score": 0.381317
+          }
+        ],
+        "query_rewrite": {
+          "original": "银柳项目甲合同与乙合同的金额合计多少元？请统一金额单位。",
+          "rewritten": "银柳项目甲合同与乙合同的金额合计多少元？请统一金额单位。",
+          "matched_synonyms": [],
+          "expansions": [],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "银柳",
+            "柳项",
+            "项目",
+            "目甲",
+            "甲合",
+            "合同",
+            "乙合",
+            "金额",
+            "额合",
+            "合计",
+            "计多",
+            "少元",
+            "请统",
+            "统一",
+            "一金",
+            "额单",
+            "单位"
+          ],
+          "candidate_count": 2,
+          "top_score": 0.440976,
+          "debug": {
+            "bm25_hits": 2,
+            "vector_hits": 2,
+            "fused": 2,
+            "reranked": 2,
+            "top_score": 0.440976,
+            "versioned_families": [],
+            "plan": {
+              "complex": true,
+              "enumeration": false,
+              "temporal": false,
+              "bridge": false,
+              "queries": [
+                "银柳项目甲合同与乙合同的金额合计多少元？请统一金额单位。"
+              ],
+              "policy_as_of": false,
+              "strict_effective_date": false,
+              "bridge_queries": []
+            },
+            "evidence_budget_complete": true,
+            "omitted_relevant_chunks": 0,
+            "vector_fallback": false,
+            "vector_errors": []
+          },
+          "chunks": [
+            {
+              "doc_id": "contract_a",
+              "title": "银柳甲合同",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.440976,
+              "rrf_score": 0.032787,
+              "bm25_rank": 1,
+              "vector_rank": 1,
+              "vector_score": 0.466318,
+              "features": {
+                "coverage": 0.3703,
+                "vector": 0.4663,
+                "title": 0.3529,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "contract_b",
+              "title": "银柳乙合同",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.392203,
+              "rrf_score": 0.032258,
+              "bm25_rank": 2,
+              "vector_rank": 2,
+              "vector_score": 0.381317,
+              "features": {
+                "coverage": 0.3122,
+                "vector": 0.3813,
+                "title": 0.3529,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            }
+          ]
+        },
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "R11_date_exclusive",
+      "category": "date_difference",
+      "question": "白桦项目从开始日期到结束日期相隔多少天？按结束日减开始日计算，不包含开始日。",
+      "expected": "2024-02-28 至2024-03-01，闰年相隔2天",
+      "answer": "2024-03-01 − 2024-02-28 = 2 天（不包含开始日）。[1][2]",
+      "strict_passed": true,
+      "answer_correct": true,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": true,
+      "expected_docs": [
+        "end",
+        "start"
+      ],
+      "retrieved_docs": [
+        "end",
+        "start"
+      ],
+      "cited_docs": [
+        "end",
+        "start"
+      ],
+      "pattern_hits": {
+        "(?:2|两|二)\\s*天": true
+      },
+      "negative_pattern_hits": {},
+      "refused": false,
+      "method": "deterministic_reasoning",
+      "llm_requested": false,
+      "failure_reasons": [],
+      "error": null,
+      "latency_ms": 0,
+      "runtime_warnings": [],
+      "result": {
+        "question": "白桦项目从开始日期到结束日期相隔多少天？按结束日减开始日计算，不包含开始日。",
+        "answer": "2024-03-01 − 2024-02-28 = 2 天（不包含开始日）。[1][2]",
+        "grounded": true,
+        "refused": false,
+        "method": "deterministic_reasoning",
+        "confidence": 1.0,
+        "model_error": null,
+        "reasoning": {
+          "answer": "2024-03-01 − 2024-02-28 = 2 天（不包含开始日）。[1][2]",
+          "indices": [
+            1,
+            2
+          ],
+          "confidence": 1.0,
+          "operation": "date_difference",
+          "facts": [],
+          "refused": false,
+          "source_chunk_ids": [
+            "start#0",
+            "end#0"
+          ]
+        },
+        "context_truncated": false,
+        "context_chunk_ids": [
+          "start#0",
+          "end#0"
+        ],
+        "citations": [
+          {
+            "index": 1,
+            "doc_id": "start",
+            "chunk_id": "start#0",
+            "title": "白桦项目启动记录",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R11_date_exclusive/start",
+            "snippet": "白桦项目开始日期：2024年2月28日。",
+            "score": 0.334101,
+            "vector_score": 0.361874
+          },
+          {
+            "index": 2,
+            "doc_id": "end",
+            "chunk_id": "end#0",
+            "title": "白桦项目结项记录",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R11_date_exclusive/end",
+            "snippet": "白桦项目结束日期：2024年3月1日。",
+            "score": 0.322426,
+            "vector_score": 0.322957
+          }
+        ],
+        "query_rewrite": {
+          "original": "白桦项目从开始日期到结束日期相隔多少天？按结束日减开始日计算，不包含开始日。",
+          "rewritten": "白桦项目从开始日期到结束日期相隔多少天？按结束日减开始日计算，不包含开始日。",
+          "matched_synonyms": [],
+          "expansions": [],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "白桦",
+            "桦项",
+            "项目",
+            "目从",
+            "从开",
+            "开始",
+            "始日",
+            "日期",
+            "期到",
+            "到结",
+            "结束",
+            "束日",
+            "期相",
+            "相隔",
+            "隔多",
+            "少天",
+            "按结",
+            "日减",
+            "减开",
+            "日计",
+            "计算",
+            "不包",
+            "包含",
+            "含开"
+          ],
+          "candidate_count": 2,
+          "top_score": 0.334101,
+          "debug": {
+            "bm25_hits": 2,
+            "vector_hits": 2,
+            "fused": 2,
+            "reranked": 2,
+            "top_score": 0.334101,
+            "versioned_families": [],
+            "plan": {
+              "complex": true,
+              "enumeration": false,
+              "temporal": false,
+              "bridge": false,
+              "queries": [
+                "白桦项目从开始日期到结束日期相隔多少天？按结束日减开始日计算，不包含开始日。"
+              ],
+              "policy_as_of": false,
+              "strict_effective_date": false,
+              "bridge_queries": []
+            },
+            "evidence_budget_complete": true,
+            "omitted_relevant_chunks": 0,
+            "vector_fallback": false,
+            "vector_errors": []
+          },
+          "chunks": [
+            {
+              "doc_id": "start",
+              "title": "白桦项目启动记录",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.334101,
+              "rrf_score": 0.032787,
+              "bm25_rank": 1,
+              "vector_rank": 1,
+              "vector_score": 0.361874,
+              "features": {
+                "coverage": 0.2201,
+                "vector": 0.3619,
+                "title": 0.25,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "end",
+              "title": "白桦项目结项记录",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.322426,
+              "rrf_score": 0.032258,
+              "bm25_rank": 2,
+              "vector_rank": 2,
+              "vector_score": 0.322957,
+              "features": {
+                "coverage": 0.2201,
+                "vector": 0.323,
+                "title": 0.25,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            }
+          ]
+        },
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "R12_date_inclusive",
+      "category": "date_difference",
+      "question": "白桦项目从开始日期到结束日期共涉及多少个自然日？开始日和结束日都计入。",
+      "expected": "2024-02-28至2024-03-01，首尾均计入为3个自然日",
+      "answer": "2024-03-01 − 2024-02-28 + 1 = 3 天（开始日、结束日均计入）。[1][2]",
+      "strict_passed": true,
+      "answer_correct": true,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": true,
+      "expected_docs": [
+        "end",
+        "start"
+      ],
+      "retrieved_docs": [
+        "end",
+        "start"
+      ],
+      "cited_docs": [
+        "end",
+        "start"
+      ],
+      "pattern_hits": {
+        "(?:3|三)\\s*(?:个)?(?:自然日|天)": true
+      },
+      "negative_pattern_hits": {},
+      "refused": false,
+      "method": "deterministic_reasoning",
+      "llm_requested": false,
+      "failure_reasons": [],
+      "error": null,
+      "latency_ms": 0,
+      "runtime_warnings": [],
+      "result": {
+        "question": "白桦项目从开始日期到结束日期共涉及多少个自然日？开始日和结束日都计入。",
+        "answer": "2024-03-01 − 2024-02-28 + 1 = 3 天（开始日、结束日均计入）。[1][2]",
+        "grounded": true,
+        "refused": false,
+        "method": "deterministic_reasoning",
+        "confidence": 1.0,
+        "model_error": null,
+        "reasoning": {
+          "answer": "2024-03-01 − 2024-02-28 + 1 = 3 天（开始日、结束日均计入）。[1][2]",
+          "indices": [
+            1,
+            2
+          ],
+          "confidence": 1.0,
+          "operation": "date_difference",
+          "facts": [],
+          "refused": false,
+          "source_chunk_ids": [
+            "start#0",
+            "end#0"
+          ]
+        },
+        "context_truncated": false,
+        "context_chunk_ids": [
+          "end#0",
+          "start#0"
+        ],
+        "citations": [
+          {
+            "index": 1,
+            "doc_id": "start",
+            "chunk_id": "start#0",
+            "title": "白桦项目启动记录",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R12_date_inclusive/start",
+            "snippet": "白桦项目开始日期：2024年2月28日。",
+            "score": 0.333188,
+            "vector_score": 0.339974
+          },
+          {
+            "index": 2,
+            "doc_id": "end",
+            "chunk_id": "end#0",
+            "title": "白桦项目结项记录",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R12_date_inclusive/end",
+            "snippet": "白桦项目结束日期：2024年3月1日。",
+            "score": 0.354855,
+            "vector_score": 0.412196
+          }
+        ],
+        "query_rewrite": {
+          "original": "白桦项目从开始日期到结束日期共涉及多少个自然日？开始日和结束日都计入。",
+          "rewritten": "白桦项目从开始日期到结束日期共涉及多少个自然日？开始日和结束日都计入。",
+          "matched_synonyms": [],
+          "expansions": [],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "白桦",
+            "桦项",
+            "项目",
+            "目从",
+            "从开",
+            "开始",
+            "始日",
+            "日期",
+            "期到",
+            "到结",
+            "结束",
+            "束日",
+            "期共",
+            "共涉",
+            "涉及",
+            "及多",
+            "少个",
+            "个自",
+            "自然",
+            "然日",
+            "日都",
+            "都计",
+            "计入"
+          ],
+          "candidate_count": 2,
+          "top_score": 0.354855,
+          "debug": {
+            "bm25_hits": 2,
+            "vector_hits": 2,
+            "fused": 2,
+            "reranked": 2,
+            "top_score": 0.354855,
+            "versioned_families": [],
+            "plan": {
+              "complex": true,
+              "enumeration": false,
+              "temporal": false,
+              "bridge": false,
+              "queries": [
+                "白桦项目从开始日期到结束日期共涉及多少个自然日？开始日和结束日都计入。"
+              ],
+              "policy_as_of": false,
+              "strict_effective_date": false,
+              "bridge_queries": []
+            },
+            "evidence_budget_complete": true,
+            "omitted_relevant_chunks": 0,
+            "vector_fallback": false,
+            "vector_errors": []
+          },
+          "chunks": [
+            {
+              "doc_id": "end",
+              "title": "白桦项目结项记录",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.354855,
+              "rrf_score": 0.032522,
+              "bm25_rank": 2,
+              "vector_rank": 1,
+              "vector_score": 0.412196,
+              "features": {
+                "coverage": 0.2302,
+                "vector": 0.4122,
+                "title": 0.2609,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "start",
+              "title": "白桦项目启动记录",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.333188,
+              "rrf_score": 0.032522,
+              "bm25_rank": 1,
+              "vector_rank": 2,
+              "vector_score": 0.339974,
+              "features": {
+                "coverage": 0.2302,
+                "vector": 0.34,
+                "title": 0.2609,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            }
+          ]
+        },
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "R13_twelve_evidence",
+      "category": "large_set_count",
+      "question": "栖岚公司的组织清单中共有多少个不同部门？请列出全部部门并统计总数。",
+      "expected": "12个不同部门，必须召回并引用全部12份证据",
+      "answer": "在本次可见组织清单范围内，去重后共 12 个部门：天青市场部 [1]；银杉制造部 [2]；白露人力部 [3]；长风销售部 [4]；碧泉采购部 [5]；松石研究部 [6]；明川交付部 [7]；紫藤运维部 [8]；秋海法务部 [9]；寒星战略部 [10]；青芒财务部 [11]；流萤质量部 [12]。",
+      "strict_passed": true,
+      "answer_correct": true,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": true,
+      "expected_docs": [
+        "many_1",
+        "many_10",
+        "many_11",
+        "many_12",
+        "many_2",
+        "many_3",
+        "many_4",
+        "many_5",
+        "many_6",
+        "many_7",
+        "many_8",
+        "many_9"
+      ],
+      "retrieved_docs": [
+        "many_1",
+        "many_10",
+        "many_11",
+        "many_12",
+        "many_2",
+        "many_3",
+        "many_4",
+        "many_5",
+        "many_6",
+        "many_7",
+        "many_8",
+        "many_9"
+      ],
+      "cited_docs": [
+        "many_1",
+        "many_10",
+        "many_11",
+        "many_12",
+        "many_2",
+        "many_3",
+        "many_4",
+        "many_5",
+        "many_6",
+        "many_7",
+        "many_8",
+        "many_9"
+      ],
+      "pattern_hits": {
+        "(?:12|十二)\\s*个": true,
+        "松石研究部": true,
+        "银杉制造部": true,
+        "长风销售部": true,
+        "青芒财务部": true,
+        "白露人力部": true,
+        "秋海法务部": true,
+        "碧泉采购部": true,
+        "紫藤运维部": true,
+        "流萤质量部": true,
+        "天青市场部": true,
+        "寒星战略部": true,
+        "明川交付部": true
+      },
+      "negative_pattern_hits": {},
+      "refused": false,
+      "method": "deterministic_reasoning",
+      "llm_requested": false,
+      "failure_reasons": [],
+      "error": null,
+      "latency_ms": 0,
+      "runtime_warnings": [],
+      "result": {
+        "question": "栖岚公司的组织清单中共有多少个不同部门？请列出全部部门并统计总数。",
+        "answer": "在本次可见组织清单范围内，去重后共 12 个部门：天青市场部 [1]；银杉制造部 [2]；白露人力部 [3]；长风销售部 [4]；碧泉采购部 [5]；松石研究部 [6]；明川交付部 [7]；紫藤运维部 [8]；秋海法务部 [9]；寒星战略部 [10]；青芒财务部 [11]；流萤质量部 [12]。",
+        "grounded": true,
+        "refused": false,
+        "method": "deterministic_reasoning",
+        "confidence": 1.0,
+        "model_error": null,
+        "reasoning": {
+          "answer": "在本次可见组织清单范围内，去重后共 12 个部门：天青市场部 [1]；银杉制造部 [2]；白露人力部 [3]；长风销售部 [4]；碧泉采购部 [5]；松石研究部 [6]；明川交付部 [7]；紫藤运维部 [8]；秋海法务部 [9]；寒星战略部 [10]；青芒财务部 [11]；流萤质量部 [12]。",
+          "indices": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "confidence": 1.0,
+          "operation": "count_unique",
+          "facts": [
+            "天青市场部",
+            "银杉制造部",
+            "白露人力部",
+            "长风销售部",
+            "碧泉采购部",
+            "松石研究部",
+            "明川交付部",
+            "紫藤运维部",
+            "秋海法务部",
+            "寒星战略部",
+            "青芒财务部",
+            "流萤质量部"
+          ],
+          "refused": false,
+          "source_chunk_ids": [
+            "many_10#0",
+            "many_2#0",
+            "many_5#0",
+            "many_3#0",
+            "many_7#0",
+            "many_1#0",
+            "many_12#0",
+            "many_8#0",
+            "many_6#0",
+            "many_11#0",
+            "many_4#0",
+            "many_9#0"
+          ]
+        },
+        "context_truncated": false,
+        "context_chunk_ids": [
+          "many_10#0",
+          "many_2#0",
+          "many_5#0",
+          "many_3#0",
+          "many_7#0",
+          "many_1#0",
+          "many_12#0",
+          "many_8#0",
+          "many_6#0",
+          "many_11#0",
+          "many_4#0",
+          "many_9#0"
+        ],
+        "citations": [
+          {
+            "index": 1,
+            "doc_id": "many_10",
+            "chunk_id": "many_10#0",
+            "title": "栖岚组织记录10",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R13_twelve_evidence/many_10",
+            "snippet": "栖岚公司组织清单第10项。栖岚公司设有天青市场部，该部门参与联合运营。",
+            "score": 0.308774,
+            "vector_score": 0.331879
+          },
+          {
+            "index": 2,
+            "doc_id": "many_2",
+            "chunk_id": "many_2#0",
+            "title": "栖岚组织记录2",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R13_twelve_evidence/many_2",
+            "snippet": "栖岚公司组织清单第2项。栖岚公司设有银杉制造部，该部门参与联合运营。",
+            "score": 0.3022,
+            "vector_score": 0.309965
+          },
+          {
+            "index": 3,
+            "doc_id": "many_5",
+            "chunk_id": "many_5#0",
+            "title": "栖岚组织记录5",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R13_twelve_evidence/many_5",
+            "snippet": "栖岚公司组织清单第5项。栖岚公司设有白露人力部，该部门参与联合运营。",
+            "score": 0.300324,
+            "vector_score": 0.30371
+          },
+          {
+            "index": 4,
+            "doc_id": "many_3",
+            "chunk_id": "many_3#0",
+            "title": "栖岚组织记录3",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R13_twelve_evidence/many_3",
+            "snippet": "栖岚公司组织清单第3项。栖岚公司设有长风销售部，该部门参与联合运营。",
+            "score": 0.297072,
+            "vector_score": 0.292873
+          },
+          {
+            "index": 5,
+            "doc_id": "many_7",
+            "chunk_id": "many_7#0",
+            "title": "栖岚组织记录7",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R13_twelve_evidence/many_7",
+            "snippet": "栖岚公司组织清单第7项。栖岚公司设有碧泉采购部，该部门参与联合运营。",
+            "score": 0.296757,
+            "vector_score": 0.291823
+          },
+          {
+            "index": 6,
+            "doc_id": "many_1",
+            "chunk_id": "many_1#0",
+            "title": "栖岚组织记录1",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R13_twelve_evidence/many_1",
+            "snippet": "栖岚公司组织清单第1项。栖岚公司设有松石研究部，该部门参与联合运营。",
+            "score": 0.290811,
+            "vector_score": 0.272003
+          },
+          {
+            "index": 7,
+            "doc_id": "many_12",
+            "chunk_id": "many_12#0",
+            "title": "栖岚组织记录12",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R13_twelve_evidence/many_12",
+            "snippet": "栖岚公司组织清单第12项。栖岚公司设有明川交付部，该部门参与联合运营。",
+            "score": 0.290811,
+            "vector_score": 0.272003
+          },
+          {
+            "index": 8,
+            "doc_id": "many_8",
+            "chunk_id": "many_8#0",
+            "title": "栖岚组织记录8",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R13_twelve_evidence/many_8",
+            "snippet": "栖岚公司组织清单第8项。栖岚公司设有紫藤运维部，该部门参与联合运营。",
+            "score": 0.280221,
+            "vector_score": 0.236703
+          },
+          {
+            "index": 9,
+            "doc_id": "many_6",
+            "chunk_id": "many_6#0",
+            "title": "栖岚组织记录6",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R13_twelve_evidence/many_6",
+            "snippet": "栖岚公司组织清单第6项。栖岚公司设有秋海法务部，该部门参与联合运营。",
+            "score": 0.275284,
+            "vector_score": 0.220246
+          },
+          {
+            "index": 10,
+            "doc_id": "many_11",
+            "chunk_id": "many_11#0",
+            "title": "栖岚组织记录11",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R13_twelve_evidence/many_11",
+            "snippet": "栖岚公司组织清单第11项。栖岚公司设有寒星战略部，该部门参与联合运营。",
+            "score": 0.27436,
+            "vector_score": 0.217165
+          },
+          {
+            "index": 11,
+            "doc_id": "many_4",
+            "chunk_id": "many_4#0",
+            "title": "栖岚组织记录4",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R13_twelve_evidence/many_4",
+            "snippet": "栖岚公司组织清单第4项。栖岚公司设有青芒财务部，该部门参与联合运营。",
+            "score": 0.273166,
+            "vector_score": 0.213186
+          },
+          {
+            "index": 12,
+            "doc_id": "many_9",
+            "chunk_id": "many_9#0",
+            "title": "栖岚组织记录9",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R13_twelve_evidence/many_9",
+            "snippet": "栖岚公司组织清单第9项。栖岚公司设有流萤质量部，该部门参与联合运营。",
+            "score": 0.26095,
+            "vector_score": 0.172466
+          }
+        ],
+        "query_rewrite": {
+          "original": "栖岚公司的组织清单中共有多少个不同部门？请列出全部部门并统计总数。",
+          "rewritten": "栖岚公司的组织清单中共有多少个不同部门？请列出全部部门并统计总数。",
+          "matched_synonyms": [],
+          "expansions": [],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "栖岚",
+            "岚公",
+            "组织",
+            "织清",
+            "清单",
+            "单中",
+            "中共",
+            "共有",
+            "有多",
+            "少个",
+            "个不",
+            "不同",
+            "同部",
+            "部门",
+            "请列",
+            "列出",
+            "出全",
+            "全部",
+            "部部",
+            "门并",
+            "并统",
+            "统计",
+            "计总",
+            "总数"
+          ],
+          "candidate_count": 12,
+          "top_score": 0.308774,
+          "debug": {
+            "bm25_hits": 36,
+            "vector_hits": 36,
+            "fused": 12,
+            "reranked": 12,
+            "top_score": 0.308774,
+            "versioned_families": [],
+            "plan": {
+              "complex": true,
+              "enumeration": true,
+              "temporal": false,
+              "bridge": false,
+              "queries": [
+                "栖岚公司的组织清单中共有多少个不同部门？请列出全部部门并统计总数。",
+                "栖岚公司的组织清单中共有多少个不同部门？请列出全部部门并统计总数。 组织清单 部门名称",
+                "栖岚公司的组织清单中共有多少个不同部门？请列出全部部门并统计总数。 部门职责 组织架构"
+              ],
+              "policy_as_of": true,
+              "strict_effective_date": false,
+              "bridge_queries": []
+            },
+            "evidence_budget_complete": true,
+            "omitted_relevant_chunks": 0,
+            "vector_fallback": false,
+            "vector_errors": []
+          },
+          "chunks": [
+            {
+              "doc_id": "many_10",
+              "title": "栖岚组织记录10",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.308774,
+              "rrf_score": 0.030415,
+              "bm25_rank": 10,
+              "vector_rank": 2,
+              "vector_score": 0.331879,
+              "features": {
+                "coverage": 0.2105,
+                "vector": 0.3319,
+                "title": 0.1667,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "many_2",
+              "title": "栖岚组织记录2",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.3022,
+              "rrf_score": 0.031514,
+              "bm25_rank": 2,
+              "vector_rank": 5,
+              "vector_score": 0.309965,
+              "features": {
+                "coverage": 0.2105,
+                "vector": 0.31,
+                "title": 0.1667,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "many_5",
+              "title": "栖岚组织记录5",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.300324,
+              "rrf_score": 0.031778,
+              "bm25_rank": 5,
+              "vector_rank": 1,
+              "vector_score": 0.30371,
+              "features": {
+                "coverage": 0.2105,
+                "vector": 0.3037,
+                "title": 0.1667,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "many_3",
+              "title": "栖岚组织记录3",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.297072,
+              "rrf_score": 0.030159,
+              "bm25_rank": 3,
+              "vector_rank": 10,
+              "vector_score": 0.292873,
+              "features": {
+                "coverage": 0.2105,
+                "vector": 0.2929,
+                "title": 0.1667,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "many_7",
+              "title": "栖岚组织记录7",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.296757,
+              "rrf_score": 0.031054,
+              "bm25_rank": 7,
+              "vector_rank": 2,
+              "vector_score": 0.291823,
+              "features": {
+                "coverage": 0.2105,
+                "vector": 0.2918,
+                "title": 0.1667,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "many_1",
+              "title": "栖岚组织记录1",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.290811,
+              "rrf_score": 0.032018,
+              "bm25_rank": 1,
+              "vector_rank": 4,
+              "vector_score": 0.272003,
+              "features": {
+                "coverage": 0.2105,
+                "vector": 0.272,
+                "title": 0.1667,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "many_12",
+              "title": "栖岚组织记录12",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.290811,
+              "rrf_score": 0.029274,
+              "bm25_rank": 12,
+              "vector_rank": 5,
+              "vector_score": 0.272003,
+              "features": {
+                "coverage": 0.2105,
+                "vector": 0.272,
+                "title": 0.1667,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "many_8",
+              "title": "栖岚组织记录8",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.280221,
+              "rrf_score": 0.030579,
+              "bm25_rank": 8,
+              "vector_rank": 3,
+              "vector_score": 0.236703,
+              "features": {
+                "coverage": 0.2105,
+                "vector": 0.2367,
+                "title": 0.1667,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "many_6",
+              "title": "栖岚组织记录6",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.275284,
+              "rrf_score": 0.030077,
+              "bm25_rank": 6,
+              "vector_rank": 7,
+              "vector_score": 0.220246,
+              "features": {
+                "coverage": 0.2105,
+                "vector": 0.2202,
+                "title": 0.1667,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "many_11",
+              "title": "栖岚组织记录11",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.27436,
+              "rrf_score": 0.02879,
+              "bm25_rank": 11,
+              "vector_rank": 8,
+              "vector_score": 0.217165,
+              "features": {
+                "coverage": 0.2105,
+                "vector": 0.2172,
+                "title": 0.1667,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "many_4",
+              "title": "栖岚组织记录4",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.273166,
+              "rrf_score": 0.030118,
+              "bm25_rank": 4,
+              "vector_rank": 9,
+              "vector_score": 0.213186,
+              "features": {
+                "coverage": 0.2105,
+                "vector": 0.2132,
+                "title": 0.1667,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "many_9",
+              "title": "栖岚组织记录9",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.26095,
+              "rrf_score": 0.028577,
+              "bm25_rank": 9,
+              "vector_rank": 11,
+              "vector_score": 0.172466,
+              "features": {
+                "coverage": 0.2105,
+                "vector": 0.1725,
+                "title": 0.1667,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            }
+          ]
+        },
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "R14_employee_denied",
+      "category": "access_control",
+      "question": "苍梧项目的保密预算金额是多少？",
+      "expected": "普通员工看不到finance保密文档，应拒答且检索结果不泄露",
+      "answer": "现有企业资料未覆盖该问题，建议联系对应业务部门确认。",
+      "strict_passed": true,
+      "answer_correct": true,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": true,
+      "expected_docs": [],
+      "retrieved_docs": [],
+      "cited_docs": [],
+      "pattern_hits": {},
+      "negative_pattern_hits": {
+        "987654": false
+      },
+      "refused": true,
+      "method": "extractive",
+      "llm_requested": false,
+      "failure_reasons": [],
+      "error": null,
+      "latency_ms": 15,
+      "runtime_warnings": [],
+      "result": {
+        "question": "苍梧项目的保密预算金额是多少？",
+        "answer": "现有企业资料未覆盖该问题，建议联系对应业务部门确认。",
+        "grounded": false,
+        "refused": true,
+        "method": "extractive",
+        "confidence": 0.0,
+        "model_error": null,
+        "reasoning": null,
+        "context_truncated": false,
+        "context_chunk_ids": [],
+        "citations": [],
+        "query_rewrite": {
+          "original": "苍梧项目的保密预算金额是多少？",
+          "rewritten": "苍梧项目的保密预算金额是多少？",
+          "matched_synonyms": [],
+          "expansions": [],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "苍梧",
+            "梧项",
+            "项目",
+            "保密",
+            "密预",
+            "预算",
+            "算金",
+            "金额"
+          ],
+          "candidate_count": 0,
+          "top_score": 0.0,
+          "debug": {
+            "bm25_hits": 0,
+            "vector_hits": 0,
+            "fused": 0,
+            "reranked": 0,
+            "top_score": 0.0,
+            "versioned_families": [],
+            "plan": {
+              "complex": false,
+              "enumeration": false,
+              "temporal": false,
+              "bridge": false,
+              "queries": [
+                "苍梧项目的保密预算金额是多少？"
+              ],
+              "policy_as_of": true,
+              "strict_effective_date": false,
+              "bridge_queries": []
+            },
+            "evidence_budget_complete": true,
+            "omitted_relevant_chunks": 0,
+            "vector_fallback": false,
+            "vector_errors": []
+          },
+          "chunks": []
+        },
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "R15_finance_allowed",
+      "category": "access_control",
+      "question": "苍梧项目的保密预算金额是多少？",
+      "expected": "财务角色可读取987654元并给出引用",
+      "answer": "根据企业知识库资料：苍梧项目保密预算金额为987654元。 [1]。",
+      "strict_passed": true,
+      "answer_correct": true,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": true,
+      "expected_docs": [
+        "secret"
+      ],
+      "retrieved_docs": [
+        "secret"
+      ],
+      "cited_docs": [
+        "secret"
+      ],
+      "pattern_hits": {
+        "987[ ,，]?654\\s*元": true
+      },
+      "negative_pattern_hits": {},
+      "refused": false,
+      "method": "extractive",
+      "llm_requested": false,
+      "failure_reasons": [],
+      "error": null,
+      "latency_ms": 516,
+      "runtime_warnings": [],
+      "result": {
+        "question": "苍梧项目的保密预算金额是多少？",
+        "answer": "根据企业知识库资料：苍梧项目保密预算金额为987654元。 [1]。",
+        "grounded": true,
+        "refused": false,
+        "method": "extractive",
+        "confidence": 1.4499,
+        "model_error": null,
+        "reasoning": null,
+        "context_truncated": false,
+        "context_chunk_ids": [
+          "secret#0"
+        ],
+        "citations": [
+          {
+            "index": 1,
+            "doc_id": "secret",
+            "chunk_id": "secret#0",
+            "title": "苍梧保密预算",
+            "section": "事实记录",
+            "department": "审计部",
+            "author": "",
+            "version": "v1",
+            "format": "md",
+            "effective_date": "2024-01-01",
+            "doc_updated_at": "2024-01-01T00:00:00",
+            "source_path": "synthetic://R15_finance_allowed/secret",
+            "snippet": "苍梧项目保密预算金额为987654元。",
+            "score": 0.914077,
+            "vector_score": 0.613589
+          }
+        ],
+        "query_rewrite": {
+          "original": "苍梧项目的保密预算金额是多少？",
+          "rewritten": "苍梧项目的保密预算金额是多少？",
+          "matched_synonyms": [],
+          "expansions": [],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "苍梧",
+            "梧项",
+            "项目",
+            "保密",
+            "密预",
+            "预算",
+            "算金",
+            "金额"
+          ],
+          "candidate_count": 1,
+          "top_score": 0.914077,
+          "debug": {
+            "bm25_hits": 1,
+            "vector_hits": 1,
+            "fused": 1,
+            "reranked": 1,
+            "top_score": 0.914077,
+            "versioned_families": [],
+            "plan": {
+              "complex": false,
+              "enumeration": false,
+              "temporal": false,
+              "bridge": false,
+              "queries": [
+                "苍梧项目的保密预算金额是多少？"
+              ],
+              "policy_as_of": true,
+              "strict_effective_date": false,
+              "bridge_queries": []
+            },
+            "evidence_budget_complete": true,
+            "omitted_relevant_chunks": 0,
+            "vector_fallback": false,
+            "vector_errors": []
+          },
+          "chunks": [
+            {
+              "doc_id": "secret",
+              "title": "苍梧保密预算",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.914077,
+              "rrf_score": 0.032787,
+              "bm25_rank": 1,
+              "vector_rank": 1,
+              "vector_score": 0.613589,
+              "features": {
+                "coverage": 1.0,
+                "vector": 0.6136,
+                "title": 1.0,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.08,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            }
+          ]
+        },
+        "latency_ms": 516
+      }
+    },
+    {
+      "id": "R16_before_first_effective",
+      "category": "version_safety",
+      "question": "截至2026年，榛林公司有效的差旅住宿标准是多少？",
+      "expected": "两个版本都尚未生效，应拒答，不能回退到未来版本",
+      "answer": "现有企业资料未覆盖该问题，建议联系对应业务部门确认。",
+      "strict_passed": true,
+      "answer_correct": true,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": true,
+      "expected_docs": [],
+      "retrieved_docs": [],
+      "cited_docs": [],
+      "pattern_hits": {},
+      "negative_pattern_hits": {
+        "(?:700|900)\\s*元": false
+      },
+      "refused": true,
+      "method": "extractive",
+      "llm_requested": false,
+      "failure_reasons": [],
+      "error": null,
+      "latency_ms": 0,
+      "runtime_warnings": [],
+      "result": {
+        "question": "截至2026年，榛林公司有效的差旅住宿标准是多少？",
+        "answer": "现有企业资料未覆盖该问题，建议联系对应业务部门确认。",
+        "grounded": false,
+        "refused": true,
+        "method": "extractive",
+        "confidence": 0.0,
+        "model_error": null,
+        "reasoning": null,
+        "context_truncated": false,
+        "context_chunk_ids": [],
+        "citations": [],
+        "query_rewrite": {
+          "original": "截至2026年，榛林公司有效的差旅住宿标准是多少？",
+          "rewritten": "截至2026年，榛林公司有效的差旅住宿标准是多少？ 出差 住宿标准 交通标准",
+          "matched_synonyms": [
+            "差旅"
+          ],
+          "expansions": [
+            "出差",
+            "住宿标准",
+            "交通标准"
+          ],
+          "time_label": "2026年"
+        },
+        "retrieval": {
+          "as_of": "2026-12-31",
+          "terms": [
+            "2026",
+            "截至",
+            "榛林",
+            "林公",
+            "司有",
+            "有效",
+            "差旅",
+            "旅住",
+            "住宿",
+            "宿标",
+            "标准",
+            "出差",
+            "交通",
+            "通标"
+          ],
+          "candidate_count": 0,
+          "top_score": 0.0,
+          "debug": {
+            "bm25_hits": 0,
+            "vector_hits": 0,
+            "fused": 0,
+            "reranked": 0,
+            "top_score": 0.0,
+            "versioned_families": [
+              "future_policy"
+            ],
+            "plan": {
+              "complex": false,
+              "enumeration": false,
+              "temporal": false,
+              "bridge": false,
+              "queries": [
+                "截至2026年，榛林公司有效的差旅住宿标准是多少？"
+              ],
+              "policy_as_of": true,
+              "strict_effective_date": true,
+              "bridge_queries": []
+            },
+            "evidence_budget_complete": true,
+            "omitted_relevant_chunks": 0,
+            "vector_fallback": false,
+            "vector_errors": []
+          },
+          "chunks": []
+        },
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "R17_missing_join_target",
+      "category": "uncertainty",
+      "question": "雪杉项目负责人的所属部门是什么？",
+      "expected": "有负责人但没有员工部门映射，应拒答，不能答非所问",
+      "answer": "现有企业资料不足以确定答案：已找到项目负责人，但缺少其所属部门记录。",
+      "strict_passed": true,
+      "answer_correct": true,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": false,
+      "expected_docs": [
+        "project"
+      ],
+      "retrieved_docs": [
+        "project"
+      ],
+      "cited_docs": [],
+      "pattern_hits": {},
+      "negative_pattern_hits": {},
+      "refused": true,
+      "method": "evidence_check",
+      "llm_requested": false,
+      "failure_reasons": [],
+      "error": null,
+      "latency_ms": 0,
+      "runtime_warnings": [],
+      "result": {
+        "question": "雪杉项目负责人的所属部门是什么？",
+        "answer": "现有企业资料不足以确定答案：已找到项目负责人，但缺少其所属部门记录。",
+        "grounded": false,
+        "refused": true,
+        "method": "evidence_check",
+        "confidence": 0.0,
+        "model_error": null,
+        "reasoning": {
+          "answer": "现有企业资料不足以确定答案：已找到项目负责人，但缺少其所属部门记录。",
+          "indices": [],
+          "confidence": 1.0,
+          "operation": "insufficient_evidence",
+          "facts": [],
+          "refused": true
+        },
+        "context_truncated": false,
+        "context_chunk_ids": [],
+        "citations": [],
+        "query_rewrite": {
+          "original": "雪杉项目负责人的所属部门是什么？",
+          "rewritten": "雪杉项目负责人的所属部门是什么？",
+          "matched_synonyms": [],
+          "expansions": [],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "雪杉",
+            "杉项",
+            "项目",
+            "目负",
+            "负责",
+            "责人",
+            "所属",
+            "属部",
+            "部门"
+          ],
+          "candidate_count": 1,
+          "top_score": 0.670769,
+          "debug": {
+            "bm25_hits": 2,
+            "vector_hits": 2,
+            "fused": 1,
+            "reranked": 1,
+            "top_score": 0.670769,
+            "versioned_families": [],
+            "plan": {
+              "complex": true,
+              "enumeration": false,
+              "temporal": false,
+              "bridge": true,
+              "queries": [
+                "雪杉项目负责人的所属部门是什么？",
+                "雪杉项目负责人的所属部门是什么？ 负责人 员工 部门归属"
+              ],
+              "policy_as_of": true,
+              "strict_effective_date": false,
+              "bridge_queries": [
+                "梁知远 所属部门 员工 部门归属"
+              ]
+            },
+            "evidence_budget_complete": true,
+            "omitted_relevant_chunks": 0,
+            "vector_fallback": false,
+            "vector_errors": []
+          },
+          "chunks": [
+            {
+              "doc_id": "project",
+              "title": "雪杉项目负责人",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.670769,
+              "rrf_score": 0.032787,
+              "bm25_rank": 1,
+              "vector_rank": 1,
+              "vector_score": 0.582049,
+              "features": {
+                "coverage": 0.6154,
+                "vector": 0.582,
+                "title": 1.0,
+                "phrase": 1.0,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            }
+          ]
+        },
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "R18_no_scope_total",
+      "category": "bounded_count",
+      "question": "这份摘录能否确定霁川公司所有部门的总数？",
+      "expected": "资料明确仅摘录局部，无法断言公司部门总数，应拒答",
+      "answer": "现有企业资料不足以确定答案：部门资料只覆盖局部，不能推出公司全部部门总数。",
+      "strict_passed": true,
+      "answer_correct": true,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": false,
+      "expected_docs": [
+        "partial"
+      ],
+      "retrieved_docs": [
+        "partial"
+      ],
+      "cited_docs": [],
+      "pattern_hits": {},
+      "negative_pattern_hits": {},
+      "refused": true,
+      "method": "evidence_check",
+      "llm_requested": false,
+      "failure_reasons": [],
+      "error": null,
+      "latency_ms": 0,
+      "runtime_warnings": [],
+      "result": {
+        "question": "这份摘录能否确定霁川公司所有部门的总数？",
+        "answer": "现有企业资料不足以确定答案：部门资料只覆盖局部，不能推出公司全部部门总数。",
+        "grounded": false,
+        "refused": true,
+        "method": "evidence_check",
+        "confidence": 0.0,
+        "model_error": null,
+        "reasoning": {
+          "answer": "现有企业资料不足以确定答案：部门资料只覆盖局部，不能推出公司全部部门总数。",
+          "indices": [],
+          "confidence": 1.0,
+          "operation": "insufficient_evidence",
+          "facts": [],
+          "refused": true
+        },
+        "context_truncated": false,
+        "context_chunk_ids": [],
+        "citations": [],
+        "query_rewrite": {
+          "original": "这份摘录能否确定霁川公司所有部门的总数？",
+          "rewritten": "这份摘录能否确定霁川公司所有部门的总数？",
+          "matched_synonyms": [],
+          "expansions": [],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "这份",
+            "份摘",
+            "摘录",
+            "录能",
+            "能否",
+            "否确",
+            "确定",
+            "定霁",
+            "霁川",
+            "川公",
+            "司所",
+            "所有",
+            "有部",
+            "部门",
+            "总数"
+          ],
+          "candidate_count": 1,
+          "top_score": 0.199211,
+          "debug": {
+            "bm25_hits": 3,
+            "vector_hits": 3,
+            "fused": 1,
+            "reranked": 1,
+            "top_score": 0.199211,
+            "versioned_families": [],
+            "plan": {
+              "complex": true,
+              "enumeration": true,
+              "temporal": false,
+              "bridge": false,
+              "queries": [
+                "这份摘录能否确定霁川公司所有部门的总数？",
+                "这份摘录能否确定霁川公司所有部门的总数？ 组织清单 部门名称",
+                "这份摘录能否确定霁川公司所有部门的总数？ 部门职责 组织架构"
+              ],
+              "policy_as_of": true,
+              "strict_effective_date": false,
+              "bridge_queries": []
+            },
+            "evidence_budget_complete": true,
+            "omitted_relevant_chunks": 0,
+            "vector_fallback": false,
+            "vector_errors": []
+          },
+          "chunks": [
+            {
+              "doc_id": "partial",
+              "title": "霁川组织资料节选",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.199211,
+              "rrf_score": 0.032787,
+              "bm25_rank": 1,
+              "vector_rank": 1,
+              "vector_score": 0.213566,
+              "features": {
+                "coverage": 0.2254,
+                "vector": 0.2136,
+                "title": 0.1333,
+                "phrase": 0.25,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            }
+          ]
+        },
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "R19_employee_after_finance",
+      "category": "access_control",
+      "question": "苍梧项目的保密预算金额是多少？",
+      "expected": "财务用户访问后，切换普通员工仍须拒答；无权限结果不可继承",
+      "answer": "现有企业资料未覆盖该问题，建议联系对应业务部门确认。",
+      "strict_passed": true,
+      "answer_correct": true,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": true,
+      "expected_docs": [],
+      "retrieved_docs": [],
+      "cited_docs": [],
+      "pattern_hits": {},
+      "negative_pattern_hits": {
+        "987654": false
+      },
+      "refused": true,
+      "method": "extractive",
+      "llm_requested": false,
+      "failure_reasons": [],
+      "error": null,
+      "latency_ms": 0,
+      "runtime_warnings": [],
+      "result": {
+        "question": "苍梧项目的保密预算金额是多少？",
+        "answer": "现有企业资料未覆盖该问题，建议联系对应业务部门确认。",
+        "grounded": false,
+        "refused": true,
+        "method": "extractive",
+        "confidence": 0.0,
+        "model_error": null,
+        "reasoning": null,
+        "context_truncated": false,
+        "context_chunk_ids": [],
+        "citations": [],
+        "query_rewrite": {
+          "original": "苍梧项目的保密预算金额是多少？",
+          "rewritten": "苍梧项目的保密预算金额是多少？",
+          "matched_synonyms": [],
+          "expansions": [],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "苍梧",
+            "梧项",
+            "项目",
+            "保密",
+            "密预",
+            "预算",
+            "算金",
+            "金额"
+          ],
+          "candidate_count": 0,
+          "top_score": 0.0,
+          "debug": {
+            "bm25_hits": 0,
+            "vector_hits": 0,
+            "fused": 0,
+            "reranked": 0,
+            "top_score": 0.0,
+            "versioned_families": [],
+            "plan": {
+              "complex": false,
+              "enumeration": false,
+              "temporal": false,
+              "bridge": false,
+              "queries": [
+                "苍梧项目的保密预算金额是多少？"
+              ],
+              "policy_as_of": true,
+              "strict_effective_date": false,
+              "bridge_queries": []
+            },
+            "evidence_budget_complete": true,
+            "omitted_relevant_chunks": 0,
+            "vector_fallback": false,
+            "vector_errors": []
+          },
+          "chunks": []
+        },
+        "latency_ms": 0
+      }
+    },
+    {
+      "id": "R20_unrelated_year_anchor",
+      "category": "entity_alignment",
+      "question": "榆枫公司的成立年份是哪一年？请根据榆枫沿革计算。",
+      "expected": "2026是另一家公司松舟的锚点，榆枫的七十年前无锚点，必须拒答",
+      "answer": "现有企业资料不足以确定答案：“年前”缺少同一主体的明确年份锚点，不能默认使用系统年份。",
+      "strict_passed": true,
+      "answer_correct": true,
+      "all_evidence_recalled": true,
+      "all_evidence_cited": false,
+      "expected_docs": [
+        "target_history"
+      ],
+      "retrieved_docs": [
+        "other_clock",
+        "target_history"
+      ],
+      "cited_docs": [],
+      "pattern_hits": {},
+      "negative_pattern_hits": {
+        "1956\\s*年": false
+      },
+      "refused": true,
+      "method": "evidence_check",
+      "llm_requested": false,
+      "failure_reasons": [],
+      "error": null,
+      "latency_ms": 0,
+      "runtime_warnings": [],
+      "result": {
+        "question": "榆枫公司的成立年份是哪一年？请根据榆枫沿革计算。",
+        "answer": "现有企业资料不足以确定答案：“年前”缺少同一主体的明确年份锚点，不能默认使用系统年份。",
+        "grounded": false,
+        "refused": true,
+        "method": "evidence_check",
+        "confidence": 0.0,
+        "model_error": null,
+        "reasoning": {
+          "answer": "现有企业资料不足以确定答案：“年前”缺少同一主体的明确年份锚点，不能默认使用系统年份。",
+          "indices": [],
+          "confidence": 1.0,
+          "operation": "insufficient_evidence",
+          "facts": [],
+          "refused": true
+        },
+        "context_truncated": false,
+        "context_chunk_ids": [],
+        "citations": [],
+        "query_rewrite": {
+          "original": "榆枫公司的成立年份是哪一年？请根据榆枫沿革计算。",
+          "rewritten": "榆枫公司的成立年份是哪一年？请根据榆枫沿革计算。",
+          "matched_synonyms": [],
+          "expansions": [],
+          "time_label": ""
+        },
+        "retrieval": {
+          "as_of": null,
+          "terms": [
+            "榆枫",
+            "枫公",
+            "成立",
+            "立年",
+            "年份",
+            "哪一",
+            "一年",
+            "请根",
+            "根据",
+            "据榆",
+            "枫沿",
+            "沿革",
+            "革计",
+            "计算"
+          ],
+          "candidate_count": 2,
+          "top_score": 0.274495,
+          "debug": {
+            "bm25_hits": 6,
+            "vector_hits": 6,
+            "fused": 2,
+            "reranked": 2,
+            "top_score": 0.274495,
+            "versioned_families": [],
+            "plan": {
+              "complex": true,
+              "enumeration": false,
+              "temporal": true,
+              "bridge": false,
+              "queries": [
+                "榆枫公司的成立年份是哪一年？请根据榆枫沿革计算。",
+                "榆枫公司的成立年份是哪一年？请根据榆枫沿革计算。 成立 创立 公司沿革",
+                "当前年份记录 今年 本年"
+              ],
+              "policy_as_of": false,
+              "strict_effective_date": false,
+              "bridge_queries": []
+            },
+            "evidence_budget_complete": true,
+            "omitted_relevant_chunks": 0,
+            "vector_fallback": false,
+            "vector_errors": []
+          },
+          "chunks": [
+            {
+              "doc_id": "target_history",
+              "title": "榆枫沿革记录",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "",
+              "chunk_type": "text",
+              "score": 0.274495,
+              "rrf_score": 0.032787,
+              "bm25_rank": 1,
+              "vector_rank": 1,
+              "vector_score": 0.265819,
+              "features": {
+                "coverage": 0.2012,
+                "vector": 0.2658,
+                "title": 0.4286,
+                "phrase": 0.5,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            },
+            {
+              "doc_id": "other_clock",
+              "title": "松舟年份记录",
+              "section": "事实记录",
+              "department": "审计部",
+              "version": "v1",
+              "doc_updated_at": "2024-01-01T00:00:00",
+              "chunk_type": "text",
+              "score": 0.272925,
+              "rrf_score": 0.032787,
+              "bm25_rank": 1,
+              "vector_rank": 1,
+              "vector_score": 0.665584,
+              "features": {
+                "coverage": 0.0671,
+                "vector": 0.6656,
+                "title": 0.1429,
+                "phrase": 0.25,
+                "table_bonus": 0.0,
+                "entity_bonus": 0.0,
+                "numeric_bonus": 0.0,
+                "year_bonus": 0.0,
+                "date_bonus": 0.0,
+                "latest_bonus": 0.0
+              }
+            }
+          ]
+        },
+        "latency_ms": 0
+      }
+    }
+  ]
+}

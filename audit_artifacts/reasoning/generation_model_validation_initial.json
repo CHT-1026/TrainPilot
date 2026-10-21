@@ -1,0 +1,47 @@
+{
+  "scope": "Generation stage only; retrieval tested separately",
+  "model": "qwen3.5-plus",
+  "enable_thinking": false,
+  "max_tokens": 1400,
+  "max_retries": 0,
+  "passed": 0,
+  "total": 4,
+  "cases": [
+    {
+      "id": "R01_four_departments",
+      "passed": false,
+      "error": "ModelAnswerValidationError",
+      "answer": "星槐公司组织清单中共有 4 个不同部门，分别为：星河研究部、赤峰制造部、远帆销售部、青禾财务部 [1][2][3][4]。\n\n具体部门列表如下：\n1. 星河研究部 [1]\n2. 赤峰制造部 [2]\n3. 远帆销售部 [3]\n4. 青禾财务部 [4]\n\n总数计算：\n清单第 1 项至第 4 项各对应一个独立部门，无重复名称。\n算式：1（星河）+ 1（赤峰）+ 1（远帆）+ 1（青禾）= 4 个部门。\n\n结论：星槐公司组织清单中不同部门总数为 4 个。",
+      "validation_error": "模型回答未通过逐句引用检查",
+      "method": "real_llm_request_failed",
+      "seconds": 7.657
+    },
+    {
+      "id": "R03_foundation_cn",
+      "passed": false,
+      "error": "ModelAnswerValidationError",
+      "answer": "槐序公司的成立年份是 1956 年。\n\n依据《槐序年份记录》，当前年份为 2026 年 [1]。依据《槐序沿革记录》，该公司于七十年前创立 [2]。通过计算：2026 - 70 = 1956，得出成立年份为 1956 年。",
+      "validation_error": "模型回答未通过逐句引用检查",
+      "method": "real_llm_request_failed",
+      "seconds": 4.25
+    },
+    {
+      "id": "R06_conflicting_year_anchor",
+      "passed": false,
+      "error": "ModelAnswerValidationError",
+      "answer": "现有企业资料未覆盖该问题，建议联系对应业务部门确认。\n\n**原因说明：**\n计算成立年份需要确定的“当前年份”作为前提，但提供的资料中存在直接冲突：\n1. 资料 [1] 记录当前年份为 2026 年 [1]。\n2. 资料 [2] 记录当前年份为 2025 年 [2]。\n3. 资料 [3] 仅指出公司创立于“七十年前”，未指定参照的具体年份 [3]。\n\n由于“当前年份”这一关键前提在资料间不一致（2026 年与 2025 年冲突），导致无法依据规则进行唯一的日期推断（若按 2026 年算为 1956 年，若按 2025 年算为 1955 年）。根据规则 7，前提冲突且缺少任一确定前提时，应说明资料不足。",
+      "validation_error": "模型回答未通过逐句引用检查",
+      "method": "real_llm_request_failed",
+      "seconds": 6.312
+    },
+    {
+      "id": "R08_sum_money_units",
+      "passed": false,
+      "error": "ModelAnswerValidationError",
+      "answer": "苔原项目甲合同与乙合同的金额合计为 20,000 元。\n\n计算依据如下：\n1. 苔原项目甲合同金额为 1.2 万元，即 12,000 元 [1]。\n2. 苔原项目乙合同金额为 8,000 元 [2]。\n3. 合计算式：12,000 元 + 8,000 元 = 20,000 元。",
+      "validation_error": "模型回答未通过逐句引用检查",
+      "method": "real_llm_request_failed",
+      "seconds": 4.609
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{"id":"S01","category":"single_doc","question":"澜图智能成立于哪一年，总部在哪里？","expected_doc_ids":["lantu_company_profile"],"keywords":["2011","苏州工业园区"],"answer_keywords":["2011","苏州工业园区"]}
+{"id":"S02","category":"single_doc","question":"公司2025年机器人出货量和累计交付量是多少？","expected_doc_ids":["lantu_company_profile"],"keywords":["21,400","10 万台"],"answer_keywords":["21,400","10 万台"]}
+{"id":"S03","category":"single_doc","question":"LT-R20 的负载、臂展和重复定位精度是多少？","expected_doc_ids":["lantu_product_r_series"],"keywords":["20 kg","1,700 mm","±0.03 mm"],"answer_keywords":["20 kg","1,700 mm","±0.03 mm"]}
+{"id":"S04","category":"single_doc","question":"LT-C800 控制器支持几轴联动，EtherCAT 总线周期是多少？","expected_doc_ids":["lantu_product_controller"],"keywords":["8 轴","1 ms"],"answer_keywords":["8 轴","1 ms"]}
+{"id":"S05","category":"single_doc","question":"员工年假按工龄分别是多少天？","expected_doc_ids":["lantu_policy_employee_handbook"],"keywords":["5/10/15 天"],"answer_keywords":["5/10/15 天"]}
+{"id":"S06","category":"single_doc","question":"2025年7月版差旅标准中，一线城市住宿和餐饮补贴是多少？","expected_doc_ids":["lantu_policy_travel_2025h2"],"keywords":["600 元/晚","150 元/天"],"answer_keywords":["600 元","150 元"]}
+{"id":"S07","category":"single_doc","question":"2025年公司营业收入和归母净利润是多少？","expected_doc_ids":["lantu_finance_annual_2025"],"keywords":["42.63 亿元","4.12 亿元"],"answer_keywords":["42.63","4.12"]}
+{"id":"S08","category":"single_doc","question":"P1 故障的响应时间和到场时间分别是多久？","expected_doc_ids":["lantu_support_sla_2025"],"keywords":["30 分钟","12 小时"],"answer_keywords":["30 分钟","12 小时"]}
+{"id":"S09","category":"single_doc","question":"LT-R20 的减速器 RV-40E 备件价格是多少？","expected_doc_ids":["lantu_support_spare_parts_price"],"keywords":["12,800"],"answer_keywords":["12,800"]}
+{"id":"S10","category":"single_doc","question":"销售合同标准模板的预付款比例和质保期是多少？","expected_doc_ids":["lantu_legal_sales_contract_template"],"keywords":["30%","24 个月"],"answer_keywords":["30%","24 个月"]}
+{"id":"S11","category":"single_doc","question":"员工账号密码的更换周期是多久？","expected_doc_ids":["lantu_policy_infosec"],"keywords":["90 天","12 位"],"answer_keywords":["90 天"]}
+{"id":"S12","category":"single_doc","question":"2025年华南大区销售完成率是多少？","expected_doc_ids":["lantu_org_sales_regions"],"keywords":["108%"],"answer_keywords":["108%"]}
+{"id":"S13","category":"single_doc","question":"公司叫什么名字？","expected_doc_ids":["lantu_company_profile"],"keywords":["澜图智能装备股份有限公司"],"answer_keywords":["澜图智能装备股份有限公司"]}
+{"id":"S14","category":"single_doc","question":"澜图智能是一家什么公司？","expected_doc_ids":["lantu_company_profile"],"keywords":["工业机器人","智能制造"],"answer_keywords":["工业机器人","智能制造"]}
+{"id":"S15","category":"single_doc","question":"公司总部在哪里？","expected_doc_ids":["lantu_company_profile"],"keywords":["苏州工业园区","星澜路88号"],"answer_keywords":["苏州工业园区","星澜路88号"]}
+{"id":"S16","category":"single_doc","question":"公司的使命是什么？","expected_doc_ids":["lantu_company_mission"],"keywords":["让每一座工厂","智能生产力"],"answer_keywords":["让每一座工厂","智能生产力"]}
+{"id":"M01","category":"multi_doc","question":"2025年公司研发投入和研发人员数量分别是多少？","expected_doc_ids":["lantu_finance_annual_2025","lantu_org_rd_system"],"keywords":["5.87 亿元","1,286 人"],"answer_keywords":["5.87","1,286"]}
+{"id":"M02","category":"multi_doc","question":"恒芯动力电池项目使用了哪些机器人，项目成效如何？","expected_doc_ids":["lantu_case_01_hengxin","lantu_meeting_case_review"],"keywords":["186 台","99.3%","42%"],"answer_keywords":["186","99.3%","42%"]}
+{"id":"M03","category":"multi_doc","question":"锂电叠片方案的良率目标和标杆客户是谁？","expected_doc_ids":["lantu_solution_lithium","lantu_case_01_hengxin"],"keywords":["99.5%","恒芯动力电池"],"answer_keywords":["99.5%","恒芯"]}
+{"id":"M04","category":"multi_doc","question":"半导体晶圆搬运方案的洁净等级和标杆客户是谁？","expected_doc_ids":["lantu_solution_semiconductor","lantu_case_06_jingtuo"],"keywords":["Class 10","晶拓微电子"],"answer_keywords":["Class 10","晶拓"]}
+{"id":"M05","category":"multi_doc","question":"2025年海外营业收入是多少，欧洲技术中心设在哪里？","expected_doc_ids":["lantu_company_global","lantu_finance_annual_2025"],"keywords":["4.86 亿元","斯图加特"],"answer_keywords":["4.86","斯图加特"]}
+{"id":"M06","category":"multi_doc","question":"售后服务团队有多少人，全国服务网点多少个？","expected_doc_ids":["lantu_support_system","lantu_org_department_duties"],"keywords":["412 人","68 个"],"answer_keywords":["412","68"]}
+{"id":"M07","category":"multi_doc","question":"2026年营业收入目标、研发投入预算和资本开支分别是多少？","expected_doc_ids":["lantu_strategy_2026","lantu_finance_budget_2026"],"keywords":["52 亿元","7.2 亿元","3.8 亿元"],"answer_keywords":["52","7.2","3.8"]}
+{"id":"M08","category":"multi_doc","question":"销售折扣 15%-25% 由谁审批，项目毛利率底线是多少？","expected_doc_ids":["lantu_sales_discount_2025","lantu_sales_policy"],"keywords":["总经理","28%"],"answer_keywords":["总经理","28%"]}
+{"id":"M09","category":"multi_doc","question":"LT-R20 Pro 计划何时量产，额定负载是多少？","expected_doc_ids":["lantu_product_r20_pro_whitepaper","lantu_meeting_product_review"],"keywords":["2026 年第二季度","22 kg"],"answer_keywords":["2026","22 kg"]}
+{"id":"M10","category":"multi_doc","question":"2025年客户投诉目标是多少起，一次交检合格率目标是多少？","expected_doc_ids":["lantu_strategy_quality_system","lantu_company_profile"],"keywords":["6 起","98.5%"],"answer_keywords":["6 起","98.5%"]}
+{"id":"X01","category":"cross_department","question":"研发人员占员工总数比例和研发投入占营业收入比例分别是多少？","expected_doc_ids":["lantu_org_rd_system","lantu_finance_annual_2025"],"keywords":["33.3%","13.8%"],"answer_keywords":["33.3%","13.8%"]}
+{"id":"X02","category":"cross_department","question":"新员工入职培训需要几天，试用期一般多长？","expected_doc_ids":["lantu_hr_new_hire_training","lantu_policy_employee_handbook"],"keywords":["5 天","3-6 个月"],"answer_keywords":["5 天","3-6 个月"]}
+{"id":"X03","category":"cross_department","question":"员工出差一线城市住宿上限和费用报销时限分别是多少？","expected_doc_ids":["lantu_policy_travel_2025h2","lantu_policy_reimbursement"],"keywords":["600 元/晚","30 个自然日"],"answer_keywords":["600","30"]}
+{"id":"X04","category":"cross_department","question":"采购标准供应商的付款账期和销售合同预付款比例分别是多少？","expected_doc_ids":["lantu_policy_purchase_2025","lantu_legal_sales_contract_template"],"keywords":["90 天","30%"],"answer_keywords":["90 天","30%"]}
+{"id":"X05","category":"cross_department","question":"公司数据分为几个等级，L3 数据访问需要谁审批？","expected_doc_ids":["lantu_policy_data_classification","lantu_policy_infosec"],"keywords":["四级","部门负责人"],"answer_keywords":["四","部门负责人"]}
+{"id":"X06","category":"cross_department","question":"2025年人均培训学时和2026届校招计划人数是多少？","expected_doc_ids":["lantu_hr_training_system","lantu_hr_campus"],"keywords":["32 小时","120 人"],"answer_keywords":["32 小时","120"]}
+{"id":"X07","category":"cross_department","question":"海外项目需要遵守哪些出口管制和数据合规要求？","expected_doc_ids":["lantu_legal_export_control","lantu_legal_data_compliance"],"keywords":["两用物项","GDPR"],"answer_keywords":["两用物项","GDPR"]}
+{"id":"X08","category":"cross_department","question":"新员工安全培训不少于多少小时，2025年安全投入是多少？","expected_doc_ids":["lantu_strategy_safety","lantu_meeting_safety"],"keywords":["24 小时","1,200 万元"],"answer_keywords":["24 小时","1,200"]}
+{"id":"C01","category":"conflict","question":"一线城市出差住宿标准是多少？","expected_doc_ids":["lantu_policy_travel_2025h2"],"keywords":["600 元/晚"],"answer_keywords":["600"]}
+{"id":"C02","category":"conflict","question":"销售折扣审批权限如何划分？","expected_doc_ids":["lantu_sales_discount_2025"],"keywords":["8%","15%","25%"],"answer_keywords":["8%","15%","25%"]}
+{"id":"C03","category":"conflict","question":"售后服务 P1 的响应时效是多久？","expected_doc_ids":["lantu_support_sla_2025"],"keywords":["30 分钟"],"answer_keywords":["30 分钟"]}
+{"id":"C04","category":"conflict","question":"公司研发中心下设几个研究所？","expected_doc_ids":["lantu_org_chart_2025"],"keywords":["5 个","具身智能研究所"],"answer_keywords":["5 个","具身智能"]}
+{"id":"C05","category":"conflict","question":"员工每月可以申请远程办公几天？","expected_doc_ids":["lantu_policy_attendance_2025"],"keywords":["4 天"],"answer_keywords":["4 天"]}
+{"id":"C06","category":"conflict","question":"采购标准供应商的付款账期是多少天？","expected_doc_ids":["lantu_policy_purchase_2025"],"keywords":["90 天"],"answer_keywords":["90 天"]}
+{"id":"C07","category":"conflict","question":"销售折扣超过 25% 由谁审批？","expected_doc_ids":["lantu_sales_discount_2025"],"keywords":["董事会"],"answer_keywords":["董事会"]}
+{"id":"C08","category":"conflict","question":"2025版销售折扣制度规定的项目毛利率底线是多少？","expected_doc_ids":["lantu_sales_discount_2025"],"keywords":["28%"],"answer_keywords":["28%"]}
+{"id":"T01","category":"time_range","question":"2024年一线城市出差住宿标准是多少？","expected_doc_ids":["lantu_policy_travel_2024"],"keywords":["450 元/晚"],"answer_keywords":["450"]}
+{"id":"T02","category":"time_range","question":"2025年1月版差旅标准中一线城市住宿上限是多少？","expected_doc_ids":["lantu_policy_travel_2025"],"keywords":["550 元/晚"],"answer_keywords":["550"]}
+{"id":"T03","category":"time_range","question":"2025年7月修订后二线城市住宿标准是多少？","expected_doc_ids":["lantu_policy_travel_2025h2"],"keywords":["450 元/晚"],"answer_keywords":["450"]}
+{"id":"T04","category":"time_range","question":"2024年公司营业收入和归母净利润是多少？","expected_doc_ids":["lantu_finance_annual_2024"],"keywords":["35.80 亿元","3.26 亿元"],"answer_keywords":["35.80","3.26"]}
+{"id":"T05","category":"time_range","question":"2025年第三季度单季营业收入是多少？","expected_doc_ids":["lantu_finance_q3_2025"],"keywords":["11.52 亿元"],"answer_keywords":["11.52"]}
+{"id":"T06","category":"time_range","question":"2024年研发投入占营业收入比例是多少？","expected_doc_ids":["lantu_finance_annual_2024"],"keywords":["12.9%"],"answer_keywords":["12.9%"]}
+{"id":"T07","category":"time_range","question":"2025年上半年新签订单金额是多少？","expected_doc_ids":["lantu_finance_h1_2025"],"keywords":["22.7 亿元"],"answer_keywords":["22.7"]}
+{"id":"T08","category":"time_range","question":"2024年末公司员工总数是多少？","expected_doc_ids":["lantu_org_chart_2024"],"keywords":["3,280 人"],"answer_keywords":["3,280"]}
+{"id":"F01","category":"fuzzy","question":"出差住宿报销上限怎么算？","expected_doc_ids":["lantu_policy_travel_2025h2"],"keywords":["600 元/晚","二线城市"],"answer_keywords":["600"]}
+{"id":"F02","category":"fuzzy","question":"机器人本体保修多久？","expected_doc_ids":["lantu_support_warranty"],"keywords":["24 个月"],"answer_keywords":["24 个月"]}
+{"id":"F03","category":"fuzzy","question":"公司去年赚了多少钱？","expected_doc_ids":["lantu_finance_annual_2025"],"keywords":["4.12 亿元"],"answer_keywords":["4.12"]}
+{"id":"F04","category":"fuzzy","question":"售后工程师多久能到现场处理停机？","expected_doc_ids":["lantu_support_sla_2025"],"keywords":["12 小时"],"answer_keywords":["12 小时"]}
+{"id":"F05","category":"fuzzy","question":"买机器人最多能打几折，找谁批？","expected_doc_ids":["lantu_sales_discount_2025"],"keywords":["25%","董事会"],"answer_keywords":["25%","董事会"]}
+{"id":"F06","category":"fuzzy","question":"新来的员工要培训几天？","expected_doc_ids":["lantu_hr_new_hire_training"],"keywords":["5 天"],"answer_keywords":["5 天"]}
+{"id":"F07","category":"fuzzy","question":"公司有哪些移动机器人产品？","expected_doc_ids":["lantu_product_amr"],"keywords":["LT-AMR-500","LT-AMR-1000","LT-AMR-2000"],"answer_keywords":["LT-AMR-500","LT-AMR-1000","LT-AMR-2000"]}
+{"id":"F08","category":"fuzzy","question":"客户投诉怎么处理，多久闭环？","expected_doc_ids":["lantu_support_complaint"],"keywords":["24 小时","3 个工作日"],"answer_keywords":["24 小时","3 个工作日"]}
+{"id":"CF01","category":"cross_format","question":"2025年12月的营业收入是多少？","expected_doc_ids":["lantu_finance_monthly_2025"],"keywords":["4.90 亿元"],"answer_keywords":["4.90"]}
+{"id":"CF02","category":"cross_format","question":"LT-AMR-1000 的负载和续航分别是多少？","expected_doc_ids":["lantu_product_matrix","lantu_product_amr"],"keywords":["1,000 kg","8 小时"],"answer_keywords":["1,000 kg","8 小时"]}
+{"id":"CF03","category":"cross_format","question":"2025年收入构成中机器人本体占比是多少？","expected_doc_ids":["lantu_finance_revenue_breakdown"],"keywords":["46.5%"],"answer_keywords":["46.5%"]}
+{"id":"CF04","category":"cross_format","question":"LT-AMR-1000 锂电池组备件的价格和质保期是多少？","expected_doc_ids":["lantu_support_spare_parts_price"],"keywords":["4,800","12 个月"],"answer_keywords":["4,800","12 个月"]}
+{"id":"CF05","category":"cross_format","question":"2025年末员工总数和苏州基地人数分别是多少？","expected_doc_ids":["lantu_org_headcount"],"keywords":["3,860","2,450"],"answer_keywords":["3,860","2,450"]}
+{"id":"CF06","category":"cross_format","question":"2025年第三季度的订单金额是多少？","expected_doc_ids":["lantu_finance_monthly_2025"],"keywords":["13.6 亿元"],"answer_keywords":["13.6"]}
+{"id":"CF07","category":"cross_format","question":"2025年公司毛利率和经营活动现金流净额是多少？","expected_doc_ids":["lantu_finance_annual_2025"],"keywords":["31.6%","5.34 亿元"],"answer_keywords":["31.6%","5.34"]}
+{"id":"CF08","category":"cross_format","question":"2025年4月董事会通过的2024年度利润分配方案是什么？","expected_doc_ids":["lantu_meeting_board"],"keywords":["每 10 股派 3.0 元","1.26 亿元"],"answer_keywords":["3.0 元","1.26"]}
+{"id":"R01","category":"refusal","question":"公司食堂今天中午的菜单是什么？","expected_doc_ids":[],"keywords":[],"answer_keywords":[],"expect_refusal":true}
+{"id":"R02","category":"refusal","question":"创始人顾承澜的生日是哪一天？","expected_doc_ids":[],"keywords":[],"answer_keywords":[],"expect_refusal":true}
+{"id":"R03","category":"refusal","question":"澜图智能在印度的工厂地址是什么？","expected_doc_ids":[],"keywords":[],"answer_keywords":[],"expect_refusal":true}
+{"id":"R04","category":"refusal","question":"公司是否提供员工宠物保险？","expected_doc_ids":[],"keywords":[],"answer_keywords":[],"expect_refusal":true}
+{"id":"R05","category":"refusal","question":"2026年世界杯冠军是谁？","expected_doc_ids":[],"keywords":[],"answer_keywords":[],"expect_refusal":true}
+{"id":"R06","category":"refusal","question":"请推荐适合澜图智能的并购标的并给出估值。","expected_doc_ids":[],"keywords":[],"answer_keywords":[],"expect_refusal":true}
+{"id":"R07","category":"refusal","question":"公司股票明天的收盘价会是多少？","expected_doc_ids":[],"keywords":[],"answer_keywords":[],"expect_refusal":true}
+{"id":"R08","category":"refusal","question":"LT-R20 的 Python SDK 源码在哪里下载？","expected_doc_ids":[],"keywords":[],"answer_keywords":[],"expect_refusal":true}
