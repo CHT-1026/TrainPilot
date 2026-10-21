@@ -30,6 +30,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, DataCollatorForSeq
 from dataset.dataset import QwenSFTEncoder
 from trainer.SFTtrain import next_token_loss, train_step
 from trainer.trainer import evaluate, train_one_epoch
+from trainer.plot_loss import LossWindow, plot_loss
 
 
 MODEL = "Qwen/Qwen3-1.7B-Base"
@@ -281,14 +282,21 @@ def run_training(args, lora_config=None):
         prior_steps = epoch_state["steps"] if epoch_state else 0
         prior_tokens = epoch_state["valid_tokens"] if epoch_state else 0
         epoch_start_global = global_step - prior_steps
+        loss_window = LossWindow(epoch_state)
 
         def on_update(state):
             step = epoch_start_global + state["steps"]
-            if step == 1 or step % args.log_steps == 0:
+            last_trial_update = args.max_updates is not None and state["steps"] - prior_steps >= args.max_updates
+            if step == 1 or step % args.log_steps == 0 or state["micro_steps"] == len(train_loader) or last_trial_update:
                 mean_loss = state["loss_sum"] / state["valid_tokens"]
+                window_loss = loss_window.update(state)
                 print(f"epoch={epoch + 1} batch={state['micro_steps']}/{len(train_loader)} "
-                      f"global_step={step} loss={mean_loss:.6f} lr={optimizer.param_groups[0]['lr']:.8f}", flush=True)
-                record({"event": "update", "epoch": epoch + 1, "global_step": step, "mean_loss": mean_loss})
+                      f"global_step={step} loss={mean_loss:.6f} window_loss={window_loss:.6f} "
+                      f"lr={optimizer.param_groups[0]['lr']:.8f}", flush=True)
+                record({"event": "update", "epoch": epoch + 1, "global_step": step,
+                        "mean_loss": mean_loss, "window_loss": window_loss,
+                        "valid_tokens": state["valid_tokens"], "loss_sum":state["loss_sum"],
+                        "learning_rate": optimizer.param_groups[0]["lr"]})
             if args.save_training_state and args.save_steps and step % args.save_steps == 0 and state["micro_steps"] < len(train_loader):
                 save_training_state(checkpoint_path, causal_lm, optimizer,
                     {"completed_epochs": epoch, "global_step": step, "epoch_state": state}, signature, args.method)
@@ -312,7 +320,7 @@ def run_training(args, lora_config=None):
             validation = evaluate(model, val_loader, device, amp_dtype=amp_dtype, loss_fn=next_token_loss)
             record({"event": "epoch", "completed_epochs": completed,
                     "global_step": global_step, "train": result, "validation": validation})
-            print(f"epoch={completed}/{args.epochs} train_loss={result['loss']:.6f} "
+            print(f"epoch={completed}/{args.epochs} global_step={global_step} train_loss={result['loss']:.6f} "
                   f"val_loss={validation['loss']:.6f}", flush=True)
         if not result["finished"] or (args.max_updates is not None and args.max_updates <= 0):
             break
@@ -341,6 +349,7 @@ def run_training(args, lora_config=None):
         print("训练断点:", checkpoint_path, flush=True)
     else:
         print("本次未保存优化器断点；导出权重可推理，但不能精确恢复中途训练。", flush=True)
+    plot_loss(metrics, title=f"Qwen {args.method.upper()} SFT")
 
 
 def train(args=None):

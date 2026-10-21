@@ -455,7 +455,7 @@ cd E:\agent项目\trainpilot
 
 第一次完整验证使用 `complete_full_validation.py` 对已完成的生成实验追加验证；当前 `evaluate_baseline.py` 已包含同一完整验证流程，复现无需重复运行补充脚本。耗时与吞吐受GPU负载、驱动和温度影响，不承诺重新运行数值完全相同。
 
-已提交的原始记录：[results.json](base_model_20261013/results.json) 与 [code_results.json](base_model_20261013/code_results.json)。文件内保留的是当时测量的配置、路径和结果。
+已提交的原始记录：[results.json](../base_model_20261013/results.json) 与 [code_results.json](../base_model_20261013/code_results.json)。文件内保留的是当时测量的配置、路径和结果。
 
 可执行的复现脚本放在 `test/test_code/baseline_20261013/`；从原本本地实验脚本整理而来，路径定位及编译器查找方式已调整，未重新测量或替换已记录结果。原始本地产物位于 `runs/base-eval-20261013/`（runs按仓库规则忽略）：
 

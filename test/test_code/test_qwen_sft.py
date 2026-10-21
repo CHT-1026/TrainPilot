@@ -180,6 +180,9 @@ class QwenSFTChecks(unittest.TestCase):
             with contextlib.redirect_stdout(io.StringIO()):
                 run_training(args(root / "continuous"))
                 run_training(args(root / "resumed", "--max-updates", "2"))
+                trial_rows = [json.loads(line) for line in (root/"resumed/metrics.jsonl").read_text().splitlines()
+                              if json.loads(line).get("event") == "update"]
+                self.assertEqual(trial_rows[-1]["global_step"],2)
                 partial = root / "resumed/checkpoint.pt"
                 run_training(args(root / "resumed", "--resume", str(partial)))
             first = torch.load(root / "continuous/checkpoint.pt", weights_only=True)
@@ -188,6 +191,10 @@ class QwenSFTChecks(unittest.TestCase):
             for name in first["weights"]:
                 torch.testing.assert_close(first["weights"][name], second["weights"][name], rtol=0, atol=0)
             self.assertTrue((root / "resumed/model/config.json").exists())
+            self.assertTrue((root / "resumed/loss_curve.png").exists())
+            updates = [json.loads(line) for line in (root/"resumed/metrics.jsonl").read_text().splitlines()
+                       if json.loads(line).get("event") == "update"]
+            self.assertTrue(all("window_loss" in row and "learning_rate" in row for row in updates))
 
             from trainer.qwen_lora_sft import train as lora_train
             from peft import PeftModel
@@ -196,6 +203,7 @@ class QwenSFTChecks(unittest.TestCase):
                 lora_train(argv(root / "lora", "--resume", str(root / "lora/checkpoint.pt"), "--lora-rank", "2"))
             adapter = root / "lora/adapter"
             self.assertTrue((adapter / "adapter_model.safetensors").exists())
+            self.assertTrue((root/"lora/loss_curve.png").exists())
             loaded = PeftModel.from_pretrained(Qwen3ForCausalLM.from_pretrained(model_dir), adapter)
             saved = torch.load(root / "lora/checkpoint.pt", weights_only=True)
             self.assertEqual(saved["progress"]["completed_epochs"], 1)

@@ -17,6 +17,7 @@ from dataset.dataset import PretrainDataset, SFTDataset, TrainPilotTokenizer, pr
 from model.model import TrainPilotForCausalLM
 from trainer import pretrain, SFTtrain
 from trainer.trainer import evaluate, load_checkpoint, save_checkpoint, train_one_epoch
+from trainer.plot_loss import LossWindow, plot_loss
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -237,19 +238,25 @@ def main(argv: list[str] | None = None) -> None:
             torch.cuda.synchronize(device)
             torch.cuda.reset_peak_memory_stats(device)
         started = time.perf_counter()
+        loss_window = LossWindow(epoch_state)
 
         def on_update(state):
             current_step = epoch_global_base + state["steps"]
-            if current_step == 1 or current_step % training["log_interval"] == 0:
+            last_trial_update = args.max_updates is not None and state["steps"] - prior_steps >= args.max_updates
+            if current_step == 1 or current_step % training["log_interval"] == 0 or state["micro_steps"] == len(train_loader) or last_trial_update:
+                window_loss = loss_window.update(state)
                 print(
                     f"epoch={epoch + 1} batch={state['micro_steps']}/{len(train_loader)} "
                     f"global_step={current_step} mean_loss={state['loss_sum'] / state['valid_tokens']:.6f} "
+                    f"window_loss={window_loss:.6f} "
                     f"lr={optimizer.param_groups[0]['lr']:.8f}", flush=True,
                 )
                 with metrics_path.open("a", encoding="utf-8") as log:
                     log.write(json.dumps({"event": "update", "epoch": epoch + 1,
                         "global_step": current_step, "micro_steps": state["micro_steps"],
                         "mean_loss": state["loss_sum"] / state["valid_tokens"],
+                        "window_loss": window_loss, "loss_sum":state["loss_sum"],
+                        "valid_tokens":state["valid_tokens"],
                         "learning_rate": optimizer.param_groups[0]["lr"]}) + "\n")
             if current_step % training["save_interval"] == 0 and state["micro_steps"] < len(train_loader):
                 save_checkpoint(checkpoint_path, model, optimizer, epoch, current_step, epoch_state=state)
@@ -276,6 +283,7 @@ def main(argv: list[str] | None = None) -> None:
             print(f"本次训练循环耗时={elapsed:.3f}s；有效监督 token/s={processed_tokens / elapsed:.2f}（含定期保存开销）")
             if device.type == "cuda":
                 print(f"峰值已分配显存 MiB={torch.cuda.max_memory_allocated(device) / 1024**2:.2f}")
+            plot_loss(metrics_path, title=f"TrainPilot {stage}")
             return
         val_record = evaluate(model, val_loader, device, amp_dtype=amp_dtype, loss_fn=functions.next_token_loss)
         if device.type == "cuda":
@@ -298,6 +306,7 @@ def main(argv: list[str] | None = None) -> None:
             flush=True,
         )
         epoch_state = None
+        plot_loss(metrics_path, title=f"TrainPilot {stage}")
         if args.max_updates is not None:
             args.max_updates -= updates_this_call
             if args.max_updates <= 0:
