@@ -20,6 +20,7 @@ class RagQueryRequest(BaseModel):
     top_k: int = Field(default=config.TOP_K, ge=1, le=20)
     as_of: date | None = None
     use_llm: bool | None = None
+    retrieval_mode: str = Field(default="hybrid", pattern="^(vector|hybrid|graph)$")
 
     @field_validator("question")
     @classmethod
@@ -46,6 +47,7 @@ async def rag_query(payload: RagQueryRequest, user: UserContext = Depends(get_us
         payload.top_k,
         payload.as_of.isoformat() if payload.as_of else None,
         payload.use_llm,
+        payload.retrieval_mode,
     )
     return {"code": 200, "data": result}
 
@@ -87,3 +89,21 @@ async def rag_eval_latest(user: UserContext = Depends(get_user_context)):
     if not path.exists():
         raise HTTPException(status_code=404, detail="尚未生成评测报告")
     return {"code": 200, "data": json.loads(path.read_text(encoding="utf-8"))}
+
+
+@router.get("/graph/stats")
+async def graph_stats(user: UserContext = Depends(get_user_context)):
+    from enterprise_rag.graph.retrieve import load_graph
+
+    return {"code": 200, "data": await asyncio.to_thread(lambda: load_graph().stats())}
+
+
+@router.get("/graph/quality")
+async def graph_quality(user: UserContext = Depends(get_user_context)):
+    path = config.PACKAGE_ROOT / "graph" / "data" / "graph_meta.json"
+    if not path.exists():
+        raise HTTPException(status_code=404, detail="尚未构建知识图谱")
+    data = json.loads(path.read_text(encoding="utf-8"))
+    return {"code": 200, "data": {"version": data.get("version"),
+                                  "stats": data.get("stats"),
+                                  "quality": data.get("quality")}}

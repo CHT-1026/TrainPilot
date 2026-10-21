@@ -6,6 +6,12 @@ import json
 from app.capabilities.retrieval.tokenizer import tokenize
 from enterprise_rag import config
 from enterprise_rag.citations import build_context, chunk_body, select_context
+from enterprise_rag.evidence import (
+    build_comparison_table,
+    enumeration_hint,
+    model_scope_mismatch,
+    unsupported_numeric_tokens,
+)
 from enterprise_rag.query import query_terms, rewrite_query, reasoning_plan
 from enterprise_rag.reasoning import infer
 
@@ -362,7 +368,8 @@ def _extractive_answer(question: str, chunks: list[dict]) -> tuple[str, list[int
     return answer, [item["chunk_index"] for item in selected], best_coverage
 
 
-def _llm_answer(question: str, chunks: list[dict]) -> tuple[str, list[int], float]:
+def _llm_answer(question: str, chunks: list[dict], graph_paths: list[str] | None = None,
+                strict: bool = False) -> tuple[str, list[int], float]:
     from app.core.config import get_settings
 
     settings = get_settings()
@@ -384,6 +391,29 @@ def _llm_answer(question: str, chunks: list[dict]) -> tuple[str, list[int], floa
             "10. 这是版本对比问题：必须同时使用旧版与新版资料，按总线、控制器、伺服、软件、可靠性等维度"
             "逐项说明变化并分别引用；如果上下文中只有一版，明确说明缺少哪一版，不得把单版内容描述为“变化”。\n"
         )
+    graph_rule = ""
+    graph_block = ""
+    if graph_paths:
+        graph_rule = (
+            "11. 如果提供了【推理路径】，先按路径逐跳列出关系，再给最终结论；"
+            "路径中的每一跳都必须引用对应来源，不得省略中间实体。\n"
+        )
+        graph_block = "\n【推理路径】\n" + "\n".join(f"- {path}" for path in graph_paths[:10]) + "\n"
+    strict_rule = ""
+    if strict:
+        strict_rule = (
+            "12. 严格证据模式：数字、单位、型号必须逐字来自被引用的资料；"
+            "不得使用同系列其他型号的参数，不得用计算结果替代原文参数。\n"
+        )
+    enumeration_rule = ""
+    enumeration_block = enumeration_hint(question, chunks)
+    if enumeration_block:
+        enumeration_rule = "13. 枚举题必须逐项列全，不得只回答数量。\n"
+    comparison_block = ""
+    if comparison:
+        table = build_comparison_table(question, chunks)
+        if table:
+            comparison_block = "\n【版本对比表（自动对齐）】\n" + table + "\n"
     prompt = (
         "你是澜图智能装备股份有限公司的企业知识库问答助手。只能依据【资料】回答，禁止使用资料外的知识。\n"
         "规则：\n"
@@ -399,8 +429,9 @@ def _llm_answer(question: str, chunks: list[dict]) -> tuple[str, list[int], floa
         "每条 claim 只写一个事实或含简短算式的推导，sources 必须包括全部前提来源；text 不要自行写引用编号。\n"
         "只保留直接回答问题的 claims，不要为了凑引用而加入无关资料。\n"
         "无充分依据或冲突时只输出 {\"refused\":true,\"claims\":[]}；无需额外前言或重复总结。\n"
-        + comparison_rule
-        + f"【资料】\n{context}\n\n【问题】\n{question}\n\n【回答】"
+        + comparison_rule + graph_rule + strict_rule + enumeration_rule
+        + comparison_block + graph_block + enumeration_block
+        + f"\n【资料】\n{context}\n\n【问题】\n{question}\n\n【回答】"
     )
     response = client.chat.completions.create(
         model=config.LLM_MODEL,
@@ -445,6 +476,11 @@ def _llm_answer(question: str, chunks: list[dict]) -> tuple[str, list[int], floa
     if not structurally_grounded:
         raise ModelAnswerValidationError("模型回答未通过逐句引用检查", answer)
     answer = verified
+    unsupported = unsupported_numeric_tokens(answer, chunks)
+    if unsupported:
+        raise ModelAnswerValidationError("数字或型号未在引用资料中出现", answer)
+    if model_scope_mismatch(question, chunks):
+        raise ModelAnswerValidationError("引用了同系列其他型号的资料", answer)
     # 生成分支的可信度由“结构校验 + 引用有效”保证；检索分只作为最低证据门槛，
     # 不能再用 0.28 的句级抽取阈值把语义正确但检索分偏低的答案误判为无依据。
     coverage = 1.0
@@ -505,7 +541,7 @@ def _focus_supported(question: str, chunks: list[dict]) -> bool:
 
 
 def generate_answer(question: str, chunks: list[dict], use_llm: bool | None = None,
-                    evidence_complete: bool = True) -> dict:
+                    evidence_complete: bool = True, graph_paths: list[str] | None = None) -> dict:
     use_llm = config.USE_LLM if use_llm is None else use_llm
     method = "extractive"
     chunks, context_truncated = select_context(chunks)
@@ -533,6 +569,7 @@ def generate_answer(question: str, chunks: list[dict], use_llm: bool | None = No
                 "reasoning": {"operation": "version_pair_check", "refused": True},
                 "context_truncated": context_truncated,
                 "context_chunk_ids": [chunk.get("chunk_id") for chunk in chunks],
+                "graph_paths": graph_paths or [],
             }
     answer = ""
     indices: list[int] = []
@@ -552,7 +589,8 @@ def generate_answer(question: str, chunks: list[dict], use_llm: bool | None = No
         last_error = None
         for attempt in range(2):
             try:
-                answer, indices, confidence = _llm_answer(question, chunks)
+                answer, indices, confidence = _llm_answer(question, chunks, graph_paths,
+                                                          strict=bool(attempt))
                 method = "llm"
                 model_error = None
                 break
@@ -585,7 +623,9 @@ def generate_answer(question: str, chunks: list[dict], use_llm: bool | None = No
         answer = REFUSAL_TEXT
         indices = []
         refused = True
-    elif any(marker in answer for marker in REFUSAL_MARKERS):
+    elif answer.startswith(REFUSAL_TEXT) or (
+        len(answer) <= 120 and any(marker in answer for marker in REFUSAL_MARKERS)
+    ):
         refused = True
         indices = []
 
@@ -618,4 +658,5 @@ def generate_answer(question: str, chunks: list[dict], use_llm: bool | None = No
         "reasoning": derived,
         "context_truncated": context_truncated,
         "context_chunk_ids": [c.get("chunk_id") for c in chunks],
+        "graph_paths": graph_paths or [],
     }

@@ -32,6 +32,8 @@ local_runtime/github_token.txt
 *.token
 local_runtime/processes.json
 *.log
+audit_artifacts/reasoning_suite/*_console.txt
+enterprise_rag/graph/data/versions/
 
 # ---------------------------------------------
 # 编辑器与操作系统

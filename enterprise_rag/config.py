@@ -34,7 +34,7 @@ EMBEDDING_BATCH = int(os.getenv("RAG_EMBEDDING_BATCH", "16"))
 # 有模型配置时默认使用生成式；显式 false 保留离线抽取/确定性推理模式。
 _llm_mode = os.getenv("RAG_USE_LLM", "auto").strip().lower()
 USE_LLM = bool(os.getenv("OPENAI_API_KEY")) if _llm_mode == "auto" else _llm_mode in {"1", "true", "yes"}
-LLM_MODEL = os.getenv("RAG_LLM_MODEL", os.getenv("OPENAI_MODEL", "qwen3.8-flash"))
+LLM_MODEL = os.getenv("RAG_LLM_MODEL", os.getenv("OPENAI_MODEL", "deepseek-v4.1-flash"))
 LLM_TEMPERATURE = float(os.getenv("RAG_LLM_TEMPERATURE", "0.2"))
 LLM_TIMEOUT = float(os.getenv("RAG_LLM_TIMEOUT", "60"))
 LLM_MAX_RETRIES = int(os.getenv("RAG_LLM_MAX_RETRIES", "0"))

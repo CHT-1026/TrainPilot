@@ -75,12 +75,16 @@ def hash_embed(text: str, dim: int | None = None) -> list[float]:
 
 
 def _dashscope_embed(texts: list[str]) -> list[list[float]]:
-    """通义千问兼容接口；失败时抛出异常，由调用方决定是否回退。"""
+    """通义千问兼容接口；失败时抛出异常，由调用方决定是否回退。
+
+    向量服务与对话模型可以指向不同网关，因此单独读取
+    RAG_EMBEDDING_API_BASE / RAG_EMBEDDING_API_KEY，未配置时回退到 OPENAI_*。
+    """
     from openai import OpenAI
 
     client = OpenAI(
-        api_key=os.getenv("OPENAI_API_KEY", ""),
-        base_url=os.getenv("OPENAI_API_BASE") or None,
+        api_key=os.getenv("RAG_EMBEDDING_API_KEY") or os.getenv("OPENAI_API_KEY", ""),
+        base_url=os.getenv("RAG_EMBEDDING_API_BASE") or os.getenv("OPENAI_API_BASE") or None,
         timeout=60,
     )
     response = client.embeddings.create(

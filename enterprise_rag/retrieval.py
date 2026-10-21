@@ -5,6 +5,7 @@ from collections import Counter, defaultdict
 
 from app.domain.user.models import UserContext
 from enterprise_rag import config
+from enterprise_rag.graph.retrieve import graph_candidates
 from enterprise_rag.query import query_terms, rewrite_query, semantic_query_variants, wants_table, reasoning_plan
 from enterprise_rag.store import RagIndex, load_index, query_vector
 
@@ -137,6 +138,15 @@ def _rerank(
         numeric_bonus = 0.0
         if numeric_intent and re.search(r"\d[\d,\.]*\s*(台|元|万元|亿元|%|小时|分钟|天|人|kg|mm)", text):
             numeric_bonus = 0.08
+        graph_bonus = min(float(chunk.get("graph_score", 0.0)) * 0.35, 0.22)
+        model_scope_penalty = 0.0
+        for model in re.findall(r"\b(?:LT|Lantu)[-A-Za-z0-9]*[A-Za-z0-9]+(?:[-A-Za-z0-9]+)*\b", question):
+            suffix = r"\s*(?:Pro|Plus|Max|II|2\.0)"
+            if re.search(re.escape(model) + suffix, text, re.I) and not re.search(
+                re.escape(model) + suffix, question, re.I
+            ):
+                model_scope_penalty = -0.30
+                break
         year_bonus = 0.0
         if question_years:
             text_years = set(re.findall(r"(20\d{2})", text))
@@ -165,6 +175,8 @@ def _rerank(
             + table_bonus
             + entity_bonus
             + numeric_bonus
+            + graph_bonus
+            + model_scope_penalty
             + year_bonus
             + date_bonus
             + latest_bonus
@@ -178,6 +190,8 @@ def _rerank(
             "table_bonus": table_bonus,
             "entity_bonus": round(entity_bonus, 4),
             "numeric_bonus": numeric_bonus,
+            "graph_bonus": round(graph_bonus, 4),
+            "model_scope_penalty": model_scope_penalty,
             "year_bonus": year_bonus,
             "date_bonus": date_bonus,
             "latest_bonus": latest_bonus,
@@ -250,9 +264,11 @@ def retrieve(
     top_k: int | None = None,
     as_of: str | None = None,
     namespace: str | None = None,
+    retrieval_mode: str = "hybrid",
 ) -> dict:
     user = user or SYSTEM_USER
     top_k = top_k or config.TOP_K
+    retrieval_mode = (retrieval_mode or "hybrid").lower()
     plan = reasoning_plan(question)
     if plan["complex"]:
         # Comparison needs both versions of one family, not the whole corpus.
@@ -311,6 +327,35 @@ def retrieve(
                 if len(bridge_queries) >= 3:
                     break
     fused = list(merged.values())
+    graph_debug = {"entities": [], "paths": [], "candidates": 0, "enabled": False,
+                   "mode": retrieval_mode}
+    graph_intent = bool(
+        plan["reporting"] or plan["comparison"]
+        or re.search(r"负责|属于|配套|客户|项目|版本|上级|下属|汇报|关系|架构", question)
+    )
+    if retrieval_mode == "graph" or (retrieval_mode == "hybrid" and graph_intent):
+        graph_hits, graph_debug = graph_candidates(question, index, hops=2)
+        graph_debug["mode"] = retrieval_mode
+        allowed_graph = []
+        for hit in graph_hits:
+            if not _allowed_rag(hit, user):
+                continue
+            if plan["comparison"] or _family_filter([hit], index, effective_as_of):
+                allowed_graph.append(hit)
+        allowed_graph = allowed_graph[:40 if plan["comparison"] else 12]
+        if retrieval_mode == "graph":
+            fused = allowed_graph or fused
+        else:
+            for hit in allowed_graph:
+                current = merged.get(hit["chunk_id"])
+                if current is None:
+                    merged[hit["chunk_id"]] = hit
+                else:
+                    current["graph_score"] = max(float(current.get("graph_score", 0)),
+                                                 float(hit.get("graph_score", 0)))
+                    if hit.get("graph_paths"):
+                        current["graph_paths"] = hit["graph_paths"]
+            fused = list(merged.values())
     if not plan["comparison"]:
         fused = _family_filter(fused, index, effective_as_of)
     reranked = _rerank(fused, terms, index, effective_as_of, wants_table(question), question)
@@ -325,6 +370,24 @@ def retrieve(
                 seen.add(chunk["doc_id"])
         reranked = first + rest
     selected = _diversify(reranked, top_k)
+    if retrieval_mode == "graph" and plan["comparison"]:
+        grouped: dict[str, list[dict]] = defaultdict(list)
+        for chunk in reranked:
+            if chunk.get("graph_document"):
+                grouped[chunk["doc_id"]].append(chunk)
+        if len(grouped) >= 2:
+            selected = []
+            for doc_id, chunks in grouped.items():
+                chunks.sort(key=lambda item: (item.get("graph_priority", 99), item.get("ord", 0)))
+                selected.extend(chunks[:4])
+            selected = selected[:top_k]
+            selected_ids_now = {chunk["chunk_id"] for chunk in selected}
+            for chunk in reranked:
+                if len(selected) >= top_k:
+                    break
+                if chunk["chunk_id"] not in selected_ids_now:
+                    selected.append(chunk)
+                    selected_ids_now.add(chunk["chunk_id"])
     comparison_family = ""
     if plan["comparison"]:
         selected, comparison_family = _ensure_version_pair(selected, reranked, index)
@@ -351,6 +414,8 @@ def retrieve(
             "versioned_families": sorted(index.versioned_families),
             "comparison_mode": plan["comparison"],
             "comparison_family": comparison_family,
+            "retrieval_mode": retrieval_mode,
+            "graph": graph_debug,
             "plan": {**plan, "bridge_queries": bridge_queries, "semantic_queries": semantic_queries},
             "queries_used": queries,
             "evidence_budget_complete": relevant_ids <= selected_ids,

@@ -11,7 +11,7 @@
 {"id":"A11","category":"version_comparison","question":"旧架构的工作温度范围是多少，新架构呢？","expected_doc_ids":["lantu_tech_control_architecture","lantu_tech_control_architecture_v2"],"keywords":["0℃","45℃","-10℃","55℃"],"answer_keywords":["0℃","45℃","-10℃","55℃"]}
 {"id":"A12","category":"version_comparison","question":"新旧架构的 EMC 等级分别是多少？","expected_doc_ids":["lantu_tech_control_architecture","lantu_tech_control_architecture_v2"],"keywords":["EMC 3 级","EMC 4 级"],"answer_keywords":["3 级","4 级"]}
 {"id":"A13","category":"version_comparison","question":"旧架构支持几轴联动，新架构支持几轴？","expected_doc_ids":["lantu_tech_control_architecture","lantu_tech_control_architecture_v2"],"keywords":["4 轴","8 轴"],"answer_keywords":["4 轴","8 轴"]}
-{"id":"A14","category":"version_comparison","question":"新架构相对旧架构新增了哪些软件能力？","expected_doc_ids":["lantu_tech_control_architecture","lantu_tech_control_architecture_v2"],"keywords":["RRT*","Python/C++","ROS2"],"answer_keywords":["RRT*","ROS2"]}
+{"id":"A14","category":"version_comparison","question":"新架构相对旧架构新增了哪些软件能力？","expected_doc_ids":["lantu_tech_control_architecture"],"keywords":["RRT*","Python/C++","ROS2"],"answer_keywords":["RRT*","ROS2"]}
 {"id":"A15","category":"version_comparison","question":"旧架构的安全功能有什么不足，新架构如何改进？","expected_doc_ids":["lantu_tech_control_architecture","lantu_tech_control_architecture_v2"],"keywords":["外部安全继电器","碰撞检测"],"answer_keywords":["外部安全继电器","碰撞检测"]}
 {"id":"H01","category":"multi_hop_relation","question":"赵一鸣的上级的上级是谁？","expected_doc_ids":["lantu_org_reporting_lines"],"keywords":["周启航"],"answer_keywords":["周启航"]}
 {"id":"H02","category":"multi_hop_relation","question":"赵一鸣和沈亦舟是什么关系？","expected_doc_ids":["lantu_org_reporting_lines"],"keywords":["沈亦舟","第4级"],"answer_keywords":["沈亦舟"]}

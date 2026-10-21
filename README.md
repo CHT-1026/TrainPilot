@@ -6,11 +6,11 @@
 
 平台不是单一的 RAG 项目：底层包含 FastAPI 服务、LangGraph 对话智能体、鉴权与审批状态机、BM25 + 向量混合检索、版本冲突消解、引用溯源、评测框架，以及多格式企业语料。
 
-**2026-10-21 已完成整体实测与修复。** 架构核验、根因、逐条原始回答、修复文件、回归结果及后续方案见 [项目整体评估与修复报告](项目整体评估与修复报告_20261021.md)。企业问答现在共用生成引擎：显式事实优先使用有来源的有限推理算子，其他问题在配置模型密钥时默认调用 LLM。`RAG_USE_LLM=false` 可保留离线模式；默认 hash 向量不等于语义 Embedding。
+**2026-10-21 已完成整体实测与修复。** 架构核验、根因、逐条原始回答、修复文件、回归结果及后续方案见 [项目整体评估与修复报告](项目整体评估与修复报告_20261021.md)。企业问答现在共用生成引擎：显式事实优先使用有来源的有限推理算子，其他问题在配置模型密钥时默认调用 LLM。`RAG_USE_LLM=false` 可保留离线模式；当前向量为 `text-embedding-v3`（1024 维），`RAG_EMBEDDING_PROVIDER=hash` 可回退离线可复现模式。
 
-本轮“公司名称/业务问法”的专项根因、代码修改与 62 题动态文档验收见 [推理能力修复与动态验收报告](推理能力修复与动态验收报告_20261021.md)。当前模型：`qwen3.8-flash`。
+本轮“公司名称/业务问法”的专项根因、代码修改与 62 题动态文档验收见 [推理能力修复与动态验收报告](推理能力修复与动态验收报告_20261021.md)。当前对话模型：`deepseek-v4.1-flash`；语义向量：`text-embedding-v3`（1024 维）。
 
-架构对比修复、多跳关系推理、114 条规模测试与 GraphRAG 优化规划见 [澜图智能推理能力与GraphRAG优化规划](澜图智能推理能力与GraphRAG优化规划_20261021.md)。
+架构对比修复、多跳关系推理、114 条规模测试与 GraphRAG 优化规划见 [澜图智能推理能力与GraphRAG优化规划](澜图智能推理能力与GraphRAG优化规划_20261021.md)。GraphRAG 落地实施项、图谱指标与 AB 结果见 [GraphRAG落地实施总结](GraphRAG落地实施总结_20261022.md)。
 
 完整架构、模块衔接、数据设计、接口、测试方法与评审指南见 [PROJECT_TECHNICAL_DOCUMENT.md](PROJECT_TECHNICAL_DOCUMENT.md)。
 
@@ -58,6 +58,24 @@ Invoke-RestMethod -Method Post -Uri http://127.0.0.1:8080/api/rag/query `
 | GET | `/api/rag/documents` | 文档目录（仅管理员） |
 | POST | `/api/rag/reindex` | 刷新进程内索引（仅管理员） |
 | GET | `/api/rag/eval/latest` | 最近一次评测结果 |
+| GET | `/api/rag/graph/stats` | 知识图谱实体/关系/来源覆盖率 |
+| GET | `/api/rag/graph/quality` | 图谱质量报告（冲突、覆盖率、低置信边） |
+
+`/api/rag/query` 支持 `retrieval_mode`：`vector`（仅 BM25+向量）、`hybrid`（默认，图+向量）、`graph`（仅图检索）。
+
+### GraphRAG 使用
+
+```powershell
+# 构建/增量更新图谱
+.\.venv312\Scripts\python.exe -m enterprise_rag.graph.build --force
+.\.venv312\Scripts\python.exe -m enterprise_rag.graph.build
+
+# 图谱版本与回滚
+.\.venv312\Scripts\python.exe -m enterprise_rag.graph.build --list-versions
+.\.venv312\Scripts\python.exe -m enterprise_rag.graph.build --rollback graph_20261022_015053.json
+```
+
+图谱存储为 `enterprise_rag/graph/data/graph.json`，每条关系绑定 `doc_id`、`chunk_id`、原文证据，无需额外图数据库即可运行；生产环境可替换为 Neo4j/Nebula。
 
 ## 三、复制到其他文件夹
 

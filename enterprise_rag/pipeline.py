@@ -34,12 +34,15 @@ def query(
     top_k: int | None = None,
     as_of: str | None = None,
     use_llm: bool | None = None,
+    retrieval_mode: str = "hybrid",
 ) -> dict:
     started = time.monotonic()
-    result = retrieve(question, user=user, top_k=top_k, as_of=as_of)
+    result = retrieve(question, user=user, top_k=top_k, as_of=as_of, retrieval_mode=retrieval_mode)
     chunks = result["chunks"]
+    graph_paths = (result["debug"].get("graph") or {}).get("paths", [])
     generated = generate_answer(question, chunks, use_llm=use_llm,
-                                evidence_complete=result["debug"].get("evidence_budget_complete", True))
+                                evidence_complete=result["debug"].get("evidence_budget_complete", True),
+                                graph_paths=graph_paths)
     latency_ms = int((time.monotonic() - started) * 1000)
 
     return {
@@ -53,6 +56,7 @@ def query(
         "reasoning": generated.get("reasoning"),
         "context_truncated": generated.get("context_truncated", False),
         "context_chunk_ids": generated.get("context_chunk_ids", []),
+        "graph_paths": generated.get("graph_paths", []),
         "citations": to_citations(generated["citations"]),
         "query_rewrite": {
             "original": result["query"]["original"],

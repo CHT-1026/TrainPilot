@@ -24,7 +24,7 @@ class Settings(BaseSettings):
     # LLM
     openai_api_key: str = ""
     openai_api_base: str = ""
-    openai_model: str = "qwen3.8-flash"
+    openai_model: str = "deepseek-v4.1-flash"
     openai_enable_thinking: str = ""
     llm_timeout_seconds: float = 60.0
     llm_max_retries: int = 2

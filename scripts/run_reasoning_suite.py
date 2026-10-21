@@ -117,6 +117,7 @@ def run(args) -> dict:
             "question": case["question"],
             "top_k": args.top_k,
             "use_llm": not args.no_llm,
+            "retrieval_mode": args.retrieval_mode,
         }
         if case.get("as_of"):
             payload["as_of"] = case["as_of"]
@@ -157,6 +158,13 @@ def run(args) -> dict:
             "missing_keywords": missing_keywords,
             "top_score": (data.get("retrieval") or {}).get("debug", {}).get("top_score"),
             "comparison_mode": (data.get("retrieval") or {}).get("debug", {}).get("comparison_mode"),
+            "graph_entities": [
+                entity.get("name") for entity in
+                (((data.get("retrieval") or {}).get("debug") or {}).get("graph") or {}).get("entities", [])
+            ],
+            "graph_paths": (
+                (((data.get("retrieval") or {}).get("debug") or {}).get("graph") or {}).get("paths", [])
+            )[:3],
             "latency_ms": latency,
             "error": error,
         }
@@ -197,6 +205,7 @@ def summarize(records: list[dict], label: str, elapsed: float, args) -> dict:
         "base_url": args.base_url,
         "use_llm": not args.no_llm,
         "top_k": args.top_k,
+        "retrieval_mode": args.retrieval_mode,
         "started_at": datetime.now(timezone(timedelta(hours=8))).isoformat(),
         "elapsed_seconds": elapsed,
         "total": len(records),
@@ -223,6 +232,7 @@ def write_reports(summary: dict, records: list[dict], label: str) -> None:
         "",
         f"- 模型标识：`{summary['model_hint']}`",
         f"- 服务地址：`{summary['base_url']}`",
+        f"- 检索模式：`{summary.get('retrieval_mode', 'hybrid')}`",
         f"- 用例总数：**{summary['total']}**，通过 **{summary['passed']}**，失败 **{summary['failed']}**，"
         f"通过率 **{summary['pass_rate'] * 100:.2f}%**",
         f"- 平均耗时：{summary['avg_latency_ms']} ms，总耗时 {summary['elapsed_seconds']} s",
@@ -264,6 +274,7 @@ def main():
     parser.add_argument("--timeout", type=float, default=180)
     parser.add_argument("--limit", type=int, default=0)
     parser.add_argument("--category", default="")
+    parser.add_argument("--retrieval-mode", default="hybrid", choices=("vector", "hybrid", "graph"))
     parser.add_argument("--no-llm", action="store_true")
     args = parser.parse_args()
     run(args)
