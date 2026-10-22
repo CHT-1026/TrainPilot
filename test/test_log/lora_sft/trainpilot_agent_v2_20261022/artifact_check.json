@@ -1,0 +1,6 @@
+{
+  "completed_epochs": 2,
+  "global_step": 300,
+  "adapter_tensors": 224,
+  "checkpoint_adapter_exactly_equal": true
+}

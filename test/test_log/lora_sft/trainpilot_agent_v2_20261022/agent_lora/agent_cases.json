@@ -1,0 +1,87 @@
+[
+  {
+    "id": "greeting",
+    "message": "你好",
+    "intent": "general_chat"
+  },
+  {
+    "id": "leave_complete",
+    "message": "我要请事假，2026年11月2日到2026年11月3日，原因是个人事务。",
+    "intent": "submit_leave",
+    "fields": {
+      "leave_type": "事假",
+      "start_date": "2026-11-02",
+      "end_date": "2026-11-03",
+      "reason": "个人事务"
+    }
+  },
+  {
+    "id": "leave_missing",
+    "message": "我想请假",
+    "intent": "submit_leave",
+    "must_not_invent": [
+      "leave_type",
+      "start_date",
+      "end_date",
+      "reason"
+    ]
+  },
+  {
+    "id": "policy",
+    "message": "公司年假制度规定每年可以休多少天？",
+    "intent": "policy_qa"
+  },
+  {
+    "id": "my_requests",
+    "message": "查看我提交的请假申请进度",
+    "intent": "query_status"
+  },
+  {
+    "id": "pending",
+    "message": "查看待我审批的申请列表",
+    "intent": "query_pending"
+  },
+  {
+    "id": "approve",
+    "message": "通过申请 leave_A102，审批意见为同意。",
+    "intent": "approve",
+    "fields": {
+      "app_id": "leave_A102",
+      "decision": "通过",
+      "comments": "同意"
+    }
+  },
+  {
+    "id": "cancel_request",
+    "message": "取消我已提交的申请 leave_A102。",
+    "intent": "delete_application",
+    "fields": {
+      "app_id": "leave_A102"
+    }
+  },
+  {
+    "id": "suggestion",
+    "message": "请给我申请 leave_A102 的审批建议。",
+    "intent": "get_suggestion",
+    "fields": {
+      "app_id": "leave_A102"
+    }
+  },
+  {
+    "id": "ambiguous",
+    "message": "帮我处理一下",
+    "intent": "clarify"
+  },
+  {
+    "id": "confirm",
+    "message": "确认提交",
+    "intent": "confirm_action",
+    "pending": true
+  },
+  {
+    "id": "discard",
+    "message": "算了，不提交了",
+    "intent": "cancel_action",
+    "pending": true
+  }
+]

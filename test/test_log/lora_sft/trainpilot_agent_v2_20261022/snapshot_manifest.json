@@ -1,0 +1,142 @@
+{
+  "created_at": "2026-10-22T22:12:54.442718+08:00",
+  "experiment": "trainpilot_agent_lora_v2_20261022",
+  "files": [
+    {
+      "file": "comparison.json",
+      "source": "runs\\lora-eval-20261022\\comparison.json",
+      "bytes": 17247,
+      "sha256": "49d4d03210263bf17e511d97b10a8ee51b2046ac40b22989f18ae7074d93d05e"
+    },
+    {
+      "file": "summary.json",
+      "source": "runs\\lora-eval-20261022\\summary.json",
+      "bytes": 10636,
+      "sha256": "d111ba144b864b3b1ff7f85d126f6bc199e013bd760aa0ceeafc3a2e9850ba10"
+    },
+    {
+      "file": "failure_analysis.json",
+      "source": "runs\\lora-eval-20261022\\failure_analysis.json",
+      "bytes": 23893,
+      "sha256": "7e7e51fa470a470a85b85b8a97312dea35b95514e0189866ba1c9454328a115a"
+    },
+    {
+      "file": "workflow_ablation.json",
+      "source": "runs\\lora-eval-20261022\\workflow_ablation.json",
+      "bytes": 9641,
+      "sha256": "69dda1d827409ecaf8be2c6d0029611b0ede902f5b39f35f8d4e22d18e48c3ac"
+    },
+    {
+      "file": "model_metadata.json",
+      "source": "runs\\lora-eval-20261022\\model_metadata.json",
+      "bytes": 6039,
+      "sha256": "3a0f5e80ff652cf1691a614f5ec6b69e06be789c945097874bcb6a11653ab72a"
+    },
+    {
+      "file": "artifact_check.json",
+      "source": "runs\\lora-eval-20261022\\artifact_check.json",
+      "bytes": 124,
+      "sha256": "6e2f9eb9d9a46605472a3eb41f620e60ed3b655d7749e93ad9b55643bc9fca0b"
+    },
+    {
+      "file": "cases.json",
+      "source": "runs\\lora-eval-20261022\\cases.json",
+      "bytes": 427031,
+      "sha256": "3e31e044d6bbd55edc6e6cc72799c5c408fc5f66b034d35a406dd3b6c5e05c66"
+    },
+    {
+      "file": "sft_generations.jsonl",
+      "source": "runs\\lora-eval-20261022\\sft_generations.jsonl",
+      "bytes": 622305,
+      "sha256": "7b3f81f675cb6a52acbbe9c7e803fa93a96f3528b29570e9e434ec6c09f61dfb"
+    },
+    {
+      "file": "lora_generations.jsonl",
+      "source": "runs\\lora-eval-20261022\\lora_generations.jsonl",
+      "bytes": 537511,
+      "sha256": "23faea04517368d7c9ddf18f4ba7a653be1439c5107d3438b9dac388260242d2"
+    },
+    {
+      "file": "agent_model_requests.jsonl",
+      "source": "runs\\lora-eval-20261022\\agent_model_requests.jsonl",
+      "bytes": 129428,
+      "sha256": "3fad39bfe8a8551f556e1b26abee72125fe792dcc75bb25ca65987c471f4af0c"
+    },
+    {
+      "file": "agent_sft/agent_cases.json",
+      "source": "runs\\lora-eval-20261022\\agent_sft\\agent_cases.json",
+      "bytes": 1966,
+      "sha256": "4f1c65cff6ae8316bd9c34d09d2b7a233b71e89dad3958c67461c992c0f30541"
+    },
+    {
+      "file": "agent_sft/agent_results.jsonl",
+      "source": "runs\\lora-eval-20261022\\agent_sft\\agent_results.jsonl",
+      "bytes": 18160,
+      "sha256": "26d19d77565dabb48562eed8d7ec084ea1d787079551872f0da19640910aa010"
+    },
+    {
+      "file": "agent_sft/agent_summary.json",
+      "source": "runs\\lora-eval-20261022\\agent_sft\\agent_summary.json",
+      "bytes": 731,
+      "sha256": "19dd40120fb4b41cf762011e2c8dd743c5b6125637c965077a2f44a74a89a936"
+    },
+    {
+      "file": "agent_lora/agent_cases.json",
+      "source": "runs\\lora-eval-20261022\\agent_lora\\agent_cases.json",
+      "bytes": 1966,
+      "sha256": "4f1c65cff6ae8316bd9c34d09d2b7a233b71e89dad3958c67461c992c0f30541"
+    },
+    {
+      "file": "agent_lora/agent_results.jsonl",
+      "source": "runs\\lora-eval-20261022\\agent_lora\\agent_results.jsonl",
+      "bytes": 15278,
+      "sha256": "091d008c0c3acf17515e4fea5e9d522606871d00f5e6347e4e3e64cebfe954dd"
+    },
+    {
+      "file": "agent_lora/agent_summary.json",
+      "source": "runs\\lora-eval-20261022\\agent_lora\\agent_summary.json",
+      "bytes": 734,
+      "sha256": "c93a5ad2b9a85adde7c40ede5f77bd6b7ca9c05abdccae069ca2e2713bf15636"
+    },
+    {
+      "file": "training/run_manifest.json",
+      "source": "runs\\trainpilot_agent_lora_v2\\run_manifest.json",
+      "bytes": 2006,
+      "sha256": "c1b72b85c324720fccc8f263125304daa894b89ce511e0d4f6fb0b265d65d1dc"
+    },
+    {
+      "file": "training/metrics.jsonl",
+      "source": "runs\\trainpilot_agent_lora_v2\\metrics.jsonl",
+      "bytes": 8129,
+      "sha256": "e457bfe300c60ecb16742422d7d4f372a1e78e7f952993841f555be7d3d88de1"
+    },
+    {
+      "file": "training/loss_curve.png",
+      "source": "runs\\trainpilot_agent_lora_v2\\loss_curve.png",
+      "bytes": 184015,
+      "sha256": "af9f4e69bf92ef2fdaa9936deefa525e8c23f3d8ae548487dc426d9710f2d1cd"
+    },
+    {
+      "file": "training/adapter_config.json",
+      "source": "runs\\trainpilot_agent_lora_v2\\adapter\\adapter_config.json",
+      "bytes": 926,
+      "sha256": "48c78ae96ff4281b3dfb85fddca984ef3664c54016c00c1bfd92a267e8e907bc"
+    }
+  ],
+  "code_sha256": {
+    "E:\\agent项目\\trainpilot\\test\\test_code\\evaluate_agent_lora.py": "4e2c9d5cc0af2bb4124f4e9389a2f0a648fca1d6a718bc2f463df39662716e55",
+    "E:\\agent项目\\trainpilot\\test\\test_code\\qwen_agent_api.py": "9a8268cfffecac075abe3b67f43022ef31040a53d856fa9670d0f4cc430cc5db",
+    "E:\\agent项目\\trainpilot\\trainer\\qwen_full_sft.py": "7fb0eb024165ae363150df4f1782de977492aa4d1b3c034e7dbe8d7a066be880",
+    "E:\\agent项目\\trainpilot\\trainer\\qwen_lora_sft.py": "c497b2edc480cf801939caf4fada7339ce7f1c84fb5060b62177c3de15cfda0e",
+    "E:\\agent项目\\lantu-enterprise-agent-platform-main\\local_runtime\\evaluate_agent_model.py": "93dcfc78406275147df0df9178bf5b2e247a46a88eab6ee9c073d24c326b4fb6",
+    "E:\\agent项目\\lantu-enterprise-agent-platform-main\\app\\workflows\\intent_protocol.py": "5c122d2624b2f2713b7e8f505c19f7527f6c7e4d3f2d40e82c7ad3f53468f60a",
+    "E:\\agent项目\\lantu-enterprise-agent-platform-main\\app\\workflows\\intent_protocol.txt": "8fb4326d4b429a778e68a036dd048e9e1a6e6468b9761c6d9150045f78fb4210",
+    "E:\\agent项目\\lantu-enterprise-agent-platform-main\\app\\workflows\\chat_nodes\\leave.py": "19beb981d88e3af6ec8f484e34d106d0cb0fb5c3f8242ad0cf56d6a2bad61b1d"
+  },
+  "weight_files_copied": false,
+  "evaluation_scope": "Business task reliability is primary; general results retained as observations. No new training or protocol change performed.",
+  "report": {
+    "file": "test_trainpilot_agent_lora_v2_2026-10-22.md",
+    "sha256": "18005f5358cc8652c6e5e4cf9c648486c68293197927ca019d11680b23ca958a"
+  }
+}

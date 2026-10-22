@@ -1,0 +1,814 @@
+{
+  "counts": {
+    "span_or_value_mismatch": 11,
+    "intent_confusion": 6,
+    "missing_fields": 6,
+    "wrong_target_id": 1,
+    "field_schema_type": 2
+  },
+  "note": "Strict exact-match failures remain failures. Span/value mismatch may include wording boundaries and must not all be interpreted as wrong intent.",
+  "cases": [
+    {
+      "id": "test-missing_type-0003",
+      "category": "missing_type",
+      "type": "span_or_value_mismatch",
+      "scenario": {
+        "user_message": "拟于2027-08-07—2027-08-07缺勤处理到医院复查，请询问我要选择哪种假别。",
+        "current_date": "2027-08-01",
+        "history": [],
+        "summary": "",
+        "pending_action": null
+      },
+      "expected": {
+        "intent": "submit_leave",
+        "extracted_info": {
+          "start_date": "2027-08-07",
+          "end_date": "2027-08-07",
+          "reason": "到医院复查"
+        }
+      },
+      "actual": {
+        "intent": "submit_leave",
+        "extracted_info": {
+          "start_date": "2027-08-07",
+          "end_date": "2027-08-07",
+          "reason": "处理到医院复查"
+        }
+      }
+    },
+    {
+      "id": "test-confirm_action-0005",
+      "category": "confirm_action",
+      "type": "intent_confusion",
+      "scenario": {
+        "user_message": "当前待确认内容无需再改，可以正式提交。",
+        "current_date": "2028-09-21",
+        "history": [],
+        "summary": "",
+        "pending_action": {
+          "action_type": "submit_leave",
+          "draft": {
+            "leave_type": "丧假",
+            "start_date": "2028-11-05",
+            "end_date": "2028-11-05",
+            "reason": "处理亲属丧事"
+          }
+        }
+      },
+      "expected": {
+        "intent": "confirm_action",
+        "extracted_info": {}
+      },
+      "actual": {
+        "intent": "approve",
+        "extracted_info": {
+          "decision": "通过",
+          "comments": ""
+        }
+      }
+    },
+    {
+      "id": "test-history_modify-0001",
+      "category": "history_modify",
+      "type": "missing_fields",
+      "scenario": {
+        "user_message": "请更新待确认申请的起止为2026-04-02至2026-04-05，并继承原来的其他信息。",
+        "current_date": "2026-02-11",
+        "history": [
+          {
+            "role": "user",
+            "content": "申请病假，2026-03-26到2026-03-29，原因是到医院复查。"
+          },
+          {
+            "role": "assistant",
+            "content": "已整理草稿，请核对后确认。"
+          }
+        ],
+        "summary": "",
+        "pending_action": {
+          "action_type": "submit_leave",
+          "draft": {
+            "leave_type": "病假",
+            "start_date": "2026-03-26",
+            "end_date": "2026-03-29",
+            "reason": "到医院复查"
+          }
+        }
+      },
+      "expected": {
+        "intent": "submit_leave",
+        "extracted_info": {
+          "leave_type": "病假",
+          "start_date": "2026-04-02",
+          "end_date": "2026-04-05",
+          "reason": "到医院复查"
+        }
+      },
+      "actual": {
+        "intent": "submit_leave",
+        "extracted_info": {
+          "leave_type": "病假",
+          "start_date": "2026-04-02",
+          "end_date": "2026-04-05"
+        }
+      }
+    },
+    {
+      "id": "test-approve-0007",
+      "category": "approve",
+      "type": "span_or_value_mismatch",
+      "scenario": {
+        "user_message": "针对请假单leave_32d2570f4ffd，拟驳回，审批记录中注明需要重新说明。",
+        "current_date": "2028-05-08",
+        "history": [],
+        "summary": "",
+        "pending_action": null
+      },
+      "expected": {
+        "intent": "approve",
+        "extracted_info": {
+          "app_id": "leave_32d2570f4ffd",
+          "decision": "驳回",
+          "comments": "需要重新说明"
+        }
+      },
+      "actual": {
+        "intent": "approve",
+        "extracted_info": {
+          "app_id": "leave_32d2570f4ffd",
+          "decision": "驳回",
+          "comments": "审批记录中注明需要重新说明"
+        }
+      }
+    },
+    {
+      "id": "test-pending_cancel_existing-0002",
+      "category": "pending_cancel_existing",
+      "type": "wrong_target_id",
+      "scenario": {
+        "user_message": "请对现存已提交申请leave_98827c1879be发起取消，当前草稿并非这句话的对象。",
+        "current_date": "2026-07-10",
+        "history": [],
+        "summary": "",
+        "pending_action": {
+          "action_type": "approve",
+          "draft": {
+            "app_id": "leave_aff7cf87550d",
+            "decision": "驳回",
+            "comments": "需要重新说明"
+          }
+        }
+      },
+      "expected": {
+        "intent": "delete_application",
+        "extracted_info": {
+          "app_id": "leave_98827c1879be"
+        }
+      },
+      "actual": {
+        "intent": "delete_application",
+        "extracted_info": {
+          "app_id": "leave_aff7cf87550d"
+        }
+      }
+    },
+    {
+      "id": "test-history_modify-0002",
+      "category": "history_modify",
+      "type": "missing_fields",
+      "scenario": {
+        "user_message": "请更新待确认申请的起止为2028-01-16至2028-01-18，并继承原来的其他信息。",
+        "current_date": "2027-11-26",
+        "history": [
+          {
+            "role": "user",
+            "content": "申请病假，2028-01-09到2028-01-11，原因是到医院复查。"
+          },
+          {
+            "role": "assistant",
+            "content": "已整理草稿，请核对后确认。"
+          }
+        ],
+        "summary": "",
+        "pending_action": {
+          "action_type": "submit_leave",
+          "draft": {
+            "leave_type": "病假",
+            "start_date": "2028-01-09",
+            "end_date": "2028-01-11",
+            "reason": "到医院复查"
+          }
+        }
+      },
+      "expected": {
+        "intent": "submit_leave",
+        "extracted_info": {
+          "leave_type": "病假",
+          "start_date": "2028-01-16",
+          "end_date": "2028-01-18",
+          "reason": "到医院复查"
+        }
+      },
+      "actual": {
+        "intent": "submit_leave",
+        "extracted_info": {
+          "leave_type": "病假",
+          "start_date": "2028-01-16",
+          "end_date": "2028-01-18"
+        }
+      }
+    },
+    {
+      "id": "test-approve-0002",
+      "category": "approve",
+      "type": "span_or_value_mismatch",
+      "scenario": {
+        "user_message": "针对请假单leave_24a4901eea0e，拟同意，审批记录中注明材料齐全。",
+        "current_date": "2027-09-18",
+        "history": [],
+        "summary": "",
+        "pending_action": null
+      },
+      "expected": {
+        "intent": "approve",
+        "extracted_info": {
+          "app_id": "leave_24a4901eea0e",
+          "decision": "通过",
+          "comments": "材料齐全"
+        }
+      },
+      "actual": {
+        "intent": "approve",
+        "extracted_info": {
+          "app_id": "leave_24a4901eea0e",
+          "decision": "通过",
+          "comments": "审批记录中注明材料齐全"
+        }
+      }
+    },
+    {
+      "id": "test-leave_full-0003",
+      "category": "leave_full",
+      "type": "span_or_value_mismatch",
+      "scenario": {
+        "user_message": "因分娩休养拟于2026-04-08—2026-04-10休产假，请协助发起申请。",
+        "current_date": "2026-03-06",
+        "history": [],
+        "summary": "",
+        "pending_action": null
+      },
+      "expected": {
+        "intent": "submit_leave",
+        "extracted_info": {
+          "leave_type": "产假",
+          "start_date": "2026-04-08",
+          "end_date": "2026-04-10",
+          "reason": "分娩休养"
+        }
+      },
+      "actual": {
+        "intent": "submit_leave",
+        "extracted_info": {
+          "leave_type": "休产假",
+          "start_date": "2026-04-08",
+          "end_date": "2026-04-10",
+          "reason": "分娩休养"
+        }
+      }
+    },
+    {
+      "id": "test-get_suggestion-0001",
+      "category": "get_suggestion",
+      "type": "field_schema_type",
+      "scenario": {
+        "user_message": "在真正审批之前，请就leave_bcf286f0a236给出建议。",
+        "current_date": "2026-07-09",
+        "history": [],
+        "summary": "",
+        "pending_action": null
+      },
+      "expected": {
+        "intent": "get_suggestion",
+        "extracted_info": {
+          "app_id": "leave_bcf286f0a236"
+        }
+      },
+      "actual": {
+        "intent": "get_suggestion",
+        "extracted_info": "leave_bcf286f0a236"
+      }
+    },
+    {
+      "id": "test-history_modify-0005",
+      "category": "history_modify",
+      "type": "missing_fields",
+      "scenario": {
+        "user_message": "请更新待确认申请的起止为2026-11-09至2026-11-11，并继承原来的其他信息。",
+        "current_date": "2026-10-19",
+        "history": [
+          {
+            "role": "user",
+            "content": "申请事假，2026-11-02到2026-11-04，原因是办理证件。"
+          },
+          {
+            "role": "assistant",
+            "content": "已整理草稿，请核对后确认。"
+          }
+        ],
+        "summary": "",
+        "pending_action": {
+          "action_type": "submit_leave",
+          "draft": {
+            "leave_type": "事假",
+            "start_date": "2026-11-02",
+            "end_date": "2026-11-04",
+            "reason": "办理证件"
+          }
+        }
+      },
+      "expected": {
+        "intent": "submit_leave",
+        "extracted_info": {
+          "leave_type": "事假",
+          "start_date": "2026-11-09",
+          "end_date": "2026-11-11",
+          "reason": "办理证件"
+        }
+      },
+      "actual": {
+        "intent": "submit_leave",
+        "extracted_info": {
+          "leave_type": "事假",
+          "start_date": "2026-11-09",
+          "end_date": "2026-11-11"
+        }
+      }
+    },
+    {
+      "id": "test-get_suggestion-0002",
+      "category": "get_suggestion",
+      "type": "field_schema_type",
+      "scenario": {
+        "user_message": "在真正审批之前，请就leave_b15a261e49e2给出建议。",
+        "current_date": "2026-06-12",
+        "history": [],
+        "summary": "",
+        "pending_action": null
+      },
+      "expected": {
+        "intent": "get_suggestion",
+        "extracted_info": {
+          "app_id": "leave_b15a261e49e2"
+        }
+      },
+      "actual": {
+        "intent": "get_suggestion",
+        "extracted_info": "leave_b15a261e49e2"
+      }
+    },
+    {
+      "id": "test-confirm_action-0003",
+      "category": "confirm_action",
+      "type": "intent_confusion",
+      "scenario": {
+        "user_message": "当前待确认内容无需再改，可以正式提交。",
+        "current_date": "2028-02-22",
+        "history": [],
+        "summary": "",
+        "pending_action": {
+          "action_type": "submit_leave",
+          "draft": {
+            "leave_type": "丧假",
+            "start_date": "2028-03-12",
+            "end_date": "2028-03-13",
+            "reason": "参加亲属葬礼"
+          }
+        }
+      },
+      "expected": {
+        "intent": "confirm_action",
+        "extracted_info": {}
+      },
+      "actual": {
+        "intent": "approve",
+        "extracted_info": {
+          "decision": "通过",
+          "comments": ""
+        }
+      }
+    },
+    {
+      "id": "test-approve-0004",
+      "category": "approve",
+      "type": "span_or_value_mismatch",
+      "scenario": {
+        "user_message": "针对请假单leave_2f652e97749d，拟批准，审批记录中注明已确认安排。",
+        "current_date": "2028-03-28",
+        "history": [],
+        "summary": "",
+        "pending_action": null
+      },
+      "expected": {
+        "intent": "approve",
+        "extracted_info": {
+          "app_id": "leave_2f652e97749d",
+          "decision": "通过",
+          "comments": "已确认安排"
+        }
+      },
+      "actual": {
+        "intent": "approve",
+        "extracted_info": {
+          "app_id": "leave_2f652e97749d",
+          "decision": "通过",
+          "comments": "审批记录中注明已确认安排"
+        }
+      }
+    },
+    {
+      "id": "test-leave_relative-0002",
+      "category": "leave_relative",
+      "type": "span_or_value_mismatch",
+      "scenario": {
+        "user_message": "后天这天因安排生育休假无法到岗，拟请一天产假。",
+        "current_date": "2027-09-18",
+        "history": [],
+        "summary": "",
+        "pending_action": null
+      },
+      "expected": {
+        "intent": "submit_leave",
+        "extracted_info": {
+          "leave_type": "产假",
+          "start_date": "2027-09-20",
+          "end_date": "2027-09-20",
+          "reason": "安排生育休假"
+        }
+      },
+      "actual": {
+        "intent": "submit_leave",
+        "extracted_info": {
+          "leave_type": "产假",
+          "start_date": "2027-09-20",
+          "end_date": "2027-09-20",
+          "reason": "安排生育"
+        }
+      }
+    },
+    {
+      "id": "test-missing_type-0000",
+      "category": "missing_type",
+      "type": "span_or_value_mismatch",
+      "scenario": {
+        "user_message": "拟于2027-09-10—2027-09-10缺勤处理身体不适，请询问我要选择哪种假别。",
+        "current_date": "2027-09-05",
+        "history": [],
+        "summary": "",
+        "pending_action": null
+      },
+      "expected": {
+        "intent": "submit_leave",
+        "extracted_info": {
+          "start_date": "2027-09-10",
+          "end_date": "2027-09-10",
+          "reason": "身体不适"
+        }
+      },
+      "actual": {
+        "intent": "submit_leave",
+        "extracted_info": {
+          "start_date": "2027-09-10",
+          "end_date": "2027-09-10",
+          "reason": "处理身体不适"
+        }
+      }
+    },
+    {
+      "id": "test-history_modify-0004",
+      "category": "history_modify",
+      "type": "missing_fields",
+      "scenario": {
+        "user_message": "请更新待确认申请的起止为2028-01-14至2028-01-14，并继承原来的其他信息。",
+        "current_date": "2027-12-08",
+        "history": [
+          {
+            "role": "user",
+            "content": "申请病假，2028-01-07到2028-01-07，原因是门诊就诊。"
+          },
+          {
+            "role": "assistant",
+            "content": "已整理草稿，请核对后确认。"
+          }
+        ],
+        "summary": "",
+        "pending_action": {
+          "action_type": "submit_leave",
+          "draft": {
+            "leave_type": "病假",
+            "start_date": "2028-01-07",
+            "end_date": "2028-01-07",
+            "reason": "门诊就诊"
+          }
+        }
+      },
+      "expected": {
+        "intent": "submit_leave",
+        "extracted_info": {
+          "leave_type": "病假",
+          "start_date": "2028-01-14",
+          "end_date": "2028-01-14",
+          "reason": "门诊就诊"
+        }
+      },
+      "actual": {
+        "intent": "submit_leave",
+        "extracted_info": {
+          "leave_type": "病假",
+          "start_date": "2028-01-14",
+          "end_date": "2028-01-14"
+        }
+      }
+    },
+    {
+      "id": "test-approve-0003",
+      "category": "approve",
+      "type": "missing_fields",
+      "scenario": {
+        "user_message": "针对请假单leave_3c8c89ebbc88，拟驳回，审批记录中注明信息不完整。",
+        "current_date": "2027-07-23",
+        "history": [],
+        "summary": "",
+        "pending_action": null
+      },
+      "expected": {
+        "intent": "approve",
+        "extracted_info": {
+          "app_id": "leave_3c8c89ebbc88",
+          "decision": "驳回",
+          "comments": "信息不完整"
+        }
+      },
+      "actual": {
+        "intent": "approve",
+        "extracted_info": {
+          "app_id": "leave_3c8c89ebbc88",
+          "decision": "驳回"
+        }
+      }
+    },
+    {
+      "id": "test-missing_type-0002",
+      "category": "missing_type",
+      "type": "span_or_value_mismatch",
+      "scenario": {
+        "user_message": "拟于2027-05-25—2027-05-25缺勤处理回乡探亲，请询问我要选择哪种假别。",
+        "current_date": "2027-04-12",
+        "history": [],
+        "summary": "",
+        "pending_action": null
+      },
+      "expected": {
+        "intent": "submit_leave",
+        "extracted_info": {
+          "start_date": "2027-05-25",
+          "end_date": "2027-05-25",
+          "reason": "回乡探亲"
+        }
+      },
+      "actual": {
+        "intent": "submit_leave",
+        "extracted_info": {
+          "start_date": "2027-05-25",
+          "end_date": "2027-05-25",
+          "reason": "处理回乡探亲"
+        }
+      }
+    },
+    {
+      "id": "test-missing_type-0001",
+      "category": "missing_type",
+      "type": "span_or_value_mismatch",
+      "scenario": {
+        "user_message": "拟于2026-03-11—2026-03-11缺勤处理产后恢复，请询问我要选择哪种假别。",
+        "current_date": "2026-03-02",
+        "history": [],
+        "summary": "",
+        "pending_action": null
+      },
+      "expected": {
+        "intent": "submit_leave",
+        "extracted_info": {
+          "start_date": "2026-03-11",
+          "end_date": "2026-03-11",
+          "reason": "产后恢复"
+        }
+      },
+      "actual": {
+        "intent": "submit_leave",
+        "extracted_info": {
+          "start_date": "2026-03-11",
+          "end_date": "2026-03-11",
+          "reason": "处理产后恢复"
+        }
+      }
+    },
+    {
+      "id": "test-confirm_action-0001",
+      "category": "confirm_action",
+      "type": "intent_confusion",
+      "scenario": {
+        "user_message": "当前待确认内容无需再改，可以正式提交。",
+        "current_date": "2027-06-06",
+        "history": [],
+        "summary": "",
+        "pending_action": {
+          "action_type": "submit_leave",
+          "draft": {
+            "leave_type": "婚假",
+            "start_date": "2027-06-09",
+            "end_date": "2027-06-12",
+            "reason": "筹办婚礼"
+          }
+        }
+      },
+      "expected": {
+        "intent": "confirm_action",
+        "extracted_info": {}
+      },
+      "actual": {
+        "intent": "approve",
+        "extracted_info": {
+          "decision": "通过",
+          "comments": ""
+        }
+      }
+    },
+    {
+      "id": "test-approve-0001",
+      "category": "approve",
+      "type": "span_or_value_mismatch",
+      "scenario": {
+        "user_message": "针对请假单leave_5ffea37c7e2b，拟批准，审批记录中注明已核对证明。",
+        "current_date": "2027-12-31",
+        "history": [],
+        "summary": "",
+        "pending_action": null
+      },
+      "expected": {
+        "intent": "approve",
+        "extracted_info": {
+          "app_id": "leave_5ffea37c7e2b",
+          "decision": "通过",
+          "comments": "已核对证明"
+        }
+      },
+      "actual": {
+        "intent": "approve",
+        "extracted_info": {
+          "app_id": "leave_5ffea37c7e2b",
+          "decision": "通过",
+          "comments": "审批记录中注明已核对证明"
+        }
+      }
+    },
+    {
+      "id": "test-history_fill-0004",
+      "category": "history_fill",
+      "type": "span_or_value_mismatch",
+      "scenario": {
+        "user_message": "承接前面那张请假单：于2026-09-06起至2026-09-09止，因办理证件申请。",
+        "current_date": "2026-08-29",
+        "history": [
+          {
+            "role": "user",
+            "content": "我想请事假。"
+          },
+          {
+            "role": "assistant",
+            "content": "请补充请假起止日期和原因。"
+          }
+        ],
+        "summary": "",
+        "pending_action": null
+      },
+      "expected": {
+        "intent": "submit_leave",
+        "extracted_info": {
+          "leave_type": "事假",
+          "start_date": "2026-09-06",
+          "end_date": "2026-09-09",
+          "reason": "办理证件"
+        }
+      },
+      "actual": {
+        "intent": "submit_leave",
+        "extracted_info": {
+          "leave_type": "事假",
+          "start_date": "2026-09-06",
+          "end_date": "2026-09-09",
+          "reason": "办理证件申请"
+        }
+      }
+    },
+    {
+      "id": "test-confirm_action-0002",
+      "category": "confirm_action",
+      "type": "intent_confusion",
+      "scenario": {
+        "user_message": "当前待确认内容无需再改，可以正式提交。",
+        "current_date": "2027-12-07",
+        "history": [],
+        "summary": "",
+        "pending_action": {
+          "action_type": "cancel_leave",
+          "draft": {
+            "app_id": "leave_74d1b60e2cb1"
+          }
+        }
+      },
+      "expected": {
+        "intent": "confirm_action",
+        "extracted_info": {}
+      },
+      "actual": {
+        "intent": "submit_leave",
+        "extracted_info": {}
+      }
+    },
+    {
+      "id": "test-approve_missing_id-0001",
+      "category": "approve_missing_id",
+      "type": "missing_fields",
+      "scenario": {
+        "user_message": "请为一张编号未知的请假单准备通过决定，说明是已确认安排。",
+        "current_date": "2027-05-27",
+        "history": [],
+        "summary": "",
+        "pending_action": null
+      },
+      "expected": {
+        "intent": "approve",
+        "extracted_info": {
+          "decision": "通过",
+          "comments": "已确认安排"
+        }
+      },
+      "actual": {
+        "intent": "approve",
+        "extracted_info": {
+          "decision": "通过"
+        }
+      }
+    },
+    {
+      "id": "test-confirm_action-0004",
+      "category": "confirm_action",
+      "type": "intent_confusion",
+      "scenario": {
+        "user_message": "当前待确认内容无需再改，可以正式提交。",
+        "current_date": "2026-09-19",
+        "history": [],
+        "summary": "",
+        "pending_action": {
+          "action_type": "cancel_leave",
+          "draft": {
+            "app_id": "leave_114d724a816e"
+          }
+        }
+      },
+      "expected": {
+        "intent": "confirm_action",
+        "extracted_info": {}
+      },
+      "actual": {
+        "intent": "submit_leave",
+        "extracted_info": {}
+      }
+    },
+    {
+      "id": "test-confirm_action-0006",
+      "category": "confirm_action",
+      "type": "intent_confusion",
+      "scenario": {
+        "user_message": "当前待确认内容无需再改，可以正式提交。",
+        "current_date": "2028-03-28",
+        "history": [],
+        "summary": "",
+        "pending_action": {
+          "action_type": "cancel_leave",
+          "draft": {
+            "app_id": "leave_de34f9d0a406"
+          }
+        }
+      },
+      "expected": {
+        "intent": "confirm_action",
+        "extracted_info": {}
+      },
+      "actual": {
+        "intent": "submit_leave",
+        "extracted_info": {}
+      }
+    }
+  ]
+}

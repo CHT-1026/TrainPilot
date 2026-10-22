@@ -17,3 +17,7 @@
 *.png binary
 *.svg text eol=lf
 dataset/datasets/pretrain_t2t_mini.jsonl filter=lfs diff=lfs merge=lfs -text
+# Preserve archived evaluation bytes so recorded SHA256 values survive checkout.
+test/test_log/lora_sft/trainpilot_agent_v2_20261022/** -text
+# Keep generated data and source manifests byte-identical across platforms.
+dataset/datasets/trainpilot_agent/** -text

@@ -1,0 +1,11 @@
+{
+  "version": "v2",
+  "approval": "用户已确认v2_preview中的规范与样例",
+  "reference_project": "lantu-enterprise-agent-platform-main",
+  "recognition_sha256": "d092f97166c8c091c88a882955b9e10df3a8639d94aecb4853a977b5d04742bd",
+  "protocol_sha256": "8fb4326d4b429a778e68a036dd048e9e1a6e6468b9761c6d9150045f78fb4210",
+  "prompt_builder_sha256": "5c122d2624b2f2713b7e8f505c19f7527f6c7e4d3f2d40e82c7ad3f53468f60a",
+  "license": "MIT",
+  "license_file": "prompt_reference.LICENSE",
+  "scope": "统一助手身份与解析提示词；沿用原意图名、路由和业务节点。"
+}

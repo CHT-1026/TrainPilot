@@ -1,0 +1,298 @@
+[
+  {
+    "query": "确认提交",
+    "mode": "original",
+    "expected_intent": "confirm_action",
+    "actual": {
+      "intent": "submit_leave",
+      "extracted_info": {
+        "leave_type": "事假",
+        "start_date": "2026-11-02",
+        "end_date": "2026-11-03",
+        "working_days": 2,
+        "reason": "个人事务",
+        "requires_hr": false
+      }
+    },
+    "raw": "{\"intent\":\"submit_leave\",\"extracted_info\":{\"leave_type\":\"事假\",\"start_date\":\"2026-11-02\",\"end_date\":\"2026-11-03\",\"working_days\":2,\"reason\":\"个人事务\",\"requires_hr\":false}}",
+    "context": {
+      "current_date": "2026-10-22",
+      "history": [
+        {
+          "role": "user",
+          "content": "我想请事假"
+        },
+        {
+          "role": "assistant",
+          "content": "请提供以下信息：\n- 请假时间（格式：2026-06-23 到 2026-06-28）\n- 请假原因"
+        },
+        {
+          "role": "user",
+          "content": "时间是2026年11月2日到11月3日，原因是个人事务。"
+        },
+        {
+          "role": "assistant",
+          "content": "请确认以下请假申请：\n- 类型：事假\n- 时间：2026-11-02 至 2026-11-03\n- 工作日：2 天\n- 原因：个人事务\n- 审批路径：主管审批\n\n回复「确认」提交，回复「取消」放弃。"
+        }
+      ],
+      "pending_action": {
+        "action_type": "submit_leave",
+        "draft": {
+          "leave_type": "事假",
+          "start_date": "2026-11-02",
+          "end_date": "2026-11-03",
+          "working_days": 2,
+          "reason": "个人事务",
+          "requires_hr": false
+        }
+      }
+    },
+    "intent_ok": false
+  },
+  {
+    "query": "确认提交",
+    "mode": "no_history",
+    "expected_intent": "confirm_action",
+    "actual": {
+      "intent": "confirm_action",
+      "extracted_info": {}
+    },
+    "raw": "{\"intent\":\"confirm_action\",\"extracted_info\":{}}",
+    "context": {
+      "current_date": "2026-10-22",
+      "history": [],
+      "pending_action": {
+        "action_type": "submit_leave",
+        "draft": {
+          "leave_type": "事假",
+          "start_date": "2026-11-02",
+          "end_date": "2026-11-03",
+          "working_days": 2,
+          "reason": "个人事务",
+          "requires_hr": false
+        }
+      }
+    },
+    "intent_ok": true
+  },
+  {
+    "query": "确认提交",
+    "mode": "four_field_draft",
+    "expected_intent": "confirm_action",
+    "actual": {
+      "intent": "submit_leave",
+      "extracted_info": {
+        "leave_type": "事假",
+        "start_date": "2026-11-02",
+        "end_date": "2026-11-03",
+        "reason": "个人事务"
+      }
+    },
+    "raw": "{\"intent\":\"submit_leave\",\"extracted_info\":{\"leave_type\":\"事假\",\"start_date\":\"2026-11-02\",\"end_date\":\"2026-11-03\",\"reason\":\"个人事务\"}}",
+    "context": {
+      "current_date": "2026-10-22",
+      "history": [
+        {
+          "role": "user",
+          "content": "我想请事假"
+        },
+        {
+          "role": "assistant",
+          "content": "请提供以下信息：\n- 请假时间（格式：2026-06-23 到 2026-06-28）\n- 请假原因"
+        },
+        {
+          "role": "user",
+          "content": "时间是2026年11月2日到11月3日，原因是个人事务。"
+        },
+        {
+          "role": "assistant",
+          "content": "请确认以下请假申请：\n- 类型：事假\n- 时间：2026-11-02 至 2026-11-03\n- 工作日：2 天\n- 原因：个人事务\n- 审批路径：主管审批\n\n回复「确认」提交，回复「取消」放弃。"
+        }
+      ],
+      "pending_action": {
+        "action_type": "submit_leave",
+        "draft": {
+          "leave_type": "事假",
+          "start_date": "2026-11-02",
+          "end_date": "2026-11-03",
+          "reason": "个人事务"
+        }
+      }
+    },
+    "intent_ok": false
+  },
+  {
+    "query": "确认提交",
+    "mode": "no_history_four_field_draft",
+    "expected_intent": "confirm_action",
+    "actual": {
+      "intent": "confirm_action",
+      "extracted_info": {}
+    },
+    "raw": "{\"intent\":\"confirm_action\",\"extracted_info\":{}}",
+    "context": {
+      "current_date": "2026-10-22",
+      "history": [],
+      "pending_action": {
+        "action_type": "submit_leave",
+        "draft": {
+          "leave_type": "事假",
+          "start_date": "2026-11-02",
+          "end_date": "2026-11-03",
+          "reason": "个人事务"
+        }
+      }
+    },
+    "intent_ok": true
+  },
+  {
+    "query": "算了，取消草稿",
+    "mode": "original",
+    "expected_intent": "cancel_action",
+    "actual": {
+      "intent": "delete_application",
+      "extracted_info": {}
+    },
+    "raw": "{\"intent\":\"delete_application\",\"extracted_info\":{}}",
+    "context": {
+      "current_date": "2026-10-22",
+      "history": [
+        {
+          "role": "user",
+          "content": "我想请事假"
+        },
+        {
+          "role": "assistant",
+          "content": "请提供以下信息：\n- 请假时间（格式：2026-06-23 到 2026-06-28）\n- 请假原因"
+        },
+        {
+          "role": "user",
+          "content": "时间是2026年11月2日到11月3日，原因是个人事务。"
+        },
+        {
+          "role": "assistant",
+          "content": "请确认以下请假申请：\n- 类型：事假\n- 时间：2026-11-02 至 2026-11-03\n- 工作日：2 天\n- 原因：个人事务\n- 审批路径：主管审批\n\n回复「确认」提交，回复「取消」放弃。"
+        },
+        {
+          "role": "user",
+          "content": "确认提交"
+        },
+        {
+          "role": "assistant",
+          "content": "请确认以下请假申请：\n- 类型：事假\n- 时间：2026-11-02 至 2026-11-03\n- 工作日：2 天\n- 原因：个人事务\n- 审批路径：主管审批\n\n回复「确认」提交，回复「取消」放弃。"
+        }
+      ],
+      "pending_action": {
+        "action_type": "submit_leave",
+        "draft": {
+          "leave_type": "事假",
+          "start_date": "2026-11-02",
+          "end_date": "2026-11-03",
+          "working_days": 2,
+          "reason": "个人事务",
+          "requires_hr": false
+        }
+      }
+    },
+    "intent_ok": false
+  },
+  {
+    "query": "算了，取消草稿",
+    "mode": "no_history",
+    "expected_intent": "cancel_action",
+    "actual": {
+      "intent": "delete_application",
+      "extracted_info": {}
+    },
+    "raw": "{\"intent\":\"delete_application\",\"extracted_info\":{}}",
+    "context": {
+      "current_date": "2026-10-22",
+      "history": [],
+      "pending_action": {
+        "action_type": "submit_leave",
+        "draft": {
+          "leave_type": "事假",
+          "start_date": "2026-11-02",
+          "end_date": "2026-11-03",
+          "working_days": 2,
+          "reason": "个人事务",
+          "requires_hr": false
+        }
+      }
+    },
+    "intent_ok": false
+  },
+  {
+    "query": "算了，取消草稿",
+    "mode": "four_field_draft",
+    "expected_intent": "cancel_action",
+    "actual": {
+      "intent": "delete_application",
+      "extracted_info": {}
+    },
+    "raw": "{\"intent\":\"delete_application\",\"extracted_info\":{}}",
+    "context": {
+      "current_date": "2026-10-22",
+      "history": [
+        {
+          "role": "user",
+          "content": "我想请事假"
+        },
+        {
+          "role": "assistant",
+          "content": "请提供以下信息：\n- 请假时间（格式：2026-06-23 到 2026-06-28）\n- 请假原因"
+        },
+        {
+          "role": "user",
+          "content": "时间是2026年11月2日到11月3日，原因是个人事务。"
+        },
+        {
+          "role": "assistant",
+          "content": "请确认以下请假申请：\n- 类型：事假\n- 时间：2026-11-02 至 2026-11-03\n- 工作日：2 天\n- 原因：个人事务\n- 审批路径：主管审批\n\n回复「确认」提交，回复「取消」放弃。"
+        },
+        {
+          "role": "user",
+          "content": "确认提交"
+        },
+        {
+          "role": "assistant",
+          "content": "请确认以下请假申请：\n- 类型：事假\n- 时间：2026-11-02 至 2026-11-03\n- 工作日：2 天\n- 原因：个人事务\n- 审批路径：主管审批\n\n回复「确认」提交，回复「取消」放弃。"
+        }
+      ],
+      "pending_action": {
+        "action_type": "submit_leave",
+        "draft": {
+          "leave_type": "事假",
+          "start_date": "2026-11-02",
+          "end_date": "2026-11-03",
+          "reason": "个人事务"
+        }
+      }
+    },
+    "intent_ok": false
+  },
+  {
+    "query": "算了，取消草稿",
+    "mode": "no_history_four_field_draft",
+    "expected_intent": "cancel_action",
+    "actual": {
+      "intent": "delete_application",
+      "extracted_info": {}
+    },
+    "raw": "{\"intent\":\"delete_application\",\"extracted_info\":{}}",
+    "context": {
+      "current_date": "2026-10-22",
+      "history": [],
+      "pending_action": {
+        "action_type": "submit_leave",
+        "draft": {
+          "leave_type": "事假",
+          "start_date": "2026-11-02",
+          "end_date": "2026-11-03",
+          "reason": "个人事务"
+        }
+      }
+    },
+    "intent_ok": false
+  }
+]

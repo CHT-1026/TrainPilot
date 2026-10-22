@@ -1,0 +1,197 @@
+{
+  "note": "V2经用户确认：助手身份为TrainPilot，不引入无关人名或公司品牌；前4个表达族训练、第5个验证、第6个测试。",
+  "templates": {
+    "leave_full": [
+      "申请{leave_type}，时间从{start_date}到{end_date}，原因：{reason}。",
+      "{reason}，需要请{leave_type}，开始日期{start_date}，结束日期{end_date}。",
+      "帮我登记一份请假草稿：{leave_type}；{start_date}至{end_date}；事由{reason}。",
+      "我要休{leave_type}，{start_date}开始、{end_date}结束，是为了{reason}。",
+      "请假事项如下：起{start_date}，止{end_date}，假别{leave_type}，缘由{reason}。",
+      "因{reason}拟于{start_date}—{end_date}休{leave_type}，请协助发起申请。"
+    ],
+    "leave_relative": [
+      "我{relative_day}请一天{leave_type}，原因是{reason}。",
+      "{relative_day}需要{reason}，帮我申请当天的{leave_type}。",
+      "安排{relative_day}一天{leave_type}，理由写{reason}。",
+      "想休{relative_day}一整天的{leave_type}，因为{reason}。",
+      "以今天为准，{relative_day}我需要休{leave_type}一天，用于{reason}。",
+      "{relative_day}这天因{reason}无法到岗，拟请一天{leave_type}。"
+    ],
+    "policy_qa": [
+      "{policy_topic}的制度要求是什么？",
+      "想了解公司对{policy_topic}有哪些规定。",
+      "请查一下{policy_topic}的内部办理流程。",
+      "我们公司的{policy_topic}标准在哪里可以确认？",
+      "能依据内部资料说明{policy_topic}的适用条件吗？",
+      "关于{policy_topic}，企业现行文件是如何约定的？"
+    ],
+    "query_status": [
+      "请列出我之前提交的请假记录。",
+      "我的申请现在办理到什么阶段了？",
+      "我想查询本人最近的请假申请状态。",
+      "帮我看看自己交上去的申请有什么结果。",
+      "能展示一下由我发起的申请及当前进度吗？",
+      "我需要核对自己的已提交申请，看看处理情况。"
+    ],
+    "query_pending": [
+      "有哪些申请等待我审批？",
+      "打开我的审批待办列表。",
+      "帮我查还没有处理的待审批申请。",
+      "我需要看一下当前轮到我审核的事项。",
+      "请展示需要由我进行审核的请假单。",
+      "把尚在等待我作审批决定的申请列出来。"
+    ],
+    "approve": [
+      "{decision_word}申请{app_id}，审批意见是{comments}。",
+      "对{app_id}作出{decision_word}决定，备注写“{comments}”。",
+      "帮我审核{app_id}：{decision_word}；意见：{comments}。",
+      "我决定{decision_word}{app_id}，请填写审批说明：{comments}。",
+      "申请编号{app_id}的审核结论为{decision_word}，附言{comments}。",
+      "针对请假单{app_id}，拟{decision_word}，审批记录中注明{comments}。"
+    ],
+    "delete_application": [
+      "撤回我已经提交的申请{app_id}。",
+      "我想取消已提交的请假单{app_id}。",
+      "删除本人那份待审批申请，编号是{app_id}。",
+      "帮我对已经提交的{app_id}发起撤销。",
+      "请把我已发起的{app_id}办理为取消申请。",
+      "不再需要已提交的请假单{app_id}了，请协助撤回。"
+    ],
+    "get_suggestion": [
+      "{app_id}该怎么审批？给我一个建议，不要执行。",
+      "请分析一下申请{app_id}应不应该批准。",
+      "我只想听听对{app_id}的审批建议。",
+      "帮忙评估{app_id}是否适合通过，暂时不作决定。",
+      "对于请假单{app_id}，你能提供供我参考的审核意见吗？",
+      "在真正审批之前，请就{app_id}给出建议。"
+    ],
+    "general_chat": [
+      "晚上好，今天过得怎么样？",
+      "想和你聊聊学习方法。",
+      "请用通俗的话解释什么是机器学习。",
+      "说一句鼓励学习的话吧。",
+      "现在只想聊聊如何养成阅读习惯。",
+      "我想进行一段与业务无关的普通闲聊。"
+    ],
+    "clarify": [
+      "请处理一下，但我还没有说明要做什么。",
+      "帮我弄一下那个东西，我还没有说明具体事项。",
+      "我有个事情要办，等我想好再告诉你内容。",
+      "准备办理一件尚未明确具体内容的事情。",
+      "我想启动一项操作，不过尚未确定处理对象和事项。",
+      "有件未说明内容的事情需要你协助，请先问我具体需求。"
+    ],
+    "missing_all": [
+      "我想发起一份请假申请，详细信息稍后说。",
+      "帮我开始办理请假，假别、时间和原因都还没告诉你。",
+      "我要申请休假，具体事项还没决定。",
+      "我想请假，但目前只确定要请假这一件事。",
+      "请协助我创建请假申请，暂时没有补充任何明细。",
+      "我准备发起休假流程，日期、事由与类型均待补充。"
+    ],
+    "missing_dates": [
+      "我想请{leave_type}，因为{reason}，还没有确定日期。",
+      "假别是{leave_type}，理由是{reason}，时间以后补。",
+      "先记录{leave_type}和原因{reason}，起止日期暂时未知。",
+      "要{reason}，所以想申请{leave_type}，没定哪天。",
+      "拟申请{leave_type}用于{reason}，尚不能提供时间区间。",
+      "我的休假类型为{leave_type}，事由{reason}，请先询问具体日期。"
+    ],
+    "missing_reason": [
+      "请{leave_type}，从{start_date}到{end_date}，原因我稍后补。",
+      "先登记{start_date}至{end_date}的{leave_type}，还没有提供事由。",
+      "我想休{leave_type}：开始{start_date}，结束{end_date}。",
+      "要申请{start_date}到{end_date}的{leave_type}，理由暂缺。",
+      "休假范围为{start_date}—{end_date}、假别{leave_type}，缘由待填写。",
+      "拟休{leave_type}，日期已定为{start_date}至{end_date}；尚未说明为什么请假。"
+    ],
+    "missing_type": [
+      "我从{start_date}到{end_date}请假，因为{reason}，假别还没选。",
+      "想为{reason}休假，日期是{start_date}至{end_date}，类型待定。",
+      "登记请假时间{start_date}到{end_date}、原因{reason}，尚未决定假别。",
+      "要{reason}，想请{start_date}至{end_date}的假，没说是什么类型。",
+      "请假事由{reason}，起止为{start_date}、{end_date}，暂不指定类型。",
+      "拟于{start_date}—{end_date}缺勤处理{reason}，请询问我要选择哪种假别。"
+    ],
+    "approve_missing_id": [
+      "我决定{decision_word}那份申请，意见是{comments}，编号还没提供。",
+      "帮忙{decision_word}一份请假单，审批说明{comments}，但我忘了编号。",
+      "要执行{decision_word}审批，理由写{comments}，还没告诉你是哪张申请。",
+      "想{decision_word}某份申请并备注{comments}，先别猜申请编号。",
+      "审核结论拟为{decision_word}，意见{comments}；处理对象尚待明确。",
+      "请为一张编号未知的请假单准备{decision_word}决定，说明是{comments}。"
+    ],
+    "approve_missing_decision": [
+      "我要审批申请{app_id}，还没决定通过还是驳回。",
+      "请帮我进入{app_id}的审批流程，审批结论暂未确定。",
+      "准备对{app_id}作审批决定，但现在还没有结论。",
+      "协助办理{app_id}的审批，我稍后告诉你批准还是拒绝。",
+      "请假单{app_id}需要我审核，先询问我的审批决定。",
+      "我想处理{app_id}的审核操作，尚未选择同意或驳回。"
+    ],
+    "cancel_missing_id": [
+      "我要撤销之前提交的一张请假单，编号没记住。",
+      "取消我已提交的某份申请，待会儿补充具体编号。",
+      "帮我办理已提交申请的撤回，但我还没说是哪份。",
+      "我想删除一份本人待审批申请，现在不知道它的编号。",
+      "有份已经发起的请假申请需要取消，具体对象稍后明确。",
+      "请协助撤回我某张已提交的请假单，先问我要申请编号。"
+    ],
+    "suggest_missing_id": [
+      "想听听针对某份请假单的审批建议，编号稍后告诉你。",
+      "帮我分析一个申请该不该批，不过我还没有说明申请对象。",
+      "我需要一份申请的审核建议，现在没提供编号。",
+      "对某张请假单给点审批意见，先不要猜是哪张。",
+      "尚未提供具体请假单，我想先进入审批建议咨询。",
+      "请就一项未明确编号的申请提供审核建议，先询问处理对象。"
+    ],
+    "history_fill": [
+      "补充一下，{start_date}到{end_date}，因为{reason}。",
+      "刚才那份请假，日期定为{start_date}至{end_date}，事由{reason}。",
+      "时间是{start_date}开始、{end_date}结束，原因填{reason}。",
+      "继续刚才的申请：{start_date}—{end_date}，要{reason}。",
+      "针对上文休假，现补足起止时间{start_date}、{end_date}及缘由{reason}。",
+      "承接前面那张请假单：于{start_date}起至{end_date}止，因{reason}申请。"
+    ],
+    "history_modify": [
+      "将草稿日期改为{new_start}到{new_end}，假别和原因不变。",
+      "刚才那份申请先修改时间：{new_start}至{new_end}，别的信息沿用。",
+      "不要按原日期，更新到{new_start}—{new_end}，其他内容照旧。",
+      "修改请假草稿，开始改成{new_start}，结束改成{new_end}，其余不动。",
+      "上文申请的时间区间更正为{new_start}、{new_end}，保留原有假别及事由。",
+      "请更新待确认申请的起止为{new_start}至{new_end}，并继承原来的其他信息。"
+    ],
+    "confirm_action": [
+      "确认。",
+      "可以按当前待确认内容提交。",
+      "我同意执行刚才准备好的操作。",
+      "以上信息正确，确定办理。",
+      "已完成核对，请照目前草稿执行。",
+      "当前待确认内容无需再改，可以正式提交。"
+    ],
+    "cancel_action": [
+      "取消。",
+      "放弃当前待确认操作。",
+      "先不执行上面的内容，这次作废。",
+      "刚准备的操作不用办了。",
+      "请丢弃目前的待确认草稿，本次不执行。",
+      "终止这次尚未提交的操作，不要继续办理。"
+    ],
+    "pending_other_task": [
+      "先别管那份草稿，我想查询自己以前的申请记录。",
+      "现在另问一件事：我提交过的请假单有什么进度？",
+      "当前不要执行草稿，请查看我的已提交申请。",
+      "先查询本人申请状态，这句话不是确认提交。",
+      "关于草稿暂不作决定，转而展示我之前发起的申请。",
+      "暂时搁置待确认内容，我现在需要核对自己的申请处理情况。"
+    ],
+    "pending_cancel_existing": [
+      "不是取消当前草稿，我要撤销已经提交的{app_id}。",
+      "请撤回已提交申请{app_id}，别把它理解成放弃当前草稿。",
+      "我要处理的是已提交的{app_id}，请取消那张申请。",
+      "另有一张申请{app_id}已经提交了，帮我办理撤回。",
+      "此次撤销对象明确为已发起的{app_id}，不是眼前待确认的内容。",
+      "请对现存已提交申请{app_id}发起取消，当前草稿并非这句话的对象。"
+    ]
+  }
+}

@@ -72,6 +72,7 @@ def build_parser(method="full"):
     parser.add_argument("--model", default=MODEL, help="HF 模型 ID 或本地模型目录")
     parser.add_argument("--revision", default=MODEL_REVISION)
     parser.add_argument("--data-path", help="本地 JSON/JSONL；省略时下载固定版本中文 Alpaca-GPT4")
+    parser.add_argument("--validation-data-path", help="显式验证文件；与 --data-path 一起使用，保留已有划分")
     parser.add_argument("--output-dir", default=f"runs/qwen_{method}_sft")
     parser.add_argument("--model-cache", default="runs/model-cache")
     parser.add_argument("--epochs", type=int, default=1)
@@ -114,7 +115,40 @@ def build_optimizer(model, args):
                              weight_decay=args.weight_decay, foreach=False)
 
 
+def prepare_fixed_data(args, tokenizer):
+    """读取事先按场景划分的训练/验证文件，不重新分桶。"""
+    if not args.data_path:
+        raise ValueError("指定验证文件时必须同时指定 --data-path")
+    source, validation_source = project_path(args.data_path), project_path(args.validation_data_path)
+    raw = datasets.load_dataset("json", data_files={"train": str(source), "validation": str(validation_source)},
+                                cache_dir=str(ROOT / "dataset/datasets/cache/qwen"))
+    if "group_id" in raw["train"].column_names and "group_id" in raw["validation"].column_names:
+        if set(raw["train"]["group_id"]) & set(raw["validation"]["group_id"]):
+            raise ValueError("训练与验证存在相同 group_id，请先按场景分组")
+    selected = raw["train"]
+    if args.max_samples:
+        selected = selected.shuffle(seed=args.seed).select(range(min(args.max_samples, len(selected))))
+    encoder = QwenSFTEncoder(tokenizer, args.max_length, args.split_seed, args.val_fraction)
+
+    def encode(rows):
+        encoded = rows.map(encoder, remove_columns=rows.column_names, desc="固定划分：模板编码与监督对齐")
+        if not len(encoded) or any(not any(label != -100 for label in row["labels"][1:]) for row in encoded):
+            raise ValueError("固定划分为空或存在被截断至无监督目标的样本，请检查 max-length")
+        return encoded.remove_columns("validation")
+
+    train, val = encode(selected), encode(raw["validation"])
+    info = {"source": str(source), "source_sha256": file_sha256(source),
+            "validation_source": str(validation_source), "validation_source_sha256": file_sha256(validation_source),
+            "repository": None, "revision": None, "split": "explicit_train_validation_files",
+            "source_records": len(raw["train"]), "selected_records": len(selected), "rejected_no_targets": 0,
+            "train": len(train), "val": len(val), "train_fingerprint": train._fingerprint, "val_fingerprint": val._fingerprint}
+    print("数据摘要:", json.dumps(info, ensure_ascii=False), flush=True)
+    return train, val, info
+
+
 def prepare_data(args, tokenizer):
+    if args.validation_data_path:
+        return prepare_fixed_data(args, tokenizer)
     if args.data_path:
         source = project_path(args.data_path)
     else:
@@ -217,15 +251,24 @@ def run_training(args, lora_config=None):
     model = QwenLogitsModel(causal_lm).to(device)
     optimizer = build_optimizer(model, args)
     signature = {k: v for k, v in vars(args).items() if k not in {
-        "output_dir", "model_cache", "data_path", "resume", "prepare_only", "max_updates", "log_steps", "save_steps",
+        "output_dir", "model_cache", "data_path", "validation_data_path", "resume", "prepare_only", "max_updates", "log_steps", "save_steps",
     }}
     signature.update(source_sha256=data_info["source_sha256"],
                      train_fingerprint=data_info["train_fingerprint"], val_fingerprint=data_info["val_fingerprint"])
+    if "validation_source_sha256" in data_info:
+        signature["validation_source_sha256"] = data_info["validation_source_sha256"]
     completed, global_step, epoch_state = 0, 0, None
     if args.resume:
         state = torch.load(project_path(args.resume), map_location="cpu", weights_only=True)
-        if state["signature"] != signature:
-            raise ValueError("恢复训练需要保持模型、数据及训练超参数一致")
+        # datasets fingerprint 是缓存标记，序列化不稳定时可能变化；数据内容由 SHA256 校验。
+        cache_keys = {"train_fingerprint", "val_fingerprint"}
+        differences = [
+            f"{key}: 断点={state['signature'].get(key)!r}, 当前={signature.get(key)!r}"
+            for key in sorted(state["signature"].keys() | signature.keys())
+            if key not in cache_keys and state["signature"].get(key) != signature.get(key)
+        ]
+        if differences:
+            raise ValueError("恢复训练需要保持模型、数据及训练超参数一致：\n" + "\n".join(differences))
         if args.method == "lora":
             from peft import set_peft_model_state_dict
             set_peft_model_state_dict(causal_lm, state["weights"])

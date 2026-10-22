@@ -1,0 +1,432 @@
+{
+  "sft": {
+    "business": {
+      "passed": 16,
+      "total": 150,
+      "auto_scored": 146,
+      "manual_review": 4,
+      "structured_total": 139,
+      "strict_json": 139,
+      "intent_correct": 113,
+      "fields_exact": 18,
+      "structured_exact": 14,
+      "samples_with_extra_fields": 120,
+      "categories": {
+        "policy_qa": {
+          "passed": 1,
+          "total": 11,
+          "auto_scored": 11,
+          "manual_review": 0
+        },
+        "query_pending": {
+          "passed": 0,
+          "total": 5,
+          "auto_scored": 5,
+          "manual_review": 0
+        },
+        "missing_type": {
+          "passed": 0,
+          "total": 4,
+          "auto_scored": 4,
+          "manual_review": 0
+        },
+        "suggest_missing_id": {
+          "passed": 0,
+          "total": 3,
+          "auto_scored": 3,
+          "manual_review": 0
+        },
+        "cancel_missing_id": {
+          "passed": 0,
+          "total": 3,
+          "auto_scored": 3,
+          "manual_review": 0
+        },
+        "leave_relative": {
+          "passed": 0,
+          "total": 5,
+          "auto_scored": 5,
+          "manual_review": 0
+        },
+        "natural": {
+          "passed": 2,
+          "total": 7,
+          "auto_scored": 7,
+          "manual_review": 0
+        },
+        "leave_full": {
+          "passed": 0,
+          "total": 10,
+          "auto_scored": 10,
+          "manual_review": 0
+        },
+        "identity": {
+          "passed": 0,
+          "total": 4,
+          "auto_scored": 0,
+          "manual_review": 4
+        },
+        "cancel_action": {
+          "passed": 7,
+          "total": 8,
+          "auto_scored": 8,
+          "manual_review": 0
+        },
+        "missing_dates": {
+          "passed": 0,
+          "total": 4,
+          "auto_scored": 4,
+          "manual_review": 0
+        },
+        "confirm_action": {
+          "passed": 0,
+          "total": 8,
+          "auto_scored": 8,
+          "manual_review": 0
+        },
+        "history_modify": {
+          "passed": 0,
+          "total": 8,
+          "auto_scored": 8,
+          "manual_review": 0
+        },
+        "query_status": {
+          "passed": 0,
+          "total": 6,
+          "auto_scored": 6,
+          "manual_review": 0
+        },
+        "general_chat": {
+          "passed": 5,
+          "total": 5,
+          "auto_scored": 5,
+          "manual_review": 0
+        },
+        "missing_all": {
+          "passed": 0,
+          "total": 4,
+          "auto_scored": 4,
+          "manual_review": 0
+        },
+        "approve": {
+          "passed": 0,
+          "total": 8,
+          "auto_scored": 8,
+          "manual_review": 0
+        },
+        "pending_cancel_existing": {
+          "passed": 0,
+          "total": 6,
+          "auto_scored": 6,
+          "manual_review": 0
+        },
+        "delete_application": {
+          "passed": 1,
+          "total": 6,
+          "auto_scored": 6,
+          "manual_review": 0
+        },
+        "clarify": {
+          "passed": 0,
+          "total": 4,
+          "auto_scored": 4,
+          "manual_review": 0
+        },
+        "missing_reason": {
+          "passed": 0,
+          "total": 4,
+          "auto_scored": 4,
+          "manual_review": 0
+        },
+        "get_suggestion": {
+          "passed": 0,
+          "total": 5,
+          "auto_scored": 5,
+          "manual_review": 0
+        },
+        "approve_missing_decision": {
+          "passed": 0,
+          "total": 4,
+          "auto_scored": 4,
+          "manual_review": 0
+        },
+        "pending_other_task": {
+          "passed": 0,
+          "total": 6,
+          "auto_scored": 6,
+          "manual_review": 0
+        },
+        "history_fill": {
+          "passed": 0,
+          "total": 8,
+          "auto_scored": 8,
+          "manual_review": 0
+        },
+        "approve_missing_id": {
+          "passed": 0,
+          "total": 4,
+          "auto_scored": 4,
+          "manual_review": 0
+        }
+      }
+    },
+    "general": {
+      "passed": 23,
+      "total": 42,
+      "groups": {
+        "arithmetic": {
+          "passed": 12,
+          "total": 12
+        },
+        "word_math": {
+          "passed": 2,
+          "total": 8
+        },
+        "logic": {
+          "passed": 1,
+          "total": 8
+        },
+        "format": {
+          "passed": 3,
+          "total": 8
+        },
+        "knowledge": {
+          "passed": 4,
+          "total": 4
+        },
+        "context": {
+          "passed": 1,
+          "total": 2
+        }
+      },
+      "logic_content_correct_ignoring_terminal_punctuation": 8,
+      "logic_content_total": 8
+    },
+    "truncated": 0,
+    "generation_seconds": 603.7818999999836,
+    "note": "有限模板测试与小规模旧题；不等于公开基准，开放题保留原文供阅读，不自动算通过。",
+    "test_numeric": {
+      "samples": 150,
+      "supervised_tokens": 4509,
+      "loss": 0.3993168324265149,
+      "ppl": 1.4908058794339238,
+      "teacher_forced_token_accuracy": 0.8860057662452872
+    },
+    "evaluation_seconds": 629.2446206000022
+  },
+  "lora": {
+    "business": {
+      "passed": 120,
+      "total": 150,
+      "auto_scored": 146,
+      "manual_review": 4,
+      "structured_total": 139,
+      "strict_json": 139,
+      "intent_correct": 133,
+      "fields_exact": 116,
+      "structured_exact": 113,
+      "samples_with_extra_fields": 3,
+      "categories": {
+        "policy_qa": {
+          "passed": 11,
+          "total": 11,
+          "auto_scored": 11,
+          "manual_review": 0
+        },
+        "query_pending": {
+          "passed": 5,
+          "total": 5,
+          "auto_scored": 5,
+          "manual_review": 0
+        },
+        "missing_type": {
+          "passed": 0,
+          "total": 4,
+          "auto_scored": 4,
+          "manual_review": 0
+        },
+        "suggest_missing_id": {
+          "passed": 3,
+          "total": 3,
+          "auto_scored": 3,
+          "manual_review": 0
+        },
+        "cancel_missing_id": {
+          "passed": 3,
+          "total": 3,
+          "auto_scored": 3,
+          "manual_review": 0
+        },
+        "leave_relative": {
+          "passed": 4,
+          "total": 5,
+          "auto_scored": 5,
+          "manual_review": 0
+        },
+        "natural": {
+          "passed": 7,
+          "total": 7,
+          "auto_scored": 7,
+          "manual_review": 0
+        },
+        "leave_full": {
+          "passed": 9,
+          "total": 10,
+          "auto_scored": 10,
+          "manual_review": 0
+        },
+        "identity": {
+          "passed": 0,
+          "total": 4,
+          "auto_scored": 0,
+          "manual_review": 4
+        },
+        "cancel_action": {
+          "passed": 8,
+          "total": 8,
+          "auto_scored": 8,
+          "manual_review": 0
+        },
+        "missing_dates": {
+          "passed": 4,
+          "total": 4,
+          "auto_scored": 4,
+          "manual_review": 0
+        },
+        "confirm_action": {
+          "passed": 2,
+          "total": 8,
+          "auto_scored": 8,
+          "manual_review": 0
+        },
+        "history_modify": {
+          "passed": 4,
+          "total": 8,
+          "auto_scored": 8,
+          "manual_review": 0
+        },
+        "query_status": {
+          "passed": 6,
+          "total": 6,
+          "auto_scored": 6,
+          "manual_review": 0
+        },
+        "general_chat": {
+          "passed": 5,
+          "total": 5,
+          "auto_scored": 5,
+          "manual_review": 0
+        },
+        "missing_all": {
+          "passed": 4,
+          "total": 4,
+          "auto_scored": 4,
+          "manual_review": 0
+        },
+        "approve": {
+          "passed": 3,
+          "total": 8,
+          "auto_scored": 8,
+          "manual_review": 0
+        },
+        "pending_cancel_existing": {
+          "passed": 5,
+          "total": 6,
+          "auto_scored": 6,
+          "manual_review": 0
+        },
+        "delete_application": {
+          "passed": 6,
+          "total": 6,
+          "auto_scored": 6,
+          "manual_review": 0
+        },
+        "clarify": {
+          "passed": 4,
+          "total": 4,
+          "auto_scored": 4,
+          "manual_review": 0
+        },
+        "missing_reason": {
+          "passed": 4,
+          "total": 4,
+          "auto_scored": 4,
+          "manual_review": 0
+        },
+        "get_suggestion": {
+          "passed": 3,
+          "total": 5,
+          "auto_scored": 5,
+          "manual_review": 0
+        },
+        "approve_missing_decision": {
+          "passed": 4,
+          "total": 4,
+          "auto_scored": 4,
+          "manual_review": 0
+        },
+        "pending_other_task": {
+          "passed": 6,
+          "total": 6,
+          "auto_scored": 6,
+          "manual_review": 0
+        },
+        "history_fill": {
+          "passed": 7,
+          "total": 8,
+          "auto_scored": 8,
+          "manual_review": 0
+        },
+        "approve_missing_id": {
+          "passed": 3,
+          "total": 4,
+          "auto_scored": 4,
+          "manual_review": 0
+        }
+      }
+    },
+    "general": {
+      "passed": 33,
+      "total": 42,
+      "groups": {
+        "arithmetic": {
+          "passed": 12,
+          "total": 12
+        },
+        "word_math": {
+          "passed": 4,
+          "total": 8
+        },
+        "logic": {
+          "passed": 6,
+          "total": 8
+        },
+        "format": {
+          "passed": 5,
+          "total": 8
+        },
+        "knowledge": {
+          "passed": 4,
+          "total": 4
+        },
+        "context": {
+          "passed": 2,
+          "total": 2
+        }
+      },
+      "logic_content_correct_ignoring_terminal_punctuation": 6,
+      "logic_content_total": 8
+    },
+    "truncated": 0,
+    "generation_seconds": 297.52101929996934,
+    "note": "有限模板测试与小规模旧题；不等于公开基准，开放题保留原文供阅读，不自动算通过。",
+    "test_numeric": {
+      "samples": 150,
+      "supervised_tokens": 4509,
+      "loss": 0.06240366112786172,
+      "ppl": 1.0643919116620126,
+      "teacher_forced_token_accuracy": 0.9866932801064537
+    },
+    "evaluation_seconds": 314.9948124000002
+  }
+}

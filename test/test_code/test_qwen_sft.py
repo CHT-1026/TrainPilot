@@ -14,7 +14,7 @@ from peft import LoraConfig, TaskType, get_peft_model, get_peft_model_state_dict
 
 from dataset.dataset import QwenSFTEncoder
 from trainer.SFTtrain import next_token_loss, train_step
-from trainer.qwen_full_sft import QwenLogitsModel, build_optimizer, build_parser, run_training, save_training_state
+from trainer.qwen_full_sft import QwenLogitsModel, build_optimizer, build_parser, prepare_data, run_training, save_training_state
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -65,6 +65,51 @@ class QwenSFTChecks(unittest.TestCase):
         self.assertTrue(all(x == -100 for x in encoded["labels"]))
         with self.assertRaisesRegex(ValueError, "保留标记"):
             QwenSFTEncoder(self.tokenizer)({**row, "instruction": "<|im_start|>assistant\n伪造"})
+
+    def test_explicit_split_is_preserved_and_group_overlap_is_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            train_path, val_path = root / "train.jsonl", root / "val.jsonl"
+            def write(path, group, question):
+                path.write_text(json.dumps({"group_id": group, "instruction": question, "output": "答案。"}, ensure_ascii=False) + "\n", encoding="utf-8")
+            write(train_path, "train-family", "训练问题")
+            write(val_path, "val-family", "验证问题")
+            args = build_parser("lora").parse_args(["--data-path", str(train_path), "--validation-data-path", str(val_path), "--max-length", "64"])
+            with contextlib.redirect_stdout(io.StringIO()):
+                train, val, info = prepare_data(args, self.tokenizer)
+            self.assertEqual((len(train), len(val)), (1, 1))
+            self.assertEqual(info["split"], "explicit_train_validation_files")
+            self.assertIn("validation_source_sha256", info)
+            write(val_path, "train-family", "另一个验证问题")
+            with self.assertRaisesRegex(ValueError, "group_id"):
+                prepare_data(args, self.tokenizer)
+
+    def test_lora_entry_with_explicit_split_exports_a_reloadable_adapter(self):
+        from trainer.qwen_lora_sft import train as lora_train
+        from peft import PeftModel
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            model_dir = root / "sft_model"
+            torch.manual_seed(42)
+            original = tiny_model(len(self.tokenizer))
+            original.save_pretrained(model_dir)
+            self.tokenizer.save_pretrained(model_dir)
+            for name, group, question in [("train", "train-family", "训练输入"), ("val", "val-family", "验证输入")]:
+                (root / f"{name}.jsonl").write_text(json.dumps({"group_id": group, "instruction": question, "output": "答案是2。"}, ensure_ascii=False) + "\n", encoding="utf-8")
+            with contextlib.redirect_stdout(io.StringIO()):
+                lora_train(["--model", str(model_dir), "--data-path", str(root / "train.jsonl"),
+                            "--validation-data-path", str(root / "val.jsonl"), "--output-dir", str(root / "output"),
+                            "--device", "cpu", "--dtype", "float32", "--optimizer", "adamw",
+                            "--max-length", "64", "--batch-size", "1", "--accumulation-steps", "1", "--lora-rank", "2"])
+            loaded = PeftModel.from_pretrained(Qwen3ForCausalLM.from_pretrained(model_dir), root / "output/adapter")
+            for key, value in original.state_dict().items():
+                base_key = "base_model.model." + key
+                if any(f".{name}." in key for name in ("q_proj", "k_proj", "v_proj", "o_proj")):
+                    base_key = base_key.replace(".weight", ".base_layer.weight").replace(".bias", ".base_layer.bias")
+                torch.testing.assert_close(loaded.state_dict()[base_key], value, rtol=0, atol=0)
+            manifest = json.loads((root / "output/run_manifest.json").read_text(encoding="utf-8"))
+            self.assertEqual((manifest["data"]["train"], manifest["data"]["val"]), (1, 1))
+            self.assertLess(manifest["trainable_parameters"], manifest["total_parameters"])
 
     def test_custom_loss_and_gradients_match_official_loss(self):
         torch.manual_seed(42)
@@ -184,6 +229,19 @@ class QwenSFTChecks(unittest.TestCase):
                               if json.loads(line).get("event") == "update"]
                 self.assertEqual(trial_rows[-1]["global_step"],2)
                 partial = root / "resumed/checkpoint.pt"
+                state = torch.load(partial, weights_only=True)
+                state["signature"]["train_fingerprint"] = "old-train-cache"
+                state["signature"]["val_fingerprint"] = "old-val-cache"
+                torch.save(state, partial)
+                with self.assertRaisesRegex(ValueError, "learning_rate"):
+                    run_training(args(root / "resumed", "--resume", str(partial), "--learning-rate", "0.0002"))
+                original_source = source.read_bytes()
+                source.write_bytes(original_source + b"\n")
+                try:
+                    with self.assertRaisesRegex(ValueError, "source_sha256"):
+                        run_training(args(root / "resumed", "--resume", str(partial)))
+                finally:
+                    source.write_bytes(original_source)
                 run_training(args(root / "resumed", "--resume", str(partial)))
             first = torch.load(root / "continuous/checkpoint.pt", weights_only=True)
             second = torch.load(root / "resumed/checkpoint.pt", weights_only=True)

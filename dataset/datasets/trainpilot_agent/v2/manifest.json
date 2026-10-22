@@ -1,0 +1,178 @@
+{
+  "version": "v2",
+  "status": "ready_for_server_check",
+  "seed": 20261022,
+  "assistant_name": "TrainPilot",
+  "source": "按用户确认规范编写场景与标签，程序确定性组合必要上下文和字段；未调用外部模型API。",
+  "generator_sha256": "428aff550eb6d2d1a0bbde57431b891730b7a6129f48995d7065690102fb0b78",
+  "prompt_source": {
+    "version": "v2",
+    "approval": "用户已确认v2_preview中的规范与样例",
+    "reference_project": "lantu-enterprise-agent-platform-main",
+    "recognition_sha256": "d092f97166c8c091c88a882955b9e10df3a8639d94aecb4853a977b5d04742bd",
+    "protocol_sha256": "8fb4326d4b429a778e68a036dd048e9e1a6e6468b9761c6d9150045f78fb4210",
+    "prompt_builder_sha256": "5c122d2624b2f2713b7e8f505c19f7527f6c7e4d3f2d40e82c7ad3f53468f60a",
+    "license": "MIT",
+    "license_file": "prompt_reference.LICENSE",
+    "scope": "统一助手身份与解析提示词；沿用原意图名、路由和业务节点。"
+  },
+  "inputs_sha256": {
+    "scenarios_v2.json": "d8708dad68a7a792989a4e6c360735f1a61351d30acdecbbc131c56a9c9d54c1",
+    "intent_prompt_v2.txt": "8fb4326d4b429a778e68a036dd048e9e1a6e6468b9761c6d9150045f78fb4210",
+    "identity_v2.json": "0b4bf62e4a29bf434cdc44aba8c7870c0dea85855c9317ba12791b8da061b0b2",
+    "spec_v2.json": "464d4aa7244c1d053cc31b922224c9363b73e5d6d1f1578cc1f8db16324a2f16"
+  },
+  "outputs": {
+    "train": {
+      "file": "train.jsonl",
+      "records": 1200,
+      "sha256": "523d456c97c41bd71b2337da52326e778c5d7cf3a8623a42b893db30ea75030d",
+      "categories": {
+        "leave_relative": 40,
+        "natural": 60,
+        "confirm_action": 56,
+        "cancel_missing_id": 30,
+        "query_pending": 40,
+        "clarify": 40,
+        "missing_type": 30,
+        "approve_missing_id": 30,
+        "leave_full": 80,
+        "query_status": 50,
+        "history_fill": 56,
+        "policy_qa": 90,
+        "pending_cancel_existing": 56,
+        "approve": 70,
+        "general_chat": 40,
+        "missing_all": 30,
+        "get_suggestion": 40,
+        "missing_dates": 30,
+        "identity": 24,
+        "cancel_action": 56,
+        "pending_other_task": 56,
+        "approve_missing_decision": 30,
+        "history_modify": 56,
+        "delete_application": 50,
+        "missing_reason": 30,
+        "suggest_missing_id": 30
+      },
+      "groups": 104
+    },
+    "val": {
+      "file": "val.jsonl",
+      "records": 150,
+      "sha256": "804ebabac2bd8f33d97562b5e3820885702687ae4728b0204a0ce8c13673acdc",
+      "categories": {
+        "policy_qa": 11,
+        "pending_other_task": 6,
+        "query_status": 6,
+        "suggest_missing_id": 3,
+        "history_fill": 8,
+        "get_suggestion": 5,
+        "delete_application": 6,
+        "missing_dates": 4,
+        "approve_missing_id": 4,
+        "cancel_action": 8,
+        "natural": 7,
+        "general_chat": 5,
+        "history_modify": 8,
+        "approve": 8,
+        "leave_full": 10,
+        "leave_relative": 5,
+        "clarify": 4,
+        "missing_reason": 4,
+        "pending_cancel_existing": 6,
+        "missing_type": 4,
+        "confirm_action": 8,
+        "query_pending": 5,
+        "identity": 4,
+        "approve_missing_decision": 4,
+        "cancel_missing_id": 3,
+        "missing_all": 4
+      },
+      "groups": 26
+    },
+    "test": {
+      "file": "test.jsonl",
+      "records": 150,
+      "sha256": "632d5b09534721e69e668b004c5493c773b321296375c9620c1129b7dea702a0",
+      "categories": {
+        "policy_qa": 11,
+        "query_pending": 5,
+        "missing_type": 4,
+        "suggest_missing_id": 3,
+        "cancel_missing_id": 3,
+        "leave_relative": 5,
+        "natural": 7,
+        "leave_full": 10,
+        "identity": 4,
+        "cancel_action": 8,
+        "missing_dates": 4,
+        "confirm_action": 8,
+        "history_modify": 8,
+        "query_status": 6,
+        "general_chat": 5,
+        "missing_all": 4,
+        "approve": 8,
+        "pending_cancel_existing": 6,
+        "delete_application": 6,
+        "clarify": 4,
+        "missing_reason": 4,
+        "get_suggestion": 5,
+        "approve_missing_decision": 4,
+        "pending_other_task": 6,
+        "history_fill": 8,
+        "approve_missing_id": 4
+      },
+      "groups": 26
+    }
+  },
+  "checks": {
+    "exact_dialogues_unique": true,
+    "template_groups_disjoint": true,
+    "schema_and_literal_fields_checked": true,
+    "existing_12_baseline_questions_excluded": true,
+    "runtime_prompt_parity_records": 1394,
+    "approved_preview_parity": true,
+    "agent_regression_tests_passed": 157,
+    "dataset_tests_passed": 4
+  },
+  "scope": "身份、简单指令保持、11种业务意图、缺失字段和多轮状态；不训练自由工具调用或广泛推理。",
+  "limits": [
+    "由有限人工编写模板构造，1500条不等于1500种独立自然表达；需用新收集问题复测。",
+    "同一表达模板及其参数变体不跨划分，但场景概念和协议仍共享，未证明语义完全不重合。",
+    "标签由构造规则核验，未经过独立人工逐条标注或教师模型复核。",
+    "工作日、权限和申请有效性由业务程序校验；模型只提取用户表达，不假定操作已执行。",
+    "test.jsonl禁止传入训练入口；保留旧12题基线作额外回归。"
+  ],
+  "encoding_check": {
+    "max_length": 1536,
+    "splits": {
+      "train": {
+        "records": 1200,
+        "min_tokens": 28,
+        "max_tokens": 637,
+        "supervised_tokens": 35842,
+        "zero_target_samples": 0,
+        "truncated_samples": 0
+      },
+      "val": {
+        "records": 150,
+        "min_tokens": 29,
+        "max_tokens": 641,
+        "supervised_tokens": 4490,
+        "zero_target_samples": 0,
+        "truncated_samples": 0
+      },
+      "test": {
+        "records": 150,
+        "min_tokens": 33,
+        "max_tokens": 636,
+        "supervised_tokens": 4509,
+        "zero_target_samples": 0,
+        "truncated_samples": 0
+      }
+    },
+    "assistant_answers_preserved": true
+  },
+  "user_approval": "V2规范及15条预览已获用户确认；不引入无关人名或公司身份。"
+}

@@ -1,0 +1,604 @@
+{
+  "status": "completed",
+  "setup": {
+    "same_full_sft_checkpoint": true,
+    "same_base_model_in_memory": true,
+    "base_checkpoint_sha256": "365a5e036ed5cf69a51d0f27bd0586377fd1a731bb8410c79ec17ddf315029da",
+    "adapter_sha256": "77e7e6a47c448728163f0cfd7c7d0d4e33c0e776d26cf2ea3d00382b8d15c9b8",
+    "dtype": "bfloat16",
+    "decode": "greedy",
+    "max_new_tokens": 256,
+    "test_records": 150,
+    "structured_test_records": 139,
+    "general_closed_cases": 42,
+    "general_open_cases": 6,
+    "external_api_calls": false,
+    "database_connected": false
+  },
+  "paired_metrics": {
+    "sft": {
+      "business": {
+        "passed": 16,
+        "total": 150,
+        "auto_scored": 146,
+        "manual_review": 4,
+        "structured_total": 139,
+        "strict_json": 139,
+        "intent_correct": 113,
+        "fields_exact": 18,
+        "structured_exact": 14,
+        "samples_with_extra_fields": 120,
+        "categories": {
+          "policy_qa": {
+            "passed": 1,
+            "total": 11,
+            "auto_scored": 11,
+            "manual_review": 0
+          },
+          "query_pending": {
+            "passed": 0,
+            "total": 5,
+            "auto_scored": 5,
+            "manual_review": 0
+          },
+          "missing_type": {
+            "passed": 0,
+            "total": 4,
+            "auto_scored": 4,
+            "manual_review": 0
+          },
+          "suggest_missing_id": {
+            "passed": 0,
+            "total": 3,
+            "auto_scored": 3,
+            "manual_review": 0
+          },
+          "cancel_missing_id": {
+            "passed": 0,
+            "total": 3,
+            "auto_scored": 3,
+            "manual_review": 0
+          },
+          "leave_relative": {
+            "passed": 0,
+            "total": 5,
+            "auto_scored": 5,
+            "manual_review": 0
+          },
+          "natural": {
+            "passed": 2,
+            "total": 7,
+            "auto_scored": 7,
+            "manual_review": 0
+          },
+          "leave_full": {
+            "passed": 0,
+            "total": 10,
+            "auto_scored": 10,
+            "manual_review": 0
+          },
+          "identity": {
+            "passed": 0,
+            "total": 4,
+            "auto_scored": 0,
+            "manual_review": 4
+          },
+          "cancel_action": {
+            "passed": 7,
+            "total": 8,
+            "auto_scored": 8,
+            "manual_review": 0
+          },
+          "missing_dates": {
+            "passed": 0,
+            "total": 4,
+            "auto_scored": 4,
+            "manual_review": 0
+          },
+          "confirm_action": {
+            "passed": 0,
+            "total": 8,
+            "auto_scored": 8,
+            "manual_review": 0
+          },
+          "history_modify": {
+            "passed": 0,
+            "total": 8,
+            "auto_scored": 8,
+            "manual_review": 0
+          },
+          "query_status": {
+            "passed": 0,
+            "total": 6,
+            "auto_scored": 6,
+            "manual_review": 0
+          },
+          "general_chat": {
+            "passed": 5,
+            "total": 5,
+            "auto_scored": 5,
+            "manual_review": 0
+          },
+          "missing_all": {
+            "passed": 0,
+            "total": 4,
+            "auto_scored": 4,
+            "manual_review": 0
+          },
+          "approve": {
+            "passed": 0,
+            "total": 8,
+            "auto_scored": 8,
+            "manual_review": 0
+          },
+          "pending_cancel_existing": {
+            "passed": 0,
+            "total": 6,
+            "auto_scored": 6,
+            "manual_review": 0
+          },
+          "delete_application": {
+            "passed": 1,
+            "total": 6,
+            "auto_scored": 6,
+            "manual_review": 0
+          },
+          "clarify": {
+            "passed": 0,
+            "total": 4,
+            "auto_scored": 4,
+            "manual_review": 0
+          },
+          "missing_reason": {
+            "passed": 0,
+            "total": 4,
+            "auto_scored": 4,
+            "manual_review": 0
+          },
+          "get_suggestion": {
+            "passed": 0,
+            "total": 5,
+            "auto_scored": 5,
+            "manual_review": 0
+          },
+          "approve_missing_decision": {
+            "passed": 0,
+            "total": 4,
+            "auto_scored": 4,
+            "manual_review": 0
+          },
+          "pending_other_task": {
+            "passed": 0,
+            "total": 6,
+            "auto_scored": 6,
+            "manual_review": 0
+          },
+          "history_fill": {
+            "passed": 0,
+            "total": 8,
+            "auto_scored": 8,
+            "manual_review": 0
+          },
+          "approve_missing_id": {
+            "passed": 0,
+            "total": 4,
+            "auto_scored": 4,
+            "manual_review": 0
+          }
+        }
+      },
+      "general": {
+        "passed": 23,
+        "total": 42,
+        "groups": {
+          "arithmetic": {
+            "passed": 12,
+            "total": 12
+          },
+          "word_math": {
+            "passed": 2,
+            "total": 8
+          },
+          "logic": {
+            "passed": 1,
+            "total": 8
+          },
+          "format": {
+            "passed": 3,
+            "total": 8
+          },
+          "knowledge": {
+            "passed": 4,
+            "total": 4
+          },
+          "context": {
+            "passed": 1,
+            "total": 2
+          }
+        },
+        "logic_content_correct_ignoring_terminal_punctuation": 8,
+        "logic_content_total": 8
+      },
+      "numeric": {
+        "samples": 150,
+        "supervised_tokens": 4509,
+        "loss": 0.3993168324265149,
+        "ppl": 1.4908058794339238,
+        "teacher_forced_token_accuracy": 0.8860057662452872
+      },
+      "truncated": 0,
+      "agent": {
+        "time": "2026-10-22T21:51:47.467254+08:00",
+        "model": "trainpilot-sft",
+        "base_url": "http://127.0.0.1:8011/v1",
+        "recognition_passed": 8,
+        "recognition_total": 12,
+        "strict_json": 12,
+        "workflow_turns_passed": 3,
+        "workflow_turns_total": 4,
+        "note": "小规模项目诊断，非标准能力榜单。评测题不要并入后续训练集。",
+        "intent_correct": 11,
+        "fields_cases_total": 4,
+        "fields_cases_correct": 2,
+        "identity_unprompted_correct": 0,
+        "identity_prompted_correct": 2,
+        "grading_limit": "recognition_passed 只检查预先指定字段，未覆盖所有额外编造字段；不能视为完整业务通过率。",
+        "v2_protocol_exact_match": 4,
+        "v2_protocol_exact_total": 12
+      }
+    },
+    "lora": {
+      "business": {
+        "passed": 120,
+        "total": 150,
+        "auto_scored": 146,
+        "manual_review": 4,
+        "structured_total": 139,
+        "strict_json": 139,
+        "intent_correct": 133,
+        "fields_exact": 116,
+        "structured_exact": 113,
+        "samples_with_extra_fields": 3,
+        "categories": {
+          "policy_qa": {
+            "passed": 11,
+            "total": 11,
+            "auto_scored": 11,
+            "manual_review": 0
+          },
+          "query_pending": {
+            "passed": 5,
+            "total": 5,
+            "auto_scored": 5,
+            "manual_review": 0
+          },
+          "missing_type": {
+            "passed": 0,
+            "total": 4,
+            "auto_scored": 4,
+            "manual_review": 0
+          },
+          "suggest_missing_id": {
+            "passed": 3,
+            "total": 3,
+            "auto_scored": 3,
+            "manual_review": 0
+          },
+          "cancel_missing_id": {
+            "passed": 3,
+            "total": 3,
+            "auto_scored": 3,
+            "manual_review": 0
+          },
+          "leave_relative": {
+            "passed": 4,
+            "total": 5,
+            "auto_scored": 5,
+            "manual_review": 0
+          },
+          "natural": {
+            "passed": 7,
+            "total": 7,
+            "auto_scored": 7,
+            "manual_review": 0
+          },
+          "leave_full": {
+            "passed": 9,
+            "total": 10,
+            "auto_scored": 10,
+            "manual_review": 0
+          },
+          "identity": {
+            "passed": 0,
+            "total": 4,
+            "auto_scored": 0,
+            "manual_review": 4
+          },
+          "cancel_action": {
+            "passed": 8,
+            "total": 8,
+            "auto_scored": 8,
+            "manual_review": 0
+          },
+          "missing_dates": {
+            "passed": 4,
+            "total": 4,
+            "auto_scored": 4,
+            "manual_review": 0
+          },
+          "confirm_action": {
+            "passed": 2,
+            "total": 8,
+            "auto_scored": 8,
+            "manual_review": 0
+          },
+          "history_modify": {
+            "passed": 4,
+            "total": 8,
+            "auto_scored": 8,
+            "manual_review": 0
+          },
+          "query_status": {
+            "passed": 6,
+            "total": 6,
+            "auto_scored": 6,
+            "manual_review": 0
+          },
+          "general_chat": {
+            "passed": 5,
+            "total": 5,
+            "auto_scored": 5,
+            "manual_review": 0
+          },
+          "missing_all": {
+            "passed": 4,
+            "total": 4,
+            "auto_scored": 4,
+            "manual_review": 0
+          },
+          "approve": {
+            "passed": 3,
+            "total": 8,
+            "auto_scored": 8,
+            "manual_review": 0
+          },
+          "pending_cancel_existing": {
+            "passed": 5,
+            "total": 6,
+            "auto_scored": 6,
+            "manual_review": 0
+          },
+          "delete_application": {
+            "passed": 6,
+            "total": 6,
+            "auto_scored": 6,
+            "manual_review": 0
+          },
+          "clarify": {
+            "passed": 4,
+            "total": 4,
+            "auto_scored": 4,
+            "manual_review": 0
+          },
+          "missing_reason": {
+            "passed": 4,
+            "total": 4,
+            "auto_scored": 4,
+            "manual_review": 0
+          },
+          "get_suggestion": {
+            "passed": 3,
+            "total": 5,
+            "auto_scored": 5,
+            "manual_review": 0
+          },
+          "approve_missing_decision": {
+            "passed": 4,
+            "total": 4,
+            "auto_scored": 4,
+            "manual_review": 0
+          },
+          "pending_other_task": {
+            "passed": 6,
+            "total": 6,
+            "auto_scored": 6,
+            "manual_review": 0
+          },
+          "history_fill": {
+            "passed": 7,
+            "total": 8,
+            "auto_scored": 8,
+            "manual_review": 0
+          },
+          "approve_missing_id": {
+            "passed": 3,
+            "total": 4,
+            "auto_scored": 4,
+            "manual_review": 0
+          }
+        }
+      },
+      "general": {
+        "passed": 33,
+        "total": 42,
+        "groups": {
+          "arithmetic": {
+            "passed": 12,
+            "total": 12
+          },
+          "word_math": {
+            "passed": 4,
+            "total": 8
+          },
+          "logic": {
+            "passed": 6,
+            "total": 8
+          },
+          "format": {
+            "passed": 5,
+            "total": 8
+          },
+          "knowledge": {
+            "passed": 4,
+            "total": 4
+          },
+          "context": {
+            "passed": 2,
+            "total": 2
+          }
+        },
+        "logic_content_correct_ignoring_terminal_punctuation": 6,
+        "logic_content_total": 8
+      },
+      "numeric": {
+        "samples": 150,
+        "supervised_tokens": 4509,
+        "loss": 0.06240366112786172,
+        "ppl": 1.0643919116620126,
+        "teacher_forced_token_accuracy": 0.9866932801064537
+      },
+      "truncated": 0,
+      "agent": {
+        "time": "2026-10-22T21:53:04.649774+08:00",
+        "model": "trainpilot-lora",
+        "base_url": "http://127.0.0.1:8011/v1",
+        "recognition_passed": 12,
+        "recognition_total": 12,
+        "strict_json": 12,
+        "workflow_turns_passed": 2,
+        "workflow_turns_total": 4,
+        "note": "小规模项目诊断，非标准能力榜单。评测题不要并入后续训练集。",
+        "intent_correct": 12,
+        "fields_cases_total": 4,
+        "fields_cases_correct": 4,
+        "identity_unprompted_correct": 0,
+        "identity_prompted_correct": 2,
+        "grading_limit": "recognition_passed 只检查预先指定字段，未覆盖所有额外编造字段；不能视为完整业务通过率。",
+        "v2_protocol_exact_match": 12,
+        "v2_protocol_exact_total": 12
+      }
+    }
+  },
+  "artifact_checks": {
+    "completed_epochs": 2,
+    "global_step": 300,
+    "adapter_tensors": 224,
+    "checkpoint_adapter_exactly_equal": true
+  },
+  "base_checkpoint_unchanged": true,
+  "adapter_unchanged": true,
+  "data_audit": {
+    "train_test_exact_prompt_overlap": 0,
+    "val_test_exact_prompt_overlap": 0,
+    "train_test_group_overlap": 0,
+    "val_test_group_overlap": 0,
+    "confirm_training_records": 56,
+    "confirm_training_with_history": 0,
+    "cancel_training_records": 56,
+    "cancel_training_with_history": 0,
+    "identity_training_records": 24,
+    "identity_training_all_have_identity_system_prompt": true
+  },
+  "ablation": [
+    {
+      "query": "确认提交",
+      "mode": "original",
+      "expected_intent": "confirm_action",
+      "actual": {
+        "intent": "submit_leave",
+        "extracted_info": {
+          "leave_type": "事假",
+          "start_date": "2026-11-02",
+          "end_date": "2026-11-03",
+          "working_days": 2,
+          "reason": "个人事务",
+          "requires_hr": false
+        }
+      },
+      "intent_ok": false
+    },
+    {
+      "query": "确认提交",
+      "mode": "no_history",
+      "expected_intent": "confirm_action",
+      "actual": {
+        "intent": "confirm_action",
+        "extracted_info": {}
+      },
+      "intent_ok": true
+    },
+    {
+      "query": "确认提交",
+      "mode": "four_field_draft",
+      "expected_intent": "confirm_action",
+      "actual": {
+        "intent": "submit_leave",
+        "extracted_info": {
+          "leave_type": "事假",
+          "start_date": "2026-11-02",
+          "end_date": "2026-11-03",
+          "reason": "个人事务"
+        }
+      },
+      "intent_ok": false
+    },
+    {
+      "query": "确认提交",
+      "mode": "no_history_four_field_draft",
+      "expected_intent": "confirm_action",
+      "actual": {
+        "intent": "confirm_action",
+        "extracted_info": {}
+      },
+      "intent_ok": true
+    },
+    {
+      "query": "算了，取消草稿",
+      "mode": "original",
+      "expected_intent": "cancel_action",
+      "actual": {
+        "intent": "delete_application",
+        "extracted_info": {}
+      },
+      "intent_ok": false
+    },
+    {
+      "query": "算了，取消草稿",
+      "mode": "no_history",
+      "expected_intent": "cancel_action",
+      "actual": {
+        "intent": "delete_application",
+        "extracted_info": {}
+      },
+      "intent_ok": false
+    },
+    {
+      "query": "算了，取消草稿",
+      "mode": "four_field_draft",
+      "expected_intent": "cancel_action",
+      "actual": {
+        "intent": "delete_application",
+        "extracted_info": {}
+      },
+      "intent_ok": false
+    },
+    {
+      "query": "算了，取消草稿",
+      "mode": "no_history_four_field_draft",
+      "expected_intent": "cancel_action",
+      "actual": {
+        "intent": "delete_application",
+        "extracted_info": {}
+      },
+      "intent_ok": false
+    }
+  ],
+  "limits": [
+    "Generated test cases share business concepts and protocol with training despite disjoint template groups.",
+    "Strict general scoring includes formatting compliance: logic content drops from 8/8 to 6/8 when terminal punctuation is ignored.",
+    "Agent workflow is a single four-turn diagnostic, not a production task success estimate; database nodes are unavailable.",
+    "Four identity/responsibility answers and six open general answers are reserved for human review.",
+    "Local GPU shares display workload; generation timings are not controlled hardware benchmarks."
+  ],
+  "conclusion": "Specialized structured output improved substantially, but real multi-turn confirmation/cancellation, target-ID handling, unprompted identity, and reasoning preservation remain unresolved."
+}

@@ -1,0 +1,19 @@
+{
+  "time": "2026-10-22T21:53:04.649774+08:00",
+  "model": "trainpilot-lora",
+  "base_url": "http://127.0.0.1:8011/v1",
+  "recognition_passed": 12,
+  "recognition_total": 12,
+  "strict_json": 12,
+  "workflow_turns_passed": 2,
+  "workflow_turns_total": 4,
+  "note": "小规模项目诊断，非标准能力榜单。评测题不要并入后续训练集。",
+  "intent_correct": 12,
+  "fields_cases_total": 4,
+  "fields_cases_correct": 4,
+  "identity_unprompted_correct": 0,
+  "identity_prompted_correct": 2,
+  "grading_limit": "recognition_passed 只检查预先指定字段，未覆盖所有额外编造字段；不能视为完整业务通过率。",
+  "v2_protocol_exact_match": 12,
+  "v2_protocol_exact_total": 12
+}
