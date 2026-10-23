@@ -1,6 +1,4 @@
-# ---------------------------------------------
-# 密钥与本地配置：绝不提交
-# ---------------------------------------------
+# Secrets and local environment
 .env
 .env.*
 !.env.example
@@ -9,9 +7,7 @@
 *.p12
 *.pfx
 
-# ---------------------------------------------
-# 本地运行环境与运行时产物
-# ---------------------------------------------
+# Python environments and caches
 .venv/
 .venv312/
 venv/
@@ -24,29 +20,31 @@ __pycache__/
 .coverage
 htmlcov/
 
-# 本机日志、进程状态、模型探测结果
+# Local runtime state and logs
 local_runtime/logs/
 local_runtime/originals/
 local_runtime/model_check.json
+local_runtime/processes.json
+local_runtime/verification*.json
+local_runtime/requirements-installed.txt
 local_runtime/github_token.txt
 *.token
-local_runtime/processes.json
 *.log
-audit_artifacts/reasoning_suite/*_console.txt
-enterprise_rag/graph/data/versions/
 
-# ---------------------------------------------
-# 编辑器与操作系统
-# ---------------------------------------------
+# Generated corpora, indexes, graph snapshots and eval reports
+data/
+enterprise_rag/data/
+enterprise_rag/corpus/
+enterprise_rag/graph/data/
+enterprise_rag/eval/reports/
+eval/reports/
+
+# Editor, OS and temporary files
 .idea/
 .vscode/
 .DS_Store
 Thumbs.db
 desktop.ini
-
-# ---------------------------------------------
-# 打包与临时文件
-# ---------------------------------------------
 dist/
 build/
 *.zip

@@ -35,11 +35,39 @@ EMBEDDING_BATCH = int(os.getenv("RAG_EMBEDDING_BATCH", "16"))
 _llm_mode = os.getenv("RAG_USE_LLM", "auto").strip().lower()
 USE_LLM = bool(os.getenv("OPENAI_API_KEY")) if _llm_mode == "auto" else _llm_mode in {"1", "true", "yes"}
 LLM_MODEL = os.getenv("RAG_LLM_MODEL", os.getenv("OPENAI_MODEL", "deepseek-v4.1-flash"))
-LLM_TEMPERATURE = float(os.getenv("RAG_LLM_TEMPERATURE", "0.2"))
 LLM_TIMEOUT = float(os.getenv("RAG_LLM_TIMEOUT", "60"))
 LLM_MAX_RETRIES = int(os.getenv("RAG_LLM_MAX_RETRIES", "0"))
 MAX_CONTEXT_CHARS = int(os.getenv("RAG_MAX_CONTEXT_CHARS", "18000"))
 REASONING_TOP_K = int(os.getenv("RAG_REASONING_TOP_K", "32"))
 
+# ---- 请求预算与可观测性 ------------------------------------------------
+REQUEST_TIMEOUT_SECONDS = float(os.getenv("RAG_REQUEST_TIMEOUT", "90"))
+MAX_QUERY_VARIANTS = int(os.getenv("RAG_MAX_QUERY_VARIANTS", "8"))
+MAX_EMBEDDING_CALLS = int(os.getenv("RAG_MAX_EMBEDDING_CALLS", "8"))
+MAX_MODEL_CALLS = int(os.getenv("RAG_MAX_MODEL_CALLS", "4"))
+QUERY_CACHE_SIZE = int(os.getenv("RAG_QUERY_CACHE_SIZE", "256"))
+QUERY_CACHE_TTL_SECONDS = int(os.getenv("RAG_QUERY_CACHE_TTL", "900"))
+
+# ---- 检索增强开关（默认保持既有基线，实验项显式开启） -------------------
+MULTI_REPRESENTATION = os.getenv("RAG_MULTI_REPRESENTATION", "false").lower() in {"1", "true", "yes"}
+NEIGHBOR_EXPANSION = os.getenv("RAG_NEIGHBOR_EXPANSION", "false").lower() in {"1", "true", "yes"}
+NEIGHBOR_WINDOW = int(os.getenv("RAG_NEIGHBOR_WINDOW", "1"))
+CONTEXT_COMPRESSION = os.getenv("RAG_CONTEXT_COMPRESSION", "false").lower() in {"1", "true", "yes"}
+CROSS_ENCODER_ENABLED = os.getenv("RAG_CROSS_ENCODER", "false").lower() in {"1", "true", "yes"}
+HYDE_ENABLED = os.getenv("RAG_HYDE_ENABLED", "false").lower() in {"1", "true", "yes"}
+MAX_HOPS = int(os.getenv("RAG_MAX_HOPS", "2"))
+ANN_CHUNK_THRESHOLD = int(os.getenv("RAG_ANN_CHUNK_THRESHOLD", "20000"))
+RAG_MAX_CONCURRENT = int(os.getenv("RAG_MAX_CONCURRENT", "8"))
+
+# ---- 答案生成与拒绝 ------------------------------------------------------
+FACT_CHECK_REFUSE_ON_CONFLICT = os.getenv(
+    "RAG_FACT_CHECK_REFUSE_ON_CONFLICT", "false"
+).lower() in {"1", "true", "yes"}
+
+# ---- 模型路由：按任务复杂度选择模型，未配置时沿用 LLM_MODEL ---------------
+MODEL_ROUTE_SIMPLE = os.getenv("RAG_MODEL_SIMPLE", "")
+MODEL_ROUTE_COMPLEX = os.getenv("RAG_MODEL_COMPLEX", "")
+
 # 权限：企业语料默认全员可读，财务/HR/管理层文档按 OA 规则收敛
 DEFAULT_VISIBILITY = "all"
+

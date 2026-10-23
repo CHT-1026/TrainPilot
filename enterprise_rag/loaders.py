@@ -132,8 +132,17 @@ def _pdf_blocks(path: Path) -> list[dict]:
     from pypdf import PdfReader
 
     reader = PdfReader(str(path))
-    text = "\n".join((page.extract_text() or "").strip() for page in reader.pages)
-    return _markdown_blocks(text, "正文")
+    blocks: list[dict] = []
+    for page_number, page in enumerate(reader.pages, 1):
+        text = (page.extract_text() or "").strip()
+        if not text:
+            continue
+        page_blocks = _markdown_blocks(text, "正文")
+        for block in page_blocks:
+            block["page"] = page_number
+        blocks.extend(page_blocks)
+    return blocks
+
 
 
 def _table_text(headers: list[str], rows: list[list[str]]) -> str:
@@ -185,6 +194,20 @@ def _xlsx_blocks(path: Path) -> list[dict]:
     return blocks
 
 
+EXTRACTOR_VERSION = "2026.10-page-anchor"
+
+
+def _annotate_blocks(blocks: list[dict], fmt: str) -> list[dict]:
+    """为每个块保留可回到原页/原段落的定位信息。"""
+    for index, block in enumerate(blocks):
+        page = block.get("page")
+        block["paragraph"] = index
+        block["anchor"] = f"{fmt}:p{page if page is not None else 0}#b{index}"
+        block["extractor_version"] = EXTRACTOR_VERSION
+        block.setdefault("ocr", False)
+    return blocks
+
+
 def load_document(path: Path) -> dict:
     suffix = path.suffix.lower()
     if suffix == ".docx":
@@ -197,4 +220,4 @@ def load_document(path: Path) -> dict:
         blocks = _xlsx_blocks(path)
     else:
         blocks = _markdown_blocks(_read_text(path), "正文")
-    return {"format": suffix.lstrip("."), "blocks": blocks}
+    return {"format": suffix.lstrip("."), "blocks": _annotate_blocks(blocks, suffix.lstrip("."))}

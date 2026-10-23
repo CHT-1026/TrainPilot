@@ -5,42 +5,16 @@ from collections import Counter, defaultdict
 
 from app.domain.user.models import UserContext
 from enterprise_rag import config
+from enterprise_rag.budget import RequestBudget, bind_budget, new_budget
 from enterprise_rag.graph.retrieve import graph_candidates
 from enterprise_rag.query import query_terms, rewrite_query, semantic_query_variants, wants_table, reasoning_plan
+from enterprise_rag.release import active_release, verify_release
+from enterprise_rag.scope import EvidenceScope
 from enterprise_rag.store import RagIndex, load_index, query_vector
 
 logger = logging.getLogger(__name__)
 
 SYSTEM_USER = UserContext(user_id="rag-eval", name="评测用户", role="admin", department="管理部")
-
-
-def _allowed_rag(chunk: dict, user: UserContext) -> bool:
-    """企业语料默认公司全员可见；department 仅作元数据，不参与跨部门拦截。"""
-    if user.is_admin:
-        return True
-    visibility = chunk.get("visibility") or "all"
-    if visibility == "all":
-        return True
-    if visibility == "manager":
-        return user.is_manager
-    if visibility == "hr":
-        return user.is_hr
-    if visibility == "finance":
-        return user.role == "finance"
-    if visibility == "admin":
-        return False
-    return False
-
-
-def _family_filter(chunks: list[dict], index: RagIndex, as_of: str | None) -> list[dict]:
-    allowed = index.allowed_doc_ids(as_of)
-    if allowed is None:
-        return chunks
-    return [
-        chunk
-        for chunk in chunks
-        if chunk.get("doc_family") not in index.versioned_families or chunk["doc_id"] in allowed
-    ]
 
 
 def _rrf(bm25_hits: list[dict], vector_hits: list[dict]) -> list[dict]:
@@ -215,47 +189,119 @@ def _diversify(chunks: list[dict], top_k: int) -> list[dict]:
     return selected
 
 
-def _ensure_version_pair(selected: list[dict], reranked: list[dict], index: RagIndex) -> tuple[list[dict], str]:
+_VERSION_QUESTION = re.compile(
+    r"20\d{2}.{0,12}20\d{2}|20\d{2}\s*版|旧版|新版|上一版|历史版本|哪一版|版本对比|版本差异|"
+    r"新增|增加|减少|取消|升级|改版|变更|"
+    r"20\d{2}\s*年.{0,6}(?:更新|发布|生效|改版)|更新于\s*20\d{2}"
+)
+
+
+def _ensure_version_pair(selected: list[dict], reranked: list[dict], index: RagIndex,
+                         question: str = "", scope: EvidenceScope | None = None) -> tuple[list[dict], str]:
     """Comparison questions need both sides of the same document family.
 
-    Pick the versioned family that dominates the top ranked evidence, then make
-    sure every document of that family contributes at least one chunk.
+    Only already-authorized candidates are used; the pair is completed inside the
+    same retrieval call rather than re-reading the global index at generation time.
     """
-    counts = Counter(
-        chunk.get("doc_family")
-        for chunk in reranked[:12]
-        if chunk.get("doc_family") in index.versioned_families
-    )
-    if not counts:
-        return selected, ""
-    family = counts.most_common(1)[0][0]
+    from enterprise_rag.evidence import version_pair
+
+    family = ""
+    pair = version_pair(reranked[:24], question) if question else None
+    if pair:
+        family = str(pair[0].get("doc_family") or "")
+    if not family:
+        counts = Counter(
+            chunk.get("doc_family")
+            for chunk in reranked[:12]
+            if chunk.get("doc_family") in index.versioned_families
+        )
+        if not counts:
+            return selected, ""
+        family = counts.most_common(1)[0][0]
     docs = index.family_docs.get(family, [])
     if len(docs) < 2:
         return selected, ""
     best_by_doc: dict[str, dict] = {}
     for chunk in reranked:
-        if chunk.get("doc_family") == family:
-            best_by_doc.setdefault(chunk["doc_id"], chunk)
+        if chunk.get("doc_family") != family:
+            continue
+        current = best_by_doc.get(chunk["doc_id"])
+        if current is None or _version_chunk_rank(chunk, family) > _version_chunk_rank(current, family):
+            best_by_doc[chunk["doc_id"]] = chunk
+    # 同一检索调用内按标题补查缺失版本；所有命中仍经过 EvidenceScope。
+    if scope is not None:
+        for doc in docs:
+            doc_id = doc["doc_id"]
+            if doc_id in best_by_doc:
+                continue
+            probe = f"{doc.get('title', '')} {doc.get('version', '')}".strip()
+            hits = scope.filter(index.bm25_search(probe, max(config.CANDIDATE_K, len(index.chunks))),
+                                index)
+            candidates = [hit for hit in hits if hit.get("doc_id") == doc_id]
+            if candidates:
+                best_by_doc[doc_id] = max(
+                    candidates, key=lambda item: _version_chunk_rank(item, family)
+                )
     if len(best_by_doc) < 2:
         return selected, family
+    present = {chunk["doc_id"] for chunk in selected if chunk.get("doc_family") == family}
+    missing = {doc_id: chunk for doc_id, chunk in best_by_doc.items() if doc_id not in present}
+    if not missing:
+        return selected, family
     selected = list(selected)
-    for doc_id, chunk in best_by_doc.items():
-        if any(item["doc_id"] == doc_id for item in selected):
-            continue
+    for chunk in missing.values():
         replace_at = next(
             (
                 position
                 for position in range(len(selected) - 1, -1, -1)
                 if selected[position].get("doc_family") != family
             ),
-            len(selected) - 1,
+            None,
         )
-        if replace_at >= 0:
-            selected[replace_at] = chunk
-        else:
+        if replace_at is None:
             selected.append(chunk)
+        else:
+            selected[replace_at] = chunk
     return selected, family
 
+
+def _version_chunk_rank(chunk: dict, family: str) -> tuple[int, float]:
+    """组织架构优先含一级部门清单的块，其余按检索分取最高块。"""
+    has_list = 1 if family == "org_chart" and "个一级部门" in str(chunk.get("text") or "") else 0
+    return has_list, float(chunk.get("score") or 0.0)
+
+
+
+def _neighbor_expand(selected: list[dict], candidates: list[dict], index: RagIndex,
+                     scope: EvidenceScope, top_k: int) -> tuple[list[dict], int]:
+    """按文档 ord 扩展相邻块；只接受同一合法边界内的证据。"""
+    if not config.NEIGHBOR_EXPANSION:
+        return selected, 0
+    expanded = list(selected)
+    seen = {chunk["chunk_id"] for chunk in expanded}
+    candidate_ids = {chunk["chunk_id"] for chunk in candidates}
+    added = 0
+    for chunk in selected:
+        if len(expanded) >= top_k:
+            break
+        doc_chunks = index.by_doc_ord.get(chunk.get("doc_id"), [])
+        position = chunk.get("ord", 0)
+        for offset in range(1, config.NEIGHBOR_WINDOW + 1):
+            for neighbor_ord in (position - offset, position + offset):
+                neighbor = next((item for item in doc_chunks if item.get("ord") == neighbor_ord), None)
+                if not neighbor or neighbor["chunk_id"] in seen:
+                    continue
+                if not scope.filter([neighbor], index):
+                    continue
+                if neighbor["chunk_id"] not in candidate_ids:
+                    neighbor = dict(neighbor, score=min(chunk.get("score", 0.0) * 0.6, 0.45),
+                                    features={"neighbor_of": chunk["chunk_id"]})
+                if len(expanded) >= top_k:
+                    return expanded, added
+                expanded.append(neighbor)
+                seen.add(neighbor["chunk_id"])
+                added += 1
+    return expanded[:top_k], added
 
 
 def retrieve(
@@ -265,6 +311,25 @@ def retrieve(
     as_of: str | None = None,
     namespace: str | None = None,
     retrieval_mode: str = "hybrid",
+    budget: RequestBudget | None = None,
+    offline: bool = False,
+) -> dict:
+    budget = budget or new_budget(offline=offline)
+    with bind_budget(budget):
+        with budget.stage("retrieval"):
+            result = _retrieve_impl(question, user, top_k, as_of, namespace, retrieval_mode, budget)
+    result["debug"]["budget"] = budget.snapshot()
+    return result
+
+
+def _retrieve_impl(
+    question: str,
+    user: UserContext | None,
+    top_k: int | None,
+    as_of: str | None,
+    namespace: str | None,
+    retrieval_mode: str,
+    budget: RequestBudget,
 ) -> dict:
     user = user or SYSTEM_USER
     top_k = top_k or config.TOP_K
@@ -276,32 +341,79 @@ def retrieve(
     index = load_index(namespace=namespace)
     rewritten = rewrite_query(question)
     effective_as_of = as_of or (rewritten["as_of"] if plan["policy_as_of"] else None)
-    semantic_queries = semantic_query_variants(question)
-    queries = list(dict.fromkeys(plan["queries"] + semantic_queries))[:8]
-    terms = query_terms(" ".join([rewritten["rewritten"]] + queries), rewritten["original"])
+    release = active_release(namespace)
+    scope = EvidenceScope.from_request(
+        user,
+        namespace=namespace,
+        as_of=effective_as_of,
+        strict_effective_date=bool(as_of or plan["strict_effective_date"]),
+        comparison=bool(plan["comparison"] or _VERSION_QUESTION.search(question)),
+        snapshot=release.get("snapshot_id", ""),
+        acl_version=(f"{release.get('acl_version', '')}:{index.access_revision}"
+                     if getattr(index, "access_revision", "") else release.get("acl_version", "")),
+    )
+    semantic_queries = semantic_query_variants(question, allow_llm=budget.can_call_model())
+    if config.HYDE_ENABLED and budget.can_call_model():
+        from enterprise_rag.query import hyde_variants
 
-    # Filter authorization and versions before applying the candidate budget.
-    # Otherwise inaccessible records can crowd all readable evidence out of top K.
+        semantic_queries = list(dict.fromkeys(
+            semantic_queries + hyde_variants(question, allow_llm=budget.can_call_model())
+        ))
+    queries = list(dict.fromkeys(plan["queries"] + semantic_queries))[:config.MAX_QUERY_VARIANTS]
+    terms = query_terms(" ".join([rewritten["rewritten"]] + queries), rewritten["original"])
+    # 同块数换版也必须停用：索引对象记录加载时的权威版本，不能只核对块数。
+    # 未绑定版本的索引（如测试替身）无法与发布快照比对，不伪造不一致。
+    bound_version = getattr(index, "index_version", "")
+    stale_index = []
+    if bound_version and release.get("index_version") and bound_version != release["index_version"]:
+        stale_index.append({"code": "INDEX_VERSION_MISMATCH", "detail": "索引已变化，需重新发布"})
+    if bound_version and release.get("index_chunks") is not None \
+            and int(release["index_chunks"]) != len(index.chunks):
+        stale_index.append({"code": "INDEX_CHUNK_COUNT_MISMATCH", "detail": "块数与发布快照不一致"})
+    if stale_index:
+        return {
+            "query": rewritten, "as_of": effective_as_of, "terms": terms,
+            "candidates": 0, "chunks": [], "scope": scope.to_dict(),
+            "debug": {
+                "bm25_hits": 0, "vector_hits": 0, "fused": 0, "reranked": 0,
+                "top_score": 0.0, "comparison_mode": plan["comparison"],
+                "evidence_budget_complete": False,
+                "graph": {"release_issues": stale_index, "paths": []},
+                "plan": {**plan, "bridge_queries": [], "semantic_queries": semantic_queries},
+                "queries_used": queries,
+                "release_issues": stale_index,
+            },
+        }
+
     def eligible(hits):
-        hits = [c for c in hits if _allowed_rag(c, user)]
-        if not plan["comparison"]:
-            hits = _family_filter(hits, index, effective_as_of)
-        if effective_as_of and (as_of or plan["strict_effective_date"]):
-            hits = [c for c in hits if not c.get("effective_date") or str(c["effective_date"]) <= effective_as_of]
-        return hits[:config.CANDIDATE_K]
+        return scope.filter(hits, index)[:config.CANDIDATE_K]
 
     bm25_hits, vector_hits, merged = [], [], {}
     vector_errors = []
-    for probe in queries:
+    budget_stops = []
+    graph_only = retrieval_mode == "graph"
+    for probe in ([] if graph_only else queries):
+        if budget.expired():
+            budget.stop("deadline_exceeded")
+            budget_stops.append("deadline_exceeded")
+            break
         text = rewrite_query(probe)["rewritten"]
         b = eligible(index.bm25_search(text, max(config.CANDIDATE_K, len(index.chunks))))
-        try:
-            v = eligible(index.vector_search(query_vector(text), max(config.CANDIDATE_K, len(index.chunks))))
-        except Exception as exc:
-            # A provider failure must not mix incompatible vector spaces.
-            logger.warning("向量检索不可用，显式降级 BM25: %s", type(exc).__name__)
-            vector_errors.append(type(exc).__name__)
-            v = []
+        if config.MULTI_REPRESENTATION and hasattr(index, "representation_search"):
+            b = eligible(b + index.representation_search(text, config.CANDIDATE_K))
+        v = []
+        if budget.can_call_embedding():
+            try:
+                v = eligible(index.vector_search(query_vector(text), max(config.CANDIDATE_K, len(index.chunks))))
+            except Exception as exc:
+                # A provider failure must not mix incompatible vector spaces.
+                logger.warning("向量检索不可用，显式降级 BM25: %s", type(exc).__name__)
+                vector_errors.append(type(exc).__name__)
+                v = []
+        else:
+            vector_errors.append("EmbeddingBudgetExceeded")
+            budget_stops.append("embedding_budget_exhausted")
+            budget.stop("embedding_budget_exhausted")
         bm25_hits.extend(b)
         vector_hits.extend(v)
         for hit in _rrf(b, v):
@@ -315,8 +427,10 @@ def retrieve(
                 current["query_hits"] = int(current.get("query_hits", 1)) + 1
     # A bounded second hop follows entities found in authorized first-hop evidence.
     bridge_queries = []
-    if plan["bridge"]:
+    if plan["bridge"] and plan.get("max_hops", 1) >= 2 and not budget.expired():
         for hit in list(merged.values())[:12]:
+            if len(bridge_queries) >= 3:
+                break
             for name in re.findall(r"负责人(?:是|为|[:：])\s*([\u4e00-\u9fff]{2,4})(?=[。；，\s]|$)", hit.get("text", "")):
                 probe = f"{name} 所属部门 员工 部门归属"
                 if probe in bridge_queries:
@@ -327,24 +441,43 @@ def retrieve(
                 if len(bridge_queries) >= 3:
                     break
     fused = list(merged.values())
-    graph_debug = {"entities": [], "paths": [], "candidates": 0, "enabled": False,
+    graph_debug = {"entities": [], "paths": [], "path_evidence": [], "candidates": 0, "enabled": False,
                    "mode": retrieval_mode}
     graph_intent = bool(
         plan["reporting"] or plan["comparison"]
         or re.search(r"负责|属于|配套|客户|项目|版本|上级|下属|汇报|关系|架构", question)
     )
     if retrieval_mode == "graph" or (retrieval_mode == "hybrid" and graph_intent):
-        graph_hits, graph_debug = graph_candidates(question, index, hops=2)
+        graph_hits, graph_debug = graph_candidates(
+            question, index, hops=min(plan.get("max_hops", config.MAX_HOPS), config.MAX_HOPS), scope=scope
+        )
         graph_debug["mode"] = retrieval_mode
+        release_issues = verify_release(
+            release,
+            graph_stats={"version": graph_debug.get("graph_version", "")},
+        )
+        if release_issues:
+            graph_debug["release_issues"] = release_issues
+            graph_hits = []
         allowed_graph = []
         for hit in graph_hits:
-            if not _allowed_rag(hit, user):
+            if not scope.filter([hit], index):
                 continue
-            if plan["comparison"] or _family_filter([hit], index, effective_as_of):
-                allowed_graph.append(hit)
+            allowed_graph.append(hit)
         allowed_graph = allowed_graph[:40 if plan["comparison"] else 12]
+        # 防御性重建：即使图支路返回了未过滤的轨迹，也只保留合法候选携带的路径。
+        graph_debug["paths"] = list(dict.fromkeys(
+            path for hit in allowed_graph for path in (hit.get("graph_paths") or [])
+        ))[:12]
+        graph_debug["path_evidence"] = [
+            evidence for hit in allowed_graph
+            for evidence in (hit.get("graph_path_evidence") or [])
+        ][:12]
         if retrieval_mode == "graph":
-            fused = allowed_graph or fused
+            # 图模式必须真实只返回图证据，不再静默回退到向量候选。
+            fused = allowed_graph
+            graph_debug["graph_only"] = True
+            graph_debug["vector_fallback"] = False
         else:
             for hit in allowed_graph:
                 current = merged.get(hit["chunk_id"])
@@ -355,10 +488,15 @@ def retrieve(
                                                  float(hit.get("graph_score", 0)))
                     if hit.get("graph_paths"):
                         current["graph_paths"] = hit["graph_paths"]
+                    if hit.get("graph_path_evidence"):
+                        current["graph_path_evidence"] = hit["graph_path_evidence"]
             fused = list(merged.values())
-    if not plan["comparison"]:
-        fused = _family_filter(fused, index, effective_as_of)
+    fused = scope.filter(fused, index)
     reranked = _rerank(fused, terms, index, effective_as_of, wants_table(question), question)
+    if config.CROSS_ENCODER_ENABLED:
+        from enterprise_rag.rerank import lexical_pair_rerank
+
+        reranked = lexical_pair_rerank(question, reranked)
     if plan["enumeration"]:
         # One chunk per document first, then fill spare budget with other sections.
         first, rest, seen = [], [], set()
@@ -389,8 +527,9 @@ def retrieve(
                     selected.append(chunk)
                     selected_ids_now.add(chunk["chunk_id"])
     comparison_family = ""
-    if plan["comparison"]:
-        selected, comparison_family = _ensure_version_pair(selected, reranked, index)
+    if plan["comparison"] or _VERSION_QUESTION.search(question):
+        selected, comparison_family = _ensure_version_pair(selected, reranked, index, question, scope)
+    selected, neighbor_added = _neighbor_expand(selected, reranked, index, scope, top_k)
     relevant_ids = {c["chunk_id"] for c in reranked if c.get("score", 0) >= config.MIN_SCORE}
     selected_ids = {c["chunk_id"] for c in selected}
 
@@ -405,6 +544,7 @@ def retrieve(
         "terms": terms,
         "candidates": len(fused),
         "chunks": selected,
+        "scope": scope.to_dict(),
         "debug": {
             "bm25_hits": len(bm25_hits),
             "vector_hits": len(vector_hits),
@@ -422,5 +562,16 @@ def retrieve(
             "omitted_relevant_chunks": len(relevant_ids - selected_ids),
             "vector_fallback": bool(vector_errors),
             "vector_errors": sorted(set(vector_errors)),
+            "budget_stops": sorted(set(budget_stops)),
+            "neighbor_expanded": neighbor_added,
+            "scope": scope.to_dict(),
+            "feature_flags": {
+                "multi_representation": config.MULTI_REPRESENTATION,
+                "neighbor_expansion": config.NEIGHBOR_EXPANSION,
+                "cross_encoder": config.CROSS_ENCODER_ENABLED,
+                "hyde": config.HYDE_ENABLED,
+                "context_compression": config.CONTEXT_COMPRESSION,
+            },
         },
     }
+

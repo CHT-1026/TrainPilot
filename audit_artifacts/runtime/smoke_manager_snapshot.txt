@@ -1,3 +1,0 @@
-HTTP manager snapshot manager_li
-MANAGER_SNAPSHOT_PASS
-

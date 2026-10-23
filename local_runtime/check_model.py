@@ -32,10 +32,11 @@ def check(if_changed=False):
     if not values.get("OPENAI_API_KEY"):
         result.update(status=0, error_code="missing_key", message="请在 .env.local 填写有效的模型密钥。")
     else:
-        body = {"model": values["OPENAI_MODEL"], "max_tokens": 32, "temperature": 0,
+        body = {"model": values["OPENAI_MODEL"], "max_tokens": 128, "temperature": 0,
                 "messages": [{"role": "user", "content": "请只回复OK。"}]}
-        if (values.get("OPENAI_ENABLE_THINKING") or "").lower() == "false":
-            body["enable_thinking"] = False
+        thinking = (values.get("OPENAI_ENABLE_THINKING") or "").strip().lower()
+        if thinking in {"true", "false"}:
+            body["enable_thinking"] = thinking == "true"
         request = urllib.request.Request(
             values["OPENAI_API_BASE"].rstrip("/") + "/chat/completions",
             data=json.dumps(body).encode(), headers={"Content-Type": "application/json",

@@ -193,6 +193,8 @@ CREATE TABLE IF NOT EXISTS kb_chunks (
     embedding_dim INT COMMENT '向量维度',
     embedding_model VARCHAR(64) COMMENT '向量模型',
     embedding_version VARCHAR(32) COMMENT '向量版本',
+    metadata_json JSON DEFAULT NULL COMMENT '页码/锚点/父子块/哈希等结构化元数据',
+    representation MEDIUMTEXT COMMENT '多表示索引文本（标题/章节/表头）',
     INDEX idx_doc (doc_id),
     INDEX idx_doc_ord (doc_id, ord)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='知识库文本块';

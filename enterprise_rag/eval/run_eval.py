@@ -39,9 +39,13 @@ SCORING_LIMITATIONS = [
 ]
 
 
+_DIGITS = str.maketrans("零一二三四五六七八九两", "01234567892")
+
+
 def normalize(text: str) -> str:
     text = (text or "").lower()
     text = text.replace("％", "%").replace("—", "-").replace("－", "-")
+    text = text.translate(_DIGITS)
     text = re.sub(r"[\s,，、]+", "", text)
     return text
 
@@ -157,6 +161,11 @@ def evaluate_case(case: dict, use_llm: bool | None = None) -> dict:
         "citation_docs": citation_docs,
         "citation_hit": citation_hit,
         **citation_audit,
+        "fact_check": result.get("fact_check"),
+        "fact_support": bool((result.get("fact_check") or {}).get("verified")),
+        "evidence_scope": result.get("evidence_scope"),
+        "model_used": result.get("model_used", ""),
+        "prompt_version": result.get("prompt_version", ""),
         "time_filter": result["retrieval"]["as_of"],
         "query_rewrite": result["query_rewrite"],
         "top_score": result["retrieval"]["top_score"],
@@ -194,6 +203,15 @@ def aggregate(results: list[dict]) -> dict:
         if refusal_cases
         else 0.0
     )
+    fact_support_rate = (
+        sum(1 for item in non_refusal if item.get("fact_support")) / len(non_refusal)
+        if non_refusal else 0.0
+    )
+    fact_coverage = (
+        sum(float((item.get("fact_check") or {}).get("coverage") or 0.0) for item in non_refusal)
+        / len(non_refusal)
+        if non_refusal else 0.0
+    )
 
     return {
         "total_cases": len(results),
@@ -211,6 +229,8 @@ def aggregate(results: list[dict]) -> dict:
         "citation_coverage": round(citation_coverage, 4),
         "all_expected_citation_coverage": round(complete_citation_coverage, 4),
         "valid_citation_marker_rate": round(valid_marker_rate, 4),
+        "fact_support_rate": round(fact_support_rate, 4),
+        "fact_coverage": round(fact_coverage, 4),
         "grounded_rate": round(grounded_rate, 4),
         "false_refusal_rate": round(false_refusal, 4),
         "refusal_accuracy": round(refusal_accuracy, 4),
@@ -228,6 +248,16 @@ def by_category(results: list[dict]) -> dict:
 def write_report(report: dict, results: list[dict]) -> None:
     report.setdefault("scoring_limitations", SCORING_LIMITATIONS)
     report.setdefault("evaluation_scope", "legacy_fixed_corpus_keyword_regression")
+    report.setdefault("metric_layers", {
+        "lexical": ["keyword_accuracy", "missing_keywords"],
+        "retrieval": ["any_expected_doc_hit@5", "any_expected_doc_hit@10",
+                       "all_expected_docs_recalled@10", "mrr", "ndcg@10"],
+        "citation_structure": ["citation_markers_valid", "all_expected_citation_coverage"],
+        "fact_support": ["fact_support_rate", "fact_coverage", "period_missing", "subject_missing",
+                          "numeric_missing", "conflicts"],
+        "manual_review_required": ["semantic entailment", "否定/矛盾", "跨文档多跳完整性",
+                                    "引用是否支持该句的全部前提"],
+    })
     config.REPORT_DIR.mkdir(parents=True, exist_ok=True)
     (config.REPORT_DIR / "latest.json").write_text(
         json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8"
@@ -264,6 +294,8 @@ def write_report(report: dict, results: list[dict]) -> None:
         f"| 至少一个期望来源被有效标记引用 | {metrics['citation_coverage']:.2%} |",
         f"| 全部期望来源被有效标记引用 | {metrics['all_expected_citation_coverage']:.2%} |",
         f"| 引用编号结构合法率 | {metrics['valid_citation_marker_rate']:.2%} |",
+        f"| 句级机械核验严格通过率 | {metrics['fact_support_rate']:.2%} |",
+        f"| 句级机械核验平均覆盖率 | {metrics['fact_coverage']:.2%} |",
         f"| 系统 grounded 标志率（非独立语义审查） | {metrics['grounded_rate']:.2%} |",
         f"| 拒答准确率 | {metrics['refusal_accuracy']:.2%} |",
         f"| 非拒答问题误拒率 | {metrics['false_refusal_rate']:.2%} |",

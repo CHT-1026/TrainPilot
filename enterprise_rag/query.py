@@ -6,6 +6,7 @@ from datetime import date, timedelta
 from functools import lru_cache
 
 from app.capabilities.retrieval.tokenizer import tokenize
+from enterprise_rag import config
 
 logger = logging.getLogger(__name__)
 
@@ -52,6 +53,7 @@ SYNONYMS = {
     "净利润": ["归母净利润", "利润"],
     "毛利率": ["毛利", "盈利能力", "成本"],
     "组织架构": ["一级部门", "汇报关系", "部门职责"],
+    "公司架构": ["组织架构", "一级部门", "汇报关系", "部门职责"],
     "采购": ["供应商", "招标", "比价", "付款"],
     "培训": ["课程", "讲师", "认证", "学时"],
     "离职": ["交接", "竞业限制", "离职面谈"],
@@ -153,9 +155,19 @@ def reasoning_plan(question: str) -> dict:
         re.search(r"的上级|的直属上级|的下属|直接下属|下属有(?:哪些|谁)|下属是谁|向谁汇报|汇报给谁|汇报关系|什么关系|关系是什么", question)
     )
     complex_query = count or temporal or numeric or bridge or comparison or reporting or len(years) > 1
+    # 复杂度决定有限跳数，而不是让模型自由循环。
+    relation_cues = len(re.findall(r"负责|属于|上级|下属|汇报|配套|客户|项目|版本|架构", question))
+    multi_hop = bool(re.search(
+        r"的上级的|的上司的|的下属的|客户的.{0,8}负责|项目的.{0,8}负责|配套.{0,8}客户|"
+        r"汇报链|间接|跨部门|通过.{0,6}找到|谁管理.{0,6}的",
+        question,
+    ))
+    max_hops = 2 if (multi_hop or reporting or comparison) else (1 if relation_cues else 0)
+    max_hops = min(max_hops, config.MAX_HOPS)
     queries = [question]
     if count:
-        queries += [question + " 组织清单 部门名称", question + " 部门职责 组织架构"]
+        queries += [question + " 组织清单 部门名称", question + " 部门职责 组织架构",
+                    "公司组织架构 一级部门 部门清单 汇报关系"]
     if temporal:
         queries += [re.sub(r"(?:19|20)\d{2}\s*年", "", question) + " 成立 创立 公司沿革",
                     "当前年份记录 今年 本年"]
@@ -167,11 +179,16 @@ def reasoning_plan(question: str) -> dict:
             "旧版 历史版本 原架构 变更内容",
             "新版 当前版本 升级内容 新增能力",
         ]
-        if "架构" in question:
+        # “公司架构”指组织架构；只有控制/技术/系统架构才补控制系统查询。
+        org_arch = bool(re.search(r"公司架构|组织架构|一级部门|汇报关系|部门职责", question))
+        tech_arch = bool(re.search(r"控制架构|控制系统|技术架构|系统架构|机器人架构", question))
+        if "架构" in question and not org_arch:
             queries += [
                 "控制系统架构 旧版 v2.4 CANopen LT-C600 伺服",
                 "控制系统架构 新版 v3.3 EtherCAT LT-C800 版本演进",
             ]
+        if org_arch and not tech_arch:
+            queries += ["公司组织架构 一级部门 汇报关系 部门职责"]
     if reporting:
         queries += [
             question + " 员工汇报关系 直接上级 下属",
@@ -179,6 +196,8 @@ def reasoning_plan(question: str) -> dict:
         ]
     if len(years) > 1:
         queries += [re.sub(r"(?:19|20)\d{2}\s*年", "", question) + f" {year}年" for year in years]
+    if re.search(r"公司架构|组织架构|一级部门", question):
+        queries.append("公司组织架构 一级部门 版本 更新时间 生效日期")
     # A period in a financial comparison must not discard older facts.
     # A report's 2025 figures can be published in 2026. Only policy/effectivity
     # questions implicitly apply an effective-date snapshot; explicit as_of wins.
@@ -187,7 +206,9 @@ def reasoning_plan(question: str) -> dict:
     return {"complex": complex_query, "enumeration": count, "temporal": temporal,
             "bridge": bridge, "comparison": comparison, "reporting": reporting,
             "queries": list(dict.fromkeys(queries))[:10], "policy_as_of": policy_as_of,
-            "strict_effective_date": policy_time}
+            "strict_effective_date": policy_time, "max_hops": max_hops,
+            "complexity": ("high" if multi_hop or reporting or comparison or len(years) > 1
+                           else "medium" if complex_query else "low")}
 
 
 def _canonical_company_queries(question: str) -> list[str]:
@@ -215,22 +236,31 @@ def _canonical_company_queries(question: str) -> list[str]:
     return queries
 
 
+class QueryPlanError(RuntimeError):
+    """查询规划调用失败；失败结果不进入缓存。"""
+
+
 @lru_cache(maxsize=256)
-def _llm_query_plan(question: str) -> tuple[str, ...]:
-    """让生成模型只做检索式改写，不回答事实；失败时返回空。"""
-    from app.core.config import get_settings
+def _llm_query_plan_cached(question: str, model: str) -> tuple[str, ...]:
+    """让生成模型只做检索式改写，不回答事实；失败抛出，避免缓存空结果。"""
+    from app.core.config import get_settings, thinking_extra_body
     from enterprise_rag import config
+    from enterprise_rag.budget import current_budget
 
     settings = get_settings()
-    if not settings.openai_api_key or not config.USE_LLM:
-        return ()
+    if not settings.openai_api_key:
+        raise QueryPlanError("未配置 OPENAI_API_KEY")
+    budget = current_budget()
+    timeout = 12.0
+    if budget is not None:
+        timeout = min(timeout, max(0.001, budget.remaining_seconds()))
     try:
         from openai import OpenAI
 
         client = OpenAI(
             api_key=settings.openai_api_key,
             base_url=settings.openai_api_base or None,
-            timeout=12,
+            timeout=timeout,
             max_retries=0,
         )
         prompt = (
@@ -240,26 +270,62 @@ def _llm_query_plan(question: str) -> tuple[str, ...]:
             '输出格式：{"queries":["..."]}。\n'
             f"用户问题：{question}"
         )
-        response = client.chat.completions.create(
-            model=config.LLM_MODEL,
-            temperature=0,
-            max_tokens=220,
-            response_format={"type": "json_object"},
-            messages=[{"role": "user", "content": prompt}],
-            extra_body={"enable_thinking": False}
-            if settings.openai_enable_thinking.strip().lower() == "false"
-            else None,
-        )
+        if budget is not None:
+            budget.charge_model(stage="query_plan", model=model, detail="attempt")
+        try:
+            response = client.chat.completions.create(
+                model=model,
+                temperature=0,
+                max_tokens=220,
+                response_format={"type": "json_object"},
+                messages=[{"role": "user", "content": prompt}],
+                extra_body=thinking_extra_body(),
+            )
+        except Exception:
+            if budget is not None:
+                budget.note_call_result(ok=False, detail="query_plan_failed")
+            raise
+        if budget is not None:
+            usage = getattr(response, "usage", None)
+            budget.note_model_usage(
+                prompt_tokens=int(getattr(usage, "prompt_tokens", 0) or 0) if usage else 0,
+                completion_tokens=int(getattr(usage, "completion_tokens", 0) or 0) if usage else 0,
+            )
         payload = json.loads(response.choices[0].message.content or "{}")
-        queries = [str(item).strip() for item in payload.get("queries", []) if str(item).strip()]
+        raw_queries = payload.get("queries")
+        if not isinstance(raw_queries, list):
+            raise QueryPlanError("invalid_query_plan")
+        queries = [item.strip()[:300] for item in raw_queries if isinstance(item, str) and item.strip()]
+        if not queries:
+            raise QueryPlanError("empty_query_plan")
         return tuple(queries[:3])
+    except QueryPlanError:
+        raise
     except Exception as exc:
-        logger.warning("语义查询规划失败，使用规则扩展: %s", type(exc).__name__)
+        raise QueryPlanError(type(exc).__name__) from exc
+
+
+def _llm_query_plan(question: str) -> tuple[str, ...]:
+    from enterprise_rag import config
+    from enterprise_rag.budget import current_budget
+    from enterprise_rag.model_router import route_for
+
+    if not config.USE_LLM:
+        return ()
+    budget = current_budget()
+    if budget is not None and not budget.can_call_model():
+        return ()
+    route = route_for({"complexity": "low"}, task="query_plan")
+    try:
+        return _llm_query_plan_cached(question, route["model"])
+    except QueryPlanError as exc:
+        logger.warning("语义查询规划失败，使用规则扩展: %s", exc)
         return ()
 
 
-def semantic_query_variants(question: str) -> list[str]:
+def semantic_query_variants(question: str, allow_llm: bool = True) -> list[str]:
     """在低置信度/泛化问法上补充语义检索式；变式只用于召回，不作为答案。"""
+    # ponytail:shortcut 模型查询规划失败时降级为规则变式，保证仍可检索。
     text = question or ""
     variants = _canonical_company_queries(text)
     # 短问句、泛化问法且没有明确数字时，交给生成模型做同义改写。
@@ -268,9 +334,92 @@ def semantic_query_variants(question: str) -> list[str]:
         and not re.search(r"\d", text)
         and re.search(r"(是什么|哪些|什么|做什么|介绍|主要|如何|怎么|区别|包括|属于|意思)", text)
     )
-    if generic and len(variants) < 3:
+    if allow_llm and generic and len(variants) < 3:
         variants.extend(_llm_query_plan(text))
     return list(dict.fromkeys(item for item in variants if item and item != text))[:4]
+
+
+@lru_cache(maxsize=128)
+def _hyde_hypothesis_cached(question: str, model: str) -> tuple[str, ...]:
+    """Cache successful hypotheses only; exceptions are never lru-cached."""
+    from app.core.config import get_settings, thinking_extra_body
+
+    settings = get_settings()
+    if not settings.openai_api_key:
+        raise QueryPlanError("未配置 OPENAI_API_KEY")
+    from enterprise_rag.budget import current_budget
+
+    budget = current_budget()
+    timeout = min(10.0, max(0.001, budget.remaining_seconds())) if budget else 10.0
+    try:
+        from openai import OpenAI
+
+        client = OpenAI(
+            api_key=settings.openai_api_key,
+            base_url=settings.openai_api_base or None,
+            timeout=timeout,
+            max_retries=0,
+        )
+        prompt = (
+            "你是企业文档检索引擎的假设片段生成器。不要回答用户，也不要声称事实为真。"
+            "请写一段 80-120 字的、可能出现在公司内部文档中的中性描述，"
+            "包含用户问题中的主体、术语和可能的章节词。只输出片段文本。\n"
+            f"用户问题：{question}"
+        )
+        if budget is not None:
+            budget.charge_model(stage="hyde", model=model, detail="attempt")
+        try:
+            response = client.chat.completions.create(
+                model=model,
+                temperature=0,
+                max_tokens=180,
+                messages=[{"role": "user", "content": prompt}],
+                extra_body=thinking_extra_body(),
+            )
+        except Exception:
+            if budget is not None:
+                budget.note_call_result(ok=False, detail="hyde_failed")
+            raise
+        if budget is not None:
+            usage = getattr(response, "usage", None)
+            budget.note_model_usage(
+                prompt_tokens=int(getattr(usage, "prompt_tokens", 0) or 0) if usage else 0,
+                completion_tokens=int(getattr(usage, "completion_tokens", 0) or 0) if usage else 0,
+                total_tokens=int(getattr(usage, "total_tokens", 0) or 0) if usage else 0,
+            )
+        text = (response.choices[0].message.content or "").strip()
+        if not text:
+            raise QueryPlanError("empty_hypothesis")
+        return (text[:300],)
+    except Exception as exc:
+        raise QueryPlanError(type(exc).__name__) from exc
+
+
+def _hyde_hypothesis(question: str) -> tuple[str, ...]:
+    """HyDE is an optional retrieval hint, never evidence for answering."""
+    from enterprise_rag.budget import current_budget
+
+    if not config.HYDE_ENABLED:
+        return ()
+    budget = current_budget()
+    if budget is not None and not budget.can_call_model():
+        return ()
+    try:
+        return _hyde_hypothesis_cached(question, config.LLM_MODEL)
+    except QueryPlanError as exc:
+        logger.warning("HyDE 假设片段生成失败: %s", exc)
+        return ()
+
+
+# Existing diagnostics clear the private hypothesis cache through this entrypoint.
+_hyde_hypothesis.cache_clear = _hyde_hypothesis_cached.cache_clear
+
+
+def hyde_variants(question: str, allow_llm: bool = True) -> list[str]:
+    """可回退的召回实验：关闭时零调用，失败时返回空。"""
+    if not config.HYDE_ENABLED or not allow_llm:
+        return []
+    return list(_hyde_hypothesis(question or ""))
 
 
 def contextualize(question: str, messages: list[dict]) -> str:

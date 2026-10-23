@@ -19,44 +19,45 @@ def _serialize(row: dict[str, Any]) -> dict[str, Any]:
     return result
 
 
-def _get_document(doc_id: str) -> dict[str, Any] | None:
+def _get_document(doc_id: str, namespace: str = "default") -> dict[str, Any] | None:
     with connection() as conn:
         with conn.cursor() as cursor:
             cursor.execute(
                 """
-                SELECT d.id, d.title, d.source_path, d.doc_type, d.version,
+                SELECT d.id, d.namespace, d.title, d.source_path, d.doc_type, d.version,
                        d.effective_date, d.status, d.visibility, d.department,
                        d.updated_at, COUNT(c.id) AS chunks
                 FROM kb_documents AS d
                 LEFT JOIN kb_chunks AS c ON c.doc_id = d.id
-                WHERE d.id = %s
+                WHERE d.id = %s AND d.namespace = %s
                 GROUP BY d.id
                 """,
-                (doc_id,),
+                (doc_id, namespace),
             )
             row = cursor.fetchone()
     return _serialize(row) if row else None
 
 
-def list_documents() -> list[dict[str, Any]]:
+def list_documents(namespace: str = "default") -> list[dict[str, Any]]:
     with connection() as conn:
         with conn.cursor() as cursor:
             cursor.execute(
                 """
-                SELECT d.id, d.title, d.source_path, d.doc_type, d.version,
+                SELECT d.id, d.namespace, d.title, d.source_path, d.doc_type, d.version,
                        d.effective_date, d.status, d.visibility, d.department,
                        d.updated_at, COUNT(c.id) AS chunks
                 FROM kb_documents AS d
                 LEFT JOIN kb_chunks AS c ON c.doc_id = d.id
+                WHERE d.namespace = %s
                 GROUP BY d.id
                 ORDER BY d.title
-                """
+                """, (namespace,),
             )
             rows = cursor.fetchall()
     return [_serialize(row) for row in rows]
 
 
-def update_document(doc_id: str, fields: dict[str, Any]) -> dict[str, Any] | None:
+def update_document(doc_id: str, fields: dict[str, Any], namespace: str = "default") -> dict[str, Any] | None:
     if not fields:
         raise ValueError("没有可更新的字段")
     unknown = set(fields) - set(UPDATABLE_FIELDS)
@@ -74,12 +75,12 @@ def update_document(doc_id: str, fields: dict[str, Any]) -> dict[str, Any] | Non
             assignments.append(f"{key} = %s")
             params.append(fields[key])
     params.append(doc_id)
+    params.append(namespace)
 
     with transaction() as conn:
         with conn.cursor() as cursor:
             cursor.execute(
-                f"UPDATE kb_documents SET {', '.join(assignments)} WHERE id = %s", tuple(params)
+                f"UPDATE kb_documents SET {', '.join(assignments)} WHERE id = %s AND namespace = %s", tuple(params)
             )
-            if cursor.rowcount == 0:
-                return None
-    return _get_document(doc_id)
+    # No-op updates are still valid; the scoped read distinguishes missing rows.
+    return _get_document(doc_id, namespace)

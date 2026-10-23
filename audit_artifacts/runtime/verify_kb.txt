@@ -1,5 +1,0 @@
-{"name": "policy_answer_with_citations", "result": "pass", "citations": 1, "token_events": 1, "elapsed_seconds": 6.47}
-{"name": "unanswerable_refused", "result": "pass", "elapsed_seconds": 2.8}
-{"name": "history_roundtrip", "result": "pass", "message_count": 4}
-KB_E2E_PASS
-

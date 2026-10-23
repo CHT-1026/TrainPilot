@@ -3,6 +3,9 @@ import logging
 
 from app.workflows.chat_nodes.enterprise_scope import looks_enterprise, looks_oa_policy
 from app.workflows.chat_state import ChatState
+from app.workflows.source_policy import (
+    SOURCE_BUSINESS, SOURCE_PUBLIC, classify_source, looks_text_task, suggested_task,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -25,18 +28,31 @@ def create_routing_nodes():
 
     def task_router_node(state: ChatState):
         intent = state.get("intent", "")
+        message = state.get("user_message", "")
         current_task = INTENT_TO_TASK.get(intent, "general_chat")
+        source = classify_source(message)
         # 模型把企业知识问题识别成闲聊时，仍交给企业知识检索链路。
         if (
             current_task == "general_chat"
-            and looks_enterprise(state.get("user_message", ""))
-            and not looks_oa_policy(state.get("user_message", ""))
+            and looks_enterprise(message)
+            and not looks_oa_policy(message)
+            and not looks_text_task(message)
         ):
             current_task = "policy_qa"
-        logger.info("任务路由: intent=%s task=%s", intent, current_task)
+        # 来源路由由代码决定：当前业务记录走业务查询，公开信息不转外网。
+        if source["kind"] == SOURCE_PUBLIC:
+            current_task = "clarify"
+        elif source["kind"] == SOURCE_BUSINESS and current_task in {"policy_qa", "general_chat"}:
+            current_task = suggested_task(message)
+        final_intent = {
+            "submit_application": "submit_leave", "approve_application": "approve",
+            "query": "query_status", "suggestion": "get_suggestion",
+        }.get(current_task, current_task)
+        logger.info("任务路由: intent=%s task=%s source=%s", intent, current_task, source["kind"])
         if current_task != "submit_application":
-            return {"current_task": current_task, "iteration_count": 0}
-        return {"current_task": current_task}
+            return {"current_task": current_task, "intent": final_intent, "iteration_count": 0,
+                    "source_kind": source["kind"]}
+        return {"current_task": current_task, "intent": final_intent, "source_kind": source["kind"]}
 
     nodes["task_router"] = task_router_node
 

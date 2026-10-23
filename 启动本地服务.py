@@ -19,9 +19,14 @@ HIDDEN = getattr(subprocess, "CREATE_NO_WINDOW", 0)
 KEEPER_MARKER = "oa-local-" + hashlib.sha256(str(ROOT).encode("utf-8")).hexdigest()[:12]
 
 
+# 本机健康检查必须绕过 HTTP(S)_PROXY：IDE/终端可能为访问外部模型设置代理，
+# 若把 127.0.0.1 也交给代理，会把已启动的后端误判为未就绪并终止。
+_LOCAL_OPENER = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+
+
 def status(port):
     try:
-        with urllib.request.urlopen(f"http://127.0.0.1:{port}/local/status", timeout=2) as response:
+        with _LOCAL_OPENER.open(f"http://127.0.0.1:{port}/local/status", timeout=2) as response:
             data = json.load(response)
         return data if data.get("service") == "lantu-agent-platform" else None
     except Exception:
@@ -174,10 +179,10 @@ def main():
             time.sleep(1)
         else:
             raise RuntimeError("后端启动超时，请查看 local_runtime/logs/backend.log。")
-        print("\n服务已运行：" + url)
-        print("演示账号：admin / employee_zhao / manager_zhang；密码均为 admin123。")
-        print("可以直接询问“公司叫什么名字？”，也可以提交请假或审批。")
-        print("模型状态：" + model["message"])
+        print("\n服务已运行：" + url, flush=True)
+        print("演示账号：admin / employee_zhao / manager_zhang；密码均为 admin123。", flush=True)
+        print("可以直接询问“公司叫什么名字？”，也可以提交请假或审批。", flush=True)
+        print("模型状态：" + model["message"], flush=True)
         if not args.no_browser:
             webbrowser.open(url)
         if args.background:

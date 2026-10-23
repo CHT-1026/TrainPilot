@@ -186,6 +186,8 @@ def main() -> None:
                 ("chunk_type", "VARCHAR(16) NOT NULL DEFAULT 'text' COMMENT 'text/table' AFTER section"),
                 ("embedding_json", "MEDIUMTEXT DEFAULT NULL COMMENT '向量JSON' AFTER token_count"),
                 ("embedding_dim", "INT DEFAULT NULL COMMENT '向量维度' AFTER embedding_json"),
+                ("metadata_json", "JSON DEFAULT NULL COMMENT '页码/锚点/父子块/哈希等元数据' AFTER embedding_version"),
+                ("representation", "MEDIUMTEXT DEFAULT NULL COMMENT '多表示索引文本' AFTER metadata_json"),
             ]
             for column, definition in chunk_columns:
                 if not column_exists(cursor, "kb_chunks", column):

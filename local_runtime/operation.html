@@ -2,44 +2,196 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232f6bd8'/%3E%3Cpath d='M8 22V10h3l5 8 5-8h3v12h-3v-7l-4 6h-2l-4-6v7z' fill='white'/%3E%3C/svg%3E">
 <title>澜图智能企业智能体平台 · 本机操作台</title>
+<script>
+try{var saved=localStorage.getItem("lantu.theme");}catch(e){var saved=null;}
+document.documentElement.dataset.theme=saved||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
+</script>
 <style>
-:root{font-family:"Microsoft YaHei","Segoe UI",sans-serif;color:#19283b;background:#f3f6fa;font-size:15px}
-*{box-sizing:border-box}body{margin:0}button,input,select,textarea{font:inherit}
-button{cursor:pointer;border:1px solid #cbd6e3;border-radius:9px;padding:9px 14px;background:#fff;color:#263e5c}
-button:hover:enabled{background:#eef4ff;border-color:#7397c9}button:disabled{opacity:.45;cursor:not-allowed}
-.primary{background:#245bcb;color:white;border-color:#245bcb}.primary:hover:enabled{background:#174aa9}
-header{height:74px;background:white;border-bottom:1px solid #dde4ee;display:flex;justify-content:space-between;align-items:center;padding:0 30px}
-.brand{font-size:21px;font-weight:700}.small{font-size:13px;color:#60718a}.badge{background:#edf4ff;border-radius:6px;padding:5px 9px;font-size:13px}
-#status{margin:18px auto 0;max-width:1200px;border:1px solid #e6c276;background:#fff6e3;color:#73521d;padding:13px 17px;border-radius:10px;line-height:1.7}
-#status.good{background:#ecf7f0;border-color:#a6d9b8;color:#24643a}
-.login{width:min(480px,calc(100% - 32px));margin:45px auto;background:white;border:1px solid #dee5ef;border-radius:16px;padding:30px}
-h1{font-size:25px;margin:0 0 9px}h2{font-size:17px;margin:0 0 14px}p{line-height:1.8}
-label{display:block;margin:20px 0 7px;font-weight:600}input,select,textarea{width:100%;padding:12px;border:1px solid #ccd6e4;border-radius:8px;color:#1c2c43;background:#fff}
-input:focus,select:focus,textarea:focus{outline:2px solid #bcd0fb;border-color:#668bd4}
-.note{font-size:13px;color:#66768b;line-height:1.8}.login .primary{width:100%;margin-top:23px}
-#workspace{max-width:1200px;margin:18px auto;display:grid;grid-template-columns:250px 1fr;gap:18px}
-aside,.chat{background:white;border:1px solid #dce4ee;border-radius:12px;overflow:hidden}
-aside{padding:18px}.session{display:block;width:100%;text-align:left;font-size:13px;margin-top:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.session.active{background:#eaf1ff;border-color:#94b1e4}.toolbar{display:flex;flex-wrap:wrap;gap:8px;padding:15px;border-bottom:1px solid #e6ebf2}
-#messages{height:48vh;min-height:260px;overflow:auto;padding:22px;background:#fbfcfe}
-.message{margin-bottom:18px;max-width:92%;line-height:1.85}.message.user{margin-left:auto}
-.who{font-size:12px;color:#74849b;margin-bottom:5px}.bubble{white-space:pre-wrap;overflow-wrap:anywhere;background:white;border:1px solid #e1e7ef;border-radius:11px;padding:13px 16px}
-.user .bubble{background:#edf3ff;border-color:#d9e4fc}.empty{text-align:center;color:#8390a2;padding:50px 12px;line-height:2}
-.composer{padding:16px;border-top:1px solid #e3e9f1}textarea{resize:vertical;min-height:96px;max-height:260px}.compose-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px}
-#identity{display:flex;align-items:center;gap:12px}.hidden{display:none!important}#toast{max-width:1200px;margin:10px auto;color:#a23b36;white-space:pre-wrap;font-size:14px;line-height:1.6}
-summary{font-size:17px;font-weight:600;cursor:pointer}details[open] summary{margin-bottom:14px}
-@media(max-width:760px){header{padding:0 15px}.brand{font-size:18px}#workspace{grid-template-columns:1fr;margin:12px}aside{max-height:190px;overflow:auto}#status{margin:12px}#messages{height:43vh}.compose-bottom{align-items:flex-start}.toolbar button{font-size:13px;padding:8px}.message{max-width:100%}#toast{margin:12px}}
-@media(max-width:760px){header{height:auto;min-height:74px;flex-direction:column;align-items:stretch;gap:12px;padding:14px 16px}.brand{white-space:nowrap}#identity{justify-content:space-between;gap:8px}#identity button{flex-shrink:0}aside{max-height:150px}aside .note{display:none}.compose-bottom{flex-direction:column;align-items:stretch}.compose-bottom button{width:100%}.toolbar button{flex:1 1 calc(50% - 8px)}}
-@media(max-width:760px){.login{margin:18px auto;padding:20px}.login h1{font-size:22px}aside{padding:14px}}
+:root{
+ color-scheme:light;
+ --bg:#f5f5f3;--surface:#fcfcfb;--surface-2:#f1f1ee;--surface-3:#e9e9e5;
+ --ink:#1d1d1b;--ink-2:#5b5b57;--ink-3:#8a8a84;
+ --accent:#2f6bd8;--accent-strong:#2359bd;--accent-ink:#ffffff;--accent-soft:#e7effc;
+ --ok-bg:#e9f4ec;--ok-ink:#24643a;--warn-bg:#fbf1dd;--warn-ink:#73521d;--danger:#a23b36;
+ --ring-1:rgba(47,107,216,.55);--ring-2:rgba(47,107,216,.16);
+ --shadow-float:0 18px 48px rgba(28,28,24,.10);
+ --ease-glide:cubic-bezier(.215,.61,.355,1);
+ --ease-snap:cubic-bezier(.16,.84,.16,1);
+ --spring-bounce:linear(0,.009,.035 2.1%,.141,.281 6.7%,.723 12.9%,.938 16.7%,1.017,1.077,1.131 22.5%,1.16,1.172,1.172 26.7%,1.161 28.4%,1.135 30.7%,1.043 35.9%,.994 39.7%,.963 43.6%,.956 47.5%,.966 51.6%,.988 56.4%,1.006 61.1%,1.014 66.1%,1.014 72.4%,1.006 79.5%,.999 88.1%,1);
+ --fw-body:400;--fw-medium:600;--fw-bold:700;
+}
+[data-theme="dark"]{
+ color-scheme:dark;
+ --bg:#0b0b0a;--surface:#151515;--surface-2:#1a1a19;--surface-3:#20201e;
+ --ink:#ececea;--ink-2:#a3a39d;--ink-3:#76766f;
+ --accent:#6f9ef0;--accent-strong:#8fb4f5;--accent-ink:#0d1420;--accent-soft:#22324d;
+ --ok-bg:#18271c;--ok-ink:#8fce9f;--warn-bg:#2a2317;--warn-ink:#dfc38a;--danger:#e08a83;
+ --ring-1:rgba(111,158,240,.65);--ring-2:rgba(111,158,240,.18);
+ --shadow-float:0 18px 48px rgba(0,0,0,.35);
+ --fw-body:360;--fw-medium:560;--fw-bold:660;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Segoe UI Variable Text","Segoe UI","PingFang SC","Microsoft YaHei UI","Microsoft YaHei",sans-serif;font-size:15px;font-weight:var(--fw-body);line-height:1.65;font-variant-numeric:tabular-nums;letter-spacing:.002em;-webkit-font-smoothing:antialiased}
+p,.bubble,.hint,.empty{text-wrap:pretty}
+button,input,select,textarea{font:inherit;color:inherit}
+button{border:0;border-radius:12px;padding:10px 16px;background:var(--surface-2);color:var(--ink);font-weight:var(--fw-medium);cursor:pointer;transition:background .18s var(--ease-glide),color .18s var(--ease-glide),transform .18s var(--ease-snap),opacity .18s var(--ease-glide)}
+button:hover:enabled{background:var(--surface-3)}
+button:active:enabled{transform:scale(.972)}
+button:focus-visible{outline:none;box-shadow:0 0 0 1px var(--ring-1),0 0 0 4px var(--ring-2)}
+button:disabled{opacity:.42;cursor:not-allowed}
+.primary{background:var(--accent);color:var(--accent-ink)}
+.primary:hover:enabled{background:var(--accent-strong)}
+.ghost{background:transparent;color:var(--ink-2)}
+.ghost:hover:enabled{background:var(--surface-2);color:var(--ink)}
+.icon{width:1em;height:1em;display:inline-block;vertical-align:-0.125em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.icon-btn{width:38px;height:38px;padding:0;display:inline-flex;align-items:center;justify-content:center;background:transparent;color:var(--ink-2);border-radius:12px}
+.icon-btn:hover:enabled{background:var(--surface-2);color:var(--ink)}
+.icon-sun{display:none}
+[data-theme="dark"] .icon-sun{display:inline-block}
+[data-theme="dark"] .icon-moon{display:none}
+header{min-height:76px;background:var(--surface);display:flex;justify-content:space-between;align-items:center;gap:18px;padding:16px 30px}
+.brand{font-size:21px;font-weight:var(--fw-bold);letter-spacing:-.01em}
+.tagline{font-size:13px;color:var(--ink-3);margin-top:2px}
+#identity{display:flex;align-items:center;gap:10px}
+.badge{background:var(--surface-2);color:var(--ink-2);border-radius:999px;padding:5px 11px;font-size:12px;letter-spacing:.03em;white-space:nowrap}
+.muted{font-size:13px;color:var(--ink-3)}
+#status{margin:16px auto 0;max-width:1200px;background:var(--warn-bg);color:var(--warn-ink);padding:12px 18px;border-radius:14px;font-size:14px;line-height:1.75}
+#status.good{background:var(--ok-bg);color:var(--ok-ink)}
+#toast{max-width:1200px;margin:10px auto;padding:0 20px;color:var(--danger);white-space:pre-wrap;font-size:14px;line-height:1.7}
+.login{width:min(480px,calc(100% - 32px));margin:48px auto;background:var(--surface);border-radius:22px;padding:32px;box-shadow:var(--shadow-float)}
+h1{font-size:25px;font-weight:var(--fw-bold);margin:0 0 10px;letter-spacing:-.012em}
+p{margin:0;line-height:1.8}
+label{display:block;margin:20px 0 8px;font-weight:var(--fw-medium);font-size:14px}
+input,select,textarea{width:100%;padding:12px 14px;border:0;border-radius:14px;background:var(--surface-2);color:var(--ink);transition:background .22s var(--ease-glide),box-shadow .28s var(--ease-glide)}
+input:focus,select:focus,textarea:focus{outline:none;background:var(--surface);box-shadow:inset 0 0 0 1px var(--ring-1),0 0 0 4px var(--ring-2)}
+.hint{font-size:13px;color:var(--ink-3);line-height:1.8}
+.login .primary{width:100%;margin-top:24px}
+#workspace{max-width:1200px;margin:18px auto 40px;padding:0 20px;display:grid;grid-template-columns:264px minmax(0,1fr);gap:16px}
+.panel{background:var(--surface);border-radius:20px;overflow:hidden}
+aside{padding:16px;align-self:start}
+.group-head{display:flex;align-items:center;justify-content:space-between;width:100%;padding:6px 8px;background:transparent;font-size:15px;font-weight:var(--fw-medium);color:var(--ink)}
+.group-head:hover:enabled{background:transparent;color:var(--ink)}
+.group-head .chev{width:16px;height:16px;color:var(--ink-3);transition:transform .46s var(--ease-glide)}
+.group.open .chev{transform:rotate(180deg)}
+.collapse{display:grid;grid-template-rows:0fr;transition:grid-template-rows .46s var(--ease-glide)}
+.group.open .collapse{grid-template-rows:1fr}
+.collapse-inner{min-height:0;overflow:hidden}
+#newSession{display:block;width:100%;margin:12px 0 4px;text-align:left;background:var(--surface-2)}
+#sessions,#archivedSessions{display:flex;flex-direction:column;gap:4px;margin-top:6px;max-height:min(56vh,520px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}
+.session-row{display:flex;align-items:center;gap:2px;border-radius:12px;overflow:hidden}
+.session-row.active{background:var(--accent-soft)}
+.session{display:block;flex:1;min-width:0;width:auto;text-align:left;padding:9px 8px 9px 12px;background:transparent;color:var(--ink-2);font-size:13px;font-weight:var(--fw-body);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border-radius:0}
+.session:hover:enabled{background:var(--surface-2);color:var(--ink)}
+.session-row.active .session{color:var(--accent)}
+.session-actions{display:flex;flex:none;opacity:.45;transition:opacity .16s var(--ease-glide)}
+.session-row:hover .session-actions,.session-row:focus-within .session-actions{opacity:1}
+.session-action{width:26px;height:28px;padding:0;display:inline-flex;align-items:center;justify-content:center;background:transparent;color:var(--ink-3);border-radius:8px}
+.session-action:hover:enabled{background:var(--surface-2);color:var(--ink)}
+.session-action.danger:hover:enabled{color:var(--danger)}
+.session-action .icon{width:14px;height:14px}
+.session-empty{padding:10px 12px;font-size:13px;color:var(--ink-3)}
+#archiveOld,#archiveEmpty{display:block;width:100%;margin:6px 0 2px;padding:7px 10px;text-align:left;background:transparent;color:var(--ink-3);font-size:12px;border-radius:8px}
+#archiveOld:hover:enabled,#archiveEmpty:hover:enabled{background:var(--surface-2);color:var(--ink)}
+#archiveOld.hidden,#archiveEmpty.hidden{display:none}
+#archiveGroup{margin-top:10px}
+#archiveGroup .badge{font-size:11px;padding:2px 8px}
+#toast.good{color:var(--ok-ink)}
+@media(hover:none){.session-actions{opacity:1}}
+aside .hint{margin-top:12px}
+.chat{display:flex;flex-direction:column;min-height:640px}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;padding:14px 16px}
+.toolbar button{font-size:13px;padding:8px 13px;background:var(--surface-2);color:var(--ink-2)}
+.toolbar button:hover:enabled{background:var(--surface-3);color:var(--ink)}
+#messages{flex:1;height:52vh;min-height:280px;overflow:auto;padding:26px 24px;background:var(--surface);scrollbar-width:thin;scrollbar-color:var(--surface-3) transparent}
+#messages::-webkit-scrollbar{width:8px}
+#messages::-webkit-scrollbar-thumb{background:var(--surface-3);border-radius:99px}
+.message{position:relative;margin-bottom:20px;max-width:min(92%,880px);line-height:1.85;font-size:15px}
+.message.user{margin-left:auto}
+.who{font-size:12px;color:var(--ink-3);margin-bottom:6px;letter-spacing:.02em}
+.assistant .who{min-height:32px;display:flex;align-items:center;padding-right:40px}
+.bubble{white-space:pre-wrap;overflow-wrap:anywhere;background:var(--surface-2);border-radius:16px 16px 16px 6px;padding:14px 17px}
+.user .bubble{background:var(--accent-soft);color:var(--ink);border-radius:16px 16px 6px 16px}
+.empty{text-align:center;color:var(--ink-3);padding:56px 16px;line-height:2;font-size:14px}
+.copy{position:absolute;z-index:1;right:4px;top:0;width:32px;height:32px;padding:0;display:inline-flex;align-items:center;justify-content:center;background:var(--surface);color:var(--ink-3);border-radius:10px;opacity:1;pointer-events:auto;transition:background .18s var(--ease-glide),color .18s var(--ease-glide),transform .18s var(--ease-snap)}
+.copy:hover:enabled{background:var(--surface-3);color:var(--ink)}
+.copy .icon-check{display:none}
+.copy.done{color:var(--ok-ink)}
+.copy.done .icon-copy{display:none}
+.copy.done .icon-check{display:inline-block;animation:pop .38s var(--spring-bounce) both}
+@keyframes pop{0%{transform:scale(.55);opacity:.4}55%{transform:scale(1.14)}80%{transform:scale(.97)}100%{transform:scale(1);opacity:1}}
+.ink,.ink-batch{display:inline;animation:inkIn .09s var(--ease-glide) both}
+.ink-batch{animation-duration:.16s}
+@keyframes inkIn{from{opacity:.2;filter:blur(6px)}to{opacity:1;filter:blur(0)}}
+.drawer{position:fixed;inset:0;z-index:40;display:flex;justify-content:flex-end;background:rgba(28,28,24,.32);opacity:0;pointer-events:none;transition:opacity .28s var(--ease-glide)}
+.drawer.open{opacity:1;pointer-events:auto}
+.drawer-panel{width:min(440px,calc(100% - 28px));height:100%;background:var(--surface);box-shadow:var(--shadow-float);padding:20px;display:flex;flex-direction:column;gap:12px;transform:translateX(28px);transition:transform .34s var(--ease-snap)}
+.drawer.open .drawer-panel{transform:translateX(0)}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.drawer-head h2{font-size:17px;font-weight:var(--fw-medium);margin:0}
+.drawer-actions{display:flex;gap:4px}
+.jobs{flex:1;overflow:auto;display:flex;flex-direction:column;gap:8px;scrollbar-width:thin;scrollbar-color:var(--surface-3) transparent}
+.job{background:var(--surface-2);border-radius:14px;padding:12px;display:grid;gap:8px}
+.job-q{font-size:14px;line-height:1.55;color:var(--ink);text-wrap:pretty}
+.job-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.job-meta{font-size:12px;color:var(--ink-3);display:flex;gap:10px;flex-wrap:wrap;font-variant-numeric:tabular-nums}
+.status-chip{font-size:11px;padding:3px 8px;border-radius:999px;background:var(--surface-3);color:var(--ink-2);white-space:nowrap}
+.status-chip.running,.status-chip.queued,.status-chip.cancelling{background:var(--accent-soft);color:var(--accent)}
+.status-chip.succeeded{background:var(--ok-bg);color:var(--ok-ink)}
+.status-chip.failed,.status-chip.cancelled{background:var(--warn-bg);color:var(--warn-ink)}
+.job-actions{display:flex;gap:8px;flex-wrap:wrap}
+.job-actions button{padding:6px 10px;font-size:12px;border-radius:9px;background:var(--surface);color:var(--ink-2)}
+.job-actions button:hover:enabled{background:var(--surface-3);color:var(--ink)}
+.job-detail{white-space:pre-wrap;font-size:13px;line-height:1.75;color:var(--ink);background:var(--surface);border-radius:12px;padding:12px;max-height:40vh;overflow:auto;text-wrap:pretty}
+.jobs-empty{color:var(--ink-3);font-size:13px;text-align:center;padding:36px 8px;text-wrap:pretty}
+.job-create{display:grid;gap:8px;background:var(--surface-2);border-radius:14px;padding:12px}
+.job-create input,.job-create select{padding:10px 12px;border-radius:10px;background:var(--surface)}
+.job-create .primary{width:100%;margin-top:2px}
+.composer{padding:16px;background:var(--surface)}
+textarea{resize:vertical;min-height:104px;max-height:280px;line-height:1.7}
+.compose-bottom{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:12px}
+.compose-bottom .hint{max-width:640px}
+#conversationId{margin-top:10px;font-size:12px;color:var(--ink-3);letter-spacing:.01em;font-variant-numeric:tabular-nums}
+.hidden{display:none!important}
+@media (prefers-reduced-motion: reduce){
+ .ink,.ink-batch,.copy.done .icon-check{animation:none}
+ .collapse,.group-head .chev,button,.copy{transition:none}
+}
+@media(max-width:760px){
+ header{min-height:72px;flex-direction:column;align-items:stretch;gap:12px;padding:14px 16px}
+ .brand{font-size:18px;white-space:nowrap}
+ #identity{justify-content:space-between;gap:8px}
+ #workspace{grid-template-columns:1fr;margin:12px 0 24px;padding:0 12px}
+ aside{padding:14px}
+ #status{margin:12px;padding:11px 14px}
+ #messages{height:45vh;padding:18px 16px}
+ .compose-bottom{flex-direction:column;align-items:stretch}
+ .compose-bottom button{width:100%}
+ .toolbar button{flex:1 1 calc(50% - 8px);font-size:13px;padding:8px}
+ .message{max-width:100%}
+ .login{margin:18px auto;padding:22px}
+ .login h1{font-size:22px}
+ #toast{margin:12px;padding:0}
+}
 </style>
 </head>
 <body>
-<header><div><div class="brand">澜图智能企业智能体平台</div><div class="small">企业知识问答 / 制度检索 / 请假审批</div></div><div id="identity"><span class="badge">本机运行</span><span id="userLabel" class="small"></span><button id="logout" class="hidden">退出账号</button></div></header>
+<header>
+<div><div class="brand">澜图智能企业智能体平台</div><div class="tagline">企业知识问答 / 制度检索 / 请假审批</div></div>
+<div id="identity">
+<span class="badge">本机运行</span><span id="userLabel" class="muted"></span>
+<button id="themeToggle" class="icon-btn" type="button" aria-label="切换深浅色">
+<svg class="icon icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+<svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg>
+</button>
+<button id="logout" class="ghost hidden">退出账号</button>
+</div>
+</header>
 <div id="status">正在检查运行环境……</div>
 <div id="toast" role="alert"></div>
 <section id="loginPanel" class="login">
-<h1>先选择一个演示账号</h1><p class="small">可以询问公司介绍、产品与制度，也可以提交请假、查看审批。所有演示账号的初始密码均为 admin123。</p>
+<h1>先选择一个演示账号</h1><p class="muted">可以询问公司介绍、产品与制度，也可以提交请假、查看审批。所有演示账号的初始密码均为 admin123。</p>
 <form id="loginForm">
 <label for="username">账号</label><select id="username">
 <option value="employee_zhao">employee_zhao · 赵工（技术部员工）</option>
@@ -50,30 +202,81 @@ summary{font-size:17px;font-weight:600;cursor:pointer}details[open] summary{marg
 <option value="finance_wang">finance_wang · 王财务</option>
 <option value="hr_liu">hr_liu · 刘HR</option></select>
 <label for="password">密码</label><input id="password" type="password" value="admin123" autocomplete="current-password" required>
-<button class="primary" id="loginButton" type="submit">登录并开始</button>
-</form><p class="note">试试问“公司叫什么名字？”，或登录员工账号提交一张请假单。</p>
+<button class="primary" id="loginButton" type="submit">登录并开始<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13m-5-6 6 6-6 6"/></svg></button>
+</form><p class="hint">试试问“公司叫什么名字？”，或登录员工账号提交一张请假单。</p>
 </section>
 <main id="workspace" class="hidden">
-<aside><details id="sessionGroup" open><summary>我的会话</summary><button id="newSession" style="width:100%">＋ 新建会话</button><div id="sessions"></div><p class="note">点击会话可继续聊天。切换账号不会删除已经保存的申请。</p></details></aside>
-<section class="chat">
-<div class="toolbar"><button id="askCompany">问公司信息</button><button id="queryMine">查询我的申请</button><button id="pending">查看待审批</button><button id="leaveTemplate">填写请假模板</button><button id="refreshStatus">检查运行状态</button></div>
+<aside class="panel">
+<div id="sessionGroup" class="group open">
+<button id="sessionToggle" class="group-head" type="button" aria-expanded="true">我的会话<svg class="icon chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+<div class="collapse"><div class="collapse-inner">
+<button id="newSession" type="button">＋ 新建会话</button>
+<div id="sessions"></div>
+<button id="archiveOld" type="button" class="hidden">归档 30 天前的会话</button>
+<button id="archiveEmpty" type="button" class="hidden">归档空白会话</button>
+<p class="hint">点击会话可继续聊天。归档只隐藏会话，删除才会永久移除聊天记录。</p>
+</div></div>
+</div>
+<div id="archiveGroup" class="group hidden">
+<button id="archiveToggle" class="group-head" type="button" aria-expanded="false">已归档 <span id="archiveCount" class="badge">0</span><svg class="icon chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+<div class="collapse"><div class="collapse-inner"><div id="archivedSessions"></div></div></div>
+</div>
+</aside>
+<section class="chat panel">
+<div class="toolbar"><button id="askCompany">问公司信息</button><button id="queryMine">查询我的申请</button><button id="pending">查看待审批</button><button id="leaveTemplate">填写请假模板</button><button id="refreshStatus">检查运行状态</button><button id="jobCenter">任务中心</button></div>
 <div id="messages"><div class="empty">可以问“公司叫什么名字？”，也可以从“查询我的申请”开始。</div></div>
-<div class="composer"><textarea id="message" maxlength="6000" placeholder="例如：公司叫什么名字？或：查询我的请假申请。"></textarea><div class="compose-bottom"><div class="note">企业知识问题会检索公司语料并给出引用；请假信息发送后会先生成确认草稿，回复“确认”才会提交。</div><button id="send" class="primary">发送消息</button></div><div id="conversationId" class="small" style="margin-top:10px"></div></div>
+<div class="composer"><textarea id="message" maxlength="6000" placeholder="例如：公司叫什么名字？或：查询我的请假申请。"></textarea><div class="compose-bottom"><div class="hint">企业知识问题会检索公司语料并给出引用；请假信息发送后会先生成确认草稿，回复“确认”才会提交。</div><button id="send" class="primary">发送消息<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13m-5-6 6 6-6 6"/></svg></button></div><div id="conversationId"></div></div>
 </section></main>
+<div id="jobDrawer" class="drawer" role="dialog" aria-modal="true" aria-labelledby="jobTitle" aria-hidden="true" inert>
+<div class="drawer-panel">
+<div class="drawer-head"><h2 id="jobTitle">后台任务</h2><div class="drawer-actions">
+<button id="jobRefresh" class="icon-btn" type="button" aria-label="刷新任务"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 5v6h-6"/></svg></button>
+<button id="jobClose" class="icon-btn" type="button" aria-label="关闭任务中心"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+</div></div>
+<form id="jobForm" class="job-create">
+<input id="jobQuestion" maxlength="2000" placeholder="输入需要后台执行的问题……" aria-label="任务问题" required>
+<select id="jobMode" aria-label="任务模式"><option value="fast">快速：不调用生成模型</option><option value="llm">深度：允许模型生成</option></select>
+<button id="jobCreate" class="primary" type="submit">创建任务</button>
+</form>
+<div id="jobList" class="jobs"><div class="jobs-empty">暂无任务</div></div>
+<p class="hint">任务在后台执行，不占用当前对话；可查看结果、取消，失败或取消后可重新执行。</p>
+</div></div>
 <script>
 "use strict";
 const $=id=>document.getElementById(id);
-if(window.matchMedia("(max-width:760px)").matches)$("sessionGroup").open=false;
+const reduceMotion=matchMedia("(prefers-reduced-motion: reduce)").matches;
 let token="",currentUser=null,threadId="",busy=false,modelReady=false;
-function toast(text){$("toast").textContent=text||"";}
-function lock(value){busy=value;["send","newSession","queryMine","askCompany","leaveTemplate","logout"].forEach(id=>$(id).disabled=value);$("send").disabled=value||!modelReady;$("pending").disabled=value||!currentUser||!["admin","manager"].includes(currentUser.role);document.querySelectorAll(".session").forEach(b=>b.disabled=value);}
+function toast(text,good=false){$("toast").textContent=text||"";$("toast").classList.toggle("good",!!good);}
+function lock(value){busy=value;["send","newSession","archiveOld","archiveEmpty","queryMine","askCompany","leaveTemplate","logout"].forEach(id=>$(id).disabled=value);$("send").disabled=value||!modelReady;$("pending").disabled=value||!currentUser||!["admin","manager"].includes(currentUser.role);document.querySelectorAll(".session,.session-action").forEach(b=>b.disabled=value);}
 async function api(path,options){
+ const requestToken=token;
  const opts=Object.assign({},options||{});opts.headers=Object.assign({},opts.headers||{},token?{"Authorization":"Bearer "+token}:{});
  if(opts.body&&typeof opts.body!=="string"){opts.headers["Content-Type"]="application/json";opts.body=JSON.stringify(opts.body);}
- const r=await fetch(path,opts);let data;
+ const r=await fetch(path,Object.assign({},opts,{cache:"no-store"}));let data;
  try{data=await r.json();}catch(e){throw new Error("服务返回了无法解析的内容，请查看服务日志。");}
+ if(requestToken!==token)throw new Error("账号已切换，本次旧请求结果已忽略。");
  if(!r.ok)throw new Error(typeof data.detail==="string"?data.detail:(data.message||"请求失败（HTTP "+r.status+"）"));
  return data;
+}
+function inkAppend(el,text){
+ if(!text)return;
+ if(reduceMotion){el.appendChild(document.createTextNode(text));return;}
+ const chars=Array.from(text);
+ if(chars.length>48){const span=document.createElement("span");span.className="ink-batch";span.textContent=text;el.appendChild(span);return;}
+ chars.forEach((char,index)=>{const span=document.createElement("span");span.className="ink";span.textContent=char;span.style.animationDelay=(Math.min(index,12)*30)+"ms";el.appendChild(span);});
+}
+function inkFill(el,text){
+ el.replaceChildren();if(!text)return;
+ if(reduceMotion){el.textContent=text;return;}
+ const span=document.createElement("span");span.className="ink-batch";span.textContent=text;el.appendChild(span);
+}
+async function copyReply(bubble,button){
+ if(bubble.dataset.incomplete==="true"){toast("这条回复未完成，请先核对记录或重新查询。");return;}
+ const text=(bubble.dataset.raw||bubble.textContent||"").trim();if(!text)return;
+ try{await navigator.clipboard.writeText(text);}
+ catch(e){const area=document.createElement("textarea");area.value=text;area.style.position="fixed";area.style.opacity="0";document.body.append(area);area.select();document.execCommand("copy");area.remove();}
+ button.classList.add("done");clearTimeout(button._timer);
+ button._timer=setTimeout(()=>button.classList.remove("done"),2500);
 }
 async function status(){
  try{
@@ -87,20 +290,108 @@ function message(role,text){
  const wrap=document.createElement("div");wrap.className="message "+(role==="user"?"user":"assistant");
  const name=document.createElement("div");name.className="who";name.textContent=role==="user"?"你":"澜图智能助手";
  const bubble=document.createElement("div");bubble.className="bubble";bubble.textContent=text;
- wrap.append(name,bubble);$("messages").append(wrap);$("messages").scrollTop=$("messages").scrollHeight;return bubble;
+ wrap.append(name);
+ if(role==="user"){wrap.append(bubble);}
+ else{
+  const copy=document.createElement("button");copy.type="button";copy.className="copy";copy.setAttribute("aria-label","复制回复");
+  copy.innerHTML='<svg class="icon icon-copy" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><svg class="icon icon-check" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>';
+  copy.onclick=()=>copyReply(bubble,copy);
+  wrap.append(bubble,copy);
+ }
+ $("messages").append(wrap);$("messages").scrollTop=$("messages").scrollHeight;return bubble;
 }
 function setThread(id){threadId=id;$("conversationId").textContent="当前会话："+id;}
-async function sessions(){
- const data=await api("/api/chat/sessions");$("sessions").replaceChildren();
- data.data.forEach(s=>{const b=document.createElement("button");b.className="session"+(s.thread_id===threadId?" active":"");b.textContent=s.title||s.thread_id;b.title=s.thread_id;b.onclick=()=>loadHistory(s.thread_id);$("sessions").append(b);});
+const SESSION_ICONS={
+ archive:'<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M6 7v12h12V7M9 11h6"/></svg>',
+ restore:'<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.3-5.7M4 5v6h6"/></svg>',
+ trash:'<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M10 11v6M14 11v6M7 7l1 13h8l1-13M9 7V4h6v3"/></svg>'
+};
+function isStale(session,days=30){const t=Date.parse(session.updated_at||"");return Number.isFinite(t)&&t<Date.now()-days*864e5;}
+function sessionRow(s,archived){
+ const row=document.createElement("div");row.className="session-row"+(s.thread_id===threadId?" active":"");row.dataset.threadId=s.thread_id;
+ const main=document.createElement("button");main.type="button";main.className="session";main.textContent=s.title||s.thread_id;main.title=s.thread_id;main.onclick=()=>loadHistory(s.thread_id);
+ const actions=document.createElement("div");actions.className="session-actions";
+ const toggle=document.createElement("button");toggle.type="button";toggle.className="session-action";toggle.title=archived?"恢复会话":"归档会话";toggle.setAttribute("aria-label",toggle.title+" "+s.thread_id);toggle.innerHTML=archived?SESSION_ICONS.restore:SESSION_ICONS.archive;
+ toggle.onclick=event=>{event.stopPropagation();setArchived(s.thread_id,!archived);};
+ const remove=document.createElement("button");remove.type="button";remove.className="session-action danger";remove.title="删除会话";remove.setAttribute("aria-label","删除会话 "+s.thread_id);remove.innerHTML=SESSION_ICONS.trash;
+ remove.onclick=event=>{event.stopPropagation();deleteSession(s);};
+ actions.append(toggle,remove);row.append(main,actions);return row;
 }
+function emptySessions(text){const empty=document.createElement("div");empty.className="session-empty";empty.textContent=text;return empty;}
+async function sessions(){
+ const data=await api("/api/chat/sessions");
+ const all=data.data||[];
+ const active=all.filter(s=>!s.archived),archived=all.filter(s=>s.archived);
+ const list=$("sessions");list.replaceChildren();
+ if(active.length){active.forEach(s=>list.append(sessionRow(s,false)));}else{list.append(emptySessions("暂无进行中的会话"));}
+ const archivedList=$("archivedSessions");archivedList.replaceChildren();
+ archived.forEach(s=>archivedList.append(sessionRow(s,true)));
+ const group=$("archiveGroup");group.classList.toggle("hidden",!archived.length);
+ $("archiveCount").textContent=String(archived.length);
+ if(!archived.length){group.classList.remove("open");$("archiveToggle").setAttribute("aria-expanded","false");}
+ const stale=active.filter(s=>isStale(s)),empty=active.filter(s=>Number(s.message_count||0)===0);
+ $("archiveOld").classList.toggle("hidden",!stale.length);
+ $("archiveOld").dataset.count=String(stale.length);
+ $("archiveEmpty").classList.toggle("hidden",!empty.length);
+ $("archiveEmpty").dataset.count=String(empty.length);
+ if(busy)lock(true);
+}
+async function setArchived(id,archived){
+ lock(true);toast("");
+ try{
+  await api("/api/chat/session/"+encodeURIComponent(id),{method:"PATCH",body:{archived}});
+  if(archived&&id===threadId){$("archiveGroup").classList.add("open");$("archiveToggle").setAttribute("aria-expanded","true");}
+  await sessions();
+  toast(archived?"会话已归档，可在“已归档”中恢复。":"会话已恢复。",true);
+ }catch(e){toast(e.message);}finally{lock(false);}
+}
+async function deleteSession(s){
+ const title=s.title||s.thread_id;
+ if(!confirm("删除会话“"+title+"”？聊天记录将永久删除，无法恢复。"))return;
+ lock(true);toast("");
+ try{
+  await api("/api/chat/session/"+encodeURIComponent(s.thread_id),{method:"DELETE"});
+  if(s.thread_id===threadId){setThread("");$("messages").replaceChildren();await createSession();}
+  else{await sessions();}
+  toast("会话已删除。",true);
+ }catch(e){toast(e.message);}finally{lock(false);}
+}
+async function bulkArchive(button,predicate,label){
+ const count=Number(button.dataset.count||0);
+ if(!count)return;
+ if(!confirm("将归档 "+count+" 个"+label+"会话，聊天记录会保留。继续？"))return;
+ lock(true);toast("");
+ try{
+  const data=await api("/api/chat/sessions");
+  const targets=(data.data||[]).filter(s=>!s.archived&&predicate(s));
+  let done=0,failed=0;
+  for(const s of targets){
+   try{await api("/api/chat/session/"+encodeURIComponent(s.thread_id),{method:"PATCH",body:{archived:true}});done++;}
+   catch(e){failed++;}
+  }
+  await sessions();
+  if(done){$("archiveGroup").classList.add("open");$("archiveToggle").setAttribute("aria-expanded","true");}
+  toast("已归档 "+done+" 个"+label+"会话"+(failed?"，"+failed+" 个正在处理已跳过":"")+"。",done>0);
+ }catch(e){toast(e.message);}finally{lock(false);}
+}
+$("archiveOld").onclick=()=>bulkArchive($("archiveOld"),isStale,"30 天前更新的");
+$("archiveEmpty").onclick=()=>bulkArchive($("archiveEmpty"),s=>Number(s.message_count||0)===0,"空白");
 async function createSession(){
  const result=await api("/api/chat/session",{method:"POST"});setThread(result.data.thread_id);
  $("messages").replaceChildren();await sessions();
 }
+async function openInitialSession(){
+ const data=await api("/api/chat/sessions");
+ const active=(data.data||[]).filter(s=>!s.archived);
+ if(active.length){await loadHistory(active[0].thread_id);return;}
+ await createSession();
+}
 async function loadHistory(id){
  if(busy)return;lock(true);toast("");
- try{const data=await api("/api/chat/history?thread_id="+encodeURIComponent(id));setThread(id);$("messages").replaceChildren();data.data.messages.forEach(m=>message(m.role,m.content));await sessions();}
+ try{const data=await api("/api/chat/history?thread_id="+encodeURIComponent(id));setThread(id);$("messages").replaceChildren();
+  if(data.data.messages.length){data.data.messages.forEach(m=>message(m.role,m.content));}
+  else{const empty=document.createElement("div");empty.className="empty";empty.textContent="可以问“公司叫什么名字？”，也可以从“查询我的申请”开始。";$("messages").append(empty);}
+  await sessions();}
  catch(e){toast(e.message);}finally{lock(false);}
 }
 $("loginForm").onsubmit=async event=>{
@@ -109,16 +400,21 @@ $("loginForm").onsubmit=async event=>{
  const data=await api("/api/auth/login",{method:"POST",body:{username:$("username").value,password:$("password").value}});
  token=data.data.token;currentUser=data.data;$("userLabel").textContent=data.data.name+" · "+data.data.department;
  $("loginPanel").classList.add("hidden");$("workspace").classList.remove("hidden");$("logout").classList.remove("hidden");
- await createSession();await status();
+ await openInitialSession();await status();
  }catch(e){token="";currentUser=null;$("loginPanel").classList.remove("hidden");$("workspace").classList.add("hidden");$("logout").classList.add("hidden");toast("登录或会话创建失败："+e.message);}
  finally{$("loginButton").disabled=false;lock(false);}
 };
-$("logout").onclick=()=>{token="";currentUser=null;threadId="";$("messages").replaceChildren();$("sessions").replaceChildren();$("userLabel").textContent="";$("loginPanel").classList.remove("hidden");$("workspace").classList.add("hidden");$("logout").classList.add("hidden");toast("");};
+$("logout").onclick=()=>{token="";currentUser=null;threadId="";setJobsOpen(false);jobsSignature="";openJobId="";$("jobList").replaceChildren();$("messages").replaceChildren();$("sessions").replaceChildren();$("archivedSessions").replaceChildren();$("archiveGroup").classList.add("hidden");$("archiveOld").classList.add("hidden");$("archiveEmpty").classList.add("hidden");$("userLabel").textContent="";$("loginPanel").classList.remove("hidden");$("workspace").classList.add("hidden");$("logout").classList.add("hidden");toast("");};
 $("newSession").onclick=async()=>{lock(true);toast("");try{await createSession();}catch(e){toast(e.message);}finally{lock(false);}};
 async function send(text){
  if(busy||!text.trim())return;if(!modelReady){toast("模型接口尚未就绪，请先更新密钥并重启服务。");return;}
  lock(true);toast("");const outgoing=text.trim();$("message").value="";message("user",outgoing);const answer=message("assistant","正在处理，请稍候……");
- let accumulated="",complete=false;
+ let accumulated="",complete=false,failure="",started=false;
+ function show(chunk,replace){
+  if(replace){accumulated=chunk||"";started=true;inkFill(answer,accumulated);}
+  else{if(!started){answer.replaceChildren();started=true;}accumulated+=chunk;inkAppend(answer,chunk);}
+  answer.dataset.raw=accumulated;
+ }
  try{
  const r=await fetch("/api/chat/stream",{method:"POST",headers:{"Content-Type":"application/json","Authorization":"Bearer "+token},body:JSON.stringify({thread_id:threadId,user_message:outgoing})});
  if(!r.ok){const data=await r.json();throw new Error(data.detail||data.message||"请求失败");}
@@ -128,17 +424,25 @@ async function send(text){
   block.split("\n").forEach(line=>{if(line.startsWith("event:"))event=line.slice(6).trim();if(line.startsWith("data:"))lines.push(line.slice(5).trimStart());});
   if(!lines.length)return;const data=JSON.parse(lines.join("\n"));
   if(event==="start")setThread(data.thread_id);
-  else if(event==="token"){accumulated+=data.token||"";answer.textContent=accumulated;}
-  else if(event==="replace"){accumulated=data.response||"";answer.textContent=accumulated;}
-  else if(event==="complete"){complete=true;answer.textContent=data.response||accumulated||"本次回复为空。";}
-  else if(event==="error")throw new Error(data.error||"对话处理出错。");
+  else if(event==="token")show(data.token||"",false);
+  else if(event==="replace")show(data.response||"",true);
+  else if(event==="complete"){
+   complete=true;const finalText=data.response||accumulated||"本次回复为空。";
+   if(finalText===accumulated){answer.dataset.raw=finalText;}
+   else if(finalText.startsWith(accumulated)){show(finalText.slice(accumulated.length),false);}
+   else{show(finalText,true);}
+  }
+  else if(event==="error"){failure=data.error||"本次请求未完成。";}
   $("messages").scrollTop=$("messages").scrollHeight;
  }
  while(true){const result=await reader.read();buffer+=decoder.decode(result.value||new Uint8Array(),{stream:!result.done});buffer=buffer.replace(/\r\n/g,"\n");let boundary;while((boundary=buffer.indexOf("\n\n"))>=0){handle(buffer.slice(0,boundary));buffer=buffer.slice(boundary+2);}if(result.done)break;}
  if(buffer.trim())handle(buffer);
- if(!complete)throw new Error("连接已结束，但未收到完整结果。若刚才提交或审批，请先查询记录再决定是否重试。");
+ if(!complete)throw new Error(failure||"连接已结束，但未收到完整结果。若刚才提交或审批，请先查询记录再决定是否重试。");
  await sessions();
- }catch(e){if(!accumulated&&!complete)answer.textContent="本次请求未完成。";toast(e.message+" 若刚才提交或审批过，请先核对申请状态。");}
+ }catch(e){
+  if(!complete){answer.textContent="本次回复未完成，临时内容已作废。若涉及提交或审批，请先查询申请状态。";answer.dataset.incomplete="true";delete answer.dataset.raw;}
+  toast(e.message+" 若刚才提交或审批过，请先核对申请状态。");
+ }
  finally{lock(false);}
 }
 $("send").onclick=()=>send($("message").value);
@@ -155,7 +459,159 @@ $("leaveTemplate").onclick=()=>{
  $("message").value="我要提交请假申请。请假类型：事假；开始日期："+fmt(start)+"；结束日期："+fmt(end)+"；请假原因：处理家庭事务。";$("message").focus();
 };
 $("refreshStatus").onclick=status;
+const JOB_TERMINAL=new Set(["succeeded","failed","cancelled"]);
+const JOB_TEXT={queued:"排队中",running:"执行中",cancelling:"取消中",succeeded:"已完成",failed:"失败",cancelled:"已取消"};
+let jobPoll=null,jobLoading=false,jobsSignature="",openJobId="",jobViewGeneration=0,jobReturnFocus=null;
+function timeText(value){
+ const date=new Date(Number(value)*1000);
+ if(Number.isNaN(date.getTime()))return "";
+ return date.toLocaleString("zh-CN",{month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hour12:false});
+}
+function ensureJobPoll(items){
+ const active=!!token&&$("jobDrawer").classList.contains("open")&&items.some(job=>!JOB_TERMINAL.has(job.status));
+ if(active&&!jobPoll)jobPoll=setInterval(loadJobs,3000);
+ if(!active&&jobPoll){clearInterval(jobPoll);jobPoll=null;}
+}
+async function loadJobs(){
+ if(!token||jobLoading||!$("jobDrawer").classList.contains("open"))return;
+ const generation=jobViewGeneration;
+ const requestToken=token;
+ jobLoading=true;
+ try{
+  const items=(await api("/api/jobs")).data.items||[];
+  if(generation!==jobViewGeneration||requestToken!==token)return;
+  const signature=JSON.stringify(items);
+  if(signature!==jobsSignature){jobsSignature=signature;renderJobs(items);}
+  ensureJobPoll(items);
+ }catch(e){if(generation===jobViewGeneration)toast(e.message);}
+ finally{if(generation===jobViewGeneration)jobLoading=false;}
+}
+function renderJobs(items){
+ const list=$("jobList");list.replaceChildren();
+ if(!items.length){const empty=document.createElement("div");empty.className="jobs-empty";empty.textContent="暂无任务。";list.append(empty);return;}
+ items.forEach(job=>{
+  const card=document.createElement("div");card.className="job";card.dataset.jobId=job.job_id;
+  const top=document.createElement("div");top.className="job-top";
+  const question=document.createElement("div");question.className="job-q";question.textContent=job.question;
+  const chip=document.createElement("span");chip.className="status-chip "+job.status;chip.textContent=JOB_TEXT[job.status]||job.status;
+  top.append(question,chip);
+  const meta=document.createElement("div");meta.className="job-meta";
+  const created=document.createElement("span");created.textContent=timeText(job.created_at);
+  const identifier=document.createElement("span");identifier.textContent=job.job_id;
+  meta.append(created,identifier);
+  const actions=document.createElement("div");actions.className="job-actions";
+  const view=document.createElement("button");view.type="button";view.textContent="查看结果";
+  view.onclick=()=>showJob(job.job_id,card,view);
+  actions.append(view);
+  if(!JOB_TERMINAL.has(job.status)){
+   const cancel=document.createElement("button");cancel.type="button";cancel.textContent="取消";
+   cancel.onclick=()=>actJob(job.job_id,"cancel");
+   actions.append(cancel);
+  }else if(job.status!=="succeeded"){
+   const retry=document.createElement("button");retry.type="button";retry.textContent="重新执行";
+   retry.onclick=()=>retryJob(job);
+   actions.append(retry);
+  }
+  card.append(top,meta,actions);list.append(card);
+ });
+ if(openJobId){
+  const card=Array.from(list.children).find(node=>node.dataset.jobId===openJobId);
+  if(card){const button=card.querySelector(".job-actions button");if(button)showJob(openJobId,card,button);}
+  else openJobId="";
+ }
+}
+async function showJob(jobId,card,button){
+ const generation=jobViewGeneration,requestToken=token;
+ button.disabled=true;
+ try{
+  const job=(await api("/api/jobs/"+encodeURIComponent(jobId))).data;
+  if(generation!==jobViewGeneration||requestToken!==token)return;
+  const result=job.result||{},observability=result.observability||{},usage=observability.usage||{};
+  const lines=[];
+  if(job.status==="succeeded"){
+   lines.push(result.answer||"（无答案）");
+   const citations=Array.isArray(result.citations)?result.citations:[];
+   if(citations.length)lines.push("", "来源："+citations.map(item=>`[${item.index}] ${item.title||item.doc_id||""}`.trim()).join("；"));
+  }else if(job.status==="failed"){lines.push("任务失败："+(job.error||"未知错误"));}
+  else if(job.status==="cancelled"){lines.push("任务已取消，未生成最终结果。");}
+  else{lines.push("任务"+(JOB_TEXT[job.status]||job.status)+"，可稍后刷新查看。");}
+  lines.push("", `调用：模型 ${observability.model_calls??0} 次 / 向量 ${observability.embedding_calls??0} 次 / ${usage.total_tokens??0} tokens / ${observability.elapsed_ms??0} ms`);
+  let detail=card.querySelector(".job-detail");
+  if(!detail){detail=document.createElement("div");detail.className="job-detail";card.append(detail);}
+  detail.textContent=lines.join("\n");
+  openJobId=jobId;
+ }catch(e){if(generation===jobViewGeneration&&requestToken===token)toast(e.message);}
+ finally{button.disabled=false;}
+}
+async function actJob(jobId,action){
+ try{await api(`/api/jobs/${encodeURIComponent(jobId)}/${action}`,{method:"POST"});await loadJobs();}
+ catch(e){toast(e.message);}
+}
+async function retryJob(job){
+ try{await api("/api/jobs/rag",{method:"POST",body:{question:job.question,use_llm:!!job.use_llm,top_k:job.top_k??null}});await loadJobs();}
+ catch(e){toast(e.message);}
+}
+function setJobsOpen(open){
+ const drawer=$("jobDrawer"),workspace=$("workspace"),header=document.querySelector("header");
+ if(open&&!drawer.classList.contains("open"))jobReturnFocus=document.activeElement;
+ jobViewGeneration++;
+ drawer.classList.toggle("open",open);
+ drawer.toggleAttribute("inert",!open);
+ drawer.setAttribute("aria-hidden",String(!open));
+ workspace.inert=open;
+ header.inert=open;
+ if(jobPoll){clearInterval(jobPoll);jobPoll=null;}
+ jobLoading=false;
+ if(open){
+  loadJobs();
+  $("jobQuestion").focus();
+ }else if(token&&!workspace.classList.contains("hidden")){
+  const target=jobReturnFocus&&jobReturnFocus.isConnected&&!jobReturnFocus.disabled?jobReturnFocus:$("jobCenter");
+  target.focus();jobReturnFocus=null;
+ }
+}
+$("jobCenter").onclick=()=>{if(!token){toast("请先登录。");return;}setJobsOpen(true);};
+$("jobClose").onclick=()=>setJobsOpen(false);
+$("jobRefresh").onclick=loadJobs;
+$("jobForm").onsubmit=async event=>{
+ event.preventDefault();
+ const question=$("jobQuestion").value.trim();
+ if(!question){toast("请输入任务问题。");return;}
+ $("jobCreate").disabled=true;
+ try{
+  await api("/api/jobs/rag",{method:"POST",body:{question,use_llm:$("jobMode").value==="llm"}});
+  $("jobQuestion").value="";jobsSignature="";await loadJobs();
+ }catch(e){toast(e.message);}
+ finally{$("jobCreate").disabled=false;}
+};
+$("jobDrawer").addEventListener("click",event=>{if(event.target===$("jobDrawer"))setJobsOpen(false);});
+document.addEventListener("keydown",event=>{
+ const drawer=$("jobDrawer");if(!drawer.classList.contains("open"))return;
+ if(event.key==="Escape"){event.preventDefault();setJobsOpen(false);return;}
+ if(event.key!=="Tab")return;
+ const items=Array.from(drawer.querySelectorAll('button,input,select,textarea,a[href],[tabindex]')).filter(el=>!el.disabled&&el.tabIndex>=0&&el.getClientRects().length);
+ if(!items.length){event.preventDefault();return;}
+ const first=items[0],last=items[items.length-1];
+ if(event.shiftKey&&(document.activeElement===first||!drawer.contains(document.activeElement))){event.preventDefault();last.focus();}
+ else if(!event.shiftKey&&(document.activeElement===last||!drawer.contains(document.activeElement))){event.preventDefault();first.focus();}
+});
+$("themeToggle").onclick=()=>{
+ const next=document.documentElement.dataset.theme==="dark"?"light":"dark";
+ document.documentElement.dataset.theme=next;
+ try{localStorage.setItem("lantu.theme",next);}catch(e){}
+};
+$("sessionToggle").onclick=()=>{
+ const group=$("sessionGroup"),open=group.classList.toggle("open");
+ $("sessionToggle").setAttribute("aria-expanded",String(open));
+};
+$("archiveToggle").onclick=()=>{
+ const group=$("archiveGroup"),open=group.classList.toggle("open");
+ $("archiveToggle").setAttribute("aria-expanded",String(open));
+};
+const compactLayout=matchMedia("(max-width:760px)");
+function collapseSessionsOnCompact(){if(compactLayout.matches){$("sessionGroup").classList.remove("open");$("sessionToggle").setAttribute("aria-expanded","false");$("archiveGroup").classList.remove("open");$("archiveToggle").setAttribute("aria-expanded","false");}}
+compactLayout.addEventListener("change",collapseSessionsOnCompact);
+collapseSessionsOnCompact();
 status();
 </script>
 </body></html>
-

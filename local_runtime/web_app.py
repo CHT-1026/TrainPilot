@@ -14,7 +14,11 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 @app.get("/", response_class=HTMLResponse, include_in_schema=False)
 def local_operation_page():
-    return HTMLResponse((ROOT / "local_runtime" / "operation.html").read_text(encoding="utf-8"))
+    # 操作台是单文件热更新页面；禁止浏览器缓存，避免重启后仍显示旧 UI。
+    return HTMLResponse(
+        (ROOT / "local_runtime" / "operation.html").read_text(encoding="utf-8"),
+        headers={"Cache-Control": "no-store, max-age=0"},
+    )
 
 
 @app.get("/local/status", include_in_schema=False)

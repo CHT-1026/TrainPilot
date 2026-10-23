@@ -40,7 +40,10 @@ def create_approval_nodes():
             },
             "created_at": datetime.now().isoformat(),
         }
-        return {"task_result": result.message, "pending_action": pending_action}
+        draft_version = int(state.get("draft_version", 0) or 0) + 1
+        pending_action["draft_version"] = draft_version
+        return {"task_result": result.message, "pending_action": pending_action,
+                "draft_version": draft_version}
 
     nodes["approve"] = approve_node
 

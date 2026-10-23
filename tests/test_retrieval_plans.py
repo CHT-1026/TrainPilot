@@ -56,6 +56,21 @@ class EffectiveDatePlanTest(unittest.TestCase):
         self.assertTrue(result["debug"]["plan"]["strict_effective_date"])
         self.assertEqual(result["chunks"], [])
 
+    def test_same_count_index_version_change_is_rejected(self):
+        rows = [document("d1", "差旅住宿标准为600元。")]
+        with patch.object(config, "EMBEDDING_PROVIDER", "hash"):
+            index = RagIndex(rows)
+        index.index_version = "index-new"
+        release = {"status": "active", "snapshot_id": "s1", "index_version": "index-old",
+                   "index_chunks": 1, "graph_version": "g1", "acl_version": "a1"}
+        with patch("enterprise_rag.retrieval.load_index", return_value=index), \
+             patch("enterprise_rag.retrieval.active_release", return_value=release), \
+             patch("enterprise_rag.retrieval.query_vector", return_value=np.zeros(config.EMBEDDING_DIM)):
+            result = retrieve("差旅住宿标准是什么？")
+        self.assertEqual(result["chunks"], [])
+        self.assertIn("INDEX_VERSION_MISMATCH",
+                      [item["code"] for item in result["debug"]["release_issues"]])
+
     def test_financial_data_period_is_not_report_publication_date(self):
         rows = [document(
             "annual-2025", "公司2025年营业收入为12亿元。", title="2025年度报告",

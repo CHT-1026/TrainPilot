@@ -6,6 +6,7 @@ from collections import Counter, defaultdict
 from app.capabilities.retrieval.tokenizer import tokenize
 from app.database.connection import get_redis_client
 from app.infra.mysql import connection
+from app.capabilities.retrieval.revision import access_revision
 
 logger = logging.getLogger(__name__)
 
@@ -17,6 +18,7 @@ DEFAULT_NAMESPACE = "default"
 
 _indexes: dict[str, "BM25Index"] = {}
 _index_versions: dict[str, str] = {}
+_access_versions: dict[str, str] = {}
 
 
 class BM25Index:
@@ -109,12 +111,15 @@ def _current_version(namespace: str = DEFAULT_NAMESPACE) -> str:
 
 def get_index(namespace: str = DEFAULT_NAMESPACE, force: bool = False) -> BM25Index:
     version = _current_version(namespace)
+    acl_revision = access_revision(namespace)
     index = _indexes.get(namespace)
-    if force or index is None or version != _index_versions.get(namespace, ""):
+    if force or index is None or version != _index_versions.get(namespace, "") \
+            or acl_revision != _access_versions.get(namespace):
         chunks = _load_chunks(namespace)
         index = BM25Index(chunks)
         _indexes[namespace] = index
         _index_versions[namespace] = version
+        _access_versions[namespace] = acl_revision
         logger.info("知识库索引已加载：namespace=%s 块=%s", namespace, len(chunks))
     return index
 

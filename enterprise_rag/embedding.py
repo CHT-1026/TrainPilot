@@ -7,7 +7,9 @@ import hashlib
 import math
 import os
 import re
-from collections import Counter
+import threading
+import time
+from collections import Counter, OrderedDict
 
 import numpy as np
 
@@ -20,6 +22,10 @@ class EmbeddingUnavailableError(RuntimeError):
 
 class EmbeddingIntegrityError(ValueError):
     """Embedding dimensions, metadata, or numeric values violate the index contract."""
+
+
+class EmbeddingBudgetExceeded(RuntimeError):
+    """The request-level embedding budget or deadline does not allow another call."""
 
 
 def validate_vectors(vectors: list, expected_count: int) -> list[list[float]]:
@@ -87,12 +93,17 @@ def _dashscope_embed(texts: list[str]) -> list[list[float]]:
         base_url=os.getenv("RAG_EMBEDDING_API_BASE") or os.getenv("OPENAI_API_BASE") or None,
         timeout=60,
     )
-    response = client.embeddings.create(
-        model=config.EMBEDDING_MODEL,
-        input=texts,
-        dimensions=config.EMBEDDING_DIM,
-    )
-    return [item.embedding for item in response.data]
+    # DashScope text-embedding-v3 单请求最多 10 条；配置值只作上限，不能直接透传。
+    batch_size = max(1, min(10, config.EMBEDDING_BATCH))
+    vectors: list[list[float]] = []
+    for start in range(0, len(texts), batch_size):
+        response = client.embeddings.create(
+            model=config.EMBEDDING_MODEL,
+            input=texts[start:start + batch_size],
+            dimensions=config.EMBEDDING_DIM,
+        )
+        vectors.extend(item.embedding for item in response.data)
+    return vectors
 
 
 def embed_texts(texts: list[str]) -> list[list[float]]:
@@ -112,6 +123,125 @@ def embed_texts(texts: list[str]) -> list[list[float]]:
 
 def embed_query(text: str) -> np.ndarray:
     return np.asarray(embed_texts([text])[0], dtype=np.float32)
+
+
+# ---- 查询向量缓存与 single-flight（S19） ---------------------------------
+_QUERY_CACHE: "OrderedDict[str, tuple[float, list[float]]]" = OrderedDict()
+_INFLIGHT: dict[str, threading.Event] = {}
+_CACHE_LOCK = threading.Lock()
+_CACHE_STATS = {"hits": 0, "misses": 0, "merged": 0, "evictions": 0, "errors": 0}
+
+
+def _query_cache_key(text: str) -> str:
+    raw = "|".join(
+        (
+            config.EMBEDDING_PROVIDER,
+            config.EMBEDDING_MODEL,
+            str(config.EMBEDDING_DIM),
+            str(config.EMBEDDING_VERSION),
+            text,
+        )
+    )
+    return hashlib.sha256(raw.encode("utf-8")).hexdigest()
+
+
+def _cache_get(key: str) -> list[float] | None:
+    ttl = config.QUERY_CACHE_TTL_SECONDS
+    now = time.monotonic()
+    with _CACHE_LOCK:
+        entry = _QUERY_CACHE.get(key)
+        if entry is None:
+            return None
+        stored_at, vector = entry
+        if ttl > 0 and now - stored_at > ttl:
+            _QUERY_CACHE.pop(key, None)
+            return None
+        _QUERY_CACHE.move_to_end(key)
+        _CACHE_STATS["hits"] += 1
+        return vector
+
+
+def _cache_put(key: str, vector: list[float]) -> None:
+    with _CACHE_LOCK:
+        _QUERY_CACHE[key] = (time.monotonic(), vector)
+        _QUERY_CACHE.move_to_end(key)
+        while len(_QUERY_CACHE) > max(config.QUERY_CACHE_SIZE, 0):
+            _QUERY_CACHE.popitem(last=False)
+            _CACHE_STATS["evictions"] += 1
+
+
+def embed_query_cached(text: str, budget=None, stage: str = "embedding") -> np.ndarray:
+    """有界缓存 + 合并相同查询；缓存只保存文本向量，不保存权限/时点证据。"""
+    key = _query_cache_key(text)
+    cached = _cache_get(key)
+    if cached is not None:
+        return np.asarray(cached, dtype=np.float32)
+
+    with _CACHE_LOCK:
+        _CACHE_STATS["misses"] += 1
+        event = _INFLIGHT.get(key)
+        if event is None:
+            event = threading.Event()
+            _INFLIGHT[key] = event
+            leader = True
+        else:
+            _CACHE_STATS["merged"] += 1
+            leader = False
+
+    if not leader:
+        timeout = max(0.1, min(60.0, budget.remaining_seconds() if budget else 60.0))
+        event.wait(timeout=timeout)
+        cached = _cache_get(key)
+        if cached is not None:
+            return np.asarray(cached, dtype=np.float32)
+        # 前一个请求失败或超时：当前请求自行计算，避免无限等待。
+        with _CACHE_LOCK:
+            _INFLIGHT[key] = threading.Event()
+        event = _INFLIGHT[key]
+
+    try:
+        if budget is not None and not budget.can_call_embedding():
+            raise EmbeddingBudgetExceeded("请求预算不允许继续调用向量服务")
+        if budget is not None:
+            budget.charge_embedding(stage=stage, detail=f"attempt:{key[:12]}")
+        try:
+            vector = embed_query(text)
+        except Exception:
+            if budget is not None:
+                budget.note_call_result(ok=False, detail="embedding_failed")
+            raise
+        _cache_put(key, vector.tolist())
+        return vector
+    except Exception:
+        with _CACHE_LOCK:
+            _CACHE_STATS["errors"] += 1
+        raise
+    finally:
+        with _CACHE_LOCK:
+            current = _INFLIGHT.get(key)
+            if current is event:
+                _INFLIGHT.pop(key, None)
+            event.set()
+
+
+def cache_stats() -> dict:
+    with _CACHE_LOCK:
+        return {
+            **_CACHE_STATS,
+            "size": len(_QUERY_CACHE),
+            "inflight": len(_INFLIGHT),
+            "capacity": config.QUERY_CACHE_SIZE,
+            "ttl_seconds": config.QUERY_CACHE_TTL_SECONDS,
+        }
+
+
+def reset_query_cache() -> None:
+    with _CACHE_LOCK:
+        _QUERY_CACHE.clear()
+        _INFLIGHT.clear()
+        for key in _CACHE_STATS:
+            _CACHE_STATS[key] = 0
+
 
 
 def to_json(vector: list[float]) -> str:

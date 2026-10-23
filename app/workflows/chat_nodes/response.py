@@ -21,7 +21,10 @@ def create_response_nodes(llm: ChatOpenAI):
         context = state.get("conversation_context", {}) or {}
         summary = state.get("summary", "")
 
-        if intent in DETERMINISTIC_INTENTS or state.get("current_task") == "policy_qa":
+        current_task = state.get("current_task", "")
+        if (current_task and current_task != "general_chat") or (
+            not current_task and intent in DETERMINISTIC_INTENTS
+        ):
             response_text = task_result or "抱歉，本次操作没有产生结果。"
         else:
             history = ""
@@ -41,6 +44,7 @@ def create_response_nodes(llm: ChatOpenAI):
 - 回答简洁、直接。
 
 用户：{context.get('user_name') or context.get('user_id', '')}（{context.get('user_department') or '未填部门'}）
+已记住的用户事实（不是企业证据，不能替代检索）：{context.get('fact_memory') or '无'}
 会话摘要：{summary or "无"}
 最近对话：
 {history}

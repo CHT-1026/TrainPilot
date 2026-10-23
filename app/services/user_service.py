@@ -2,15 +2,24 @@
 用户认证服务
 从MySQL数据库验证用户登录，支持用户管理
 """
-from app.database.connection import get_sync_db_connection
 from app.infra.mysql import connection, transaction
 from app.utils.password import verify_password
 
 
+def _user_payload(row: dict) -> dict:
+    return {
+        "username": row["username"],
+        "name": row["name"],
+        "role": row["role"],
+        "department": row["department"],
+        "position": row["position"],
+        "manager_id": row.get("manager_id"),
+    }
+
+
 def verify_login(username: str, password: str) -> dict | None:
     """验证登录"""
-    conn = get_sync_db_connection()
-    try:
+    with connection() as conn:
         with conn.cursor() as cursor:
             cursor.execute(
                 "SELECT username, name, role, department, position, manager_id, password "
@@ -18,20 +27,9 @@ def verify_login(username: str, password: str) -> dict | None:
                 (username,)
             )
             user = cursor.fetchone()
-            
-            if not user or not verify_password(password, user["password"]):
-                return None
-            
-            return {
-                "username": user["username"],
-                "name": user["name"],
-                "role": user["role"],
-                "department": user["department"],
-                "position": user["position"],
-                "manager_id": user.get("manager_id"),
-            }
-    finally:
-        conn.close()
+    if not user or not verify_password(password, user["password"]):
+        return None
+    return _user_payload(user)
 
 
 def list_users() -> list[dict]:
@@ -71,8 +69,7 @@ def set_manager(username: str, manager_id: str | None) -> dict | None:
 
 def get_user_by_username(username: str) -> dict | None:
     """根据用户名获取用户信息（不含密码）"""
-    conn = get_sync_db_connection()
-    try:
+    with connection() as conn:
         with conn.cursor() as cursor:
             cursor.execute(
                 "SELECT username, name, role, department, position, manager_id "
@@ -80,15 +77,4 @@ def get_user_by_username(username: str) -> dict | None:
                 (username,)
             )
             user = cursor.fetchone()
-            if user:
-                return {
-                    "username": user["username"],
-                    "name": user["name"],
-                    "role": user["role"],
-                    "department": user["department"],
-                    "position": user["position"],
-                    "manager_id": user.get("manager_id"),
-                }
-    finally:
-        conn.close()
-    return None
+    return _user_payload(user) if user else None

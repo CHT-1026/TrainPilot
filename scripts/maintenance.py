@@ -34,7 +34,8 @@ def main():
     from app.database.connection import get_redis_client, get_sync_db_connection
 
     settings = get_settings()
-    result = {"idempotency_expired": 0, "sessions_stale": 0, "dry_run": args.dry_run}
+    result = {"idempotency_expired": 0, "sessions_stale": 0, "checkpoints_deleted": 0,
+              "dry_run": args.dry_run}
 
     conn = get_sync_db_connection()
     try:
@@ -62,7 +63,20 @@ def main():
                     if datetime.fromisoformat(updated) < cutoff:
                         result["sessions_stale"] += 1
                         if not args.dry_run:
-                            redis_client.hdel(key, field)
+                            from app.workflows.retention import checkpoint_patterns
+
+                            deleted = 0
+                            try:
+                                for pattern in checkpoint_patterns(field):
+                                    for checkpoint_key in redis_client.scan_iter(match=pattern):
+                                        redis_client.delete(checkpoint_key)
+                                        deleted += 1
+                            except Exception as exc:
+                                # 清理失败时保留会话索引，便于下次重试，避免失去 thread 入口。
+                                result.setdefault("checkpoint_errors", []).append(str(exc)[:120])
+                            else:
+                                redis_client.hdel(key, field)
+                            result["checkpoints_deleted"] += deleted
                 except ValueError:
                     continue
     finally:

@@ -22,6 +22,8 @@ from app.database.connection import (
     get_sync_db_connection,
 )
 from app.models.exceptions import BusinessException
+from app.core.backpressure import OverloadedError
+from app.jobs.rag_jobs import JobStorageError
 from enterprise_rag.embedding import EmbeddingUnavailableError, EmbeddingIntegrityError
 
 logger = logging.getLogger(__name__)
@@ -43,14 +45,20 @@ if settings.tracing_enabled:
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    from app.jobs.rag_jobs import start_job_worker, shutdown_job_worker
+
     get_sync_db_connection()
     logger.info("MySQL数据库连接池初始化完成")
     await init_graphs()
     logger.info("工作流图初始化完成")
-    yield
-    await close_async_redis()
-    close_all_connections()
-    logger.info("数据库连接已关闭")
+    start_job_worker()
+    try:
+        yield
+    finally:
+        await asyncio.to_thread(shutdown_job_worker)
+        await close_async_redis()
+        close_all_connections()
+        logger.info("数据库连接已关闭")
 
 
 app = FastAPI(
@@ -104,7 +112,9 @@ from app.routes.auth import router as auth_router
 from app.routes.chat import router as chat_router
 from app.routes.kb import router as kb_router
 from app.routes.metrics import router as metrics_router
+from app.routes.memory import router as memory_router
 from app.routes.users import router as users_router
+from app.routes.jobs import router as jobs_router
 from enterprise_rag.api import router as rag_router
 
 app.include_router(auth_router)
@@ -112,7 +122,9 @@ app.include_router(chat_router)
 app.include_router(approvals_router)
 app.include_router(kb_router)
 app.include_router(metrics_router)
+app.include_router(memory_router)
 app.include_router(users_router)
+app.include_router(jobs_router)
 app.include_router(rag_router)
 
 
@@ -171,6 +183,26 @@ async def embedding_exception_handler(request: Request, exc: Exception):
         "message": "知识索引暂不可用，请检查向量配置并重新入库。", "success": False})
 
 
+@app.exception_handler(JobStorageError)
+async def job_storage_exception_handler(request: Request, exc: JobStorageError):
+    logger.error("任务存储不可用: %s", exc)
+    return JSONResponse(
+        status_code=503,
+        content={"code": "JOB_STORAGE_UNAVAILABLE", "message": "任务存储暂不可用，请稍后重试。",
+                 "success": False},
+    )
+
+
+@app.exception_handler(OverloadedError)
+async def overloaded_handler(request: Request, exc: OverloadedError):
+    logger.warning("请求背压触发: %s", request.url.path)
+    return JSONResponse(
+        status_code=503,
+        content={"code": "OVERLOADED", "message": str(exc), "success": False},
+        headers={"Retry-After": str(exc.retry_after)},
+    )
+
+
 @app.get("/api/health")
 async def health():
     return {
@@ -214,6 +246,28 @@ async def ready():
             healthy = False
     except Exception as exc:
         checks["knowledge_base"] = f"error: {exc}"
+        healthy = False
+
+    try:
+        from enterprise_rag.store import index_stats as enterprise_stats
+        from enterprise_rag.graph.retrieve import load_graph
+        from enterprise_rag.release import active_release, manifest_checksum, verify_release
+
+        def enterprise_health():
+            stats = enterprise_stats()
+            graph = load_graph().stats()
+            release = active_release(stats["namespace"])
+            issues = verify_release(release, index_stats=stats, graph_stats=graph,
+                                    corpus_checksum=manifest_checksum())
+            return {**stats, "graph": graph, "release_issues": issues,
+                    "snapshot": release.get("snapshot_id")}
+
+        checks["enterprise_rag"] = await asyncio.to_thread(enterprise_health)
+        if not checks["enterprise_rag"].get("chunks") or checks["enterprise_rag"]["release_issues"]:
+            healthy = False
+    except Exception as exc:
+        logger.warning("企业知识库就绪检查失败: %s", type(exc).__name__)
+        checks["enterprise_rag"] = {"error": type(exc).__name__}
         healthy = False
 
     return JSONResponse(

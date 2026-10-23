@@ -97,12 +97,7 @@ class GraphFeatureTest(unittest.IsolatedAsyncioTestCase):
         self.assertIn("暂时不可用", result["response"])
 
 
-class MemoryRedis:
-    def __init__(self): self.rows = {}
-    def hget(self, key, field): return self.rows.get(key, {}).get(field)
-    def hset(self, key, field, value): self.rows.setdefault(key, {})[field] = value
-    def expire(self, key, seconds): return True
-
+from tests.workflow_fakes import TransactionRedis as MemoryRedis
 
 class RouteGraph:
     def __init__(self, *, partial=False):
@@ -156,6 +151,50 @@ class RouteFeatureTest(unittest.TestCase):
         complete = next(data for kind, data in events if kind == "complete")
         self.assertEqual(visible, complete["response"])
         self.assertTrue(complete["stream_reset"])
+
+
+class SessionArchiveTest(unittest.TestCase):
+    def setUp(self):
+        self.app = FastAPI()
+        self.app.include_router(chat.router)
+        self.app.dependency_overrides[get_user_context] = lambda: USER
+        self.client = TestClient(self.app)
+        self.redis = MemoryRedis()
+        self.patch = patch("app.routes.chat.get_redis_client", return_value=self.redis)
+        self.patch.start()
+        self.addCleanup(self.patch.stop)
+
+    def create(self):
+        return self.client.post("/api/chat/session").json()["data"]["thread_id"]
+
+    def test_archive_and_restore_keep_the_same_session_record(self):
+        thread = self.create()
+        archived = self.client.patch(f"/api/chat/session/{thread}", json={"archived": True})
+        self.assertEqual(archived.status_code, 200)
+        self.assertTrue(archived.json()["data"]["archived"])
+        self.assertIn("archived_at", archived.json()["data"])
+        listed = self.client.get("/api/chat/sessions").json()["data"]
+        self.assertTrue(any(item["thread_id"] == thread and item["archived"] for item in listed))
+
+        restored = self.client.patch(f"/api/chat/session/{thread}", json={"archived": False})
+        self.assertEqual(restored.status_code, 200)
+        self.assertFalse(restored.json()["data"]["archived"])
+        self.assertNotIn("archived_at", restored.json()["data"])
+
+    def test_new_message_automatically_restores_an_archived_session(self):
+        thread = self.create()
+        self.client.patch(f"/api/chat/session/{thread}", json={"archived": True})
+        chat._touch_session(USER.user_id, thread, user_message="继续刚才的话题")
+        meta = json.loads(self.redis.hget(chat._session_key(USER.user_id), thread))
+        self.assertFalse(meta["archived"])
+        self.assertNotIn("archived_at", meta)
+
+    def test_other_user_cannot_archive_the_session(self):
+        thread = self.create()
+        other = UserContext(user_id="other_user", name="其他员工", role="employee")
+        self.app.dependency_overrides[get_user_context] = lambda: other
+        response = self.client.patch(f"/api/chat/session/{thread}", json={"archived": True})
+        self.assertEqual(response.status_code, 403)
 
 
 class CitationCoverageTest(unittest.TestCase):

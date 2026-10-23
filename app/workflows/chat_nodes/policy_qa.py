@@ -11,24 +11,44 @@ from app.core.metrics import inc
 from app.workflows.chat_nodes.common import actor_from_state
 from app.workflows.chat_nodes.enterprise_scope import looks_enterprise, looks_oa_policy
 from app.workflows.chat_state import ChatState
+from app.workflows.dialog_state import apply_context, update_dialog_state
+from app.workflows.source_policy import SOURCE_PUBLIC, classify_source
 from enterprise_rag.query import contextualize
 
 logger = logging.getLogger(__name__)
 
 
 def create_policy_nodes(llm):
+    def _emit_status(stage: str, phase: str = "progress") -> None:
+        try:
+            get_stream_writer()({"type": "status", "stage": stage, "phase": phase})
+        except RuntimeError:
+            pass
+
     def retrieve_node(state: ChatState):
-        question = contextualize(state.get("user_message", ""), state.get("messages", []))
+        original = state.get("user_message", "")
+        dialog_state = update_dialog_state(
+            state.get("dialog_state"), original,
+            state.get("extracted_info"), state.get("intent", ""),
+        )
+        question, inherited_as_of = apply_context(original, state.get("messages", []), dialog_state)
         actor = actor_from_state(state)
         settings = get_settings()
-        base = {"retrieval_question": question, "citations": [], "task_result": "", "grounded": False}
-        original = state.get("user_message", "")
+        source = classify_source(original)
+        base = {"retrieval_question": question, "citations": [], "task_result": "", "grounded": False,
+                "dialog_state": dialog_state, "source_kind": source["kind"]}
+        _emit_status("retrieving", source["kind"])
+        if source["kind"] == SOURCE_PUBLIC:
+            return {**base, "retrieved_chunks": [], "knowledge_namespace": "public_blocked",
+                    "retrieval_meta": {"source": source}}
         enterprise_intent = looks_enterprise(original)
         # 非 OA 制度问题先尝试企业知识库；明确的企业问题即使无命中也不混用 OA 语料。
         if enterprise_intent or not looks_oa_policy(original):
             from enterprise_rag import config as rag_config
             from enterprise_rag.retrieval import retrieve as enterprise_retrieve
-            result = enterprise_retrieve(question, user=actor, top_k=settings.kb_top_k)
+            result = enterprise_retrieve(question, user=actor, top_k=settings.kb_top_k,
+                                         as_of=inherited_as_of)
+            _emit_status("retrieved", "enterprise")
             if result.get("chunks") and result["debug"].get("top_score", 0) >= rag_config.MIN_SCORE:
                 return {**base, "retrieved_chunks": result["chunks"], "knowledge_namespace": "enterprise",
                         "retrieval_meta": result["debug"]}
@@ -38,19 +58,28 @@ def create_policy_nodes(llm):
         candidates = retrieve(question, actor, top_k=settings.kb_top_k)
         chunks = [c for c in candidates if c.get("score", 0) >= settings.kb_min_score]
         inc("retrieval_hits_total" if chunks else "retrieval_empty_total")
+        _emit_status("retrieved", "oa")
         return {**base, "retrieved_chunks": chunks, "knowledge_namespace": "oa", "retrieval_meta": {}}
 
     async def answer_node(state: ChatState):
         chunks = state.get("retrieved_chunks") or []
         question = state.get("retrieval_question") or state.get("user_message", "")
         method = "refusal"
+        _emit_status("verifying", "answer")
         if not chunks:
-            text, citations, grounded = REFUSAL_TEXT, [], False
+            if state.get("source_kind") == SOURCE_PUBLIC:
+                text = "公开信息检索默认关闭，请提供内部资料或明确可公开的信息需求。"
+            else:
+                text = REFUSAL_TEXT
+            citations, grounded = [], False
         elif state.get("knowledge_namespace") == "enterprise":
             from enterprise_rag.answer import generate_answer
             from enterprise_rag.citations import to_citations as enterprise_citations, source_summary
-            generated = await asyncio.to_thread(generate_answer, question, chunks, None,
-                state.get("retrieval_meta", {}).get("evidence_budget_complete", True))
+            meta = state.get("retrieval_meta", {})
+            graph_paths = ((meta.get("graph") or {}).get("paths") or [])
+            generated = await asyncio.to_thread(
+                generate_answer, question, chunks, None,
+                meta.get("evidence_budget_complete", True), graph_paths)
             citations = enterprise_citations(generated["citations"])
             text = generated["answer"]
             if generated["citations"]:
@@ -77,6 +106,7 @@ def create_policy_nodes(llm):
                     break
             citations, text = to_citations(cited), format_with_sources(answer, cited)
             method = "llm_verified" if cited else "refusal"
+        _emit_status("verified", "answer")
         try:
             get_stream_writer()({"type": "token", "delta": text, "mode": "verified"})
         except RuntimeError:

@@ -46,6 +46,14 @@ class ChatState(TypedDict, total=False):
     trace_id: str
     # 最终回复
     response: str
+    # 同一线程的请求版本；用于发现并发覆盖
+    state_version: int
+    # 草稿版本；用户修改槽位后递增，旧确认不得提交过期草稿
+    draft_version: int
+    # 会话级实体/主题/可覆盖时点（非证据，只用于追问补全）
+    dialog_state: dict[str, Any]
+    # 信息来源类型：document / business_record / public_info / unknown
+    source_kind: str
 
 
 INTENT_RECOGNITION_HISTORY_COUNT = 6

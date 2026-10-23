@@ -1,7 +1,0 @@
-submit ok leave_2c0587f23cee days 4
-manager approved, moved to HR
-manager repeat blocked FORBIDDEN
-HR approved, final status approved
-audit ok ['submit', 'approve', 'approve'] {'hr-smoke-trace'}
-HR_SMOKE_PASS
-

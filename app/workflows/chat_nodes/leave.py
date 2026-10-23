@@ -90,6 +90,8 @@ def create_leave_nodes():
             "policy_checks": [check.model_dump() for check in checks],
             "created_at": datetime.now().isoformat(),
         }
+        draft_version = int(state.get("draft_version", 0) or 0) + 1
+        pending_action["draft_version"] = draft_version
 
         logger.info("生成请假待确认草稿: %s", pending_action["action_id"])
         return {
@@ -97,6 +99,7 @@ def create_leave_nodes():
             "extracted_info": merged,
             "conversation_context": {**context, "accumulated_extracted_info": merged},
             "pending_action": pending_action,
+            "draft_version": draft_version,
             "iteration_count": 0,
         }
 

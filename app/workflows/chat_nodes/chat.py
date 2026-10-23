@@ -27,4 +27,19 @@ def create_chat_nodes():
         }
 
     nodes["clarify"] = clarify_node
+
+    def record_unsupported_node(state: ChatState):
+        message = state.get("user_message", "") or ""
+        if "考勤" in message:
+            detail = "考勤打卡记录"
+        elif "年假" in message or "休假" in message or "调休" in message:
+            detail = "年假余额与休假记录"
+        else:
+            detail = "实时业务记录"
+        return {
+            "task_result": f"{detail}尚未接入实时服务，暂时无法查询；不会用请假申请列表或制度天数替代。",
+            "pending_action": None,
+        }
+
+    nodes["record_unsupported"] = record_unsupported_node
     return nodes

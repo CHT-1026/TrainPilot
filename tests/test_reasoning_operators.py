@@ -3,6 +3,7 @@ import unittest
 from decimal import Decimal
 
 from enterprise_rag.reasoning import infer, number
+from enterprise_rag.verification import verify_answer_facts
 
 
 def c(text, title=""):
@@ -51,6 +52,28 @@ class ScopeAndMoneyTest(unittest.TestCase):
     def test_explicit_pair_difference_not_blocked_by_corpus_budget(self):
         result = infer("初阳项目甲合同金额比乙合同金额多多少元？", [c("初阳项目甲合同金额：7100元。"), c("初阳项目乙合同金额：4300元。")], complete=False)
         self.assertIn("= 2800 元", result["answer"])
+
+    def test_amount_ratio_uses_named_numerator_and_denominator(self):
+        chunks = [c("甲项目金额：1200元。"), c("乙项目金额：3000元。")]
+        result = infer("甲项目金额占乙项目金额的百分比是多少？", chunks)
+        self.assertIn("40%", result["answer"])
+        self.assertEqual(result["indices"], [1, 2])
+        self.assertEqual(result["operation"], "ratio")
+        check = verify_answer_facts("甲项目金额占乙项目金额的百分比是多少？", result["answer"], chunks)
+        self.assertEqual(check["numeric_missing"], [])
+
+    def test_year_over_year_difference_filters_subject_and_period(self):
+        chunks = [
+            c("甲公司2025年营业收入：42.63亿元。"),
+            c("甲公司2024年营业收入：35.80亿元。"),
+            c("乙公司2025年营业收入：99.99亿元。"),
+            c("甲公司营业收入：10亿元。"),
+        ]
+        result = infer("甲公司2025年收入比2024年增加多少？", chunks)
+        self.assertIn("42.63 − 35.8 = 6.83 亿元", result["answer"])
+        self.assertEqual(result["indices"], [1, 2])
+        missing = infer("甲公司2027年确定收入是多少？", chunks)
+        self.assertTrue(missing["refused"])
 
 
 class TimeAndJoinTest(unittest.TestCase):
@@ -108,6 +131,29 @@ class TimeAndJoinTest(unittest.TestCase):
         result = infer("甲公司的组织清单共有多少个部门？", [c("甲公司设有研发部，乙公司设有采购部。甲公司设有财务部。")])
         self.assertIn("共 2 个部门", result["answer"])
         self.assertNotIn("采购部", result["answer"])
+
+
+class EvidenceAggregationTest(unittest.TestCase):
+    def test_four_documents_four_unique_departments(self):
+        chunks = [
+            c("本文件涉及部门：研发部。"),
+            c("本文件涉及部门：销售部。"),
+            c("本文件涉及部门：财务部。"),
+            c("本文件涉及部门：质量部。"),
+        ]
+        result = infer("四份资料分别提到不同部门，一共有多少个不重复部门？", chunks)
+        self.assertIn("4 个部门", result["answer"])
+        self.assertEqual(sorted(result["indices"]), [1, 2, 3, 4])
+
+    def test_duplicate_department_is_counted_once(self):
+        chunks = [c("本文件涉及部门：研发部。"), c("本文件涉及部门：研发部、销售部。")]
+        result = infer("这两份资料一共有多少个不重复部门？", chunks)
+        self.assertIn("2 个部门", result["answer"])
+
+    def test_year_arithmetic_from_question_base(self):
+        result = infer("2026年的七十年前是多少年？", [c("无关资料。")])
+        self.assertIn("1956", result["answer"])
+        self.assertIn("2026 − 70", result["answer"])
 
 
 if __name__ == "__main__":

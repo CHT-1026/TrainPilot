@@ -10,6 +10,7 @@ from datetime import date
 from decimal import Decimal, InvalidOperation
 
 from enterprise_rag.citations import chunk_body
+from enterprise_rag.facts import evidence_periods
 
 CN = "零〇一二两三四五六七八九十百千万亿点"
 NUMBER = rf"(?:\d[\d,]*(?:\.\d+)?|[{CN}]+)"
@@ -52,6 +53,13 @@ def fmt(value) -> str:
 
 def _result(text, indices, operation, facts=None, refused=False):
     indices = list(dict.fromkeys(indices))
+    if indices and not refused:
+        from enterprise_rag.evidence import bind_trailing_refs
+        clauses = re.split(r"(?<=[。；;])", bind_trailing_refs(text))
+        text = "".join(part if not re.search(r"[\u4e00-\u9fffA-Za-z0-9]", part)
+                       or re.search(r"\[\d+\]", part) else
+                       part.rstrip("。；;") + "".join(f"[{i}]" for i in indices)
+                       + (part[-1] if part[-1:] in "。；;" else "") for part in clauses)
     return {"answer": text, "indices": indices, "confidence": 1.0,
             "operation": operation, "facts": facts or [], "refused": refused}
 
@@ -64,9 +72,17 @@ def _body(chunk):
     return re.sub(r"(?m)^(?:所属部门|作者|更新时间|创建时间|生效日期|版本号|文档族)[:：].*$", "", chunk_body(chunk))
 
 
+_GENERIC_SUBJECTS = {"本公司", "该公司", "本项目", "该项目", "母公司", "子公司",
+                     "分公司", "总公司", "集团公司", "年公司", "月公司", "日公司"}
+
+
 def _subjects(text):
-    # Explicit subjects only; do not borrow a clock from another named company.
-    return set(re.findall(r"([\u4e00-\u9fffA-Za-z0-9]{1,24}?(?:股份有限公司|有限公司|公司|项目))", text)) - {"本公司", "该公司", "本项目", "该项目"}
+    # Explicit subjects only; "2024 年公司…" and "归属于母公司" are not names.
+    found = set(re.findall(
+        r"([\u4e00-\u9fffA-Za-z0-9]{1,24}?(?:股份有限公司|有限公司|公司|项目))", text))
+    return {item for item in found - _GENERIC_SUBJECTS
+            if not item.endswith(("母公司", "子公司", "分公司"))
+            and not re.match(r"^(?:19|20)\d{2}", item)}
 
 
 def _scoped(question, bodies, chunks):
@@ -80,12 +96,19 @@ def _scoped(question, bodies, chunks):
     named = set().union(*(subjects for _, _, subjects in entries)) if entries else set()
     targets = {subject for subject in named if subject in question}
     if targets:
+        target_companies = {subject for subject in targets if subject.endswith(("公司", "集团"))}
+        target_projects = {subject for subject in targets if subject.endswith("项目")}
+
+        def matches(subjects):
+            return ((not target_companies or bool(subjects & target_companies))
+                    and (not target_projects or bool(subjects & target_projects)))
+
         selected = []
         for i, text, subjects in entries:
             if not subjects:
                 selected.append((i, text))
                 continue
-            if not subjects & targets:
+            if not matches(subjects):
                 continue
             active = _subjects(str(chunks[i-1].get("title", "")))
             pieces = []
@@ -93,7 +116,7 @@ def _scoped(question, bodies, chunks):
                 explicit = _subjects(sentence)
                 if explicit:
                     active = explicit
-                if active & targets:
+                if matches(active):
                     pieces.append(sentence)
             if pieces:
                 selected.append((i, "".join(pieces)))
@@ -114,16 +137,37 @@ def _question_subjects(question):
 
 
 def _department_count_intent(question):
-    return bool(re.search(r"(?:多少|几)\s*个?(?:不同)?的?部门|部门(?:的)?(?:总数|数量|共有几个|有几个|共有多少个)|统计.{0,8}部门", question))
+    return bool(re.search(
+        r"(?:多少|几)\s*个?(?:不同|不重复)?的?部门|"
+        r"部门(?:的)?(?:总数|数量|共有几个|有几个|共有多少个)|统计.{0,8}部门",
+        question,
+    ))
+
+
+def _ratio_intent(question):
+    return bool(re.search(
+        r"[^，。；？?\s]{2,40}\s*(?:占|/)\s*[^，。；？?\s]{2,40}\s*(?:的)?\s*"
+        r"(?:比例|比重|百分比|百分之)", question))
+
+
+def _year_amount_intent(question):
+    return bool(
+        re.search(r"(?:19|20)\d{2}\s*年", question)
+        and re.search(r"(营业收入|收入|净利润|金额)", question)
+        and not re.search(r"(合计|总计|相差|差额|多多少|少多少|增加|增长|减少|下降|占|比例|比重|百分比)", question)
+    )
 
 
 def _operator_intent(question):
     return bool(
         _department_count_intent(question)
+        or _year_amount_intent(question)
         or re.search(r"(成立|创立|创办).{0,12}(年|多久)|多少年", question)
+        or re.search(r"(?:19|20)\d{2}.{0,12}(?:年前|减.{0,6}年|往前推|前推)", question)
         or ("负责人" in question and "部门" in question)
         or re.search(r"(相隔多少天|自然日|结束日减开始日)", question)
-        or (re.search(r"(合计|总计|相差|差额|多多少|少多少)", question) and re.search(r"(金额|合同|收入|元)", question))
+        or (re.search(r"(合计|总计|相差|差额|多多少|少多少|增加|增长|减少|下降)", question) and re.search(r"(金额|合同|收入|元)", question))
+        or (_ratio_intent(question) and re.search(r"(金额|收入|元)", question))
     )
 
 
@@ -345,20 +389,92 @@ def _company_founded(text):
     return [int(m.group(1)) for pattern in patterns for m in re.finditer(pattern, text)]
 
 
+_CN_DIGITS = {"零": 0, "一": 1, "二": 2, "两": 2, "三": 3, "四": 4,
+              "五": 5, "六": 6, "七": 7, "八": 8, "九": 9}
+
+
+def _cn_number(text: str) -> int | None:
+    text = (text or "").strip()
+    if not text or not re.fullmatch(rf"[\d{CN}]+", text):
+        return None
+    value = number(text)
+    return int(value) if value == value.to_integral_value() else None
+
+
+def _year_arithmetic(question: str) -> dict | None:
+    """题目自带年份基准时，直接做年差/回溯，不依赖检索到成立年份。
+
+    结果完全由问题自身的基准年推导，因此不引用检索片段，避免把无关来源
+    当作计算依据。
+    """
+    base_match = re.search(r"((?:19|20)\d{2})\s*年", question)
+    if not base_match:
+        return None
+    offset_match = re.search(
+        rf"((?:19|20)\d{{2}})\s*年(?:的)?\s*([\d{CN}]{{1,12}})\s*年前",
+        question,
+    )
+    if offset_match:
+        base, offset_text = offset_match.group(1), offset_match.group(2)
+    else:
+        subtract = re.search(
+            r"((?:19|20)\d{2}).{0,8}(?:减|减去|往前推|前推).{0,6}"
+            rf"([\d{CN}]{{1,12}})\s*年",
+            question,
+        )
+        if not subtract:
+            return None
+        base, offset_text = subtract.group(1), subtract.group(2)
+    offset = _cn_number(offset_text)
+    if offset is None or offset <= 0:
+        return None
+    target = int(base) - offset
+    if target < 1:
+        return None
+    return _result(
+        f"按题目给定的基准年计算，{int(base)} − {offset} = {target} 年。",
+        [],
+        "year_arithmetic",
+    )
+
+
 def infer(question: str, chunks: list[dict], complete: bool = True) -> dict | None:
     bodies = [(i, _body(chunk)) for i, chunk in enumerate(chunks, 1)]
+    operator = _operator_intent(question)
+    if operator:
+        direct_year = _year_arithmetic(question)
+        if direct_year is not None:
+            return direct_year
     if not bodies:
         return None
     if _reporting_intent(question):
         result = _reporting_relation(question, bodies, chunks)
         if result is not None:
             return result
-    if not _operator_intent(question):
+    if not operator:
         return None
     scoped, targets = _scoped(question, bodies, chunks)
     known = set().union(*(_record_subjects(i, text, chunks) for i, text in bodies))
     if _question_subjects(question) and known and not targets:
         return _refuse("当前证据没有对应问题所指的公司或项目，不能借用其他主体的事实推断。")
+
+    if _year_amount_intent(question):
+        years = list(dict.fromkeys(re.findall(r"(?:19|20)\d{2}", question)))
+        present = set()
+        target_requested = bool(re.search(r"目标|预算|预计|预测|计划|愿景", question))
+        for i, text in (scoped or bodies):
+            for sentence in re.split(r"[。；\n]", text):
+                context = sentence + " " + str(chunks[i-1].get("title", ""))
+                if not target_requested and re.search(r"目标|预算|预计|预测|计划|愿景|力争", context):
+                    continue
+                if not re.search(r"(金额|营业收入|收入)", sentence):
+                    continue
+                if not re.search(r"\d[\d,]*(?:\.\d+)?\s*(?:亿元|万元|元)", sentence):
+                    continue
+                present.update(evidence_periods(sentence, chunks[i-1]))
+        missing = [year for year in years if year not in present]
+        if missing:
+            return _refuse(f"资料中没有{missing[0]}年的金额数据。")
 
     # A list is a set, not a count of search hits or file count.
     if _department_count_intent(question):
@@ -370,10 +486,14 @@ def infer(question: str, chunks: list[dict], complete: bool = True) -> dict | No
         for i, text in scoped:
             if targets and not _record_subjects(i, text, chunks) & targets:
                 continue
-            for match in re.finditer(r"(?:设有|部门(?:为|是)|部门名称[:：])\s*([^，。；\n]{2,60})", text):
-                for entity in re.split(r"[、]|(?<=[部所室])(?:和|与|及)", match.group(1)):
+            for match in re.finditer(
+                r"(?:设有|一级部门(?:为|是|[:：])|部门(?:为|是)|部门名称[:：]|"
+                r"一级部门包括[:：]?|部门包括[:：]?|涉及部门[:：]?)\s*([^，。；\n]{2,80})",
+                text,
+            ):
+                for entity in re.split(r"[、]|(?<=[部所室科组])(?:和|与|及)", match.group(1)):
                     entity = entity.strip()
-                    if entity.endswith(("部", "中心", "办公室", "研究所")):
+                    if entity.endswith(("部", "中心", "办公室", "研究所", "事业部", "科", "组")):
                         entities.setdefault(entity, i)
         if entities:
             if not complete:
@@ -494,10 +614,12 @@ def infer(question: str, chunks: list[dict], complete: bool = True) -> dict | No
                            + ("（开始日、结束日均计入）" if inclusive else "（不包含开始日）") + f"。[{si}][{ei}]",
                            [si, ei], "date_difference")
 
-    if re.search(r"(合计|总计|相差|差额|多多少|少多少)", question) and re.search(r"(金额|合同|收入|元)", question):
+    if (re.search(r"(合计|总计|相差|差额|多多少|少多少|增加|增长|减少|下降)", question) or _ratio_intent(question)) \
+            and re.search(r"(金额|合同|收入|元)", question):
         if not scoped:
             return None
         facts = {}
+        periods = {}
         qyears = set(re.findall(r"(?:19|20)\d{2}", question))
         requested_contracts = list(dict.fromkeys(re.findall(r"[甲乙丙丁A-Za-z0-9一二三四]+合同", question)))
         for i, text in scoped:
@@ -506,12 +628,16 @@ def infer(question: str, chunks: list[dict], complete: bool = True) -> dict | No
             for sentence in re.split(r"[。；\n]", text):
                 if not re.search(r"金额|营业收入", sentence):
                     continue
-                if "全年" in question and re.search(r"上半年|下半年|季度|单季|前三季度", sentence):
+                # 未明确指定季度/半年口径时，只用年度数据，避免半年报混入年度差额。
+                if not re.search(r"季度|上半年|下半年|单季|前三季度", question) \
+                        and re.search(r"上半年|下半年|季度|单季|前三季度", sentence):
                     continue
-                years = re.findall(r"(?:19|20)\d{2}", sentence)
-                if qyears and years and not qyears.intersection(years):
+                if not re.search(r"目标|计划|预算|预测|预计", question) and re.search(r"目标|计划|预算|预测|预计|力争", sentence + " " + str(chunks[i-1].get("title", ""))):
                     continue
-                for m in re.finditer(rf"(?P<label>[^。；：:\n]{{1,80}}?(?:金额|营业收入))\s*[:：为是]?\s*(?P<value>{NUMBER})\s*(?P<unit>亿元|万元|元)", sentence):
+                years = sorted(evidence_periods(sentence, chunks[i-1]))
+                if qyears and not qyears.intersection(years):
+                    continue
+                for m in re.finditer(rf"(?P<label>[^。；：:\n]{{0,80}}?(?:金额|营业收入))\s*[:：为是]?\s*(?P<value>{NUMBER})\s*(?P<unit>亿元|万元|元)", sentence):
                     label = re.sub(r"\s+", "", m.group("label"))
                     if requested_contracts and not any(contract in label for contract in requested_contracts):
                         continue
@@ -520,15 +646,62 @@ def infer(question: str, chunks: list[dict], complete: bool = True) -> dict | No
                     if "预付款" not in question and "预付款" in label:
                         continue
                     if qyears and "营业收入" in label:
-                        ys = re.findall(r"(?:19|20)\d{2}", label)
-                        label = (ys[-1] + "营业收入") if ys else label
+                        ys = re.findall(r"(?<!\d)(?:19|20)\d{2}(?!\d)", label) or years
+                        metric = re.sub(r"(?:19|20)\d{2}\s*年?", "", label)
+                        metric = re.sub(r"公司|实现|全年|的", "", metric)
+                        # “海外营业收入”等细分口径必须有对应问题限定，不能并入总收入。
+                        qualifier = metric.removesuffix("营业收入")
+                        if qualifier and qualifier not in question:
+                            continue
+                        label = ((max(ys) if ys else "") + metric) if metric else ""
                     value = number(m.group("value")) * {"亿元": Decimal(100000000), "万元": Decimal(10000), "元": Decimal(1)}[m.group("unit")]
+                    if not label:
+                        continue
                     previous = facts.get(label)
                     if previous and previous[0] != value:
                         return _refuse("相同金额指标存在冲突。")
                     facts.setdefault(label, (value, i))
+                    periods.setdefault(label, set()).update(years)
+        if not facts and _ratio_intent(question) and qyears:
+            return _refuse(f"资料中没有{sorted(qyears)[0]}年的金额数据。")
         if facts:
-            difference = bool(re.search(r"(相差|差额|多多少|少多少)", question))
+            ratio_query = re.search(
+                r"([^，。；？?\s]{2,40}?)\s*(?:占|/)\s*([^，。；？?\s]{2,40}?)\s*(?:的)?\s*"
+                r"(?:比例|比重|百分比|百分之)", question)
+            if ratio_query:
+                numerator_term = ratio_query.group(1).removesuffix("的").strip()
+                denominator_term = ratio_query.group(2).removesuffix("的").strip()
+                numerator_labels = [label for label in facts if numerator_term in label]
+                denominator_labels = [label for label in facts if denominator_term in label]
+                if not numerator_labels or not denominator_labels:
+                    # 原文直接给出比例时交给抽取式回答；否则缺少运算数，拒答。
+                    missing = numerator_term if not numerator_labels else denominator_term
+                    base_term = re.sub(r"(?:19|20)\d{2}\s*年?", "", missing)
+                    explicit = any(
+                        base_term in text and re.search(r"\d+(?:\.\d+)?\s*[%％]", text)
+                        for _, text in scoped
+                    )
+                    return None if explicit else _refuse("比例运算缺少分子或分母金额。")
+                if (len(numerator_labels) != 1 or len(denominator_labels) != 1
+                        or numerator_labels[0] == denominator_labels[0]):
+                    return _refuse("无法唯一确定比例运算的分子与分母。")
+                numerator, ni = facts[numerator_labels[0]]
+                denominator, di = facts[denominator_labels[0]]
+                left_periods = periods.get(numerator_labels[0], set())
+                right_periods = periods.get(denominator_labels[0], set())
+                if left_periods and right_periods and left_periods != right_periods and len(qyears) < 2:
+                    return _refuse("分子与分母的统计期不一致，问题未授权跨期相除。")
+                if denominator == 0:
+                    return _refuse("比例运算的分母为零。")
+                percent = (numerator / denominator * 100).quantize(Decimal("0.01")).normalize()
+                return _result(
+                    f"{numerator_labels[0]}占{denominator_labels[0]}的{fmt(percent)}%"
+                    f"（{fmt(numerator)} ÷ {fmt(denominator)} × 100 = {fmt(percent)}%）。[{ni}][{di}]",
+                    [ni, di], "ratio",
+                    [{"label": numerator_labels[0], "yuan": fmt(numerator), "citation": ni},
+                     {"label": denominator_labels[0], "yuan": fmt(denominator), "citation": di}],
+                )
+            difference = bool(re.search(r"(相差|差额|多多少|少多少|增加|增长|减少|下降)", question))
             explicit_pair = len(requested_contracts) == 2 or len(qyears) == 2
             if not complete and not (difference and explicit_pair and len(facts) == 2):
                 return _refuse("金额证据超出检索预算，不能确认合计或差额。")
@@ -539,7 +712,9 @@ def infer(question: str, chunks: list[dict], complete: bool = True) -> dict | No
             values = list(facts.values())
             if difference and len(values) != 2:
                 return _refuse("差额的两个比较对象不唯一。")
-            directional = difference and "比" in question and bool(re.search(r"(多多少|少多少)", question))
+            directional = difference and "比" in question and bool(
+                re.search(r"(多多少|少多少|增加|增长|减少|下降)", question)
+            )
             if directional:
                 if len(requested_contracts) == 2:
                     ordered_labels = [next(label for label in facts if contract in label) for contract in requested_contracts]
@@ -551,12 +726,35 @@ def infer(question: str, chunks: list[dict], complete: bool = True) -> dict | No
                 else:
                     return None
                 values = [facts[label] for label in ordered_labels]
-                if "少多少" in question:
+                if "少多少" in question or "减少" in question or "下降" in question:
                     values.reverse()
                 total = values[0][0] - values[1][0]
             else:
                 total = abs(values[0][0] - values[1][0]) if difference else sum(v for v, _ in values)
-            divisor, unit = (Decimal(100000000), "亿元") if "多少亿元" in question else ((Decimal(10000), "万元") if "多少万元" in question else (Decimal(1), "元"))
+            if difference and re.search(r"增长率|增幅|涨幅|下降率|降幅", question):
+                if not directional:
+                    return _refuse("增长率需要明确本期与基期。")
+                base = values[0][0] if re.search(r"下降率|降幅", question) else values[1][0]
+                if base == 0:
+                    return _refuse("增长率的基期金额为零。")
+                percent = (total / abs(base) * 100).quantize(Decimal("0.01"))
+                refs = list(dict.fromkeys(i for _, i in values))
+                rate_name = "下降率" if re.search(r"下降率|降幅", question) else "增长率"
+                return _result(f"按本期与基期金额计算，{rate_name}为{fmt(percent)}%（{fmt(total)} ÷ {fmt(base)} × 100 = {fmt(percent)}%）。"
+                               + "".join(f"[{i}]" for i in refs), refs, "growth_rate",
+                               [{"label": label, "yuan": fmt(value), "citation": i} for label, (value, i) in facts.items()])
+            if "多少亿元" in question:
+                divisor, unit = Decimal(100000000), "亿元"
+            elif "多少万元" in question:
+                divisor, unit = Decimal(10000), "万元"
+            elif "多少元" in question:
+                divisor, unit = Decimal(1), "元"
+            elif any("亿元" in text for _, text in scoped):
+                divisor, unit = Decimal(100000000), "亿元"
+            elif any("万元" in text for _, text in scoped):
+                divisor, unit = Decimal(10000), "万元"
+            else:
+                divisor, unit = Decimal(1), "元"
             amounts = sorted([v/divisor for v, _ in values], reverse=True) if difference and not directional else [v/divisor for v, _ in values]
             indices = [i for _, i in values]
             formula = (" − " if difference else " + ").join(fmt(v) for v in amounts)

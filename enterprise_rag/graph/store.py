@@ -98,6 +98,18 @@ class GraphStore:
                 entity["doc_ids"] = [item for item in entity["doc_ids"] if item != doc_id]
         self.rebuild_index()
 
+    def prune_dangling(self) -> int:
+        """移除 source/target 实体缺失的悬空边；返回清理数量。"""
+        dangling = [
+            key for key, relation in self.relations.items()
+            if relation["source"] not in self.entities or relation["target"] not in self.entities
+        ]
+        for key in dangling:
+            self.relations.pop(key, None)
+        if dangling:
+            self.rebuild_index()
+        return len(dangling)
+
     def save(self, path: Path) -> None:
         path.parent.mkdir(parents=True, exist_ok=True)
         payload = {
@@ -181,8 +193,14 @@ class GraphStore:
                     }
         return sorted(matches.values(), key=lambda item: item["score"], reverse=True)[:limit]
 
-    def expand(self, entity_ids: list[str], hops: int = 2, max_relations: int = 120) -> list[dict]:
-        """Bounded BFS over relations; returns relations annotated with distance."""
+    def expand(self, entity_ids: list[str], hops: int = 2, max_relations: int = 120,
+               allowed_chunk_ids: set[str] | None = None) -> list[dict]:
+        """Bounded BFS over relations; returns relations annotated with distance.
+
+        When ``allowed_chunk_ids`` is supplied, relations whose source chunk is not
+        legal are neither returned nor traversed, so an illegal document cannot be
+        used as a bridge back into legal evidence.
+        """
         results: list[dict] = []
         seen_relations: set[str] = set()
         visited_nodes: set[str] = set(entity_ids)
@@ -196,6 +214,8 @@ class GraphStore:
                     continue
                 seen_relations.add(key)
                 relation = dict(self.relations[key])
+                if allowed_chunk_ids is not None and relation.get("chunk_id") not in allowed_chunk_ids:
+                    continue
                 relation["distance"] = distance + 1
                 results.append(relation)
                 for node in (relation["source"], relation["target"]):
@@ -206,7 +226,8 @@ class GraphStore:
                     break
         return results
 
-    def paths_between(self, source: str, target: str, max_hops: int = 4, max_paths: int = 5) -> list[dict]:
+    def paths_between(self, source: str, target: str, max_hops: int = 4, max_paths: int = 5,
+                      allowed_chunk_ids: set[str] | None = None) -> list[dict]:
         if source == target:
             return []
         queue = deque([(source, [], [])])
@@ -217,6 +238,8 @@ class GraphStore:
                 continue
             for key in self.out.get(current, []):
                 relation = self.relations[key]
+                if allowed_chunk_ids is not None and relation.get("chunk_id") not in allowed_chunk_ids:
+                    continue
                 next_node = relation["target"]
                 if next_node in nodes or next_node == current:
                     continue
@@ -228,6 +251,8 @@ class GraphStore:
                 queue.append((next_node, next_nodes, next_relations))
             for key in self.incoming.get(current, []):
                 relation = self.relations[key]
+                if allowed_chunk_ids is not None and relation.get("chunk_id") not in allowed_chunk_ids:
+                    continue
                 next_node = relation["source"]
                 if next_node in nodes or next_node == current:
                     continue
@@ -239,9 +264,10 @@ class GraphStore:
                 queue.append((next_node, next_nodes, next_relations))
         return paths
 
-    def chunk_refs(self, entity_ids: list[str], hops: int = 2, question: str = "") -> dict[str, dict]:
+    def chunk_refs(self, entity_ids: list[str], hops: int = 2, question: str = "",
+                   allowed_chunk_ids: set[str] | None = None) -> dict[str, dict]:
         """Map source chunks to graph scores and human-readable paths."""
-        relations = self.expand(entity_ids, hops=hops)
+        relations = self.expand(entity_ids, hops=hops, allowed_chunk_ids=allowed_chunk_ids)
         refs: dict[str, dict] = {}
         for relation in relations:
             chunk_id = relation.get("chunk_id")
@@ -250,18 +276,31 @@ class GraphStore:
             hint_bonus = 0.0
             if any(word in question for word in RELATION_HINTS.get(relation["relation"], ())):
                 hint_bonus = 0.08
-            base = float(relation.get("confidence", 0.8)) * (0.22 if relation["distance"] == 1 else 0.12)
+            confidence = max(0.0, min(float(relation.get("confidence", 0.8)), 1.0))
+            base = confidence * (0.22 if relation["distance"] == 1 else 0.12)
             score = base + hint_bonus
-            current = refs.setdefault(chunk_id, {"score": 0.0, "paths": []})
+            current = refs.setdefault(chunk_id, {"score": 0.0, "paths": [], "path_evidence": []})
             current["score"] = round(current["score"] + score, 4)
             if len(current["paths"]) < 6:
                 current["paths"].append(self.serialize_relation(relation))
+            if len(current["path_evidence"]) < 6:
+                current["path_evidence"].append({
+                    "path": self.serialize_relation(relation),
+                    "chunk_id": chunk_id,
+                    "doc_id": relation.get("doc_id", ""),
+                    "section": relation.get("section", ""),
+                    "relation": relation.get("relation", ""),
+                    "confidence": confidence,
+                    "evidence": relation.get("evidence", ""),
+                })
         return refs
 
     def serialize_relation(self, relation: dict) -> str:
         label = RELATION_LABELS.get(relation["relation"], relation["relation"])
         return (f"{self.name(relation['source'])} -[{label}]-> {self.name(relation['target'])}"
-                f"（{relation.get('doc_id', '')} / {relation.get('section', '')}）")
+                f"（{relation.get('doc_id', '')} / {relation.get('section', '')}"
+                f" / {relation.get('chunk_id', '')}）")
+
 
     def serialize_path(self, path: dict) -> str:
         parts = []

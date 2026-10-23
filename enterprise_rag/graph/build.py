@@ -135,6 +135,7 @@ def build_graph(force: bool = False, incremental: bool = True, namespace: str | 
             ))
 
     store.version = datetime.now(timezone(timedelta(hours=8))).isoformat()
+    pruned_dangling = store.prune_dangling()
     _backup_current()
     store.save(GRAPH_PATH)
     stats = store.stats()
@@ -146,10 +147,12 @@ def build_graph(force: bool = False, incremental: bool = True, namespace: str | 
         "doc_checksums": checksums,
         "changed_docs": sorted(changed_docs),
         "processed_chunks": processed_chunks,
+        "pruned_dangling_relations": pruned_dangling,
         "namespace": namespace or config.RAG_NAMESPACE,
     }, ensure_ascii=False, indent=2), encoding="utf-8")
     return {"stats": stats, "quality": quality, "changed_docs": sorted(changed_docs),
-            "processed_chunks": processed_chunks, "graph_path": str(GRAPH_PATH)}
+            "processed_chunks": processed_chunks, "pruned_dangling_relations": pruned_dangling,
+            "graph_path": str(GRAPH_PATH)}
 
 
 def main() -> None:

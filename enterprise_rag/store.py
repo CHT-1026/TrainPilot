@@ -11,7 +11,7 @@ from app.capabilities.retrieval.tokenizer import tokenize
 from app.database.connection import get_redis_client
 from app.infra.mysql import connection
 from enterprise_rag import config
-from enterprise_rag.embedding import EmbeddingIntegrityError, embed_query, hash_embed, validate_vectors
+from enterprise_rag.embedding import EmbeddingIntegrityError, hash_embed, validate_vectors
 
 logger = logging.getLogger(__name__)
 
@@ -19,11 +19,44 @@ _indexes: dict[str, "RagIndex"] = {}
 _versions: dict[str, str] = {}
 
 
+def _representation_text(chunk: dict) -> str:
+    """多表示索引：标题、章节、表头/表名与正文首句，帮助短问句命中文档主题。"""
+    stored = (chunk.get("representation") or "").strip()
+    if stored:
+        return stored
+    text = chunk.get("text", "") or ""
+    body = text.split("\n", 1)[1] if "\n" in text else text
+    lines = [line.strip() for line in body.splitlines() if line.strip()]
+    header = ""
+    if chunk.get("chunk_type") == "table" and lines:
+        cells = [cell.strip() for cell in lines[0].strip("|").split("|") if cell.strip()]
+        header = " ".join(cells[:8])
+    first = lines[1] if chunk.get("chunk_type") == "table" and len(lines) > 1 else (lines[0] if lines else "")
+    return " ".join(part for part in (
+        chunk.get("title", ""),
+        chunk.get("section", ""),
+        header,
+        first[:80],
+    ) if part)
+
+
+
 class RagIndex:
     def __init__(self, chunks: list[dict]):
         self.chunks = chunks
+        # 加载时绑定的索引版本；检索前与发布快照核对，避免同块数换版被漏检。
+        self.index_version = ""
         self.by_id = {chunk["chunk_id"]: chunk for chunk in chunks}
+        self.by_doc_ord: dict[str, list[dict]] = defaultdict(list)
+        for chunk in chunks:
+            self.by_doc_ord[chunk.get("doc_id", "")].append(chunk)
+        for doc_chunks in self.by_doc_ord.values():
+            doc_chunks.sort(key=lambda item: item.get("ord", 0))
         self.bm25 = BM25Index(chunks)
+        self.representation_chunks = [
+            dict(chunk, text=_representation_text(chunk)) for chunk in chunks
+        ]
+        self.representation_index = BM25Index(self.representation_chunks)
         self.matrix = self._build_matrix(chunks)
         self.family_docs: dict[str, list[dict]] = defaultdict(list)
         seen = set()
@@ -72,6 +105,18 @@ class RagIndex:
 
     def bm25_search(self, query: str, top_k: int) -> list[dict]:
         return self.bm25.search(query, top_k=top_k)
+
+    def representation_search(self, query: str, top_k: int) -> list[dict]:
+        """标题/章节/表头表示召回；返回真实块（不带表示文本）。"""
+        hits = self.representation_index.search(query, top_k=top_k)
+        results = []
+        for hit in hits:
+            chunk = self.by_id.get(hit["chunk_id"])
+            if chunk is not None:
+                current = dict(chunk)
+                current["representation_score"] = hit.get("score", 0.0)
+                results.append(current)
+        return results
 
     def vector_search(self, query_vector: np.ndarray, top_k: int) -> list[dict]:
         if not len(self.chunks):
@@ -148,6 +193,7 @@ def _load_chunks(namespace: str) -> list[dict]:
                 SELECT c.id AS chunk_id, c.doc_id, c.section, c.chunk_type, c.ord,
                        c.text, c.token_count, c.embedding_json,
                        c.embedding_dim, c.embedding_model, c.embedding_version,
+                       c.metadata_json, c.representation,
                        d.title, d.version, d.effective_date, d.visibility, d.department,
                        d.namespace, d.author, d.doc_family, d.category, d.format,
                        d.doc_created_at, d.doc_updated_at, d.source_path
@@ -164,6 +210,17 @@ def _load_chunks(namespace: str) -> list[dict]:
             value = row.get(field)
             if value and hasattr(value, "isoformat"):
                 row[field] = value.isoformat()
+        metadata_raw = row.pop("metadata_json", None)
+        if metadata_raw:
+            try:
+                metadata = json.loads(metadata_raw) if isinstance(metadata_raw, str) else metadata_raw
+            except (TypeError, ValueError):
+                metadata = {}
+            if isinstance(metadata, dict):
+                for field in ("page", "paragraph", "anchor", "extractor_version", "ocr",
+                              "parent_id", "prev_id", "next_id", "source_hash"):
+                    if field in metadata:
+                        row[field] = metadata[field]
         payload = row.pop("embedding_json", None)
         _validate_embedding_metadata(row)
         if not payload:
@@ -177,11 +234,17 @@ def _load_chunks(namespace: str) -> list[dict]:
 
 def load_index(namespace: str | None = None, force: bool = False) -> RagIndex:
     namespace = namespace or config.RAG_NAMESPACE
+    from app.capabilities.retrieval.revision import access_revision
+
+    acl_revision = access_revision(namespace)
     version = _current_version(namespace)
     index = _indexes.get(namespace)
-    if force or index is None or version != _versions.get(namespace, ""):
+    if force or index is None or version != _versions.get(namespace, "") \
+            or acl_revision != getattr(index, "access_revision", ""):
         chunks = _load_chunks(namespace)
         index = RagIndex(chunks)
+        index.index_version = version
+        index.access_revision = acl_revision
         _indexes[namespace] = index
         _versions[namespace] = version
         logger.info("RAG 索引已加载：namespace=%s 文档=%s 块=%s", namespace, len(index.family_docs), len(chunks))
@@ -207,7 +270,40 @@ def index_stats(namespace: str | None = None) -> dict:
         "index_version": _versions.get(namespace, ""),
         "categories": sorted({chunk.get("category") for chunk in index.chunks if chunk.get("category")}),
         "formats": sorted({chunk.get("format") for chunk in index.chunks if chunk.get("format")}),
+        "ann": ann_recommendation(index),
+        "query_cache": _cache_stats_safe(),
     }
+
+
+def ann_recommendation(index: "RagIndex | None" = None, threshold: int | None = None) -> dict:
+    """按规模与过滤能力决定是否值得迁移 ANN/向量库（S35）。"""
+    threshold = threshold or config.ANN_CHUNK_THRESHOLD
+    chunks = len(index.chunks) if index is not None else 0
+    dim = int(index.matrix.shape[1]) if index is not None and len(index.matrix) else config.EMBEDDING_DIM
+    estimated_mb = round(chunks * dim * 4 / (1024 * 1024), 3)
+    return {
+        "chunks": chunks,
+        "dim": dim,
+        "estimated_vector_mb": estimated_mb,
+        "threshold": threshold,
+        "recommended": chunks >= threshold,
+        "reason": (
+            f"当前 {chunks} 块低于 {threshold} 块阈值，进程内精确扫描仍可控；"
+            "达到阈值后再评估带过滤能力的 ANN 或向量数据库"
+        ) if chunks < threshold else (
+            f"当前 {chunks} 块达到 {threshold} 块阈值，应评估 ANN/向量库的过滤下推与一致性"
+        ),
+    }
+
+
+def _cache_stats_safe() -> dict:
+    try:
+        from enterprise_rag.embedding import cache_stats
+
+        return cache_stats()
+    except Exception:
+        return {}
+
 
 
 def document_list(namespace: str | None = None) -> list[dict]:
@@ -235,4 +331,8 @@ def document_list(namespace: str | None = None) -> list[dict]:
 
 
 def query_vector(text: str) -> np.ndarray:
-    return embed_query(text)
+    from enterprise_rag.budget import current_budget
+    from enterprise_rag.embedding import embed_query_cached
+
+    return embed_query_cached(text, budget=current_budget())
+

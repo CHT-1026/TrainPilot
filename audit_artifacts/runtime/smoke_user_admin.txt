@@ -1,8 +1,0 @@
-list users 7
-employee list blocked
-set manager ok
-non-manager rejected
-missing user rejected
-restore manager ok
-USER_ADMIN_PASS
-

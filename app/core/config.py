@@ -71,3 +71,11 @@ class Settings(BaseSettings):
 @lru_cache(maxsize=1)
 def get_settings() -> Settings:
     return Settings()
+
+
+def thinking_extra_body() -> dict | None:
+    """Explicitly forward enable_thinking; some models require True and reject False."""
+    value = get_settings().openai_enable_thinking.strip().lower()
+    if value in {"true", "false"}:
+        return {"enable_thinking": value == "true"}
+    return None

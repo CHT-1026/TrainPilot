@@ -19,7 +19,7 @@ load_dotenv(ROOT / ".env.local", override=False)
 load_dotenv(ROOT / ".env", override=False)
 
 from app.capabilities.retrieval.search import retrieve  # noqa: E402
-from app.core.config import get_settings  # noqa: E402
+from app.core.config import get_settings, thinking_extra_body  # noqa: E402
 from app.domain.user.models import UserContext  # noqa: E402
 
 GOLDEN = ROOT / "eval" / "golden_set.jsonl"
@@ -102,11 +102,7 @@ async def evaluate_answers(items: list[dict], user: UserContext, limit: int) -> 
     from app.workflows.chat_nodes.policy_qa import create_policy_nodes
 
     settings = get_settings()
-    extra_body = (
-        {"enable_thinking": False}
-        if settings.openai_enable_thinking.strip().lower() == "false"
-        else None
-    )
+    extra_body = thinking_extra_body()
     llm = ChatOpenAI(
         model=settings.openai_model,
         api_key=settings.openai_api_key,

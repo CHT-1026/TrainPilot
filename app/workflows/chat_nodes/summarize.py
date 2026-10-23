@@ -4,28 +4,21 @@ import logging
 from langchain_openai import ChatOpenAI
 
 from app.workflows.chat_state import ChatState
+from app.workflows.retention import KEEP_RECENT, MIN_NEW_MESSAGES, retention_plan, should_summarize
 
 logger = logging.getLogger(__name__)
-
-MIN_NEW_MESSAGES = 12
-KEEP_RECENT = 8
-
-
-def should_summarize(messages: list[dict], summarized_count: int) -> bool:
-    if not messages:
-        return False
-    return len(messages) - max(0, summarized_count) >= MIN_NEW_MESSAGES
 
 
 def create_summarize_node(llm: ChatOpenAI):
     def summarize_node(state: ChatState):
         messages = state.get("messages", []) or []
         summarized_count = int(state.get("summarized_count", 0) or 0)
-        if not should_summarize(messages, summarized_count):
+        plan = retention_plan(messages, summarized_count)
+        if not plan["should_summarize"]:
             return {}
 
-        end = max(summarized_count, len(messages) - KEEP_RECENT)
-        old_messages = messages[summarized_count:end]
+        start, end = plan["summarize_range"]
+        old_messages = messages[start:end]
         if not old_messages:
             return {}
 

@@ -35,7 +35,10 @@ def create_delete_nodes():
             "draft": {"app_id": app_id, "application": result.data.get("application")},
             "created_at": datetime.now().isoformat(),
         }
-        return {"task_result": result.message, "pending_action": pending_action}
+        draft_version = int(state.get("draft_version", 0) or 0) + 1
+        pending_action["draft_version"] = draft_version
+        return {"task_result": result.message, "pending_action": pending_action,
+                "draft_version": draft_version}
 
     nodes["delete"] = delete_node
     return nodes

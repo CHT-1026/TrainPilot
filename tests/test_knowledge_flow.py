@@ -82,12 +82,7 @@ def build_graph(llm):
     return builder.compile(checkpointer=MemorySaver())
 
 
-class MemoryRedis:
-    def __init__(self): self.rows = {}
-    def hget(self, key, field): return self.rows.get(key, {}).get(field)
-    def hset(self, key, field, value): self.rows.setdefault(key, {})[field] = value
-    def expire(self, key, seconds): return True
-
+from tests.workflow_fakes import TransactionRedis as MemoryRedis
 
 async def run_route(graph, question, *, redis=None, thread=None):
     redis = MemoryRedis() if redis is None else redis
@@ -157,7 +152,7 @@ class KnowledgeFlowTest(unittest.IsolatedAsyncioTestCase):
             events, _ = await run_route(graph, "那它共有几个部门？", thread="followup", redis=redis)
         actual_question = retrieval.call_args.args[0]
         self.assertIn("澜图公司组织架构是什么", actual_question)
-        self.assertIn("追问：那它共有几个部门", actual_question)
+        self.assertIn("那它共有几个部门", actual_question)
         self.assertNotIn("UNTRUSTED_ASSISTANT_CLAIM", actual_question)
         self.assertNotIn("999", final_reply(events)["response"])
 

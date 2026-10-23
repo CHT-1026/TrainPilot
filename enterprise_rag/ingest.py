@@ -110,7 +110,9 @@ def _upsert_document(conn, record: dict, path: Path) -> None:
         )
 
 
-def _replace_chunks(conn, doc_id: str, chunks: list[dict]) -> None:
+def _replace_chunks(conn, doc_id: str, chunks: list[dict], source_hash: str = "") -> None:
+    from enterprise_rag.store import _representation_text
+
     with conn.cursor() as cursor:
         cursor.execute("DELETE FROM kb_chunks WHERE doc_id = %s", (doc_id,))
         if not chunks:
@@ -119,8 +121,9 @@ def _replace_chunks(conn, doc_id: str, chunks: list[dict]) -> None:
             """
             INSERT INTO kb_chunks
                 (id, doc_id, section, chunk_type, ord, text, token_count,
-                 embedding_json, embedding_dim, embedding_model, embedding_version)
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                 embedding_json, embedding_dim, embedding_model, embedding_version,
+                 metadata_json, representation)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
             """,
             [
                 (
@@ -135,6 +138,18 @@ def _replace_chunks(conn, doc_id: str, chunks: list[dict]) -> None:
                     config.EMBEDDING_DIM,
                     config.EMBEDDING_MODEL,
                     config.EMBEDDING_VERSION,
+                    json.dumps({
+                        "page": chunk.get("page"),
+                        "paragraph": chunk.get("paragraph"),
+                        "anchor": chunk.get("anchor", ""),
+                        "extractor_version": chunk.get("extractor_version", ""),
+                        "ocr": bool(chunk.get("ocr", False)),
+                        "parent_id": chunk.get("parent_id", ""),
+                        "prev_id": chunk.get("prev_id", ""),
+                        "next_id": chunk.get("next_id", ""),
+                        "source_hash": source_hash,
+                    }, ensure_ascii=False),
+                    _representation_text(chunk),
                 )
                 for chunk in chunks
             ],
@@ -188,7 +203,8 @@ def ingest(limit: int | None = None, clean: bool = True, namespace: str | None =
 
             with transaction() as conn:
                 _upsert_document(conn, record, path)
-                _replace_chunks(conn, record["doc_id"], chunks)
+                _replace_chunks(conn, record["doc_id"], chunks,
+                                source_hash=record.get("checksum", ""))
             documents += 1
             chunks_total += len(chunks)
             if index % 10 == 0:
@@ -203,6 +219,13 @@ def ingest(limit: int | None = None, clean: bool = True, namespace: str | None =
     except Exception as exc:
         logger.warning("刷新索引版本失败: %s", exc)
         version = ""
+    try:
+        from enterprise_rag.release import active_release, invalidate_release
+
+        if active_release(namespace).get("status") == "active":
+            invalidate_release(namespace, "corpus_ingested")
+    except Exception as exc:
+        logger.warning("发布快照失效标记失败: %s", exc)
 
     summary = {
         "namespace": namespace,

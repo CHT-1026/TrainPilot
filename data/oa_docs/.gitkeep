@@ -1,2 +1,0 @@
-# 把知识库文档(PDF / Markdown / txt)放在此目录,然后执行:
-#   docker compose exec api python -m rag.ingest

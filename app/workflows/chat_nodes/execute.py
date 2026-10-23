@@ -26,6 +26,35 @@ def create_execution_nodes():
         actor = actor_from_state(state)
         trace_id = state.get("trace_id", "")
 
+        pending_version = int(pending.get("draft_version", 0) or 0)
+        current_version = int(state.get("draft_version", 0) or 0)
+        if pending_version != current_version:
+            from app.domain.common.results import ToolResult
+
+            result = ToolResult.failure(
+                "STALE_DRAFT",
+                "待确认草稿已更新，请重新核对当前内容后再确认，未提交任何变更。",
+            )
+            logger.warning("拒绝提交过期草稿: action=%s pending=%s current=%s",
+                           action_id, pending_version, current_version)
+            return {
+                "task_result": result.message,
+                "last_result": result.to_dict(),
+                "pending_action": None,
+            }
+
+        from app.domain.common.tool_contract import contract_error, validate_execution
+
+        contract = validate_execution(action_type, draft, action_id)
+        if not contract.ok:
+            result = contract_error(action_type, contract)
+            logger.warning("待确认操作未通过工具契约: %s / %s", action_type, contract.code)
+            return {
+                "task_result": result.message,
+                "last_result": result.to_dict(),
+                "pending_action": None,
+            }
+
         if action_type == "submit_leave":
             result = leave_service.submit(
                 actor, draft, idempotency_key=action_id, trace_id=trace_id

@@ -7,7 +7,7 @@ from langgraph.checkpoint.redis.aio import AsyncRedisSaver
 from langgraph.constants import END
 from langgraph.graph import StateGraph
 
-from app.core.config import get_settings
+from app.core.config import get_settings, thinking_extra_body
 from app.database.connection import get_async_redis_client
 from app.workflows.chat_nodes_factory import create_all_nodes
 from app.workflows.chat_state import ChatState
@@ -29,6 +29,7 @@ TASK_TO_NODE = {
     "confirm_action": "execute_pending",
     "cancel_action": "clear_pending",
     "clarify": "clarify",
+    "record_unsupported": "record_unsupported",
 }
 
 
@@ -36,9 +37,7 @@ async def create_chat_graph():
     settings = get_settings()
     logger.info("创建对话工作流图，模型=%s", settings.openai_model)
 
-    extra_body = None
-    if settings.openai_enable_thinking.strip().lower() == "false":
-        extra_body = {"enable_thinking": False}
+    extra_body = thinking_extra_body()
 
     llm = ChatOpenAI(
         model=settings.openai_model,
@@ -74,7 +73,12 @@ async def create_chat_graph():
     builder.add_edge("response_generator", "summarize")
     builder.add_edge("summarize", END)
 
-    checkpointer = AsyncRedisSaver(redis_client=get_async_redis_client())
+    from app.workflows.retention import CHECKPOINT_RETENTION_DAYS
+
+    checkpointer = AsyncRedisSaver(
+        redis_client=get_async_redis_client(),
+        ttl={"default_ttl": CHECKPOINT_RETENTION_DAYS * 24 * 60},
+    )
     await checkpointer.setup()
 
     return builder.compile(checkpointer=checkpointer)

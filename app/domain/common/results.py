@@ -11,6 +11,7 @@ class ToolResult(BaseModel):
     message: str = ""
     retryable: bool = False
     meta: dict[str, Any] = Field(default_factory=dict)
+    schema_version: str = "1.0"
 
     @classmethod
     def success(cls, data: dict[str, Any] | None = None, message: str = "") -> "ToolResult":

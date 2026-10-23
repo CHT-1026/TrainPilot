@@ -88,7 +88,16 @@ def chunk_document(document: dict, blocks: list[dict]) -> list[dict]:
                     "ord": ord_index,
                     "text": text,
                     "token_count": len(tokenize(text)),
+                    "page": block.get("page"),
+                    "paragraph": block.get("paragraph"),
+                    "anchor": block.get("anchor", ""),
+                    "extractor_version": block.get("extractor_version", ""),
+                    "ocr": bool(block.get("ocr", False)),
+                    "parent_id": document["doc_id"],
                 }
             )
             ord_index += 1
+    for position, chunk in enumerate(chunks):
+        chunk["prev_id"] = chunks[position - 1]["chunk_id"] if position else ""
+        chunk["next_id"] = chunks[position + 1]["chunk_id"] if position + 1 < len(chunks) else ""
     return chunks
