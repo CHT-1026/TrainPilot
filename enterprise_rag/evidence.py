@@ -7,7 +7,7 @@ from decimal import Decimal, InvalidOperation
 from enterprise_rag.citations import chunk_body
 
 UNIT_RE = re.compile(
-    r"(?<![\d.])[-−]?\d[\d,\.]*\s*(?:ms|kHz|Hz|位|轴|小时|℃|级|mm|kg|%|亿元|万元|元|台|人|天|分钟|秒|MPa|N·m|个)"
+    r"(?<![\d.])[-−]?\d[\d,\.]*\s*(?:ms|kHz|Hz|位|轴|小时|℃|级|mm|kg|%|亿元|万元|元|万台|台|万人|人|天|分钟|秒|MPa|N·m|个)"
 )
 MODEL_RE = re.compile(
     r"(?<![A-Za-z0-9_.-])(?:LT|Lantu)[-A-Za-z0-9]*[A-Za-z0-9]+"
@@ -53,7 +53,7 @@ def _sentences(answer: str) -> list[str]:
 
 
 _EXPR = re.compile(
-    r"(?<![\d.])(\d[\d,]*(?:\.\d+)?(?:\s*[+\-*/×÷x]\s*\d[\d,]*(?:\.\d+)?)+)"
+    r"(?<![\d.])(\d[\d,]*(?:\.\d+)?(?:\s*[+\-−*/×÷x]\s*\d[\d,]*(?:\.\d+)?)+)"
     r"\s*[=＝]\s*(\d[\d,]*(?:\.\d+)?)"
 )
 
@@ -62,7 +62,7 @@ def _derived_numbers(answer: str) -> set[float]:
     """Return verified arithmetic results explicitly shown in the answer."""
     values: set[float] = set()
     for match in _EXPR.finditer(answer or ""):
-        expression = match.group(1).replace(",", "").replace("×", "*").replace("÷", "/")
+        expression = match.group(1).replace(",", "").replace("×", "*").replace("÷", "/").replace("−", "-")
         expression = re.sub(r"(?<=\d)\s*[xX]\s*(?=\d)", "*", expression)
         if not re.fullmatch(r"[\d+\-*/().\s]+", expression):
             continue
@@ -97,6 +97,8 @@ def quantity_key(token: str) -> tuple[Decimal, str] | None:
         value = Decimal(value.replace(",", "").replace("−", "-"))
     except InvalidOperation:
         return None
+    if unit in {"万台", "万人"}:
+        return value * 10000, unit[1:]
     return (value * _MONEY_SCALE[unit], "元") if unit in _MONEY_SCALE else (value, unit.lower())
 
 
@@ -132,7 +134,7 @@ def supported_derived_quantities(answer: str, chunks: list[dict]) -> set[tuple[D
         unit = _NUMBER.match(quantity.group(0)).group(2).strip()
         if unit == "%":
             continue
-        expression = match.group(1).replace(",", "").replace("×", "*").replace("÷", "/")
+        expression = match.group(1).replace(",", "").replace("×", "*").replace("÷", "/").replace("−", "-")
         expression = re.sub(r"(?<=\d)\s*[xX]\s*(?=\d)", "*", expression)
         if "*" in expression or "/" in expression:
             # Same-unit operands alone cannot prove the dimension of a product.

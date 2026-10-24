@@ -7,6 +7,7 @@ from functools import lru_cache
 
 from app.capabilities.retrieval.tokenizer import tokenize
 from enterprise_rag import config
+from enterprise_rag.budget import model_usage_available
 
 logger = logging.getLogger(__name__)
 
@@ -110,6 +111,13 @@ def extract_time(question: str) -> tuple[str | None, str]:
     return None, ""
 
 
+def resolve_relative_years(question: str, reference_year: int | None = None) -> str:
+    """Resolve user-authored relative years; never rewrite documentary clocks."""
+    year = date.today().year if reference_year is None else reference_year
+    offsets = {"今年":0, "去年":-1, "前年":-2, "明年":1}
+    return re.sub(r"今年|去年|前年|明年", lambda m: f"{year+offsets[m.group(0)]}年", question or "")
+
+
 def rewrite_query(question: str) -> dict:
     question = (question or "").strip()
     lowered = question.lower()
@@ -139,6 +147,52 @@ def rewrite_query(question: str) -> dict:
     }
 
 
+_TOPIC_RULES = (
+    ("business", "经营", r"经营|业绩|增长|营收|营业收入|净利润|订单|销售额|经营现金流",
+     "经营业绩 营业收入 净利润 新签订单 同比增长",
+     r"(?:营业收入|营收|净利润|归母净利润|新签订单|订单金额|销售额|经营现金流)\s*(?:为|达|达到|实现|约|共|总计|合计|[:：])?\s*[-−]?\d[\d,.]*\s*(?:亿元|万元|元)"
+     r"|(?:营业收入|营收|净利润|新签订单)\s*(?:同比|较上年|较去年).{0,12}\d[\d.]*\s*%"),
+    ("research", "研发", r"研发|技术投入|技术进展|创新投入", "研发投入 研发费用 研发人员 技术进展",
+     r"研发(?:投入|费用|费用率|人员|团队)|技术(?:投入|进展|成果)|授权专利"),
+    ("production", "生产", r"产能|生产效率|交付周期|制造效率|良率", "产能 生产效率 交付周期 良率",
+     r"产能|生产效率|交付周期|制造效率|良率"),
+    ("workforce", "人员", r"员工人数|员工总数|人员结构|员工结构|编制", "员工人数 员工总数 人员结构 编制",
+     r"员工(?:人数|总数|结构)|人员结构|编制"),
+)
+
+
+def topic_matches(topic_id: str, text: str) -> bool:
+    """A topic hit is substantive evidence, not a mention in another metric.
+
+    In particular, “研发投入占营业收入13.8%” supplies research evidence but
+    no realized operating revenue. This is coverage, not a claim of causality.
+    """
+    return any(key == topic_id and re.search(pattern, text)
+               for key, _, _, _, pattern in _TOPIC_RULES)
+
+
+def _bounded_topics(question: str) -> tuple[list[dict], list[str]]:
+    from enterprise_rag.facts import named_subjects
+
+    if not re.search(r"结合|联系|关系|与|和|及|分别|同时|对比|比较|占", question):
+        return [], []
+    matches = []
+    for key, label, trigger, terms, _ in _TOPIC_RULES:
+        hits = [m for m in re.finditer(trigger, question)
+                if not re.search(r"(?:不要讨论|不谈|不涉及|无需讨论|排除)[^，。；]*$", question[:m.start()])]
+        if hits:
+            matches.append((hits[0].start(), key, label, terms))
+    if len(matches) < 2:
+        return [], []
+    subjects = sorted({re.sub(r"^(?:结合|关于|请问|比较|对比|解释|说明|分析|介绍)+", "", item)
+                       for item in named_subjects(question)})
+    years = list(dict.fromkeys(re.findall(r"(?<!\d)(?:19|20)\d{2}(?!\d)", question)))
+    anchor = " ".join(subjects + [year + "年" for year in years])
+    topics = [{"id":key, "label":label, "query":f"{anchor} {terms}".strip()}
+              for _, key, label, terms in sorted(matches)[:3]]
+    return topics, subjects
+
+
 def reasoning_plan(question: str) -> dict:
     """Bounded query decomposition. Fact periods are not policy effective dates."""
     years = list(dict.fromkeys(re.findall(r"(?:19|20)\d{2}", question)))
@@ -154,7 +208,16 @@ def reasoning_plan(question: str) -> dict:
     reporting = bool(
         re.search(r"的上级|的直属上级|的下属|直接下属|下属有(?:哪些|谁)|下属是谁|向谁汇报|汇报给谁|汇报关系|什么关系|关系是什么", question)
     )
-    complex_query = count or temporal or numeric or bridge or comparison or reporting or len(years) > 1
+    # 开放式综合题需要跨主题归纳，但不能无限扩张；单独标记后使用更短、
+    # 更严格的首轮生成，避免长 JSON 先撞上客户端超时。
+    synthesis = bool(re.search(
+        r"结合|有依据的联系|哪些.{0,8}联系|联系.{0,8}(?:增长|投入|经营|技术)"
+        r"|区分.{0,8}事实.{0,8}推断|增长.{0,8}技术投入|技术投入.{0,8}增长",
+        question,
+    )) and not comparison
+    topics, topic_subjects = _bounded_topics(question)
+    existing_complex = count or temporal or numeric or bridge or comparison or reporting or len(years) > 1
+    complex_query = existing_complex or bool(topics)
     # 复杂度决定有限跳数，而不是让模型自由循环。
     relation_cues = len(re.findall(r"负责|属于|上级|下属|汇报|配套|客户|项目|版本|架构", question))
     multi_hop = bool(re.search(
@@ -164,7 +227,7 @@ def reasoning_plan(question: str) -> dict:
     ))
     max_hops = 2 if (multi_hop or reporting or comparison) else (1 if relation_cues else 0)
     max_hops = min(max_hops, config.MAX_HOPS)
-    queries = [question]
+    queries = [question] + [topic["query"] for topic in topics]
     if count:
         queries += [question + " 组织清单 部门名称", question + " 部门职责 组织架构",
                     "公司组织架构 一级部门 部门清单 汇报关系"]
@@ -202,12 +265,16 @@ def reasoning_plan(question: str) -> dict:
     # A report's 2025 figures can be published in 2026. Only policy/effectivity
     # questions implicitly apply an effective-date snapshot; explicit as_of wins.
     policy_time = bool(re.search(r"制度|标准|政策|办法|规章|差旅|考勤|折扣|服务等级|SLA|有效|生效", question, re.I))
-    policy_as_of = not (comparison or len(years) > 1 or temporal or numeric)
+    policy_as_of = not (comparison or len(years) > 1 or temporal or numeric or topics)
     return {"complex": complex_query, "enumeration": count, "temporal": temporal,
             "bridge": bridge, "comparison": comparison, "reporting": reporting,
+            "synthesis": synthesis,
             "queries": list(dict.fromkeys(queries))[:10], "policy_as_of": policy_as_of,
             "strict_effective_date": policy_time, "max_hops": max_hops,
-            "complexity": ("high" if multi_hop or reporting or comparison or len(years) > 1
+            "topics": topics, "topic_subjects": topic_subjects,
+            "bounded_topic_only": bool(topics) and not existing_complex,
+            "complexity": ("high" if synthesis or multi_hop or reporting or comparison
+                           or len(years) > 1 or topics
                            else "medium" if complex_query else "low")}
 
 
@@ -279,7 +346,7 @@ def _llm_query_plan_cached(question: str, model: str) -> tuple[str, ...]:
                 max_tokens=220,
                 response_format={"type": "json_object"},
                 messages=[{"role": "user", "content": prompt}],
-                extra_body=thinking_extra_body(),
+                extra_body=thinking_extra_body(model),
             )
         except Exception:
             if budget is not None:
@@ -288,6 +355,7 @@ def _llm_query_plan_cached(question: str, model: str) -> tuple[str, ...]:
         if budget is not None:
             usage = getattr(response, "usage", None)
             budget.note_model_usage(
+                available=model_usage_available(usage),
                 prompt_tokens=int(getattr(usage, "prompt_tokens", 0) or 0) if usage else 0,
                 completion_tokens=int(getattr(usage, "completion_tokens", 0) or 0) if usage else 0,
             )
@@ -374,7 +442,7 @@ def _hyde_hypothesis_cached(question: str, model: str) -> tuple[str, ...]:
                 temperature=0,
                 max_tokens=180,
                 messages=[{"role": "user", "content": prompt}],
-                extra_body=thinking_extra_body(),
+                extra_body=thinking_extra_body(model),
             )
         except Exception:
             if budget is not None:
@@ -383,6 +451,7 @@ def _hyde_hypothesis_cached(question: str, model: str) -> tuple[str, ...]:
         if budget is not None:
             usage = getattr(response, "usage", None)
             budget.note_model_usage(
+                available=model_usage_available(usage),
                 prompt_tokens=int(getattr(usage, "prompt_tokens", 0) or 0) if usage else 0,
                 completion_tokens=int(getattr(usage, "completion_tokens", 0) or 0) if usage else 0,
                 total_tokens=int(getattr(usage, "total_tokens", 0) or 0) if usage else 0,

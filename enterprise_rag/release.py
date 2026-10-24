@@ -1,13 +1,14 @@
-"""版本化发布：把语料、向量索引、图谱与 ACL 版本绑定为同一快照。
+"""发布绑定：校验语料、索引、图谱和 ACL 的资源身份。
 
-发布失败保留旧快照；权限/语料变更会使旧快照失效并递增 acl_version。
-本模块不替代鉴权，只保证同一次回答引用的索引与图谱属于同一发布版本。
+候选校验失败不改 current 指针；显式失效操作更新 ACL 版本标记。
+本模块不替代鉴权、不可变资源或并发读隔离；原子写 current 指针不等于资源切换隔离。
 """
 from __future__ import annotations
 
 import hashlib
 import json
 import os
+import re
 import tempfile
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
@@ -29,7 +30,10 @@ def _digest(payload: dict) -> str:
 
 
 def release_path(namespace: str | None = None) -> Path:
-    return CURRENT_DIR / f"{namespace or config.RAG_NAMESPACE}.json"
+    name = namespace or config.RAG_NAMESPACE
+    if not re.fullmatch(r"[A-Za-z0-9_-]{1,32}", name):
+        raise ValueError("命名空间必须为1至32位字母、数字、下划线或连字符")
+    return CURRENT_DIR / f"{name}.json"
 
 
 def _atomic_write(path: Path, payload: dict) -> None:
@@ -134,17 +138,17 @@ def prepare_release(
     return payload
 
 
-def publish_release(namespace: str | None = None, **bindings) -> dict:
-    """Publish explicit bindings; CLI validates the candidate before this step."""
-    candidate = prepare_release(namespace, **bindings)
-    return _write_release(candidate["namespace"], candidate)
-
-
 def activate_release(candidate: dict, *, index_stats: dict, graph_stats: dict,
                      corpus_checksum: str) -> dict:
     """Verify actual resources before the only mutation of the current pointer."""
     issues = verify_release(candidate, index_stats=index_stats, graph_stats=graph_stats,
                             corpus_checksum=corpus_checksum)
+    if not candidate.get("namespace") or index_stats.get("namespace") != candidate["namespace"]:
+        issues.append({"code": "NAMESPACE_MISMATCH", "detail": "实际索引命名空间与候选不同"})
+    if not index_stats.get("index_version") or not graph_stats.get("version"):
+        issues.append({"code": "RESOURCE_VERSION_MISSING", "detail": "发布必须验证实际索引和图谱版本"})
+    if "namespace" not in graph_stats:
+        issues.append({"code": "GRAPH_NAMESPACE_MISSING", "detail": "发布必须验证实际图谱命名空间"})
     if issues:
         raise ValueError("发布候选校验失败: " + ", ".join(item["code"] for item in issues))
     return _write_release(candidate["namespace"], candidate)
@@ -186,6 +190,11 @@ def verify_release(release: dict, *, index_stats: dict | None = None,
                 and int(release["index_chunks"]) != int(index_stats["chunks"]):
             issues.append({"code": "INDEX_CHUNK_COUNT_MISMATCH", "detail": "块数与发布快照不一致"})
     if graph_stats:
+        if "namespace" in graph_stats:
+            if not graph_stats["namespace"]:
+                issues.append({"code": "GRAPH_NAMESPACE_MISSING", "detail": "无法确定实际图谱命名空间"})
+            elif graph_stats["namespace"] != release.get("namespace"):
+                issues.append({"code": "GRAPH_NAMESPACE_MISMATCH", "detail": "实际图谱命名空间与发布快照不一致"})
         if "version" in graph_stats and (not release.get("graph_version") or \
                 release["graph_version"] != graph_stats["version"]):
             issues.append({"code": "GRAPH_VERSION_MISMATCH", "detail": "图谱已变化，需重新发布"})

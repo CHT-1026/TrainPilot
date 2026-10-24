@@ -24,7 +24,9 @@ def _doc_name(store: GraphStore, doc_id: str) -> str:
 def load_graph() -> GraphStore:
     if not GRAPH_PATH.exists():
         return GraphStore()
-    mtime = GRAPH_PATH.stat().st_mtime
+    metadata_path = GRAPH_PATH.with_name("graph_meta.json")
+    mtime = (GRAPH_PATH.stat().st_mtime_ns,
+             metadata_path.stat().st_mtime_ns if metadata_path.exists() else None)
     if _cache["mtime"] != mtime:
         _cache["store"] = GraphStore.load(GRAPH_PATH)
         _cache["mtime"] = mtime

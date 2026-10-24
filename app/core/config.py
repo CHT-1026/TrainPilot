@@ -73,9 +73,15 @@ def get_settings() -> Settings:
     return Settings()
 
 
-def thinking_extra_body() -> dict | None:
-    """Explicitly forward enable_thinking; some models require True and reject False."""
-    value = get_settings().openai_enable_thinking.strip().lower()
+def thinking_extra_body(model: str | None = None, *, value: str | None = None) -> dict | None:
+    """Translate the configured switch into the selected model's API parameter."""
+    if model is None or value is None:
+        settings = get_settings()
+        model = model or settings.openai_model
+        value = settings.openai_enable_thinking if value is None else value
+    value = value.strip().lower()
     if value in {"true", "false"}:
+        if model.lower().startswith("deepseek"):
+            return {"thinking": {"type": "enabled" if value == "true" else "disabled"}}
         return {"enable_thinking": value == "true"}
     return None

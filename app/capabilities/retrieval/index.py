@@ -23,6 +23,7 @@ _access_versions: dict[str, str] = {}
 
 class BM25Index:
     def __init__(self, chunks: list[dict]):
+        self.index_version = ""
         self.chunks = chunks
         self.doc_tokens = [tokenize(chunk.get("text", "")) for chunk in chunks]
         self.doc_tf = [Counter(tokens) for tokens in self.doc_tokens]
@@ -105,8 +106,9 @@ def _current_version(namespace: str = DEFAULT_NAMESPACE) -> str:
         if value is None and namespace == DEFAULT_NAMESPACE:
             value = client.get("kb_index_version")
         return value or ""
-    except Exception:
-        return ""
+    except Exception as exc:
+        from app.capabilities.retrieval.revision import IndexRevisionUnavailable
+        raise IndexRevisionUnavailable("制度库索引版本存储不可用") from exc
 
 
 def get_index(namespace: str = DEFAULT_NAMESPACE, force: bool = False) -> BM25Index:
@@ -117,6 +119,7 @@ def get_index(namespace: str = DEFAULT_NAMESPACE, force: bool = False) -> BM25In
             or acl_revision != _access_versions.get(namespace):
         chunks = _load_chunks(namespace)
         index = BM25Index(chunks)
+        index.index_version = version
         _indexes[namespace] = index
         _index_versions[namespace] = version
         _access_versions[namespace] = acl_revision
@@ -134,5 +137,5 @@ def index_stats(namespace: str = DEFAULT_NAMESPACE) -> dict:
         "namespace": namespace,
         "chunks": len(index.chunks),
         "documents": len({chunk["doc_id"] for chunk in index.chunks}),
-        "version": _index_versions.get(namespace, ""),
+        "version": index.index_version,
     }

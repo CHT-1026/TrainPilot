@@ -17,20 +17,25 @@ def choose_model(complexity: str = "medium", task: str = "answer") -> str:
     return config.LLM_MODEL
 
 
-def max_tokens_for(complexity: str = "medium", task: str = "answer") -> int:
+def max_tokens_for(complexity: str = "medium", task: str = "answer",
+                   synthesis: bool = False) -> int:
     if task == "query_plan":
         return 220
-    # 复杂对比题需要多段 claim；预留足够输出，避免 JSON 被截断后整次调用作废。
-    return 2600 if complexity == "high" else 1800
+    # 综合题只保留有限 claim；过长输出既拖慢网关，也更容易在截断后整次作废。
+    if synthesis:
+        return config.MAX_TOKENS_SYNTHESIS
+    if complexity == "high":
+        return config.MAX_TOKENS_COMPLEX
+    return config.MAX_TOKENS_MEDIUM
 
 
 def route_for(plan: dict | None = None, task: str = "answer") -> dict:
-    complexity = (plan or {}).get("complexity")
-    if not complexity:
-        complexity = "medium"
+    plan = plan or {}
+    complexity = plan.get("complexity") or "medium"
+    synthesis = bool(plan.get("synthesis"))
     return {
         "task": task,
         "complexity": complexity,
         "model": choose_model(complexity, task),
-        "max_tokens": max_tokens_for(complexity, task),
+        "max_tokens": max_tokens_for(complexity, task, synthesis=synthesis),
     }

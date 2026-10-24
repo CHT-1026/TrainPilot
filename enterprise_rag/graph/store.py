@@ -34,6 +34,9 @@ class GraphStore:
     def __init__(self, data: dict | None = None):
         data = data or {}
         self.version = data.get("version", "")
+        namespace = data.get("namespace", "")
+        self.namespace = namespace if isinstance(namespace, str) and re.fullmatch(r"[A-Za-z0-9_-]{1,32}", namespace) else ""
+        self.namespace_source = "graph_payload" if self.namespace else "unknown"
         self.entities: dict[str, dict] = {item["id"]: dict(item) for item in data.get("entities", [])}
         self.relations: dict[str, dict] = {
             f"{item['source']}|{item['relation']}|{item['target']}": dict(item)
@@ -114,6 +117,7 @@ class GraphStore:
         path.parent.mkdir(parents=True, exist_ok=True)
         payload = {
             "version": self.version or datetime.now(timezone(timedelta(hours=8))).isoformat(),
+            "namespace": self.namespace,
             "entities": sorted(self.entities.values(), key=lambda item: item["id"]),
             "relations": sorted(self.relations.values(), key=lambda item: (item["source"], item["relation"], item["target"])),
         }
@@ -123,7 +127,21 @@ class GraphStore:
     def load(cls, path: Path) -> "GraphStore":
         if not path.exists():
             return cls()
-        return cls(json.loads(path.read_text(encoding="utf-8")))
+        store = cls(json.loads(path.read_text(encoding="utf-8")))
+        if not store.namespace and path.name == "graph.json":
+            # Existing graphs put namespace only in graph_meta.json. Trust that
+            # sidecar solely when it names this exact graph version, never config.
+            metadata_path = path.with_name("graph_meta.json")
+            try:
+                metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+            except (OSError, ValueError):
+                metadata = {}
+            namespace = metadata.get("namespace", "") if isinstance(metadata, dict) else ""
+            if (store.version and isinstance(metadata, dict) and metadata.get("version") == store.version
+                    and isinstance(namespace, str) and re.fullmatch(r"[A-Za-z0-9_-]{1,32}", namespace)):
+                store.namespace = namespace
+                store.namespace_source = "matching_graph_meta"
+        return store
 
     def entity(self, entity_id_value: str) -> dict | None:
         return self.entities.get(entity_id_value)
@@ -323,6 +341,8 @@ class GraphStore:
                 sourced += 1
         return {
             "version": self.version,
+            "namespace": self.namespace,
+            "namespace_source": self.namespace_source,
             "entities": len(self.entities),
             "relations": len(self.relations),
             "entity_types": dict(sorted(type_counts.items())),

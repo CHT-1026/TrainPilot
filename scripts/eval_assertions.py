@@ -84,15 +84,32 @@ def evaluate_case(case: dict, result: dict, latency_ms: int) -> dict:
         and int(budget.get("embedding_calls", 0)) <= int(budget.get("max_embedding_calls", 8))
     )
     latency_ok = latency_ms <= 30000
+    unknown_dimensions = []
+    factuality_ok = None
+    if not expect_refusal and not result.get("refused"):
+        fact_status = (result.get("fact_check") or {}).get("verified")
+        if type(fact_status) is bool:
+            factuality_ok = fact_status
+        else:
+            unknown_dimensions.append("factuality")
+        if USER.role == "employee" and permission_ok is None:
+            unknown_dimensions.append("permission")
     dimensions = {
         "answer": answer_ok, "source": source_ok, "citation": citation_ok,
+        "factuality": factuality_ok,
         "refusal": refusal_ok, "permission": permission_ok, "cost": cost_ok, "latency": latency_ok,
     }
     applicable = [value for value in dimensions.values() if value is not None]
     return {
         "id": case.get("id"), "question": case["question"], "method": result.get("method"),
-        "refused": bool(result.get("refused")), "answer": answer[:300], "dimensions": dimensions,
-        "passed": all(applicable), "latency_ms": latency_ms,
+        "refused": bool(result.get("refused")), "answer": answer, "dimensions": dimensions,
+        "refusal_reason": result.get("refusal_reason"),
+        "citations": citations, "fact_check": result.get("fact_check"),
+        "evidence_scope": result.get("evidence_scope"),
+        "model_used": result.get("model_used"), "prompt_version": result.get("prompt_version"),
+        "retrieval_docs": sorted(retrieval_docs),
+        "passed": all(applicable) and not unknown_dimensions, "latency_ms": latency_ms,
+        "unknown_dimensions": unknown_dimensions,
         "model_calls": budget.get("model_calls", 0),
         "embedding_calls": budget.get("embedding_calls", 0),
         "expected_docs": sorted(expected_docs), "cited_docs": sorted(doc for doc in cited_docs if doc),
@@ -116,20 +133,23 @@ def main() -> None:
     if args.limit:
         cases = cases[:args.limit]
     records = [run_case(case, args.llm) for case in cases]
-    dimensions = ["answer", "source", "citation", "refusal", "permission", "cost", "latency"]
+    dimensions = ["answer", "source", "citation", "factuality", "refusal", "permission", "cost", "latency"]
 
     def dimension_stat(name: str) -> dict:
         applicable = [item for item in records if item["dimensions"][name] is not None]
         passed = sum(1 for item in applicable if item["dimensions"][name])
+        unknown = sum(name in item["unknown_dimensions"] for item in records)
         return {
             "passed": passed,
             "applicable": len(applicable),
-            "not_applicable": len(records) - len(applicable),
+            "not_applicable": len(records) - len(applicable) - unknown,
+            "unknown": unknown,
             "rate": round(passed / len(applicable), 4) if applicable else None,
         }
 
     summary = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
+        "assessment_contract": "v2.2-factuality-and-explicit-unknown",
         "model": "llm" if args.llm else "deterministic",
         "total": len(records),
         "overall_passed": sum(1 for item in records if item["passed"]),
@@ -143,18 +163,18 @@ def main() -> None:
     lines = [
         f"# 分维度断言基线（{summary['model']}）", "",
         f"- 用例：{summary['total']}；全部适用维度通过：{summary['overall_passed']}/{summary['total']}", "",
-        "| 维度 | 通过/适用 | 不适用 | 通过率 |", "| --- | --- | --- | --- |",
+        "| 维度 | 通过/适用 | 不适用 | 未知 | 通过率 |", "| --- | --- | --- | --- | --- |",
     ]
     for name in dimensions:
         item = summary["dimensions"][name]
         rate = "-" if item["rate"] is None else f"{item['rate'] * 100:.2f}%"
-        lines.append(f"| {name} | {item['passed']}/{item['applicable']} | {item['not_applicable']} | {rate} |")
-    lines += ["", "| 用例 | 答案 | 来源 | 引用 | 拒答 | 权限 | 成本 | 时延 |", "| --- | --- | --- | --- | --- | --- | --- | --- |"]
+        lines.append(f"| {name} | {item['passed']}/{item['applicable']} | {item['not_applicable']} | {item['unknown']} | {rate} |")
+    lines += ["", "| 用例 | 答案 | 来源 | 引用 | 有限事实核验 | 拒答 | 权限 | 成本 | 时延 |", "| --- | --- | --- | --- | --- | --- | --- | --- | --- |"]
     for item in records:
         marks = []
         for name in dimensions:
             value = item["dimensions"][name]
-            marks.append("N/A" if value is None else ("PASS" if value else "FAIL"))
+            marks.append("UNKNOWN" if name in item["unknown_dimensions"] else "N/A" if value is None else ("PASS" if value else "FAIL"))
         lines.append(f"| {item['id']} | " + " | ".join(marks) + " |")
     md_path = OUT / f"assertions_{stamp}.md"
     md_path.write_text("\n".join(lines), encoding="utf-8")

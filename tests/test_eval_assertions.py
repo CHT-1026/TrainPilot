@@ -7,6 +7,7 @@ from scripts.eval_assertions import evaluate_case
 def result(**overrides):
     payload = {
         "refused": False,
+        "fact_check": {"verified": True},
         "answer": "公司名称为澜图智能装备股份有限公司 [1]。",
         "citations": [{"index": 1, "doc_id": "lantu_company_profile", "visibility": "all"}],
         "retrieval": {"chunks": [{}]},
@@ -43,7 +44,18 @@ class EvalScoringTest(unittest.TestCase):
         citations = [{"index": 1, "doc_id": "lantu_company_profile", "visibility": None}]
         record = evaluate_case(case, result(citations=citations), 10)
         self.assertIsNone(record["dimensions"]["permission"])
-        self.assertTrue(record["passed"])
+        self.assertIn("permission",record["unknown_dimensions"])
+        self.assertFalse(record["passed"])
+
+    def test_keyword_match_cannot_override_failed_or_missing_factuality(self):
+        case={"question":"公司名称？","keywords":["澜图智能装备股份有限公司"],"expected_doc_ids":["lantu_company_profile"]}
+        record=evaluate_case(case,result(fact_check={"verified":False}),10)
+        self.assertTrue(record["dimensions"]["answer"])
+        self.assertFalse(record["dimensions"]["factuality"])
+        self.assertFalse(record["passed"])
+        unknown=evaluate_case(case,result(fact_check={}),10)
+        self.assertIn("factuality",unknown["unknown_dimensions"])
+        self.assertFalse(unknown["passed"])
 
 
 if __name__ == "__main__":

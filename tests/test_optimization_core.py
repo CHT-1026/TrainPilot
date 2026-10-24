@@ -21,7 +21,8 @@ from enterprise_rag.model_router import route_for
 from enterprise_rag.release import (
     active_release,
     invalidate_release,
-    publish_release,
+    prepare_release,
+    activate_release,
     verify_release,
 )
 from enterprise_rag.rerank import lexical_pair_rerank
@@ -98,9 +99,13 @@ class ReleaseTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             base = Path(temp)
             with patch("enterprise_rag.release.CURRENT_DIR", base), \
-                 patch("enterprise_rag.release.RELEASE_DIR", base):
-                first = publish_release("test", index_version="v1", graph_version="g1",
-                                        corpus_checksum="c1", index_chunks=10, graph_relations=20)
+                 patch("enterprise_rag.release.RELEASE_DIR", base), \
+                 patch("app.database.connection.get_redis_client"):
+                candidate = prepare_release("test", index_version="v1", graph_version="g1",
+                                            corpus_checksum="c1", index_chunks=10, graph_relations=20)
+                first = activate_release(candidate,
+                                         index_stats={"namespace":"test", "index_version":"v1", "chunks":10},
+                                         graph_stats={"namespace":"test", "version":"g1", "relations":20}, corpus_checksum="c1")
                 self.assertTrue(first["snapshot_id"])
                 current = active_release("test")
                 self.assertEqual(current["snapshot_id"], first["snapshot_id"])
@@ -121,6 +126,16 @@ class ScoringAndRoutingTest(unittest.TestCase):
              patch.object(config, "MODEL_ROUTE_SIMPLE", "fast-model"):
             self.assertEqual(route_for({"complexity": "high"})["model"], "strong-model")
             self.assertEqual(route_for({"complexity": "low"})["model"], "fast-model")
+
+    def test_synthesis_route_uses_shorter_output_budget(self):
+        with patch.object(config, "MAX_TOKENS_SYNTHESIS", 2200):
+            self.assertEqual(
+                route_for({"complexity": "high", "synthesis": True})["max_tokens"], 2200
+            )
+        self.assertLess(
+            route_for({"complexity": "high", "synthesis": True})["max_tokens"],
+            route_for({"complexity": "high"})["max_tokens"],
+        )
 
     def test_cross_encoder_changes_order_without_dropping(self):
         chunks = [

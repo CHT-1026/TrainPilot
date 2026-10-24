@@ -7,6 +7,7 @@ from enterprise_rag import answer as answer_module, config, query
 from enterprise_rag.budget import RequestBudget, bind_budget
 from enterprise_rag.evidence import MODEL_RE, enumeration_hint, token_supported, unsupported_numeric_tokens
 from enterprise_rag.prompts import answer_messages
+from enterprise_rag.query import resolve_relative_years
 from enterprise_rag.reasoning import infer
 from enterprise_rag.verification import verify_answer_facts
 from scripts.eval_assertions import evaluate_case
@@ -14,6 +15,16 @@ from scripts.eval_assertions import evaluate_case
 
 def chunk(text, title="", doc="d1"):
     return {"text": text, "title": title, "doc_id": doc, "chunk_id": doc + "#1", "score": .8}
+
+
+class SynthesisPlanTest(unittest.TestCase):
+    def test_open_ended_synthesis_is_high_complexity_and_marked(self):
+        plan = query.reasoning_plan(
+            "结合2025年经营情况和研发投入，说明公司增长与技术投入之间有哪些有依据的联系，区分事实与推断。"
+        )
+        self.assertTrue(plan["synthesis"])
+        self.assertEqual(plan["complexity"], "high")
+        self.assertTrue(plan["bounded_topic_only"])
 
 
 class BoundFactsTest(unittest.TestCase):
@@ -76,7 +87,8 @@ class BoundFactsTest(unittest.TestCase):
 class EvaluationContractTest(unittest.TestCase):
     def payload(self, **kw):
         result = {"answer": "设备有7台 [1]。", "refused": False,
-                  "citations": [{"index": 1, "doc_id": "d1"}], "retrieval": {"chunks": [{"doc_id": "d1"}]}}
+                  "fact_check":{"verified":True},
+                  "citations": [{"index": 1, "doc_id": "d1", "visibility":"all"}], "retrieval": {"chunks": [{"doc_id": "d1"}]}}
         result.update(kw)
         return result
 
@@ -131,13 +143,64 @@ class GeneratedAnswerBoundaryTest(unittest.TestCase):
         self.assertFalse(answer_module._focus_supported("乙公司有哪些产品？", [chunk("甲公司提供工业机器人。")], model_answer=True))
         self.assertFalse(answer_module._focus_supported("LT-R30有哪些应用？", [chunk("LT-R60用于装配。")], model_answer=True))
 
+    def test_extractive_focus_uses_only_visible_context_and_distinguishes_unknown_topic(self):
+        source = chunk("工业机器人用于焊接和搬运。")
+        with patch("enterprise_rag.store.load_index", side_effect=AssertionError("Generation must not reload index")):
+            good = answer_module.generate_answer("工业机器人有哪些用途？", [source], use_llm=False)
+            bad = answer_module.generate_answer("工业机器人的食堂菜单是什么？", [source], use_llm=False)
+        self.assertFalse(good["refused"])
+        self.assertTrue(bad["refused"])
+        self.assertEqual(bad["confidence"], 0)
+
+    def test_question_field_words_are_not_unknown_business_entities(self):
+        pairs = [
+            ("研发人员数量是多少？", "研发人员有120人。"),
+            ("住宿上限和报销时限是多少？", "住宿不超过500元；报销须在20天内提交。"),
+            ("毛利率底线是多少？", "项目毛利率不得低于28%。"),
+            ("响应时效是多少？", "故障响应时间为2小时。"),
+            ("标杆客户是谁？", "典型客户为北辰制造。"),
+        ]
+        for question, body in pairs:
+            with self.subTest(question=question):
+                self.assertTrue(answer_module._focus_supported(question, [chunk(body)]))
+        self.assertFalse(answer_module._focus_supported("食堂菜单是什么？", [chunk("项目毛利率不得低于28%。")]))
+
+    def test_each_extracted_semicolon_clause_has_its_source(self):
+        rows = [chunk("控制器支持9轴联动；总线周期为2ms；额定负载为8kg。")]
+        result = answer_module.generate_answer("控制器支持几轴联动，总线周期是多少？", rows, use_llm=False)
+        self.assertFalse(result["refused"])
+        self.assertEqual(result["fact_check"]["unbound_sentences"], 0)
+        self.assertTrue(result["fact_check"]["verified"])
+
+    def test_relative_year_filters_other_years_goals_and_interim_reports(self):
+        rows = [chunk("2029年营业收入为31亿元；归母净利润为4亿元。", "2029年度报告"),
+                chunk("2028年营业收入为24亿元。", "2028年度报告", "d2"),
+                chunk("2030年营业收入目标为40亿元。", "2030经营预算", "d3"),
+                chunk("2029年上半年营业收入为12亿元。", "2029半年度报告", "d4")]
+        original = resolve_relative_years
+        with patch.object(answer_module, "resolve_relative_years", side_effect=lambda q: original(q, reference_year=2030)):
+            result = answer_module.generate_answer("公司去年赚了多少钱？", rows, use_llm=False)
+        self.assertFalse(result["refused"])
+        self.assertIn("31", result["answer"])
+        self.assertNotIn("2028", result["answer"])
+        self.assertNotIn("2030", result["answer"])
+        self.assertNotIn("上半年", result["answer"])
+        self.assertTrue(result["fact_check"]["verified"])
+
+    def test_soft_metric_quantity_wrap_keeps_year_but_not_next_year(self):
+        source = chunk("2027年公司营业收入为9亿元，归母净利润\n2亿元。\n2026年公司营业收入为8亿元。")
+        good = verify_answer_facts("2027年利润？", "2027年公司归母净利润为2亿元 [1]。", [source])
+        bad = verify_answer_facts("2027年收入？", "2027年公司营业收入为8亿元 [1]。", [source])
+        self.assertTrue(good["verified"])
+        self.assertFalse(bad["verified"])
+
     def test_late_rejection_has_zero_confidence_and_controlled_reason(self):
-        with patch.object(answer_module, "_llm_answer", return_value=("设备支持装配 [1]。", [1], 1.0, "fake", [])):
+        with patch.object(answer_module, "_llm_answer", return_value=answer_module.ModelAnswer("设备支持装配 [1]。", [1], 1.0, "fake", [])):
             low = answer_module.generate_answer("设备用于什么？", [dict(chunk("设备支持装配。"), score=0)], use_llm=True)
         self.assertTrue(low["refused"])
         self.assertEqual(low["confidence"], 0)
         self.assertEqual(low["refusal_reason"], "low_retrieval_score")
-        with patch.object(answer_module, "_llm_answer", return_value=(answer_module.REFUSAL_TEXT, [], 1.0, "fake", [])):
+        with patch.object(answer_module, "_llm_answer", return_value=answer_module.ModelAnswer(answer_module.REFUSAL_TEXT, [], 1.0, "fake", [])):
             refused = answer_module.generate_answer("设备用于什么？", [chunk("设备支持装配。")], use_llm=True)
         self.assertEqual(refused["refusal_reason"], "model_refusal")
         self.assertEqual(refused["confidence"], 0)

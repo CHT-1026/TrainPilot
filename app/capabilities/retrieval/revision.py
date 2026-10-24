@@ -9,13 +9,20 @@ import json
 from app.infra.mysql import connection
 
 
+class IndexRevisionUnavailable(RuntimeError):
+    """The authoritative index identity cannot be obtained."""
+
+
 def access_revision(namespace: str) -> str:
-    with connection() as conn:
-        with conn.cursor() as cursor:
-            cursor.execute(
-                "SELECT id, status, visibility, department, effective_date, doc_family, version "
-                "FROM kb_documents WHERE namespace = %s ORDER BY id", (namespace,),
-            )
-            rows = cursor.fetchall()
+    try:
+        with connection() as conn:
+            with conn.cursor() as cursor:
+                cursor.execute(
+                    "SELECT id, status, visibility, department, effective_date, doc_family, version "
+                    "FROM kb_documents WHERE namespace = %s ORDER BY id", (namespace,),
+                )
+                rows = cursor.fetchall()
+    except Exception as exc:
+        raise IndexRevisionUnavailable("知识文档权限元数据暂不可用") from exc
     payload = json.dumps(rows, ensure_ascii=False, sort_keys=True, default=str)
     return hashlib.sha256(payload.encode('utf-8')).hexdigest()[:16]

@@ -64,6 +64,7 @@ def query(
 ) -> dict:
     started = time.monotonic()
     budget = new_budget(use_llm=use_llm, offline=offline)
+    budget.cancel_check = cancel_check
     with bind_budget(budget):
         with budget.stage("pipeline"):
             _check_cancel(cancel_check)
@@ -108,8 +109,19 @@ def query(
                     changed = ("snapshot_changed" if first_scope.get("snapshot") != retry_scope.get("snapshot")
                                else "acl_changed")
                     correction["reason"] = f"{gap}:{changed}"
-                    result["debug"]["evidence_budget_complete"] = False
-                    result["debug"]["corrective_retrieval"] = correction
+                    # Known revoked/replaced evidence must not enter generation.
+                    chunks = []
+                    result["scope"] = retry_scope
+                    result["candidates"] = 0
+                    result["terms"] = []
+                    result["debug"] = {
+                        "top_score": 0.0,
+                        "graph": {"paths": [], "path_evidence": []},
+                        "scope": retry_scope,
+                        "evidence_budget_complete": False,
+                        "corrective_retrieval": correction,
+                    }
+                    budget.stop("evidence_scope_changed")
             graph_paths = (result["debug"].get("graph") or {}).get("paths", [])
             effective_use_llm = False if offline else use_llm
             _check_cancel(cancel_check)
@@ -121,6 +133,8 @@ def query(
                 graph_paths=graph_paths,
                 budget=budget,
             )
+            if budget.stopped_reason == "evidence_scope_changed":
+                generated["refusal_reason"] = "evidence_scope_changed"
     latency_ms = int((time.monotonic() - started) * 1000)
 
     return {
@@ -128,6 +142,9 @@ def query(
         "answer": generated["answer"],
         "grounded": generated["grounded"],
         "refused": generated["refused"],
+        "refusal_reason": generated.get("refusal_reason"),
+        "partial": generated.get("partial", False),
+        "rejected_claims": generated.get("rejected_claims", []),
         "method": generated["method"],
         "confidence": generated["confidence"],
         "model_error": generated.get("model_error"),

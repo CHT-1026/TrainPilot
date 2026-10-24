@@ -6,8 +6,10 @@ from collections import Counter, defaultdict
 from app.domain.user.models import UserContext
 from enterprise_rag import config
 from enterprise_rag.budget import RequestBudget, bind_budget, new_budget
+from enterprise_rag.citations import chunk_body
+from enterprise_rag.facts import evidence_periods, factual_clauses, named_subjects
 from enterprise_rag.graph.retrieve import graph_candidates
-from enterprise_rag.query import query_terms, rewrite_query, semantic_query_variants, wants_table, reasoning_plan
+from enterprise_rag.query import query_terms, rewrite_query, semantic_query_variants, wants_table, reasoning_plan, topic_matches
 from enterprise_rag.release import active_release, verify_release
 from enterprise_rag.scope import EvidenceScope
 from enterprise_rag.store import RagIndex, load_index, query_vector
@@ -189,6 +191,72 @@ def _diversify(chunks: list[dict], top_k: int) -> list[dict]:
     return selected
 
 
+def _topic_supported(topic: dict, chunk: dict, question: str, subjects: list[str]) -> bool:
+    body = chunk_body(chunk)
+    identity = body + " " + str(chunk.get("title", ""))
+    if any(subject not in identity for subject in subjects):
+        return False
+    years = set(re.findall(r"(?<!\d)(?:19|20)\d{2}(?!\d)", question))
+    planning = bool(re.search(r"目标|计划|预算|预计|预测", question))
+    for part in factual_clauses(body):
+        if not planning and re.search(r"目标|计划|预算|预计|预测|将保持|力争", part):
+            continue
+        if years and not years.intersection(evidence_periods(part, chunk)):
+            continue
+        if topic_matches(topic["id"], part):
+            return True
+    return False
+
+
+def _cover_topics(chunks: list[dict], top_k: int, plan: dict, question: str,
+                  ranks: dict[str, dict[str, int]]) -> list[dict]:
+    """Reserve one legal substantive hit per requested topic, then fill by rank.
+
+    This does not search outside the already scoped candidates, and it does not
+    claim the evidence proves an answer or a causal relationship.
+    """
+    selected, ids, content_keys = [], set(), set()
+    per_doc: dict[str, int] = defaultdict(int)
+
+    def add(chunk):
+        body = re.sub(r"\s+", "", chunk_body(chunk))
+        key = (body, tuple(sorted(evidence_periods(chunk_body(chunk), chunk))),
+               tuple(sorted(named_subjects(chunk_body(chunk) + " " + str(chunk.get("title", ""))))),
+               chunk.get("namespace", ""))
+        if (len(selected) >= top_k or chunk["chunk_id"] in ids or key in content_keys
+                or per_doc[chunk["doc_id"]] >= config.MAX_CHUNKS_PER_DOC):
+            return False
+        selected.append(chunk)
+        ids.add(chunk["chunk_id"])
+        content_keys.add(key)
+        per_doc[chunk["doc_id"]] += 1
+        return True
+
+    for topic in plan["topics"]:
+        if any(_topic_supported(topic, c, question, plan["topic_subjects"]) for c in selected):
+            continue
+        candidates = [c for c in chunks if _topic_supported(topic, c, question, plan["topic_subjects"])]
+        candidates.sort(key=lambda c: (ranks.get(topic["id"], {}).get(c["chunk_id"], 10**9),
+                                       -float(c.get("score", 0))))
+        for candidate in candidates:
+            if add(candidate):
+                break
+    for chunk in chunks:
+        add(chunk)
+    return sorted(selected, key=lambda c: float(c.get("score", 0)), reverse=True)
+
+
+def _topic_coverage(selected: list[dict], plan: dict, question: str, used_queries: list[str]) -> dict:
+    sources = {topic["id"]: [c["chunk_id"] for c in selected
+                            if _topic_supported(topic, c, question, plan["topic_subjects"])]
+               for topic in plan["topics"]}
+    missing = [key for key, ids in sources.items() if not ids]
+    return {"applicable":bool(sources), "requested":list(sources), "covered":[key for key, ids in sources.items() if ids],
+            "missing":missing, "complete":not missing if sources else None, "source_chunk_ids":sources,
+            "topic_queries_used":[topic["id"] for topic in plan["topics"] if topic["query"] in used_queries],
+            "meaning":"每个所问主题至少有一块同主体/统计期的可见实质证据；不代表完整事实或因果证明"}
+
+
 _VERSION_QUESTION = re.compile(
     r"20\d{2}.{0,12}20\d{2}|20\d{2}\s*版|旧版|新版|上一版|历史版本|哪一版|版本对比|版本差异|"
     r"新增|增加|减少|取消|升级|改版|变更|"
@@ -335,7 +403,7 @@ def _retrieve_impl(
     top_k = top_k or config.TOP_K
     retrieval_mode = (retrieval_mode or "hybrid").lower()
     plan = reasoning_plan(question)
-    if plan["complex"]:
+    if plan["complex"] and not plan.get("bounded_topic_only"):
         # Comparison needs both versions of one family, not the whole corpus.
         top_k = max(top_k, 12 if plan["comparison"] or plan["reporting"] else config.REASONING_TOP_K)
     index = load_index(namespace=namespace)
@@ -381,6 +449,8 @@ def _retrieve_impl(
                 "graph": {"release_issues": stale_index, "paths": []},
                 "plan": {**plan, "bridge_queries": [], "semantic_queries": semantic_queries},
                 "queries_used": queries,
+                "queries_executed": [],
+                "topic_coverage": _topic_coverage([], plan, question, []),
                 "release_issues": stale_index,
             },
         }
@@ -389,6 +459,9 @@ def _retrieve_impl(
         return scope.filter(hits, index)[:config.CANDIDATE_K]
 
     bm25_hits, vector_hits, merged = [], [], {}
+    topic_by_query = {topic["query"]:topic["id"] for topic in plan["topics"]}
+    topic_ranks: dict[str, dict[str, int]] = defaultdict(dict)
+    executed_queries = []
     vector_errors = []
     budget_stops = []
     graph_only = retrieval_mode == "graph"
@@ -398,6 +471,7 @@ def _retrieve_impl(
             budget_stops.append("deadline_exceeded")
             break
         text = rewrite_query(probe)["rewritten"]
+        executed_queries.append(probe)
         b = eligible(index.bm25_search(text, max(config.CANDIDATE_K, len(index.chunks))))
         if config.MULTI_REPRESENTATION and hasattr(index, "representation_search"):
             b = eligible(b + index.representation_search(text, config.CANDIDATE_K))
@@ -416,7 +490,9 @@ def _retrieve_impl(
             budget.stop("embedding_budget_exhausted")
         bm25_hits.extend(b)
         vector_hits.extend(v)
-        for hit in _rrf(b, v):
+        for rank, hit in enumerate(_rrf(b, v), 1):
+            if probe in topic_by_query:
+                topic_ranks[topic_by_query[probe]][hit["chunk_id"]] = rank
             current = merged.get(hit["chunk_id"])
             if current is None:
                 hit["query_hits"] = 1
@@ -507,7 +583,8 @@ def _retrieve_impl(
                 first.append(chunk)
                 seen.add(chunk["doc_id"])
         reranked = first + rest
-    selected = _diversify(reranked, top_k)
+    selected = (_cover_topics(reranked, top_k, plan, question, topic_ranks)
+                if plan["topics"] else _diversify(reranked, top_k))
     if retrieval_mode == "graph" and plan["comparison"]:
         grouped: dict[str, list[dict]] = defaultdict(list)
         for chunk in reranked:
@@ -558,6 +635,8 @@ def _retrieve_impl(
             "graph": graph_debug,
             "plan": {**plan, "bridge_queries": bridge_queries, "semantic_queries": semantic_queries},
             "queries_used": queries,
+            "queries_executed": executed_queries,
+            "topic_coverage": _topic_coverage(selected, plan, question, executed_queries),
             "evidence_budget_complete": relevant_ids <= selected_ids,
             "omitted_relevant_chunks": len(relevant_ids - selected_ids),
             "vector_fallback": bool(vector_errors),

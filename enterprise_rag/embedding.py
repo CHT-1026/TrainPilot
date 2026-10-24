@@ -15,6 +15,7 @@ import numpy as np
 
 from app.capabilities.retrieval.tokenizer import tokenize
 from enterprise_rag import config
+from enterprise_rag.budget import current_budget, RequestCancelled
 
 class EmbeddingUnavailableError(RuntimeError):
     """Configured embedding service failed; never substitute a different vector space."""
@@ -88,19 +89,32 @@ def _dashscope_embed(texts: list[str]) -> list[list[float]]:
     """
     from openai import OpenAI
 
+    budget = current_budget()
+    def remaining_timeout():
+        if budget is None:
+            return 60.0
+        budget.check_cancel()
+        remaining = budget.remaining_seconds()
+        if remaining <= 0:
+            raise EmbeddingBudgetExceeded("请求时限已到，未调用向量服务")
+        return min(60.0, remaining)
+
     client = OpenAI(
         api_key=os.getenv("RAG_EMBEDDING_API_KEY") or os.getenv("OPENAI_API_KEY", ""),
         base_url=os.getenv("RAG_EMBEDDING_API_BASE") or os.getenv("OPENAI_API_BASE") or None,
-        timeout=60,
+        timeout=remaining_timeout(),
+        max_retries=0,
     )
     # DashScope text-embedding-v3 单请求最多 10 条；配置值只作上限，不能直接透传。
     batch_size = max(1, min(10, config.EMBEDDING_BATCH))
     vectors: list[list[float]] = []
     for start in range(0, len(texts), batch_size):
+        options = {"timeout": remaining_timeout()} if budget is not None else {}
         response = client.embeddings.create(
             model=config.EMBEDDING_MODEL,
             input=texts[start:start + batch_size],
             dimensions=config.EMBEDDING_DIM,
+            **options,
         )
         vectors.extend(item.embedding for item in response.data)
     return vectors
@@ -112,6 +126,8 @@ def embed_texts(texts: list[str]) -> list[list[float]]:
     if config.EMBEDDING_PROVIDER == "dashscope":
         try:
             vectors = _dashscope_embed(texts)
+        except (RequestCancelled, EmbeddingBudgetExceeded):
+            raise
         except Exception as exc:
             # Hash and semantic vectors have unrelated coordinate systems.
             raise EmbeddingUnavailableError("DashScope 向量服务不可用；未替换为 hash 向量，请恢复服务后重试") from exc

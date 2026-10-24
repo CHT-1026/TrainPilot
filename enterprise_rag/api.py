@@ -1,5 +1,6 @@
 """企业 RAG HTTP 接口：查询、统计、文档目录、索引刷新、评测结果。"""
 import asyncio
+import contextvars
 import json
 import threading
 from datetime import date
@@ -64,9 +65,14 @@ async def rag_query(payload: RagQueryRequest, user: UserContext = Depends(get_us
         finally:
             # HTTP 协程被取消时线程仍在执行；容量必须绑定到真实 worker 结束。
             release("rag")
-    # shield also keeps a queued executor job alive long enough to release its slot.
-    # Cancelling the await must not cancel that Future before work() can run.
-    task = asyncio.create_task(asyncio.to_thread(work))
+    # Submit synchronously so a rejected submission can release admission here.
+    # shield keeps accepted queued work alive until work() releases its own slot.
+    try:
+        context = contextvars.copy_context()
+        task = asyncio.get_running_loop().run_in_executor(None, context.run, work)
+    except RuntimeError as exc:
+        release("rag")
+        raise OverloadedError("问答执行器暂不可用，请稍后重试") from exc
     try:
         return {"code": 200, "data": await asyncio.shield(task)}
     except asyncio.CancelledError:

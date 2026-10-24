@@ -3,10 +3,11 @@ import logging
 import re
 import json
 import time
+from dataclasses import dataclass, field
 
 from app.capabilities.retrieval.tokenizer import tokenize
 from enterprise_rag import config
-from enterprise_rag.budget import RequestBudget, new_budget
+from enterprise_rag.budget import RequestBudget, new_budget, model_usage_available
 from enterprise_rag.citations import build_context, chunk_body, select_context
 from enterprise_rag.evidence import (
     MODEL_RE,
@@ -20,13 +21,14 @@ from enterprise_rag.evidence import (
     version_pair,
 )
 from enterprise_rag.facts import named_subjects
+from enterprise_rag.facts import evidence_periods, factual_clauses
 from enterprise_rag.model_router import route_for
 from enterprise_rag.org_facts import answer_org_question
 from enterprise_rag.prompts import PROMPT_VERSIONS, answer_messages
-from enterprise_rag.query import query_terms, rewrite_query, reasoning_plan
+from enterprise_rag.query import query_terms, rewrite_query, reasoning_plan, resolve_relative_years
 from enterprise_rag.reasoning import infer
 from enterprise_rag.skills import match_skills, render_skill_block
-from enterprise_rag.verification import verify_answer_facts
+from enterprise_rag.verification import verify_answer_facts, unsupported_quantitative_trends
 
 logger = logging.getLogger(__name__)
 
@@ -36,6 +38,16 @@ class ModelAnswerValidationError(ValueError):
         super().__init__(reason)
         self.answer = answer
 
+
+@dataclass
+class ModelAnswer:
+    answer: str
+    indices: list[int]
+    confidence: float
+    model: str
+    skill_packs: list[str]
+    rejected_claims: list[dict] = field(default_factory=list)
+
 REFUSAL_TEXT = "现有企业资料未覆盖该问题，建议联系对应业务部门确认。"
 REFUSAL_MARKERS = ("未覆盖", "资料不足", "无法回答", "没有找到", "未提及", "建议联系")
 
@@ -44,10 +56,12 @@ _META_PREFIXES = ("所属部门：", "作者：", "创建时间：", "更新时�
 _TABLE_ROW = re.compile(r"^\|.*\|$")
 
 
-def _sentences(text: str) -> list[str]:
+def _sentences(text: str, split_clauses: bool = False) -> list[str]:
     parts: list[str] = []
     buffer = ""
-    for raw in _SENTENCE.split(text.replace("\r", "\n")):
+    table_header: list[str] = []
+    boundary = r"(?<=[。！？；;\n])" if split_clauses else _SENTENCE
+    for raw in re.split(boundary, text.replace("\r", "\n")):
         line = raw.strip()
         if not line:
             continue
@@ -61,8 +75,20 @@ def _sentences(text: str) -> list[str]:
                 buffer = ""
             cells = [cell.strip() for cell in line.strip("|").split("|") if cell.strip()]
             if len(cells) >= 2:
-                parts.append("，".join(cells))
+                if not table_header:
+                    table_header = cells
+                elif len(cells) == len(table_header):
+                    # Preserve metric names and per-column units when cells only
+                    # contain numbers. Bare row values cannot answer a metric.
+                    values = [cells[0]]
+                    for header, cell in zip(table_header[1:], cells[1:]):
+                        match = re.fullmatch(r"(.+?)[（(]([^）)]+)[）)]", header)
+                        label, unit = match.groups() if match else (header, "")
+                        values.append(f"{label}{cell}{unit}" if unit and re.fullmatch(r"[-−]?\d[\d,.]*", cell)
+                                      else f"{label}{cell}")
+                    parts.append("，".join(values))
             continue
+        table_header = []
         buffer = f"{buffer}{line}" if buffer else line
         if buffer.endswith(("。", "！", "？", "；", ";")):
             if len(buffer) >= 8:
@@ -71,6 +97,71 @@ def _sentences(text: str) -> list[str]:
     if buffer and len(buffer) >= 8:
         parts.append(buffer)
     return parts
+
+
+def _financial_slots(question: str) -> list[tuple[str, str]]:
+    """Explicit requested metrics, rather than one revenue gate for all facts."""
+    amount = r"\s*(?:目标|预算|预计|计划)?\s*(?:为|达|达到|实现|约|[:：])?\s*\d[\d,.]*\s*(?:亿元|万元|元)"
+    slots = []
+    for label, trigger, metric in (
+        ("营业收入", r"营业收入|营收|海外收入|赚", r"(?:营业收入|营收|收入)"),
+        ("净利润", r"净利润|归母|赚", r"(?:归母净利润|净利润)"),
+        ("研发投入", r"研发投入|研发费用|技术投入", r"(?:研发投入|研发费用|技术投入)"),
+        ("资本开支", r"资本开支|资本支出", r"(?:资本开支|资本支出)"),
+        ("订单", r"订单", r"(?:新签订单|订单金额|订单)"),
+    ):
+        if re.search(trigger, question):
+            if label == "营业收入" and "海外" in question:
+                metric = r"海外(?:营业收入|营收|收入)"
+            slots.append((label, metric + amount))
+    for label, trigger, metric in (
+        ("研发人员", r"研发人员|研发团队", r"研发(?:人员|团队)"),
+        ("员工人数", r"员工人数|员工总数", r"员工(?:人数|总数)?"),
+    ):
+        if re.search(trigger, question):
+            slots.append((label, metric + r"\s*(?:为|有|共|约|[:：])?\s*\d[\d,]*\s*人"))
+    return slots
+
+
+def _same_reporting_period(question: str, sentence: str, chunk: dict) -> bool:
+    """Match statistical granularity; publication/as-of dates are not months."""
+    month = re.search(r"((?:19|20)\d{2})\s*年\s*(\d{1,2})\s*月", question)
+    context = " ".join(str(chunk.get(k) or "") for k in ("fact_period", "section", "title"))
+    if month:
+        wanted = rf"{month.group(1)}\s*年\s*0?{int(month.group(2))}\s*月"
+        # “截至12月31日，全年...” describes a snapshot/annual total.
+        return bool(re.search(wanted, sentence) and not re.search(r"截至|全年|年度|累计", sentence))
+    half = re.search(r"(上|下)半年|([12])H|H([12])", question, re.I)
+    if half:
+        wanted = half.group(1) or ("上" if (half.group(2) or half.group(3)) == "1" else "下")
+        actual = re.search(r"(上|下)半年|([12])H|H([12])", sentence, re.I)
+        actual = actual or re.search(r"(上|下)半年|([12])H|H([12])", context, re.I)
+        if not actual:
+            return False
+        value = actual.group(1) or ("上" if (actual.group(2) or actual.group(3)) == "1" else "下")
+        return value == wanted
+    quarter = re.search(r"(?:第)?([一二三四1-4])\s*季度|Q\s*([1-4])", question, re.I)
+    if quarter:
+        raw = quarter.group(1) or quarter.group(2)
+        number = {"一":1, "二":2, "三":3, "四":4}.get(raw, int(raw) if raw.isdigit() else 0)
+        cumulative = bool(re.search(r"前[一二三四1-4]季度|累计", question))
+        actual_cumulative = bool(re.search(r"前[一二三四1-4]季度|累计", sentence + " " + str(chunk.get("section", ""))))
+        if cumulative != actual_cumulative:
+            return False
+        actual = re.search(r"(?:第)?([一二三四1-4])\s*季度|Q\s*([1-4])", sentence, re.I)
+        actual = actual or re.search(r"(?:第)?([一二三四1-4])\s*季度|Q\s*([1-4])", context, re.I)
+        if not actual:
+            return False
+        value = actual.group(1) or actual.group(2)
+        return number == {"一":1, "二":2, "三":3, "四":4}.get(value, int(value) if value.isdigit() else 0)
+    if re.search(r"(?:19|20)\d{2}", question) and not re.search(r"半年|截至", question):
+        if re.search(r"半年|季度|单季|Q[1-4]", sentence + " " + context, re.I):
+            return False
+        # A report may open with “截至12月31日” before explicitly naming an
+        # annual metric. Remove only that snapshot date for annual matching.
+        statistical = re.sub(r"截至\s*(?:19|20)\d{2}\s*年\s*\d{1,2}\s*月\s*\d{1,2}\s*日", "", sentence)
+        return not re.search(r"\d\s*月", statistical + " " + context)
+    return True
 
 
 def _coverage(tokens: set[str], terms: list[str]) -> float:
@@ -123,10 +214,35 @@ def _sentence_score(sentence: str, terms: list[str], question: str, coverage: fl
 def _extractive_answer(question: str, chunks: list[dict]) -> tuple[str, list[int], float]:
     rewritten = rewrite_query(question)
     terms = query_terms(rewritten["rewritten"], question)
+    requested_years = set(re.findall(r"(?:19|20)\d{2}", question))
+    financial_value = bool(re.search(r"营业收入|营收|海外收入|净利润|归母|研发投入|研发费用|技术投入|资本开支|资本支出|订单|赚", question))
+    annual_financial = (bool(requested_years) and financial_value
+                        and not re.search(r"季度|半年|\d\s*月|截至|Q[1-4]", question, re.I))
+    financial_slots = ([] if not financial_value or re.search(r"占|比例|比重|增长率|增幅|费用率|相差|差额", question)
+                       else _financial_slots(question))
+    place_match = re.search(r"([\u4e00-\u9fffA-Za-z]{2,16}(?:中心|基地|工厂|总部|办事处|分公司)).{0,5}(?:设在哪里|在哪里|位于哪里|地点|地址)", question)
+    place_entity = re.sub(r"^.*[，,、]", "", place_match.group(1)) if place_match else ""
     candidates = []
     for index, chunk in enumerate(chunks, 1):
         context_tokens = set(tokenize(f"{chunk.get('title', '')} {chunk.get('section', '')}"))
-        for position, sentence in enumerate(_sentences(chunk_body(chunk))):
+        sentences = _sentences(chunk_body(chunk), split_clauses=bool(financial_slots))
+        if financial_slots:
+            # A later dated metric cannot date an earlier undated headcount.
+            sentences = [part for sentence in sentences for part in factual_clauses(sentence)]
+        for position, sentence in enumerate(sentences):
+            matched_slots = [label for label, pattern in financial_slots if re.search(pattern, sentence)]
+            place_hit = bool(place_entity and place_entity in sentence
+                             and re.search(r"位于|设立|设在|坐落|地址", sentence))
+            if financial_slots and not (matched_slots or place_hit):
+                continue
+            periods = evidence_periods(sentence, chunk)
+            if financial_value and not place_hit and requested_years and periods and not requested_years.intersection(periods):
+                continue
+            if matched_slots and not _same_reporting_period(question, sentence, chunk):
+                continue
+            if annual_financial and not place_hit and re.search(r"上半年|下半年|半年度|季度|单季|Q[1-4]",
+                                               sentence + " " + chunk.get("title", "") + " " + chunk.get("section", ""), re.I):
+                continue
             tokens = set(tokenize(sentence))
             # 句子覆盖率纳入所属文档/章节上下文，避免“成效数据”这类无主语句子被误过滤。
             coverage = _coverage(tokens | context_tokens, terms)
@@ -143,6 +259,10 @@ def _extractive_answer(question: str, chunks: list[dict]) -> tuple[str, list[int
                     "score": score,
                     "coverage": coverage,
                     "position": position,
+                    "slots": matched_slots + (["地点"] if place_hit else []),
+                    "fact_periods": periods,
+                    "planning_context": (chunk.get("title", "") + " · " + chunk.get("section", ""))
+                        if re.search(r"目标|预算|计划|预测|预计", chunk.get("title", "") + chunk.get("section", "")) else "",
                 }
             )
     if not candidates:
@@ -198,6 +318,10 @@ def _extractive_answer(question: str, chunks: list[dict]) -> tuple[str, list[int
         if chosen and chosen["sentence"] not in [item["sentence"] for item in required]:
             required.append(chosen)
 
+    for label in [name for name, _ in financial_slots] + (["地点"] if place_entity else []):
+        add_slot([c for c in candidates if label in c["slots"]],
+                 chooser=lambda pool: max(pool, key=lambda c: (bool(requested_years & c["fact_periods"]), c["score"])))
+
     if "台" in question or (
         "机器人" in question and any(word in question for word in ("使用", "用了", "部署", "几台", "多少台"))
     ):
@@ -243,7 +367,7 @@ def _extractive_answer(question: str, chunks: list[dict]) -> tuple[str, list[int
                 if re.search(r"(四级|三级|两级|分为.{0,8}级)", c["sentence"])
             ]
         )
-    if any(word in question for word in ("哪里", "地址", "设在", "位于", "地点")):
+    if not place_entity and any(word in question for word in ("哪里", "地址", "设在", "位于", "地点")):
         place_pool = [c for c in candidates if re.search(r"(位于|设立|设在|坐落|地址[:：])", c["sentence"])]
         if "总部" in question:
             add_slot(
@@ -369,14 +493,37 @@ def _extractive_answer(question: str, chunks: list[dict]) -> tuple[str, list[int
         if item["sentence"] not in [existing["sentence"] for existing in unique]:
             unique.append(item)
     selected = unique[:4]
+    if financial_slots:
+        # Preserve distinct slot values and periods, without repeating the
+        # identical requested metric from several summaries of one fact.
+        deduped, seen_facts = [], set()
+        for item in selected:
+            identity = tuple(sorted(named_subjects(item["sentence"] + " " + item["title"])))
+            signatures = {(label, re.sub(r"[\s,]", "", hit.group()), tuple(sorted(item["fact_periods"])), identity,
+                           bool(item["planning_context"]))
+                          for label, pattern in financial_slots for hit in re.finditer(pattern, item["sentence"])}
+            if signatures and all(any(sig[:2] == old[:2] and sig[3:] == old[3:]
+                                      and (sig[2] == old[2] or not sig[2]) for old in seen_facts)
+                                  for sig in signatures):
+                continue
+            deduped.append(item)
+            seen_facts.update(signatures)
+        selected = deduped
     required_sentences = {item["sentence"] for item in required}
     selected.sort(key=lambda item: (item["sentence"] not in required_sentences, -item["score"]))
 
     best_coverage = max(item["score"] for item in candidates)
     parts = []
     for candidate in selected:
-        sentence = candidate["sentence"].rstrip("；; ")
-        parts.append(f"{sentence} [{candidate['chunk_index']}]")
+        sentence = candidate["sentence"]
+        # Source headings carry modality. Keep it visible when a plan contains
+        # an otherwise unqualified amount; never turn a budget into an actual.
+        if candidate["planning_context"] and candidate["slots"] and not re.search(r"目标|预算|计划|预测|预计", sentence):
+            sentence = candidate["planning_context"] + "：" + sentence
+        for clause in re.split(r"(?<=[。！？；;\n])", sentence):
+            clause = clause.strip().rstrip("。！？；; ")
+            if clause:
+                parts.append(f"{clause} [{candidate['chunk_index']}]")
     answer = "根据企业知识库资料：" + "；".join(parts) + "。"
     return answer, [item["chunk_index"] for item in selected], best_coverage
 
@@ -567,9 +714,52 @@ def _family_contrast_answer(question: str, chunks: list[dict]) -> tuple[str, lis
     return answer, [old_index, new_index], 1.0
 
 
+def _model_validation_error(question: str, answer: str, chunks: list[dict]) -> str | None:
+    if unsupported_numeric_tokens(answer, chunks, question):
+        return "unsupported_quantity"
+    if unsupported_quantitative_trends(answer, chunks):
+        return "unsupported_quantitative_trend"
+    facts = verify_answer_facts(question, answer, chunks)
+    if any(facts.get(key) for key in ("numeric_missing", "period_missing", "conflicts", "unbound_facts")):
+        return "fact_period_subject_or_modality_mismatch"
+    return None
+
+
+def _salvage_truncated_claims(raw_answer: str) -> list[dict]:
+    """当模型在 max_tokens 处截断时，保留已经完整输出的 claim 对象。
+
+    只接受显式 ``refused:false`` 的 JSON 前缀；最后一个未闭合的 claim 丢弃。
+    调用方仍会走逐 claim 的引用、事实与时期核验，不能借截断绕过证据约束。
+    """
+    if not re.search(r'"refused"\s*:\s*false', raw_answer, re.I):
+        return []
+    marker = raw_answer.find('"claims"')
+    if marker < 0:
+        return []
+    bracket = raw_answer.find("[", marker)
+    if bracket < 0:
+        return []
+    decoder = json.JSONDecoder()
+    index = bracket + 1
+    claims = []
+    while index < len(raw_answer):
+        while index < len(raw_answer) and raw_answer[index] in " \r\n\t,":
+            index += 1
+        if index >= len(raw_answer) or raw_answer[index] != "{":
+            break
+        try:
+            value, end = decoder.raw_decode(raw_answer, index)
+        except json.JSONDecodeError:
+            break
+        if isinstance(value, dict):
+            claims.append(value)
+        index = end
+    return claims
+
+
 def _llm_answer(question: str, chunks: list[dict], graph_paths: list[str] | None = None,
                 strict: bool = False, budget: RequestBudget | None = None,
-                plan: dict | None = None) -> tuple[str, list[int], float, str, list[str]]:
+                plan: dict | None = None) -> ModelAnswer:
     from app.core.config import get_settings, thinking_extra_body
 
     settings = get_settings()
@@ -586,7 +776,7 @@ def _llm_answer(question: str, chunks: list[dict], graph_paths: list[str] | None
         api_key=settings.openai_api_key,
         base_url=settings.openai_api_base or None,
         timeout=min(config.LLM_TIMEOUT, max(0.001, budget.remaining_seconds())) if budget else config.LLM_TIMEOUT,
-        max_retries=config.LLM_MAX_RETRIES,
+        max_retries=0,
     )
     comparison = reasoning_plan(question)["comparison"]
     comparison_block = ""
@@ -618,7 +808,7 @@ def _llm_answer(question: str, chunks: list[dict], graph_paths: list[str] | None
             messages=messages,
             max_tokens=route["max_tokens"],
             response_format={"type": "json_object"},
-            extra_body=thinking_extra_body(),
+            extra_body=thinking_extra_body(model),
         )
     except Exception:
         if budget is not None:
@@ -630,7 +820,7 @@ def _llm_answer(question: str, chunks: list[dict], graph_paths: list[str] | None
         completion_tokens = int(getattr(usage, "completion_tokens", 0) or 0) if usage is not None else 0
         total_tokens = int(getattr(usage, "total_tokens", 0) or 0) if usage is not None else 0
         budget.note_model_usage(prompt_tokens=prompt_tokens, completion_tokens=completion_tokens,
-                                total_tokens=total_tokens)
+                                total_tokens=total_tokens, available=model_usage_available(usage))
         try:
             from app.core.metrics import record_usage
 
@@ -638,28 +828,50 @@ def _llm_answer(question: str, chunks: list[dict], graph_paths: list[str] | None
         except Exception:
             pass
     raw_answer = (response.choices[0].message.content or "").strip()
+    rejected = []
     try:
-        payload = json.loads(raw_answer)
+        try:
+            payload = json.loads(raw_answer)
+        except json.JSONDecodeError:
+            # 严格模式允许保留截断前的完整 claim；非严格模式仍按原合同拒绝。
+            salvaged = _salvage_truncated_claims(raw_answer) if strict else []
+            if not salvaged:
+                raise
+            payload = {"refused": False, "claims": salvaged}
+            rejected.append({"claim_index": 0, "reason": "output_truncated"})
         if not isinstance(payload.get("refused"), bool) or not isinstance(payload.get("claims"), list):
             raise ValueError("invalid schema")
         if payload["refused"]:
-            return REFUSAL_TEXT, [], 0.0, model, [skill["id"] for skill in skills]
+            return ModelAnswer(REFUSAL_TEXT, [], 0.0, model, [skill["id"] for skill in skills])
         parts = []
+        claim_parts = []
         if not payload["claims"]:
             raise ValueError("empty claims")
-        for claim in payload["claims"]:
+        for position, claim in enumerate(payload["claims"], 1):
             text, sources = claim["text"], claim["sources"]
-            if not isinstance(text, str) or not isinstance(sources, list) or not sources:
+            if not isinstance(text, str) or not text.strip() or not isinstance(sources, list):
                 raise ValueError("invalid claim")
             if any(type(i) is not int or not 1 <= i <= len(chunks) for i in sources):
                 raise ValueError("invalid source")
+            if not sources:
+                if not strict:
+                    raise ModelAnswerValidationError("claim_missing_sources", raw_answer)
+                rejected.append({"claim_index": position, "reason": "missing_citations"})
+                continue
+            # Structured sources are the single citation representation.
+            text = re.sub(r"\[\d+\]", "", text)
             refs = "".join(f"[{i}]" for i in dict.fromkeys(sources))
             # Attach the declared support to every clause/sentence of the claim.
             # verify_answer splits on Chinese semicolons as well, so a citation
             # appended only to the final clause would fail the per-sentence check.
+            current = []
             for sentence in re.split(r"(?<=[。！？；;\n])", text):
                 if sentence.strip():
-                    parts.append(sentence.strip().rstrip("。！？；;") + " " + refs + "。")
+                    current.append(sentence.strip().rstrip("。！？；;") + " " + refs + "。")
+            parts.extend(current)
+            claim_parts.append((position, "\n".join(current)))
+        if not parts:
+            raise ValueError("no supported claims")
         answer = "\n".join(parts)
     except (ValueError, KeyError, TypeError, AttributeError):
         raise ModelAnswerValidationError("模型返回的事实与引用结构无效", raw_answer)
@@ -671,15 +883,38 @@ def _llm_answer(question: str, chunks: list[dict], graph_paths: list[str] | None
     if not structurally_grounded:
         raise ModelAnswerValidationError("模型回答未通过逐句引用检查", answer)
     answer = verified
-    unsupported = unsupported_numeric_tokens(answer, chunks, question)
-    if unsupported:
-        raise ModelAnswerValidationError("数字或型号未在引用资料中出现", answer)
     if model_scope_mismatch(question, chunks):
         raise ModelAnswerValidationError("引用了同系列其他型号的资料", answer)
+    error = _model_validation_error(question, answer, chunks)
+    if strict and (error or rejected):
+        # Only a well-formed second model response is eligible for a partial
+        # answer. Do not turn invalid references/schema or failed services into
+        # fabricated support. Keep complete claims, never cut a claim's premise.
+        accepted = []
+        for position, claim in claim_parts:
+            reason = _model_validation_error(question, claim, chunks)
+            if not reason and not verify_answer_facts(question, claim, chunks)["verified"]:
+                reason = "claim_support_not_verified"
+            if reason:
+                rejected.append({"claim_index": position, "reason": reason})
+            else:
+                accepted.append(claim)
+        if accepted:
+            answer = "\n".join(accepted)
+            # Recheck the combined retained text: inherited years or a later
+            # trend must not become valid merely by being checked in isolation.
+            error = _model_validation_error(question, answer, chunks)
+            if not verify_answer_facts(question, answer, chunks)["verified"]:
+                error = error or "combined_claim_support_not_verified"
+            indices = [int(marker) for marker in re.findall(r"\[(\d+)\]", answer)]
+        else:
+            error = "no_supported_claims"
+    if error:
+        raise ModelAnswerValidationError(error, answer)
     # 生成分支的可信度由“结构校验 + 引用有效”保证；检索分只作为最低证据门槛，
     # 不能再用 0.28 的句级抽取阈值把语义正确但检索分偏低的答案误判为无依据。
     coverage = 1.0
-    return answer, indices, coverage, model, [skill["id"] for skill in skills]
+    return ModelAnswer(answer, indices, coverage, model, [skill["id"] for skill in skills], rejected)
 
 
 
@@ -713,16 +948,19 @@ def _focus_supported(question: str, chunks: list[dict], model_answer: bool = Fal
         ))
     import jieba.posseg as pseg
 
-    from enterprise_rag.store import load_index
-
-    index = load_index()
-    corpus_text = index.corpus_text
-    top_text = "\n".join(chunk.get("text", "") for chunk in chunks[:3]).lower()
+    # Generation must use the immutable visible context passed by retrieval;
+    # reloading a global index here can change namespace/ACL/version mid-answer.
+    corpus_text = "\n".join(chunk_body(chunk) + " " + str(chunk.get("title", "")) for chunk in chunks).lower()
     ignore = {
         "澜图", "智能", "公司", "企业", "项目", "产品", "方案", "服务", "中国",
         "多长", "多久", "多少", "几天", "几个", "哪些", "哪里", "什么", "怎样", "如何", "是否",
         "学时", "周期", "去年", "前年", "明年", "上年", "今年",
         "名字", "名称", "全称", "简称", "叫什么", "哪家", "公司名",
+        "用途", "类型", "应用", "场景", "联系", "推断", "事实", "依据",
+        # Query field names, applicability roles and document words are not
+        # unknown business entities. Their values still require cited evidence.
+        "数量", "数目", "总数", "比例", "比重", "金额", "时长", "时限", "时效",
+        "上限", "下限", "底线", "目标", "标杆", "现场", "员工", "制度", "规定",
     }
     unknown = []
     for word, flag in pseg.cut(question):
@@ -739,14 +977,13 @@ def _focus_supported(question: str, chunks: list[dict], model_answer: bool = Fal
         if len(word) > 2 and any(word[i : i + 2].lower() in corpus_text for i in range(len(word) - 1)):
             continue
         unknown.append(word)
-    if not unknown:
-        return True
-    return any(word.lower() in top_text for word in unknown)
+    return not unknown
 
 
 def generate_answer(question: str, chunks: list[dict], use_llm: bool | None = None,
                     evidence_complete: bool = True, graph_paths: list[str] | None = None,
                     budget: RequestBudget | None = None) -> dict:
+    question = resolve_relative_years(question)
     use_llm = config.USE_LLM if use_llm is None else use_llm
     budget = budget or new_budget(use_llm=use_llm)
     method = "extractive"
@@ -784,6 +1021,7 @@ def generate_answer(question: str, chunks: list[dict], use_llm: bool | None = No
     model_error = None
     model_used = ""
     skill_packs: list[str] = []
+    rejected_claims: list[dict] = []
     if chunks:
         org_result = answer_org_question(question, chunks)
         if org_result is not None:
@@ -825,23 +1063,32 @@ def generate_answer(question: str, chunks: list[dict], use_llm: bool | None = No
 
     if derived is None and use_llm and chunks and budget.can_call_model():
         last_error = None
+        # 综合题首轮即启用严格证据模式：无来源的因果推断应被剔除并保留有据事实，
+        # 而不是先整题失败、再用第二次长调用补救。
+        first_strict = bool(plan.get("synthesis"))
         for attempt in range(2):
             if not budget.can_call_model():
                 break
             attempt_started = time.monotonic()
             try:
                 with budget.stage("answer_generation"):
-                    answer, indices, confidence, model_used, skill_packs = _llm_answer(
-                        question, chunks, graph_paths, strict=bool(attempt),
+                    candidate = _llm_answer(
+                        question, chunks, graph_paths,
+                        strict=bool(attempt) or first_strict,
                         budget=budget, plan=plan,
                     )
+                    answer, indices, confidence = candidate.answer, candidate.indices, candidate.confidence
+                    model_used, skill_packs = candidate.model, candidate.skill_packs
+                    rejected_claims = candidate.rejected_claims
                 method = "llm"
                 model_error = None
                 break
             except Exception as exc:
                 last_error = exc
                 model_error = type(exc).__name__
-                logger.warning("LLM 回答失败（第 %s 次）：%s", attempt + 1, model_error)
+                reason = str(exc.args[0])[:160] if getattr(exc, "args", None) else ""
+                logger.warning("LLM 回答失败（第 %s 次）：%s%s",
+                               attempt + 1, model_error, f" [{reason}]" if reason else "")
                 # 超时或单次已耗时过久时，重试只会把总延迟翻倍。
                 if model_error in {"APITimeoutError", "APIConnectionError"}:
                     break
@@ -872,7 +1119,12 @@ def generate_answer(question: str, chunks: list[dict], use_llm: bool | None = No
     if not answer or (not indices and not self_contained) or (derived is None and best_score < min_score):
         refusal_reason = ("empty_answer" if not answer else "model_refusal" if method == "llm" and not indices
                           else "missing_citations" if not indices else "low_retrieval_score")
-        answer = REFUSAL_TEXT
+        if model_error and method == "extractive_fallback" and not indices and chunks:
+            refusal_reason = "model_output_invalid" if model_error == "ModelAnswerValidationError" else "generation_unavailable"
+            answer = ("已找到相关资料，但生成内容未通过证据核验，暂时无法提供可靠结论。" if refusal_reason == "model_output_invalid"
+                      else "已找到相关资料，生成服务暂时不可用，请稍后重试。")
+        else:
+            answer = REFUSAL_TEXT
         indices = []
         refused = True
     elif method != "llm" and confidence < 0.28:
@@ -915,16 +1167,25 @@ def generate_answer(question: str, chunks: list[dict], use_llm: bool | None = No
     fact_check = {"verified": False, "reason": "refused"} if refused else verify_answer_facts(
         question, answer, citations
     )
-    if not refused and config.FACT_CHECK_REFUSE_ON_CONFLICT and fact_check.get("conflicts"):
+    if not refused and (fact_check.get("trend_missing") or
+                        (config.FACT_CHECK_REFUSE_ON_CONFLICT and fact_check.get("conflicts"))):
         answer = REFUSAL_TEXT
         indices = []
         citations = []
         refused = True
         fact_check["refused_for_conflict"] = True
-        refusal_reason = "fact_conflict"
+        refusal_reason = "unsupported_quantitative_trend" if fact_check.get("trend_missing") else "fact_conflict"
 
     if refused:
         confidence = 0.0
+    partial = bool(rejected_claims) and not refused
+    if partial:
+        answer = "部分回答（其余内容缺少可核验证据）：\n" + answer
+        if plan.get("synthesis"):
+            answer += (
+                "\n说明：以上仅列出可核对事实；资料未给出足以证明因果关系的直接证据，"
+                "相关联系仍属待验证推断。"
+            )
 
     return {
         "answer": answer,
@@ -932,6 +1193,8 @@ def generate_answer(question: str, chunks: list[dict], use_llm: bool | None = No
         "grounded": bool(indices) and not refused,
         "refused": refused,
         "refusal_reason": refusal_reason,
+        "partial": partial,
+        "rejected_claims": rejected_claims if partial else [],
         "method": method,
         "confidence": round(confidence, 4),
         "max_chunk_score": round(best_score, 4),

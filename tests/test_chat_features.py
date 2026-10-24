@@ -52,6 +52,11 @@ class FakeLLM:
 
 
 class GraphFeatureTest(unittest.IsolatedAsyncioTestCase):
+    def setUp(self):
+        memory = patch("app.workflows.fact_memory._client", return_value=MemoryRedis())
+        memory.start()
+        self.addCleanup(memory.stop)
+
     def graph(self, llm):
         builder = StateGraph(ChatState)
         builder.add_node("chat", create_chat_nodes()["general_chat"])
@@ -125,6 +130,7 @@ class RouteFeatureTest(unittest.TestCase):
         redis = MemoryRedis()
         graph = RouteGraph(partial=partial)
         with patch("app.routes.chat.get_redis_client", return_value=redis), \
+             patch("app.workflows.fact_memory._client", return_value=redis), \
              patch("app.routes.chat.get_chat_graph", new=AsyncMock(return_value=graph)), \
              patch("app.routes.chat.check_rate_limit", return_value=(True, 59, 0)):
             thread = client.post("/api/chat/session").json()["data"]["thread_id"]

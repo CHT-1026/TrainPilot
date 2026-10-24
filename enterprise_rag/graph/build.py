@@ -60,11 +60,16 @@ def _backup_current() -> None:
 
 
 def build_graph(force: bool = False, incremental: bool = True, namespace: str | None = None) -> dict:
+    namespace = namespace or config.RAG_NAMESPACE
     index = load_index(namespace=namespace)
     checksums = _manifest_checksums()
     meta = json.loads(META_PATH.read_text(encoding="utf-8")) if META_PATH.exists() else {}
     previous_checksums = meta.get("doc_checksums", {})
     store = GraphStore() if force or not GRAPH_PATH.exists() else GraphStore.load(GRAPH_PATH)
+    if store.version and store.namespace != namespace:
+        raise ValueError("现有图谱命名空间不匹配或未知；如需替换全局图文件，请显式 --force 重建")
+    store.namespace = namespace
+    store.namespace_source = "graph_payload"
 
     changed_docs = {
         doc_id for doc_id, checksum in checksums.items()

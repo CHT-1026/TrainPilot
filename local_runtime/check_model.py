@@ -6,11 +6,14 @@ import pathlib
 import sys
 import urllib.error
 import urllib.request
+import urllib.parse
 from datetime import datetime, timedelta, timezone
 
 from dotenv import dotenv_values
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from app.core.config import thinking_extra_body
 REPORT = ROOT / "local_runtime" / "model_check.json"
 
 
@@ -34,15 +37,20 @@ def check(if_changed=False):
     else:
         body = {"model": values["OPENAI_MODEL"], "max_tokens": 128, "temperature": 0,
                 "messages": [{"role": "user", "content": "请只回复OK。"}]}
-        thinking = (values.get("OPENAI_ENABLE_THINKING") or "").strip().lower()
-        if thinking in {"true", "false"}:
-            body["enable_thinking"] = thinking == "true"
+        extra = thinking_extra_body(values["OPENAI_MODEL"], value=values.get("OPENAI_ENABLE_THINKING") or "")
+        if extra:
+            body.update(extra)
         request = urllib.request.Request(
             values["OPENAI_API_BASE"].rstrip("/") + "/chat/completions",
             data=json.dumps(body).encode(), headers={"Content-Type": "application/json",
             "Authorization": "Bearer " + values["OPENAI_API_KEY"]})
         try:
-            with urllib.request.urlopen(request, timeout=30) as response:
+            no_proxy = values.get("NO_PROXY")
+            bypass = bool(no_proxy and urllib.request.proxy_bypass_environment(
+                urllib.parse.urlsplit(values["OPENAI_API_BASE"]).hostname or "", {"no": no_proxy}))
+            open_url = (urllib.request.build_opener(urllib.request.ProxyHandler({})).open
+                        if bypass else urllib.request.urlopen)
+            with open_url(request, timeout=30) as response:
                 data = json.load(response)
             text = data.get("choices", [{}])[0].get("message", {}).get("content", "")
             result.update(ok=bool(text), status=200, message="模型请求成功。" if text else "接口返回了空回答。")

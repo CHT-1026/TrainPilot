@@ -181,8 +181,9 @@ def _validate_embedding_metadata(chunk: dict) -> None:
 def _current_version(namespace: str) -> str:
     try:
         return get_redis_client().get(f"rag_index_version:{namespace}") or ""
-    except Exception:
-        return ""
+    except Exception as exc:
+        from app.capabilities.retrieval.revision import IndexRevisionUnavailable
+        raise IndexRevisionUnavailable("索引版本存储不可用") from exc
 
 
 def _load_chunks(namespace: str) -> list[dict]:
@@ -238,6 +239,13 @@ def load_index(namespace: str | None = None, force: bool = False) -> RagIndex:
 
     acl_revision = access_revision(namespace)
     version = _current_version(namespace)
+    if not version:
+        from enterprise_rag.release import active_release
+        from app.capabilities.retrieval.revision import IndexRevisionUnavailable
+
+        published = active_release(namespace)
+        if published.get("status") == "active" and published.get("index_version"):
+            raise IndexRevisionUnavailable("已发布索引缺少权威版本，不能按旧快照提供内容")
     index = _indexes.get(namespace)
     if force or index is None or version != _versions.get(namespace, "") \
             or acl_revision != getattr(index, "access_revision", ""):
@@ -247,7 +255,7 @@ def load_index(namespace: str | None = None, force: bool = False) -> RagIndex:
         index.access_revision = acl_revision
         _indexes[namespace] = index
         _versions[namespace] = version
-        logger.info("RAG 索引已加载：namespace=%s 文档=%s 块=%s", namespace, len(index.family_docs), len(chunks))
+        logger.info("RAG 索引已加载：namespace=%s 文档族=%s 块=%s", namespace, len(index.family_docs), len(chunks))
     return index
 
 
@@ -267,7 +275,7 @@ def index_stats(namespace: str | None = None) -> dict:
         "versioned_families": len(index.versioned_families),
         "vector_dim": int(index.matrix.shape[1]) if len(index.matrix) else 0,
         "embedding_model": config.EMBEDDING_MODEL,
-        "index_version": _versions.get(namespace, ""),
+        "index_version": index.index_version,
         "categories": sorted({chunk.get("category") for chunk in index.chunks if chunk.get("category")}),
         "formats": sorted({chunk.get("format") for chunk in index.chunks if chunk.get("format")}),
         "ann": ann_recommendation(index),

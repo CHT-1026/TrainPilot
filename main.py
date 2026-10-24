@@ -25,6 +25,7 @@ from app.models.exceptions import BusinessException
 from app.core.backpressure import OverloadedError
 from app.jobs.rag_jobs import JobStorageError
 from enterprise_rag.embedding import EmbeddingUnavailableError, EmbeddingIntegrityError
+from app.capabilities.retrieval.revision import IndexRevisionUnavailable
 
 logger = logging.getLogger(__name__)
 
@@ -47,18 +48,23 @@ if settings.tracing_enabled:
 async def lifespan(app: FastAPI):
     from app.jobs.rag_jobs import start_job_worker, shutdown_job_worker
 
-    get_sync_db_connection()
-    logger.info("MySQL数据库连接池初始化完成")
-    await init_graphs()
-    logger.info("工作流图初始化完成")
-    start_job_worker()
     try:
+        connection = get_sync_db_connection()
+        connection.close()
+        logger.info("MySQL数据库连接池初始化完成")
+        await init_graphs()
+        logger.info("工作流图初始化完成")
+        start_job_worker()
         yield
     finally:
-        await asyncio.to_thread(shutdown_job_worker)
-        await close_async_redis()
-        close_all_connections()
-        logger.info("数据库连接已关闭")
+        try:
+            await asyncio.to_thread(shutdown_job_worker)
+        finally:
+            try:
+                await close_async_redis()
+            finally:
+                close_all_connections()
+                logger.info("数据库连接已关闭")
 
 
 app = FastAPI(
@@ -177,6 +183,7 @@ async def general_exception_handler(request: Request, exc: Exception):
 
 @app.exception_handler(EmbeddingUnavailableError)
 @app.exception_handler(EmbeddingIntegrityError)
+@app.exception_handler(IndexRevisionUnavailable)
 async def embedding_exception_handler(request: Request, exc: Exception):
     logger.error("知识索引不可用: %s", type(exc).__name__)
     return JSONResponse(status_code=503, content={"code": "RAG_INDEX_UNAVAILABLE",
@@ -227,14 +234,14 @@ async def ready():
         finally:
             conn.close()
     except Exception as exc:
-        checks["mysql"] = f"error: {exc}"
+        checks["mysql"] = {"error": type(exc).__name__}
         healthy = False
 
     try:
         get_redis_client().ping()
         checks["redis"] = "ok"
     except Exception as exc:
-        checks["redis"] = f"error: {exc}"
+        checks["redis"] = {"error": type(exc).__name__}
         healthy = False
 
     try:
@@ -245,7 +252,7 @@ async def ready():
         if not stats.get("chunks"):
             healthy = False
     except Exception as exc:
-        checks["knowledge_base"] = f"error: {exc}"
+        checks["knowledge_base"] = {"error": type(exc).__name__}
         healthy = False
 
     try:

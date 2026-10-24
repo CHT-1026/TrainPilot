@@ -31,12 +31,11 @@ EMBEDDING_MODEL = os.getenv("RAG_EMBEDDING_MODEL", "lantu-hash-384" if EMBEDDING
 EMBEDDING_VERSION = os.getenv("RAG_EMBEDDING_VERSION", "1")
 EMBEDDING_BATCH = int(os.getenv("RAG_EMBEDDING_BATCH", "16"))
 
-# 有模型配置时默认使用生成式；显式 false 保留离线抽取/确定性推理模式。
+# 显式 false 禁止模型生成；向量是否联网由 provider 与请求 offline 控制。
 _llm_mode = os.getenv("RAG_USE_LLM", "auto").strip().lower()
 USE_LLM = bool(os.getenv("OPENAI_API_KEY")) if _llm_mode == "auto" else _llm_mode in {"1", "true", "yes"}
 LLM_MODEL = os.getenv("RAG_LLM_MODEL", os.getenv("OPENAI_MODEL", "deepseek-v4.1-flash"))
 LLM_TIMEOUT = float(os.getenv("RAG_LLM_TIMEOUT", "60"))
-LLM_MAX_RETRIES = int(os.getenv("RAG_LLM_MAX_RETRIES", "0"))
 MAX_CONTEXT_CHARS = int(os.getenv("RAG_MAX_CONTEXT_CHARS", "18000"))
 REASONING_TOP_K = int(os.getenv("RAG_REASONING_TOP_K", "32"))
 
@@ -45,6 +44,10 @@ REQUEST_TIMEOUT_SECONDS = float(os.getenv("RAG_REQUEST_TIMEOUT", "90"))
 MAX_QUERY_VARIANTS = int(os.getenv("RAG_MAX_QUERY_VARIANTS", "8"))
 MAX_EMBEDDING_CALLS = int(os.getenv("RAG_MAX_EMBEDDING_CALLS", "8"))
 MAX_MODEL_CALLS = int(os.getenv("RAG_MAX_MODEL_CALLS", "4"))
+# 输出预算按任务收敛：综合题优先保证在客户端窗口内完成，避免长 JSON 被截断。
+MAX_TOKENS_MEDIUM = int(os.getenv("RAG_MAX_TOKENS_MEDIUM", "1800"))
+MAX_TOKENS_COMPLEX = int(os.getenv("RAG_MAX_TOKENS_COMPLEX", "2600"))
+MAX_TOKENS_SYNTHESIS = int(os.getenv("RAG_MAX_TOKENS_SYNTHESIS", "2200"))
 QUERY_CACHE_SIZE = int(os.getenv("RAG_QUERY_CACHE_SIZE", "256"))
 QUERY_CACHE_TTL_SECONDS = int(os.getenv("RAG_QUERY_CACHE_TTL", "900"))
 

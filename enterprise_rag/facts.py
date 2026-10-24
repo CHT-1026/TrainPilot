@@ -37,11 +37,26 @@ def named_subjects(text: str) -> set[str]:
                                      "这家公司", "那家公司", "什么公司", "哪家公司"}
 
 
+def join_quantity_wraps(text: str) -> str:
+    """Repair quantity layout only; leave new periods/subjects on hard lines."""
+    # A PDF can wrap between a quantity and its unit. Join only a complete
+    # unit before punctuation/whitespace/end; “3\n人事部...” is a new name,
+    # and “3人\n13台...” remains two different quantities.
+    text = re.sub(r"(?<=\d)[ \t]*\r?\n[ \t]*(?=(?:亿元|万元|元/晚|元/天|个工作日|个自然日|ms|kHz|Hz|MPa|N·m|kg|mm|m/s|%|元|台|人|天|小时|分钟|秒|个月|年|月|日|℃)(?:[，,。；;！？\s]|$))",
+                  "", text or "")
+    # PDF/text wrapping can put a metric label and its quantity on adjacent
+    # lines. Join only that form; a new year or named subject stays a boundary.
+    text = re.sub(r"([\u4e00-\u9fffA-Za-z]{2,20})[ \t]*\n[ \t]*(?=[-−]?\d[\d,.]*\s*(?:亿元|万元|元|台|人|kg|mm|%|℃))",
+                  r"\1 ", text or "")
+    return text
+
+
 def factual_clauses(text: str) -> list[str]:
     """Keep comma-separated thousands, split when a new named fact/period starts."""
+    text = join_quantity_wraps(text)
     return [part.strip() for part in re.split(
         r"(?<=[。！？；;\n])|[，,](?=\s*(?:(?:19|20)\d{2}\s*年|[^，。；]{1,30}(?:公司|项目)))",
-        text or "") if part.strip()]
+        text) if part.strip()]
 
 
 @dataclass(frozen=True)

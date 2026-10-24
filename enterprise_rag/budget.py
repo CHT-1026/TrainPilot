@@ -9,6 +9,7 @@ from __future__ import annotations
 import contextvars
 import threading
 import time
+from collections.abc import Callable
 from contextlib import contextmanager
 from dataclasses import dataclass, field
 
@@ -25,6 +26,12 @@ class RequestCancelled(RuntimeError):
 
 def current_budget() -> "RequestBudget | None":
     return _CURRENT_BUDGET.get()
+
+
+def model_usage_available(usage) -> bool:
+    """An empty provider usage object is not a known zero-token response."""
+    return (getattr(usage, "prompt_tokens", None) is not None
+            and getattr(usage, "completion_tokens", None) is not None)
 
 
 @contextmanager
@@ -56,6 +63,7 @@ class CallRecord:
     completion_tokens: int = 0
     total_tokens: int = 0
     model: str = ""
+    usage_available: bool = False
 
 
 @dataclass
@@ -65,6 +73,7 @@ class RequestBudget:
     allow_model: bool = True
     max_model_calls: int = field(default_factory=lambda: config.MAX_MODEL_CALLS)
     max_embedding_calls: int = field(default_factory=lambda: config.MAX_EMBEDDING_CALLS)
+    cancel_check: Callable[[], bool] | None = field(default=None, repr=False)
 
     started_at: float = field(default_factory=time.monotonic)
     _lock: threading.Lock = field(default_factory=threading.Lock, repr=False)
@@ -86,7 +95,13 @@ class RequestBudget:
         return self.remaining_seconds() <= 0
 
     # ---- 调用许可 -----------------------------------------------------
+    def check_cancel(self) -> None:
+        if self.cancel_check is not None and self.cancel_check():
+            self.stop("cancelled")
+            raise RequestCancelled("cancelled")
+
     def can_call_model(self) -> bool:
+        self.check_cancel()
         with self._lock:
             return (
                 not self.offline
@@ -97,6 +112,7 @@ class RequestBudget:
             )
 
     def can_call_embedding(self) -> bool:
+        self.check_cancel()
         with self._lock:
             return (
                 not self.offline
@@ -115,6 +131,7 @@ class RequestBudget:
                 prompt_tokens=prompt_tokens or 0,
                 completion_tokens=completion_tokens or 0,
                 total_tokens=total_tokens or (prompt_tokens or 0) + (completion_tokens or 0),
+                usage_available=bool(prompt_tokens or completion_tokens or total_tokens),
             ))
             if self._stage_stack:
                 self._stage_stack[-1].calls += 1
@@ -139,7 +156,7 @@ class RequestBudget:
                 self._stage_stack[-1].ok = self._stage_stack[-1].ok and ok
 
     def note_model_usage(self, *, prompt_tokens: int = 0, completion_tokens: int = 0,
-                         total_tokens: int = 0) -> None:
+                         total_tokens: int = 0, available: bool = True) -> None:
         """Attach token usage to the already-counted model attempt."""
         with self._lock:
             for call in reversed(self.calls):
@@ -148,6 +165,7 @@ class RequestBudget:
                     call.prompt_tokens = prompt_tokens or 0
                     call.completion_tokens = completion_tokens or 0
                     call.total_tokens = total_tokens or (prompt_tokens or 0) + (completion_tokens or 0)
+                    call.usage_available = available
                     return
 
     def stop(self, reason: str) -> None:
@@ -161,6 +179,7 @@ class RequestBudget:
     # ---- 阶段 ---------------------------------------------------------
     @contextmanager
     def stage(self, name: str):
+        self.check_cancel()
         record = StageRecord(name=name)
         with self._lock:
             self.stages.append(record)
@@ -213,6 +232,7 @@ class RequestBudget:
                         "ok": call.ok,
                         "detail": call.detail,
                         "model": call.model,
+                        "usage_available": call.usage_available if call.kind == "model" else None,
                         "prompt_tokens": call.prompt_tokens,
                         "completion_tokens": call.completion_tokens,
                         "total_tokens": call.total_tokens,
@@ -220,6 +240,8 @@ class RequestBudget:
                     for call in self.calls
                 ],
                 "usage": usage,
+                "model_usage_complete": all(call.usage_available for call in self.calls if call.kind == "model"),
+                "unknown_model_usage_calls": sum(not call.usage_available for call in self.calls if call.kind == "model"),
             }
 
 

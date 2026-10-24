@@ -88,6 +88,7 @@ async def run_route(graph, question, *, redis=None, thread=None):
     redis = MemoryRedis() if redis is None else redis
     request = Request({"type": "http", "headers": []})
     with patch("app.routes.chat.get_redis_client", return_value=redis), \
+         patch("app.workflows.fact_memory._client", return_value=redis), \
          patch("app.routes.chat.check_rate_limit", return_value=(True, 99, 0)), \
          patch("app.routes.chat.get_chat_graph", new=AsyncMock(return_value=graph)):
         response = await chat.chat_stream(ChatRequest(user_message=question, thread_id=thread), request, USER)
