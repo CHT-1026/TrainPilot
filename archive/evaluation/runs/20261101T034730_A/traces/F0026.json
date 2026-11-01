@@ -1,0 +1,142 @@
+{
+  "qid": "F0026",
+  "question": "收入构成明细的产品线口径与行业口径可以相加吗？",
+  "question_type": "矛盾与例外识别",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>收入构成 产品线 行业 口径</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 98,
+        "prompt_tokens": 356,
+        "total_tokens": 454,
+        "completion_tokens_details": {
+          "reasoning_tokens": 62
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.328
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>收入构成 产品线 行业 口径 相加</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 82,
+        "prompt_tokens": 429,
+        "total_tokens": 511,
+        "completion_tokens_details": {
+          "reasoning_tokens": 43
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.281
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>收入构成 产品线 行业 口径</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 62,
+        "prompt_tokens": 505,
+        "total_tokens": 567,
+        "completion_tokens_details": {
+          "reasoning_tokens": 26
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.172
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>收入构成 产品线 行业 口径</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 66,
+        "prompt_tokens": 578,
+        "total_tokens": 644,
+        "completion_tokens_details": {
+          "reasoning_tokens": 30
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 2.188
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>收入构成 产品线 行业 口径</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 74,
+        "prompt_tokens": 651,
+        "total_tokens": 725,
+        "completion_tokens_details": {
+          "reasoning_tokens": 38
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.375
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>收入构成 产品线 行业 口径</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 67,
+        "prompt_tokens": 724,
+        "total_tokens": 791,
+        "completion_tokens_details": {
+          "reasoning_tokens": 31
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 3.781
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"无法回答：本次会话中检索工具未能成功调用，未获取到任何企业资料，因此无法确认收入构成明细中产品线口径与行业口径是否可以相加（通常需核查两口径是否为同一收入的不同切分维度、是否存在重复计算，需以企业披露原文为准）。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 106,
+        "prompt_tokens": 794,
+        "total_tokens": 900,
+        "completion_tokens_details": {
+          "reasoning_tokens": 19
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 3.078
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "无法回答：本次会话中检索工具未能成功调用，未获取到任何企业资料，因此无法确认收入构成明细中产品线口径与行业口径是否可以相加（通常需核查两口径是否为同一收入的不同切分维度、是否存在重复计算，需以企业披露原文为准）。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4592,
+  "started_at": "2026-11-01T04:55:42",
+  "elapsed_seconds": 19.2,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.01,
+    "number_recall": 0.0
+  }
+}

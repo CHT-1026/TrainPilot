@@ -1,0 +1,171 @@
+{
+  "qid": "I0015",
+  "question": "公司的海外机构分布在哪些城市？分别是哪一年成立或开业的？海外员工有多少人？",
+  "question_type": "事实检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=list><parameter=keyword>海外</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 44,
+        "prompt_tokens": 362,
+        "total_tokens": 406,
+        "completion_tokens_details": {
+          "reasoning_tokens": 26
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.719
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=list><parameter=keyword>海外</parameter></tool_call>",
+      "usage": {
+        "completion_tokens": 33,
+        "prompt_tokens": 417,
+        "total_tokens": 450,
+        "completion_tokens_details": {
+          "reasoning_tokens": 17
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.219
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"海外\"}}",
+      "usage": {
+        "completion_tokens": 33,
+        "prompt_tokens": 470,
+        "total_tokens": 503,
+        "completion_tokens_details": {
+          "reasoning_tokens": 18
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.109
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_company_global\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 35,
+        "prompt_tokens": 538,
+        "total_tokens": 573,
+        "completion_tokens_details": {
+          "reasoning_tokens": 5
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 0.937
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据《澜图智能全球化布局与海外业务》(v2.2，2025-12-10 更新)：公司在海外共有 4 处机构——德国斯图加特的欧洲技术中心（2025 年 3 月开业），以及越南胡志明市、墨西哥蒙特雷、匈牙利布达佩斯三处服务网点。需要说明的是，文档仅明确记载了斯图加特欧洲技术中心的开业时间（2025 年 3 月），三个服务网点的设立年份文档中未披露，建议向国际业务部确认。海外员工总数为 200 人。\",\"citations\":[\"lantu_company_global\"],\"evidence\":[\"lantu_company_global#片段1\"]}",
+      "usage": {
+        "completion_tokens": 274,
+        "prompt_tokens": 985,
+        "total_tokens": 1259,
+        "completion_tokens_details": {
+          "reasoning_tokens": 96
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 6.25
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "海外"
+      },
+      "result_sha": "46d2a83be3cc9e6bfb1ccea7694ff143c30c7725e7dc367c7fa169b248b1c3b8",
+      "result_chars": 75,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_company_global",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "4e7dbba96b0ada022cf07c32a155805a0d829358ecec75ec39782c76bacb1417",
+      "result_chars": 633,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《澜图智能全球化布局与海外业务》(v2.2，2025-12-10 更新)：公司在海外共有 4 处机构——德国斯图加特的欧洲技术中心（2025 年 3 月开业），以及越南胡志明市、墨西哥蒙特雷、匈牙利布达佩斯三处服务网点。需要说明的是，文档仅明确记载了斯图加特欧洲技术中心的开业时间（2025 年 3 月），三个服务网点的设立年份文档中未披露，建议向国际业务部确认。海外员工总数为 200 人。",
+    "citations": [
+      "lantu_company_global"
+    ],
+    "evidence": [
+      "lantu_company_global#片段1"
+    ]
+  },
+  "status": "answered",
+  "tokens": 3191,
+  "started_at": "2026-11-01T05:16:41",
+  "elapsed_seconds": 12.25,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "海外"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_company_global",
+            "title": "# 澜图智能全球化布局与海外业务"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_company_global",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_company_global",
+        "title": "# 澜图智能全球化布局与海外业务",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 464,
+        "text": "# 澜图智能全球化布局与海外业务\n\n所属部门：国际业务部\n作者：罗嘉树\n创建时间：2024-06-01 10:00\n更新时间：2025-12-10 14:30\n版本号：v2.2\n文档类型：company\n文档族：global_presence\n生效日期：2025-12-10\n\n## 一、海外机构\n\n公司在德国斯图加特设立欧洲技术中心（2025 年 3 月开业），在越南胡志明市、墨西哥蒙特雷、匈牙利布达佩斯设有服务网点，海外员工 200 人。\n\n## 二、海外业绩\n\n2025 年海外营业收入 4.86 亿元，占总收入 11.4%，同比增长 31.2%；欧洲收入 3.20 亿元，东南亚收入 0.98 亿元，北美收入 0.68 亿元。\n\n## 三、重点市场\n\n欧洲聚焦汽车零部件与新能源，东南亚聚焦 3C 与家电，北美聚焦物流自动化。2025 年海外新签订单 6.1 亿元。\n\n## 四、合规要求\n\n出口业务须执行两用物项筛查，涉及加密、视觉算法等敏感技术的项目须经法务合规部审批；欧盟项目须满足 CE 与 GDPR 要求。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_company_global"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.541,
+    "number_recall": 1.0
+  }
+}

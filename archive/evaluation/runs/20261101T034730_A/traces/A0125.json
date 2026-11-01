@@ -1,0 +1,142 @@
+{
+  "qid": "A0125",
+  "question": "销售团队 620 人由哪几类构成？各类分别多少人？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>销售团队 620 人 构成</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 57,
+        "prompt_tokens": 361,
+        "total_tokens": 418,
+        "completion_tokens_details": {
+          "reasoning_tokens": 21
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.937
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>销售人员 人数 构成</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 46,
+        "prompt_tokens": 434,
+        "total_tokens": 480,
+        "completion_tokens_details": {
+          "reasoning_tokens": 24
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.922
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=args>{\"query\": \"销售人员 人数 构成\", \"top_k\": 10}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 43,
+        "prompt_tokens": 493,
+        "total_tokens": 536,
+        "completion_tokens_details": {
+          "reasoning_tokens": 10
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.516
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>销售人员 人数 构成</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 36,
+        "prompt_tokens": 563,
+        "total_tokens": 599,
+        "completion_tokens_details": {
+          "reasoning_tokens": 5
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 1.203
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>销售人员 人数 构成</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 38,
+        "prompt_tokens": 631,
+        "total_tokens": 669,
+        "completion_tokens_details": {
+          "reasoning_tokens": 7
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.265
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>销售人员 人数 构成</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 80,
+        "prompt_tokens": 699,
+        "total_tokens": 779,
+        "completion_tokens_details": {
+          "reasoning_tokens": 49
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 4.453
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"未能检索到相关资料——多次检索尝试均未成功返回任何文档内容，因此无法确认销售团队620人的具体构成及各类人数。如需回答，请提供包含销售人员分类与人数的原始文档（如年报、招股说明书或内部人员结构说明），或明确检索关键词（如公司名称、报告年份等）。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 112,
+        "prompt_tokens": 764,
+        "total_tokens": 876,
+        "completion_tokens_details": {
+          "reasoning_tokens": 19
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 3.844
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "未能检索到相关资料——多次检索尝试均未成功返回任何文档内容，因此无法确认销售团队620人的具体构成及各类人数。如需回答，请提供包含销售人员分类与人数的原始文档（如年报、招股说明书或内部人员结构说明），或明确检索关键词（如公司名称、报告年份等）。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4357,
+  "started_at": "2026-11-01T04:02:59",
+  "elapsed_seconds": 18.16,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.167,
+    "number_recall": 0.0
+  }
+}

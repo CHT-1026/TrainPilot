@@ -1,0 +1,221 @@
+{
+  "qid": "F0092",
+  "question": "投资者问答列出的四项主要风险因素是什么？公司如何应对？",
+  "question_type": "清单枚举",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>投资者问答 风险因素</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list><parameter=keyword>投资者</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 73,
+        "prompt_tokens": 356,
+        "total_tokens": 429,
+        "completion_tokens_details": {
+          "reasoning_tokens": 25
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 5.407
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"投资者问答 风险因素\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 69,
+        "prompt_tokens": 441,
+        "total_tokens": 510,
+        "completion_tokens_details": {
+          "reasoning_tokens": 42
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.031
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_finance_investor_qa\",\"offset\":0,\"limit\":6000}}",
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 2864,
+        "total_tokens": 2914,
+        "completion_tokens_details": {
+          "reasoning_tokens": 15
+        },
+        "prompt_tokens_details": null
+      },
+      "seconds": 1.687
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"《澜图智能投资者常见问题答复》（v2.0，生效日期2025-12-30）第五节列出的主要风险因素为四项：①行业周期性波动；②客户集中度；③海外合规风险；④汇率风险。公司的应对措施是：通过客户多元化与套期保值进行应对（即以客户多元化对冲行业周期性波动与客户集中度风险，以套期保值对冲汇率风险）。\",\"citations\":[\"lantu_finance_investor_qa\"],\"evidence\":[\"lantu_finance_investor_qa#片段0\"]}",
+      "usage": {
+        "completion_tokens": 228,
+        "prompt_tokens": 3303,
+        "total_tokens": 3531,
+        "completion_tokens_details": {
+          "reasoning_tokens": 83
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2816
+        }
+      },
+      "seconds": 4.735
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "投资者问答 风险因素",
+        "top_k": 10
+      },
+      "result_sha": "690f10095a2fee9bbf01d45ceb8b9034b5d6d5189822e0b3b98cd4e711e54447",
+      "result_chars": 3816,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_finance_investor_qa",
+        "offset": 0,
+        "limit": 6000
+      },
+      "result_sha": "37a088ca8440b1e65e67466440e767c9a1c60e38957cc718d1b8fb71158f392a",
+      "result_chars": 625,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "《澜图智能投资者常见问题答复》（v2.0，生效日期2025-12-30）第五节列出的主要风险因素为四项：①行业周期性波动；②客户集中度；③海外合规风险；④汇率风险。公司的应对措施是：通过客户多元化与套期保值进行应对（即以客户多元化对冲行业周期性波动与客户集中度风险，以套期保值对冲汇率风险）。",
+    "citations": [
+      "lantu_finance_investor_qa"
+    ],
+    "evidence": [
+      "lantu_finance_investor_qa#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 7384,
+  "started_at": "2026-11-01T05:00:38",
+  "elapsed_seconds": 13.86,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "投资者问答 风险因素",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_finance_investor_qa",
+            "title": "# 澜图智能投资者常见问题答复",
+            "chunk": 0,
+            "score": 18.661,
+            "snippet": "# 澜图智能投资者常见问题答复\n\n所属部门：董事会办公室\n作者：周敏仪\n创建时间：2025-11-01 09:00\n更新时间：2025-12-30 16:00\n版本号：v2.0\n文档类型：finance\n文档族：investor_qa\n生效日期：2025-12-30\n\n## 一、增长来源\n\n2025 年增长主要来自动力电池与半导体行业，两项合计贡献收入增量的 61%；海外市场贡献 22%。\n\n## 二、毛利率趋势\n\n随着自研控制器与驱动器比例提升、标准工作站放量，预计 2026 年毛利率提升至 32.5% 左右。\n"
+          },
+          {
+            "doc_id": "lantu_investor_overview",
+            "title": "# 澜图智能投资者关系概览",
+            "chunk": 0,
+            "score": 9.063,
+            "snippet": "# 澜图智能投资者关系概览\n\n所属部门：董事会办公室\n作者：周敏仪\n创建时间：2024-03-20 09:00\n更新时间：2026-01-10 17:00\n版本号：v4.1\n文档类型：company\n文档族：investor_overview\n生效日期：2026-01-10\n\n## 一、基本信息\n\n公司股票代码 688719，总股本 4.2 亿股，2025 年末总市值约 168 亿元。2025 年度拟每 10 股派发现金红利 3.2 元（含税）。\n\n## 二、经营数据\n\n2025 年营业收入 42.63 亿元，归母"
+          },
+          {
+            "doc_id": "lantu_company_profile",
+            "title": "澜图智能装备公司简介",
+            "chunk": 1,
+            "score": 7.611,
+            "snippet": "入 13.8%。\n五、质量与认证\n公司通过 ISO 9001、ISO 14001、ISO 45001、IATF 16949 与 ISO 27001 认证，产品符合 CE、UL 与 GB\n标准。2025 年客户投诉 3 起，一次交检合格率 98.6%。\n六、联系方式\n总部地址：江苏省苏州市工业园区星澜路88号；总机：0512-6688-2100；官网：www.lantu-robot.com；\n投资者关系邮箱：ir@lantu-robot.com。"
+          },
+          {
+            "doc_id": "lantu_meeting_strategy",
+            "title": "# 2026 年战略研讨会纪要",
+            "chunk": 0,
+            "score": 5.56,
+            "snippet": "# 2026 年战略研讨会纪要\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-11-21 09:00\n更新时间：2025-11-22 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_strategy_2026\n生效日期：2025-11-22\n\n## 一、战略目标\n\n2026 年营业收入 52 亿元，2028 年 80 亿元；海外收入占比 2026 年提升至 17%，2028 年达到 25%。\n\n## 二、业务重点\n\n巩固锂电与汽车基本盘，突破半导体与具身智能；软件与服务收"
+          },
+          {
+            "doc_id": "lantu_finance_cashflow",
+            "title": "# 澜图智能现金流与资金管理报告",
+            "chunk": 0,
+            "score": 4.95,
+            "snippet": "# 澜图智能现金流与资金管理报告\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-12-10 09:00\n更新时间：2025-12-15 17:00\n版本号：v1.1\n文档类型：finance\n文档族：cashflow_2025\n生效日期：2025-12-15\n\n## 一、现金流概况\n\n2025 年经营活动现金流净额 5.34 亿元，投资活动现金流净额 -3.86 亿元，筹资活动现金流净额 -0.92 亿元。\n\n## 二、回款管理\n\n应收账款余额 10.24 亿元，周转天数 86 天；逾期账款占比 4.2%，"
+          },
+          {
+            "doc_id": "lantu_meeting_board",
+            "title": "# 2025 年第二次临时董事会决议",
+            "chunk": 0,
+            "score": 4.926,
+            "snippet": "# 2025 年第二次临时董事会决议\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-04-25 09:00\n更新时间：2025-04-25 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_board_2025\n生效日期：2025-04-25\n\n## 一、会议信息\n\n时间：2025 年 4 月 25 日；方式：现场加视频；应到董事 9 人，实到 9 人；列席：高管团队。\n\n## 二、审议事项\n\n审议通过《2024 年度利润分配方案》《2025 年度研发投入预算》《苏州二期"
+          },
+          {
+            "doc_id": "lantu_strategy_2025",
+            "title": "# 澜图智能 2025 年度经营计划",
+            "chunk": 0,
+            "score": 4.335,
+            "snippet": "# 澜图智能 2025 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-01-10 09:00\n更新时间：2025-02-10 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2025\n生效日期：2025-02-10\n\n## 一、年度目标\n\n2025 年营业收入目标 41.5 亿元，力争 42.63 亿元；新签订单目标 46 亿元；机器人出货目标 20,000 台。\n\n## 二、重点任务\n\n锂电与半导体行业突破；LT-C800 控制器量产；海外收入占"
+          },
+          {
+            "doc_id": "lantu_tech_security",
+            "title": "# 澜图智能产品网络安全设计规范",
+            "chunk": 0,
+            "score": 4.238,
+            "snippet": "# 澜图智能产品网络安全设计规范\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-11-01 09:00\n更新时间：2025-10-01 09:00\n版本号：v2.5\n文档类型：tech\n文档族：product_security\n生效日期：2025-10-01\n\n## 一、安全设计原则\n\n遵循最小权限、默认拒绝、纵深防御与安全默认配置原则，产品通过等保三级与 IEC 62443 评估。\n\n## 二、身份与访问\n\n支持多因素认证、RBAC 权限模型与操作审计；默认密码首次登录强制修改，会话超时 30 分钟。\n"
+          },
+          {
+            "doc_id": "lantu_meeting_safety",
+            "title": "# 2025 年安全生产委员会会议纪要",
+            "chunk": 0,
+            "score": 3.533,
+            "snippet": "# 2025 年安全生产委员会会议纪要\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2025-06-12 09:00\n更新时间：2025-06-12 15:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_safety_2025\n生效日期：2025-06-12\n\n## 一、安全形势\n\n上半年未发生重伤及以上事故，轻伤 2 起，同比下降 50%；排查隐患 27 项，整改完成 25 项。\n\n## 二、重点风险\n\n机器人调试区域误入风险、锂电物料存储消防风险、高处作业风险；需完善安全围栏与联锁。"
+          },
+          {
+            "doc_id": "lantu_tech_patents",
+            "title": "# 澜图智能知识产权与专利布局",
+            "chunk": 0,
+            "score": 2.95,
+            "snippet": "# 澜图智能知识产权与专利布局\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-04-26 09:00\n更新时间：2025-12-18 15:00\n版本号：v2.8\n文档类型：tech\n文档族：patent_portfolio\n生效日期：2025-12-18\n\n## 一、专利总量\n\n累计有效专利 1,286 件，其中发明专利 412 件、实用新型 726 件、外观设计 148 件；软件著作权 168 项。\n\n## 二、重点布局\n\n运动控制、伺服驱动、机器视觉、力控与具身智能五大方向；PCT 国际专利申请 3"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_finance_investor_qa",
+        "offset": 0,
+        "limit": 6000
+      },
+      "result": {
+        "doc_id": "lantu_finance_investor_qa",
+        "title": "# 澜图智能投资者常见问题答复",
+        "offset": 0,
+        "limit": 6000,
+        "total_chars": 448,
+        "text": "# 澜图智能投资者常见问题答复\n\n所属部门：董事会办公室\n作者：周敏仪\n创建时间：2025-11-01 09:00\n更新时间：2025-12-30 16:00\n版本号：v2.0\n文档类型：finance\n文档族：investor_qa\n生效日期：2025-12-30\n\n## 一、增长来源\n\n2025 年增长主要来自动力电池与半导体行业，两项合计贡献收入增量的 61%；海外市场贡献 22%。\n\n## 二、毛利率趋势\n\n随着自研控制器与驱动器比例提升、标准工作站放量，预计 2026 年毛利率提升至 32.5% 左右。\n\n## 三、研发投入\n\n2025 年研发投入 5.87 亿元，重点投向具身智能、力控与视觉；研发费用率将保持在 13%-14%。\n\n## 四、分红政策\n\n公司实行稳定分红政策，最近三年累计现金分红占归母净利润的 32%；未来将结合资本开支与现金流动态调整。\n\n## 五、风险因素\n\n行业周期性波动、客户集中度、海外合规与汇率风险是主要风险，公司通过客户多元化与套期保值应对。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_finance_investor_qa"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.421,
+    "number_recall": 0.0
+  }
+}

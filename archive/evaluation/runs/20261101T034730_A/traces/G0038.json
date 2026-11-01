@@ -1,0 +1,239 @@
+{
+  "qid": "G0038",
+  "question": "云平台的高可用与灾备指标是什么？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>云平台 高可用 灾备 指标</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 56,
+        "prompt_tokens": 353,
+        "total_tokens": 409,
+        "completion_tokens_details": {
+          "reasoning_tokens": 18
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.844
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>高可用 灾备 指标 RTO RPO</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 84,
+        "prompt_tokens": 428,
+        "total_tokens": 512,
+        "completion_tokens_details": {
+          "reasoning_tokens": 45
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.656
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"云平台高可用灾备指标RTO RPO\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 504,
+        "total_tokens": 555,
+        "completion_tokens_details": {
+          "reasoning_tokens": 20
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.969
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_tech_cloud_platform\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 2911,
+        "total_tokens": 2962,
+        "completion_tokens_details": {
+          "reasoning_tokens": 19
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.656
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据《澜图智能云平台架构设计》（v3.0，2025-09-18 生效）第四节“安全与高可用”：云平台通过等保三级认证，支持多可用区部署；核心服务可用性为 99.95%，灾备指标为 RPO 15 分钟、RTO 30 分钟。\",\"citations\":[\"lantu_tech_cloud_platform\"],\"evidence\":[\"lantu_tech_cloud_platform#片段4\"]}",
+      "usage": {
+        "completion_tokens": 123,
+        "prompt_tokens": 3296,
+        "total_tokens": 3419,
+        "completion_tokens_details": {
+          "reasoning_tokens": 3
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2880
+        }
+      },
+      "seconds": 4.5
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "云平台高可用灾备指标RTO RPO",
+        "top_k": 10
+      },
+      "result_sha": "c3f861445b4ef26a88e95690bb7e0f37a9b24089d460359defcaafab6e24c9a6",
+      "result_chars": 3901,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_cloud_platform",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "8be05b3efd8f67600d1f6e8ce067e41f0d4e4b19341627fd5288f94daa8ff907",
+      "result_chars": 562,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《澜图智能云平台架构设计》（v3.0，2025-09-18 生效）第四节“安全与高可用”：云平台通过等保三级认证，支持多可用区部署；核心服务可用性为 99.95%，灾备指标为 RPO 15 分钟、RTO 30 分钟。",
+    "citations": [
+      "lantu_tech_cloud_platform"
+    ],
+    "evidence": [
+      "lantu_tech_cloud_platform#片段4"
+    ]
+  },
+  "status": "answered",
+  "tokens": 7857,
+  "started_at": "2026-11-01T05:04:26",
+  "elapsed_seconds": 13.62,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "云平台高可用灾备指标RTO RPO",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_tech_cloud_platform",
+            "title": "# 澜图智能云平台架构设计",
+            "chunk": 0,
+            "score": 31.92,
+            "snippet": "# 澜图智能云平台架构设计\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-09-01 09:00\n更新时间：2025-09-18 16:00\n版本号：v3.0\n文档类型：tech\n文档族：cloud_platform\n生效日期：2025-09-18\n\n## 一、总体架构\n\n云平台采用微服务架构，基于 Kubernetes 部署，分为设备接入、数据服务、应用服务与开放 API 四层。\n\n## 二、接入能力\n\n单集群支持 5,000 台设备接入，MQTT 消息吞吐 20 万条/秒，设备离线缓存 7 天。\n\n#"
+          },
+          {
+            "doc_id": "lantu_tech_data_platform",
+            "title": "# 澜图智能工业数据平台建设方案",
+            "chunk": 0,
+            "score": 11.291,
+            "snippet": "# 澜图智能工业数据平台建设方案\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-10-01 09:00\n更新时间：2025-07-30 14:00\n版本号：v2.4\n文档类型：tech\n文档族：data_platform\n生效日期：2025-07-30\n\n## 一、平台定位\n\n构建统一工业数据湖仓，支撑设备运维、质量分析与经营决策，覆盖 3 大基地与客户现场。\n\n## 二、数据架构\n\n采集层支持 OPC UA、Modbus、MQTT；存储层采用数据湖 + 数仓分层；服务层提供 BI、API 与算法服务。\n"
+          },
+          {
+            "doc_id": "lantu_tech_security",
+            "title": "# 澜图智能产品网络安全设计规范",
+            "chunk": 0,
+            "score": 6.507,
+            "snippet": "# 澜图智能产品网络安全设计规范\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-11-01 09:00\n更新时间：2025-10-01 09:00\n版本号：v2.5\n文档类型：tech\n文档族：product_security\n生效日期：2025-10-01\n\n## 一、安全设计原则\n\n遵循最小权限、默认拒绝、纵深防御与安全默认配置原则，产品通过等保三级与 IEC 62443 评估。\n\n## 二、身份与访问\n\n支持多因素认证、RBAC 权限模型与操作审计；默认密码首次登录强制修改，会话超时 30 分钟。\n"
+          },
+          {
+            "doc_id": "lantu_tech_vision",
+            "title": "# 澜图智能机器视觉算法平台说明",
+            "chunk": 0,
+            "score": 5.702,
+            "snippet": "# 澜图智能机器视觉算法平台说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-08-01 09:00\n更新时间：2025-11-05 15:00\n版本号：v3.1\n文档类型：tech\n文档族：vision_algorithm\n生效日期：2025-11-05\n\n## 一、算法能力\n\n覆盖 2D/3D 定位、缺陷检测、OCR、分割与无序抓取，支持小样本学习与在线增量训练。\n\n## 二、性能指标\n\n3D 测量精度 0.05 mm，缺陷检测召回率 99.2%，误检率 0.8%，单帧推理延迟 35 ms。\n\n##"
+          },
+          {
+            "doc_id": "lantu_product_digital_twin",
+            "title": "# LantuTwin 数字孪生平台介绍",
+            "chunk": 0,
+            "score": 3.721,
+            "snippet": "# LantuTwin 数字孪生平台介绍\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-09-01 09:00\n更新时间：2025-06-30 16:00\n版本号：v3.0\n文档类型：product\n文档族：product_digital_twin\n生效日期：2025-06-30\n\n## 一、平台定位\n\nLantuTwin 3.0 是面向智能工厂规划、调试与运维的数字孪生平台，支持机器人、产线与物流系统的虚实同步。\n\n## 二、核心能力\n\n单项目支持 500 台设备接入，数据刷新延迟低于 80 ms，仿真"
+          },
+          {
+            "doc_id": "lantu_tech_roadmap",
+            "title": "# 澜图智能技术路线图（2025—2028）",
+            "chunk": 0,
+            "score": 3.14,
+            "snippet": "# 澜图智能技术路线图（2025—2028）\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-11-01 09:00\n更新时间：2025-12-05 16:00\n版本号：v2.2\n文档类型：tech\n文档族：tech_roadmap\n生效日期：2025-12-05\n\n## 一、总体路线\n\n以“本体+控制+视觉+软件”为基础，向具身智能与柔性制造演进，2026 年完成 LT-R20 Pro 与具身智能平台 1.0。\n\n## 二、2025 年\n\nLT-C800 控制器量产、LantuTwin 3.0 发布、LT"
+          },
+          {
+            "doc_id": "lantu_product_assembly",
+            "title": "# LT-Assembly 柔性装配工作站方案",
+            "chunk": 0,
+            "score": 2.655,
+            "snippet": "# LT-Assembly 柔性装配工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-07-15 09:00\n更新时间：2025-09-05 11:00\n版本号：v2.5\n文档类型：product\n文档族：solution_assembly\n生效日期：2025-09-05\n\n## 一、方案组成\n\n由 LT-R12/LT-R20 机器人、力控末端、LT-V3D 视觉与快换工装组成，支持多品种混线装配。\n\n## 二、工艺指标\n\n装配节拍 3.2 秒/件，力控精度 ±2 N，视觉定位精度 ±0.05 mm，"
+          },
+          {
+            "doc_id": "lantu_tech_servo",
+            "title": "# 澜图智能伺服驱动与关节模组技术说明",
+            "chunk": 0,
+            "score": 2.611,
+            "snippet": "# 澜图智能伺服驱动与关节模组技术说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-07-01 09:00\n更新时间：2025-08-25 10:00\n版本号：v2.6\n文档类型：tech\n文档族：servo_drive\n生效日期：2025-08-25\n\n## 一、产品范围\n\n自研 400W-7.5kW 伺服驱动器与关节模组，覆盖 LT-R 与 LT-S 全系列，自研比例 61%。\n\n## 二、关键指标\n\n电流环带宽 2.5 kHz，速度环 1.2 kHz，位置精度 23 位，过载能力 300% 持续 "
+          },
+          {
+            "doc_id": "lantu_solution_photovoltaic",
+            "title": "# 光伏电池片串焊整线解决方案",
+            "chunk": 0,
+            "score": 2.6,
+            "snippet": "# 光伏电池片串焊整线解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-09-20 09:00\n更新时间：2025-10-16 14:00\n版本号：v3.1\n文档类型：product\n文档族：solution_photovoltaic\n生效日期：2025-10-16\n\n## 一、方案概述\n\n面向 TOPCon/HJT 电池片串焊，提供上料、串焊、EL 检测与下料整线方案，核心设备为 LT-S10 SCARA 与 LT-V3D 视觉。\n\n## 二、产线指标\n\n串焊速度 4,200 片/小时，良率 99.6"
+          },
+          {
+            "doc_id": "lantu_product_painting",
+            "title": "# LT-Paint 机器人喷涂工作站方案",
+            "chunk": 0,
+            "score": 2.558,
+            "snippet": "# LT-Paint 机器人喷涂工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-08-01 09:00\n更新时间：2025-04-18 15:00\n版本号：v2.2\n文档类型：product\n文档族：solution_painting\n生效日期：2025-04-18\n\n## 一、方案组成\n\n以 LT-R20 防爆机器人为核心，集成旋杯喷枪、供漆系统、防爆控制柜与 VOC 处理装置。\n\n## 二、工艺指标\n\n换色时间 6 分钟，涂料利用率提升 23%，膜厚均匀性 ±5 μm，VOC 排放下降 19%。"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_cloud_platform",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_tech_cloud_platform",
+        "title": "# 澜图智能云平台架构设计",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 391,
+        "text": "# 澜图智能云平台架构设计\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-09-01 09:00\n更新时间：2025-09-18 16:00\n版本号：v3.0\n文档类型：tech\n文档族：cloud_platform\n生效日期：2025-09-18\n\n## 一、总体架构\n\n云平台采用微服务架构，基于 Kubernetes 部署，分为设备接入、数据服务、应用服务与开放 API 四层。\n\n## 二、接入能力\n\n单集群支持 5,000 台设备接入，MQTT 消息吞吐 20 万条/秒，设备离线缓存 7 天。\n\n## 三、数据服务\n\n时序数据存储于 TDengine，业务数据存储于 MySQL，分析任务使用 Flink 与 Spark。\n\n## 四、安全与高可用\n\n通过等保三级认证，支持多可用区部署，核心服务可用性 99.95%，RPO 15 分钟、RTO 30 分钟。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_tech_cloud_platform"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.86,
+    "number_recall": 0.0
+  }
+}

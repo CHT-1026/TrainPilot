@@ -1,0 +1,78 @@
+{
+  "qid": "C0039",
+  "question": "控制器产品说明中提到内置安全限速与区域监控，与 R 系列手册提到的内置安全功能是否为同一组？",
+  "question_type": "矛盾与例外识别",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=list><parameter=keyword></parameter></tool_call>",
+      "usage": {
+        "completion_tokens": 57,
+        "prompt_tokens": 371,
+        "total_tokens": 428,
+        "completion_tokens_details": {
+          "reasoning_tokens": 43
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.688
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=list><parameter=keyword>控制器</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 92,
+        "prompt_tokens": 422,
+        "total_tokens": 514,
+        "completion_tokens_details": {
+          "reasoning_tokens": 74
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 4.375
+    },
+    {
+      "round": 3,
+      "text": "{\"name\":\"list\",\"args\":{\"keyword\":\"控制器\"}}",
+      "usage": {
+        "completion_tokens": 33,
+        "prompt_tokens": 477,
+        "total_tokens": 510,
+        "completion_tokens_details": {
+          "reasoning_tokens": 20
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 0.968
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "name": "list",
+    "args": {
+      "keyword": "控制器"
+    }
+  },
+  "status": "answered",
+  "tokens": 1452,
+  "started_at": "2026-11-01T04:12:54",
+  "elapsed_seconds": 7.03,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

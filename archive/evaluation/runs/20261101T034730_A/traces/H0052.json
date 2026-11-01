@@ -1,0 +1,142 @@
+{
+  "qid": "H0052",
+  "question": "客户服务白皮书的「海外 3 个服务点」与销售区域文档的「覆盖 32 个国家和地区」是什么关系？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>海外服务点 客户服务白皮书</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=search><parameter=query>覆盖 32 个国家和地区 销售区域</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 86,
+        "prompt_tokens": 373,
+        "total_tokens": 459,
+        "completion_tokens_details": {
+          "reasoning_tokens": 17
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.687
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>海外服务点 客户服务白皮书 32个国家和地区</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 479,
+        "total_tokens": 527,
+        "completion_tokens_details": {
+          "reasoning_tokens": 8
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.125
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>客户服务白皮书 海外服务点 32个国家和地区</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 47,
+        "prompt_tokens": 556,
+        "total_tokens": 603,
+        "completion_tokens_details": {
+          "reasoning_tokens": 8
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.516
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>客户服务白皮书 海外服务点 32个国家和地区</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 79,
+        "prompt_tokens": 632,
+        "total_tokens": 711,
+        "completion_tokens_details": {
+          "reasoning_tokens": 40
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 2.656
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>客户服务白皮书 海外服务点</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 54,
+        "prompt_tokens": 708,
+        "total_tokens": 762,
+        "completion_tokens_details": {
+          "reasoning_tokens": 20
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 1.469
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>客户服务白皮书 海外服务点</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 42,
+        "prompt_tokens": 779,
+        "total_tokens": 821,
+        "completion_tokens_details": {
+          "reasoning_tokens": 8
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 1.312
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_relation_extraction\",\"answer\":\"未能检索到语料库中的原文证据，无法确认二者关系。需要先检索「客户服务白皮书」中「海外 3 个服务点」的具体表述（如服务点性质、分布区域、职能），以及「销售区域文档」中「覆盖 32 个国家和地区」的口径（如统计年份、是否含港澳台、覆盖与自建服务点的区分），才能判断二者是同一体系的不同维度（销售覆盖 vs 服务网络），还是数据口径存在差异/冲突。建议补充检索这两份文档原文后再行比对。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 163,
+        "prompt_tokens": 847,
+        "total_tokens": 1010,
+        "completion_tokens_details": {
+          "reasoning_tokens": 18
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 768
+        }
+      },
+      "seconds": 4.375
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_relation_extraction",
+    "answer": "未能检索到语料库中的原文证据，无法确认二者关系。需要先检索「客户服务白皮书」中「海外 3 个服务点」的具体表述（如服务点性质、分布区域、职能），以及「销售区域文档」中「覆盖 32 个国家和地区」的口径（如统计年份、是否含港澳台、覆盖与自建服务点的区分），才能判断二者是同一体系的不同维度（销售覆盖 vs 服务网络），还是数据口径存在差异/冲突。建议补充检索这两份文档原文后再行比对。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4893,
+  "started_at": "2026-11-01T05:13:44",
+  "elapsed_seconds": 15.14,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.077,
+    "number_recall": 0.0
+  }
+}

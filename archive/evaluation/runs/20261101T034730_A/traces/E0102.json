@@ -1,0 +1,395 @@
+{
+  "qid": "E0102",
+  "question": "商业秘密的范围与数据分级规范中 L3 数据的列举口径是否一致？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>商业秘密的范围</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=search><parameter=query>数据分级 L3 数据</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 99,
+        "prompt_tokens": 360,
+        "total_tokens": 459,
+        "completion_tokens_details": {
+          "reasoning_tokens": 42
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.046
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>商业秘密的范围</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 116,
+        "prompt_tokens": 454,
+        "total_tokens": 570,
+        "completion_tokens_details": {
+          "reasoning_tokens": 87
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.672
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"商业秘密的范围\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 38,
+        "prompt_tokens": 520,
+        "total_tokens": 558,
+        "completion_tokens_details": {
+          "reasoning_tokens": 14
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.344
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"数据分级 L3 数据分类\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 35,
+        "prompt_tokens": 2881,
+        "total_tokens": 2916,
+        "completion_tokens_details": {
+          "reasoning_tokens": 9
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 1.391
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_data_classification\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 52,
+        "prompt_tokens": 5284,
+        "total_tokens": 5336,
+        "completion_tokens_details": {
+          "reasoning_tokens": 21
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2816
+        }
+      },
+      "seconds": 1.593
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_confidentiality\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 57,
+        "prompt_tokens": 5746,
+        "total_tokens": 5803,
+        "completion_tokens_details": {
+          "reasoning_tokens": 25
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 5248
+        }
+      },
+      "seconds": 2.313
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"不一致，两者是交叉但不完全重合的口径。（1）《商业秘密与保密管理规范》（v3.1，2025-03-28 生效）按法律类别列举：技术秘密（源代码、算法、图纸、工艺参数）、经营秘密（客户名单、报价、成本、未披露财务数据）与人事秘密。（2）《数据分级与分类管理规范》（v2.5，2025-09-10 生效）按敏感度分级，L3（机密，限授权岗位）典型数据仅为：客户合同、报价、产品图纸；源代码与未披露财报被划入更高级别的 L4（绝密）。（3）差异点：报价、图纸（产品图纸）两者一致落入保密/L3；但源代码、未披露财务数据在商业秘密中属保密信息，而在数据分级中属 L4 而非 L3；算法、工艺参数、客户名单、成本、人事秘密未在 L3 典型数据中列举；客户合同则只见于 L3 而未在商业秘密列举中明示。因此不能简单以 L3 等同于商业秘密范围，实务中需按“就高不就低”原则处理重叠数据（如报价、图纸），并注意 L4 数据同样可能构成商业秘密。\",\"citations\":[\"lantu_policy_confidentiality\",\"lantu_policy_data_classification\"],\"evidence\":[\"lantu_policy_confidentiality#片段0\",\"lantu_policy_data_classification#片段0\"]}",
+      "usage": {
+        "completion_tokens": 527,
+        "prompt_tokens": 6161,
+        "total_tokens": 6688,
+        "completion_tokens_details": {
+          "reasoning_tokens": 182
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 5696
+        }
+      },
+      "seconds": 11.937
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "商业秘密的范围",
+        "top_k": 10
+      },
+      "result_sha": "b14c740e321f7ca3335343f2b9eaa0ce6bc37b7131278a57aa3f316cdb4f753e",
+      "result_chars": 3888,
+      "hits": 10
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "数据分级 L3 数据分类",
+        "top_k": 10
+      },
+      "result_sha": "3bd753313146269ae726ba0cbd71ec98a312e6d196254e6945f0c4c97fae83b3",
+      "result_chars": 3940,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_data_classification",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "771741860b42ad3363de125c9966bb920c2bd694a5a17e42d034e8f058400d5d",
+      "result_chars": 684,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_confidentiality",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "f69172ab39d3cf80bfb0aa2815d2f78c01451507f35450870f8cdeb58785e57d",
+      "result_chars": 616,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "不一致，两者是交叉但不完全重合的口径。（1）《商业秘密与保密管理规范》（v3.1，2025-03-28 生效）按法律类别列举：技术秘密（源代码、算法、图纸、工艺参数）、经营秘密（客户名单、报价、成本、未披露财务数据）与人事秘密。（2）《数据分级与分类管理规范》（v2.5，2025-09-10 生效）按敏感度分级，L3（机密，限授权岗位）典型数据仅为：客户合同、报价、产品图纸；源代码与未披露财报被划入更高级别的 L4（绝密）。（3）差异点：报价、图纸（产品图纸）两者一致落入保密/L3；但源代码、未披露财务数据在商业秘密中属保密信息，而在数据分级中属 L4 而非 L3；算法、工艺参数、客户名单、成本、人事秘密未在 L3 典型数据中列举；客户合同则只见于 L3 而未在商业秘密列举中明示。因此不能简单以 L3 等同于商业秘密范围，实务中需按“就高不就低”原则处理重叠数据（如报价、图纸），并注意 L4 数据同样可能构成商业秘密。",
+    "citations": [
+      "lantu_policy_confidentiality",
+      "lantu_policy_data_classification"
+    ],
+    "evidence": [
+      "lantu_policy_confidentiality#片段0",
+      "lantu_policy_data_classification#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 22330,
+  "started_at": "2026-11-01T04:52:56",
+  "elapsed_seconds": 24.3,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "商业秘密的范围",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_policy_confidentiality",
+            "title": "# 澜图智能商业秘密与保密管理规范",
+            "chunk": 0,
+            "score": 17.921,
+            "snippet": "# 澜图智能商业秘密与保密管理规范\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-15 09:00\n更新时间：2025-03-28 11:00\n版本号：v3.1\n文档类型：policy\n文档族：confidentiality\n生效日期：2025-03-28\n\n## 一、保密范围\n\n技术秘密（源代码、算法、图纸、工艺参数）、经营秘密（客户名单、报价、成本、未披露财务数据）与人事秘密均属保密信息。\n\n## 二、保密义务\n\n员工在职期间及离职后 3 年内不得披露、使用或允许他人使用公司保密信息；竞业限制人"
+          },
+          {
+            "doc_id": "lantu_legal_nda_template",
+            "title": "澜图智能保密协议模板（NDA）",
+            "chunk": 0,
+            "score": 10.434,
+            "snippet": "澜图智能保密协议模板（NDA）\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-10 09:00\n更新时间：2025-02-01 09:00\n版本号：v3.0\n文档类型：legal\n文档族：nda_template\n生效日期：2025-02-01\n第一条 保密信息\n保密信息包括技术资料、图纸、源代码、算法、客户信息、报价、成本与未公开财务数据。\n第二条 保密义务\n接收方仅可为合作目的使用保密信息，不得披露给第三方；接触人员须签署个人保密承诺。\n第三条 保密期限\n本协议保密期限为签署之日起 3 年，商业秘"
+          },
+          {
+            "doc_id": "lantu_policy_employee_handbook",
+            "title": "# 澜图智能员工手册",
+            "chunk": 0,
+            "score": 7.622,
+            "snippet": "# 澜图智能员工手册\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-07-01 09:00\n版本号：v6.0\n文档类型：policy\n文档族：employee_handbook\n生效日期：2025-07-01\n\n## 一、适用范围\n\n本手册适用于澜图智能装备股份有限公司及下属子公司全体正式员工、试用期员工与实习生。劳务派遣与外包人员参照执行。\n\n## 二、入职与试用\n\n新员工入职当日签署劳动合同、保密协议与廉洁承诺书，试用期 3-6 个月。试用期内需完成入职培"
+          },
+          {
+            "doc_id": "lantu_support_warranty",
+            "title": "# 澜图智能产品保修政策",
+            "chunk": 0,
+            "score": 3.916,
+            "snippet": "# 澜图智能产品保修政策\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-01-01 09:00\n更新时间：2025-04-01 09:00\n版本号：v3.0\n文档类型：support\n文档族：warranty_policy\n生效日期：2025-04-01\n\n## 一、保修期限\n\n机器人本体保修 24 个月或 6,000 小时，以先到者为准；控制器保修 18 个月；易损件保修 6 个月。\n\n## 二、保修范围\n\n因产品设计、制造或材料缺陷导致的故障免费维修或更换；软件提供 12 个月免费升级。\n\n## 三、"
+          },
+          {
+            "doc_id": "lantu_legal_anti_bribery",
+            "title": "# 澜图智能反商业贿赂管理规定",
+            "chunk": 0,
+            "score": 3.814,
+            "snippet": "# 澜图智能反商业贿赂管理规定\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-03-01 09:00\n更新时间：2025-01-15 10:00\n版本号：v2.4\n文档类型：legal\n文档族：anti_bribery\n生效日期：2025-01-15\n\n## 一、禁止行为\n\n禁止向客户、政府官员、供应商及其亲属提供现金、购物卡、有价证券、贵重礼品、旅游或娱乐安排。\n\n## 二、礼品与招待\n\n商务礼品单价不超过 200 元，须登记备案；业务招待人均不超过 600 元，禁止高消费娱乐。\n\n## 三、第三方管理"
+          },
+          {
+            "doc_id": "lantu_tech_servo",
+            "title": "# 澜图智能伺服驱动与关节模组技术说明",
+            "chunk": 0,
+            "score": 2.997,
+            "snippet": "# 澜图智能伺服驱动与关节模组技术说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-07-01 09:00\n更新时间：2025-08-25 10:00\n版本号：v2.6\n文档类型：tech\n文档族：servo_drive\n生效日期：2025-08-25\n\n## 一、产品范围\n\n自研 400W-7.5kW 伺服驱动器与关节模组，覆盖 LT-R 与 LT-S 全系列，自研比例 61%。\n\n## 二、关键指标\n\n电流环带宽 2.5 kHz，速度环 1.2 kHz，位置精度 23 位，过载能力 300% 持续 "
+          },
+          {
+            "doc_id": "lantu_legal_compliance_manual",
+            "title": "# 澜图智能合规管理手册",
+            "chunk": 0,
+            "score": 2.882,
+            "snippet": "# 澜图智能合规管理手册\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-02-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v3.1\n文档类型：legal\n文档族：compliance_manual\n生效日期：2025-06-01\n\n## 一、合规组织\n\n公司设合规委员会，主任由法务合规总监担任，成员包括财务、销售、采购、人力与信息技术负责人。\n\n## 二、重点领域\n\n反商业贿赂、出口管制、数据保护、反垄断、劳动用工与环境保护。各领域每年至少开展一次风险评估。\n\n## 三、培训与举"
+          },
+          {
+            "doc_id": "lantu_org_committees",
+            "title": "# 澜图智能跨部门委员会与运作机制",
+            "chunk": 0,
+            "score": 2.797,
+            "snippet": "# 澜图智能跨部门委员会与运作机制\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2024-05-06 09:00\n更新时间：2025-10-18 11:00\n版本号：v2.1\n文档类型：org\n文档族：committees\n生效日期：2025-10-18\n\n## 一、产品决策委员会\n\n主任由 CTO 担任，成员包括产品部、研发中心、销售中心、质量部负责人，负责产品立项、版本发布与退市决策，每月召开一次。\n\n## 二、质量安全委员会\n\n主任由 COO 担任，负责重大质量事故、召回与安全生产事项，实行 24 小时响"
+          },
+          {
+            "doc_id": "lantu_sales_channel",
+            "title": "# 澜图智能渠道管理办法",
+            "chunk": 0,
+            "score": 2.782,
+            "snippet": "# 澜图智能渠道管理办法\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-03-05 09:00\n更新时间：2025-11-06 10:00\n版本号：v2.7\n文档类型：sales\n文档族：sales_channel\n生效日期：2025-11-06\n\n## 一、渠道分级\n\n渠道商分为金牌、银牌、认证三级。金牌渠道年度采购额不低于 3,000 万元，享受 82 折拿货价、优先技术支持与联合市场活动。\n\n## 二、准入与退出\n\n新渠道需具备 3 年以上自动化行业经验、专职技术团队不少于 5 人。连续 12 个月"
+          },
+          {
+            "doc_id": "lantu_legal_supplier_code",
+            "title": "# 澜图智能供应商行为准则",
+            "chunk": 0,
+            "score": 2.777,
+            "snippet": "# 澜图智能供应商行为准则\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-04-01 09:00\n更新时间：2025-05-01 09:00\n版本号：v2.0\n文档类型：legal\n文档族：supplier_code\n生效日期：2025-05-01\n\n## 一、劳工与人权\n\n供应商不得使用童工、强迫劳动，须保障结社自由与最低工资，工作时间符合当地法律。\n\n## 二、健康与安全\n\n供应商须提供安全的工作环境，配备必要的防护设施，定期开展安全培训与应急演练。\n\n## 三、环境要求\n\n供应商须遵守环保法规，优"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "数据分级 L3 数据分类",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_policy_data_classification",
+            "title": "# 澜图智能数据分级与分类管理规范",
+            "chunk": 0,
+            "score": 31.476,
+            "snippet": "# 澜图智能数据分级与分类管理规范\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-05-20 09:00\n更新时间：2025-09-10 14:00\n版本号：v2.5\n文档类型：policy\n文档族：data_classification\n生效日期：2025-09-10\n\n## 一、分级定义\n\n数据分为 L1 公开、L2 内部、L3 机密、L4 绝密四级。L1 可对外发布；L2 限公司内部；L3 限授权岗位；L4 限特定人员并加密存储。\n\n## 二、典型数据\n\nL1：宣传资料、公开财报；L2：一般制度、会"
+          },
+          {
+            "doc_id": "lantu_org_committees",
+            "title": "# 澜图智能跨部门委员会与运作机制",
+            "chunk": 0,
+            "score": 14.279,
+            "snippet": "# 澜图智能跨部门委员会与运作机制\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2024-05-06 09:00\n更新时间：2025-10-18 11:00\n版本号：v2.1\n文档类型：org\n文档族：committees\n生效日期：2025-10-18\n\n## 一、产品决策委员会\n\n主任由 CTO 担任，成员包括产品部、研发中心、销售中心、质量部负责人，负责产品立项、版本发布与退市决策，每月召开一次。\n\n## 二、质量安全委员会\n\n主任由 COO 担任，负责重大质量事故、召回与安全生产事项，实行 24 小时响"
+          },
+          {
+            "doc_id": "lantu_policy_infosec",
+            "title": "# 澜图智能信息安全管理制度",
+            "chunk": 0,
+            "score": 7.423,
+            "snippet": "# 澜图智能信息安全管理制度\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-04-01 09:00\n更新时间：2025-08-01 09:00\n版本号：v4.0\n文档类型：policy\n文档族：information_security\n生效日期：2025-08-01\n\n## 一、账号与密码\n\n员工账号一人一号，密码长度不少于 12 位，包含大小写字母、数字与符号，每 90 天更换一次；禁止共享账号。\n\n## 二、终端安全\n\n办公电脑须安装公司统一的终端防护软件，开启磁盘加密与屏保锁定；禁止安装未授权软件与"
+          },
+          {
+            "doc_id": "lantu_support_training_certification",
+            "title": "# 澜图智能服务工程师培训与认证体系",
+            "chunk": 0,
+            "score": 6.094,
+            "snippet": "# 澜图智能服务工程师培训与认证体系\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-06-01 09:00\n更新时间：2025-08-08 10:00\n版本号：v2.4\n文档类型：support\n文档族：service_certification\n生效日期：2025-08-08\n\n## 一、认证等级\n\n服务工程师分为 L1 初级、L2 中级、L3 高级三级，分别对应常规维护、故障维修与整线调试。\n\n## 二、培训内容\n\nL1：安全、保养、备件更换（5 天）；L2：电气与控制系统维修（10 天）；L3：整线"
+          },
+          {
+            "doc_id": "lantu_finance_revenue_breakdown",
+            "title": "﻿维度,分类,收入（亿元）,占比,同比",
+            "chunk": 0,
+            "score": 5.415,
+            "snippet": "﻿维度,分类,收入（亿元）,占比,同比\n产品线,机器人本体,19.84,46.5%,+18.2%\n产品线,智能产线,14.92,35.0%,+21.6%\n产品线,工业软件与服务,5.21,12.2%,+26.8%\n产品线,备件及其他,2.66,6.3%,+9.4%\n行业,动力电池,13.64,32.0%,+24.1%\n行业,汽车及零部件,10.23,24.0%,+11.5%\n行业,半导体,5.12,12.0%,+38.6%\n行业,光伏,4.26,10.0%,+6.2%\n行业,3C 电子,3.41,8.0%,+14."
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2025",
+            "title": "# 澜图智能采购管理制度（2025版）",
+            "chunk": 0,
+            "score": 5.305,
+            "snippet": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付"
+          },
+          {
+            "doc_id": "lantu_tech_data_platform",
+            "title": "# 澜图智能工业数据平台建设方案",
+            "chunk": 0,
+            "score": 5.255,
+            "snippet": "# 澜图智能工业数据平台建设方案\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-10-01 09:00\n更新时间：2025-07-30 14:00\n版本号：v2.4\n文档类型：tech\n文档族：data_platform\n生效日期：2025-07-30\n\n## 一、平台定位\n\n构建统一工业数据湖仓，支撑设备运维、质量分析与经营决策，覆盖 3 大基地与客户现场。\n\n## 二、数据架构\n\n采集层支持 OPC UA、Modbus、MQTT；存储层采用数据湖 + 数仓分层；服务层提供 BI、API 与算法服务。\n"
+          },
+          {
+            "doc_id": "lantu_legal_data_compliance",
+            "title": "# 澜图智能数据合规与隐私保护规范",
+            "chunk": 0,
+            "score": 5.162,
+            "snippet": "# 澜图智能数据合规与隐私保护规范\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-07-01 09:00\n更新时间：2025-09-01 09:00\n版本号：v2.6\n文档类型：legal\n文档族：data_compliance\n生效日期：2025-09-01\n\n## 一、适用法律\n\n遵守《个人信息保护法》《数据安全法》《网络安全法》及欧盟 GDPR，处理个人信息须遵循最小必要与告知同意原则。\n\n## 二、数据出境\n\n向境外提供个人信息或重要数据须开展安全评估或签订标准合同，涉及研发数据的须经信息安全委员"
+          },
+          {
+            "doc_id": "lantu_tech_cloud_platform",
+            "title": "# 澜图智能云平台架构设计",
+            "chunk": 0,
+            "score": 4.748,
+            "snippet": "# 澜图智能云平台架构设计\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-09-01 09:00\n更新时间：2025-09-18 16:00\n版本号：v3.0\n文档类型：tech\n文档族：cloud_platform\n生效日期：2025-09-18\n\n## 一、总体架构\n\n云平台采用微服务架构，基于 Kubernetes 部署，分为设备接入、数据服务、应用服务与开放 API 四层。\n\n## 二、接入能力\n\n单集群支持 5,000 台设备接入，MQTT 消息吞吐 20 万条/秒，设备离线缓存 7 天。\n\n#"
+          },
+          {
+            "doc_id": "lantu_strategy_digital_transformation",
+            "title": "# 澜图智能数字化转型规划",
+            "chunk": 0,
+            "score": 4.467,
+            "snippet": "# 澜图智能数字化转型规划\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-08-01 09:00\n更新时间：2025-10-10 14:00\n版本号：v2.3\n文档类型：strategy\n文档族：digital_transformation\n生效日期：2025-10-10\n\n## 一、转型目标\n\n三年内实现研发、供应链、制造、销售与服务的全流程数字化，运营效率提升 20%。\n\n## 二、重点工程\n\nPLM 研发协同、SRM 供应链协同、MES 制造执行、CRM 客户经营与数据中台五大工程。\n\n## 三、技"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_data_classification",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_data_classification",
+        "title": "# 澜图智能数据分级与分类管理规范",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 498,
+        "text": "# 澜图智能数据分级与分类管理规范\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-05-20 09:00\n更新时间：2025-09-10 14:00\n版本号：v2.5\n文档类型：policy\n文档族：data_classification\n生效日期：2025-09-10\n\n## 一、分级定义\n\n数据分为 L1 公开、L2 内部、L3 机密、L4 绝密四级。L1 可对外发布；L2 限公司内部；L3 限授权岗位；L4 限特定人员并加密存储。\n\n## 二、典型数据\n\nL1：宣传资料、公开财报；L2：一般制度、会议纪要；L3：客户合同、报价、产品图纸；L4：核心技术源代码、并购方案、未披露财报。\n\n## 三、访问控制\n\n按最小权限原则授权，L3 数据访问须部门负责人审批，L4 数据须分管高管与信息安全委员会双审批，权限每季度复核。\n\n## 四、存储与传输\n\nL3/L4 数据须存储于公司加密服务器，传输使用加密通道；禁止存储于个人设备，确需离线的须申请加密笔记本。\n\n## 五、销毁\n\n数据销毁须采用多次覆写或物理销毁，保留销毁记录；离职人员账号在离职当日禁用，30 日内清理权限。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_confidentiality",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_confidentiality",
+        "title": "# 澜图智能商业秘密与保密管理规范",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 434,
+        "text": "# 澜图智能商业秘密与保密管理规范\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-15 09:00\n更新时间：2025-03-28 11:00\n版本号：v3.1\n文档类型：policy\n文档族：confidentiality\n生效日期：2025-03-28\n\n## 一、保密范围\n\n技术秘密（源代码、算法、图纸、工艺参数）、经营秘密（客户名单、报价、成本、未披露财务数据）与人事秘密均属保密信息。\n\n## 二、保密义务\n\n员工在职期间及离职后 3 年内不得披露、使用或允许他人使用公司保密信息；竞业限制人员按协议执行。\n\n## 三、涉密载体\n\n涉密文件须标注密级，存放于带锁文件柜或加密系统；复印、拍照与外发须审批并登记。\n\n## 四、对外交流\n\n技术交流、展会与论文发表须经法务合规部与研发中心审核，禁止披露未公开的技术路线与参数。\n\n## 五、违约处理\n\n违反保密义务的，公司有权解除劳动合同、要求赔偿损失并追究法律责任；涉嫌犯罪的移交司法机关。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_policy_confidentiality",
+      "lantu_policy_data_classification"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.057,
+    "number_recall": 0.0
+  }
+}

@@ -1,0 +1,199 @@
+{
+  "qid": "H0013",
+  "question": "备件库存分布中周转天数最长与最短的分别是哪一行？两者相差多少天？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"备件库存分布\"}}",
+      "usage": {
+        "prompt_tokens": 368,
+        "total_tokens": 495,
+        "completion_tokens": 127,
+        "completion_tokens_details": {
+          "reasoning_tokens": 107,
+          "text_tokens": 127
+        }
+      },
+      "seconds": 1.297
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_support_spare_inventory\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 2800,
+        "total_tokens": 3088,
+        "completion_tokens": 288,
+        "completion_tokens_details": {
+          "reasoning_tokens": 253,
+          "text_tokens": 288
+        }
+      },
+      "seconds": 2.922
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"备件库存分布中，周转天数最长的是“其他 7 仓”（141 天），最短的是“苏州中心仓”（92 天）。两者相差 49 天。\",\"citations\":[\"lantu_support_spare_inventory\"],\"evidence\":[\"lantu_support_spare_inventory#0\"]}",
+      "usage": {
+        "prompt_tokens": 3183,
+        "total_tokens": 3675,
+        "completion_tokens": 492,
+        "completion_tokens_details": {
+          "reasoning_tokens": 410,
+          "text_tokens": 492
+        }
+      },
+      "seconds": 4.047
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "备件库存分布"
+      },
+      "result_sha": "8f6b3a2e16d655adfd96f412104100489c8c762d2eec17d2fd1950710e5e18c5",
+      "result_chars": 3975,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_spare_inventory",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "79d68b4266003391d23a2df6cf51353edeba7f0f55adf976952ee5b285fc7259",
+      "result_chars": 540,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "备件库存分布中，周转天数最长的是“其他 7 仓”（141 天），最短的是“苏州中心仓”（92 天）。两者相差 49 天。",
+    "citations": [
+      "lantu_support_spare_inventory"
+    ],
+    "evidence": [
+      "lantu_support_spare_inventory#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 7258,
+  "started_at": "2026-11-01T05:16:25",
+  "elapsed_seconds": 8.27,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "备件库存分布"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_support_spare_inventory",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 23.933,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能备件库存分布（2025Q4）\n所属部门\t售后服务部\n作者\t陆绍\n创建时间\t2025-12-25 09:00\n更新时间\t2026-01-02 10:00\n版本号\tv1.0\n文档类型\tsupport\n文档族\tspare_inventory_2025q4\n生效日期\t2026-01-02\n[工作表] 备件仓库存\n仓库\t所在城市\t库存金额（万元）\tSKU 数\t周转天数\n苏州中心仓\t苏州\t6,200\t4,860\t92\n东莞仓\t东莞\t2,800\t2,240\t105\n成都仓\t成都\t1,"
+          },
+          {
+            "doc_id": "lantu_org_headcount",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 6.273,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能员工分布统计（2025）\n所属部门\t人力资源部\n作者\t陈依然\n创建时间\t2025-12-31 18:00\n更新时间\t2026-01-09 09:30\n版本号\tv1.0\n文档类型\torg\n文档族\theadcount_2025\n生效日期\t2026-01-09\n[工作表] 基地分布\n基地\t员工数\t研发\t销售\t制造\t服务\t职能\n苏州总部\t2,450\t1,120\t310\t560\t250\t210\n东莞华南\t780\t86\t150\t300\t120\t124\n成都西部\t430\t80\t90\t"
+          },
+          {
+            "doc_id": "lantu_meeting_supply_chain",
+            "title": "2025 年供应链韧性专题会纪要",
+            "chunk": 0,
+            "score": 4.764,
+            "snippet": "2025 年供应链韧性专题会纪要\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-10-16 09:00\n更新时间：2025-10-16 15:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_supply_chain\n生效日期：2025-10-16\n一、供应形势\n减速器交期由 8 周延长至 12 周，芯片交期 20 周；关键物料库存周转 92 天，高于目标 75 天。\n二、双源策略\n减速器已引入第二供应商，2026 年一季度实现 30% 替代；伺服驱动器自研比例提升至 61%。\n三"
+          },
+          {
+            "doc_id": "lantu_hr_performance",
+            "title": "# 澜图智能绩效管理制度",
+            "chunk": 0,
+            "score": 4.07,
+            "snippet": "# 澜图智能绩效管理制度\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v3.4\n文档类型：hr\n文档族：performance\n生效日期：2025-06-01\n\n## 一、考核周期\n\n实行季度考核与年度考核，季度占 40%，年度占 60%。试用期员工参加转正考核。\n\n## 二、考核维度\n\n业绩目标 60%、价值观 20%、能力成长 20%。销售岗位业绩权重 70%。\n\n## 三、绩效分布\n\nS 级 10%、A 级 30%、B "
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2025",
+            "title": "# 澜图智能采购管理制度（2025版）",
+            "chunk": 0,
+            "score": 4.059,
+            "snippet": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付"
+          },
+          {
+            "doc_id": "lantu_support_sla_2024",
+            "title": "# 澜图智能服务等级协议（SLA 2024版）",
+            "chunk": 0,
+            "score": 3.661,
+            "snippet": "# 澜图智能服务等级协议（SLA 2024版）\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v2.0\n文档类型：support\n文档族：service_sla\n生效日期：2024-01-01\n\n## 一、故障分级\n\nP1 为产线停机或安全风险；P2 为单机停机但产线可降级运行；P3 为一般故障或咨询。\n\n## 二、响应时效\n\nP1：2 小时内响应、24 小时内到场；P2：8 小时内响应、72 小时内到场；P3：24 小时内响应、"
+          },
+          {
+            "doc_id": "lantu_support_sla_2025",
+            "title": "# 澜图智能服务等级协议（SLA 2025版）",
+            "chunk": 0,
+            "score": 3.585,
+            "snippet": "# 澜图智能服务等级协议（SLA 2025版）\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2025-03-10 09:00\n更新时间：2025-04-01 09:00\n版本号：v3.0\n文档类型：support\n文档族：service_sla\n生效日期：2025-04-01\n\n## 一、故障分级\n\nP1 为产线停机或安全风险；P2 为单机停机但产线可降级运行；P3 为一般故障或咨询。\n\n## 二、响应时效\n\nP1：30 分钟内响应、12 小时内到场；P2：4 小时内响应、48 小时内到场；P3：12 小时内响应"
+          },
+          {
+            "doc_id": "lantu_support_system",
+            "title": "# 澜图智能客户服务体系白皮书",
+            "chunk": 0,
+            "score": 3.408,
+            "snippet": "# 澜图智能客户服务体系白皮书\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-03-01 09:00\n更新时间：2025-12-08 10:00\n版本号：v3.2\n文档类型：support\n文档族：service_system\n生效日期：2025-12-08\n\n## 一、服务网络\n\n公司在全国设有 68 个服务网点、12 个备件仓，覆盖 31 个省级行政区；海外设 3 个服务点。售后服务团队 412 人，认证工程师 286 人。\n\n## 二、服务内容\n\n提供安装调试、培训、预防性维护、故障维修、备件供应、"
+          },
+          {
+            "doc_id": "lantu_support_spare_parts_price",
+            "title": "﻿适配机型,备件名称,单价（元）,发货时效,质保期",
+            "chunk": 0,
+            "score": 3.179,
+            "snippet": "﻿适配机型,备件名称,单价（元）,发货时效,质保期\nLT-R20,减速器 RV-40E,\"12,800\",48 小时,12 个月\nLT-R20,伺服驱动器 LT-D4,\"8,600\",48 小时,18 个月\nLT-R20,示教器 LT-Pad3,\"5,200\",48 小时,12 个月\nLT-R12,减速器 RV-20E,\"7,900\",48 小时,12 个月\nLT-R12,伺服电机 750W,\"3,600\",48 小时,18 个月\nLT-R6,谐波减速器 CSF-17,\"6,400\",72 小时,12 个月\nLT-"
+          },
+          {
+            "doc_id": "lantu_strategy_supply_chain_resilience",
+            "title": "# 澜图智能供应链韧性建设方案",
+            "chunk": 0,
+            "score": 3.116,
+            "snippet": "# 澜图智能供应链韧性建设方案\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-02-01 09:00\n更新时间：2025-09-30 16:00\n版本号：v1.5\n文档类型：strategy\n文档族：supply_chain_resilience\n生效日期：2025-09-30\n\n## 一、风险识别\n\n关键物料包括减速器、伺服电机、芯片与视觉相机，其中芯片与减速器存在单一来源风险。\n\n## 二、双源与备库\n\n减速器 2026 年实现 30% 第二来源；关键芯片备库 6 个月；通用物料安全库存 30 天。"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_spare_inventory",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_support_spare_inventory",
+        "title": "[工作表] 文档信息",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 338,
+        "text": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能备件库存分布（2025Q4）\n所属部门\t售后服务部\n作者\t陆绍\n创建时间\t2025-12-25 09:00\n更新时间\t2026-01-02 10:00\n版本号\tv1.0\n文档类型\tsupport\n文档族\tspare_inventory_2025q4\n生效日期\t2026-01-02\n[工作表] 备件仓库存\n仓库\t所在城市\t库存金额（万元）\tSKU 数\t周转天数\n苏州中心仓\t苏州\t6,200\t4,860\t92\n东莞仓\t东莞\t2,800\t2,240\t105\n成都仓\t成都\t1,600\t1,380\t126\n上海仓\t上海\t1,200\t960\t110\n北京仓\t北京\t980\t820\t132\n其他 7 仓\t—\t5,820\t3,640\t141",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_support_spare_inventory"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.912,
+    "number_recall": 0.0
+  }
+}

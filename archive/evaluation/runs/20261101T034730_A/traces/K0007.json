@@ -1,0 +1,305 @@
+{
+  "qid": "K0007",
+  "question": "葛俊是信息技术部负责人，同时负责云平台、工业数据平台和产品网络安全规范。数据分级规范中 L4 数据须「分管高管与信息安全委员会双审批」，而信息安全管理制度写 L3、L4 外发须「部门负责人与信息安全委员会审批」。作为这两个制度的作者与信息安全委员会主任，葛俊在两份制度里都出现了。这说明什么？两份制度在 L4 外发审批上是否一致？",
+  "question_type": "矛盾与例外识别",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>L4 数据 分管高管 信息安全委员会 双审批</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 55,
+        "prompt_tokens": 440,
+        "total_tokens": 495,
+        "completion_tokens_details": {
+          "reasoning_tokens": 19
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.39
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>数据分级规范 L4 双审批 分管高管 信息安全委员会</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 513,
+        "total_tokens": 563,
+        "completion_tokens_details": {
+          "reasoning_tokens": 11
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 1.329
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=args>{\"query\": \"数据分级规范 L4 双审批 分管高管 信息安全委员会\", \"top_k\": 10}</parameter><parameter=name>search</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 62,
+        "prompt_tokens": 589,
+        "total_tokens": 651,
+        "completion_tokens_details": {
+          "reasoning_tokens": 14
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.359
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search>{\"query\": \"数据分级规范 L4 双审批 分管高管 信息安全委员会\", \"top_k\": 10}</function></tool_call>",
+      "usage": {
+        "completion_tokens": 61,
+        "prompt_tokens": 674,
+        "total_tokens": 735,
+        "completion_tokens_details": {
+          "reasoning_tokens": 25
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.219
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>数据分级规范 L4 外发审批 分管高管 信息安全委员会</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 91,
+        "prompt_tokens": 747,
+        "total_tokens": 838,
+        "completion_tokens_details": {
+          "reasoning_tokens": 60
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 1.984
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"数据分级规范 L4 外发审批 分管高管 信息安全委员会\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 138,
+        "prompt_tokens": 815,
+        "total_tokens": 953,
+        "completion_tokens_details": {
+          "reasoning_tokens": 103
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 2.672
+    },
+    {
+      "round": 7,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_data_classification\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 54,
+        "prompt_tokens": 3165,
+        "total_tokens": 3219,
+        "completion_tokens_details": {
+          "reasoning_tokens": 23
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 1.312
+    },
+    {
+      "round": 8,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_infosec\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 40,
+        "prompt_tokens": 3627,
+        "total_tokens": 3667,
+        "completion_tokens_details": {
+          "reasoning_tokens": 9
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3136
+        }
+      },
+      "seconds": 1.454
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "数据分级规范 L4 外发审批 分管高管 信息安全委员会",
+        "top_k": 10
+      },
+      "result_sha": "caa56d6109e1a5c4d58ee12b5c19dbc72e896479160a28fe0d2f96b54fa456af",
+      "result_chars": 3897,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_data_classification",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "771741860b42ad3363de125c9966bb920c2bd694a5a17e42d034e8f058400d5d",
+      "result_chars": 684,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_infosec",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "eb5e872f6bcbc95bcf05a312eba16b5e31169eb6cd7ecb96b297a43f22926927",
+      "result_chars": 624,
+      "hits": 0
+    }
+  ],
+  "answer": null,
+  "status": "unfinished",
+  "tokens": 11121,
+  "started_at": "2026-11-01T05:25:21",
+  "elapsed_seconds": 12.72,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "数据分级规范 L4 外发审批 分管高管 信息安全委员会",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_policy_data_classification",
+            "title": "# 澜图智能数据分级与分类管理规范",
+            "chunk": 0,
+            "score": 52.192,
+            "snippet": "# 澜图智能数据分级与分类管理规范\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-05-20 09:00\n更新时间：2025-09-10 14:00\n版本号：v2.5\n文档类型：policy\n文档族：data_classification\n生效日期：2025-09-10\n\n## 一、分级定义\n\n数据分为 L1 公开、L2 内部、L3 机密、L4 绝密四级。L1 可对外发布；L2 限公司内部；L3 限授权岗位；L4 限特定人员并加密存储。\n\n## 二、典型数据\n\nL1：宣传资料、公开财报；L2：一般制度、会"
+          },
+          {
+            "doc_id": "lantu_policy_infosec",
+            "title": "# 澜图智能信息安全管理制度",
+            "chunk": 0,
+            "score": 32.744,
+            "snippet": "# 澜图智能信息安全管理制度\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-04-01 09:00\n更新时间：2025-08-01 09:00\n版本号：v4.0\n文档类型：policy\n文档族：information_security\n生效日期：2025-08-01\n\n## 一、账号与密码\n\n员工账号一人一号，密码长度不少于 12 位，包含大小写字母、数字与符号，每 90 天更换一次；禁止共享账号。\n\n## 二、终端安全\n\n办公电脑须安装公司统一的终端防护软件，开启磁盘加密与屏保锁定；禁止安装未授权软件与"
+          },
+          {
+            "doc_id": "lantu_org_committees",
+            "title": "# 澜图智能跨部门委员会与运作机制",
+            "chunk": 0,
+            "score": 31.192,
+            "snippet": "# 澜图智能跨部门委员会与运作机制\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2024-05-06 09:00\n更新时间：2025-10-18 11:00\n版本号：v2.1\n文档类型：org\n文档族：committees\n生效日期：2025-10-18\n\n## 一、产品决策委员会\n\n主任由 CTO 担任，成员包括产品部、研发中心、销售中心、质量部负责人，负责产品立项、版本发布与退市决策，每月召开一次。\n\n## 二、质量安全委员会\n\n主任由 COO 担任，负责重大质量事故、召回与安全生产事项，实行 24 小时响"
+          },
+          {
+            "doc_id": "lantu_legal_data_compliance",
+            "title": "# 澜图智能数据合规与隐私保护规范",
+            "chunk": 0,
+            "score": 23.347,
+            "snippet": "# 澜图智能数据合规与隐私保护规范\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-07-01 09:00\n更新时间：2025-09-01 09:00\n版本号：v2.6\n文档类型：legal\n文档族：data_compliance\n生效日期：2025-09-01\n\n## 一、适用法律\n\n遵守《个人信息保护法》《数据安全法》《网络安全法》及欧盟 GDPR，处理个人信息须遵循最小必要与告知同意原则。\n\n## 二、数据出境\n\n向境外提供个人信息或重要数据须开展安全评估或签订标准合同，涉及研发数据的须经信息安全委员"
+          },
+          {
+            "doc_id": "lantu_policy_confidentiality",
+            "title": "# 澜图智能商业秘密与保密管理规范",
+            "chunk": 0,
+            "score": 11.808,
+            "snippet": "# 澜图智能商业秘密与保密管理规范\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-15 09:00\n更新时间：2025-03-28 11:00\n版本号：v3.1\n文档类型：policy\n文档族：confidentiality\n生效日期：2025-03-28\n\n## 一、保密范围\n\n技术秘密（源代码、算法、图纸、工艺参数）、经营秘密（客户名单、报价、成本、未披露财务数据）与人事秘密均属保密信息。\n\n## 二、保密义务\n\n员工在职期间及离职后 3 年内不得披露、使用或允许他人使用公司保密信息；竞业限制人"
+          },
+          {
+            "doc_id": "lantu_org_board",
+            "title": "# 澜图智能董事会与治理结构",
+            "chunk": 0,
+            "score": 10.848,
+            "snippet": "# 澜图智能董事会与治理结构\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2023-09-01 09:00\n更新时间：2025-06-20 14:00\n版本号：v3.0\n文档类型：org\n文档族：board_structure\n生效日期：2025-06-20\n\n## 一、董事会构成\n\n董事会由 9 名董事组成，其中独立董事 3 名，职工董事 1 名。董事长顾承澜，副董事长由机构股东提名。\n\n## 二、专门委员会\n\n董事会下设战略委员会、审计委员会、薪酬与考核委员会、提名委员会。审计委员会主任由独立董事担任，负"
+          },
+          {
+            "doc_id": "lantu_company_brand",
+            "title": "# 澜图智能品牌视觉与传播规范",
+            "chunk": 0,
+            "score": 10.028,
+            "snippet": "# 澜图智能品牌视觉与传播规范\n\n所属部门：市场部\n作者：苏婉清\n创建时间：2024-02-01 09:30\n更新时间：2025-08-15 11:00\n版本号：v2.3\n文档类型：company\n文档族：brand_manual\n生效日期：2025-08-15\n\n## 一、品牌定位\n\n澜图智能（LANTU）定位为“可信赖的智能制造伙伴”，核心传播主张为“稳、准、快”。品牌不得使用“全球第一”“绝对领先”等绝对化表述。\n\n## 二、视觉规范\n\n主色为澜图蓝（PANTONE 2728C，HEX #1F4FA8），辅助"
+          },
+          {
+            "doc_id": "lantu_tech_security",
+            "title": "# 澜图智能产品网络安全设计规范",
+            "chunk": 0,
+            "score": 9.841,
+            "snippet": "# 澜图智能产品网络安全设计规范\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-11-01 09:00\n更新时间：2025-10-01 09:00\n版本号：v2.5\n文档类型：tech\n文档族：product_security\n生效日期：2025-10-01\n\n## 一、安全设计原则\n\n遵循最小权限、默认拒绝、纵深防御与安全默认配置原则，产品通过等保三级与 IEC 62443 评估。\n\n## 二、身份与访问\n\n支持多因素认证、RBAC 权限模型与操作审计；默认密码首次登录强制修改，会话超时 30 分钟。\n"
+          },
+          {
+            "doc_id": "lantu_meeting_safety",
+            "title": "# 2025 年安全生产委员会会议纪要",
+            "chunk": 0,
+            "score": 9.246,
+            "snippet": "# 2025 年安全生产委员会会议纪要\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2025-06-12 09:00\n更新时间：2025-06-12 15:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_safety_2025\n生效日期：2025-06-12\n\n## 一、安全形势\n\n上半年未发生重伤及以上事故，轻伤 2 起，同比下降 50%；排查隐患 27 项，整改完成 25 项。\n\n## 二、重点风险\n\n机器人调试区域误入风险、锂电物料存储消防风险、高处作业风险；需完善安全围栏与联锁。"
+          },
+          {
+            "doc_id": "lantu_legal_compliance_manual",
+            "title": "# 澜图智能合规管理手册",
+            "chunk": 0,
+            "score": 8.364,
+            "snippet": "# 澜图智能合规管理手册\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-02-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v3.1\n文档类型：legal\n文档族：compliance_manual\n生效日期：2025-06-01\n\n## 一、合规组织\n\n公司设合规委员会，主任由法务合规总监担任，成员包括财务、销售、采购、人力与信息技术负责人。\n\n## 二、重点领域\n\n反商业贿赂、出口管制、数据保护、反垄断、劳动用工与环境保护。各领域每年至少开展一次风险评估。\n\n## 三、培训与举"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_data_classification",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_data_classification",
+        "title": "# 澜图智能数据分级与分类管理规范",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 498,
+        "text": "# 澜图智能数据分级与分类管理规范\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-05-20 09:00\n更新时间：2025-09-10 14:00\n版本号：v2.5\n文档类型：policy\n文档族：data_classification\n生效日期：2025-09-10\n\n## 一、分级定义\n\n数据分为 L1 公开、L2 内部、L3 机密、L4 绝密四级。L1 可对外发布；L2 限公司内部；L3 限授权岗位；L4 限特定人员并加密存储。\n\n## 二、典型数据\n\nL1：宣传资料、公开财报；L2：一般制度、会议纪要；L3：客户合同、报价、产品图纸；L4：核心技术源代码、并购方案、未披露财报。\n\n## 三、访问控制\n\n按最小权限原则授权，L3 数据访问须部门负责人审批，L4 数据须分管高管与信息安全委员会双审批，权限每季度复核。\n\n## 四、存储与传输\n\nL3/L4 数据须存储于公司加密服务器，传输使用加密通道；禁止存储于个人设备，确需离线的须申请加密笔记本。\n\n## 五、销毁\n\n数据销毁须采用多次覆写或物理销毁，保留销毁记录；离职人员账号在离职当日禁用，30 日内清理权限。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_infosec",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_infosec",
+        "title": "# 澜图智能信息安全管理制度",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 453,
+        "text": "# 澜图智能信息安全管理制度\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-04-01 09:00\n更新时间：2025-08-01 09:00\n版本号：v4.0\n文档类型：policy\n文档族：information_security\n生效日期：2025-08-01\n\n## 一、账号与密码\n\n员工账号一人一号，密码长度不少于 12 位，包含大小写字母、数字与符号，每 90 天更换一次；禁止共享账号。\n\n## 二、终端安全\n\n办公电脑须安装公司统一的终端防护软件，开启磁盘加密与屏保锁定；禁止安装未授权软件与私人远程工具。\n\n## 三、数据外发\n\n涉及 L3、L4 级数据的外发须经部门负责人与信息安全委员会审批；禁止通过个人邮箱、网盘与即时通讯工具传输敏感数据。\n\n## 四、事件响应\n\n安全事件须在 1 小时内上报信息安全委员会，重大事件启动应急预案并在 24 小时内完成初步处置。\n\n## 五、审计与处罚\n\n公司每季度开展权限复核与日志审计；违规行为视情节给予警告、降级或解除劳动合同。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

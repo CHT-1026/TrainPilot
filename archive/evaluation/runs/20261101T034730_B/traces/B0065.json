@@ -1,0 +1,201 @@
+{
+  "qid": "B0065",
+  "question": "培训满意度的目标值是多少？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"培训满意度\", \"top_k\":10}}",
+      "usage": {
+        "prompt_tokens": 356,
+        "total_tokens": 496,
+        "completion_tokens": 140,
+        "completion_tokens_details": {
+          "reasoning_tokens": 114,
+          "text_tokens": 140
+        }
+      },
+      "seconds": 1.781
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\": \"lantu_hr_training_system\", \"offset\": 0, \"limit\": 4000}}",
+      "usage": {
+        "prompt_tokens": 2674,
+        "total_tokens": 3037,
+        "completion_tokens": 363,
+        "completion_tokens_details": {
+          "reasoning_tokens": 324,
+          "text_tokens": 363
+        }
+      },
+      "seconds": 3.094
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"培训满意度的目标值是 90% 以上。\",\"citations\":[\"lantu_hr_training_system\"],\"evidence\":[\"lantu_hr_training_system#4\"]}",
+      "usage": {
+        "prompt_tokens": 3053,
+        "total_tokens": 3209,
+        "completion_tokens": 156,
+        "completion_tokens_details": {
+          "reasoning_tokens": 108,
+          "text_tokens": 156
+        }
+      },
+      "seconds": 1.422
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "培训满意度",
+        "top_k": 10
+      },
+      "result_sha": "748d4c021b0dbd159d302c54418adc3889ba1c8ba1ab75fc4bf44c73d7e2d82d",
+      "result_chars": 3890,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_training_system",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "afc0508b4683bf77241881717bc92dea0541d3094b2819dfe97e08c78c60633e",
+      "result_chars": 540,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "培训满意度的目标值是 90% 以上。",
+    "citations": [
+      "lantu_hr_training_system"
+    ],
+    "evidence": [
+      "lantu_hr_training_system#4"
+    ]
+  },
+  "status": "answered",
+  "tokens": 6742,
+  "started_at": "2026-11-01T04:11:05",
+  "elapsed_seconds": 6.3,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "培训满意度",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_hr_training_system",
+            "title": "# 澜图智能培训体系与年度计划",
+            "chunk": 0,
+            "score": 16.371,
+            "snippet": "# 澜图智能培训体系与年度计划\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-02-01 09:00\n更新时间：2025-12-01 10:00\n版本号：v3.6\n文档类型：hr\n文档族：training_system\n生效日期：2025-12-01\n\n## 一、培训体系\n\n分为新员工培训、专业培训、管理培训与领导力培训四大类，覆盖全员全周期。\n\n## 二、年度计划\n\n2025 年计划培训 12,000 人次，人均 32 小时；专业培训占比 55%，管理培训 20%，新员工 15%，合规安全 10%。\n"
+          },
+          {
+            "doc_id": "lantu_support_system",
+            "title": "# 澜图智能客户服务体系白皮书",
+            "chunk": 0,
+            "score": 9.153,
+            "snippet": "# 澜图智能客户服务体系白皮书\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-03-01 09:00\n更新时间：2025-12-08 10:00\n版本号：v3.2\n文档类型：support\n文档族：service_system\n生效日期：2025-12-08\n\n## 一、服务网络\n\n公司在全国设有 68 个服务网点、12 个备件仓，覆盖 31 个省级行政区；海外设 3 个服务点。售后服务团队 412 人，认证工程师 286 人。\n\n## 二、服务内容\n\n提供安装调试、培训、预防性维护、故障维修、备件供应、"
+          },
+          {
+            "doc_id": "lantu_support_complaint",
+            "title": "# 澜图智能客户投诉处理管理办法",
+            "chunk": 0,
+            "score": 6.912,
+            "snippet": "# 澜图智能客户投诉处理管理办法\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-02-01 09:00\n更新时间：2025-09-01 09:00\n版本号：v2.8\n文档类型：support\n文档族：complaint_management\n生效日期：2025-09-01\n\n## 一、受理渠道\n\n客户可通过 400 热线、服务邮箱、客户门户或销售转达投诉，受理后 1 小时内录入系统。\n\n## 二、分级处理\n\n一般投诉 24 小时内响应、3 个工作日内闭环；重大投诉 2 小时内上报总经理并成立专项小组。\n\n"
+          },
+          {
+            "doc_id": "lantu_org_executives",
+            "title": "# 澜图智能高级管理人员名单",
+            "chunk": 0,
+            "score": 6.687,
+            "snippet": "# 澜图智能高级管理人员名单\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2024-03-01 09:00\n更新时间：2025-11-28 17:00\n版本号：v4.0\n文档类型：org\n文档族：executives\n生效日期：2025-11-28\n\n## 一、核心管理层\n\n顾承澜，董事长兼总经理，1968 年生，教授级高级工程师，持股 18.6%；沈亦舟，CTO，负责研发体系；周敏仪，CFO，负责财务与资本运作；韩立恒，COO，负责供应链与制造。\n\n## 二、业务分管\n\n罗嘉树，销售副总裁，分管销售中心、客"
+          },
+          {
+            "doc_id": "lantu_support_sla_2025",
+            "title": "# 澜图智能服务等级协议（SLA 2025版）",
+            "chunk": 0,
+            "score": 6.574,
+            "snippet": "# 澜图智能服务等级协议（SLA 2025版）\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2025-03-10 09:00\n更新时间：2025-04-01 09:00\n版本号：v3.0\n文档类型：support\n文档族：service_sla\n生效日期：2025-04-01\n\n## 一、故障分级\n\nP1 为产线停机或安全风险；P2 为单机停机但产线可降级运行；P3 为一般故障或咨询。\n\n## 二、响应时效\n\nP1：30 分钟内响应、12 小时内到场；P2：4 小时内响应、48 小时内到场；P3：12 小时内响应"
+          },
+          {
+            "doc_id": "lantu_hr_new_hire_training",
+            "title": "澜图智能新员工入职培训大纲",
+            "chunk": 0,
+            "score": 3.706,
+            "snippet": "澜图智能新员工入职培训大纲\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-03-01 09:00\n更新时间：2025-08-01 10:00\n版本号：v2.3\n文档类型：hr\n文档族：new_hire_training\n生效日期：2025-08-01\n一、培训目标\n帮助新员工了解公司战略、文化、制度与岗位要求，在 30 天内完成从入职到独立工作的过渡。\n二、课程安排\n第 1 天：公司介绍与企业文化；第 2 天：制度与信息安全；第 3 天：产品与业务；第 4 天：质量意识与安全生产；第 5 天：岗位实践与导"
+          },
+          {
+            "doc_id": "lantu_support_training_certification",
+            "title": "# 澜图智能服务工程师培训与认证体系",
+            "chunk": 0,
+            "score": 3.556,
+            "snippet": "# 澜图智能服务工程师培训与认证体系\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-06-01 09:00\n更新时间：2025-08-08 10:00\n版本号：v2.4\n文档类型：support\n文档族：service_certification\n生效日期：2025-08-08\n\n## 一、认证等级\n\n服务工程师分为 L1 初级、L2 中级、L3 高级三级，分别对应常规维护、故障维修与整线调试。\n\n## 二、培训内容\n\nL1：安全、保养、备件更换（5 天）；L2：电气与控制系统维修（10 天）；L3：整线"
+          },
+          {
+            "doc_id": "lantu_org_department_duties",
+            "title": "# 澜图智能一级部门职责与编制",
+            "chunk": 1,
+            "score": 3.245,
+            "snippet": "| 部门 | 负责人 | 编制（人） | 主要职责 |\n| --- | --- | --- | --- |\n| 研发中心 | 沈亦舟 | 1,286 | 本体/控制器/视觉/具身智能研发 |\n| 产品部 | 孟凡 | 96 | 产品规划与生命周期管理 |\n| 销售中心 | 罗嘉树 | 620 | 区域销售与渠道 |\n| 客户成功部 | 林可 | 86 | 重点客户经营 |\n| 供应链中心 | 韩立恒 | 210 | 采购、计划、物流 |\n| 制造中心 | 韩立恒 | 980 | 三大基地生产 |\n| 质量部 | 潘"
+          },
+          {
+            "doc_id": "lantu_strategy_esg",
+            "title": "# 澜图智能 ESG 与可持续发展报告",
+            "chunk": 0,
+            "score": 3.209,
+            "snippet": "# 澜图智能 ESG 与可持续发展报告\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2025-04-22 09:00\n更新时间：2025-04-25 10:00\n版本号：v2.0\n文档类型：strategy\n文档族：esg_report\n生效日期：2025-04-25\n\n## 一、环境\n\n2025 年苏州基地光伏装机 6.2MW，绿电占比 28%；单位产值能耗下降 9.6%；危废合规处置率 100%。\n\n## 二、社会\n\n员工培训人均 32 小时；安全生产投入 1,200 万元；公益捐赠 380 万元，支持职业"
+          },
+          {
+            "doc_id": "lantu_hr_manager_training",
+            "title": "澜图智能管理者领导力培训方案",
+            "chunk": 0,
+            "score": 3.144,
+            "snippet": "澜图智能管理者领导力培训方案\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-05-01 09:00\n更新时间：2025-09-01 10:00\n版本号：v2.0\n文档类型：hr\n文档族：manager_training\n生效日期：2025-09-01\n一、培养对象\n新任经理、部门总监与高潜后备，每期 30 人，全年 3 期。\n二、课程模块\n战略解码、团队管理、绩效辅导、跨部门协作、财务思维与变革管理，共 6 个模块 12 天。\n三、行动学习\n每位学员围绕真实业务问题组建立项，结业时汇报成果；优秀项目可获得"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_training_system",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_hr_training_system",
+        "title": "# 澜图智能培训体系与年度计划",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 368,
+        "text": "# 澜图智能培训体系与年度计划\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-02-01 09:00\n更新时间：2025-12-01 10:00\n版本号：v3.6\n文档类型：hr\n文档族：training_system\n生效日期：2025-12-01\n\n## 一、培训体系\n\n分为新员工培训、专业培训、管理培训与领导力培训四大类，覆盖全员全周期。\n\n## 二、年度计划\n\n2025 年计划培训 12,000 人次，人均 32 小时；专业培训占比 55%，管理培训 20%，新员工 15%，合规安全 10%。\n\n## 三、讲师体系\n\n内部认证讲师 86 人，外部合作机构 12 家；讲师课酬 500-2,000 元/课时。\n\n## 四、效果评估\n\n采用柯氏四级评估，重点跟踪行为改变与业务结果；培训满意度目标 90% 以上。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_hr_training_system"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.4,
+    "number_recall": 0.0
+  }
+}

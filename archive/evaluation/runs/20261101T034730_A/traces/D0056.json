@@ -1,0 +1,110 @@
+{
+  "qid": "D0056",
+  "question": "昇达电梯位于哪个城市？主营什么行业？哪一年启动自动化改造？",
+  "question_type": "事实检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>昇达电梯</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 52,
+        "prompt_tokens": 359,
+        "total_tokens": 411,
+        "completion_tokens_details": {
+          "reasoning_tokens": 24
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.156
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>昇达电梯 城市 行业</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 43,
+        "prompt_tokens": 424,
+        "total_tokens": 467,
+        "completion_tokens_details": {
+          "reasoning_tokens": 8
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 4.859
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>昇达电梯 自动化改造</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 39,
+        "prompt_tokens": 496,
+        "total_tokens": 535,
+        "completion_tokens_details": {
+          "reasoning_tokens": 7
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 1.563
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>昇达电梯</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 68,
+        "prompt_tokens": 565,
+        "total_tokens": 633,
+        "completion_tokens_details": {
+          "reasoning_tokens": 40
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.578
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"needs_clarification\",\"answer\":\"“昇达电梯”这一名称可能对应多家企业（如不同省份的昇达、升达电梯及配件公司），且未提供统一社会信用代码等标识信息，无法确定具体指向哪一家，因此无法准确回答其所在城市、主营行业及自动化改造启动年份。请补充该企业的完整名称（含地区前缀，例如“XX市昇达电梯有限公司”）、信用代码或相关资料片段。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 125,
+        "prompt_tokens": 630,
+        "total_tokens": 755,
+        "completion_tokens_details": {
+          "reasoning_tokens": 12
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.641
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "needs_clarification",
+    "answer": "“昇达电梯”这一名称可能对应多家企业（如不同省份的昇达、升达电梯及配件公司），且未提供统一社会信用代码等标识信息，无法确定具体指向哪一家，因此无法准确回答其所在城市、主营行业及自动化改造启动年份。请补充该企业的完整名称（含地区前缀，例如“XX市昇达电梯有限公司”）、信用代码或相关资料片段。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 2801,
+  "started_at": "2026-11-01T04:33:03",
+  "elapsed_seconds": 14.8,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.12,
+    "number_recall": 0.0
+  }
+}

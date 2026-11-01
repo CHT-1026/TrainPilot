@@ -1,0 +1,142 @@
+{
+  "qid": "G0009",
+  "question": "控制架构 v2.4 何时生效、何时被取代？取代后它的用途是什么？",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>控制架构 v2.4 生效 取代</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 75,
+        "prompt_tokens": 362,
+        "total_tokens": 437,
+        "completion_tokens_details": {
+          "reasoning_tokens": 39
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.063
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search>{\"query\": \"控制架构 v2.4 生效 取代\", \"top_k\": 10}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 133,
+        "prompt_tokens": 435,
+        "total_tokens": 568,
+        "completion_tokens_details": {
+          "reasoning_tokens": 98
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 4.25
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=args>{\"query\": \"控制架构 v2.4 生效 取代\", \"top_k\": 10}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 58,
+        "prompt_tokens": 507,
+        "total_tokens": 565,
+        "completion_tokens_details": {
+          "reasoning_tokens": 20
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 2.046
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>控制架构 v2.4 生效 取代</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 43,
+        "prompt_tokens": 582,
+        "total_tokens": 625,
+        "completion_tokens_details": {
+          "reasoning_tokens": 7
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.25
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>控制架构 v2.4 生效 取代</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 58,
+        "prompt_tokens": 655,
+        "total_tokens": 713,
+        "completion_tokens_details": {
+          "reasoning_tokens": 22
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 2.329
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>控制架构 v2.4 生效 取代</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 53,
+        "prompt_tokens": 728,
+        "total_tokens": 781,
+        "completion_tokens_details": {
+          "reasoning_tokens": 17
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 2.671
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\": \"not_in_corpus\",\"answer\":\"无法在资料库中检索到关于\\\"控制架构 v2.4\\\"生效时间、被取代时间及取代后用途的任何文档，因此无法回答该问题。若该文档存在，请提供更精确的名称、编号或相关关键词（如所属项目、版本系列名），以便重新检索。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 99,
+        "prompt_tokens": 798,
+        "total_tokens": 897,
+        "completion_tokens_details": {
+          "reasoning_tokens": 12
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 2.985
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "无法在资料库中检索到关于\"控制架构 v2.4\"生效时间、被取代时间及取代后用途的任何文档，因此无法回答该问题。若该文档存在，请提供更精确的名称、编号或相关关键词（如所属项目、版本系列名），以便重新检索。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4586,
+  "started_at": "2026-11-01T05:02:14",
+  "elapsed_seconds": 18.59,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

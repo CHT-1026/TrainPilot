@@ -1,0 +1,240 @@
+{
+  "qid": "M0223",
+  "question": "“安委会”今年上半年出了什么情况？轻伤几起、隐患整改了多少？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>安委会 上半年 轻伤 隐患整改</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list><parameter=keyword>安委会</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 93,
+        "prompt_tokens": 361,
+        "total_tokens": 454,
+        "completion_tokens_details": {
+          "reasoning_tokens": 38
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.547
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=list><parameter=keyword>安委会</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 30,
+        "prompt_tokens": 453,
+        "total_tokens": 483,
+        "completion_tokens_details": {
+          "reasoning_tokens": 11
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.0
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=list><parameter=keyword>安委会</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 31,
+        "prompt_tokens": 509,
+        "total_tokens": 540,
+        "completion_tokens_details": {
+          "reasoning_tokens": 12
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 0.922
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"安委会\"}}",
+      "usage": {
+        "completion_tokens": 23,
+        "prompt_tokens": 565,
+        "total_tokens": 588,
+        "completion_tokens_details": {
+          "reasoning_tokens": 7
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.328
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>安委会 上半年 安全生产 轻伤 隐患整改</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 62,
+        "prompt_tokens": 609,
+        "total_tokens": 671,
+        "completion_tokens_details": {
+          "reasoning_tokens": 20
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.969
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"安委会 上半年 轻伤 隐患整改\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 45,
+        "prompt_tokens": 688,
+        "total_tokens": 733,
+        "completion_tokens_details": {
+          "reasoning_tokens": 12
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 1.359
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据《2025 年安全生产委员会会议纪要》（制造中心，2025-06-12）：上半年未发生重伤及以上事故，轻伤 2 起，同比下降 50%；排查隐患 27 项，已完成整改 25 项（即尚余 2 项未整改）。此外纪要还指出了重点风险：机器人调试区域误入风险、锂电物料存储消防风险和高处作业风险，需完善安全围栏与联锁。\",\"citations\":[\"lantu_meeting_safety\"],\"evidence\":[\"lantu_meeting_safety#片段0\"]}",
+      "usage": {
+        "completion_tokens": 167,
+        "prompt_tokens": 2457,
+        "total_tokens": 2624,
+        "completion_tokens_details": {
+          "reasoning_tokens": 17
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 4.235
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "安委会"
+      },
+      "result_sha": "1290604daacc15212b4f59638c659261007a940d59ae4c9dd916d753b78e21de",
+      "result_chars": 12,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "安委会 上半年 轻伤 隐患整改",
+        "top_k": 10
+      },
+      "result_sha": "fe590c19ab1ea2bb9ce0b56eb0a5eed0997c49656efba294f9d8781a9a133e4e",
+      "result_chars": 2737,
+      "hits": 7
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《2025 年安全生产委员会会议纪要》（制造中心，2025-06-12）：上半年未发生重伤及以上事故，轻伤 2 起，同比下降 50%；排查隐患 27 项，已完成整改 25 项（即尚余 2 项未整改）。此外纪要还指出了重点风险：机器人调试区域误入风险、锂电物料存储消防风险和高处作业风险，需完善安全围栏与联锁。",
+    "citations": [
+      "lantu_meeting_safety"
+    ],
+    "evidence": [
+      "lantu_meeting_safety#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 6093,
+  "started_at": "2026-11-01T05:48:15",
+  "elapsed_seconds": 14.36,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "安委会"
+      },
+      "result": {
+        "docs": []
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "安委会 上半年 轻伤 隐患整改",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_meeting_safety",
+            "title": "# 2025 年安全生产委员会会议纪要",
+            "chunk": 0,
+            "score": 22.064,
+            "snippet": "# 2025 年安全生产委员会会议纪要\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2025-06-12 09:00\n更新时间：2025-06-12 15:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_safety_2025\n生效日期：2025-06-12\n\n## 一、安全形势\n\n上半年未发生重伤及以上事故，轻伤 2 起，同比下降 50%；排查隐患 27 项，整改完成 25 项。\n\n## 二、重点风险\n\n机器人调试区域误入风险、锂电物料存储消防风险、高处作业风险；需完善安全围栏与联锁。"
+          },
+          {
+            "doc_id": "lantu_finance_h1_2025",
+            "title": "# 澜图智能 2025 年半年度报告摘要",
+            "chunk": 0,
+            "score": 11.677,
+            "snippet": "# 澜图智能 2025 年半年度报告摘要\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-08-25 09:00\n更新时间：2025-08-28 18:00\n版本号：v1.0\n文档类型：finance\n文档族：semiannual_2025\n生效日期：2025-08-28\n\n## 一、经营数据\n\n2025 年上半年营业收入 19.84 亿元，同比增长 21.3%；归母净利润 1.83 亿元，同比增长 24.6%；毛利率 31.2%。\n\n## 二、订单情况\n\n上半年新签订单 22.7 亿元，同比增长 18.5%"
+          },
+          {
+            "doc_id": "lantu_meeting_quality",
+            "title": "2025 年第三季度质量专题会纪要",
+            "chunk": 0,
+            "score": 11.648,
+            "snippet": "2025 年第三季度质量专题会纪要\n所属部门：质量部\n作者：潘文博\n创建时间：2025-07-22 09:00\n更新时间：2025-07-22 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_quality_q3\n生效日期：2025-07-22\n一、质量数据\n上半年一次交检合格率 98.4%，客户投诉 1 起；第三季度首月投诉 1 起，为 LT-R12 线束磨损问题。\n二、问题分析\n线束磨损源于走线路径与防护套选型不当，涉及 2025 年 3 月生产的 120 台 LT-R12，已启"
+          },
+          {
+            "doc_id": "lantu_legal_supplier_code",
+            "title": "# 澜图智能供应商行为准则",
+            "chunk": 0,
+            "score": 4.207,
+            "snippet": "# 澜图智能供应商行为准则\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-04-01 09:00\n更新时间：2025-05-01 09:00\n版本号：v2.0\n文档类型：legal\n文档族：supplier_code\n生效日期：2025-05-01\n\n## 一、劳工与人权\n\n供应商不得使用童工、强迫劳动，须保障结社自由与最低工资，工作时间符合当地法律。\n\n## 二、健康与安全\n\n供应商须提供安全的工作环境，配备必要的防护设施，定期开展安全培训与应急演练。\n\n## 三、环境要求\n\n供应商须遵守环保法规，优"
+          },
+          {
+            "doc_id": "lantu_support_sla_2025",
+            "title": "# 澜图智能服务等级协议（SLA 2025版）",
+            "chunk": 0,
+            "score": 3.119,
+            "snippet": "# 澜图智能服务等级协议（SLA 2025版）\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2025-03-10 09:00\n更新时间：2025-04-01 09:00\n版本号：v3.0\n文档类型：support\n文档族：service_sla\n生效日期：2025-04-01\n\n## 一、故障分级\n\nP1 为产线停机或安全风险；P2 为单机停机但产线可降级运行；P3 为一般故障或咨询。\n\n## 二、响应时效\n\nP1：30 分钟内响应、12 小时内到场；P2：4 小时内响应、48 小时内到场；P3：12 小时内响应"
+          },
+          {
+            "doc_id": "lantu_strategy_quality_system",
+            "title": "澜图智能质量管理体系手册",
+            "chunk": 0,
+            "score": 3.107,
+            "snippet": "澜图智能质量管理体系手册\n所属部门：质量部\n作者：潘文博\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v4.2\n文档类型：strategy\n文档族：quality_system\n生效日期：2025-06-01\n一、质量方针\n以客户为中心，以零缺陷为目标，持续改进，追求卓越。公司通过 ISO 9001、IATF 16949 与 ISO 13485\n认证。\n二、质量目标\n2025 年一次交检合格率不低于 98.5%，客户投诉不超过 6 起，MTBF 不低于 12,00"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2025",
+            "title": "# 澜图智能采购管理制度（2025版）",
+            "chunk": 0,
+            "score": 3.09,
+            "snippet": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付"
+          }
+        ]
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.5,
+    "cited": [
+      "lantu_meeting_safety"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.256,
+    "number_recall": 0.25
+  }
+}

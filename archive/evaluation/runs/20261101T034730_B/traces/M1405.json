@@ -1,0 +1,574 @@
+{
+  "qid": "M1405",
+  "question": "186 这个数字在公司材料里出现过两次，分别指什么？另外战略供应商一共有多少家？",
+  "question_type": "矛盾与例外识别",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"186\",\"top_k\":10}}",
+      "usage": {
+        "prompt_tokens": 371,
+        "total_tokens": 499,
+        "completion_tokens": 128,
+        "completion_tokens_details": {
+          "reasoning_tokens": 102,
+          "text_tokens": 128
+        }
+      },
+      "seconds": 1.282
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"战略供应商\",\"top_k\":10}}",
+      "usage": {
+        "prompt_tokens": 1560,
+        "total_tokens": 1751,
+        "completion_tokens": 191,
+        "completion_tokens_details": {
+          "reasoning_tokens": 166,
+          "text_tokens": 191
+        }
+      },
+      "seconds": 1.828
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_solution_lithium\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 3893,
+        "total_tokens": 4996,
+        "completion_tokens": 1103,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1068,
+          "text_tokens": 1103
+        }
+      },
+      "seconds": 9.125
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"战略供应商 数量\",\"top_k\":10}}",
+      "usage": {
+        "prompt_tokens": 4337,
+        "total_tokens": 5223,
+        "completion_tokens": 886,
+        "completion_tokens_details": {
+          "reasoning_tokens": 859,
+          "text_tokens": 886
+        }
+      },
+      "seconds": 7.484
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_purchase_2025\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 6673,
+        "total_tokens": 7486,
+        "completion_tokens": 813,
+        "completion_tokens_details": {
+          "reasoning_tokens": 775,
+          "text_tokens": 813
+        }
+      },
+      "seconds": 6.875
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"战略供应商 数量\"}}",
+      "usage": {
+        "prompt_tokens": 7120,
+        "total_tokens": 7998,
+        "completion_tokens": 878,
+        "completion_tokens_details": {
+          "reasoning_tokens": 857,
+          "text_tokens": 878
+        }
+      },
+      "seconds": 6.859
+    },
+    {
+      "round": 7,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_meeting_supply_chain\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 9450,
+        "total_tokens": 11192,
+        "completion_tokens": 1742,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1707,
+          "text_tokens": 1742
+        }
+      },
+      "seconds": 12.938
+    },
+    {
+      "round": 8,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"1. 数字“186”在公司材料中均指代**恒芯动力电池项目**中部署的**LT-R20 机器人数量**（共 186 台）。\\n2. 战略供应商一共有**5 家**。\",\"citations\":[\"lantu_meeting_case_review\", \"lantu_solution_lithium\", \"lantu_meeting_supply_chain\"], \"evidence\":[\"lantu_meeting_case_review#0\", \"lantu_solution_lithium#0\", \"lantu_meeting_supply_chain#0\"]}",
+      "usage": {
+        "prompt_tokens": 9820,
+        "total_tokens": 10415,
+        "completion_tokens": 595,
+        "completion_tokens_details": {
+          "reasoning_tokens": 465,
+          "text_tokens": 595
+        }
+      },
+      "seconds": 4.391
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "186",
+        "top_k": 10
+      },
+      "result_sha": "2fac7025b7a9e8d6ce5a23a0bc4a96b0ddab78eedf2971e385e99fb799a53741",
+      "result_chars": 1950,
+      "hits": 5
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "战略供应商",
+        "top_k": 10
+      },
+      "result_sha": "8a044283aad07151c56318d9673ef86c2facd14070325335729afeb74a41d702",
+      "result_chars": 3928,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_solution_lithium",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "3eae315ba7aa8706c483dc1921de404bff7da719c225aac8b43b8f7fd7a59e61",
+      "result_chars": 622,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "战略供应商 数量",
+        "top_k": 10
+      },
+      "result_sha": "8ad02e1a2c341cac9eb33f0cb9bc47ce756a9056d16d9c7a86cf7386978f0e7e",
+      "result_chars": 3929,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_purchase_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "a43282daf04801f0f16f7d64d197206dfa10185ee100b1a3054935cc73749d1f",
+      "result_chars": 635,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "战略供应商 数量"
+      },
+      "result_sha": "8ad02e1a2c341cac9eb33f0cb9bc47ce756a9056d16d9c7a86cf7386978f0e7e",
+      "result_chars": 3929,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_meeting_supply_chain",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "0afe9391b96186085f020f47ebbd197d93e86bd331c9b0ca25293fe50a6c8d5a",
+      "result_chars": 528,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "1. 数字“186”在公司材料中均指代**恒芯动力电池项目**中部署的**LT-R20 机器人数量**（共 186 台）。\n2. 战略供应商一共有**5 家**。",
+    "citations": [
+      "lantu_meeting_case_review",
+      "lantu_solution_lithium",
+      "lantu_meeting_supply_chain"
+    ],
+    "evidence": [
+      "lantu_meeting_case_review#0",
+      "lantu_solution_lithium#0",
+      "lantu_meeting_supply_chain#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 49560,
+  "started_at": "2026-11-01T06:43:48",
+  "elapsed_seconds": 50.78,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "186",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_meeting_case_review",
+            "title": "# 恒芯动力电池项目复盘会纪要",
+            "chunk": 0,
+            "score": 3.442,
+            "snippet": "# 恒芯动力电池项目复盘会纪要\n\n所属部门：客户成功部\n作者：林可\n创建时间：2025-03-18 09:00\n更新时间：2025-03-18 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_case_hengxin\n生效日期：2025-03-18\n\n## 一、项目结果\n\n恒芯动力电池 12 条叠片线完成验收，部署 186 台 LT-R20 与 24 台 AMR-1000，合同金额 2.16 亿元。\n\n## 二、成功经验\n\n虚拟调试提前发现 37 处干涉，现场调试周期缩短 12 天；"
+          },
+          {
+            "doc_id": "lantu_solution_lithium",
+            "title": "# 动力电池叠片与物流整体解决方案",
+            "chunk": 0,
+            "score": 3.402,
+            "snippet": "# 动力电池叠片与物流整体解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-10-12 09:00\n更新时间：2025-12-01 10:00\n版本号：v3.6\n文档类型：product\n文档族：solution_lithium\n生效日期：2025-12-01\n\n## 一、方案概述\n\n面向动力电池电芯段，提供叠片、焊接、检测与物料配送一体化方案，核心设备包括 LT-R20 机器人、LT-AMR-1000 与 LT-V3D 视觉。\n\n## 二、产线配置\n\n单条叠片线配置 15-16 台 LT-R20、2 "
+          },
+          {
+            "doc_id": "lantu_org_sales_regions",
+            "title": "# 澜图智能销售区域与渠道网络",
+            "chunk": 0,
+            "score": 3.168,
+            "snippet": "# 澜图智能销售区域与渠道网络\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-02-15 09:00\n更新时间：2025-12-05 15:00\n版本号：v3.1\n文档类型：org\n文档族：sales_regions\n生效日期：2025-12-05\n\n## 一、区域划分\n\n销售中心下设华东、华南、华北、西部、海外五个大区，覆盖 32 个国家和地区。华东大区总部苏州，华南大区总部东莞，华北大区总部北京，西部大区总部成都。\n\n## 二、团队规模\n\n销售团队 620 人，其中行业销售 280 人、渠道销售 16"
+          },
+          {
+            "doc_id": "lantu_company_campus",
+            "title": "# 澜图智能制造基地与产能布局",
+            "chunk": 0,
+            "score": 3.084,
+            "snippet": "# 澜图智能制造基地与产能布局\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2024-04-12 09:00\n更新时间：2025-11-20 15:00\n版本号：v3.0\n文档类型：company\n文档族：manufacturing_base\n生效日期：2025-11-20\n\n## 一、苏州总部基地\n\n位于苏州工业园区，占地 120 亩，建筑面积 9.6 万平方米，承担六轴机器人总装、控制器生产与研发测试，年产能 18,000 台。\n\n## 二、东莞华南基地\n\n位于东莞松山湖，占地 60 亩，聚焦 SCARA、A"
+          },
+          {
+            "doc_id": "lantu_case_01_hengxin",
+            "title": "# 客户案例：恒芯动力电池电芯叠片与物流项目",
+            "chunk": 0,
+            "score": 2.598,
+            "snippet": "# 客户案例：恒芯动力电池电芯叠片与物流项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_hengxin\n生效日期：2025-12-20\n\n## 一、客户背景\n\n恒芯动力电池位于常州，主营动力电池业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "战略供应商",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_legal_supplier_code",
+            "title": "# 澜图智能供应商行为准则",
+            "chunk": 0,
+            "score": 10.733,
+            "snippet": "# 澜图智能供应商行为准则\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-04-01 09:00\n更新时间：2025-05-01 09:00\n版本号：v2.0\n文档类型：legal\n文档族：supplier_code\n生效日期：2025-05-01\n\n## 一、劳工与人权\n\n供应商不得使用童工、强迫劳动，须保障结社自由与最低工资，工作时间符合当地法律。\n\n## 二、健康与安全\n\n供应商须提供安全的工作环境，配备必要的防护设施，定期开展安全培训与应急演练。\n\n## 三、环境要求\n\n供应商须遵守环保法规，优"
+          },
+          {
+            "doc_id": "lantu_meeting_supply_chain",
+            "title": "2025 年供应链韧性专题会纪要",
+            "chunk": 0,
+            "score": 10.613,
+            "snippet": "2025 年供应链韧性专题会纪要\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-10-16 09:00\n更新时间：2025-10-16 15:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_supply_chain\n生效日期：2025-10-16\n一、供应形势\n减速器交期由 8 周延长至 12 周，芯片交期 20 周；关键物料库存周转 92 天，高于目标 75 天。\n二、双源策略\n减速器已引入第二供应商，2026 年一季度实现 30% 替代；伺服驱动器自研比例提升至 61%。\n三"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2025",
+            "title": "# 澜图智能采购管理制度（2025版）",
+            "chunk": 0,
+            "score": 10.548,
+            "snippet": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付"
+          },
+          {
+            "doc_id": "lantu_strategy_supply_chain_resilience",
+            "title": "# 澜图智能供应链韧性建设方案",
+            "chunk": 0,
+            "score": 10.326,
+            "snippet": "# 澜图智能供应链韧性建设方案\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-02-01 09:00\n更新时间：2025-09-30 16:00\n版本号：v1.5\n文档类型：strategy\n文档族：supply_chain_resilience\n生效日期：2025-09-30\n\n## 一、风险识别\n\n关键物料包括减速器、伺服电机、芯片与视觉相机，其中芯片与减速器存在单一来源风险。\n\n## 二、双源与备库\n\n减速器 2026 年实现 30% 第二来源；关键芯片备库 6 个月；通用物料安全库存 30 天。"
+          },
+          {
+            "doc_id": "lantu_company_campus",
+            "title": "# 澜图智能制造基地与产能布局",
+            "chunk": 0,
+            "score": 9.252,
+            "snippet": "# 澜图智能制造基地与产能布局\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2024-04-12 09:00\n更新时间：2025-11-20 15:00\n版本号：v3.0\n文档类型：company\n文档族：manufacturing_base\n生效日期：2025-11-20\n\n## 一、苏州总部基地\n\n位于苏州工业园区，占地 120 亩，建筑面积 9.6 万平方米，承担六轴机器人总装、控制器生产与研发测试，年产能 18,000 台。\n\n## 二、东莞华南基地\n\n位于东莞松山湖，占地 60 亩，聚焦 SCARA、A"
+          },
+          {
+            "doc_id": "lantu_legal_purchase_contract_template",
+            "title": "澜图智能采购合同模板（2025版）",
+            "chunk": 0,
+            "score": 7.857,
+            "snippet": "澜图智能采购合同模板（2025版）\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-10 09:00\n更新时间：2025-03-01 09:00\n版本号：v3.2\n文档类型：legal\n文档族：purchase_contract_template\n生效日期：2025-03-01\n第一条 采购标的\n甲方向乙方采购原材料/零部件，品名、规格、数量、单价以采购订单为准。\n第二条 付款方式\n标准账期为月结 90 天，战略供应商可约定 120 天；预付款不超过 20%；质保金 5%-10%。\n第三条 质量要求\n乙"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2024",
+            "title": "# 澜图智能采购管理制度（2024版）",
+            "chunk": 0,
+            "score": 5.241,
+            "snippet": "# 澜图智能采购管理制度（2024版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2024-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。\n\n## 二、付款账期\n\n标准供应商月结 60 天；预付款比例不超过 30%；质保金 5%-10%。\n\n## 三、供应商"
+          },
+          {
+            "doc_id": "lantu_company_mission",
+            "title": "# 澜图智能使命、愿景与价值观",
+            "chunk": 0,
+            "score": 5.23,
+            "snippet": "# 澜图智能使命、愿景与价值观\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2023-05-10 10:00\n更新时间：2025-12-20 16:00\n版本号：v3.1\n文档类型：company\n文档族：company_mission\n生效日期：2025-12-20\n\n## 一、使命\n\n让每一座工厂拥有可靠、易用、可进化的智能生产力。\n\n## 二、愿景\n\n到 2030 年，成为全球工业机器人领域最值得信赖的中国品牌，服务 10,000 家制造企业。\n\n## 三、价值观\n\n客户成功、实事求是、长期主义、协同共赢"
+          },
+          {
+            "doc_id": "lantu_strategy_quality_system",
+            "title": "澜图智能质量管理体系手册",
+            "chunk": 0,
+            "score": 4.289,
+            "snippet": "澜图智能质量管理体系手册\n所属部门：质量部\n作者：潘文博\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v4.2\n文档类型：strategy\n文档族：quality_system\n生效日期：2025-06-01\n一、质量方针\n以客户为中心，以零缺陷为目标，持续改进，追求卓越。公司通过 ISO 9001、IATF 16949 与 ISO 13485\n认证。\n二、质量目标\n2025 年一次交检合格率不低于 98.5%，客户投诉不超过 6 起，MTBF 不低于 12,00"
+          },
+          {
+            "doc_id": "lantu_strategy_2025",
+            "title": "# 澜图智能 2025 年度经营计划",
+            "chunk": 0,
+            "score": 4.01,
+            "snippet": "# 澜图智能 2025 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-01-10 09:00\n更新时间：2025-02-10 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2025\n生效日期：2025-02-10\n\n## 一、年度目标\n\n2025 年营业收入目标 41.5 亿元，力争 42.63 亿元；新签订单目标 46 亿元；机器人出货目标 20,000 台。\n\n## 二、重点任务\n\n锂电与半导体行业突破；LT-C800 控制器量产；海外收入占"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_solution_lithium",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_solution_lithium",
+        "title": "# 动力电池叠片与物流整体解决方案",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 450,
+        "text": "# 动力电池叠片与物流整体解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-10-12 09:00\n更新时间：2025-12-01 10:00\n版本号：v3.6\n文档类型：product\n文档族：solution_lithium\n生效日期：2025-12-01\n\n## 一、方案概述\n\n面向动力电池电芯段，提供叠片、焊接、检测与物料配送一体化方案，核心设备包括 LT-R20 机器人、LT-AMR-1000 与 LT-V3D 视觉。\n\n## 二、产线配置\n\n单条叠片线配置 15-16 台 LT-R20、2 台 AMR，节拍 0.12 秒/片，良率 99.5%，支持 12 条线集群调度。\n\n## 三、质量检测\n\n在线检测极片对齐度、毛刺与褶皱，检测精度 0.05 mm，NG 自动剔除并记录追溯码。\n\n## 四、标杆案例\n\n恒芯动力电池 12 条叠片线使用 186 台 LT-R20 与 24 台 AMR-1000，叠片良率由 98.1% 提升至 99.3%，投资回收期 18 个月。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "战略供应商 数量",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_legal_purchase_contract_template",
+            "title": "澜图智能采购合同模板（2025版）",
+            "chunk": 0,
+            "score": 11.475,
+            "snippet": "澜图智能采购合同模板（2025版）\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-10 09:00\n更新时间：2025-03-01 09:00\n版本号：v3.2\n文档类型：legal\n文档族：purchase_contract_template\n生效日期：2025-03-01\n第一条 采购标的\n甲方向乙方采购原材料/零部件，品名、规格、数量、单价以采购订单为准。\n第二条 付款方式\n标准账期为月结 90 天，战略供应商可约定 120 天；预付款不超过 20%；质保金 5%-10%。\n第三条 质量要求\n乙"
+          },
+          {
+            "doc_id": "lantu_legal_supplier_code",
+            "title": "# 澜图智能供应商行为准则",
+            "chunk": 0,
+            "score": 10.733,
+            "snippet": "# 澜图智能供应商行为准则\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-04-01 09:00\n更新时间：2025-05-01 09:00\n版本号：v2.0\n文档类型：legal\n文档族：supplier_code\n生效日期：2025-05-01\n\n## 一、劳工与人权\n\n供应商不得使用童工、强迫劳动，须保障结社自由与最低工资，工作时间符合当地法律。\n\n## 二、健康与安全\n\n供应商须提供安全的工作环境，配备必要的防护设施，定期开展安全培训与应急演练。\n\n## 三、环境要求\n\n供应商须遵守环保法规，优"
+          },
+          {
+            "doc_id": "lantu_meeting_supply_chain",
+            "title": "2025 年供应链韧性专题会纪要",
+            "chunk": 0,
+            "score": 10.613,
+            "snippet": "2025 年供应链韧性专题会纪要\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-10-16 09:00\n更新时间：2025-10-16 15:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_supply_chain\n生效日期：2025-10-16\n一、供应形势\n减速器交期由 8 周延长至 12 周，芯片交期 20 周；关键物料库存周转 92 天，高于目标 75 天。\n二、双源策略\n减速器已引入第二供应商，2026 年一季度实现 30% 替代；伺服驱动器自研比例提升至 61%。\n三"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2025",
+            "title": "# 澜图智能采购管理制度（2025版）",
+            "chunk": 0,
+            "score": 10.548,
+            "snippet": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付"
+          },
+          {
+            "doc_id": "lantu_strategy_supply_chain_resilience",
+            "title": "# 澜图智能供应链韧性建设方案",
+            "chunk": 0,
+            "score": 10.326,
+            "snippet": "# 澜图智能供应链韧性建设方案\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-02-01 09:00\n更新时间：2025-09-30 16:00\n版本号：v1.5\n文档类型：strategy\n文档族：supply_chain_resilience\n生效日期：2025-09-30\n\n## 一、风险识别\n\n关键物料包括减速器、伺服电机、芯片与视觉相机，其中芯片与减速器存在单一来源风险。\n\n## 二、双源与备库\n\n减速器 2026 年实现 30% 第二来源；关键芯片备库 6 个月；通用物料安全库存 30 天。"
+          },
+          {
+            "doc_id": "lantu_company_campus",
+            "title": "# 澜图智能制造基地与产能布局",
+            "chunk": 0,
+            "score": 9.252,
+            "snippet": "# 澜图智能制造基地与产能布局\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2024-04-12 09:00\n更新时间：2025-11-20 15:00\n版本号：v3.0\n文档类型：company\n文档族：manufacturing_base\n生效日期：2025-11-20\n\n## 一、苏州总部基地\n\n位于苏州工业园区，占地 120 亩，建筑面积 9.6 万平方米，承担六轴机器人总装、控制器生产与研发测试，年产能 18,000 台。\n\n## 二、东莞华南基地\n\n位于东莞松山湖，占地 60 亩，聚焦 SCARA、A"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2024",
+            "title": "# 澜图智能采购管理制度（2024版）",
+            "chunk": 0,
+            "score": 9.246,
+            "snippet": "# 澜图智能采购管理制度（2024版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2024-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。\n\n## 二、付款账期\n\n标准供应商月结 60 天；预付款比例不超过 30%；质保金 5%-10%。\n\n## 三、供应商"
+          },
+          {
+            "doc_id": "lantu_company_mission",
+            "title": "# 澜图智能使命、愿景与价值观",
+            "chunk": 0,
+            "score": 5.23,
+            "snippet": "# 澜图智能使命、愿景与价值观\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2023-05-10 10:00\n更新时间：2025-12-20 16:00\n版本号：v3.1\n文档类型：company\n文档族：company_mission\n生效日期：2025-12-20\n\n## 一、使命\n\n让每一座工厂拥有可靠、易用、可进化的智能生产力。\n\n## 二、愿景\n\n到 2030 年，成为全球工业机器人领域最值得信赖的中国品牌，服务 10,000 家制造企业。\n\n## 三、价值观\n\n客户成功、实事求是、长期主义、协同共赢"
+          },
+          {
+            "doc_id": "lantu_strategy_quality_system",
+            "title": "澜图智能质量管理体系手册",
+            "chunk": 0,
+            "score": 4.289,
+            "snippet": "澜图智能质量管理体系手册\n所属部门：质量部\n作者：潘文博\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v4.2\n文档类型：strategy\n文档族：quality_system\n生效日期：2025-06-01\n一、质量方针\n以客户为中心，以零缺陷为目标，持续改进，追求卓越。公司通过 ISO 9001、IATF 16949 与 ISO 13485\n认证。\n二、质量目标\n2025 年一次交检合格率不低于 98.5%，客户投诉不超过 6 起，MTBF 不低于 12,00"
+          },
+          {
+            "doc_id": "lantu_strategy_2025",
+            "title": "# 澜图智能 2025 年度经营计划",
+            "chunk": 0,
+            "score": 4.01,
+            "snippet": "# 澜图智能 2025 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-01-10 09:00\n更新时间：2025-02-10 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2025\n生效日期：2025-02-10\n\n## 一、年度目标\n\n2025 年营业收入目标 41.5 亿元，力争 42.63 亿元；新签订单目标 46 亿元；机器人出货目标 20,000 台。\n\n## 二、重点任务\n\n锂电与半导体行业突破；LT-C800 控制器量产；海外收入占"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_purchase_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_purchase_2025",
+        "title": "# 澜图智能采购管理制度（2025版）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 453,
+        "text": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付款比例不超过 20%；质保金 5%-10%。\n\n## 三、供应商准入\n\n供应商须通过资质审查、现场审核与小批量试用，签署质量协议、廉洁协议与数据安全协议。\n\n## 四、库存与交付\n\n关键物料安全库存 45 天，通用物料 30 天；供应商交付准时率目标 96%，年度考核末位 5% 启动整改。\n\n## 五、生效说明\n\n本制度自 2025 年 1 月 1 日起生效，2024 版同时废止。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "战略供应商 数量"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_legal_purchase_contract_template",
+            "title": "澜图智能采购合同模板（2025版）",
+            "chunk": 0,
+            "score": 11.475,
+            "snippet": "澜图智能采购合同模板（2025版）\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-10 09:00\n更新时间：2025-03-01 09:00\n版本号：v3.2\n文档类型：legal\n文档族：purchase_contract_template\n生效日期：2025-03-01\n第一条 采购标的\n甲方向乙方采购原材料/零部件，品名、规格、数量、单价以采购订单为准。\n第二条 付款方式\n标准账期为月结 90 天，战略供应商可约定 120 天；预付款不超过 20%；质保金 5%-10%。\n第三条 质量要求\n乙"
+          },
+          {
+            "doc_id": "lantu_legal_supplier_code",
+            "title": "# 澜图智能供应商行为准则",
+            "chunk": 0,
+            "score": 10.733,
+            "snippet": "# 澜图智能供应商行为准则\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-04-01 09:00\n更新时间：2025-05-01 09:00\n版本号：v2.0\n文档类型：legal\n文档族：supplier_code\n生效日期：2025-05-01\n\n## 一、劳工与人权\n\n供应商不得使用童工、强迫劳动，须保障结社自由与最低工资，工作时间符合当地法律。\n\n## 二、健康与安全\n\n供应商须提供安全的工作环境，配备必要的防护设施，定期开展安全培训与应急演练。\n\n## 三、环境要求\n\n供应商须遵守环保法规，优"
+          },
+          {
+            "doc_id": "lantu_meeting_supply_chain",
+            "title": "2025 年供应链韧性专题会纪要",
+            "chunk": 0,
+            "score": 10.613,
+            "snippet": "2025 年供应链韧性专题会纪要\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-10-16 09:00\n更新时间：2025-10-16 15:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_supply_chain\n生效日期：2025-10-16\n一、供应形势\n减速器交期由 8 周延长至 12 周，芯片交期 20 周；关键物料库存周转 92 天，高于目标 75 天。\n二、双源策略\n减速器已引入第二供应商，2026 年一季度实现 30% 替代；伺服驱动器自研比例提升至 61%。\n三"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2025",
+            "title": "# 澜图智能采购管理制度（2025版）",
+            "chunk": 0,
+            "score": 10.548,
+            "snippet": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付"
+          },
+          {
+            "doc_id": "lantu_strategy_supply_chain_resilience",
+            "title": "# 澜图智能供应链韧性建设方案",
+            "chunk": 0,
+            "score": 10.326,
+            "snippet": "# 澜图智能供应链韧性建设方案\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-02-01 09:00\n更新时间：2025-09-30 16:00\n版本号：v1.5\n文档类型：strategy\n文档族：supply_chain_resilience\n生效日期：2025-09-30\n\n## 一、风险识别\n\n关键物料包括减速器、伺服电机、芯片与视觉相机，其中芯片与减速器存在单一来源风险。\n\n## 二、双源与备库\n\n减速器 2026 年实现 30% 第二来源；关键芯片备库 6 个月；通用物料安全库存 30 天。"
+          },
+          {
+            "doc_id": "lantu_company_campus",
+            "title": "# 澜图智能制造基地与产能布局",
+            "chunk": 0,
+            "score": 9.252,
+            "snippet": "# 澜图智能制造基地与产能布局\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2024-04-12 09:00\n更新时间：2025-11-20 15:00\n版本号：v3.0\n文档类型：company\n文档族：manufacturing_base\n生效日期：2025-11-20\n\n## 一、苏州总部基地\n\n位于苏州工业园区，占地 120 亩，建筑面积 9.6 万平方米，承担六轴机器人总装、控制器生产与研发测试，年产能 18,000 台。\n\n## 二、东莞华南基地\n\n位于东莞松山湖，占地 60 亩，聚焦 SCARA、A"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2024",
+            "title": "# 澜图智能采购管理制度（2024版）",
+            "chunk": 0,
+            "score": 9.246,
+            "snippet": "# 澜图智能采购管理制度（2024版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2024-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。\n\n## 二、付款账期\n\n标准供应商月结 60 天；预付款比例不超过 30%；质保金 5%-10%。\n\n## 三、供应商"
+          },
+          {
+            "doc_id": "lantu_company_mission",
+            "title": "# 澜图智能使命、愿景与价值观",
+            "chunk": 0,
+            "score": 5.23,
+            "snippet": "# 澜图智能使命、愿景与价值观\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2023-05-10 10:00\n更新时间：2025-12-20 16:00\n版本号：v3.1\n文档类型：company\n文档族：company_mission\n生效日期：2025-12-20\n\n## 一、使命\n\n让每一座工厂拥有可靠、易用、可进化的智能生产力。\n\n## 二、愿景\n\n到 2030 年，成为全球工业机器人领域最值得信赖的中国品牌，服务 10,000 家制造企业。\n\n## 三、价值观\n\n客户成功、实事求是、长期主义、协同共赢"
+          },
+          {
+            "doc_id": "lantu_strategy_quality_system",
+            "title": "澜图智能质量管理体系手册",
+            "chunk": 0,
+            "score": 4.289,
+            "snippet": "澜图智能质量管理体系手册\n所属部门：质量部\n作者：潘文博\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v4.2\n文档类型：strategy\n文档族：quality_system\n生效日期：2025-06-01\n一、质量方针\n以客户为中心，以零缺陷为目标，持续改进，追求卓越。公司通过 ISO 9001、IATF 16949 与 ISO 13485\n认证。\n二、质量目标\n2025 年一次交检合格率不低于 98.5%，客户投诉不超过 6 起，MTBF 不低于 12,00"
+          },
+          {
+            "doc_id": "lantu_strategy_2025",
+            "title": "# 澜图智能 2025 年度经营计划",
+            "chunk": 0,
+            "score": 4.01,
+            "snippet": "# 澜图智能 2025 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-01-10 09:00\n更新时间：2025-02-10 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2025\n生效日期：2025-02-10\n\n## 一、年度目标\n\n2025 年营业收入目标 41.5 亿元，力争 42.63 亿元；新签订单目标 46 亿元；机器人出货目标 20,000 台。\n\n## 二、重点任务\n\n锂电与半导体行业突破；LT-C800 控制器量产；海外收入占"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_meeting_supply_chain",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_meeting_supply_chain",
+        "title": "2025 年供应链韧性专题会纪要",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 363,
+        "text": "2025 年供应链韧性专题会纪要\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-10-16 09:00\n更新时间：2025-10-16 15:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_supply_chain\n生效日期：2025-10-16\n一、供应形势\n减速器交期由 8 周延长至 12 周，芯片交期 20 周；关键物料库存周转 92 天，高于目标 75 天。\n二、双源策略\n减速器已引入第二供应商，2026 年一季度实现 30% 替代；伺服驱动器自研比例提升至 61%。\n三、库存与物流\n安全库存由 30 天提升至 45 天；东莞基地增设线边仓，华南客户交付周期缩短 2 天。\n四、决议\n与 5 家战略供应商签订年度框架协议；对单一来源物料建立替代清单；每月跟踪供应商交付准时率。",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.2,
+    "cited": [
+      "lantu_meeting_case_review",
+      "lantu_solution_lithium",
+      "lantu_meeting_supply_chain"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.01,
+    "number_recall": 0.0
+  }
+}

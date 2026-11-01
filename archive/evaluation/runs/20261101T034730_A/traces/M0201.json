@@ -1,0 +1,271 @@
+{
+  "qid": "M0201",
+  "question": "公司那套被称为“澜图视觉”的相机系统，拍照准不准？跟算法侧的指标是一回事吗？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>澜图视觉</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=search><parameter=query>相机 拍照 准确率 指标</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 108,
+        "prompt_tokens": 367,
+        "total_tokens": 475,
+        "completion_tokens_details": {
+          "reasoning_tokens": 44
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.782
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"澜图视觉 相机\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 89,
+        "prompt_tokens": 468,
+        "total_tokens": 557,
+        "completion_tokens_details": {
+          "reasoning_tokens": 63
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.187
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_product_vision\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 74,
+        "prompt_tokens": 2909,
+        "total_tokens": 2983,
+        "completion_tokens_details": {
+          "reasoning_tokens": 43
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.875
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_tech_vision\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 86,
+        "prompt_tokens": 3313,
+        "total_tokens": 3399,
+        "completion_tokens_details": {
+          "reasoning_tokens": 54
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2880
+        }
+      },
+      "seconds": 3.422
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"不完全是一回事，两者口径不同。\\n\\n1）相机系统（LT-V3D 工业视觉系统，产品口径 v2.6，2025-07-15）：由结构光相机＋视觉控制器＋LantuVision 软件组成，标称“测量精度 0.05 mm、单帧点云 120 万点、帧率 30 fps、识别准确率 99.8%、支持 12 种典型缺陷分类”。这里的“拍照准不准”对应的是硬件/系统级指标——测量精度 0.05 mm 与综合识别准确率 99.8%。\\n\\n2）算法侧（机器视觉算法平台，技术口径 v3.1，2025-11-05）：指标是“3D 测量精度 0.05 mm、缺陷检测召回率 99.2%、误检率 0.8%、单帧推理延迟 35 ms”，衡量的是算法模型本身的检出能力与误报水平。\\n\\n结论：\\n- 相同的部分：两者都给出 3D 测量精度 0.05 mm，这是可对齐的口径。\\n- 不同的部分：产品侧的“识别准确率 99.8%”是系统级综合口径；算法侧的“召回率 99.2%＋误检率 0.8%”是模型级指标，二者定义、测试条件与文档版本/更新时间均不同，不能直接画等号。对外引用时建议注明取自哪份文档及版本号。\",\"citations\":[\"lantu_product_vision\",\"lantu_tech_vision\"],\"evidence\":[\"lantu_product_vision#片段1\",\"lantu_tech_vision#片段1\"]}",
+      "usage": {
+        "completion_tokens": 848,
+        "prompt_tokens": 3694,
+        "total_tokens": 4542,
+        "completion_tokens_details": {
+          "reasoning_tokens": 437
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3264
+        }
+      },
+      "seconds": 18.375
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "澜图视觉 相机",
+        "top_k": 10
+      },
+      "result_sha": "47cefec864d7e8ac8e2f91272ddb9f334006b5bde3a2199be580c9b34c5c7678",
+      "result_chars": 3911,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_vision",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "0e7f943fb829f2ca9e8b7788d195ac313fa7c5ee1703c2bc2a83470804b33fef",
+      "result_chars": 587,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_vision",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "848547f043dfc6ea13a41883f054f05daec3b3e001e86524f225ddb4e4a5a713",
+      "result_chars": 533,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "不完全是一回事，两者口径不同。\n\n1）相机系统（LT-V3D 工业视觉系统，产品口径 v2.6，2025-07-15）：由结构光相机＋视觉控制器＋LantuVision 软件组成，标称“测量精度 0.05 mm、单帧点云 120 万点、帧率 30 fps、识别准确率 99.8%、支持 12 种典型缺陷分类”。这里的“拍照准不准”对应的是硬件/系统级指标——测量精度 0.05 mm 与综合识别准确率 99.8%。\n\n2）算法侧（机器视觉算法平台，技术口径 v3.1，2025-11-05）：指标是“3D 测量精度 0.05 mm、缺陷检测召回率 99.2%、误检率 0.8%、单帧推理延迟 35 ms”，衡量的是算法模型本身的检出能力与误报水平。\n\n结论：\n- 相同的部分：两者都给出 3D 测量精度 0.05 mm，这是可对齐的口径。\n- 不同的部分：产品侧的“识别准确率 99.8%”是系统级综合口径；算法侧的“召回率 99.2%＋误检率 0.8%”是模型级指标，二者定义、测试条件与文档版本/更新时间均不同，不能直接画等号。对外引用时建议注明取自哪份文档及版本号。",
+    "citations": [
+      "lantu_product_vision",
+      "lantu_tech_vision"
+    ],
+    "evidence": [
+      "lantu_product_vision#片段1",
+      "lantu_tech_vision#片段1"
+    ]
+  },
+  "status": "answered",
+  "tokens": 11956,
+  "started_at": "2026-11-01T05:40:09",
+  "elapsed_seconds": 28.64,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "澜图视觉 相机",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_product_vision",
+            "title": "# LT-V3D 工业视觉系统技术说明",
+            "chunk": 0,
+            "score": 7.006,
+            "snippet": "# LT-V3D 工业视觉系统技术说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-06-18 09:00\n更新时间：2025-07-15 14:00\n版本号：v2.6\n文档类型：product\n文档族：product_vision\n生效日期：2025-07-15\n\n## 一、系统组成\n\nLT-V3D 由结构光相机、视觉控制器与 LantuVision 软件组成，支持 3D 点云、2D 图像与深度学习缺陷检测。\n\n## 二、核心指标\n\n测量精度 0.05 mm，单帧点云 120 万点，帧率 30 fps"
+          },
+          {
+            "doc_id": "lantu_strategy_supply_chain_resilience",
+            "title": "# 澜图智能供应链韧性建设方案",
+            "chunk": 0,
+            "score": 5.321,
+            "snippet": "# 澜图智能供应链韧性建设方案\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-02-01 09:00\n更新时间：2025-09-30 16:00\n版本号：v1.5\n文档类型：strategy\n文档族：supply_chain_resilience\n生效日期：2025-09-30\n\n## 一、风险识别\n\n关键物料包括减速器、伺服电机、芯片与视觉相机，其中芯片与减速器存在单一来源风险。\n\n## 二、双源与备库\n\n减速器 2026 年实现 30% 第二来源；关键芯片备库 6 个月；通用物料安全库存 30 天。"
+          },
+          {
+            "doc_id": "lantu_product_amr",
+            "title": "# LT-AMR 自主移动机器人产品手册",
+            "chunk": 0,
+            "score": 4.878,
+            "snippet": "# LT-AMR 自主移动机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-05-10 09:00\n更新时间：2025-08-20 15:00\n版本号：v3.4\n文档类型：product\n文档族：product_amr\n生效日期：2025-08-20\n\n## 一、产品系列\n\nLT-AMR-500 负载 500 kg、速度 1.8 m/s、续航 8 小时；LT-AMR-1000 负载 1,000 kg、速度 1.5 m/s、续航 8 小时；LT-AMR-2000 负载 2,000 kg、速度 1.2"
+          },
+          {
+            "doc_id": "lantu_support_spare_parts_price",
+            "title": "﻿适配机型,备件名称,单价（元）,发货时效,质保期",
+            "chunk": 0,
+            "score": 3.966,
+            "snippet": "﻿适配机型,备件名称,单价（元）,发货时效,质保期\nLT-R20,减速器 RV-40E,\"12,800\",48 小时,12 个月\nLT-R20,伺服驱动器 LT-D4,\"8,600\",48 小时,18 个月\nLT-R20,示教器 LT-Pad3,\"5,200\",48 小时,12 个月\nLT-R12,减速器 RV-20E,\"7,900\",48 小时,12 个月\nLT-R12,伺服电机 750W,\"3,600\",48 小时,18 个月\nLT-R6,谐波减速器 CSF-17,\"6,400\",72 小时,12 个月\nLT-"
+          },
+          {
+            "doc_id": "lantu_company_brand",
+            "title": "# 澜图智能品牌视觉与传播规范",
+            "chunk": 0,
+            "score": 2.347,
+            "snippet": "# 澜图智能品牌视觉与传播规范\n\n所属部门：市场部\n作者：苏婉清\n创建时间：2024-02-01 09:30\n更新时间：2025-08-15 11:00\n版本号：v2.3\n文档类型：company\n文档族：brand_manual\n生效日期：2025-08-15\n\n## 一、品牌定位\n\n澜图智能（LANTU）定位为“可信赖的智能制造伙伴”，核心传播主张为“稳、准、快”。品牌不得使用“全球第一”“绝对领先”等绝对化表述。\n\n## 二、视觉规范\n\n主色为澜图蓝（PANTONE 2728C，HEX #1F4FA8），辅助"
+          },
+          {
+            "doc_id": "lantu_tech_edge",
+            "title": "# 澜图智能边缘计算产品 LT-Edge 说明",
+            "chunk": 0,
+            "score": 2.218,
+            "snippet": "# 澜图智能边缘计算产品 LT-Edge 说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2025-01-10 09:00\n更新时间：2025-06-12 11:00\n版本号：v1.3\n文档类型：tech\n文档族：edge_computing\n生效日期：2025-06-12\n\n## 一、产品定位\n\nLT-Edge 是面向产线的边缘计算单元，承载视觉推理、数据采集与协议转换，支持断网续传。\n\n## 二、硬件规格\n\n8 核 ARM 处理器，32 TOPS NPU，16 GB 内存，256 GB 存储，支持 4 路千"
+          },
+          {
+            "doc_id": "lantu_tech_vision",
+            "title": "# 澜图智能机器视觉算法平台说明",
+            "chunk": 0,
+            "score": 2.185,
+            "snippet": "# 澜图智能机器视觉算法平台说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-08-01 09:00\n更新时间：2025-11-05 15:00\n版本号：v3.1\n文档类型：tech\n文档族：vision_algorithm\n生效日期：2025-11-05\n\n## 一、算法能力\n\n覆盖 2D/3D 定位、缺陷检测、OCR、分割与无序抓取，支持小样本学习与在线增量训练。\n\n## 二、性能指标\n\n3D 测量精度 0.05 mm，缺陷检测召回率 99.2%，误检率 0.8%，单帧推理延迟 35 ms。\n\n##"
+          },
+          {
+            "doc_id": "lantu_tech_roadmap",
+            "title": "# 澜图智能技术路线图（2025—2028）",
+            "chunk": 0,
+            "score": 2.182,
+            "snippet": "# 澜图智能技术路线图（2025—2028）\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-11-01 09:00\n更新时间：2025-12-05 16:00\n版本号：v2.2\n文档类型：tech\n文档族：tech_roadmap\n生效日期：2025-12-05\n\n## 一、总体路线\n\n以“本体+控制+视觉+软件”为基础，向具身智能与柔性制造演进，2026 年完成 LT-R20 Pro 与具身智能平台 1.0。\n\n## 二、2025 年\n\nLT-C800 控制器量产、LantuTwin 3.0 发布、LT"
+          },
+          {
+            "doc_id": "lantu_product_assembly",
+            "title": "# LT-Assembly 柔性装配工作站方案",
+            "chunk": 0,
+            "score": 2.163,
+            "snippet": "# LT-Assembly 柔性装配工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-07-15 09:00\n更新时间：2025-09-05 11:00\n版本号：v2.5\n文档类型：product\n文档族：solution_assembly\n生效日期：2025-09-05\n\n## 一、方案组成\n\n由 LT-R12/LT-R20 机器人、力控末端、LT-V3D 视觉与快换工装组成，支持多品种混线装配。\n\n## 二、工艺指标\n\n装配节拍 3.2 秒/件，力控精度 ±2 N，视觉定位精度 ±0.05 mm，"
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 0,
+            "score": 2.07,
+            "snippet": "# 澜图智能产品与解决方案总览\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-02-20 09:00\n更新时间：2025-12-22 10:00\n版本号：v6.0\n文档类型：product\n文档族：product_overview\n生效日期：2025-12-22\n\n## 一、产品矩阵\n\n公司产品覆盖六轴工业机器人、SCARA 机器人、自主移动机器人（AMR）、机器视觉、运动控制器、数字孪生平台与行业工作站，形成“本体+控制器+视觉+软件+工艺”的一体化方案。\n\n## 二、行业方案\n\n重点行业包括汽车及零部件、"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_vision",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_product_vision",
+        "title": "# LT-V3D 工业视觉系统技术说明",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 415,
+        "text": "# LT-V3D 工业视觉系统技术说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-06-18 09:00\n更新时间：2025-07-15 14:00\n版本号：v2.6\n文档类型：product\n文档族：product_vision\n生效日期：2025-07-15\n\n## 一、系统组成\n\nLT-V3D 由结构光相机、视觉控制器与 LantuVision 软件组成，支持 3D 点云、2D 图像与深度学习缺陷检测。\n\n## 二、核心指标\n\n测量精度 0.05 mm，单帧点云 120 万点，帧率 30 fps，识别准确率 99.8%，支持 12 种典型缺陷分类。\n\n## 三、软件能力\n\n提供可视化标定、手眼标定、模板匹配与缺陷标注工具，支持模型 OTA 更新，单台控制器可接入 8 路相机。\n\n## 四、应用场景\n\n广泛应用于装配定位、焊缝跟踪、表面缺陷检测与无序抓取，兼容 LT-R 与 LT-S 全系列机器人。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_vision",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_tech_vision",
+        "title": "# 澜图智能机器视觉算法平台说明",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 367,
+        "text": "# 澜图智能机器视觉算法平台说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-08-01 09:00\n更新时间：2025-11-05 15:00\n版本号：v3.1\n文档类型：tech\n文档族：vision_algorithm\n生效日期：2025-11-05\n\n## 一、算法能力\n\n覆盖 2D/3D 定位、缺陷检测、OCR、分割与无序抓取，支持小样本学习与在线增量训练。\n\n## 二、性能指标\n\n3D 测量精度 0.05 mm，缺陷检测召回率 99.2%，误检率 0.8%，单帧推理延迟 35 ms。\n\n## 三、部署形态\n\n支持边缘盒子 LT-Edge 与工控机部署，模型可 OTA 更新；提供标注、训练、评估一体化工具链。\n\n## 四、数据闭环\n\n客户现场数据经脱敏后回传训练，模型迭代周期由 8 周缩短至 2 周。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_product_vision",
+      "lantu_tech_vision"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.546,
+    "number_recall": 0.0
+  }
+}

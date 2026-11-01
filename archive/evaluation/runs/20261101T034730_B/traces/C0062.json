@@ -1,0 +1,481 @@
+{
+  "qid": "C0062",
+  "question": "装配方案的数据保存 5 年，与锂电方案的追溯码记录、光伏方案检测数据接入 MES 共同反映了什么技术路线？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"装配方案 数据保存 锂电 追溯码 光伏 MES\",\"top_k\":10}}",
+      "usage": {
+        "prompt_tokens": 378,
+        "total_tokens": 679,
+        "completion_tokens": 301,
+        "completion_tokens_details": {
+          "reasoning_tokens": 265,
+          "text_tokens": 301
+        }
+      },
+      "seconds": 3.015
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"数据保存 5 年 装配方案\",\"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 2680,
+        "total_tokens": 3093,
+        "completion_tokens": 413,
+        "completion_tokens_details": {
+          "reasoning_tokens": 382,
+          "text_tokens": 413
+        }
+      },
+      "seconds": 3.469
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_product_assembly\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 3848,
+        "total_tokens": 4309,
+        "completion_tokens": 461,
+        "completion_tokens_details": {
+          "reasoning_tokens": 427,
+          "text_tokens": 461
+        }
+      },
+      "seconds": 3.75
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"动力电池叠片 追溯码\",\"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 4217,
+        "total_tokens": 4583,
+        "completion_tokens": 366,
+        "completion_tokens_details": {
+          "reasoning_tokens": 338,
+          "text_tokens": 366
+        }
+      },
+      "seconds": 3.359
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_solution_lithium\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 5441,
+        "total_tokens": 5849,
+        "completion_tokens": 408,
+        "completion_tokens_details": {
+          "reasoning_tokens": 373,
+          "text_tokens": 408
+        }
+      },
+      "seconds": 3.375
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_solution_photovoltaic\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 5885,
+        "total_tokens": 5975,
+        "completion_tokens": 90,
+        "completion_tokens_details": {
+          "reasoning_tokens": 54,
+          "text_tokens": 90
+        }
+      },
+      "seconds": 0.907
+    },
+    {
+      "round": 7,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_strategy_digital_transformation\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 6314,
+        "total_tokens": 6908,
+        "completion_tokens": 594,
+        "completion_tokens_details": {
+          "reasoning_tokens": 558,
+          "text_tokens": 594
+        }
+      },
+      "seconds": 5.0
+    },
+    {
+      "round": 8,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"这些措施共同反映了企业向**智能制造**（或**数字化制造**）转型的技术路线。具体而言，通过规范数据存储周期（如保存 5 年）、实施唯一标识管理（追溯码）以及打通底层设备与上层管理系统（MES）的连接，实现了生产全过程的**数字化监控**、**数据互联**与**质量可追溯**，支撑了公司‘全流程数字化’的战略目标。\",\"citations\":[\"lantu_product_assembly\",\"lantu_solution_lithium\",\"lantu_solution_photovoltaic\",\"lantu_strategy_digital_transformation\"],\"evidence\":[\"lantu_product_assembly#chunk 0\",\"lantu_solution_lithium#chunk 0\",\"lantu_solution_photovoltaic#chunk 0\",\"lantu_strategy_digital_transformation#chunk 0\"]}",
+      "usage": {
+        "prompt_tokens": 6671,
+        "total_tokens": 7962,
+        "completion_tokens": 1291,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1110,
+          "text_tokens": 1291
+        }
+      },
+      "seconds": 10.312
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "装配方案 数据保存 锂电 追溯码 光伏 MES",
+        "top_k": 10
+      },
+      "result_sha": "ac7e7216ca3f22adb79ba7f8e79581d5c655fb69a74f25747153d2b2a0519076",
+      "result_chars": 3905,
+      "hits": 10
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "数据保存 5 年 装配方案",
+        "top_k": 5
+      },
+      "result_sha": "7c9d5ac84deac051531b6b32d46987e4d3ad3971e43042b57981f8664b65d0ac",
+      "result_chars": 1945,
+      "hits": 5
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_assembly",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "b952e1e15024ac725a6dbfe6d6926055ad5c9c7f1f0bb9ba2c7893266ebc91c5",
+      "result_chars": 555,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "动力电池叠片 追溯码",
+        "top_k": 5
+      },
+      "result_sha": "7bec76f8e4ad4b54364cebc2e9029b838eae6e109e4dfafc17bc4cb93a804ba9",
+      "result_chars": 1982,
+      "hits": 5
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_solution_lithium",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "3eae315ba7aa8706c483dc1921de404bff7da719c225aac8b43b8f7fd7a59e61",
+      "result_chars": 622,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_solution_photovoltaic",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "8772706ec6205e5148400f958ae3ae80d7202cb29424ef92fba54822f824848c",
+      "result_chars": 597,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_strategy_digital_transformation",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "7fb8788515840ec6f7759672549ac4d57c5f8680c9a4370dedfff71336627f6f",
+      "result_chars": 550,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "这些措施共同反映了企业向**智能制造**（或**数字化制造**）转型的技术路线。具体而言，通过规范数据存储周期（如保存 5 年）、实施唯一标识管理（追溯码）以及打通底层设备与上层管理系统（MES）的连接，实现了生产全过程的**数字化监控**、**数据互联**与**质量可追溯**，支撑了公司‘全流程数字化’的战略目标。",
+    "citations": [
+      "lantu_product_assembly",
+      "lantu_solution_lithium",
+      "lantu_solution_photovoltaic",
+      "lantu_strategy_digital_transformation"
+    ],
+    "evidence": [
+      "lantu_product_assembly#chunk 0",
+      "lantu_solution_lithium#chunk 0",
+      "lantu_solution_photovoltaic#chunk 0",
+      "lantu_strategy_digital_transformation#chunk 0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 39358,
+  "started_at": "2026-11-01T04:20:41",
+  "elapsed_seconds": 33.19,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "装配方案 数据保存 锂电 追溯码 光伏 MES",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_product_assembly",
+            "title": "# LT-Assembly 柔性装配工作站方案",
+            "chunk": 0,
+            "score": 23.832,
+            "snippet": "# LT-Assembly 柔性装配工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-07-15 09:00\n更新时间：2025-09-05 11:00\n版本号：v2.5\n文档类型：product\n文档族：solution_assembly\n生效日期：2025-09-05\n\n## 一、方案组成\n\n由 LT-R12/LT-R20 机器人、力控末端、LT-V3D 视觉与快换工装组成，支持多品种混线装配。\n\n## 二、工艺指标\n\n装配节拍 3.2 秒/件，力控精度 ±2 N，视觉定位精度 ±0.05 mm，"
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 1,
+            "score": 11.66,
+            "snippet": "| 产品线 | 代表型号 | 负载 | 典型行业 |\n| --- | --- | --- | --- |\n| 六轴机器人 | LT-R6/R12/R20/R50/R210 | 6-210 kg | 汽车、锂电、金属加工 |\n| SCARA | LT-S4/S10 | 4-10 kg | 3C、光伏、食品 |\n| 移动机器人 | LT-AMR-500/1000/2000 | 500-2,000 kg | 物流、半导体 |\n| 机器视觉 | LT-V3D | — | 装配、检测 |\n| 控制器 | LT-C800 | "
+          },
+          {
+            "doc_id": "lantu_solution_photovoltaic",
+            "title": "# 光伏电池片串焊整线解决方案",
+            "chunk": 0,
+            "score": 10.884,
+            "snippet": "# 光伏电池片串焊整线解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-09-20 09:00\n更新时间：2025-10-16 14:00\n版本号：v3.1\n文档类型：product\n文档族：solution_photovoltaic\n生效日期：2025-10-16\n\n## 一、方案概述\n\n面向 TOPCon/HJT 电池片串焊，提供上料、串焊、EL 检测与下料整线方案，核心设备为 LT-S10 SCARA 与 LT-V3D 视觉。\n\n## 二、产线指标\n\n串焊速度 4,200 片/小时，良率 99.6"
+          },
+          {
+            "doc_id": "lantu_solution_lithium",
+            "title": "# 动力电池叠片与物流整体解决方案",
+            "chunk": 0,
+            "score": 9.668,
+            "snippet": "# 动力电池叠片与物流整体解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-10-12 09:00\n更新时间：2025-12-01 10:00\n版本号：v3.6\n文档类型：product\n文档族：solution_lithium\n生效日期：2025-12-01\n\n## 一、方案概述\n\n面向动力电池电芯段，提供叠片、焊接、检测与物料配送一体化方案，核心设备包括 LT-R20 机器人、LT-AMR-1000 与 LT-V3D 视觉。\n\n## 二、产线配置\n\n单条叠片线配置 15-16 台 LT-R20、2 "
+          },
+          {
+            "doc_id": "lantu_case_12_shengda",
+            "title": "# 客户案例：昇达电梯门板装配项目",
+            "chunk": 0,
+            "score": 9.432,
+            "snippet": "# 客户案例：昇达电梯门板装配项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_shengda\n生效日期：2025-12-20\n\n## 一、客户背景\n\n昇达电梯位于湖州，主营电梯业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖3 条"
+          },
+          {
+            "doc_id": "lantu_finance_q3_2025",
+            "title": "# 澜图智能 2025 年第三季度经营数据",
+            "chunk": 0,
+            "score": 8.506,
+            "snippet": "# 澜图智能 2025 年第三季度经营数据\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-10-22 09:00\n更新时间：2025-10-26 18:00\n版本号：v1.0\n文档类型：finance\n文档族：quarterly_2025_q3\n生效日期：2025-10-26\n\n## 一、季度业绩\n\n2025 年第三季度营业收入 11.52 亿元，同比增长 17.8%；归母净利润 1.21 亿元，同比增长 22.1%；毛利率 31.4%。\n\n## 二、累计业绩\n\n前三季度累计营业收入 31.36 亿元，归母"
+          },
+          {
+            "doc_id": "lantu_legal_export_control",
+            "title": "# 澜图智能出口管制与制裁合规指引",
+            "chunk": 0,
+            "score": 8.233,
+            "snippet": "# 澜图智能出口管制与制裁合规指引\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-06-01 09:00\n更新时间：2025-08-01 09:00\n版本号：v2.2\n文档类型：legal\n文档族：export_control\n生效日期：2025-08-01\n\n## 一、适用范围\n\n适用于所有跨境销售、技术许可、境外投资与人员出境技术服务，覆盖中国、欧盟、美国出口管制要求。\n\n## 二、筛查要求\n\n交易前须对客户、最终用户与最终用途进行筛查，核对制裁名单与两用物项清单；涉及加密、视觉算法与高精度伺服的项目"
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 0,
+            "score": 7.861,
+            "snippet": "# 澜图智能产品与解决方案总览\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-02-20 09:00\n更新时间：2025-12-22 10:00\n版本号：v6.0\n文档类型：product\n文档族：product_overview\n生效日期：2025-12-22\n\n## 一、产品矩阵\n\n公司产品覆盖六轴工业机器人、SCARA 机器人、自主移动机器人（AMR）、机器视觉、运动控制器、数字孪生平台与行业工作站，形成“本体+控制器+视觉+软件+工艺”的一体化方案。\n\n## 二、行业方案\n\n重点行业包括汽车及零部件、"
+          },
+          {
+            "doc_id": "lantu_case_03_yaoyang",
+            "title": "# 客户案例：曜阳光能电池片串焊项目",
+            "chunk": 0,
+            "score": 7.241,
+            "snippet": "# 客户案例：曜阳光能电池片串焊项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_yaoyang\n生效日期：2025-12-20\n\n## 一、客户背景\n\n曜阳光能位于合肥，主营光伏业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖16"
+          },
+          {
+            "doc_id": "lantu_strategy_digital_transformation",
+            "title": "# 澜图智能数字化转型规划",
+            "chunk": 0,
+            "score": 6.583,
+            "snippet": "# 澜图智能数字化转型规划\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-08-01 09:00\n更新时间：2025-10-10 14:00\n版本号：v2.3\n文档类型：strategy\n文档族：digital_transformation\n生效日期：2025-10-10\n\n## 一、转型目标\n\n三年内实现研发、供应链、制造、销售与服务的全流程数字化，运营效率提升 20%。\n\n## 二、重点工程\n\nPLM 研发协同、SRM 供应链协同、MES 制造执行、CRM 客户经营与数据中台五大工程。\n\n## 三、技"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "数据保存 5 年 装配方案",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_product_assembly",
+            "title": "# LT-Assembly 柔性装配工作站方案",
+            "chunk": 0,
+            "score": 18.378,
+            "snippet": "# LT-Assembly 柔性装配工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-07-15 09:00\n更新时间：2025-09-05 11:00\n版本号：v2.5\n文档类型：product\n文档族：solution_assembly\n生效日期：2025-09-05\n\n## 一、方案组成\n\n由 LT-R12/LT-R20 机器人、力控末端、LT-V3D 视觉与快换工装组成，支持多品种混线装配。\n\n## 二、工艺指标\n\n装配节拍 3.2 秒/件，力控精度 ±2 N，视觉定位精度 ±0.05 mm，"
+          },
+          {
+            "doc_id": "lantu_case_12_shengda",
+            "title": "# 客户案例：昇达电梯门板装配项目",
+            "chunk": 0,
+            "score": 8.909,
+            "snippet": "# 客户案例：昇达电梯门板装配项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_shengda\n生效日期：2025-12-20\n\n## 一、客户背景\n\n昇达电梯位于湖州，主营电梯业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖3 条"
+          },
+          {
+            "doc_id": "lantu_legal_export_control",
+            "title": "# 澜图智能出口管制与制裁合规指引",
+            "chunk": 0,
+            "score": 8.233,
+            "snippet": "# 澜图智能出口管制与制裁合规指引\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-06-01 09:00\n更新时间：2025-08-01 09:00\n版本号：v2.2\n文档类型：legal\n文档族：export_control\n生效日期：2025-08-01\n\n## 一、适用范围\n\n适用于所有跨境销售、技术许可、境外投资与人员出境技术服务，覆盖中国、欧盟、美国出口管制要求。\n\n## 二、筛查要求\n\n交易前须对客户、最终用户与最终用途进行筛查，核对制裁名单与两用物项清单；涉及加密、视觉算法与高精度伺服的项目"
+          },
+          {
+            "doc_id": "lantu_meeting_board",
+            "title": "# 2025 年第二次临时董事会决议",
+            "chunk": 0,
+            "score": 6.252,
+            "snippet": "# 2025 年第二次临时董事会决议\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-04-25 09:00\n更新时间：2025-04-25 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_board_2025\n生效日期：2025-04-25\n\n## 一、会议信息\n\n时间：2025 年 4 月 25 日；方式：现场加视频；应到董事 9 人，实到 9 人；列席：高管团队。\n\n## 二、审议事项\n\n审议通过《2024 年度利润分配方案》《2025 年度研发投入预算》《苏州二期"
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 1,
+            "score": 5.504,
+            "snippet": "| 产品线 | 代表型号 | 负载 | 典型行业 |\n| --- | --- | --- | --- |\n| 六轴机器人 | LT-R6/R12/R20/R50/R210 | 6-210 kg | 汽车、锂电、金属加工 |\n| SCARA | LT-S4/S10 | 4-10 kg | 3C、光伏、食品 |\n| 移动机器人 | LT-AMR-500/1000/2000 | 500-2,000 kg | 物流、半导体 |\n| 机器视觉 | LT-V3D | — | 装配、检测 |\n| 控制器 | LT-C800 | "
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_assembly",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_product_assembly",
+        "title": "# LT-Assembly 柔性装配工作站方案",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 377,
+        "text": "# LT-Assembly 柔性装配工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-07-15 09:00\n更新时间：2025-09-05 11:00\n版本号：v2.5\n文档类型：product\n文档族：solution_assembly\n生效日期：2025-09-05\n\n## 一、方案组成\n\n由 LT-R12/LT-R20 机器人、力控末端、LT-V3D 视觉与快换工装组成，支持多品种混线装配。\n\n## 二、工艺指标\n\n装配节拍 3.2 秒/件，力控精度 ±2 N，视觉定位精度 ±0.05 mm，换型时间 10 分钟。\n\n## 三、质量追溯\n\n每件产品记录扭矩、位移与视觉检测结果，数据保存 5 年，支持 MES 追溯与 SPC 分析。\n\n## 四、适用行业\n\n3C 电子、家电、汽车电子与医疗器械，已交付 180 余套工作站。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "动力电池叠片 追溯码",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_solution_lithium",
+            "title": "# 动力电池叠片与物流整体解决方案",
+            "chunk": 0,
+            "score": 33.481,
+            "snippet": "# 动力电池叠片与物流整体解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-10-12 09:00\n更新时间：2025-12-01 10:00\n版本号：v3.6\n文档类型：product\n文档族：solution_lithium\n生效日期：2025-12-01\n\n## 一、方案概述\n\n面向动力电池电芯段，提供叠片、焊接、检测与物料配送一体化方案，核心设备包括 LT-R20 机器人、LT-AMR-1000 与 LT-V3D 视觉。\n\n## 二、产线配置\n\n单条叠片线配置 15-16 台 LT-R20、2 "
+          },
+          {
+            "doc_id": "lantu_case_01_hengxin",
+            "title": "# 客户案例：恒芯动力电池电芯叠片与物流项目",
+            "chunk": 0,
+            "score": 19.897,
+            "snippet": "# 客户案例：恒芯动力电池电芯叠片与物流项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_hengxin\n生效日期：2025-12-20\n\n## 一、客户背景\n\n恒芯动力电池位于常州，主营动力电池业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追"
+          },
+          {
+            "doc_id": "lantu_meeting_case_review",
+            "title": "# 恒芯动力电池项目复盘会纪要",
+            "chunk": 0,
+            "score": 17.661,
+            "snippet": "# 恒芯动力电池项目复盘会纪要\n\n所属部门：客户成功部\n作者：林可\n创建时间：2025-03-18 09:00\n更新时间：2025-03-18 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_case_hengxin\n生效日期：2025-03-18\n\n## 一、项目结果\n\n恒芯动力电池 12 条叠片线完成验收，部署 186 台 LT-R20 与 24 台 AMR-1000，合同金额 2.16 亿元。\n\n## 二、成功经验\n\n虚拟调试提前发现 37 处干涉，现场调试周期缩短 12 天；"
+          },
+          {
+            "doc_id": "lantu_support_case_hengxin",
+            "title": "# 恒芯动力电池 48 小时复产服务案例",
+            "chunk": 0,
+            "score": 15.615,
+            "snippet": "# 恒芯动力电池 48 小时复产服务案例\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2025-04-10 09:00\n更新时间：2025-04-12 18:00\n版本号：v1.0\n文档类型：support\n文档族：service_case_hengxin\n生效日期：2025-04-12\n\n## 一、事件经过\n\n2025 年 4 月 8 日凌晨，恒芯动力电池 3 号叠片线报伺服过载停机，影响两条线体。客户通过 400 热线报修。\n\n## 二、响应过程\n\n远程诊断中心 12 分钟内定位为驱动器散热风扇故障，指导客户"
+          },
+          {
+            "doc_id": "lantu_sales_customer_list",
+            "title": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态",
+            "chunk": 0,
+            "score": 15.221,
+            "snippet": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态\n恒芯动力电池,动力电池,常州,电芯叠片与物流,\"21,600\",2025,已验收\n澜岳汽车零部件,汽车零部件,上海,白车身焊装,\"14,800\",2024,已验收\n曜阳光能,光伏,合肥,电池片串焊,\"9,800\",2025,已验收\n星禾电子,3C 电子,昆山,精密组装,\"12,500\",2024,已验收\n海翎家电,家电,顺德,喷涂与打磨,\"6,300\",2025,已验收\n晶拓微电子,半导体,无锡,晶圆搬运,\"7,400\",2025,已验收\n麦丰食品,食品,漯河"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_solution_lithium",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_solution_lithium",
+        "title": "# 动力电池叠片与物流整体解决方案",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 450,
+        "text": "# 动力电池叠片与物流整体解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-10-12 09:00\n更新时间：2025-12-01 10:00\n版本号：v3.6\n文档类型：product\n文档族：solution_lithium\n生效日期：2025-12-01\n\n## 一、方案概述\n\n面向动力电池电芯段，提供叠片、焊接、检测与物料配送一体化方案，核心设备包括 LT-R20 机器人、LT-AMR-1000 与 LT-V3D 视觉。\n\n## 二、产线配置\n\n单条叠片线配置 15-16 台 LT-R20、2 台 AMR，节拍 0.12 秒/片，良率 99.5%，支持 12 条线集群调度。\n\n## 三、质量检测\n\n在线检测极片对齐度、毛刺与褶皱，检测精度 0.05 mm，NG 自动剔除并记录追溯码。\n\n## 四、标杆案例\n\n恒芯动力电池 12 条叠片线使用 186 台 LT-R20 与 24 台 AMR-1000，叠片良率由 98.1% 提升至 99.3%，投资回收期 18 个月。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_solution_photovoltaic",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_solution_photovoltaic",
+        "title": "# 光伏电池片串焊整线解决方案",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 422,
+        "text": "# 光伏电池片串焊整线解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-09-20 09:00\n更新时间：2025-10-16 14:00\n版本号：v3.1\n文档类型：product\n文档族：solution_photovoltaic\n生效日期：2025-10-16\n\n## 一、方案概述\n\n面向 TOPCon/HJT 电池片串焊，提供上料、串焊、EL 检测与下料整线方案，核心设备为 LT-S10 SCARA 与 LT-V3D 视觉。\n\n## 二、产线指标\n\n串焊速度 4,200 片/小时，良率 99.6%，碎片率 0.15%，兼容 182/210 尺寸硅片。\n\n## 三、智能检测\n\nEL 检测可识别隐裂、断栅与虚焊等 9 类缺陷，误判率低于 0.5%，检测数据接入 MES。\n\n## 四、标杆案例\n\n曜阳光能 16 条串焊线采用 220 台 LT-S10，组件产能由 4.2GW 提升至 6.5GW，串焊良率 99.6%。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_strategy_digital_transformation",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_strategy_digital_transformation",
+        "title": "# 澜图智能数字化转型规划",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 367,
+        "text": "# 澜图智能数字化转型规划\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-08-01 09:00\n更新时间：2025-10-10 14:00\n版本号：v2.3\n文档类型：strategy\n文档族：digital_transformation\n生效日期：2025-10-10\n\n## 一、转型目标\n\n三年内实现研发、供应链、制造、销售与服务的全流程数字化，运营效率提升 20%。\n\n## 二、重点工程\n\nPLM 研发协同、SRM 供应链协同、MES 制造执行、CRM 客户经营与数据中台五大工程。\n\n## 三、技术底座\n\n统一身份认证、主数据管理、低代码平台与数据湖仓；核心系统云化率 80%。\n\n## 四、里程碑\n\n2025 年完成 PLM 与 CRM 上线；2026 年完成 MES 全面推广；2027 年实现智能决策。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_product_assembly",
+      "lantu_solution_lithium",
+      "lantu_solution_photovoltaic",
+      "lantu_strategy_digital_transformation"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.024,
+    "number_recall": 0.0
+  }
+}

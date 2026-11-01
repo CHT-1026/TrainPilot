@@ -1,0 +1,193 @@
+{
+  "qid": "M1603",
+  "question": "人力资源部负责人陈依然的个人月薪是多少？",
+  "question_type": "条件判断与边界",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"陈依然\"}}",
+      "usage": {
+        "prompt_tokens": 357,
+        "total_tokens": 426,
+        "completion_tokens": 69,
+        "completion_tokens_details": {
+          "reasoning_tokens": 50,
+          "text_tokens": 69
+        }
+      },
+      "seconds": 1.031
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_hr_compensation\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 2691,
+        "total_tokens": 3102,
+        "completion_tokens": 411,
+        "completion_tokens_details": {
+          "reasoning_tokens": 377,
+          "text_tokens": 411
+        }
+      },
+      "seconds": 4.219
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"资料库中未收录人力资源部负责人陈依然的个人月薪信息。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "prompt_tokens": 3067,
+        "total_tokens": 3499,
+        "completion_tokens": 432,
+        "completion_tokens_details": {
+          "reasoning_tokens": 394,
+          "text_tokens": 432
+        }
+      },
+      "seconds": 4.0
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "陈依然"
+      },
+      "result_sha": "45a6c37c6560a50c1fda80078c3149f42c339b2b8731a298dd1c7f286fba2469",
+      "result_chars": 3884,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_compensation",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "80636806aa8fcc2d075a7ce0027ff8acb45eff1f9ea2bcdc4b17c791e2763584",
+      "result_chars": 531,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "资料库中未收录人力资源部负责人陈依然的个人月薪信息。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 7027,
+  "started_at": "2026-11-01T07:01:13",
+  "elapsed_seconds": 9.25,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "陈依然"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_org_reporting_lines",
+            "title": "# 澜图智能员工汇报关系与业务分工",
+            "chunk": 0,
+            "score": 4.62,
+            "snippet": "# 澜图智能员工汇报关系与业务分工\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-02-10 09:00\n更新时间：2025-09-01 10:00\n版本号：v1.2\n文档类型：org\n文档族：org_reporting_lines\n生效日期：2025-09-01\n\n## 一、研发体系汇报链\n\n顾承澜是沈亦舟的上级。沈亦舟是程知远的上级。程知远是周启航的上级。周启航是林晓的上级。林晓是赵一鸣的上级。\n\n沈亦舟担任 CTO，负责研发体系。程知远担任研发中心总经理，负责研发中心整体经营管理。周启航担任控制器"
+          },
+          {
+            "doc_id": "lantu_org_headcount",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 4.174,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能员工分布统计（2025）\n所属部门\t人力资源部\n作者\t陈依然\n创建时间\t2025-12-31 18:00\n更新时间\t2026-01-09 09:30\n版本号\tv1.0\n文档类型\torg\n文档族\theadcount_2025\n生效日期\t2026-01-09\n[工作表] 基地分布\n基地\t员工数\t研发\t销售\t制造\t服务\t职能\n苏州总部\t2,450\t1,120\t310\t560\t250\t210\n东莞华南\t780\t86\t150\t300\t120\t124\n成都西部\t430\t80\t90\t"
+          },
+          {
+            "doc_id": "lantu_org_department_duties",
+            "title": "# 澜图智能一级部门职责与编制",
+            "chunk": 1,
+            "score": 4.113,
+            "snippet": "| 部门 | 负责人 | 编制（人） | 主要职责 |\n| --- | --- | --- | --- |\n| 研发中心 | 沈亦舟 | 1,286 | 本体/控制器/视觉/具身智能研发 |\n| 产品部 | 孟凡 | 96 | 产品规划与生命周期管理 |\n| 销售中心 | 罗嘉树 | 620 | 区域销售与渠道 |\n| 客户成功部 | 林可 | 86 | 重点客户经营 |\n| 供应链中心 | 韩立恒 | 210 | 采购、计划、物流 |\n| 制造中心 | 韩立恒 | 980 | 三大基地生产 |\n| 质量部 | 潘"
+          },
+          {
+            "doc_id": "lantu_hr_performance",
+            "title": "# 澜图智能绩效管理制度",
+            "chunk": 0,
+            "score": 3.978,
+            "snippet": "# 澜图智能绩效管理制度\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v3.4\n文档类型：hr\n文档族：performance\n生效日期：2025-06-01\n\n## 一、考核周期\n\n实行季度考核与年度考核，季度占 40%，年度占 60%。试用期员工参加转正考核。\n\n## 二、考核维度\n\n业绩目标 60%、价值观 20%、能力成长 20%。销售岗位业绩权重 70%。\n\n## 三、绩效分布\n\nS 级 10%、A 级 30%、B "
+          },
+          {
+            "doc_id": "lantu_hr_campus",
+            "title": "# 澜图智能 2026 届校园招聘方案",
+            "chunk": 0,
+            "score": 3.978,
+            "snippet": "# 澜图智能 2026 届校园招聘方案\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-08-15 09:00\n更新时间：2025-09-20 15:00\n版本号：v1.0\n文档类型：hr\n文档族：campus_recruitment_2026\n生效日期：2025-09-20\n\n## 一、招聘计划\n\n2026 届校招计划 120 人，其中研发 78 人、产品 12 人、销售 18 人、职能 12 人；重点院校 18 所。\n\n## 二、岗位方向\n\n机器人算法、运动控制、机器视觉、嵌入式软件、机械结构、售前技"
+          },
+          {
+            "doc_id": "lantu_hr_compensation",
+            "title": "# 澜图智能薪酬与奖金管理办法",
+            "chunk": 0,
+            "score": 3.97,
+            "snippet": "# 澜图智能薪酬与奖金管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-01-01 09:00\n版本号：v3.2\n文档类型：hr\n文档族：compensation\n生效日期：2025-01-01\n\n## 一、薪酬结构\n\n年度薪酬 = 12 个月基本工资 + 1 个月年终双薪 + 绩效奖金（0-6 个月）+ 专项奖励。\n\n## 二、调薪机制\n\n每年 4 月调薪，依据市场分位、绩效与职级；调薪预算为工资总额的 5%-8%。\n\n## 三、绩效奖金\n\n与公司、部"
+          },
+          {
+            "doc_id": "lantu_org_chart_2024",
+            "title": "# 澜图智能组织架构（2024版）",
+            "chunk": 0,
+            "score": 3.954,
+            "snippet": "# 澜图智能组织架构（2024版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-05 09:00\n更新时间：2024-01-15 10:00\n版本号：v1.0\n文档类型：org\n文档族：org_chart\n生效日期：2024-01-01\n\n## 一、一级部门\n\n2024 年公司设 11 个一级部门：研发中心、产品部、销售中心、供应链中心、制造中心、质量部、财务部、人力资源部、法务合规部、信息技术部、战略投资部。售后服务部隶属销售中心。\n\n## 二、研发体系\n\n研发中心下设 4 个研究所：机器人本"
+          },
+          {
+            "doc_id": "lantu_hr_training_system",
+            "title": "# 澜图智能培训体系与年度计划",
+            "chunk": 0,
+            "score": 3.93,
+            "snippet": "# 澜图智能培训体系与年度计划\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-02-01 09:00\n更新时间：2025-12-01 10:00\n版本号：v3.6\n文档类型：hr\n文档族：training_system\n生效日期：2025-12-01\n\n## 一、培训体系\n\n分为新员工培训、专业培训、管理培训与领导力培训四大类，覆盖全员全周期。\n\n## 二、年度计划\n\n2025 年计划培训 12,000 人次，人均 32 小时；专业培训占比 55%，管理培训 20%，新员工 15%，合规安全 10%。\n"
+          },
+          {
+            "doc_id": "lantu_hr_social",
+            "title": "# 澜图智能社会招聘管理办法",
+            "chunk": 0,
+            "score": 3.93,
+            "snippet": "# 澜图智能社会招聘管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-02-01 09:00\n更新时间：2025-07-15 11:00\n版本号：v2.5\n文档类型：hr\n文档族：social_recruitment\n生效日期：2025-07-15\n\n## 一、适用岗位\n\n适用于经理级及以上、高级技术专家与紧缺岗位；年度社招计划 200 人。\n\n## 二、渠道管理\n\n使用猎头、招聘平台、内部推荐与行业社群。猎头费用为年薪的 20%-25%，保证期 90 天。\n\n## 三、内部推荐\n\n员工推荐成功入"
+          },
+          {
+            "doc_id": "lantu_hr_manager_training",
+            "title": "澜图智能管理者领导力培训方案",
+            "chunk": 0,
+            "score": 3.922,
+            "snippet": "澜图智能管理者领导力培训方案\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-05-01 09:00\n更新时间：2025-09-01 10:00\n版本号：v2.0\n文档类型：hr\n文档族：manager_training\n生效日期：2025-09-01\n一、培养对象\n新任经理、部门总监与高潜后备，每期 30 人，全年 3 期。\n二、课程模块\n战略解码、团队管理、绩效辅导、跨部门协作、财务思维与变革管理，共 6 个模块 12 天。\n三、行动学习\n每位学员围绕真实业务问题组建立项，结业时汇报成果；优秀项目可获得"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_compensation",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_hr_compensation",
+        "title": "# 澜图智能薪酬与奖金管理办法",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 362,
+        "text": "# 澜图智能薪酬与奖金管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-01-01 09:00\n版本号：v3.2\n文档类型：hr\n文档族：compensation\n生效日期：2025-01-01\n\n## 一、薪酬结构\n\n年度薪酬 = 12 个月基本工资 + 1 个月年终双薪 + 绩效奖金（0-6 个月）+ 专项奖励。\n\n## 二、调薪机制\n\n每年 4 月调薪，依据市场分位、绩效与职级；调薪预算为工资总额的 5%-8%。\n\n## 三、绩效奖金\n\n与公司、部门、个人绩效挂钩，S 级系数 1.5，A 级 1.2，B 级 1.0，C 级 0.5，D 级无奖金。\n\n## 四、专项奖励\n\n设置项目交付奖、专利奖、质量奖与销售冠军奖；单个项目奖励不超过 50 万元。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.006,
+    "number_recall": 0.0
+  }
+}

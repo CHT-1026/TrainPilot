@@ -1,0 +1,245 @@
+{
+  "qid": "M0802",
+  "question": "公司第 10 万台机器人是哪一天下线的？光看发展历程能不能拿到具体日期？这一年里公司还完成了哪些里程碑？",
+  "question_type": "时间与因果推断",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"第10万台机器人 下线\"}}",
+      "usage": {
+        "prompt_tokens": 378,
+        "total_tokens": 583,
+        "completion_tokens": 205,
+        "completion_tokens_details": {
+          "reasoning_tokens": 181,
+          "text_tokens": 205
+        }
+      },
+      "seconds": 2.64
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_company_milestones_2025\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 2554,
+        "total_tokens": 2841,
+        "completion_tokens": 287,
+        "completion_tokens_details": {
+          "reasoning_tokens": 247,
+          "text_tokens": 287
+        }
+      },
+      "seconds": 2.485
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_company_history\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 3075,
+        "total_tokens": 3384,
+        "completion_tokens": 309,
+        "completion_tokens_details": {
+          "reasoning_tokens": 276,
+          "text_tokens": 309
+        }
+      },
+      "seconds": 2.625
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"公司第 10 万台机器人于 2025 年 9 月 12 日下线。\\n\\n在 2025 年，公司还完成了以下主要里程碑：\\n\\n1. **经营业绩**：全年营业收入达到 42.63 亿元（同比增长 19.1%），新签订单 48.90 亿元，机器人出货量达 21,400 台。\\n2. **组织建设**：\\n   - 3 月，德国欧洲技术中心在斯图加特开业。\\n   - 5 月，成立具身智能研究所（研发中心下属研究所增至 5 个）。\\n   - 7 月，售后服务部升级为一级部门。\\n3. **产品研发**：\\n   - 4 月，发布 LT-C800 控制器。\\n   - 6 月，发布 LantuTwin 3.0 数字孪生平台。\\n   - 11 月，LT-R20 Pro 完成样机验证，计划 2026 年第二季度量产。\\n4. **质量与合规**：通过 ISO 27001 复审，并完成欧盟 CE 与北美 UL 认证换版。\\n5. **社会责任**：苏州基地光伏装机 6.2MW，绿电占比 28%。\",\"citations\":[\"lantu_company_milestones_2025\",\"lantu_company_history\"],\"evidence\":[\"lantu_company_milestones_2025#0\",\"lantu_company_history#0\"]}",
+      "usage": {
+        "prompt_tokens": 3708,
+        "total_tokens": 5062,
+        "completion_tokens": 1354,
+        "completion_tokens_details": {
+          "reasoning_tokens": 993,
+          "text_tokens": 1354
+        }
+      },
+      "seconds": 8.609
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "第10万台机器人 下线"
+      },
+      "result_sha": "4abba2983491185378e1a48291be9058db8ec9bb3f68d50d86ada012b008f2bd",
+      "result_chars": 3679,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_company_milestones_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "fac97c0e47b6d6d81123d76a7034642beea3457a1816142a549c5be6fa957afe",
+      "result_chars": 734,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_company_history",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "7324cc889068a794d60ff8abbd22176c09ad9b26d53c33036b65e3c7c3fd68d3",
+      "result_chars": 873,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "公司第 10 万台机器人于 2025 年 9 月 12 日下线。\n\n在 2025 年，公司还完成了以下主要里程碑：\n\n1. **经营业绩**：全年营业收入达到 42.63 亿元（同比增长 19.1%），新签订单 48.90 亿元，机器人出货量达 21,400 台。\n2. **组织建设**：\n   - 3 月，德国欧洲技术中心在斯图加特开业。\n   - 5 月，成立具身智能研究所（研发中心下属研究所增至 5 个）。\n   - 7 月，售后服务部升级为一级部门。\n3. **产品研发**：\n   - 4 月，发布 LT-C800 控制器。\n   - 6 月，发布 LantuTwin 3.0 数字孪生平台。\n   - 11 月，LT-R20 Pro 完成样机验证，计划 2026 年第二季度量产。\n4. **质量与合规**：通过 ISO 27001 复审，并完成欧盟 CE 与北美 UL 认证换版。\n5. **社会责任**：苏州基地光伏装机 6.2MW，绿电占比 28%。",
+    "citations": [
+      "lantu_company_milestones_2025",
+      "lantu_company_history"
+    ],
+    "evidence": [
+      "lantu_company_milestones_2025#0",
+      "lantu_company_history#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 11870,
+  "started_at": "2026-11-01T06:29:55",
+  "elapsed_seconds": 16.36,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "第10万台机器人 下线"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_company_milestones_2025",
+            "title": "# 澜图智能 2025 年度大事记",
+            "chunk": 0,
+            "score": 14.387,
+            "snippet": "# 澜图智能 2025 年度大事记\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-12-31 18:00\n更新时间：2026-01-06 09:00\n版本号：v1.0\n文档类型：company\n文档族：annual_milestones_2025\n生效日期：2026-01-06\n\n## 一、经营里程碑\n\n2025 年营业收入 42.63 亿元，同比增长 19.1%；新签订单 48.90 亿元；机器人出货 21,400 台；第 10 万台机器人于 9 月 12 日下线。\n\n## 二、组织里程碑\n\n3 月"
+          },
+          {
+            "doc_id": "lantu_company_history",
+            "title": "# 澜图智能发展历程（2011—2025）",
+            "chunk": 0,
+            "score": 13.913,
+            "snippet": "# 澜图智能发展历程（2011—2025）\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2023-03-01 09:00\n更新时间：2026-01-05 14:00\n版本号：v4.0\n文档类型：company\n文档族：company_history\n生效日期：2026-01-05\n\n## 一、创业阶段（2011—2015）\n\n2011 年 6 月 18 日，公司在苏州工业园区成立，创始团队来自高校机器人实验室，首款产品为 LT-R6 六轴工业机器人，2012 年实现小批量交付 120 台。2014 年建成首条机"
+          },
+          {
+            "doc_id": "lantu_company_profile",
+            "title": "澜图智能装备公司简介",
+            "chunk": 0,
+            "score": 6.149,
+            "snippet": "澜图智能装备公司简介\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2023-03-01 09:00\n更新时间：2026-01-08 10:30\n版本号：v5.2\n文档类型：company\n文档族：company_profile\n生效日期：2026-01-08\n一、公司概况\n澜图智能装备股份有限公司成立于2011-06-18，总部位于江苏省苏州市工业园区星澜路88号，注册资本\n6.8 亿元，2023 年在上海证券交易所科创板上市（股票代码 688719）。公司专注工业机器人、智能产线\n与工业软件，为汽车、锂电、光伏"
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 1,
+            "score": 4.03,
+            "snippet": "| 产品线 | 代表型号 | 负载 | 典型行业 |\n| --- | --- | --- | --- |\n| 六轴机器人 | LT-R6/R12/R20/R50/R210 | 6-210 kg | 汽车、锂电、金属加工 |\n| SCARA | LT-S4/S10 | 4-10 kg | 3C、光伏、食品 |\n| 移动机器人 | LT-AMR-500/1000/2000 | 500-2,000 kg | 物流、半导体 |\n| 机器视觉 | LT-V3D | — | 装配、检测 |\n| 控制器 | LT-C800 | "
+          },
+          {
+            "doc_id": "lantu_product_welding",
+            "title": "# LT-Weld-2000 机器人焊接工作站方案",
+            "chunk": 0,
+            "score": 3.927,
+            "snippet": "# LT-Weld-2000 机器人焊接工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-04-10 09:00\n更新时间：2025-05-22 10:00\n版本号：v2.8\n文档类型：product\n文档族：solution_welding\n生效日期：2025-05-22\n\n## 一、方案组成\n\n以 LT-R50 机器人为核心，集成 2,000A 焊接电源、双轴变位机、焊缝激光跟踪与烟尘净化系统，形成标准焊接工作站。\n\n## 二、工艺指标\n\n焊接速度 1.8 m/min，焊缝跟踪精度 ±0.15 m"
+          },
+          {
+            "doc_id": "lantu_tech_control_architecture_v2",
+            "title": "# 澜图智能机器人控制系统架构（旧版 v2.4）",
+            "chunk": 1,
+            "score": 3.904,
+            "snippet": "本版本于 2024-05-10 生效，2025-10-20 被 v3.3 取代，仅用于历史版本对比与旧项目维护。"
+          },
+          {
+            "doc_id": "lantu_product_s_series",
+            "title": "# LT-S 系列 SCARA 机器人产品说明",
+            "chunk": 0,
+            "score": 3.7,
+            "snippet": "# LT-S 系列 SCARA 机器人产品说明\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-03-01 09:00\n更新时间：2025-09-12 11:00\n版本号：v3.2\n文档类型：product\n文档族：product_s_series\n生效日期：2025-09-12\n\n## 一、产品定位\n\nLT-S 系列 SCARA 机器人面向 3C 组装、光伏串焊、食品包装等高速取放场景，标准循环时间 0.38 秒。\n\n## 二、型号参数\n\nLT-S4 负载 4 kg、臂展 600 mm、重复精度 ±0.02 "
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 0,
+            "score": 3.666,
+            "snippet": "# 澜图智能产品与解决方案总览\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-02-20 09:00\n更新时间：2025-12-22 10:00\n版本号：v6.0\n文档类型：product\n文档族：product_overview\n生效日期：2025-12-22\n\n## 一、产品矩阵\n\n公司产品覆盖六轴工业机器人、SCARA 机器人、自主移动机器人（AMR）、机器视觉、运动控制器、数字孪生平台与行业工作站，形成“本体+控制器+视觉+软件+工艺”的一体化方案。\n\n## 二、行业方案\n\n重点行业包括汽车及零部件、"
+          },
+          {
+            "doc_id": "lantu_product_amr",
+            "title": "# LT-AMR 自主移动机器人产品手册",
+            "chunk": 0,
+            "score": 3.657,
+            "snippet": "# LT-AMR 自主移动机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-05-10 09:00\n更新时间：2025-08-20 15:00\n版本号：v3.4\n文档类型：product\n文档族：product_amr\n生效日期：2025-08-20\n\n## 一、产品系列\n\nLT-AMR-500 负载 500 kg、速度 1.8 m/s、续航 8 小时；LT-AMR-1000 负载 1,000 kg、速度 1.5 m/s、续航 8 小时；LT-AMR-2000 负载 2,000 kg、速度 1.2"
+          },
+          {
+            "doc_id": "lantu_tech_control_architecture",
+            "title": "# 澜图智能机器人控制系统架构",
+            "chunk": 0,
+            "score": 3.543,
+            "snippet": "# 澜图智能机器人控制系统架构\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-06-01 09:00\n更新时间：2025-10-20 14:00\n版本号：v3.3\n文档类型：tech\n文档族：control_architecture\n生效日期：2025-10-20\n\n## 一、总体架构\n\n控制系统分为感知层、决策层、运动控制层与执行层，采用 EtherCAT 总线连接伺服与 I/O，总线周期 1 ms。\n\n## 二、控制器\n\nLT-C800 采用双核 ARM + FPGA 架构，支持 8 轴联动、0.5 "
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_company_milestones_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_company_milestones_2025",
+        "title": "# 澜图智能 2025 年度大事记",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 551,
+        "text": "# 澜图智能 2025 年度大事记\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-12-31 18:00\n更新时间：2026-01-06 09:00\n版本号：v1.0\n文档类型：company\n文档族：annual_milestones_2025\n生效日期：2026-01-06\n\n## 一、经营里程碑\n\n2025 年营业收入 42.63 亿元，同比增长 19.1%；新签订单 48.90 亿元；机器人出货 21,400 台；第 10 万台机器人于 9 月 12 日下线。\n\n## 二、组织里程碑\n\n3 月德国欧洲技术中心在斯图加特开业；5 月具身智能研究所成立，研发中心下属研究所增至 5 个；7 月售后服务部升级为一级部门。\n\n## 三、产品里程碑\n\n4 月发布 LT-C800 控制器；6 月发布 LantuTwin 3.0 数字孪生平台；11 月 LT-R20 Pro 完成样机验证，计划 2026 年第二季度量产。\n\n## 四、质量与合规\n\n全年客户投诉 3 起，同比下降 62%；通过 ISO 27001 复审；完成欧盟 CE 与北美 UL 认证换版。\n\n## 五、社会责任\n\n苏州基地光伏装机 6.2MW，绿电占比 28%；全年安全培训 4,120 人次，未发生重伤事故。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_company_history",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_company_history",
+        "title": "# 澜图智能发展历程（2011—2025）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 694,
+        "text": "# 澜图智能发展历程（2011—2025）\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2023-03-01 09:00\n更新时间：2026-01-05 14:00\n版本号：v4.0\n文档类型：company\n文档族：company_history\n生效日期：2026-01-05\n\n## 一、创业阶段（2011—2015）\n\n2011 年 6 月 18 日，公司在苏州工业园区成立，创始团队来自高校机器人实验室，首款产品为 LT-R6 六轴工业机器人，2012 年实现小批量交付 120 台。2014 年建成首条机器人装配线，年产能 1,500 台。\n\n## 二、成长阶段（2016—2020）\n\n2016 年发布 LT-C600 控制器，实现核心部件自研；2018 年营收突破 10 亿元；2019 年东莞华南基地投产，年产能提升至 8,000 台；2020 年推出 AMR 移动机器人产品线。\n\n## 三、扩张阶段（2021—2023）\n\n2021 年完成股份制改造；2022 年成都基地开工；2023 年 9 月 28 日在科创板上市，募集资金 12.6 亿元，用于年产 18,000 台智能装备产业化项目。\n\n## 四、规模化阶段（2024—2025）\n\n2024 年营业收入 35.80 亿元；2025 年 3 月德国欧洲技术中心开业，5 月具身智能研究所成立，9 月第 10 万台机器人下线，全年营业收入 42.63 亿元。\n\n## 五、未来展望\n\n公司计划 2028 年实现营业收入 80 亿元，海外收入占比提升至 25%，并建成以具身智能为核心的下一代机器人平台。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.667,
+    "cited": [
+      "lantu_company_milestones_2025",
+      "lantu_company_history"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.448,
+    "number_recall": 0.667
+  }
+}

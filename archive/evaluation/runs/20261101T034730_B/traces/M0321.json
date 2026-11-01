@@ -1,0 +1,166 @@
+{
+  "qid": "M0321",
+  "question": "我们的云平台一次能接多少设备？核心服务可用性和灾备指标是多少？",
+  "question_type": "单文档多跳推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"云平台 接入 设备 数量 可用性 灾备\", \"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 366,
+        "total_tokens": 516,
+        "completion_tokens": 150,
+        "completion_tokens_details": {
+          "reasoning_tokens": 115,
+          "text_tokens": 150
+        }
+      },
+      "seconds": 1.391
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\": \"lantu_tech_cloud_platform\", \"offset\": 0, \"limit\": 4000}}",
+      "usage": {
+        "prompt_tokens": 1529,
+        "total_tokens": 1794,
+        "completion_tokens": 265,
+        "completion_tokens_details": {
+          "reasoning_tokens": 225,
+          "text_tokens": 265
+        }
+      },
+      "seconds": 2.531
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据《澜图智能云平台架构设计》文档：\\n\\n1. **接入能力**：单集群支持 **5,000 台**设备接入。\\n2. **核心服务可用性**：**99.95%**。\\n3. **灾备指标**：恢复点目标 (RPO) 为 **15 分钟**，恢复时间目标 (RTO) 为 **30 分钟**。\",\"citations\":[\"lantu_tech_cloud_platform\"],\"evidence\":[\"lantu_tech_cloud_platform#chunk 0\"]}",
+      "usage": {
+        "prompt_tokens": 1901,
+        "total_tokens": 2242,
+        "completion_tokens": 341,
+        "completion_tokens_details": {
+          "reasoning_tokens": 209,
+          "text_tokens": 341
+        }
+      },
+      "seconds": 2.157
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "云平台 接入 设备 数量 可用性 灾备",
+        "top_k": 5
+      },
+      "result_sha": "efcba06e171fe155e99ab5d8a05adb64988687622c48db74435e598a4e62c556",
+      "result_chars": 1968,
+      "hits": 5
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_cloud_platform",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "8be05b3efd8f67600d1f6e8ce067e41f0d4e4b19341627fd5288f94daa8ff907",
+      "result_chars": 562,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《澜图智能云平台架构设计》文档：\n\n1. **接入能力**：单集群支持 **5,000 台**设备接入。\n2. **核心服务可用性**：**99.95%**。\n3. **灾备指标**：恢复点目标 (RPO) 为 **15 分钟**，恢复时间目标 (RTO) 为 **30 分钟**。",
+    "citations": [
+      "lantu_tech_cloud_platform"
+    ],
+    "evidence": [
+      "lantu_tech_cloud_platform#chunk 0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 4552,
+  "started_at": "2026-11-01T06:29:11",
+  "elapsed_seconds": 6.08,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "云平台 接入 设备 数量 可用性 灾备",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_tech_cloud_platform",
+            "title": "# 澜图智能云平台架构设计",
+            "chunk": 0,
+            "score": 29.546,
+            "snippet": "# 澜图智能云平台架构设计\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-09-01 09:00\n更新时间：2025-09-18 16:00\n版本号：v3.0\n文档类型：tech\n文档族：cloud_platform\n生效日期：2025-09-18\n\n## 一、总体架构\n\n云平台采用微服务架构，基于 Kubernetes 部署，分为设备接入、数据服务、应用服务与开放 API 四层。\n\n## 二、接入能力\n\n单集群支持 5,000 台设备接入，MQTT 消息吞吐 20 万条/秒，设备离线缓存 7 天。\n\n#"
+          },
+          {
+            "doc_id": "lantu_tech_data_platform",
+            "title": "# 澜图智能工业数据平台建设方案",
+            "chunk": 0,
+            "score": 14.661,
+            "snippet": "# 澜图智能工业数据平台建设方案\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-10-01 09:00\n更新时间：2025-07-30 14:00\n版本号：v2.4\n文档类型：tech\n文档族：data_platform\n生效日期：2025-07-30\n\n## 一、平台定位\n\n构建统一工业数据湖仓，支撑设备运维、质量分析与经营决策，覆盖 3 大基地与客户现场。\n\n## 二、数据架构\n\n采集层支持 OPC UA、Modbus、MQTT；存储层采用数据湖 + 数仓分层；服务层提供 BI、API 与算法服务。\n"
+          },
+          {
+            "doc_id": "lantu_product_digital_twin",
+            "title": "# LantuTwin 数字孪生平台介绍",
+            "chunk": 0,
+            "score": 9.465,
+            "snippet": "# LantuTwin 数字孪生平台介绍\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-09-01 09:00\n更新时间：2025-06-30 16:00\n版本号：v3.0\n文档类型：product\n文档族：product_digital_twin\n生效日期：2025-06-30\n\n## 一、平台定位\n\nLantuTwin 3.0 是面向智能工厂规划、调试与运维的数字孪生平台，支持机器人、产线与物流系统的虚实同步。\n\n## 二、核心能力\n\n单项目支持 500 台设备接入，数据刷新延迟低于 80 ms，仿真"
+          },
+          {
+            "doc_id": "lantu_tech_security",
+            "title": "# 澜图智能产品网络安全设计规范",
+            "chunk": 0,
+            "score": 8.281,
+            "snippet": "# 澜图智能产品网络安全设计规范\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-11-01 09:00\n更新时间：2025-10-01 09:00\n版本号：v2.5\n文档类型：tech\n文档族：product_security\n生效日期：2025-10-01\n\n## 一、安全设计原则\n\n遵循最小权限、默认拒绝、纵深防御与安全默认配置原则，产品通过等保三级与 IEC 62443 评估。\n\n## 二、身份与访问\n\n支持多因素认证、RBAC 权限模型与操作审计；默认密码首次登录强制修改，会话超时 30 分钟。\n"
+          },
+          {
+            "doc_id": "lantu_support_remote_diagnostics",
+            "title": "# 澜图智能远程诊断服务说明",
+            "chunk": 0,
+            "score": 6.505,
+            "snippet": "# 澜图智能远程诊断服务说明\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-05-01 09:00\n更新时间：2025-07-18 15:00\n版本号：v2.6\n文档类型：support\n文档族：remote_diagnostics\n生效日期：2025-07-18\n\n## 一、服务能力\n\n远程诊断中心 7×24 小时值守，通过安全网关接入客户设备，实时读取报警、日志与运行数据。\n\n## 二、解决率\n\n2025 年远程诊断解决率 85%，平均故障定位时间 18 分钟，减少现场出勤 2,100 次。\n\n## "
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_cloud_platform",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_tech_cloud_platform",
+        "title": "# 澜图智能云平台架构设计",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 391,
+        "text": "# 澜图智能云平台架构设计\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-09-01 09:00\n更新时间：2025-09-18 16:00\n版本号：v3.0\n文档类型：tech\n文档族：cloud_platform\n生效日期：2025-09-18\n\n## 一、总体架构\n\n云平台采用微服务架构，基于 Kubernetes 部署，分为设备接入、数据服务、应用服务与开放 API 四层。\n\n## 二、接入能力\n\n单集群支持 5,000 台设备接入，MQTT 消息吞吐 20 万条/秒，设备离线缓存 7 天。\n\n## 三、数据服务\n\n时序数据存储于 TDengine，业务数据存储于 MySQL，分析任务使用 Flink 与 Spark。\n\n## 四、安全与高可用\n\n通过等保三级认证，支持多可用区部署，核心服务可用性 99.95%，RPO 15 分钟、RTO 30 分钟。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_tech_cloud_platform"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.22,
+    "number_recall": 1.0
+  }
+}

@@ -1,0 +1,201 @@
+{
+  "qid": "G0029",
+  "question": "LT-Edge 在产线中承担哪三项职责？有什么断网场景下的能力？",
+  "question_type": "事实检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"LT-Edge\",\"top_k\":10}}",
+      "usage": {
+        "prompt_tokens": 369,
+        "total_tokens": 455,
+        "completion_tokens": 86,
+        "completion_tokens_details": {
+          "reasoning_tokens": 60,
+          "text_tokens": 86
+        }
+      },
+      "seconds": 1.109
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_tech_edge\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 2633,
+        "total_tokens": 3087,
+        "completion_tokens": 454,
+        "completion_tokens_details": {
+          "reasoning_tokens": 420,
+          "text_tokens": 454
+        }
+      },
+      "seconds": 4.766
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"LT-Edge在产线中承担的三项职责是：**视觉推理**、**数据采集**和**协议转换**。在断网场景下，它具备**断网续传**的能力。\",\"citations\":[\"lantu_tech_edge\"],\"evidence\":[\"lantu_tech_edge#0\"]}",
+      "usage": {
+        "prompt_tokens": 3004,
+        "total_tokens": 3444,
+        "completion_tokens": 440,
+        "completion_tokens_details": {
+          "reasoning_tokens": 364,
+          "text_tokens": 440
+        }
+      },
+      "seconds": 3.484
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "LT-Edge",
+        "top_k": 10
+      },
+      "result_sha": "01fc460d58f9e509c4d123b8d64fba26add299d9c4d70c28bed54681d43bfb8e",
+      "result_chars": 3854,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_edge",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "a3176a5f1357e0dfae98032ebee356fa47be602410eae00486e20bba73af3c08",
+      "result_chars": 557,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "LT-Edge在产线中承担的三项职责是：**视觉推理**、**数据采集**和**协议转换**。在断网场景下，它具备**断网续传**的能力。",
+    "citations": [
+      "lantu_tech_edge"
+    ],
+    "evidence": [
+      "lantu_tech_edge#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 6986,
+  "started_at": "2026-11-01T05:09:48",
+  "elapsed_seconds": 9.36,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "LT-Edge",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_tech_edge",
+            "title": "# 澜图智能边缘计算产品 LT-Edge 说明",
+            "chunk": 0,
+            "score": 8.515,
+            "snippet": "# 澜图智能边缘计算产品 LT-Edge 说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2025-01-10 09:00\n更新时间：2025-06-12 11:00\n版本号：v1.3\n文档类型：tech\n文档族：edge_computing\n生效日期：2025-06-12\n\n## 一、产品定位\n\nLT-Edge 是面向产线的边缘计算单元，承载视觉推理、数据采集与协议转换，支持断网续传。\n\n## 二、硬件规格\n\n8 核 ARM 处理器，32 TOPS NPU，16 GB 内存，256 GB 存储，支持 4 路千"
+          },
+          {
+            "doc_id": "lantu_tech_vision",
+            "title": "# 澜图智能机器视觉算法平台说明",
+            "chunk": 0,
+            "score": 5.555,
+            "snippet": "# 澜图智能机器视觉算法平台说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-08-01 09:00\n更新时间：2025-11-05 15:00\n版本号：v3.1\n文档类型：tech\n文档族：vision_algorithm\n生效日期：2025-11-05\n\n## 一、算法能力\n\n覆盖 2D/3D 定位、缺陷检测、OCR、分割与无序抓取，支持小样本学习与在线增量训练。\n\n## 二、性能指标\n\n3D 测量精度 0.05 mm，缺陷检测召回率 99.2%，误检率 0.8%，单帧推理延迟 35 ms。\n\n##"
+          },
+          {
+            "doc_id": "lantu_support_spare_parts_price",
+            "title": "﻿适配机型,备件名称,单价（元）,发货时效,质保期",
+            "chunk": 0,
+            "score": 2.249,
+            "snippet": "﻿适配机型,备件名称,单价（元）,发货时效,质保期\nLT-R20,减速器 RV-40E,\"12,800\",48 小时,12 个月\nLT-R20,伺服驱动器 LT-D4,\"8,600\",48 小时,18 个月\nLT-R20,示教器 LT-Pad3,\"5,200\",48 小时,12 个月\nLT-R12,减速器 RV-20E,\"7,900\",48 小时,12 个月\nLT-R12,伺服电机 750W,\"3,600\",48 小时,18 个月\nLT-R6,谐波减速器 CSF-17,\"6,400\",72 小时,12 个月\nLT-"
+          },
+          {
+            "doc_id": "lantu_product_r_series",
+            "title": "# LT-R 系列六轴工业机器人产品手册",
+            "chunk": 1,
+            "score": 2.158,
+            "snippet": "| 型号 | 负载 | 臂展 | 重复精度 | 本体重量 | 最大速度 |\n| --- | --- | --- | --- | --- | --- |\n| LT-R6 | 6 kg | 1,450 mm | ±0.02 mm | 165 kg | 3.2 m/s |\n| LT-R12 | 12 kg | 1,550 mm | ±0.03 mm | 210 kg | 3.0 m/s |\n| LT-R20 | 20 kg | 1,700 mm | ±0.03 mm | 285 kg | 2.8 m/s |\n| LT-R"
+          },
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 2.157,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能产品参数矩阵（2025）\n所属部门\t产品部\n作者\t孟凡\n创建时间\t2025-01-20 09:00\n更新时间\t2025-12-15 18:00\n版本号\tv2.0\n文档类型\tproduct\n文档族\tproduct_matrix\n生效日期\t2025-12-15\n[工作表] 六轴与SCARA\n型号\t负载\t臂展\t重复精度\t本体重量\t最大速度\nLT-R6\t6 kg\t1,450 mm\t±0.02 mm\t165 kg\t3.2 m/s\nLT-R12\t12 kg\t1,550 mm\t±0."
+          },
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 1,
+            "score": 2.145,
+            "snippet": "0 kg\t1.5 m/s\nLT-AMR-2000\t2,000 kg\t—\t±10 mm\t420 kg\t1.2 m/s\n[工作表] 交付与保修\n产品线\t标准交期\t保修期\t备件响应\nLT-R 系列\t6-8 周\t24 个月/6,000 小时\t48 小时\nLT-S 系列\t4 周\t24 个月/6,000 小时\t48 小时\nLT-AMR 系列\t8 周\t24 个月\t72 小时\nLT-V3D\t4 周\t12 个月\t72 小时"
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 1,
+            "score": 2.123,
+            "snippet": "| 产品线 | 代表型号 | 负载 | 典型行业 |\n| --- | --- | --- | --- |\n| 六轴机器人 | LT-R6/R12/R20/R50/R210 | 6-210 kg | 汽车、锂电、金属加工 |\n| SCARA | LT-S4/S10 | 4-10 kg | 3C、光伏、食品 |\n| 移动机器人 | LT-AMR-500/1000/2000 | 500-2,000 kg | 物流、半导体 |\n| 机器视觉 | LT-V3D | — | 装配、检测 |\n| 控制器 | LT-C800 | "
+          },
+          {
+            "doc_id": "lantu_product_s_series",
+            "title": "# LT-S 系列 SCARA 机器人产品说明",
+            "chunk": 0,
+            "score": 2.046,
+            "snippet": "# LT-S 系列 SCARA 机器人产品说明\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-03-01 09:00\n更新时间：2025-09-12 11:00\n版本号：v3.2\n文档类型：product\n文档族：product_s_series\n生效日期：2025-09-12\n\n## 一、产品定位\n\nLT-S 系列 SCARA 机器人面向 3C 组装、光伏串焊、食品包装等高速取放场景，标准循环时间 0.38 秒。\n\n## 二、型号参数\n\nLT-S4 负载 4 kg、臂展 600 mm、重复精度 ±0.02 "
+          },
+          {
+            "doc_id": "lantu_product_r_series",
+            "title": "# LT-R 系列六轴工业机器人产品手册",
+            "chunk": 0,
+            "score": 2.045,
+            "snippet": "# LT-R 系列六轴工业机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-01-15 09:00\n更新时间：2025-10-30 16:00\n版本号：v4.3\n文档类型：product\n文档族：product_r_series\n生效日期：2025-10-30\n\n## 一、产品定位\n\nLT-R 系列覆盖 6 kg 至 210 kg 负载，适用于搬运、焊接、装配、喷涂、打磨等工序，重复定位精度最高 ±0.02 mm，防护等级 IP54，可选 IP67。\n\n## 二、型号与参数\n\nLT-R6 负载 6"
+          },
+          {
+            "doc_id": "lantu_product_assembly",
+            "title": "# LT-Assembly 柔性装配工作站方案",
+            "chunk": 0,
+            "score": 2.019,
+            "snippet": "# LT-Assembly 柔性装配工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-07-15 09:00\n更新时间：2025-09-05 11:00\n版本号：v2.5\n文档类型：product\n文档族：solution_assembly\n生效日期：2025-09-05\n\n## 一、方案组成\n\n由 LT-R12/LT-R20 机器人、力控末端、LT-V3D 视觉与快换工装组成，支持多品种混线装配。\n\n## 二、工艺指标\n\n装配节拍 3.2 秒/件，力控精度 ±2 N，视觉定位精度 ±0.05 mm，"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_edge",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_tech_edge",
+        "title": "# 澜图智能边缘计算产品 LT-Edge 说明",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 386,
+        "text": "# 澜图智能边缘计算产品 LT-Edge 说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2025-01-10 09:00\n更新时间：2025-06-12 11:00\n版本号：v1.3\n文档类型：tech\n文档族：edge_computing\n生效日期：2025-06-12\n\n## 一、产品定位\n\nLT-Edge 是面向产线的边缘计算单元，承载视觉推理、数据采集与协议转换，支持断网续传。\n\n## 二、硬件规格\n\n8 核 ARM 处理器，32 TOPS NPU，16 GB 内存，256 GB 存储，支持 4 路千兆网口与 2 路 CAN。\n\n## 三、软件能力\n\n预置 LantuEdge OS，支持 Docker 容器、模型 OTA、远程运维与安全启动。\n\n## 四、应用效果\n\n视觉推理延迟低于 40 ms，数据本地留存 30 天，云端带宽成本降低 62%。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_tech_edge"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.216,
+    "number_recall": 0.0
+  }
+}

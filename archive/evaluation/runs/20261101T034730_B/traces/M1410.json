@@ -1,0 +1,138 @@
+{
+  "qid": "M1410",
+  "question": "最新的控制系统架构文档里，旧版 v2.4 用的是什么现场总线、总线周期多少、单条总线最多接几个从站？旧版文档自己是怎么规定时间效力和适用范围的？",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"控制系统架构\"}}",
+      "usage": {
+        "prompt_tokens": 392,
+        "total_tokens": 531,
+        "completion_tokens": 139,
+        "completion_tokens_details": {
+          "reasoning_tokens": 120,
+          "text_tokens": 139
+        }
+      },
+      "seconds": 1.343
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_tech_control_architecture_v2\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 496,
+        "total_tokens": 786,
+        "completion_tokens": 290,
+        "completion_tokens_details": {
+          "reasoning_tokens": 252,
+          "text_tokens": 290
+        }
+      },
+      "seconds": 2.453
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"旧版 v2.4 控制系统架构中：\\n1. 现场总线采用的是 **CANopen**。\\n2. 总线周期为 **2 ms**。\\n3. 单条总线最多连接 **16 个从站**。\\n\\n关于时间效力和适用范围的规定如下：\\n- **生效日期**：2024-05-10。\\n- **废止/取代情况**：2025-10-20 被 v3.3 取代。\\n- **适用范围**：仅用于历史版本对比与旧项目维护。\",\"citations\":[\"lantu_tech_control_architecture_v2\"],\"evidence\":[\"lantu_tech_control_architecture_v2#一、总体架构（旧版）\",\"lantu_tech_control_architecture_v2#六、版本说明（旧版）\"]}",
+      "usage": {
+        "prompt_tokens": 1104,
+        "total_tokens": 1860,
+        "completion_tokens": 756,
+        "completion_tokens_details": {
+          "reasoning_tokens": 559,
+          "text_tokens": 756
+        }
+      },
+      "seconds": 5.907
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "控制系统架构"
+      },
+      "result_sha": "432f23036c3d658b23d2e531c93b8816017d1d5ac398fdafd0d5e0afed18cc18",
+      "result_chars": 172,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_control_architecture_v2",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "581bc85faa5be9bad43b62183aef0806a93e437252c90ff8999b75e945a85df3",
+      "result_chars": 913,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "旧版 v2.4 控制系统架构中：\n1. 现场总线采用的是 **CANopen**。\n2. 总线周期为 **2 ms**。\n3. 单条总线最多连接 **16 个从站**。\n\n关于时间效力和适用范围的规定如下：\n- **生效日期**：2024-05-10。\n- **废止/取代情况**：2025-10-20 被 v3.3 取代。\n- **适用范围**：仅用于历史版本对比与旧项目维护。",
+    "citations": [
+      "lantu_tech_control_architecture_v2"
+    ],
+    "evidence": [
+      "lantu_tech_control_architecture_v2#一、总体架构（旧版）",
+      "lantu_tech_control_architecture_v2#六、版本说明（旧版）"
+    ]
+  },
+  "status": "answered",
+  "tokens": 3177,
+  "started_at": "2026-11-01T06:45:50",
+  "elapsed_seconds": 9.7,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "控制系统架构"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_tech_control_architecture",
+            "title": "# 澜图智能机器人控制系统架构"
+          },
+          {
+            "doc_id": "lantu_tech_control_architecture_v2",
+            "title": "# 澜图智能机器人控制系统架构（旧版 v2.4）"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_control_architecture_v2",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_tech_control_architecture_v2",
+        "title": "# 澜图智能机器人控制系统架构（旧版 v2.4）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 714,
+        "text": "# 澜图智能机器人控制系统架构（旧版 v2.4）\n\n所属部门：研发中心\n作者：程知远\n创建时间：2023-08-01 09:00\n更新时间：2024-05-10 18:00\n版本号：v2.4\n文档类型：tech\n文档族：control_architecture\n生效日期：2024-05-10\n\n## 一、总体架构（旧版）\n\n旧版控制系统采用“工控机 + 运动控制卡”的两层结构：上位工控机负责任务调度与人机界面，下位运动控制卡负责插补与伺服闭环。现场总线采用 CANopen，总线周期 2 ms，单条总线最多连接 16 个从站，未使用 EtherCAT。\n\n## 二、控制器（旧版）\n\n旧版主控为 LT-C600 工控机，搭载单核 ARM Cortex-A9 处理器，配置 4 轴运动控制卡，支持 4 轴联动，插补周期 1 ms。安全功能依赖外部安全继电器，未内置安全限速与碰撞检测。\n\n## 三、伺服与编码器（旧版）\n\n伺服驱动器采样频率 8 kHz，编码器为 17 位增量式，速度环带宽 600 Hz，支持基础振动抑制，不具备重力补偿。\n\n## 四、软件栈（旧版）\n\n上位机运行 Windows + RTX 实时扩展，运动规划采用梯形加减速与直线插补，提供 C# SDK，未提供 Python/C++ SDK 与 ROS2 驱动。\n\n## 五、可靠性（旧版）\n\n控制器 MTBF 30,000 小时，工作温度 0℃ 至 45℃，通过 EMC 3 级测试，防护等级 IP20。\n\n## 六、版本说明（旧版）\n\n本版本于 2024-05-10 生效，2025-10-20 被 v3.3 取代，仅用于历史版本对比与旧项目维护。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.5,
+    "cited": [
+      "lantu_tech_control_architecture_v2"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.152,
+    "number_recall": 0.5
+  }
+}

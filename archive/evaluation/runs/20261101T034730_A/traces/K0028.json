@@ -1,0 +1,271 @@
+{
+  "qid": "K0028",
+  "question": "LantuTwin 数字孪生平台称某汽车零部件客户通过虚拟调试将现场调试周期由 21 天缩短至 9 天，停线风险下降 46%；恒芯项目复盘会纪要称虚拟调试提前发现 37 处干涉、现场调试周期缩短 12 天。请比较这两个虚拟调试带来的收益口径，并说明为什么两个数字不能直接对比。",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>虚拟调试 缩短 调试周期</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 73,
+        "prompt_tokens": 432,
+        "total_tokens": 505,
+        "completion_tokens_details": {
+          "reasoning_tokens": 38
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.797
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"虚拟调试 缩短 调试周期 停线风险\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 55,
+        "prompt_tokens": 504,
+        "total_tokens": 559,
+        "completion_tokens_details": {
+          "reasoning_tokens": 20
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.39
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_product_digital_twin\",\"offset\":0,\"limit\":6000}}",
+      "usage": {
+        "completion_tokens": 80,
+        "prompt_tokens": 2922,
+        "total_tokens": 3002,
+        "completion_tokens_details": {
+          "reasoning_tokens": 47
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.563
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_meeting_case_review\",\"offset\":0,\"limit\":6000}}",
+      "usage": {
+        "completion_tokens": 57,
+        "prompt_tokens": 3335,
+        "total_tokens": 3392,
+        "completion_tokens_details": {
+          "reasoning_tokens": 25
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2880
+        }
+      },
+      "seconds": 1.656
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"两个数字来自不同性质、不同项目、不同指标体系的文档，口径不一致，不能直接对比。\\n\\n【收益口径比较】\\n1) LantuTwin 平台介绍（产品宣传口径，信息技术部，v3.0，更新于2025-06-30）：给出的是绝对基线+相对结果的完整表述——现场调试周期由 21 天缩短至 9 天（即缩短 12 天，约 57%），另附一个风险类指标“停线风险下降 46%”。客户为未具名的“某汽车零部件客户”，无法追溯核验。\\n2) 恒芯项目复盘会纪要（内部项目复盘口径，客户成功部，v1.0，2025-03-18）：只给绝对增量“现场调试周期缩短 12 天”，未给出原基线周期，无法折算相对改善比例；其配套收益指标是“提前发现 37 处干涉”（问题发现数量）和“备件提前铺货、停机时间控制在 4 小时内”（停机时长），而非风险百分比。\\n\\n【为什么不能直接对比】\\n- 基线口径不同：产品文档有明确基线（21天），纪要只有增量（12天）而无基线。恒芯是 12 条叠片线、186 台机器人的大规模项目，基线周期很可能与 21 天不在同一量级，12 天的相对意义完全不同。两者“12 天”数值巧合，但不可互相印证或替代。\\n- 对象口径不同：一边是未具名的汽车零部件客户（白车身/零部件类场景未知），一边是明确的锂电叠片线项目；行业、产线数量、设备规模差异大，调试复杂度不可比。\\n- 指标定义不同：“停线风险下降 46%”（概率/风险类）与“发现 37 处干涉”（问题数量）、“停机 4 小时内”（时长）是三个不同维度的指标，单位和测量方法不同，不能互换比较。\\n- 文档性质与时点不同：前者是面向市场的宣传材料，后者是内部复盘记录，撰写目的和数据审定标准不同；版本时间也不同（2025-06-30 vs 2025-03-18）。\\n- 语料局限：两份文档均未说明“现场调试周期”的起止点定义（是否包含虚拟调试本身的投入工时）、“停线风险”与“干涉”的统计方法，因此即使同名指标也无法对齐口径。若要做严格对比，需补充两项的测量口径定义与基线数据。\",\"citations\":[\"lantu_product_digital_twin\",\"lantu_meeting_case_review\"],\"evidence\":[\"lantu_product_digital_twin#片段0\",\"lantu_meeting_case_review#片段0\"]}",
+      "usage": {
+        "completion_tokens": 1346,
+        "prompt_tokens": 3738,
+        "total_tokens": 5084,
+        "completion_tokens_details": {
+          "reasoning_tokens": 664
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3328
+        }
+      },
+      "seconds": 24.219
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "虚拟调试 缩短 调试周期 停线风险",
+        "top_k": 10
+      },
+      "result_sha": "909fa6dbeefcdfd57c59159e3a4a7a975a2605acc44712dd4aecacf414d4f1f6",
+      "result_chars": 3899,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_digital_twin",
+        "offset": 0,
+        "limit": 6000
+      },
+      "result_sha": "2c240a1331475125cad643282895dfac4194f90e629646792dbe6a428df12ed8",
+      "result_chars": 611,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_meeting_case_review",
+        "offset": 0,
+        "limit": 6000
+      },
+      "result_sha": "8affe5c1f0a4721f2a3168f282d78e3bb384edfbcb194db07887495dc585fa13",
+      "result_chars": 566,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "两个数字来自不同性质、不同项目、不同指标体系的文档，口径不一致，不能直接对比。\n\n【收益口径比较】\n1) LantuTwin 平台介绍（产品宣传口径，信息技术部，v3.0，更新于2025-06-30）：给出的是绝对基线+相对结果的完整表述——现场调试周期由 21 天缩短至 9 天（即缩短 12 天，约 57%），另附一个风险类指标“停线风险下降 46%”。客户为未具名的“某汽车零部件客户”，无法追溯核验。\n2) 恒芯项目复盘会纪要（内部项目复盘口径，客户成功部，v1.0，2025-03-18）：只给绝对增量“现场调试周期缩短 12 天”，未给出原基线周期，无法折算相对改善比例；其配套收益指标是“提前发现 37 处干涉”（问题发现数量）和“备件提前铺货、停机时间控制在 4 小时内”（停机时长），而非风险百分比。\n\n【为什么不能直接对比】\n- 基线口径不同：产品文档有明确基线（21天），纪要只有增量（12天）而无基线。恒芯是 12 条叠片线、186 台机器人的大规模项目，基线周期很可能与 21 天不在同一量级，12 天的相对意义完全不同。两者“12 天”数值巧合，但不可互相印证或替代。\n- 对象口径不同：一边是未具名的汽车零部件客户（白车身/零部件类场景未知），一边是明确的锂电叠片线项目；行业、产线数量、设备规模差异大，调试复杂度不可比。\n- 指标定义不同：“停线风险下降 46%”（概率/风险类）与“发现 37 处干涉”（问题数量）、“停机 4 小时内”（时长）是三个不同维度的指标，单位和测量方法不同，不能互换比较。\n- 文档性质与时点不同：前者是面向市场的宣传材料，后者是内部复盘记录，撰写目的和数据审定标准不同；版本时间也不同（2025-06-30 vs 2025-03-18）。\n- 语料局限：两份文档均未说明“现场调试周期”的起止点定义（是否包含虚拟调试本身的投入工时）、“停线风险”与“干涉”的统计方法，因此即使同名指标也无法对齐口径。若要做严格对比，需补充两项的测量口径定义与基线数据。",
+    "citations": [
+      "lantu_product_digital_twin",
+      "lantu_meeting_case_review"
+    ],
+    "evidence": [
+      "lantu_product_digital_twin#片段0",
+      "lantu_meeting_case_review#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 12542,
+  "started_at": "2026-11-01T05:32:25",
+  "elapsed_seconds": 33.62,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "虚拟调试 缩短 调试周期 停线风险",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_product_digital_twin",
+            "title": "# LantuTwin 数字孪生平台介绍",
+            "chunk": 0,
+            "score": 31.059,
+            "snippet": "# LantuTwin 数字孪生平台介绍\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-09-01 09:00\n更新时间：2025-06-30 16:00\n版本号：v3.0\n文档类型：product\n文档族：product_digital_twin\n生效日期：2025-06-30\n\n## 一、平台定位\n\nLantuTwin 3.0 是面向智能工厂规划、调试与运维的数字孪生平台，支持机器人、产线与物流系统的虚实同步。\n\n## 二、核心能力\n\n单项目支持 500 台设备接入，数据刷新延迟低于 80 ms，仿真"
+          },
+          {
+            "doc_id": "lantu_meeting_case_review",
+            "title": "# 恒芯动力电池项目复盘会纪要",
+            "chunk": 0,
+            "score": 19.937,
+            "snippet": "# 恒芯动力电池项目复盘会纪要\n\n所属部门：客户成功部\n作者：林可\n创建时间：2025-03-18 09:00\n更新时间：2025-03-18 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_case_hengxin\n生效日期：2025-03-18\n\n## 一、项目结果\n\n恒芯动力电池 12 条叠片线完成验收，部署 186 台 LT-R20 与 24 台 AMR-1000，合同金额 2.16 亿元。\n\n## 二、成功经验\n\n虚拟调试提前发现 37 处干涉，现场调试周期缩短 12 天；"
+          },
+          {
+            "doc_id": "lantu_case_12_shengda",
+            "title": "# 客户案例：昇达电梯门板装配项目",
+            "chunk": 0,
+            "score": 11.012,
+            "snippet": "# 客户案例：昇达电梯门板装配项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_shengda\n生效日期：2025-12-20\n\n## 一、客户背景\n\n昇达电梯位于湖州，主营电梯业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖3 条"
+          },
+          {
+            "doc_id": "lantu_case_05_hailing",
+            "title": "# 客户案例：海翎家电喷涂与打磨项目",
+            "chunk": 0,
+            "score": 10.396,
+            "snippet": "# 客户案例：海翎家电喷涂与打磨项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_hailing\n生效日期：2025-12-20\n\n## 一、客户背景\n\n海翎家电位于顺德，主营家电业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖4 "
+          },
+          {
+            "doc_id": "lantu_case_02_lanyue",
+            "title": "# 客户案例：澜岳汽车零部件白车身焊装项目",
+            "chunk": 0,
+            "score": 10.045,
+            "snippet": "# 客户案例：澜岳汽车零部件白车身焊装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_lanyue\n生效日期：2024-12-20\n\n## 一、客户背景\n\n澜岳汽车零部件位于上海，主营汽车零部件业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追"
+          },
+          {
+            "doc_id": "lantu_case_07_maifeng",
+            "title": "# 客户案例：麦丰食品后端包装项目",
+            "chunk": 0,
+            "score": 8.271,
+            "snippet": "# 客户案例：麦丰食品后端包装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_maifeng\n生效日期：2024-12-20\n\n## 一、客户背景\n\n麦丰食品位于漯河，主营食品业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖6 条"
+          },
+          {
+            "doc_id": "lantu_case_04_xinghe",
+            "title": "# 客户案例：星禾电子精密组装项目",
+            "chunk": 0,
+            "score": 8.258,
+            "snippet": "# 客户案例：星禾电子精密组装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_xinghe\n生效日期：2024-12-20\n\n## 一、客户背景\n\n星禾电子位于昆山，主营3C 电子业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖8"
+          },
+          {
+            "doc_id": "lantu_case_03_yaoyang",
+            "title": "# 客户案例：曜阳光能电池片串焊项目",
+            "chunk": 0,
+            "score": 8.233,
+            "snippet": "# 客户案例：曜阳光能电池片串焊项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_yaoyang\n生效日期：2025-12-20\n\n## 一、客户背景\n\n曜阳光能位于合肥，主营光伏业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖16"
+          },
+          {
+            "doc_id": "lantu_case_10_hengrui",
+            "title": "# 客户案例：恒锐精密机床上下料项目",
+            "chunk": 0,
+            "score": 8.195,
+            "snippet": "# 客户案例：恒锐精密机床上下料项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2023-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_hengrui\n生效日期：2023-12-20\n\n## 一、客户背景\n\n恒锐精密位于宁波，主营金属加工业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2023 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖"
+          },
+          {
+            "doc_id": "lantu_case_08_kangze",
+            "title": "# 客户案例：康泽制药无菌灌装项目",
+            "chunk": 0,
+            "score": 8.195,
+            "snippet": "# 客户案例：康泽制药无菌灌装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_kangze\n生效日期：2025-12-20\n\n## 一、客户背景\n\n康泽制药位于苏州，主营医药业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖3 条无"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_digital_twin",
+        "offset": 0,
+        "limit": 6000
+      },
+      "result": {
+        "doc_id": "lantu_product_digital_twin",
+        "title": "# LantuTwin 数字孪生平台介绍",
+        "offset": 0,
+        "limit": 6000,
+        "total_chars": 432,
+        "text": "# LantuTwin 数字孪生平台介绍\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-09-01 09:00\n更新时间：2025-06-30 16:00\n版本号：v3.0\n文档类型：product\n文档族：product_digital_twin\n生效日期：2025-06-30\n\n## 一、平台定位\n\nLantuTwin 3.0 是面向智能工厂规划、调试与运维的数字孪生平台，支持机器人、产线与物流系统的虚实同步。\n\n## 二、核心能力\n\n单项目支持 500 台设备接入，数据刷新延迟低于 80 ms，仿真精度 99.5%，支持 3D 可视化、碰撞检测与节拍仿真。\n\n## 三、部署方式\n\n支持私有化与云端部署，提供 Kubernetes 编排方案，单集群可支撑 5,000 台设备；与 MES、WMS、ERP 通过标准接口集成。\n\n## 四、客户价值\n\n某汽车零部件客户通过虚拟调试将现场调试周期由 21 天缩短至 9 天，停线风险下降 46%。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_meeting_case_review",
+        "offset": 0,
+        "limit": 6000
+      },
+      "result": {
+        "doc_id": "lantu_meeting_case_review",
+        "title": "# 恒芯动力电池项目复盘会纪要",
+        "offset": 0,
+        "limit": 6000,
+        "total_chars": 393,
+        "text": "# 恒芯动力电池项目复盘会纪要\n\n所属部门：客户成功部\n作者：林可\n创建时间：2025-03-18 09:00\n更新时间：2025-03-18 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_case_hengxin\n生效日期：2025-03-18\n\n## 一、项目结果\n\n恒芯动力电池 12 条叠片线完成验收，部署 186 台 LT-R20 与 24 台 AMR-1000，合同金额 2.16 亿元。\n\n## 二、成功经验\n\n虚拟调试提前发现 37 处干涉，现场调试周期缩短 12 天；备件提前铺货，停机时间控制在 4 小时内。\n\n## 三、问题不足\n\n初期节拍未达标，原因是视觉节拍与机器人节拍不匹配，后续通过轨迹优化提升 8%。\n\n## 四、复用建议\n\n形成锂电叠片标准包，固化 12 条线配置与调试 checklist；将视觉节拍纳入方案仿真。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_product_digital_twin",
+      "lantu_meeting_case_review"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.056,
+    "number_recall": 0.0
+  }
+}

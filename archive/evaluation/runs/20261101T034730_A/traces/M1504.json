@@ -1,0 +1,142 @@
+{
+  "qid": "M1504",
+  "question": "用户：现在迟到多久以内要扣绩效？一个月最多能补几次卡？\n助手：按现行（2025 年 1 月 1 日起生效）版本，迟到 60 分钟以内每次扣减绩效 0.5 分，漏打卡每月补卡不超过 4 次。\n用户：我想看的是 2024 年那版的旧规定。",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=list><parameter=keyword>考勤</parameter></function></tool_call><tool_call><function=search><parameter=query>2024 版 考勤 迟到 绩效 补卡 旧规定</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 84,
+        "prompt_tokens": 429,
+        "total_tokens": 513,
+        "completion_tokens_details": {
+          "reasoning_tokens": 29
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.297
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=list><parameter=keyword>考勤</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 52,
+        "prompt_tokens": 521,
+        "total_tokens": 573,
+        "completion_tokens_details": {
+          "reasoning_tokens": 33
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 2.594
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>2024 版考勤管理制度 迟到扣绩效 补卡次数</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 108,
+        "prompt_tokens": 577,
+        "total_tokens": 685,
+        "completion_tokens_details": {
+          "reasoning_tokens": 65
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 3.375
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>2024版 考勤管理制度 迟到 补卡</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 56,
+        "prompt_tokens": 657,
+        "total_tokens": 713,
+        "completion_tokens_details": {
+          "reasoning_tokens": 15
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.687
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>2024 考勤 迟到 扣绩效 补卡 旧版</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 61,
+        "prompt_tokens": 735,
+        "total_tokens": 796,
+        "completion_tokens_details": {
+          "reasoning_tokens": 16
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 3.735
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>2024年考勤管理制度 迟到扣绩效 补卡次数</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 60,
+        "prompt_tokens": 817,
+        "total_tokens": 877,
+        "completion_tokens_details": {
+          "reasoning_tokens": 18
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 1.687
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"抱歉，我尝试检索 2024 年版考勤旧规定（关于迟到扣绩效标准和每月补卡次数上限）的原文，但检索未能成功执行，我没有取得可核实的 2024 版原文证据。为避免凭记忆作答导致口径错误，我无法给出 2024 版的具体数值。建议您：1）直接查阅公司 OA/HR 系统中 2024 年生效的考勤管理制度文件；2）向人力资源部确认旧版条款是否仍可追溯。如您能重新提问或提供文件，我可以再尝试检索核实。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 183,
+        "prompt_tokens": 893,
+        "total_tokens": 1076,
+        "completion_tokens_details": {
+          "reasoning_tokens": 26
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 768
+        }
+      },
+      "seconds": 5.047
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "抱歉，我尝试检索 2024 年版考勤旧规定（关于迟到扣绩效标准和每月补卡次数上限）的原文，但检索未能成功执行，我没有取得可核实的 2024 版原文证据。为避免凭记忆作答导致口径错误，我无法给出 2024 版的具体数值。建议您：1）直接查阅公司 OA/HR 系统中 2024 年生效的考勤管理制度文件；2）向人力资源部确认旧版条款是否仍可追溯。如您能重新提问或提供文件，我可以再尝试检索核实。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 5233,
+  "started_at": "2026-11-01T06:11:41",
+  "elapsed_seconds": 20.42,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.042,
+    "number_recall": 0.5
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "qid": "M1516",
+  "question": "用户：芯片和减速器这些关键物料，断供风险大吗？我们怎么应对？\n助手：芯片与减速器存在单一来源风险；公司已对减速器实现双源供应，伺服驱动器自研比例 61%，关键物料安全库存 45 天。\n用户：那具体到 2026 年的双源替代目标是多少？芯片备库要备多久？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"2026 双源替代\"}}",
+      "usage": {
+        "prompt_tokens": 435,
+        "total_tokens": 628,
+        "completion_tokens": 193,
+        "completion_tokens_details": {
+          "reasoning_tokens": 168,
+          "text_tokens": 193
+        }
+      },
+      "seconds": 1.844
+    },
+    {
+      "round": 2,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据供应链韧性建设方案及专题会纪要，2026 年减速器的双源替代（第二来源）目标为 **30%**；关键芯片的备库周期要求为 **6 个月**。\",\"citations\":[\"lantu_meeting_supply_chain\", \"lantu_strategy_supply_chain_resilience\"],\"evidence\":[\"lantu_meeting_supply_chain#0\", \"lantu_strategy_supply_chain_resilience#0\"]}",
+      "usage": {
+        "prompt_tokens": 2807,
+        "total_tokens": 3389,
+        "completion_tokens": 582,
+        "completion_tokens_details": {
+          "reasoning_tokens": 477,
+          "text_tokens": 582
+        }
+      },
+      "seconds": 4.641
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "2026 双源替代"
+      },
+      "result_sha": "d19adde8e58313831dd30d6c879980a43e5719cd5e65fe97f9e1afef7e538d1f",
+      "result_chars": 3895,
+      "hits": 10
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据供应链韧性建设方案及专题会纪要，2026 年减速器的双源替代（第二来源）目标为 **30%**；关键芯片的备库周期要求为 **6 个月**。",
+    "citations": [
+      "lantu_meeting_supply_chain",
+      "lantu_strategy_supply_chain_resilience"
+    ],
+    "evidence": [
+      "lantu_meeting_supply_chain#0",
+      "lantu_strategy_supply_chain_resilience#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 4017,
+  "started_at": "2026-11-01T06:52:57",
+  "elapsed_seconds": 6.49,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "2026 双源替代"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_meeting_supply_chain",
+            "title": "2025 年供应链韧性专题会纪要",
+            "chunk": 0,
+            "score": 9.879,
+            "snippet": "2025 年供应链韧性专题会纪要\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-10-16 09:00\n更新时间：2025-10-16 15:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_supply_chain\n生效日期：2025-10-16\n一、供应形势\n减速器交期由 8 周延长至 12 周，芯片交期 20 周；关键物料库存周转 92 天，高于目标 75 天。\n二、双源策略\n减速器已引入第二供应商，2026 年一季度实现 30% 替代；伺服驱动器自研比例提升至 61%。\n三"
+          },
+          {
+            "doc_id": "lantu_strategy_supply_chain_resilience",
+            "title": "# 澜图智能供应链韧性建设方案",
+            "chunk": 0,
+            "score": 8.713,
+            "snippet": "# 澜图智能供应链韧性建设方案\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-02-01 09:00\n更新时间：2025-09-30 16:00\n版本号：v1.5\n文档类型：strategy\n文档族：supply_chain_resilience\n生效日期：2025-09-30\n\n## 一、风险识别\n\n关键物料包括减速器、伺服电机、芯片与视觉相机，其中芯片与减速器存在单一来源风险。\n\n## 二、双源与备库\n\n减速器 2026 年实现 30% 第二来源；关键芯片备库 6 个月；通用物料安全库存 30 天。"
+          },
+          {
+            "doc_id": "lantu_finance_gross_margin",
+            "title": "# 澜图智能毛利率与成本结构分析",
+            "chunk": 0,
+            "score": 6.765,
+            "snippet": "# 澜图智能毛利率与成本结构分析\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-11-15 09:00\n更新时间：2025-11-20 17:00\n版本号：v1.2\n文档类型：finance\n文档族：gross_margin_analysis\n生效日期：2025-11-20\n\n## 一、整体毛利率\n\n2025 年综合毛利率 31.6%，较 2024 年提升 1.2 个百分点。机器人本体毛利率 34.8%，智能产线 26.2%，软件与服务 52.4%。\n\n## 二、成本构成\n\n直接材料占营业成本 68.4%，"
+          },
+          {
+            "doc_id": "lantu_finance_cost",
+            "title": "# 澜图智能成本管理与降本专项报告",
+            "chunk": 0,
+            "score": 5.302,
+            "snippet": "# 澜图智能成本管理与降本专项报告\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-09-05 09:00\n更新时间：2025-09-12 17:00\n版本号：v1.3\n文档类型：finance\n文档族：cost_management\n生效日期：2025-09-12\n\n## 一、降本目标\n\n2025 年降本目标 1.8 亿元，前三季度完成 1.48 亿元，完成率 82%。\n\n## 二、主要项目\n\n减速器国产替代降本 4,200 万元，伺服驱动器自研降本 3,800 万元，结构件轻量化降本 2,600 万元，物"
+          },
+          {
+            "doc_id": "lantu_company_campus",
+            "title": "# 澜图智能制造基地与产能布局",
+            "chunk": 0,
+            "score": 4.722,
+            "snippet": "# 澜图智能制造基地与产能布局\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2024-04-12 09:00\n更新时间：2025-11-20 15:00\n版本号：v3.0\n文档类型：company\n文档族：manufacturing_base\n生效日期：2025-11-20\n\n## 一、苏州总部基地\n\n位于苏州工业园区，占地 120 亩，建筑面积 9.6 万平方米，承担六轴机器人总装、控制器生产与研发测试，年产能 18,000 台。\n\n## 二、东莞华南基地\n\n位于东莞松山湖，占地 60 亩，聚焦 SCARA、A"
+          },
+          {
+            "doc_id": "lantu_strategy_2025",
+            "title": "# 澜图智能 2025 年度经营计划",
+            "chunk": 0,
+            "score": 3.533,
+            "snippet": "# 澜图智能 2025 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-01-10 09:00\n更新时间：2025-02-10 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2025\n生效日期：2025-02-10\n\n## 一、年度目标\n\n2025 年营业收入目标 41.5 亿元，力争 42.63 亿元；新签订单目标 46 亿元；机器人出货目标 20,000 台。\n\n## 二、重点任务\n\n锂电与半导体行业突破；LT-C800 控制器量产；海外收入占"
+          },
+          {
+            "doc_id": "lantu_product_controller",
+            "title": "# LT-C800 运动控制器产品说明",
+            "chunk": 0,
+            "score": 3.47,
+            "snippet": "# LT-C800 运动控制器产品说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2025-04-08 09:00\n更新时间：2025-10-10 10:00\n版本号：v1.5\n文档类型：product\n文档族：product_controller\n生效日期：2025-10-10\n\n## 一、产品定位\n\nLT-C800 是澜图智能自研的新一代八轴运动控制器，面向机器人、工作站与小型产线，替代上一代 LT-C600。\n\n## 二、性能指标\n\n支持 8 轴联动，EtherCAT 总线周期 1 ms，插补周期 0.5"
+          },
+          {
+            "doc_id": "lantu_meeting_strategy",
+            "title": "# 2026 年战略研讨会纪要",
+            "chunk": 0,
+            "score": 3.196,
+            "snippet": "# 2026 年战略研讨会纪要\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-11-21 09:00\n更新时间：2025-11-22 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_strategy_2026\n生效日期：2025-11-22\n\n## 一、战略目标\n\n2026 年营业收入 52 亿元，2028 年 80 亿元；海外收入占比 2026 年提升至 17%，2028 年达到 25%。\n\n## 二、业务重点\n\n巩固锂电与汽车基本盘，突破半导体与具身智能；软件与服务收"
+          },
+          {
+            "doc_id": "lantu_finance_budget_2026",
+            "title": "# 澜图智能 2026 年度经营预算",
+            "chunk": 0,
+            "score": 3.191,
+            "snippet": "# 澜图智能 2026 年度经营预算\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-12-20 09:00\n更新时间：2026-01-15 17:00\n版本号：v1.0\n文档类型：finance\n文档族：budget_2026\n生效日期：2026-01-15\n\n## 一、预算目标\n\n2026 年营业收入目标 52 亿元，同比增长 22%；归母净利润目标 5.2 亿元；综合毛利率目标 32.5%。\n\n## 二、收入分解\n\n机器人本体 24.2 亿元，智能产线 18.4 亿元，软件与服务 6.4 亿元，备件及其"
+          },
+          {
+            "doc_id": "lantu_hr_campus",
+            "title": "# 澜图智能 2026 届校园招聘方案",
+            "chunk": 0,
+            "score": 3.18,
+            "snippet": "# 澜图智能 2026 届校园招聘方案\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-08-15 09:00\n更新时间：2025-09-20 15:00\n版本号：v1.0\n文档类型：hr\n文档族：campus_recruitment_2026\n生效日期：2025-09-20\n\n## 一、招聘计划\n\n2026 届校招计划 120 人，其中研发 78 人、产品 12 人、销售 18 人、职能 12 人；重点院校 18 所。\n\n## 二、岗位方向\n\n机器人算法、运动控制、机器视觉、嵌入式软件、机械结构、售前技"
+          }
+        ]
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.667,
+    "cited": [
+      "lantu_meeting_supply_chain",
+      "lantu_strategy_supply_chain_resilience"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.045,
+    "number_recall": 1.0
+  }
+}

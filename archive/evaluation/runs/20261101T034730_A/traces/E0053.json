@@ -1,0 +1,142 @@
+{
+  "qid": "E0053",
+  "question": "销售政策中的战略价规定与 2025 版折扣审批权限中的 S 级客户战略支持如何衔接？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>战略价 销售政策</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=search><parameter=query>2025版 折扣审批权限 S级客户</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 109,
+        "prompt_tokens": 370,
+        "total_tokens": 479,
+        "completion_tokens_details": {
+          "reasoning_tokens": 42
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.641
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>战略价 销售政策 S级客户 战略支持 折扣审批权限</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 474,
+        "total_tokens": 525,
+        "completion_tokens_details": {
+          "reasoning_tokens": 8
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.422
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>战略价 销售政策</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 45,
+        "prompt_tokens": 554,
+        "total_tokens": 599,
+        "completion_tokens_details": {
+          "reasoning_tokens": 14
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.078
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>战略价 销售政策</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 63,
+        "prompt_tokens": 622,
+        "total_tokens": 685,
+        "completion_tokens_details": {
+          "reasoning_tokens": 32
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 2.531
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>战略价 S级客户 战略支持 折扣审批权限 2025</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 78,
+        "prompt_tokens": 690,
+        "total_tokens": 768,
+        "completion_tokens_details": {
+          "reasoning_tokens": 34
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 2.36
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>战略价 销售政策 S级客户 战略支持 折扣审批权限</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 771,
+        "total_tokens": 821,
+        "completion_tokens_details": {
+          "reasoning_tokens": 7
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 5.578
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"多次检索「战略价 销售政策」「2025版 折扣审批权限 S级客户」等关键词均未成功获取到可引用的原文资料（工具调用未返回任何文档片段），因此无法核实销售政策中战略价规定与2025版折扣审批权限中 S 级客户战略支持的具体衔接口径。为准确回答，需要提供：1）现行销售政策文件中关于战略价的条款；2）2025版折扣审批权限文件中 S 级客户战略支持的审批层级、折扣上限及与战略价的适用优先级/叠加规则。建议补充上述文件后重新检索。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 216,
+        "prompt_tokens": 848,
+        "total_tokens": 1064,
+        "completion_tokens_details": {
+          "reasoning_tokens": 53
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 768
+        }
+      },
+      "seconds": 7.343
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "多次检索「战略价 销售政策」「2025版 折扣审批权限 S级客户」等关键词均未成功获取到可引用的原文资料（工具调用未返回任何文档片段），因此无法核实销售政策中战略价规定与2025版折扣审批权限中 S 级客户战略支持的具体衔接口径。为准确回答，需要提供：1）现行销售政策文件中关于战略价的条款；2）2025版折扣审批权限文件中 S 级客户战略支持的审批层级、折扣上限及与战略价的适用优先级/叠加规则。建议补充上述文件后重新检索。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4941,
+  "started_at": "2026-11-01T04:45:46",
+  "elapsed_seconds": 23.95,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": true,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.094,
+    "number_recall": 1.0
+  }
+}

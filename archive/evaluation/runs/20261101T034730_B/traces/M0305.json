@@ -1,0 +1,199 @@
+{
+  "qid": "M0305",
+  "question": "客户投诉我们之后，多久要响应、多久要闭环？什么情况下必须立刻上报？",
+  "question_type": "单文档多跳推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"客户投诉 响应时间 闭环 上报\"}}",
+      "usage": {
+        "prompt_tokens": 368,
+        "total_tokens": 465,
+        "completion_tokens": 97,
+        "completion_tokens_details": {
+          "reasoning_tokens": 71,
+          "text_tokens": 97
+        }
+      },
+      "seconds": 1.25
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_support_complaint\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 2680,
+        "total_tokens": 2981,
+        "completion_tokens": 301,
+        "completion_tokens_details": {
+          "reasoning_tokens": 267,
+          "text_tokens": 301
+        }
+      },
+      "seconds": 2.937
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据《澜图智能客户投诉处理管理办法》：\\n\\n1. **响应与闭环时间**：\\n   - **一般投诉**：需在 **24 小时内响应**，并在 **3 个工作日内闭环**。\\n   - **重大投诉**：需在 **2 小时内上报总经理** 并成立专项小组（具体闭环时限未明确，但需启动专项处理）。\\n\\n2. **必须立刻上报的情况**：\\n   - 当投诉被判定为**重大投诉**时，必须在 **2 小时内** 上报总经理。\",\"citations\":[\"lantu_support_complaint\"],\"evidence\":[\"lantu_support_complaint#0\"]}",
+      "usage": {
+        "prompt_tokens": 3032,
+        "total_tokens": 3959,
+        "completion_tokens": 927,
+        "completion_tokens_details": {
+          "reasoning_tokens": 770,
+          "text_tokens": 927
+        }
+      },
+      "seconds": 7.36
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "客户投诉 响应时间 闭环 上报"
+      },
+      "result_sha": "8fedfb4110b5719002cd9b50ce3aa1ff1ca430a6b6d7d15eb7c127f0d2e855ae",
+      "result_chars": 3835,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_complaint",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "33eff201b5dc0056ede8806566b2a16f5dfcc9e75526e6f6022f7b401f227ed8",
+      "result_chars": 535,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《澜图智能客户投诉处理管理办法》：\n\n1. **响应与闭环时间**：\n   - **一般投诉**：需在 **24 小时内响应**，并在 **3 个工作日内闭环**。\n   - **重大投诉**：需在 **2 小时内上报总经理** 并成立专项小组（具体闭环时限未明确，但需启动专项处理）。\n\n2. **必须立刻上报的情况**：\n   - 当投诉被判定为**重大投诉**时，必须在 **2 小时内** 上报总经理。",
+    "citations": [
+      "lantu_support_complaint"
+    ],
+    "evidence": [
+      "lantu_support_complaint#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 7405,
+  "started_at": "2026-11-01T06:26:22",
+  "elapsed_seconds": 11.55,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "客户投诉 响应时间 闭环 上报"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_support_complaint",
+            "title": "# 澜图智能客户投诉处理管理办法",
+            "chunk": 0,
+            "score": 21.973,
+            "snippet": "# 澜图智能客户投诉处理管理办法\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-02-01 09:00\n更新时间：2025-09-01 09:00\n版本号：v2.8\n文档类型：support\n文档族：complaint_management\n生效日期：2025-09-01\n\n## 一、受理渠道\n\n客户可通过 400 热线、服务邮箱、客户门户或销售转达投诉，受理后 1 小时内录入系统。\n\n## 二、分级处理\n\n一般投诉 24 小时内响应、3 个工作日内闭环；重大投诉 2 小时内上报总经理并成立专项小组。\n\n"
+          },
+          {
+            "doc_id": "lantu_meeting_quality",
+            "title": "2025 年第三季度质量专题会纪要",
+            "chunk": 0,
+            "score": 10.446,
+            "snippet": "2025 年第三季度质量专题会纪要\n所属部门：质量部\n作者：潘文博\n创建时间：2025-07-22 09:00\n更新时间：2025-07-22 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_quality_q3\n生效日期：2025-07-22\n一、质量数据\n上半年一次交检合格率 98.4%，客户投诉 1 起；第三季度首月投诉 1 起，为 LT-R12 线束磨损问题。\n二、问题分析\n线束磨损源于走线路径与防护套选型不当，涉及 2025 年 3 月生产的 120 台 LT-R12，已启"
+          },
+          {
+            "doc_id": "lantu_company_profile",
+            "title": "澜图智能装备公司简介",
+            "chunk": 1,
+            "score": 9.365,
+            "snippet": "入 13.8%。\n五、质量与认证\n公司通过 ISO 9001、ISO 14001、ISO 45001、IATF 16949 与 ISO 27001 认证，产品符合 CE、UL 与 GB\n标准。2025 年客户投诉 3 起，一次交检合格率 98.6%。\n六、联系方式\n总部地址：江苏省苏州市工业园区星澜路88号；总机：0512-6688-2100；官网：www.lantu-robot.com；\n投资者关系邮箱：ir@lantu-robot.com。"
+          },
+          {
+            "doc_id": "lantu_support_sla_2025",
+            "title": "# 澜图智能服务等级协议（SLA 2025版）",
+            "chunk": 0,
+            "score": 7.872,
+            "snippet": "# 澜图智能服务等级协议（SLA 2025版）\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2025-03-10 09:00\n更新时间：2025-04-01 09:00\n版本号：v3.0\n文档类型：support\n文档族：service_sla\n生效日期：2025-04-01\n\n## 一、故障分级\n\nP1 为产线停机或安全风险；P2 为单机停机但产线可降级运行；P3 为一般故障或咨询。\n\n## 二、响应时效\n\nP1：30 分钟内响应、12 小时内到场；P2：4 小时内响应、48 小时内到场；P3：12 小时内响应"
+          },
+          {
+            "doc_id": "lantu_strategy_quality_system",
+            "title": "澜图智能质量管理体系手册",
+            "chunk": 0,
+            "score": 7.401,
+            "snippet": "澜图智能质量管理体系手册\n所属部门：质量部\n作者：潘文博\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v4.2\n文档类型：strategy\n文档族：quality_system\n生效日期：2025-06-01\n一、质量方针\n以客户为中心，以零缺陷为目标，持续改进，追求卓越。公司通过 ISO 9001、IATF 16949 与 ISO 13485\n认证。\n二、质量目标\n2025 年一次交检合格率不低于 98.5%，客户投诉不超过 6 起，MTBF 不低于 12,00"
+          },
+          {
+            "doc_id": "lantu_support_sla_2024",
+            "title": "# 澜图智能服务等级协议（SLA 2024版）",
+            "chunk": 0,
+            "score": 7.342,
+            "snippet": "# 澜图智能服务等级协议（SLA 2024版）\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v2.0\n文档类型：support\n文档族：service_sla\n生效日期：2024-01-01\n\n## 一、故障分级\n\nP1 为产线停机或安全风险；P2 为单机停机但产线可降级运行；P3 为一般故障或咨询。\n\n## 二、响应时效\n\nP1：2 小时内响应、24 小时内到场；P2：8 小时内响应、72 小时内到场；P3：24 小时内响应、"
+          },
+          {
+            "doc_id": "lantu_company_milestones_2025",
+            "title": "# 澜图智能 2025 年度大事记",
+            "chunk": 0,
+            "score": 6.78,
+            "snippet": "# 澜图智能 2025 年度大事记\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-12-31 18:00\n更新时间：2026-01-06 09:00\n版本号：v1.0\n文档类型：company\n文档族：annual_milestones_2025\n生效日期：2026-01-06\n\n## 一、经营里程碑\n\n2025 年营业收入 42.63 亿元，同比增长 19.1%；新签订单 48.90 亿元；机器人出货 21,400 台；第 10 万台机器人于 9 月 12 日下线。\n\n## 二、组织里程碑\n\n3 月"
+          },
+          {
+            "doc_id": "lantu_solution_semiconductor",
+            "title": "# 半导体晶圆搬运洁净解决方案",
+            "chunk": 0,
+            "score": 6.096,
+            "snippet": "# 半导体晶圆搬运洁净解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2025-02-14 09:00\n更新时间：2025-11-11 09:30\n版本号：v2.0\n文档类型：product\n文档族：solution_semiconductor\n生效日期：2025-11-11\n\n## 一、方案概述\n\n面向 8/12 英寸晶圆厂，提供晶圆盒搬运、机台上下料与跨区物流方案，采用 LT-AMR-500 洁净版与 LT-R12 洁净机器人。\n\n## 二、洁净指标\n\n洁净等级 Class 10，颗粒物控制 0.1 μm，"
+          },
+          {
+            "doc_id": "lantu_company_brand",
+            "title": "# 澜图智能品牌视觉与传播规范",
+            "chunk": 0,
+            "score": 5.867,
+            "snippet": "# 澜图智能品牌视觉与传播规范\n\n所属部门：市场部\n作者：苏婉清\n创建时间：2024-02-01 09:30\n更新时间：2025-08-15 11:00\n版本号：v2.3\n文档类型：company\n文档族：brand_manual\n生效日期：2025-08-15\n\n## 一、品牌定位\n\n澜图智能（LANTU）定位为“可信赖的智能制造伙伴”，核心传播主张为“稳、准、快”。品牌不得使用“全球第一”“绝对领先”等绝对化表述。\n\n## 二、视觉规范\n\n主色为澜图蓝（PANTONE 2728C，HEX #1F4FA8），辅助"
+          },
+          {
+            "doc_id": "lantu_company_profile",
+            "title": "澜图智能装备公司简介",
+            "chunk": 0,
+            "score": 5.748,
+            "snippet": "澜图智能装备公司简介\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2023-03-01 09:00\n更新时间：2026-01-08 10:30\n版本号：v5.2\n文档类型：company\n文档族：company_profile\n生效日期：2026-01-08\n一、公司概况\n澜图智能装备股份有限公司成立于2011-06-18，总部位于江苏省苏州市工业园区星澜路88号，注册资本\n6.8 亿元，2023 年在上海证券交易所科创板上市（股票代码 688719）。公司专注工业机器人、智能产线\n与工业软件，为汽车、锂电、光伏"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_complaint",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_support_complaint",
+        "title": "# 澜图智能客户投诉处理管理办法",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 363,
+        "text": "# 澜图智能客户投诉处理管理办法\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-02-01 09:00\n更新时间：2025-09-01 09:00\n版本号：v2.8\n文档类型：support\n文档族：complaint_management\n生效日期：2025-09-01\n\n## 一、受理渠道\n\n客户可通过 400 热线、服务邮箱、客户门户或销售转达投诉，受理后 1 小时内录入系统。\n\n## 二、分级处理\n\n一般投诉 24 小时内响应、3 个工作日内闭环；重大投诉 2 小时内上报总经理并成立专项小组。\n\n## 三、根因分析\n\n重大投诉须在 7 个工作日内提交 8D 报告，包含临时措施、根因、永久措施与预防措施。\n\n## 四、考核与回访\n\n投诉处理满意度纳入服务考核；闭环后 7 日内回访，回访率 100%。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_support_complaint"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.271,
+    "number_recall": 0.0
+  }
+}

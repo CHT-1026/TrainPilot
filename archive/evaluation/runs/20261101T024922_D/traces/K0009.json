@@ -1,0 +1,25 @@
+{
+  "qid": "K0009",
+  "question": "质量部负责人潘文博签署了《2025 年第三季度质量专题会纪要》和《质量管理体系手册》，而 LT-R12 召回通知也由质量部署名（作者潘文博）。同一位负责人签署了「启动召回」和「年度质量目标」两份文件。请把召回事宜与质量手册中的年度目标对应起来，判断 2025 年是否达成召回相关目标。",
+  "question_type": "跨文档推理",
+  "rounds": [],
+  "tool_calls": [],
+  "answer": null,
+  "status": "api_error",
+  "tokens": 0,
+  "started_at": "2026-11-01T03:05:11",
+  "error": "URLError: <urlopen error [WinError 10061] 由于目标计算机积极拒绝，无法连接。>",
+  "elapsed_seconds": 2.05,
+  "tool_calls_detail": [],
+  "model_label": "D",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

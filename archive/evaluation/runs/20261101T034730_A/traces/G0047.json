@@ -1,0 +1,271 @@
+{
+  "qid": "G0047",
+  "question": "工业数据平台的「数据可用性 99.9%」与云平台的「核心服务可用性 99.95%」可以互相比较吗？",
+  "question_type": "矛盾与例外识别",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>数据可用性 99.9% 核心服务可用性 99.95%</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 97,
+        "prompt_tokens": 379,
+        "total_tokens": 476,
+        "completion_tokens_details": {
+          "reasoning_tokens": 51
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.906
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"数据可用性 99.9% 核心服务可用性 99.95% 口径\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 99,
+        "prompt_tokens": 462,
+        "total_tokens": 561,
+        "completion_tokens_details": {
+          "reasoning_tokens": 54
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.844
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_tech_data_platform\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 45,
+        "prompt_tokens": 2872,
+        "total_tokens": 2917,
+        "completion_tokens_details": {
+          "reasoning_tokens": 13
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 2.359
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_tech_cloud_platform\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 73,
+        "prompt_tokens": 3234,
+        "total_tokens": 3307,
+        "completion_tokens_details": {
+          "reasoning_tokens": 41
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2816
+        }
+      },
+      "seconds": 2.234
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"不能直接互相比较，两者是不同平台、不同口径的指标：\\n\\n1）对象不同：工业数据平台（澜图智能工业数据平台建设方案 v2.4，2025-07-30 生效）中的『99.9%』指的是数据治理层面的『数据可用性』，与指标字典、数据血缘、质量规则并列，衡量的是数据本身可被使用的程度；而云平台（澜图智能云平台架构设计 v3.0，2025-09-18 生效）中的『99.95%』指的是『核心服务可用性』，属于安全与高可用范畴，与多可用区部署、RPO 15 分钟、RTO 30 分钟等运维指标并列，衡量的是服务在线状态。\\n\\n2）统计口径与边界不同：数据可用性通常以数据可查询/可用时间占比或数据质量达标率计算；服务可用性通常以服务在线时间占比（如按月度统计窗口）计算。两份文档均未给出统一的统计窗口、计算公式或度量方式，数值上的高低不能直接说明优劣。\\n\\n3）结论：两者只能作为各自平台的独立承诺/目标分别引用，若要横向比较，需先明确统一的统计周期、计算公式与度量边界（例如都折算为『任意时刻数据可被正确访问的时间占比』），资料中目前不具备该口径，不能给出可比性判断。\",\"citations\":[\"lantu_tech_data_platform\",\"lantu_tech_cloud_platform\"],\"evidence\":[\"lantu_tech_data_platform#片段0\",\"lantu_tech_cloud_platform#片段0\"]}",
+      "usage": {
+        "completion_tokens": 457,
+        "prompt_tokens": 3619,
+        "total_tokens": 4076,
+        "completion_tokens_details": {
+          "reasoning_tokens": 78
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3200
+        }
+      },
+      "seconds": 11.891
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "数据可用性 99.9% 核心服务可用性 99.95% 口径",
+        "top_k": 10
+      },
+      "result_sha": "e1379547295f6b2bd0b886bc8ac106cbedee63d37531a8397de398dc54a27a05",
+      "result_chars": 3909,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_data_platform",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "8ac736a16358b4bfd4ef7dacf9472ce651ad81d588df931f9a3a80acaacf827e",
+      "result_chars": 529,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_cloud_platform",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "8be05b3efd8f67600d1f6e8ce067e41f0d4e4b19341627fd5288f94daa8ff907",
+      "result_chars": 562,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "不能直接互相比较，两者是不同平台、不同口径的指标：\n\n1）对象不同：工业数据平台（澜图智能工业数据平台建设方案 v2.4，2025-07-30 生效）中的『99.9%』指的是数据治理层面的『数据可用性』，与指标字典、数据血缘、质量规则并列，衡量的是数据本身可被使用的程度；而云平台（澜图智能云平台架构设计 v3.0，2025-09-18 生效）中的『99.95%』指的是『核心服务可用性』，属于安全与高可用范畴，与多可用区部署、RPO 15 分钟、RTO 30 分钟等运维指标并列，衡量的是服务在线状态。\n\n2）统计口径与边界不同：数据可用性通常以数据可查询/可用时间占比或数据质量达标率计算；服务可用性通常以服务在线时间占比（如按月度统计窗口）计算。两份文档均未给出统一的统计窗口、计算公式或度量方式，数值上的高低不能直接说明优劣。\n\n3）结论：两者只能作为各自平台的独立承诺/目标分别引用，若要横向比较，需先明确统一的统计周期、计算公式与度量边界（例如都折算为『任意时刻数据可被正确访问的时间占比』），资料中目前不具备该口径，不能给出可比性判断。",
+    "citations": [
+      "lantu_tech_data_platform",
+      "lantu_tech_cloud_platform"
+    ],
+    "evidence": [
+      "lantu_tech_data_platform#片段0",
+      "lantu_tech_cloud_platform#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 11337,
+  "started_at": "2026-11-01T05:05:13",
+  "elapsed_seconds": 24.23,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "数据可用性 99.9% 核心服务可用性 99.95% 口径",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_tech_cloud_platform",
+            "title": "# 澜图智能云平台架构设计",
+            "chunk": 0,
+            "score": 43.671,
+            "snippet": "# 澜图智能云平台架构设计\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-09-01 09:00\n更新时间：2025-09-18 16:00\n版本号：v3.0\n文档类型：tech\n文档族：cloud_platform\n生效日期：2025-09-18\n\n## 一、总体架构\n\n云平台采用微服务架构，基于 Kubernetes 部署，分为设备接入、数据服务、应用服务与开放 API 四层。\n\n## 二、接入能力\n\n单集群支持 5,000 台设备接入，MQTT 消息吞吐 20 万条/秒，设备离线缓存 7 天。\n\n#"
+          },
+          {
+            "doc_id": "lantu_tech_data_platform",
+            "title": "# 澜图智能工业数据平台建设方案",
+            "chunk": 0,
+            "score": 31.048,
+            "snippet": "# 澜图智能工业数据平台建设方案\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-10-01 09:00\n更新时间：2025-07-30 14:00\n版本号：v2.4\n文档类型：tech\n文档族：data_platform\n生效日期：2025-07-30\n\n## 一、平台定位\n\n构建统一工业数据湖仓，支撑设备运维、质量分析与经营决策，覆盖 3 大基地与客户现场。\n\n## 二、数据架构\n\n采集层支持 OPC UA、Modbus、MQTT；存储层采用数据湖 + 数仓分层；服务层提供 BI、API 与算法服务。\n"
+          },
+          {
+            "doc_id": "lantu_company_brand",
+            "title": "# 澜图智能品牌视觉与传播规范",
+            "chunk": 0,
+            "score": 7.645,
+            "snippet": "# 澜图智能品牌视觉与传播规范\n\n所属部门：市场部\n作者：苏婉清\n创建时间：2024-02-01 09:30\n更新时间：2025-08-15 11:00\n版本号：v2.3\n文档类型：company\n文档族：brand_manual\n生效日期：2025-08-15\n\n## 一、品牌定位\n\n澜图智能（LANTU）定位为“可信赖的智能制造伙伴”，核心传播主张为“稳、准、快”。品牌不得使用“全球第一”“绝对领先”等绝对化表述。\n\n## 二、视觉规范\n\n主色为澜图蓝（PANTONE 2728C，HEX #1F4FA8），辅助"
+          },
+          {
+            "doc_id": "lantu_strategy_digital_transformation",
+            "title": "# 澜图智能数字化转型规划",
+            "chunk": 0,
+            "score": 5.601,
+            "snippet": "# 澜图智能数字化转型规划\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-08-01 09:00\n更新时间：2025-10-10 14:00\n版本号：v2.3\n文档类型：strategy\n文档族：digital_transformation\n生效日期：2025-10-10\n\n## 一、转型目标\n\n三年内实现研发、供应链、制造、销售与服务的全流程数字化，运营效率提升 20%。\n\n## 二、重点工程\n\nPLM 研发协同、SRM 供应链协同、MES 制造执行、CRM 客户经营与数据中台五大工程。\n\n## 三、技"
+          },
+          {
+            "doc_id": "lantu_policy_data_classification",
+            "title": "# 澜图智能数据分级与分类管理规范",
+            "chunk": 0,
+            "score": 5.258,
+            "snippet": "# 澜图智能数据分级与分类管理规范\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-05-20 09:00\n更新时间：2025-09-10 14:00\n版本号：v2.5\n文档类型：policy\n文档族：data_classification\n生效日期：2025-09-10\n\n## 一、分级定义\n\n数据分为 L1 公开、L2 内部、L3 机密、L4 绝密四级。L1 可对外发布；L2 限公司内部；L3 限授权岗位；L4 限特定人员并加密存储。\n\n## 二、典型数据\n\nL1：宣传资料、公开财报；L2：一般制度、会"
+          },
+          {
+            "doc_id": "lantu_case_07_maifeng",
+            "title": "# 客户案例：麦丰食品后端包装项目",
+            "chunk": 0,
+            "score": 4.384,
+            "snippet": "# 客户案例：麦丰食品后端包装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_maifeng\n生效日期：2024-12-20\n\n## 一、客户背景\n\n麦丰食品位于漯河，主营食品业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖6 条"
+          },
+          {
+            "doc_id": "lantu_case_04_xinghe",
+            "title": "# 客户案例：星禾电子精密组装项目",
+            "chunk": 0,
+            "score": 4.378,
+            "snippet": "# 客户案例：星禾电子精密组装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_xinghe\n生效日期：2024-12-20\n\n## 一、客户背景\n\n星禾电子位于昆山，主营3C 电子业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖8"
+          },
+          {
+            "doc_id": "lantu_case_03_yaoyang",
+            "title": "# 客户案例：曜阳光能电池片串焊项目",
+            "chunk": 0,
+            "score": 4.366,
+            "snippet": "# 客户案例：曜阳光能电池片串焊项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_yaoyang\n生效日期：2025-12-20\n\n## 一、客户背景\n\n曜阳光能位于合肥，主营光伏业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖16"
+          },
+          {
+            "doc_id": "lantu_case_12_shengda",
+            "title": "# 客户案例：昇达电梯门板装配项目",
+            "chunk": 0,
+            "score": 4.354,
+            "snippet": "# 客户案例：昇达电梯门板装配项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_shengda\n生效日期：2025-12-20\n\n## 一、客户背景\n\n昇达电梯位于湖州，主营电梯业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖3 条"
+          },
+          {
+            "doc_id": "lantu_case_10_hengrui",
+            "title": "# 客户案例：恒锐精密机床上下料项目",
+            "chunk": 0,
+            "score": 4.348,
+            "snippet": "# 客户案例：恒锐精密机床上下料项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2023-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_hengrui\n生效日期：2023-12-20\n\n## 一、客户背景\n\n恒锐精密位于宁波，主营金属加工业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2023 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_data_platform",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_tech_data_platform",
+        "title": "# 澜图智能工业数据平台建设方案",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 356,
+        "text": "# 澜图智能工业数据平台建设方案\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-10-01 09:00\n更新时间：2025-07-30 14:00\n版本号：v2.4\n文档类型：tech\n文档族：data_platform\n生效日期：2025-07-30\n\n## 一、平台定位\n\n构建统一工业数据湖仓，支撑设备运维、质量分析与经营决策，覆盖 3 大基地与客户现场。\n\n## 二、数据架构\n\n采集层支持 OPC UA、Modbus、MQTT；存储层采用数据湖 + 数仓分层；服务层提供 BI、API 与算法服务。\n\n## 三、数据治理\n\n建立指标字典、数据血缘与质量规则，核心指标一致率 98.5%，数据可用性 99.9%。\n\n## 四、应用场景\n\n设备预测性维护、工艺参数优化、能耗分析与客户产能看板。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_cloud_platform",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_tech_cloud_platform",
+        "title": "# 澜图智能云平台架构设计",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 391,
+        "text": "# 澜图智能云平台架构设计\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-09-01 09:00\n更新时间：2025-09-18 16:00\n版本号：v3.0\n文档类型：tech\n文档族：cloud_platform\n生效日期：2025-09-18\n\n## 一、总体架构\n\n云平台采用微服务架构，基于 Kubernetes 部署，分为设备接入、数据服务、应用服务与开放 API 四层。\n\n## 二、接入能力\n\n单集群支持 5,000 台设备接入，MQTT 消息吞吐 20 万条/秒，设备离线缓存 7 天。\n\n## 三、数据服务\n\n时序数据存储于 TDengine，业务数据存储于 MySQL，分析任务使用 Flink 与 Spark。\n\n## 四、安全与高可用\n\n通过等保三级认证，支持多可用区部署，核心服务可用性 99.95%，RPO 15 分钟、RTO 30 分钟。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_tech_data_platform",
+      "lantu_tech_cloud_platform"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.1,
+    "number_recall": 0.0
+  }
+}

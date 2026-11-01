@@ -1,0 +1,25 @@
+{
+  "qid": "M0217",
+  "question": "客户问到我们下一代控制器项目（LT-C900），谁牵头？跟现在已经在卖的那台控制器是同一台吗？",
+  "question_type": "跨文档推理",
+  "rounds": [],
+  "tool_calls": [],
+  "answer": null,
+  "status": "api_error",
+  "tokens": 0,
+  "started_at": "2026-11-01T03:05:30",
+  "error": "HTTPError: HTTP Error 503: Service Unavailable",
+  "elapsed_seconds": 0.0,
+  "tool_calls_detail": [],
+  "model_label": "D",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

@@ -1,0 +1,283 @@
+{
+  "qid": "C0039",
+  "question": "控制器产品说明中提到内置安全限速与区域监控，与 R 系列手册提到的内置安全功能是否为同一组？",
+  "question_type": "矛盾与例外识别",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"内置安全限速\",\"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 373,
+        "total_tokens": 877,
+        "completion_tokens": 504,
+        "completion_tokens_details": {
+          "reasoning_tokens": 479,
+          "text_tokens": 504
+        }
+      },
+      "seconds": 4.468
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_product_controller\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 1538,
+        "total_tokens": 1828,
+        "completion_tokens": 290,
+        "completion_tokens_details": {
+          "reasoning_tokens": 257,
+          "text_tokens": 290
+        }
+      },
+      "seconds": 2.672
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_product_r_series\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 1926,
+        "total_tokens": 2382,
+        "completion_tokens": 456,
+        "completion_tokens_details": {
+          "reasoning_tokens": 422,
+          "text_tokens": 456
+        }
+      },
+      "seconds": 4.157
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"区域监控\",\"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 2725,
+        "total_tokens": 5560,
+        "completion_tokens": 2835,
+        "completion_tokens_details": {
+          "reasoning_tokens": 2811,
+          "text_tokens": 2835
+        }
+      },
+      "seconds": 24.859
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"控制器产品说明中提到的“内置安全限速与区域监控”与 R 系列手册提到的“内置安全功能”**不是同一组**。根据资料对比：\\n\\n1.  **LT-C800 控制器**（控制器产品说明）列出的安全功能为：**安全限速**、**安全停止**与**区域监控**。\\n2.  **LT-R 系列机器人**（R 系列手册）虽然采用 LT-C800 控制器，但其手册中描述的内置安全功能为：**碰撞检测**与**安全限速**。\\n\\n两者仅“安全限速”功能重合。R 系列手册侧重于机器人本体的“碰撞检测”，而控制器说明书侧重于底层的“安全停止”和“区域监控”，因此不属于同一组功能。\",\"citations\":[\"lantu_product_controller\", \"lantu_product_r_series\"],\"evidence\":[\"lantu_product_controller#0\", \"lantu_product_r_series#0\"]}",
+      "usage": {
+        "prompt_tokens": 3869,
+        "total_tokens": 7481,
+        "completion_tokens": 3612,
+        "completion_tokens_details": {
+          "reasoning_tokens": 3401,
+          "text_tokens": 3612
+        }
+      },
+      "seconds": 31.016
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "内置安全限速",
+        "top_k": 5
+      },
+      "result_sha": "c5d3148dbbcb0bfd6b9b270c4591865907ac190ec43caf9736feb1a2a042c15f",
+      "result_chars": 1990,
+      "hits": 5
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_controller",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "8cf0e3a3952faa7f099ae40a40a0492aceb901859eef99fcaa81959ff59d9c85",
+      "result_chars": 613,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_r_series",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "5c5eb726380ebdafb358cb6eedee62fd291890837646665d55d1f5b0ef52e697",
+      "result_chars": 1218,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "区域监控",
+        "top_k": 5
+      },
+      "result_sha": "a847d0e24be78473be6b48ecb234dd0396584107de3de903a1b13f1f2da8cddf",
+      "result_chars": 1943,
+      "hits": 5
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "控制器产品说明中提到的“内置安全限速与区域监控”与 R 系列手册提到的“内置安全功能”**不是同一组**。根据资料对比：\n\n1.  **LT-C800 控制器**（控制器产品说明）列出的安全功能为：**安全限速**、**安全停止**与**区域监控**。\n2.  **LT-R 系列机器人**（R 系列手册）虽然采用 LT-C800 控制器，但其手册中描述的内置安全功能为：**碰撞检测**与**安全限速**。\n\n两者仅“安全限速”功能重合。R 系列手册侧重于机器人本体的“碰撞检测”，而控制器说明书侧重于底层的“安全停止”和“区域监控”，因此不属于同一组功能。",
+    "citations": [
+      "lantu_product_controller",
+      "lantu_product_r_series"
+    ],
+    "evidence": [
+      "lantu_product_controller#0",
+      "lantu_product_r_series#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 18128,
+  "started_at": "2026-11-01T04:15:45",
+  "elapsed_seconds": 67.17,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "内置安全限速",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_tech_control_architecture",
+            "title": "# 澜图智能机器人控制系统架构",
+            "chunk": 0,
+            "score": 15.418,
+            "snippet": "# 澜图智能机器人控制系统架构\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-06-01 09:00\n更新时间：2025-10-20 14:00\n版本号：v3.3\n文档类型：tech\n文档族：control_architecture\n生效日期：2025-10-20\n\n## 一、总体架构\n\n控制系统分为感知层、决策层、运动控制层与执行层，采用 EtherCAT 总线连接伺服与 I/O，总线周期 1 ms。\n\n## 二、控制器\n\nLT-C800 采用双核 ARM + FPGA 架构，支持 8 轴联动、0.5 "
+          },
+          {
+            "doc_id": "lantu_tech_control_architecture_v2",
+            "title": "# 澜图智能机器人控制系统架构（旧版 v2.4）",
+            "chunk": 0,
+            "score": 14.013,
+            "snippet": "# 澜图智能机器人控制系统架构（旧版 v2.4）\n\n所属部门：研发中心\n作者：程知远\n创建时间：2023-08-01 09:00\n更新时间：2024-05-10 18:00\n版本号：v2.4\n文档类型：tech\n文档族：control_architecture\n生效日期：2024-05-10\n\n## 一、总体架构（旧版）\n\n旧版控制系统采用“工控机 + 运动控制卡”的两层结构：上位工控机负责任务调度与人机界面，下位运动控制卡负责插补与伺服闭环。现场总线采用 CANopen，总线周期 2 ms，单条总线最多连接 16"
+          },
+          {
+            "doc_id": "lantu_product_controller",
+            "title": "# LT-C800 运动控制器产品说明",
+            "chunk": 0,
+            "score": 13.435,
+            "snippet": "# LT-C800 运动控制器产品说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2025-04-08 09:00\n更新时间：2025-10-10 10:00\n版本号：v1.5\n文档类型：product\n文档族：product_controller\n生效日期：2025-10-10\n\n## 一、产品定位\n\nLT-C800 是澜图智能自研的新一代八轴运动控制器，面向机器人、工作站与小型产线，替代上一代 LT-C600。\n\n## 二、性能指标\n\n支持 8 轴联动，EtherCAT 总线周期 1 ms，插补周期 0.5"
+          },
+          {
+            "doc_id": "lantu_product_r_series",
+            "title": "# LT-R 系列六轴工业机器人产品手册",
+            "chunk": 0,
+            "score": 10.573,
+            "snippet": "# LT-R 系列六轴工业机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-01-15 09:00\n更新时间：2025-10-30 16:00\n版本号：v4.3\n文档类型：product\n文档族：product_r_series\n生效日期：2025-10-30\n\n## 一、产品定位\n\nLT-R 系列覆盖 6 kg 至 210 kg 负载，适用于搬运、焊接、装配、喷涂、打磨等工序，重复定位精度最高 ±0.02 mm，防护等级 IP54，可选 IP67。\n\n## 二、型号与参数\n\nLT-R6 负载 6"
+          },
+          {
+            "doc_id": "lantu_product_welding",
+            "title": "# LT-Weld-2000 机器人焊接工作站方案",
+            "chunk": 0,
+            "score": 6.036,
+            "snippet": "# LT-Weld-2000 机器人焊接工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-04-10 09:00\n更新时间：2025-05-22 10:00\n版本号：v2.8\n文档类型：product\n文档族：solution_welding\n生效日期：2025-05-22\n\n## 一、方案组成\n\n以 LT-R50 机器人为核心，集成 2,000A 焊接电源、双轴变位机、焊缝激光跟踪与烟尘净化系统，形成标准焊接工作站。\n\n## 二、工艺指标\n\n焊接速度 1.8 m/min，焊缝跟踪精度 ±0.15 m"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_controller",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_product_controller",
+        "title": "# LT-C800 运动控制器产品说明",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 437,
+        "text": "# LT-C800 运动控制器产品说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2025-04-08 09:00\n更新时间：2025-10-10 10:00\n版本号：v1.5\n文档类型：product\n文档族：product_controller\n生效日期：2025-10-10\n\n## 一、产品定位\n\nLT-C800 是澜图智能自研的新一代八轴运动控制器，面向机器人、工作站与小型产线，替代上一代 LT-C600。\n\n## 二、性能指标\n\n支持 8 轴联动，EtherCAT 总线周期 1 ms，插补周期 0.5 ms，内置 16 路数字输入、16 路数字输出与 4 路模拟输入。\n\n## 三、软件生态\n\n提供 LantuStudio 编程环境，支持梯形图、结构化文本与 Python 脚本；开放 OPC UA、Modbus TCP 与 ROS2 接口。\n\n## 四、安全功能\n\n符合 PL d 安全等级，支持安全限速、安全停止与区域监控，可选安全 PLC 模块。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_r_series",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_product_r_series",
+        "title": "# LT-R 系列六轴工业机器人产品手册",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 1028,
+        "text": "# LT-R 系列六轴工业机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-01-15 09:00\n更新时间：2025-10-30 16:00\n版本号：v4.3\n文档类型：product\n文档族：product_r_series\n生效日期：2025-10-30\n\n## 一、产品定位\n\nLT-R 系列覆盖 6 kg 至 210 kg 负载，适用于搬运、焊接、装配、喷涂、打磨等工序，重复定位精度最高 ±0.02 mm，防护等级 IP54，可选 IP67。\n\n## 二、型号与参数\n\nLT-R6 负载 6 kg、臂展 1,450 mm、重复精度 ±0.02 mm、本体重量 165 kg；LT-R12 负载 12 kg、臂展 1,550 mm、精度 ±0.03 mm；LT-R20 负载 20 kg、臂展 1,700 mm、精度 ±0.03 mm、重量 285 kg、最大速度 2.8 m/s。\n\n## 三、核心部件\n\n采用自研 LT-C800 控制器与 23 位绝对值编码器伺服电机，支持 EtherCAT 1 ms 总线周期，内置碰撞检测与安全限速功能。\n\n## 四、可靠性与维护\n\n平均无故障时间（MTBF）12,000 小时，减速器寿命 20,000 小时，建议每 4,000 小时更换润滑脂，每 12 个月进行精度校准。\n\n## 五、交付与认证\n\n标准交期 6-8 周，整机通过 CE、UL 认证，防护等级 IP54，工作温度 0-45℃。\n\n## LT-R 系列参数表\n\n| 型号 | 负载 | 臂展 | 重复精度 | 本体重量 | 最大速度 |\n| --- | --- | --- | --- | --- | --- |\n| LT-R6 | 6 kg | 1,450 mm | ±0.02 mm | 165 kg | 3.2 m/s |\n| LT-R12 | 12 kg | 1,550 mm | ±0.03 mm | 210 kg | 3.0 m/s |\n| LT-R20 | 20 kg | 1,700 mm | ±0.03 mm | 285 kg | 2.8 m/s |\n| LT-R50 | 50 kg | 2,100 mm | ±0.05 mm | 540 kg | 2.2 m/s |\n| LT-R210 | 210 kg | 2,650 mm | ±0.08 mm | 1,180 kg | 1.8 m/s |\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "区域监控",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_product_controller",
+            "title": "# LT-C800 运动控制器产品说明",
+            "chunk": 0,
+            "score": 12.703,
+            "snippet": "# LT-C800 运动控制器产品说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2025-04-08 09:00\n更新时间：2025-10-10 10:00\n版本号：v1.5\n文档类型：product\n文档族：product_controller\n生效日期：2025-10-10\n\n## 一、产品定位\n\nLT-C800 是澜图智能自研的新一代八轴运动控制器，面向机器人、工作站与小型产线，替代上一代 LT-C600。\n\n## 二、性能指标\n\n支持 8 轴联动，EtherCAT 总线周期 1 ms，插补周期 0.5"
+          },
+          {
+            "doc_id": "lantu_org_sales_regions",
+            "title": "# 澜图智能销售区域与渠道网络",
+            "chunk": 0,
+            "score": 4.735,
+            "snippet": "# 澜图智能销售区域与渠道网络\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-02-15 09:00\n更新时间：2025-12-05 15:00\n版本号：v3.1\n文档类型：org\n文档族：sales_regions\n生效日期：2025-12-05\n\n## 一、区域划分\n\n销售中心下设华东、华南、华北、西部、海外五个大区，覆盖 32 个国家和地区。华东大区总部苏州，华南大区总部东莞，华北大区总部北京，西部大区总部成都。\n\n## 二、团队规模\n\n销售团队 620 人，其中行业销售 280 人、渠道销售 16"
+          },
+          {
+            "doc_id": "lantu_org_reporting_lines",
+            "title": "# 澜图智能员工汇报关系与业务分工",
+            "chunk": 1,
+            "score": 3.838,
+            "snippet": "周敏仪担任 CFO，负责财务与资本运作。陈依然担任人力资源副总裁，负责人力资源体系。蒋雯担任薪酬绩效经理，负责薪酬、绩效与员工关系。邵岚担任法务合规总监，负责法务、合规与知识产权。\n\n## 五、跨部门业务分工\n\n周启航同时担任新一代控制器 LT-C900 项目负责人，项目成员包括林晓与赵一鸣。唐婧负责销售中心，华东区域由许博管理，上海区域重点客户由陈璐维护。方磊负责制造中心，苏州工厂由郭涛管理。\n\n## 六、汇报关系使用说明\n\n本文件中的“上级”均指行政汇报关系中的直接上级；跨部门项目中的项目负责人关系不改变行政汇"
+          },
+          {
+            "doc_id": "lantu_org_department_duties",
+            "title": "# 澜图智能一级部门职责与编制",
+            "chunk": 1,
+            "score": 3.205,
+            "snippet": "| 部门 | 负责人 | 编制（人） | 主要职责 |\n| --- | --- | --- | --- |\n| 研发中心 | 沈亦舟 | 1,286 | 本体/控制器/视觉/具身智能研发 |\n| 产品部 | 孟凡 | 96 | 产品规划与生命周期管理 |\n| 销售中心 | 罗嘉树 | 620 | 区域销售与渠道 |\n| 客户成功部 | 林可 | 86 | 重点客户经营 |\n| 供应链中心 | 韩立恒 | 210 | 采购、计划、物流 |\n| 制造中心 | 韩立恒 | 980 | 三大基地生产 |\n| 质量部 | 潘"
+          },
+          {
+            "doc_id": "lantu_org_reporting_lines",
+            "title": "# 澜图智能员工汇报关系与业务分工",
+            "chunk": 0,
+            "score": 2.972,
+            "snippet": "# 澜图智能员工汇报关系与业务分工\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-02-10 09:00\n更新时间：2025-09-01 10:00\n版本号：v1.2\n文档类型：org\n文档族：org_reporting_lines\n生效日期：2025-09-01\n\n## 一、研发体系汇报链\n\n顾承澜是沈亦舟的上级。沈亦舟是程知远的上级。程知远是周启航的上级。周启航是林晓的上级。林晓是赵一鸣的上级。\n\n沈亦舟担任 CTO，负责研发体系。程知远担任研发中心总经理，负责研发中心整体经营管理。周启航担任控制器"
+          }
+        ]
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_product_controller",
+      "lantu_product_r_series"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.123,
+    "number_recall": 0.0
+  }
+}

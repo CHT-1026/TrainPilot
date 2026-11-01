@@ -1,0 +1,25 @@
+{
+  "qid": "M1510",
+  "question": "用户：客户要单独买一台 LT-R20 的减速器备件，多少钱？\n助手：减速器 RV-40E 单价 12,800 元，48 小时发货，质保 12 个月。\n用户：那换成 LT-R12 的减速器呢？",
+  "question_type": "数值参数检索",
+  "rounds": [],
+  "tool_calls": [],
+  "answer": null,
+  "status": "api_error",
+  "tokens": 0,
+  "started_at": "2026-11-01T03:05:30",
+  "error": "HTTPError: HTTP Error 503: Service Unavailable",
+  "elapsed_seconds": 0.0,
+  "tool_calls_detail": [],
+  "model_label": "D",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

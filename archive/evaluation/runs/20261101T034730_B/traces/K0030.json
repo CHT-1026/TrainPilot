@@ -1,0 +1,211 @@
+{
+  "qid": "K0030",
+  "question": "机器视觉算法平台写「单帧推理延迟 35 ms」，边缘计算 LT-Edge 写「视觉推理延迟低于 40 ms」，数字孪生平台写「数据刷新延迟低于 80 ms」，AMR 手册写「任务分配延迟低于 80 ms」。请判断这四个延迟数字是否互相矛盾，并说明它们分别衡量什么。",
+  "question_type": "矛盾与例外识别",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"延迟\",\"top_k\":10}}",
+      "usage": {
+        "prompt_tokens": 431,
+        "total_tokens": 768,
+        "completion_tokens": 337,
+        "completion_tokens_details": {
+          "reasoning_tokens": 313,
+          "text_tokens": 337
+        }
+      },
+      "seconds": 3.438
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_tech_edge\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 1396,
+        "total_tokens": 2155,
+        "completion_tokens": 759,
+        "completion_tokens_details": {
+          "reasoning_tokens": 725,
+          "text_tokens": 759
+        }
+      },
+      "seconds": 5.531
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_product_amr\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 1767,
+        "total_tokens": 2363,
+        "completion_tokens": 596,
+        "completion_tokens_details": {
+          "reasoning_tokens": 562,
+          "text_tokens": 596
+        }
+      },
+      "seconds": 4.953
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"这四个延迟数字**不互相矛盾**，因为它们分别衡量了不同层级和场景下的性能指标：\\n\\n1. **机器视觉算法平台（35 ms）**：衡量的是**算法模型本身的计算耗时**（单帧推理），即处理一张图片所需的纯计算时间。\\n2. **边缘计算 LT-Edge（低于 40 ms）**：衡量的是**边缘计算单元的视觉推理性能**。该指标通常包含算法计算及必要的预处理/后处理时间。由于 35 ms < 40 ms，算法平台的性能完全满足边缘计算平台的指标要求，两者是一致的。\\n3. **数字孪生平台（低于 80 ms）**：衡量的是**数据刷新延迟**，即从数据采集到在孪生界面上完成同步显示的端到端时间。这涉及网络传输、数据处理和渲染，属于应用层指标，因此数值较大。\\n4. **AMR 手册（低于 80 ms）**：衡量的是**任务分配延迟**，即调度系统接收指令并分发给机器人的响应时间，属于调度系统的性能指标。\\n\\n综上，这些指标分别对应算法层、边缘计算层、应用层和调度层，数值大小符合系统层级递进的逻辑，不存在矛盾。\",\"citations\":[\"lantu_tech_vision\", \"lantu_tech_edge\", \"lantu_product_digital_twin\", \"lantu_product_amr\"], \"evidence\":[\"lantu_tech_vision#0\", \"lantu_tech_edge#0\", \"lantu_product_digital_twin#0\", \"lantu_product_amr#0\"]}",
+      "usage": {
+        "prompt_tokens": 2225,
+        "total_tokens": 3565,
+        "completion_tokens": 1340,
+        "completion_tokens_details": {
+          "reasoning_tokens": 988,
+          "text_tokens": 1340
+        }
+      },
+      "seconds": 9.907
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "延迟",
+        "top_k": 10
+      },
+      "result_sha": "f44214bc8a12cced0da632b12154c04526b187d0901695a60aef407c01a1139b",
+      "result_chars": 1558,
+      "hits": 4
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_edge",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "a3176a5f1357e0dfae98032ebee356fa47be602410eae00486e20bba73af3c08",
+      "result_chars": 557,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_amr",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "547fc67df7c235bab6fdd7de0529730e0286b17ec46d4ba4b850d306a74ca286",
+      "result_chars": 669,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "这四个延迟数字**不互相矛盾**，因为它们分别衡量了不同层级和场景下的性能指标：\n\n1. **机器视觉算法平台（35 ms）**：衡量的是**算法模型本身的计算耗时**（单帧推理），即处理一张图片所需的纯计算时间。\n2. **边缘计算 LT-Edge（低于 40 ms）**：衡量的是**边缘计算单元的视觉推理性能**。该指标通常包含算法计算及必要的预处理/后处理时间。由于 35 ms < 40 ms，算法平台的性能完全满足边缘计算平台的指标要求，两者是一致的。\n3. **数字孪生平台（低于 80 ms）**：衡量的是**数据刷新延迟**，即从数据采集到在孪生界面上完成同步显示的端到端时间。这涉及网络传输、数据处理和渲染，属于应用层指标，因此数值较大。\n4. **AMR 手册（低于 80 ms）**：衡量的是**任务分配延迟**，即调度系统接收指令并分发给机器人的响应时间，属于调度系统的性能指标。\n\n综上，这些指标分别对应算法层、边缘计算层、应用层和调度层，数值大小符合系统层级递进的逻辑，不存在矛盾。",
+    "citations": [
+      "lantu_tech_vision",
+      "lantu_tech_edge",
+      "lantu_product_digital_twin",
+      "lantu_product_amr"
+    ],
+    "evidence": [
+      "lantu_tech_vision#0",
+      "lantu_tech_edge#0",
+      "lantu_product_digital_twin#0",
+      "lantu_product_amr#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 8851,
+  "started_at": "2026-11-01T05:54:39",
+  "elapsed_seconds": 23.83,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "延迟",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_tech_edge",
+            "title": "# 澜图智能边缘计算产品 LT-Edge 说明",
+            "chunk": 0,
+            "score": 3.827,
+            "snippet": "# 澜图智能边缘计算产品 LT-Edge 说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2025-01-10 09:00\n更新时间：2025-06-12 11:00\n版本号：v1.3\n文档类型：tech\n文档族：edge_computing\n生效日期：2025-06-12\n\n## 一、产品定位\n\nLT-Edge 是面向产线的边缘计算单元，承载视觉推理、数据采集与协议转换，支持断网续传。\n\n## 二、硬件规格\n\n8 核 ARM 处理器，32 TOPS NPU，16 GB 内存，256 GB 存储，支持 4 路千"
+          },
+          {
+            "doc_id": "lantu_tech_vision",
+            "title": "# 澜图智能机器视觉算法平台说明",
+            "chunk": 0,
+            "score": 3.742,
+            "snippet": "# 澜图智能机器视觉算法平台说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-08-01 09:00\n更新时间：2025-11-05 15:00\n版本号：v3.1\n文档类型：tech\n文档族：vision_algorithm\n生效日期：2025-11-05\n\n## 一、算法能力\n\n覆盖 2D/3D 定位、缺陷检测、OCR、分割与无序抓取，支持小样本学习与在线增量训练。\n\n## 二、性能指标\n\n3D 测量精度 0.05 mm，缺陷检测召回率 99.2%，误检率 0.8%，单帧推理延迟 35 ms。\n\n##"
+          },
+          {
+            "doc_id": "lantu_product_digital_twin",
+            "title": "# LantuTwin 数字孪生平台介绍",
+            "chunk": 0,
+            "score": 3.569,
+            "snippet": "# LantuTwin 数字孪生平台介绍\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-09-01 09:00\n更新时间：2025-06-30 16:00\n版本号：v3.0\n文档类型：product\n文档族：product_digital_twin\n生效日期：2025-06-30\n\n## 一、平台定位\n\nLantuTwin 3.0 是面向智能工厂规划、调试与运维的数字孪生平台，支持机器人、产线与物流系统的虚实同步。\n\n## 二、核心能力\n\n单项目支持 500 台设备接入，数据刷新延迟低于 80 ms，仿真"
+          },
+          {
+            "doc_id": "lantu_product_amr",
+            "title": "# LT-AMR 自主移动机器人产品手册",
+            "chunk": 0,
+            "score": 3.549,
+            "snippet": "# LT-AMR 自主移动机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-05-10 09:00\n更新时间：2025-08-20 15:00\n版本号：v3.4\n文档类型：product\n文档族：product_amr\n生效日期：2025-08-20\n\n## 一、产品系列\n\nLT-AMR-500 负载 500 kg、速度 1.8 m/s、续航 8 小时；LT-AMR-1000 负载 1,000 kg、速度 1.5 m/s、续航 8 小时；LT-AMR-2000 负载 2,000 kg、速度 1.2"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_edge",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_tech_edge",
+        "title": "# 澜图智能边缘计算产品 LT-Edge 说明",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 386,
+        "text": "# 澜图智能边缘计算产品 LT-Edge 说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2025-01-10 09:00\n更新时间：2025-06-12 11:00\n版本号：v1.3\n文档类型：tech\n文档族：edge_computing\n生效日期：2025-06-12\n\n## 一、产品定位\n\nLT-Edge 是面向产线的边缘计算单元，承载视觉推理、数据采集与协议转换，支持断网续传。\n\n## 二、硬件规格\n\n8 核 ARM 处理器，32 TOPS NPU，16 GB 内存，256 GB 存储，支持 4 路千兆网口与 2 路 CAN。\n\n## 三、软件能力\n\n预置 LantuEdge OS，支持 Docker 容器、模型 OTA、远程运维与安全启动。\n\n## 四、应用效果\n\n视觉推理延迟低于 40 ms，数据本地留存 30 天，云端带宽成本降低 62%。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_amr",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_product_amr",
+        "title": "# LT-AMR 自主移动机器人产品手册",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 499,
+        "text": "# LT-AMR 自主移动机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-05-10 09:00\n更新时间：2025-08-20 15:00\n版本号：v3.4\n文档类型：product\n文档族：product_amr\n生效日期：2025-08-20\n\n## 一、产品系列\n\nLT-AMR-500 负载 500 kg、速度 1.8 m/s、续航 8 小时；LT-AMR-1000 负载 1,000 kg、速度 1.5 m/s、续航 8 小时；LT-AMR-2000 负载 2,000 kg、速度 1.2 m/s、续航 10 小时。\n\n## 二、导航与安全\n\n采用激光 SLAM + 视觉融合导航，定位精度 ±10 mm，支持 360° 避障、3D 相机与安全激光，符合 ISO 3691-4 标准。\n\n## 三、调度能力\n\nLantuFleet 调度系统单仓支持 500 台 AMR 协同，任务分配延迟低于 80 ms，支持与 WMS、MES 对接。\n\n## 四、行业应用\n\n已应用于物流仓储、半导体晶圆搬运、锂电物料配送与汽车零部件线边物流，洁净室版本达到 Class 10。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_tech_vision",
+      "lantu_tech_edge",
+      "lantu_product_digital_twin",
+      "lantu_product_amr"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.082,
+    "number_recall": 0.0
+  }
+}

@@ -1,0 +1,223 @@
+{
+  "qid": "G0019",
+  "question": "关节模组集成了哪些部件？集成后带来了什么改进？",
+  "question_type": "事实检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>关节模组 集成 部件</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 60,
+        "prompt_tokens": 356,
+        "total_tokens": 416,
+        "completion_tokens_details": {
+          "reasoning_tokens": 24
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 4.734
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"关节模组 集成 部件 改进\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 40,
+        "prompt_tokens": 429,
+        "total_tokens": 469,
+        "completion_tokens_details": {
+          "reasoning_tokens": 6
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.235
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_tech_servo\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 2938,
+        "total_tokens": 2986,
+        "completion_tokens_details": {
+          "reasoning_tokens": 16
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 1.046
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"关节模组集成了谐波减速器、无框电机、编码器与驱动器。集成后带来的改进：重量降低 18%，装配工时减少 35%。\",\"citations\":[\"lantu_tech_servo\"],\"evidence\":[\"lantu_tech_servo#片段3\"]}",
+      "usage": {
+        "completion_tokens": 83,
+        "prompt_tokens": 3344,
+        "total_tokens": 3427,
+        "completion_tokens_details": {
+          "reasoning_tokens": 7
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2880
+        }
+      },
+      "seconds": 6.797
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "关节模组 集成 部件 改进",
+        "top_k": 10
+      },
+      "result_sha": "a7088ea6e4450fafe504bb598e7562791cc7a962c0e3c491c306ac818f3bdeae",
+      "result_chars": 3933,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_servo",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "a6b92b440a939fa5b870013dc12215a48ac2849cce14bf1f14d372e24861c767",
+      "result_chars": 542,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "关节模组集成了谐波减速器、无框电机、编码器与驱动器。集成后带来的改进：重量降低 18%，装配工时减少 35%。",
+    "citations": [
+      "lantu_tech_servo"
+    ],
+    "evidence": [
+      "lantu_tech_servo#片段3"
+    ]
+  },
+  "status": "answered",
+  "tokens": 7298,
+  "started_at": "2026-11-01T05:03:10",
+  "elapsed_seconds": 13.81,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "关节模组 集成 部件 改进",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_tech_servo",
+            "title": "# 澜图智能伺服驱动与关节模组技术说明",
+            "chunk": 0,
+            "score": 26.355,
+            "snippet": "# 澜图智能伺服驱动与关节模组技术说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-07-01 09:00\n更新时间：2025-08-25 10:00\n版本号：v2.6\n文档类型：tech\n文档族：servo_drive\n生效日期：2025-08-25\n\n## 一、产品范围\n\n自研 400W-7.5kW 伺服驱动器与关节模组，覆盖 LT-R 与 LT-S 全系列，自研比例 61%。\n\n## 二、关键指标\n\n电流环带宽 2.5 kHz，速度环 1.2 kHz，位置精度 23 位，过载能力 300% 持续 "
+          },
+          {
+            "doc_id": "lantu_product_digital_twin",
+            "title": "# LantuTwin 数字孪生平台介绍",
+            "chunk": 0,
+            "score": 5.52,
+            "snippet": "# LantuTwin 数字孪生平台介绍\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-09-01 09:00\n更新时间：2025-06-30 16:00\n版本号：v3.0\n文档类型：product\n文档族：product_digital_twin\n生效日期：2025-06-30\n\n## 一、平台定位\n\nLantuTwin 3.0 是面向智能工厂规划、调试与运维的数字孪生平台，支持机器人、产线与物流系统的虚实同步。\n\n## 二、核心能力\n\n单项目支持 500 台设备接入，数据刷新延迟低于 80 ms，仿真"
+          },
+          {
+            "doc_id": "lantu_hr_performance",
+            "title": "# 澜图智能绩效管理制度",
+            "chunk": 0,
+            "score": 5.072,
+            "snippet": "# 澜图智能绩效管理制度\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v3.4\n文档类型：hr\n文档族：performance\n生效日期：2025-06-01\n\n## 一、考核周期\n\n实行季度考核与年度考核，季度占 40%，年度占 60%。试用期员工参加转正考核。\n\n## 二、考核维度\n\n业绩目标 60%、价值观 20%、能力成长 20%。销售岗位业绩权重 70%。\n\n## 三、绩效分布\n\nS 级 10%、A 级 30%、B "
+          },
+          {
+            "doc_id": "lantu_strategy_quality_system",
+            "title": "澜图智能质量管理体系手册",
+            "chunk": 0,
+            "score": 4.778,
+            "snippet": "澜图智能质量管理体系手册\n所属部门：质量部\n作者：潘文博\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v4.2\n文档类型：strategy\n文档族：quality_system\n生效日期：2025-06-01\n一、质量方针\n以客户为中心，以零缺陷为目标，持续改进，追求卓越。公司通过 ISO 9001、IATF 16949 与 ISO 13485\n认证。\n二、质量目标\n2025 年一次交检合格率不低于 98.5%，客户投诉不超过 6 起，MTBF 不低于 12,00"
+          },
+          {
+            "doc_id": "lantu_support_spare_parts_price",
+            "title": "﻿适配机型,备件名称,单价（元）,发货时效,质保期",
+            "chunk": 0,
+            "score": 4.637,
+            "snippet": "﻿适配机型,备件名称,单价（元）,发货时效,质保期\nLT-R20,减速器 RV-40E,\"12,800\",48 小时,12 个月\nLT-R20,伺服驱动器 LT-D4,\"8,600\",48 小时,18 个月\nLT-R20,示教器 LT-Pad3,\"5,200\",48 小时,12 个月\nLT-R12,减速器 RV-20E,\"7,900\",48 小时,12 个月\nLT-R12,伺服电机 750W,\"3,600\",48 小时,18 个月\nLT-R6,谐波减速器 CSF-17,\"6,400\",72 小时,12 个月\nLT-"
+          },
+          {
+            "doc_id": "lantu_case_02_lanyue",
+            "title": "# 客户案例：澜岳汽车零部件白车身焊装项目",
+            "chunk": 0,
+            "score": 4.097,
+            "snippet": "# 客户案例：澜岳汽车零部件白车身焊装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_lanyue\n生效日期：2024-12-20\n\n## 一、客户背景\n\n澜岳汽车零部件位于上海，主营汽车零部件业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追"
+          },
+          {
+            "doc_id": "lantu_sales_customer_list",
+            "title": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态",
+            "chunk": 0,
+            "score": 3.56,
+            "snippet": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态\n恒芯动力电池,动力电池,常州,电芯叠片与物流,\"21,600\",2025,已验收\n澜岳汽车零部件,汽车零部件,上海,白车身焊装,\"14,800\",2024,已验收\n曜阳光能,光伏,合肥,电池片串焊,\"9,800\",2025,已验收\n星禾电子,3C 电子,昆山,精密组装,\"12,500\",2024,已验收\n海翎家电,家电,顺德,喷涂与打磨,\"6,300\",2025,已验收\n晶拓微电子,半导体,无锡,晶圆搬运,\"7,400\",2025,已验收\n麦丰食品,食品,漯河"
+          },
+          {
+            "doc_id": "lantu_finance_revenue_breakdown",
+            "title": "﻿维度,分类,收入（亿元）,占比,同比",
+            "chunk": 0,
+            "score": 3.362,
+            "snippet": "﻿维度,分类,收入（亿元）,占比,同比\n产品线,机器人本体,19.84,46.5%,+18.2%\n产品线,智能产线,14.92,35.0%,+21.6%\n产品线,工业软件与服务,5.21,12.2%,+26.8%\n产品线,备件及其他,2.66,6.3%,+9.4%\n行业,动力电池,13.64,32.0%,+24.1%\n行业,汽车及零部件,10.23,24.0%,+11.5%\n行业,半导体,5.12,12.0%,+38.6%\n行业,光伏,4.26,10.0%,+6.2%\n行业,3C 电子,3.41,8.0%,+14."
+          },
+          {
+            "doc_id": "lantu_support_case_hengxin",
+            "title": "# 恒芯动力电池 48 小时复产服务案例",
+            "chunk": 0,
+            "score": 3.338,
+            "snippet": "# 恒芯动力电池 48 小时复产服务案例\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2025-04-10 09:00\n更新时间：2025-04-12 18:00\n版本号：v1.0\n文档类型：support\n文档族：service_case_hengxin\n生效日期：2025-04-12\n\n## 一、事件经过\n\n2025 年 4 月 8 日凌晨，恒芯动力电池 3 号叠片线报伺服过载停机，影响两条线体。客户通过 400 热线报修。\n\n## 二、响应过程\n\n远程诊断中心 12 分钟内定位为驱动器散热风扇故障，指导客户"
+          },
+          {
+            "doc_id": "lantu_hr_resignation",
+            "title": "# 澜图智能离职与交接管理办法",
+            "chunk": 0,
+            "score": 3.326,
+            "snippet": "# 澜图智能离职与交接管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-15 09:00\n更新时间：2025-05-20 09:00\n版本号：v2.4\n文档类型：hr\n文档族：resignation\n生效日期：2025-05-20\n\n## 一、离职申请\n\n正式员工提前 30 日、试用期员工提前 3 日提交书面离职申请；关键岗位须提前 60 日。\n\n## 二、离职面谈\n\nHR 在收到申请后 3 个工作日内安排面谈，了解离职原因并记录改进建议；核心人才可启动挽留。\n\n## 三、工作交接\n\n交接内"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_servo",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_tech_servo",
+        "title": "# 澜图智能伺服驱动与关节模组技术说明",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 374,
+        "text": "# 澜图智能伺服驱动与关节模组技术说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-07-01 09:00\n更新时间：2025-08-25 10:00\n版本号：v2.6\n文档类型：tech\n文档族：servo_drive\n生效日期：2025-08-25\n\n## 一、产品范围\n\n自研 400W-7.5kW 伺服驱动器与关节模组，覆盖 LT-R 与 LT-S 全系列，自研比例 61%。\n\n## 二、关键指标\n\n电流环带宽 2.5 kHz，速度环 1.2 kHz，位置精度 23 位，过载能力 300% 持续 3 秒。\n\n## 三、关节模组\n\n集成谐波减速器、无框电机、编码器与驱动器，重量降低 18%，装配工时减少 35%。\n\n## 四、测试与认证\n\n通过 1,000 小时高温老化、振动与 EMC 测试，符合 CE 与 UL 要求。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_tech_servo"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.829,
+    "number_recall": 0.0
+  }
+}

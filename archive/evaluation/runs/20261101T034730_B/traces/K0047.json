@@ -1,0 +1,255 @@
+{
+  "qid": "K0047",
+  "question": "研发体系文档写「累计有效专利 1,286 件，其中发明专利 412 件……2025 年新增授权专利 216 件」；专利布局文档写「累计有效专利 1,286 件，其中发明专利 412 件、实用新型 726 件、外观设计 148 件；软件著作权 168 项」「PCT 国际专利申请 36 件」「发明人奖励 5,000-30,000 元」「年度知识产权预算 1,200 万元」；法务合规部由邵岚负责，研发中心由沈亦舟负责。请判断：研发体系文档与专利布局文档在专利总数上是否存在冲突？两份文档在知识产权管理上的分工如何理解？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"累计有效专利 1,286 件 研发体系文档 专利布局文档\",\"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 527,
+        "total_tokens": 1326,
+        "completion_tokens": 799,
+        "completion_tokens_details": {
+          "reasoning_tokens": 758,
+          "text_tokens": 799
+        }
+      },
+      "seconds": 7.265
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_tech_patents\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 1748,
+        "total_tokens": 2736,
+        "completion_tokens": 988,
+        "completion_tokens_details": {
+          "reasoning_tokens": 953,
+          "text_tokens": 988
+        }
+      },
+      "seconds": 7.36
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_org_rd_system\",\"offset\":400,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 2136,
+        "total_tokens": 3597,
+        "completion_tokens": 1461,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1425,
+          "text_tokens": 1461
+        }
+      },
+      "seconds": 11.265
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_org_rd_system\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 2328,
+        "total_tokens": 3776,
+        "completion_tokens": 1448,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1414,
+          "text_tokens": 1448
+        }
+      },
+      "seconds": 10.516
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"两份文档在专利总数上**不存在冲突**。两份文档均明确记载累计有效专利为 1,286 件，其中发明专利 412 件，软件著作权 168 项。专利布局文档进一步提供了细分数据（实用新型 726 件、外观设计 148 件），经核算 412+726+148=1,286，数据完全一致。\\n\\n关于知识产权管理的分工理解如下：\\n1. **法务合规部（负责人：邵岚）**：主导知识产权的**统筹管理与风控**。负责制定知识产权战略（如五大方向布局、PCT 申请）、建立管理制度（如发明人奖励标准）、把控预算（年度 1,200 万元）以及进行风险防控（FTO 检索与侵权评估）。\\n2. **研发中心（负责人：沈亦舟）**：作为知识产权的**核心产出部门**。依托 IPD 研发流程和重点项目（如 LT-R20 Pro 等）进行技术创新，产生专利成果（如 2025 年新增授权 216 件），并向公司汇报研发绩效。\", \"citations\": [\"lantu_tech_patents\", \"lantu_org_rd_system\"], \"evidence\": [\"lantu_tech_patents#0\", \"lantu_org_rd_system#0\"]}",
+      "usage": {
+        "prompt_tokens": 2790,
+        "total_tokens": 4848,
+        "completion_tokens": 2058,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1755,
+          "text_tokens": 2058
+        }
+      },
+      "seconds": 16.031
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "累计有效专利 1,286 件 研发体系文档 专利布局文档",
+        "top_k": 5
+      },
+      "result_sha": "a111f1a3c5fd6821cbfc652806a57b8c7cce873788116639a8462c6415ebfb2d",
+      "result_chars": 1947,
+      "hits": 5
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_patents",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "d0a230ea259cc2e27851b1b57ff41bd0aceee4eacf513aa78d205422647f4628",
+      "result_chars": 559,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_rd_system",
+        "offset": 400,
+        "limit": 4000
+      },
+      "result_sha": "f26ccfc86fba73f0098816589423927fb98ad5d58824f17f0a89a70755a17a6d",
+      "result_chars": 258,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_rd_system",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "4f16c99d9331b7a74c227587b61d99cae0d201b89f25fd252dab03b94d5d6fd9",
+      "result_chars": 681,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "两份文档在专利总数上**不存在冲突**。两份文档均明确记载累计有效专利为 1,286 件，其中发明专利 412 件，软件著作权 168 项。专利布局文档进一步提供了细分数据（实用新型 726 件、外观设计 148 件），经核算 412+726+148=1,286，数据完全一致。\n\n关于知识产权管理的分工理解如下：\n1. **法务合规部（负责人：邵岚）**：主导知识产权的**统筹管理与风控**。负责制定知识产权战略（如五大方向布局、PCT 申请）、建立管理制度（如发明人奖励标准）、把控预算（年度 1,200 万元）以及进行风险防控（FTO 检索与侵权评估）。\n2. **研发中心（负责人：沈亦舟）**：作为知识产权的**核心产出部门**。依托 IPD 研发流程和重点项目（如 LT-R20 Pro 等）进行技术创新，产生专利成果（如 2025 年新增授权 216 件），并向公司汇报研发绩效。",
+    "citations": [
+      "lantu_tech_patents",
+      "lantu_org_rd_system"
+    ],
+    "evidence": [
+      "lantu_tech_patents#0",
+      "lantu_org_rd_system#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 16283,
+  "started_at": "2026-11-01T06:00:41",
+  "elapsed_seconds": 52.44,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "累计有效专利 1,286 件 研发体系文档 专利布局文档",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_tech_patents",
+            "title": "# 澜图智能知识产权与专利布局",
+            "chunk": 0,
+            "score": 45.952,
+            "snippet": "# 澜图智能知识产权与专利布局\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-04-26 09:00\n更新时间：2025-12-18 15:00\n版本号：v2.8\n文档类型：tech\n文档族：patent_portfolio\n生效日期：2025-12-18\n\n## 一、专利总量\n\n累计有效专利 1,286 件，其中发明专利 412 件、实用新型 726 件、外观设计 148 件；软件著作权 168 项。\n\n## 二、重点布局\n\n运动控制、伺服驱动、机器视觉、力控与具身智能五大方向；PCT 国际专利申请 3"
+          },
+          {
+            "doc_id": "lantu_org_rd_system",
+            "title": "# 澜图智能研发体系与投入",
+            "chunk": 0,
+            "score": 37.449,
+            "snippet": "# 澜图智能研发体系与投入\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-02-01 09:00\n更新时间：2026-01-12 10:00\n版本号：v5.0\n文档类型：org\n文档族：rd_system\n生效日期：2026-01-12\n\n## 一、研发架构\n\n研发中心下设机器人本体研究所、控制器研究所、机器视觉研究所、工艺应用研究所、具身智能研究所，另设测试中心与可靠性实验室。\n\n## 二、人员结构\n\n研发人员 1,286 人，其中博士 48 人、硕士 612 人，35 岁以下占比 61%。2025 年"
+          },
+          {
+            "doc_id": "lantu_investor_overview",
+            "title": "# 澜图智能投资者关系概览",
+            "chunk": 0,
+            "score": 30.1,
+            "snippet": "# 澜图智能投资者关系概览\n\n所属部门：董事会办公室\n作者：周敏仪\n创建时间：2024-03-20 09:00\n更新时间：2026-01-10 17:00\n版本号：v4.1\n文档类型：company\n文档族：investor_overview\n生效日期：2026-01-10\n\n## 一、基本信息\n\n公司股票代码 688719，总股本 4.2 亿股，2025 年末总市值约 168 亿元。2025 年度拟每 10 股派发现金红利 3.2 元（含税）。\n\n## 二、经营数据\n\n2025 年营业收入 42.63 亿元，归母"
+          },
+          {
+            "doc_id": "lantu_org_chart_2025",
+            "title": "# 澜图智能组织架构（2025版）",
+            "chunk": 0,
+            "score": 11.982,
+            "snippet": "# 澜图智能组织架构（2025版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-03-20 09:00\n更新时间：2025-04-10 10:00\n版本号：v2.0\n文档类型：org\n文档族：org_chart\n生效日期：2025-04-01\n\n## 一、一级部门\n\n2025 年 4 月起公司设 12 个一级部门：研发中心、产品部、销售中心、客户成功部、供应链中心、制造中心、质量部、财务部、人力资源部、法务合规部、信息技术部、售后服务部。售后服务部由销售中心下属部门升级为一级部门。\n\n## 二、研发体"
+          },
+          {
+            "doc_id": "lantu_support_training_certification",
+            "title": "# 澜图智能服务工程师培训与认证体系",
+            "chunk": 0,
+            "score": 9.603,
+            "snippet": "# 澜图智能服务工程师培训与认证体系\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-06-01 09:00\n更新时间：2025-08-08 10:00\n版本号：v2.4\n文档类型：support\n文档族：service_certification\n生效日期：2025-08-08\n\n## 一、认证等级\n\n服务工程师分为 L1 初级、L2 中级、L3 高级三级，分别对应常规维护、故障维修与整线调试。\n\n## 二、培训内容\n\nL1：安全、保养、备件更换（5 天）；L2：电气与控制系统维修（10 天）；L3：整线"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_patents",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_tech_patents",
+        "title": "# 澜图智能知识产权与专利布局",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 393,
+        "text": "# 澜图智能知识产权与专利布局\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-04-26 09:00\n更新时间：2025-12-18 15:00\n版本号：v2.8\n文档类型：tech\n文档族：patent_portfolio\n生效日期：2025-12-18\n\n## 一、专利总量\n\n累计有效专利 1,286 件，其中发明专利 412 件、实用新型 726 件、外观设计 148 件；软件著作权 168 项。\n\n## 二、重点布局\n\n运动控制、伺服驱动、机器视觉、力控与具身智能五大方向；PCT 国际专利申请 36 件。\n\n## 三、管理体系\n\n执行《企业知识产权管理规范》GB/T 29490，设专利评审委员会，发明人奖励 5,000-30,000 元。\n\n## 四、风险防控\n\n新产品上市前开展 FTO 检索，重点市场进行侵权风险评估；年度知识产权预算 1,200 万元。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_rd_system",
+        "offset": 400,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_org_rd_system",
+        "title": "# 澜图智能研发体系与投入",
+        "offset": 400,
+        "limit": 4000,
+        "total_chars": 512,
+        "text": "利 412 件；软件著作权 168 项；2025 年新增授权专利 216 件。\n\n## 五、研发流程\n\n执行 IPD 集成产品开发流程，分为概念、计划、开发、验证、发布、生命周期管理六个阶段，关键节点由产品决策委员会评审。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_rd_system",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_org_rd_system",
+        "title": "# 澜图智能研发体系与投入",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 512,
+        "text": "# 澜图智能研发体系与投入\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-02-01 09:00\n更新时间：2026-01-12 10:00\n版本号：v5.0\n文档类型：org\n文档族：rd_system\n生效日期：2026-01-12\n\n## 一、研发架构\n\n研发中心下设机器人本体研究所、控制器研究所、机器视觉研究所、工艺应用研究所、具身智能研究所，另设测试中心与可靠性实验室。\n\n## 二、人员结构\n\n研发人员 1,286 人，其中博士 48 人、硕士 612 人，35 岁以下占比 61%。2025 年研发投入 5.87 亿元，占营业收入 13.8%。\n\n## 三、重点项目\n\nLT-R20 Pro 本体轻量化、LT-C800 控制器、具身智能操作模型 Lantu-VLA、数字孪生平台 LantuTwin 3.0。\n\n## 四、知识产权\n\n累计有效专利 1,286 件，其中发明专利 412 件；软件著作权 168 项；2025 年新增授权专利 216 件。\n\n## 五、研发流程\n\n执行 IPD 集成产品开发流程，分为概念、计划、开发、验证、发布、生命周期管理六个阶段，关键节点由产品决策委员会评审。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_tech_patents",
+      "lantu_org_rd_system"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.147,
+    "number_recall": 0.4
+  }
+}

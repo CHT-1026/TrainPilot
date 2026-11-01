@@ -1,0 +1,245 @@
+{
+  "qid": "E0044",
+  "question": "2025 版 SLA 在服务考核上比 2024 版新增了什么要求？",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"SLA 2025 2024 服务考核\"}}",
+      "usage": {
+        "prompt_tokens": 373,
+        "total_tokens": 538,
+        "completion_tokens": 165,
+        "completion_tokens_details": {
+          "reasoning_tokens": 133,
+          "text_tokens": 165
+        }
+      },
+      "seconds": 1.734
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_support_sla_2024\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 2740,
+        "total_tokens": 2985,
+        "completion_tokens": 245,
+        "completion_tokens_details": {
+          "reasoning_tokens": 206,
+          "text_tokens": 245
+        }
+      },
+      "seconds": 2.235
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_support_sla_2025\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 3134,
+        "total_tokens": 3405,
+        "completion_tokens": 271,
+        "completion_tokens_details": {
+          "reasoning_tokens": 232,
+          "text_tokens": 271
+        }
+      },
+      "seconds": 2.672
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据《澜图智能服务等级协议》的对比，2025 版在“服务考核”章节相比 2024 版主要新增了以下两点要求：\\n\\n1. **新增考核指标**：2025 版在原有的“响应及时率”和“首次修复率”基础上，新增了**“客户满意度”**作为每月统计的指标。\\n2. **新增处罚措施**：对于未达标的服务商，2025 版除了原有的“扣减服务费”外，还新增了**“限期整改”**的要求。\\n\\n具体条款对比如下：\\n*   **2024 版**：“每月统计响应及时率与首次修复率，未达标的服务商扣减服务费。”\\n*   **2025 版**：“每月统计响应及时率、首次修复率与客户满意度，未达标的服务商扣减服务费并限期整改。”\",\"citations\":[\"lantu_support_sla_2024\",\"lantu_support_sla_2025\"],\"evidence\":[\"lantu_support_sla_2024#3\",\"lantu_support_sla_2025#3\"]}",
+      "usage": {
+        "prompt_tokens": 3573,
+        "total_tokens": 4439,
+        "completion_tokens": 866,
+        "completion_tokens_details": {
+          "reasoning_tokens": 601,
+          "text_tokens": 866
+        }
+      },
+      "seconds": 7.281
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "SLA 2025 2024 服务考核"
+      },
+      "result_sha": "7af75f81434c7db9da85a71d3d38d32ffafe3072de90b140c3ac604161225f19",
+      "result_chars": 3910,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_sla_2024",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "9f4c2c9d260d7b154ea4d04e3ee5784f3ae9648c00971463f1c02316cab72a80",
+      "result_chars": 545,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_sla_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "af8cbc14afa842ef7c71e0de95dfc2ee6c39002e37a09d1c893850c37a03f553",
+      "result_chars": 608,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《澜图智能服务等级协议》的对比，2025 版在“服务考核”章节相比 2024 版主要新增了以下两点要求：\n\n1. **新增考核指标**：2025 版在原有的“响应及时率”和“首次修复率”基础上，新增了**“客户满意度”**作为每月统计的指标。\n2. **新增处罚措施**：对于未达标的服务商，2025 版除了原有的“扣减服务费”外，还新增了**“限期整改”**的要求。\n\n具体条款对比如下：\n*   **2024 版**：“每月统计响应及时率与首次修复率，未达标的服务商扣减服务费。”\n*   **2025 版**：“每月统计响应及时率、首次修复率与客户满意度，未达标的服务商扣减服务费并限期整改。”",
+    "citations": [
+      "lantu_support_sla_2024",
+      "lantu_support_sla_2025"
+    ],
+    "evidence": [
+      "lantu_support_sla_2024#3",
+      "lantu_support_sla_2025#3"
+    ]
+  },
+  "status": "answered",
+  "tokens": 11367,
+  "started_at": "2026-11-01T04:47:20",
+  "elapsed_seconds": 13.92,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "SLA 2025 2024 服务考核"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_support_sla_2024",
+            "title": "# 澜图智能服务等级协议（SLA 2024版）",
+            "chunk": 0,
+            "score": 14.935,
+            "snippet": "# 澜图智能服务等级协议（SLA 2024版）\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v2.0\n文档类型：support\n文档族：service_sla\n生效日期：2024-01-01\n\n## 一、故障分级\n\nP1 为产线停机或安全风险；P2 为单机停机但产线可降级运行；P3 为一般故障或咨询。\n\n## 二、响应时效\n\nP1：2 小时内响应、24 小时内到场；P2：8 小时内响应、72 小时内到场；P3：24 小时内响应、"
+          },
+          {
+            "doc_id": "lantu_support_sla_2025",
+            "title": "# 澜图智能服务等级协议（SLA 2025版）",
+            "chunk": 0,
+            "score": 14.372,
+            "snippet": "# 澜图智能服务等级协议（SLA 2025版）\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2025-03-10 09:00\n更新时间：2025-04-01 09:00\n版本号：v3.0\n文档类型：support\n文档族：service_sla\n生效日期：2025-04-01\n\n## 一、故障分级\n\nP1 为产线停机或安全风险；P2 为单机停机但产线可降级运行；P3 为一般故障或咨询。\n\n## 二、响应时效\n\nP1：30 分钟内响应、12 小时内到场；P2：4 小时内响应、48 小时内到场；P3：12 小时内响应"
+          },
+          {
+            "doc_id": "lantu_support_complaint",
+            "title": "# 澜图智能客户投诉处理管理办法",
+            "chunk": 0,
+            "score": 9.692,
+            "snippet": "# 澜图智能客户投诉处理管理办法\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-02-01 09:00\n更新时间：2025-09-01 09:00\n版本号：v2.8\n文档类型：support\n文档族：complaint_management\n生效日期：2025-09-01\n\n## 一、受理渠道\n\n客户可通过 400 热线、服务邮箱、客户门户或销售转达投诉，受理后 1 小时内录入系统。\n\n## 二、分级处理\n\n一般投诉 24 小时内响应、3 个工作日内闭环；重大投诉 2 小时内上报总经理并成立专项小组。\n\n"
+          },
+          {
+            "doc_id": "lantu_support_training_certification",
+            "title": "# 澜图智能服务工程师培训与认证体系",
+            "chunk": 0,
+            "score": 5.99,
+            "snippet": "# 澜图智能服务工程师培训与认证体系\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-06-01 09:00\n更新时间：2025-08-08 10:00\n版本号：v2.4\n文档类型：support\n文档族：service_certification\n生效日期：2025-08-08\n\n## 一、认证等级\n\n服务工程师分为 L1 初级、L2 中级、L3 高级三级，分别对应常规维护、故障维修与整线调试。\n\n## 二、培训内容\n\nL1：安全、保养、备件更换（5 天）；L2：电气与控制系统维修（10 天）；L3：整线"
+          },
+          {
+            "doc_id": "lantu_hr_performance",
+            "title": "# 澜图智能绩效管理制度",
+            "chunk": 0,
+            "score": 5.152,
+            "snippet": "# 澜图智能绩效管理制度\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v3.4\n文档类型：hr\n文档族：performance\n生效日期：2025-06-01\n\n## 一、考核周期\n\n实行季度考核与年度考核，季度占 40%，年度占 60%。试用期员工参加转正考核。\n\n## 二、考核维度\n\n业绩目标 60%、价值观 20%、能力成长 20%。销售岗位业绩权重 70%。\n\n## 三、绩效分布\n\nS 级 10%、A 级 30%、B "
+          },
+          {
+            "doc_id": "lantu_org_executives",
+            "title": "# 澜图智能高级管理人员名单",
+            "chunk": 0,
+            "score": 5.1,
+            "snippet": "# 澜图智能高级管理人员名单\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2024-03-01 09:00\n更新时间：2025-11-28 17:00\n版本号：v4.0\n文档类型：org\n文档族：executives\n生效日期：2025-11-28\n\n## 一、核心管理层\n\n顾承澜，董事长兼总经理，1968 年生，教授级高级工程师，持股 18.6%；沈亦舟，CTO，负责研发体系；周敏仪，CFO，负责财务与资本运作；韩立恒，COO，负责供应链与制造。\n\n## 二、业务分管\n\n罗嘉树，销售副总裁，分管销售中心、客"
+          },
+          {
+            "doc_id": "lantu_strategy_2025",
+            "title": "# 澜图智能 2025 年度经营计划",
+            "chunk": 0,
+            "score": 4.024,
+            "snippet": "# 澜图智能 2025 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-01-10 09:00\n更新时间：2025-02-10 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2025\n生效日期：2025-02-10\n\n## 一、年度目标\n\n2025 年营业收入目标 41.5 亿元，力争 42.63 亿元；新签订单目标 46 亿元；机器人出货目标 20,000 台。\n\n## 二、重点任务\n\n锂电与半导体行业突破；LT-C800 控制器量产；海外收入占"
+          },
+          {
+            "doc_id": "lantu_policy_employee_handbook",
+            "title": "# 澜图智能员工手册",
+            "chunk": 0,
+            "score": 3.448,
+            "snippet": "# 澜图智能员工手册\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-07-01 09:00\n版本号：v6.0\n文档类型：policy\n文档族：employee_handbook\n生效日期：2025-07-01\n\n## 一、适用范围\n\n本手册适用于澜图智能装备股份有限公司及下属子公司全体正式员工、试用期员工与实习生。劳务派遣与外包人员参照执行。\n\n## 二、入职与试用\n\n新员工入职当日签署劳动合同、保密协议与廉洁承诺书，试用期 3-6 个月。试用期内需完成入职培"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2025",
+            "title": "# 澜图智能采购管理制度（2025版）",
+            "chunk": 0,
+            "score": 3.267,
+            "snippet": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付"
+          },
+          {
+            "doc_id": "lantu_hr_new_hire_training",
+            "title": "澜图智能新员工入职培训大纲",
+            "chunk": 0,
+            "score": 3.122,
+            "snippet": "澜图智能新员工入职培训大纲\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-03-01 09:00\n更新时间：2025-08-01 10:00\n版本号：v2.3\n文档类型：hr\n文档族：new_hire_training\n生效日期：2025-08-01\n一、培训目标\n帮助新员工了解公司战略、文化、制度与岗位要求，在 30 天内完成从入职到独立工作的过渡。\n二、课程安排\n第 1 天：公司介绍与企业文化；第 2 天：制度与信息安全；第 3 天：产品与业务；第 4 天：质量意识与安全生产；第 5 天：岗位实践与导"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_sla_2024",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_support_sla_2024",
+        "title": "# 澜图智能服务等级协议（SLA 2024版）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 367,
+        "text": "# 澜图智能服务等级协议（SLA 2024版）\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v2.0\n文档类型：support\n文档族：service_sla\n生效日期：2024-01-01\n\n## 一、故障分级\n\nP1 为产线停机或安全风险；P2 为单机停机但产线可降级运行；P3 为一般故障或咨询。\n\n## 二、响应时效\n\nP1：2 小时内响应、24 小时内到场；P2：8 小时内响应、72 小时内到场；P3：24 小时内响应、5 个工作日内处理。\n\n## 三、备件服务\n\n常用备件 72 小时内发货，紧急备件 48 小时内发货；备件满足率不低于 90%。\n\n## 四、服务考核\n\n每月统计响应及时率与首次修复率，未达标的服务商扣减服务费。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_sla_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_support_sla_2025",
+        "title": "# 澜图智能服务等级协议（SLA 2025版）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 426,
+        "text": "# 澜图智能服务等级协议（SLA 2025版）\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2025-03-10 09:00\n更新时间：2025-04-01 09:00\n版本号：v3.0\n文档类型：support\n文档族：service_sla\n生效日期：2025-04-01\n\n## 一、故障分级\n\nP1 为产线停机或安全风险；P2 为单机停机但产线可降级运行；P3 为一般故障或咨询。\n\n## 二、响应时效\n\nP1：30 分钟内响应、12 小时内到场；P2：4 小时内响应、48 小时内到场；P3：12 小时内响应、3 个工作日内处理。\n\n## 三、备件服务\n\n常用备件 48 小时内发货，紧急备件 24 小时内发货；备件满足率不低于 96%。\n\n## 四、服务考核\n\n每月统计响应及时率、首次修复率与客户满意度，未达标的服务商扣减服务费并限期整改。\n\n## 五、生效说明\n\n本版本自 2025 年 4 月 1 日起生效，2024 版同时废止。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_support_sla_2024",
+      "lantu_support_sla_2025"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.565,
+    "number_recall": 1.0
+  }
+}

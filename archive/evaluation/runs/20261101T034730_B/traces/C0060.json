@@ -1,0 +1,355 @@
+{
+  "qid": "C0060",
+  "question": "装配方案采用 LT-R12/LT-R20 两款机器人，而焊接方案采用 LT-R50、喷涂方案采用 LT-R20，选择依据与负载能力如何对应？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"LT-R12 LT-R20 LT-R50 负载 装配 焊接 喷涂\"}}",
+      "usage": {
+        "prompt_tokens": 390,
+        "total_tokens": 564,
+        "completion_tokens": 174,
+        "completion_tokens_details": {
+          "reasoning_tokens": 137,
+          "text_tokens": 174
+        }
+      },
+      "seconds": 1.86
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_product_r_series\",\"offset\":4000,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 2692,
+        "total_tokens": 3394,
+        "completion_tokens": 702,
+        "completion_tokens_details": {
+          "reasoning_tokens": 665,
+          "text_tokens": 702
+        }
+      },
+      "seconds": 6.64
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"LT-R50 负载 kg\"}}",
+      "usage": {
+        "prompt_tokens": 2812,
+        "total_tokens": 3824,
+        "completion_tokens": 1012,
+        "completion_tokens_details": {
+          "reasoning_tokens": 988,
+          "text_tokens": 1012
+        }
+      },
+      "seconds": 8.344
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_product_r_series\",\"offset\":0,\"limit\":10000}}",
+      "usage": {
+        "prompt_tokens": 5067,
+        "total_tokens": 6250,
+        "completion_tokens": 1183,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1148,
+          "text_tokens": 1183
+        }
+      },
+      "seconds": 10.375
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据产品手册与解决方案文档，三款机器人的选型依据与负载能力对应关系如下：\\n\\n1. **装配方案 (LT-R12 / LT-R20)**\\n*   **负载能力**：LT-R12 额定负载 12 kg，LT-R20 额定负载 20 kg。\\n*   **选择依据**：装配工序通常涉及零部件的抓取与安装，负载相对较轻，但对**重复定位精度**（±0.03 mm）和**力控精度**（±2 N）要求较高。LT-R12 和 LT-R20 作为中小负载机器人，既能满足装配件的负载需求，又能提供高精度的运动控制，适合多品种混线装配场景。\\n\\n2. **焊接方案 (LT-R50)**\\n*   **负载能力**：LT-R50 额定负载 50 kg，臂展 2,100 mm。\\n*   **选择依据**：焊接工艺通常需要使用重型焊钳或复杂的送丝/供气系统，且往往需要覆盖更大的焊缝范围。LT-R50 拥有 50 kg 的较大负载能力和 2.1 米的长臂展，能够承载较重的焊接末端执行器并覆盖大型工件的焊接区域，同时配合双轴变位机实现高效焊接。\\n\\n3. **喷涂方案 (LT-R20)**\\n*   **负载能力**：LT-R20 额定负载 20 kg。\\n*   **选择依据**：喷涂作业主要负载为旋杯喷枪及供漆管路，重量通常在 20 kg 以内。LT-R20 的 20 kg 负载能力完全覆盖喷涂末端需求，且其 1,700 mm 的臂展足以覆盖常规喷涂对象。此外，该方案明确指定使用**LT-R20 防爆机器人**，以满足喷涂车间的安全防爆要求。\\n\\n**总结**：选型遵循“工艺负载需求 + 精度/臂展匹配”原则。装配侧重中小负载与高精度；焊接侧重中大负载与大臂展；喷涂侧重防爆属性与适中负载。\", \"citations\":[\"lantu_product_r_series\", \"lantu_product_assembly\", \"lantu_product_welding\", \"lantu_product_painting\"], \"evidence\":[\"lantu_product_r_series#1\", \"lantu_product_assembly#0\", \"lantu_product_welding#0\", \"lantu_product_painting#0\"]}",
+      "usage": {
+        "prompt_tokens": 5867,
+        "total_tokens": 7928,
+        "completion_tokens": 2061,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1516,
+          "text_tokens": 2061
+        }
+      },
+      "seconds": 16.735
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "LT-R12 LT-R20 LT-R50 负载 装配 焊接 喷涂"
+      },
+      "result_sha": "582da6c261ce77b07dbf9ee962cc379235070545259e828fea7b5cf9e5badf47",
+      "result_chars": 3936,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_r_series",
+        "offset": 4000,
+        "limit": 4000
+      },
+      "result_sha": "73e7d2fa1104d844d757bb397861b4f1dfa72a342dd8727104a23e8a40f5fdb6",
+      "result_chars": 153,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "LT-R50 负载 kg"
+      },
+      "result_sha": "5a8c898211c813a9be1ab8236e39168fe1d3afcf0550dead17e9d7d2346ba106",
+      "result_chars": 3850,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_r_series",
+        "offset": 0,
+        "limit": 10000
+      },
+      "result_sha": "c85b89e1a6097dc4c9cc2154956bf74a1fa327d31afff16c2c15fc790ca907fe",
+      "result_chars": 1218,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据产品手册与解决方案文档，三款机器人的选型依据与负载能力对应关系如下：\n\n1. **装配方案 (LT-R12 / LT-R20)**\n*   **负载能力**：LT-R12 额定负载 12 kg，LT-R20 额定负载 20 kg。\n*   **选择依据**：装配工序通常涉及零部件的抓取与安装，负载相对较轻，但对**重复定位精度**（±0.03 mm）和**力控精度**（±2 N）要求较高。LT-R12 和 LT-R20 作为中小负载机器人，既能满足装配件的负载需求，又能提供高精度的运动控制，适合多品种混线装配场景。\n\n2. **焊接方案 (LT-R50)**\n*   **负载能力**：LT-R50 额定负载 50 kg，臂展 2,100 mm。\n*   **选择依据**：焊接工艺通常需要使用重型焊钳或复杂的送丝/供气系统，且往往需要覆盖更大的焊缝范围。LT-R50 拥有 50 kg 的较大负载能力和 2.1 米的长臂展，能够承载较重的焊接末端执行器并覆盖大型工件的焊接区域，同时配合双轴变位机实现高效焊接。\n\n3. **喷涂方案 (LT-R20)**\n*   **负载能力**：LT-R20 额定负载 20 kg。\n*   **选择依据**：喷涂作业主要负载为旋杯喷枪及供漆管路，重量通常在 20 kg 以内。LT-R20 的 20 kg 负载能力完全覆盖喷涂末端需求，且其 1,700 mm 的臂展足以覆盖常规喷涂对象。此外，该方案明确指定使用**LT-R20 防爆机器人**，以满足喷涂车间的安全防爆要求。\n\n**总结**：选型遵循“工艺负载需求 + 精度/臂展匹配”原则。装配侧重中小负载与高精度；焊接侧重中大负载与大臂展；喷涂侧重防爆属性与适中负载。",
+    "citations": [
+      "lantu_product_r_series",
+      "lantu_product_assembly",
+      "lantu_product_welding",
+      "lantu_product_painting"
+    ],
+    "evidence": [
+      "lantu_product_r_series#1",
+      "lantu_product_assembly#0",
+      "lantu_product_welding#0",
+      "lantu_product_painting#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 21960,
+  "started_at": "2026-11-01T04:19:40",
+  "elapsed_seconds": 43.95,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "LT-R12 LT-R20 LT-R50 负载 装配 焊接 喷涂"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 1,
+            "score": 23.786,
+            "snippet": "| 产品线 | 代表型号 | 负载 | 典型行业 |\n| --- | --- | --- | --- |\n| 六轴机器人 | LT-R6/R12/R20/R50/R210 | 6-210 kg | 汽车、锂电、金属加工 |\n| SCARA | LT-S4/S10 | 4-10 kg | 3C、光伏、食品 |\n| 移动机器人 | LT-AMR-500/1000/2000 | 500-2,000 kg | 物流、半导体 |\n| 机器视觉 | LT-V3D | — | 装配、检测 |\n| 控制器 | LT-C800 | "
+          },
+          {
+            "doc_id": "lantu_product_r_series",
+            "title": "# LT-R 系列六轴工业机器人产品手册",
+            "chunk": 0,
+            "score": 23.215,
+            "snippet": "# LT-R 系列六轴工业机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-01-15 09:00\n更新时间：2025-10-30 16:00\n版本号：v4.3\n文档类型：product\n文档族：product_r_series\n生效日期：2025-10-30\n\n## 一、产品定位\n\nLT-R 系列覆盖 6 kg 至 210 kg 负载，适用于搬运、焊接、装配、喷涂、打磨等工序，重复定位精度最高 ±0.02 mm，防护等级 IP54，可选 IP67。\n\n## 二、型号与参数\n\nLT-R6 负载 6"
+          },
+          {
+            "doc_id": "lantu_product_r_series",
+            "title": "# LT-R 系列六轴工业机器人产品手册",
+            "chunk": 1,
+            "score": 20.109,
+            "snippet": "| 型号 | 负载 | 臂展 | 重复精度 | 本体重量 | 最大速度 |\n| --- | --- | --- | --- | --- | --- |\n| LT-R6 | 6 kg | 1,450 mm | ±0.02 mm | 165 kg | 3.2 m/s |\n| LT-R12 | 12 kg | 1,550 mm | ±0.03 mm | 210 kg | 3.0 m/s |\n| LT-R20 | 20 kg | 1,700 mm | ±0.03 mm | 285 kg | 2.8 m/s |\n| LT-R"
+          },
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 16.596,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能产品参数矩阵（2025）\n所属部门\t产品部\n作者\t孟凡\n创建时间\t2025-01-20 09:00\n更新时间\t2025-12-15 18:00\n版本号\tv2.0\n文档类型\tproduct\n文档族\tproduct_matrix\n生效日期\t2025-12-15\n[工作表] 六轴与SCARA\n型号\t负载\t臂展\t重复精度\t本体重量\t最大速度\nLT-R6\t6 kg\t1,450 mm\t±0.02 mm\t165 kg\t3.2 m/s\nLT-R12\t12 kg\t1,550 mm\t±0."
+          },
+          {
+            "doc_id": "lantu_product_assembly",
+            "title": "# LT-Assembly 柔性装配工作站方案",
+            "chunk": 0,
+            "score": 16.021,
+            "snippet": "# LT-Assembly 柔性装配工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-07-15 09:00\n更新时间：2025-09-05 11:00\n版本号：v2.5\n文档类型：product\n文档族：solution_assembly\n生效日期：2025-09-05\n\n## 一、方案组成\n\n由 LT-R12/LT-R20 机器人、力控末端、LT-V3D 视觉与快换工装组成，支持多品种混线装配。\n\n## 二、工艺指标\n\n装配节拍 3.2 秒/件，力控精度 ±2 N，视觉定位精度 ±0.05 mm，"
+          },
+          {
+            "doc_id": "lantu_product_welding",
+            "title": "# LT-Weld-2000 机器人焊接工作站方案",
+            "chunk": 0,
+            "score": 14.186,
+            "snippet": "# LT-Weld-2000 机器人焊接工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-04-10 09:00\n更新时间：2025-05-22 10:00\n版本号：v2.8\n文档类型：product\n文档族：solution_welding\n生效日期：2025-05-22\n\n## 一、方案组成\n\n以 LT-R50 机器人为核心，集成 2,000A 焊接电源、双轴变位机、焊缝激光跟踪与烟尘净化系统，形成标准焊接工作站。\n\n## 二、工艺指标\n\n焊接速度 1.8 m/min，焊缝跟踪精度 ±0.15 m"
+          },
+          {
+            "doc_id": "lantu_support_spare_parts_price",
+            "title": "﻿适配机型,备件名称,单价（元）,发货时效,质保期",
+            "chunk": 0,
+            "score": 14.019,
+            "snippet": "﻿适配机型,备件名称,单价（元）,发货时效,质保期\nLT-R20,减速器 RV-40E,\"12,800\",48 小时,12 个月\nLT-R20,伺服驱动器 LT-D4,\"8,600\",48 小时,18 个月\nLT-R20,示教器 LT-Pad3,\"5,200\",48 小时,12 个月\nLT-R12,减速器 RV-20E,\"7,900\",48 小时,12 个月\nLT-R12,伺服电机 750W,\"3,600\",48 小时,18 个月\nLT-R6,谐波减速器 CSF-17,\"6,400\",72 小时,12 个月\nLT-"
+          },
+          {
+            "doc_id": "lantu_product_r20_pro_whitepaper",
+            "title": "LT-R20 Pro 机器人技术白皮书",
+            "chunk": 0,
+            "score": 13.668,
+            "snippet": "LT-R20 Pro 机器人技术白皮书\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2025-11-20 09:00\n更新时间：2025-11-28 18:00\n版本号：v0.9\n文档类型：product\n文档族：product_r20_pro\n生效日期：2025-11-28\n一、研发背景\n面向锂电叠片、汽车装配等高频节拍场景，澜图智能研发新一代中型六轴机器人 LT-R20 Pro，计划\n2026 年第二季度量产。\n二、技术指标\n额定负载 22 kg，臂展 1,750 mm，重复定位精度 ±0.02 mm，本体重量"
+          },
+          {
+            "doc_id": "lantu_product_painting",
+            "title": "# LT-Paint 机器人喷涂工作站方案",
+            "chunk": 0,
+            "score": 13.255,
+            "snippet": "# LT-Paint 机器人喷涂工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-08-01 09:00\n更新时间：2025-04-18 15:00\n版本号：v2.2\n文档类型：product\n文档族：solution_painting\n生效日期：2025-04-18\n\n## 一、方案组成\n\n以 LT-R20 防爆机器人为核心，集成旋杯喷枪、供漆系统、防爆控制柜与 VOC 处理装置。\n\n## 二、工艺指标\n\n换色时间 6 分钟，涂料利用率提升 23%，膜厚均匀性 ±5 μm，VOC 排放下降 19%。"
+          },
+          {
+            "doc_id": "lantu_solution_lithium",
+            "title": "# 动力电池叠片与物流整体解决方案",
+            "chunk": 0,
+            "score": 12.291,
+            "snippet": "# 动力电池叠片与物流整体解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-10-12 09:00\n更新时间：2025-12-01 10:00\n版本号：v3.6\n文档类型：product\n文档族：solution_lithium\n生效日期：2025-12-01\n\n## 一、方案概述\n\n面向动力电池电芯段，提供叠片、焊接、检测与物料配送一体化方案，核心设备包括 LT-R20 机器人、LT-AMR-1000 与 LT-V3D 视觉。\n\n## 二、产线配置\n\n单条叠片线配置 15-16 台 LT-R20、2 "
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_r_series",
+        "offset": 4000,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_product_r_series",
+        "title": "# LT-R 系列六轴工业机器人产品手册",
+        "offset": 4000,
+        "limit": 4000,
+        "total_chars": 1028,
+        "text": "",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "LT-R50 负载 kg"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_product_r_series",
+            "title": "# LT-R 系列六轴工业机器人产品手册",
+            "chunk": 1,
+            "score": 15.452,
+            "snippet": "| 型号 | 负载 | 臂展 | 重复精度 | 本体重量 | 最大速度 |\n| --- | --- | --- | --- | --- | --- |\n| LT-R6 | 6 kg | 1,450 mm | ±0.02 mm | 165 kg | 3.2 m/s |\n| LT-R12 | 12 kg | 1,550 mm | ±0.03 mm | 210 kg | 3.0 m/s |\n| LT-R20 | 20 kg | 1,700 mm | ±0.03 mm | 285 kg | 2.8 m/s |\n| LT-R"
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 1,
+            "score": 14.822,
+            "snippet": "| 产品线 | 代表型号 | 负载 | 典型行业 |\n| --- | --- | --- | --- |\n| 六轴机器人 | LT-R6/R12/R20/R50/R210 | 6-210 kg | 汽车、锂电、金属加工 |\n| SCARA | LT-S4/S10 | 4-10 kg | 3C、光伏、食品 |\n| 移动机器人 | LT-AMR-500/1000/2000 | 500-2,000 kg | 物流、半导体 |\n| 机器视觉 | LT-V3D | — | 装配、检测 |\n| 控制器 | LT-C800 | "
+          },
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 13.501,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能产品参数矩阵（2025）\n所属部门\t产品部\n作者\t孟凡\n创建时间\t2025-01-20 09:00\n更新时间\t2025-12-15 18:00\n版本号\tv2.0\n文档类型\tproduct\n文档族\tproduct_matrix\n生效日期\t2025-12-15\n[工作表] 六轴与SCARA\n型号\t负载\t臂展\t重复精度\t本体重量\t最大速度\nLT-R6\t6 kg\t1,450 mm\t±0.02 mm\t165 kg\t3.2 m/s\nLT-R12\t12 kg\t1,550 mm\t±0."
+          },
+          {
+            "doc_id": "lantu_product_r_series",
+            "title": "# LT-R 系列六轴工业机器人产品手册",
+            "chunk": 0,
+            "score": 11.629,
+            "snippet": "# LT-R 系列六轴工业机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-01-15 09:00\n更新时间：2025-10-30 16:00\n版本号：v4.3\n文档类型：product\n文档族：product_r_series\n生效日期：2025-10-30\n\n## 一、产品定位\n\nLT-R 系列覆盖 6 kg 至 210 kg 负载，适用于搬运、焊接、装配、喷涂、打磨等工序，重复定位精度最高 ±0.02 mm，防护等级 IP54，可选 IP67。\n\n## 二、型号与参数\n\nLT-R6 负载 6"
+          },
+          {
+            "doc_id": "lantu_product_amr",
+            "title": "# LT-AMR 自主移动机器人产品手册",
+            "chunk": 0,
+            "score": 10.797,
+            "snippet": "# LT-AMR 自主移动机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-05-10 09:00\n更新时间：2025-08-20 15:00\n版本号：v3.4\n文档类型：product\n文档族：product_amr\n生效日期：2025-08-20\n\n## 一、产品系列\n\nLT-AMR-500 负载 500 kg、速度 1.8 m/s、续航 8 小时；LT-AMR-1000 负载 1,000 kg、速度 1.5 m/s、续航 8 小时；LT-AMR-2000 负载 2,000 kg、速度 1.2"
+          },
+          {
+            "doc_id": "lantu_product_s_series",
+            "title": "# LT-S 系列 SCARA 机器人产品说明",
+            "chunk": 0,
+            "score": 10.54,
+            "snippet": "# LT-S 系列 SCARA 机器人产品说明\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-03-01 09:00\n更新时间：2025-09-12 11:00\n版本号：v3.2\n文档类型：product\n文档族：product_s_series\n生效日期：2025-09-12\n\n## 一、产品定位\n\nLT-S 系列 SCARA 机器人面向 3C 组装、光伏串焊、食品包装等高速取放场景，标准循环时间 0.38 秒。\n\n## 二、型号参数\n\nLT-S4 负载 4 kg、臂展 600 mm、重复精度 ±0.02 "
+          },
+          {
+            "doc_id": "lantu_product_r20_pro_whitepaper",
+            "title": "LT-R20 Pro 机器人技术白皮书",
+            "chunk": 0,
+            "score": 7.993,
+            "snippet": "LT-R20 Pro 机器人技术白皮书\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2025-11-20 09:00\n更新时间：2025-11-28 18:00\n版本号：v0.9\n文档类型：product\n文档族：product_r20_pro\n生效日期：2025-11-28\n一、研发背景\n面向锂电叠片、汽车装配等高频节拍场景，澜图智能研发新一代中型六轴机器人 LT-R20 Pro，计划\n2026 年第二季度量产。\n二、技术指标\n额定负载 22 kg，臂展 1,750 mm，重复定位精度 ±0.02 mm，本体重量"
+          },
+          {
+            "doc_id": "lantu_meeting_product_review",
+            "title": "LT-R20 Pro 产品评审会纪要",
+            "chunk": 0,
+            "score": 7.168,
+            "snippet": "LT-R20 Pro 产品评审会纪要\n所属部门：产品部\n作者：孟凡\n创建时间：2025-08-18 09:00\n更新时间：2025-08-18 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_product_review\n生效日期：2025-08-18\n一、会议信息\n时间：2025 年 8 月 18 日；主持：沈亦舟；参会：产品部、研发中心、质量部、销售中心、售后服务部。\n二、评审结论\nLT-R20 Pro 通过概念与计划阶段评审，进入开发阶段。目标负载 22 kg、臂展 1,750"
+          },
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 1,
+            "score": 7.117,
+            "snippet": "0 kg\t1.5 m/s\nLT-AMR-2000\t2,000 kg\t—\t±10 mm\t420 kg\t1.2 m/s\n[工作表] 交付与保修\n产品线\t标准交期\t保修期\t备件响应\nLT-R 系列\t6-8 周\t24 个月/6,000 小时\t48 小时\nLT-S 系列\t4 周\t24 个月/6,000 小时\t48 小时\nLT-AMR 系列\t8 周\t24 个月\t72 小时\nLT-V3D\t4 周\t12 个月\t72 小时"
+          },
+          {
+            "doc_id": "lantu_product_welding",
+            "title": "# LT-Weld-2000 机器人焊接工作站方案",
+            "chunk": 0,
+            "score": 5.092,
+            "snippet": "# LT-Weld-2000 机器人焊接工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-04-10 09:00\n更新时间：2025-05-22 10:00\n版本号：v2.8\n文档类型：product\n文档族：solution_welding\n生效日期：2025-05-22\n\n## 一、方案组成\n\n以 LT-R50 机器人为核心，集成 2,000A 焊接电源、双轴变位机、焊缝激光跟踪与烟尘净化系统，形成标准焊接工作站。\n\n## 二、工艺指标\n\n焊接速度 1.8 m/min，焊缝跟踪精度 ±0.15 m"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_r_series",
+        "offset": 0,
+        "limit": 10000
+      },
+      "result": {
+        "doc_id": "lantu_product_r_series",
+        "title": "# LT-R 系列六轴工业机器人产品手册",
+        "offset": 0,
+        "limit": 6000,
+        "total_chars": 1028,
+        "text": "# LT-R 系列六轴工业机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-01-15 09:00\n更新时间：2025-10-30 16:00\n版本号：v4.3\n文档类型：product\n文档族：product_r_series\n生效日期：2025-10-30\n\n## 一、产品定位\n\nLT-R 系列覆盖 6 kg 至 210 kg 负载，适用于搬运、焊接、装配、喷涂、打磨等工序，重复定位精度最高 ±0.02 mm，防护等级 IP54，可选 IP67。\n\n## 二、型号与参数\n\nLT-R6 负载 6 kg、臂展 1,450 mm、重复精度 ±0.02 mm、本体重量 165 kg；LT-R12 负载 12 kg、臂展 1,550 mm、精度 ±0.03 mm；LT-R20 负载 20 kg、臂展 1,700 mm、精度 ±0.03 mm、重量 285 kg、最大速度 2.8 m/s。\n\n## 三、核心部件\n\n采用自研 LT-C800 控制器与 23 位绝对值编码器伺服电机，支持 EtherCAT 1 ms 总线周期，内置碰撞检测与安全限速功能。\n\n## 四、可靠性与维护\n\n平均无故障时间（MTBF）12,000 小时，减速器寿命 20,000 小时，建议每 4,000 小时更换润滑脂，每 12 个月进行精度校准。\n\n## 五、交付与认证\n\n标准交期 6-8 周，整机通过 CE、UL 认证，防护等级 IP54，工作温度 0-45℃。\n\n## LT-R 系列参数表\n\n| 型号 | 负载 | 臂展 | 重复精度 | 本体重量 | 最大速度 |\n| --- | --- | --- | --- | --- | --- |\n| LT-R6 | 6 kg | 1,450 mm | ±0.02 mm | 165 kg | 3.2 m/s |\n| LT-R12 | 12 kg | 1,550 mm | ±0.03 mm | 210 kg | 3.0 m/s |\n| LT-R20 | 20 kg | 1,700 mm | ±0.03 mm | 285 kg | 2.8 m/s |\n| LT-R50 | 50 kg | 2,100 mm | ±0.05 mm | 540 kg | 2.2 m/s |\n| LT-R210 | 210 kg | 2,650 mm | ±0.08 mm | 1,180 kg | 1.8 m/s |\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.75,
+    "cited": [
+      "lantu_product_r_series",
+      "lantu_product_assembly",
+      "lantu_product_welding",
+      "lantu_product_painting"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.056,
+    "number_recall": 0.0
+  }
+}

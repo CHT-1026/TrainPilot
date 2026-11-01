@@ -1,0 +1,189 @@
+{
+  "qid": "C0115",
+  "question": "产品参数矩阵（2025）交付与保修表中，LT-V3D 的标准交期、保修期与备件响应分别是多少？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"产品参数矩阵\"}}",
+      "usage": {
+        "prompt_tokens": 379,
+        "total_tokens": 504,
+        "completion_tokens": 125,
+        "completion_tokens_details": {
+          "reasoning_tokens": 105,
+          "text_tokens": 125
+        }
+      },
+      "seconds": 1.344
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"LT-V3D\"}}",
+      "usage": {
+        "prompt_tokens": 424,
+        "total_tokens": 577,
+        "completion_tokens": 153,
+        "completion_tokens_details": {
+          "reasoning_tokens": 132,
+          "text_tokens": 153
+        }
+      },
+      "seconds": 1.563
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据《产品参数矩阵（2025）》中的交付与保修表，LT-V3D 的相关参数如下：\\n\\n*   **标准交期**：4 周\\n*   **保修期**：12 个月\\n*   **备件响应**：72 小时\",\"citations\":[\"lantu_product_matrix\"],\"evidence\":[\"lantu_product_matrix#1\"]}",
+      "usage": {
+        "prompt_tokens": 2715,
+        "total_tokens": 3264,
+        "completion_tokens": 549,
+        "completion_tokens_details": {
+          "reasoning_tokens": 451,
+          "text_tokens": 549
+        }
+      },
+      "seconds": 4.015
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "产品参数矩阵"
+      },
+      "result_sha": "1290604daacc15212b4f59638c659261007a940d59ae4c9dd916d753b78e21de",
+      "result_chars": 12,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "LT-V3D"
+      },
+      "result_sha": "0385f397a7d22a748acbe527a4a9b06a414327a44bf04e0388940a2117a1e80e",
+      "result_chars": 3863,
+      "hits": 10
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《产品参数矩阵（2025）》中的交付与保修表，LT-V3D 的相关参数如下：\n\n*   **标准交期**：4 周\n*   **保修期**：12 个月\n*   **备件响应**：72 小时",
+    "citations": [
+      "lantu_product_matrix"
+    ],
+    "evidence": [
+      "lantu_product_matrix#1"
+    ]
+  },
+  "status": "answered",
+  "tokens": 4345,
+  "started_at": "2026-11-01T04:30:34",
+  "elapsed_seconds": 6.92,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "产品参数矩阵"
+      },
+      "result": {
+        "docs": []
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "LT-V3D"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_product_vision",
+            "title": "# LT-V3D 工业视觉系统技术说明",
+            "chunk": 0,
+            "score": 5.116,
+            "snippet": "# LT-V3D 工业视觉系统技术说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-06-18 09:00\n更新时间：2025-07-15 14:00\n版本号：v2.6\n文档类型：product\n文档族：product_vision\n生效日期：2025-07-15\n\n## 一、系统组成\n\nLT-V3D 由结构光相机、视觉控制器与 LantuVision 软件组成，支持 3D 点云、2D 图像与深度学习缺陷检测。\n\n## 二、核心指标\n\n测量精度 0.05 mm，单帧点云 120 万点，帧率 30 fps"
+          },
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 1,
+            "score": 4.806,
+            "snippet": "0 kg\t1.5 m/s\nLT-AMR-2000\t2,000 kg\t—\t±10 mm\t420 kg\t1.2 m/s\n[工作表] 交付与保修\n产品线\t标准交期\t保修期\t备件响应\nLT-R 系列\t6-8 周\t24 个月/6,000 小时\t48 小时\nLT-S 系列\t4 周\t24 个月/6,000 小时\t48 小时\nLT-AMR 系列\t8 周\t24 个月\t72 小时\nLT-V3D\t4 周\t12 个月\t72 小时"
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 1,
+            "score": 4.692,
+            "snippet": "| 产品线 | 代表型号 | 负载 | 典型行业 |\n| --- | --- | --- | --- |\n| 六轴机器人 | LT-R6/R12/R20/R50/R210 | 6-210 kg | 汽车、锂电、金属加工 |\n| SCARA | LT-S4/S10 | 4-10 kg | 3C、光伏、食品 |\n| 移动机器人 | LT-AMR-500/1000/2000 | 500-2,000 kg | 物流、半导体 |\n| 机器视觉 | LT-V3D | — | 装配、检测 |\n| 控制器 | LT-C800 | "
+          },
+          {
+            "doc_id": "lantu_support_spare_parts_price",
+            "title": "﻿适配机型,备件名称,单价（元）,发货时效,质保期",
+            "chunk": 0,
+            "score": 4.483,
+            "snippet": "﻿适配机型,备件名称,单价（元）,发货时效,质保期\nLT-R20,减速器 RV-40E,\"12,800\",48 小时,12 个月\nLT-R20,伺服驱动器 LT-D4,\"8,600\",48 小时,18 个月\nLT-R20,示教器 LT-Pad3,\"5,200\",48 小时,12 个月\nLT-R12,减速器 RV-20E,\"7,900\",48 小时,12 个月\nLT-R12,伺服电机 750W,\"3,600\",48 小时,18 个月\nLT-R6,谐波减速器 CSF-17,\"6,400\",72 小时,12 个月\nLT-"
+          },
+          {
+            "doc_id": "lantu_product_assembly",
+            "title": "# LT-Assembly 柔性装配工作站方案",
+            "chunk": 0,
+            "score": 4.206,
+            "snippet": "# LT-Assembly 柔性装配工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-07-15 09:00\n更新时间：2025-09-05 11:00\n版本号：v2.5\n文档类型：product\n文档族：solution_assembly\n生效日期：2025-09-05\n\n## 一、方案组成\n\n由 LT-R12/LT-R20 机器人、力控末端、LT-V3D 视觉与快换工装组成，支持多品种混线装配。\n\n## 二、工艺指标\n\n装配节拍 3.2 秒/件，力控精度 ±2 N，视觉定位精度 ±0.05 mm，"
+          },
+          {
+            "doc_id": "lantu_product_s_series",
+            "title": "# LT-S 系列 SCARA 机器人产品说明",
+            "chunk": 0,
+            "score": 4.129,
+            "snippet": "# LT-S 系列 SCARA 机器人产品说明\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-03-01 09:00\n更新时间：2025-09-12 11:00\n版本号：v3.2\n文档类型：product\n文档族：product_s_series\n生效日期：2025-09-12\n\n## 一、产品定位\n\nLT-S 系列 SCARA 机器人面向 3C 组装、光伏串焊、食品包装等高速取放场景，标准循环时间 0.38 秒。\n\n## 二、型号参数\n\nLT-S4 负载 4 kg、臂展 600 mm、重复精度 ±0.02 "
+          },
+          {
+            "doc_id": "lantu_solution_lithium",
+            "title": "# 动力电池叠片与物流整体解决方案",
+            "chunk": 0,
+            "score": 4.004,
+            "snippet": "# 动力电池叠片与物流整体解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-10-12 09:00\n更新时间：2025-12-01 10:00\n版本号：v3.6\n文档类型：product\n文档族：solution_lithium\n生效日期：2025-12-01\n\n## 一、方案概述\n\n面向动力电池电芯段，提供叠片、焊接、检测与物料配送一体化方案，核心设备包括 LT-R20 机器人、LT-AMR-1000 与 LT-V3D 视觉。\n\n## 二、产线配置\n\n单条叠片线配置 15-16 台 LT-R20、2 "
+          },
+          {
+            "doc_id": "lantu_solution_photovoltaic",
+            "title": "# 光伏电池片串焊整线解决方案",
+            "chunk": 0,
+            "score": 3.946,
+            "snippet": "# 光伏电池片串焊整线解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-09-20 09:00\n更新时间：2025-10-16 14:00\n版本号：v3.1\n文档类型：product\n文档族：solution_photovoltaic\n生效日期：2025-10-16\n\n## 一、方案概述\n\n面向 TOPCon/HJT 电池片串焊，提供上料、串焊、EL 检测与下料整线方案，核心设备为 LT-S10 SCARA 与 LT-V3D 视觉。\n\n## 二、产线指标\n\n串焊速度 4,200 片/小时，良率 99.6"
+          },
+          {
+            "doc_id": "lantu_case_01_hengxin",
+            "title": "# 客户案例：恒芯动力电池电芯叠片与物流项目",
+            "chunk": 0,
+            "score": 3.223,
+            "snippet": "# 客户案例：恒芯动力电池电芯叠片与物流项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_hengxin\n生效日期：2025-12-20\n\n## 一、客户背景\n\n恒芯动力电池位于常州，主营动力电池业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追"
+          },
+          {
+            "doc_id": "lantu_case_02_lanyue",
+            "title": "# 客户案例：澜岳汽车零部件白车身焊装项目",
+            "chunk": 0,
+            "score": 3.195,
+            "snippet": "# 客户案例：澜岳汽车零部件白车身焊装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_lanyue\n生效日期：2024-12-20\n\n## 一、客户背景\n\n澜岳汽车零部件位于上海，主营汽车零部件业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追"
+          }
+        ]
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_product_matrix"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.357,
+    "number_recall": 0.0
+  }
+}

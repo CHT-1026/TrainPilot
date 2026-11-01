@@ -1,0 +1,413 @@
+{
+  "qid": "K0040",
+  "question": "题设规定申请条件按申请发生日、报销额度按费用发生日适用版本，且无其他过渡例外。6月20日申请、8月1日出差，分别适用哪版申请提前天数和一线城市住宿额度？超标谁承担？原文是否要求旧申请一律重批？",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>申请提前天数 一线城市 住宿额度</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 56,
+        "prompt_tokens": 406,
+        "total_tokens": 462,
+        "completion_tokens_details": {
+          "reasoning_tokens": 22
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.0
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"query\":\"申请提前天数 一线城市 住宿额度 版本 适用\",\"top_k\":10}",
+      "usage": {
+        "completion_tokens": 43,
+        "prompt_tokens": 477,
+        "total_tokens": 520,
+        "completion_tokens_details": {
+          "reasoning_tokens": 11
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.266
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_travel_2025h2\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 83,
+        "prompt_tokens": 2978,
+        "total_tokens": 3061,
+        "completion_tokens_details": {
+          "reasoning_tokens": 46
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.109
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_travel_2025\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 314,
+        "prompt_tokens": 3447,
+        "total_tokens": 3761,
+        "completion_tokens_details": {
+          "reasoning_tokens": 279
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2944
+        }
+      },
+      "seconds": 7.047
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"过渡 已提交申请 重新审批 重批 旧版申请\",\"top_k\":8}}",
+      "usage": {
+        "completion_tokens": 96,
+        "prompt_tokens": 3895,
+        "total_tokens": 3991,
+        "completion_tokens_details": {
+          "reasoning_tokens": 62
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3392
+        }
+      },
+      "seconds": 2.125
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_travel_2024\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 76,
+        "prompt_tokens": 5904,
+        "total_tokens": 5980,
+        "completion_tokens_details": {
+          "reasoning_tokens": 41
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3840
+        }
+      },
+      "seconds": 2.094
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"按题设口径（假定为 2025 年，且无其他过渡例外）：①申请提前天数：申请发生日为 6 月 20 日，在 2025 年 7 月 1 日新版本生效之前，故适用 2025 版（v2.0）——出差须提前 2 个工作日申请。②一线城市住宿额度：费用发生日为 8 月 1 日，适用 2025 年 7 月修订版（v3.0）——北京、上海、广州、深圳住宿标准 600 元/晚。③超标承担：适用费用发生日版本（v3.0）标准，超标部分由个人承担（新旧版本对此规定一致）。④是否要求旧申请一律重批：不要求。2025 年 7 月修订版『五、生效说明』仅规定『本版本自 2025 年 7 月 1 日起生效，2025 年 1 月版同时废止』，全文及 2025 版均无关于已提交申请需重新审批或重新适用新申请门槛的过渡条款；结合题设『无其他过渡例外』，6 月 20 日的申请按提交时有效的 2 个工作日提前要求判断合规性即可，不因新版本生效而一律重批。注意：题设未注明年份，此处按文档族中最新版本序列（2024 版→2025 版→2025 年 7 月修订）推定为 2025 年；若为其他年份需澄清。\",\"citations\":[\"lantu_policy_travel_2025\",\"lantu_policy_travel_2025h2\",\"lantu_policy_travel_2024\"],\"evidence\":[\"lantu_policy_travel_2025#片段0\",\"lantu_policy_travel_2025h2#片段0\",\"lantu_policy_travel_2024#片段0\"]}",
+      "usage": {
+        "completion_tokens": 684,
+        "prompt_tokens": 6311,
+        "total_tokens": 6995,
+        "completion_tokens_details": {
+          "reasoning_tokens": 212
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 5888
+        }
+      },
+      "seconds": 13.5
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "申请提前天数 一线城市 住宿额度 版本 适用",
+        "top_k": 10
+      },
+      "result_sha": "a39c3486788bb682700b927d03d288591f2955e68b3c5eac4e89c4e7a50f069e",
+      "result_chars": 3958,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_travel_2025h2",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "cd892ed8038ab44deaedda8457a73e71e1401350b20b3259ba550d0bbcdbd0f9",
+      "result_chars": 631,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_travel_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "e29663c4188024bf9d693e3f523d6c8cafadfd85843c0a0ed12ab858fb15459d",
+      "result_chars": 605,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "过渡 已提交申请 重新审批 重批 旧版申请",
+        "top_k": 8
+      },
+      "result_sha": "8ccf3cbc66c236b1303d72fe49ce0e91c731ce0a4b91d1a7290e973de115d478",
+      "result_chars": 3146,
+      "hits": 8
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_travel_2024",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "9111b8079fc93fdfeab5d671a2ab9c3188bcd3260d9a047e7a4de45027e6cf50",
+      "result_chars": 553,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "按题设口径（假定为 2025 年，且无其他过渡例外）：①申请提前天数：申请发生日为 6 月 20 日，在 2025 年 7 月 1 日新版本生效之前，故适用 2025 版（v2.0）——出差须提前 2 个工作日申请。②一线城市住宿额度：费用发生日为 8 月 1 日，适用 2025 年 7 月修订版（v3.0）——北京、上海、广州、深圳住宿标准 600 元/晚。③超标承担：适用费用发生日版本（v3.0）标准，超标部分由个人承担（新旧版本对此规定一致）。④是否要求旧申请一律重批：不要求。2025 年 7 月修订版『五、生效说明』仅规定『本版本自 2025 年 7 月 1 日起生效，2025 年 1 月版同时废止』，全文及 2025 版均无关于已提交申请需重新审批或重新适用新申请门槛的过渡条款；结合题设『无其他过渡例外』，6 月 20 日的申请按提交时有效的 2 个工作日提前要求判断合规性即可，不因新版本生效而一律重批。注意：题设未注明年份，此处按文档族中最新版本序列（2024 版→2025 版→2025 年 7 月修订）推定为 2025 年；若为其他年份需澄清。",
+    "citations": [
+      "lantu_policy_travel_2025",
+      "lantu_policy_travel_2025h2",
+      "lantu_policy_travel_2024"
+    ],
+    "evidence": [
+      "lantu_policy_travel_2025#片段0",
+      "lantu_policy_travel_2025h2#片段0",
+      "lantu_policy_travel_2024#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 24770,
+  "started_at": "2026-11-01T05:36:41",
+  "elapsed_seconds": 31.14,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "申请提前天数 一线城市 住宿额度 版本 适用",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_policy_travel_2024",
+            "title": "# 澜图智能差旅费用报销标准（2024版）",
+            "chunk": 0,
+            "score": 26.678,
+            "snippet": "# 澜图智能差旅费用报销标准（2024版）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-02-20 09:00\n更新时间：2024-03-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2024-03-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 450 元/晚，二线城市 350 元/晚，其他城市 300 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 100 元/天，按自然日计算；客户宴请须提"
+          },
+          {
+            "doc_id": "lantu_policy_travel_2025",
+            "title": "# 澜图智能差旅费用报销标准（2025版）",
+            "chunk": 0,
+            "score": 26.094,
+            "snippet": "# 澜图智能差旅费用报销标准（2025版）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-12-15 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2025-01-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 550 元/晚，二线城市 420 元/晚，其他城市 350 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 120 元/天，按自然日计算；客户宴请须提"
+          },
+          {
+            "doc_id": "lantu_policy_travel_2025h2",
+            "title": "# 澜图智能差旅费用报销标准（2025年7月修订）",
+            "chunk": 0,
+            "score": 25.51,
+            "snippet": "# 澜图智能差旅费用报销标准（2025年7月修订）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-06-10 09:00\n更新时间：2025-07-01 09:00\n版本号：v3.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2025-07-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 600 元/晚，二线城市 450 元/晚，其他城市 380 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 150 元/天，按自然日计算；客户"
+          },
+          {
+            "doc_id": "lantu_finance_cashflow",
+            "title": "# 澜图智能现金流与资金管理报告",
+            "chunk": 0,
+            "score": 9.951,
+            "snippet": "# 澜图智能现金流与资金管理报告\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-12-10 09:00\n更新时间：2025-12-15 17:00\n版本号：v1.1\n文档类型：finance\n文档族：cashflow_2025\n生效日期：2025-12-15\n\n## 一、现金流概况\n\n2025 年经营活动现金流净额 5.34 亿元，投资活动现金流净额 -3.86 亿元，筹资活动现金流净额 -0.92 亿元。\n\n## 二、回款管理\n\n应收账款余额 10.24 亿元，周转天数 86 天；逾期账款占比 4.2%，"
+          },
+          {
+            "doc_id": "lantu_legal_export_control",
+            "title": "# 澜图智能出口管制与制裁合规指引",
+            "chunk": 0,
+            "score": 8.255,
+            "snippet": "# 澜图智能出口管制与制裁合规指引\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-06-01 09:00\n更新时间：2025-08-01 09:00\n版本号：v2.2\n文档类型：legal\n文档族：export_control\n生效日期：2025-08-01\n\n## 一、适用范围\n\n适用于所有跨境销售、技术许可、境外投资与人员出境技术服务，覆盖中国、欧盟、美国出口管制要求。\n\n## 二、筛查要求\n\n交易前须对客户、最终用户与最终用途进行筛查，核对制裁名单与两用物项清单；涉及加密、视觉算法与高精度伺服的项目"
+          },
+          {
+            "doc_id": "lantu_support_spare_inventory",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 7.987,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能备件库存分布（2025Q4）\n所属部门\t售后服务部\n作者\t陆绍\n创建时间\t2025-12-25 09:00\n更新时间\t2026-01-02 10:00\n版本号\tv1.0\n文档类型\tsupport\n文档族\tspare_inventory_2025q4\n生效日期\t2026-01-02\n[工作表] 备件仓库存\n仓库\t所在城市\t库存金额（万元）\tSKU 数\t周转天数\n苏州中心仓\t苏州\t6,200\t4,860\t92\n东莞仓\t东莞\t2,800\t2,240\t105\n成都仓\t成都\t1,"
+          },
+          {
+            "doc_id": "lantu_hr_resignation",
+            "title": "# 澜图智能离职与交接管理办法",
+            "chunk": 0,
+            "score": 7.056,
+            "snippet": "# 澜图智能离职与交接管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-15 09:00\n更新时间：2025-05-20 09:00\n版本号：v2.4\n文档类型：hr\n文档族：resignation\n生效日期：2025-05-20\n\n## 一、离职申请\n\n正式员工提前 30 日、试用期员工提前 3 日提交书面离职申请；关键岗位须提前 60 日。\n\n## 二、离职面谈\n\nHR 在收到申请后 3 个工作日内安排面谈，了解离职原因并记录改进建议；核心人才可启动挽留。\n\n## 三、工作交接\n\n交接内"
+          },
+          {
+            "doc_id": "lantu_policy_attendance_2024",
+            "title": "# 澜图智能考勤管理制度（2024版）",
+            "chunk": 0,
+            "score": 6.892,
+            "snippet": "# 澜图智能考勤管理制度（2024版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：attendance\n生效日期：2024-01-01\n\n## 一、打卡规则\n\n员工每日上下班各打卡一次，漏打卡须在 3 个工作日内提交补卡申请，每月补卡不超过 3 次。\n\n## 二、弹性工作\n\n上班弹性 30 分钟，9:00-9:30 到岗均视为正常；每月可申请远程办公 2 天，须提前 1 个工作日审批"
+          },
+          {
+            "doc_id": "lantu_policy_attendance_2025",
+            "title": "# 澜图智能考勤管理制度（2025版）",
+            "chunk": 0,
+            "score": 6.622,
+            "snippet": "# 澜图智能考勤管理制度（2025版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-12-20 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：attendance\n生效日期：2025-01-01\n\n## 一、打卡规则\n\n员工每日上下班各打卡一次，漏打卡须在 3 个工作日内提交补卡申请，每月补卡不超过 4 次。\n\n## 二、弹性工作\n\n上班弹性 60 分钟，9:00-10:00 到岗均视为正常；每月可申请远程办公 4 天，须提前 1 个工作日审"
+          },
+          {
+            "doc_id": "lantu_policy_employee_handbook",
+            "title": "# 澜图智能员工手册",
+            "chunk": 0,
+            "score": 6.612,
+            "snippet": "# 澜图智能员工手册\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-07-01 09:00\n版本号：v6.0\n文档类型：policy\n文档族：employee_handbook\n生效日期：2025-07-01\n\n## 一、适用范围\n\n本手册适用于澜图智能装备股份有限公司及下属子公司全体正式员工、试用期员工与实习生。劳务派遣与外包人员参照执行。\n\n## 二、入职与试用\n\n新员工入职当日签署劳动合同、保密协议与廉洁承诺书，试用期 3-6 个月。试用期内需完成入职培"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_travel_2025h2",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_travel_2025h2",
+        "title": "# 澜图智能差旅费用报销标准（2025年7月修订）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 443,
+        "text": "# 澜图智能差旅费用报销标准（2025年7月修订）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-06-10 09:00\n更新时间：2025-07-01 09:00\n版本号：v3.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2025-07-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 600 元/晚，二线城市 450 元/晚，其他城市 380 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 150 元/天，按自然日计算；客户宴请须提前申请，不得重复领取补贴。\n\n## 三、出差补贴\n\n市内交通与通讯补贴合计 120 元/天，凭票据实报销，无票按标准发放。\n\n## 四、交通标准\n\n高铁二等座、飞机经济舱；总监及以上可乘坐高铁一等座。出差须提前 3 个工作日申请，并同步提交行程与预算。\n\n## 五、生效说明\n\n本版本自 2025 年 7 月 1 日起生效，2025 年 1 月版同时废止。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_travel_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_travel_2025",
+        "title": "# 澜图智能差旅费用报销标准（2025版）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 423,
+        "text": "# 澜图智能差旅费用报销标准（2025版）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-12-15 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2025-01-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 550 元/晚，二线城市 420 元/晚，其他城市 350 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 120 元/天，按自然日计算；客户宴请须提前申请，不得重复领取补贴。\n\n## 三、出差补贴\n\n市内交通与通讯补贴合计 100 元/天，凭票据实报销，无票按标准发放。\n\n## 四、交通标准\n\n高铁二等座、飞机经济舱；总监及以上可乘坐高铁一等座。出差须提前 2 个工作日申请。\n\n## 五、生效说明\n\n本版本自 2025 年 1 月 1 日起生效，2024 版同时废止。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "过渡 已提交申请 重新审批 重批 旧版申请",
+        "top_k": 8
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_policy_attendance_2024",
+            "title": "# 澜图智能考勤管理制度（2024版）",
+            "chunk": 0,
+            "score": 15.917,
+            "snippet": "# 澜图智能考勤管理制度（2024版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：attendance\n生效日期：2024-01-01\n\n## 一、打卡规则\n\n员工每日上下班各打卡一次，漏打卡须在 3 个工作日内提交补卡申请，每月补卡不超过 3 次。\n\n## 二、弹性工作\n\n上班弹性 30 分钟，9:00-9:30 到岗均视为正常；每月可申请远程办公 2 天，须提前 1 个工作日审批"
+          },
+          {
+            "doc_id": "lantu_policy_attendance_2025",
+            "title": "# 澜图智能考勤管理制度（2025版）",
+            "chunk": 0,
+            "score": 15.893,
+            "snippet": "# 澜图智能考勤管理制度（2025版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-12-20 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：attendance\n生效日期：2025-01-01\n\n## 一、打卡规则\n\n员工每日上下班各打卡一次，漏打卡须在 3 个工作日内提交补卡申请，每月补卡不超过 4 次。\n\n## 二、弹性工作\n\n上班弹性 60 分钟，9:00-10:00 到岗均视为正常；每月可申请远程办公 4 天，须提前 1 个工作日审"
+          },
+          {
+            "doc_id": "lantu_sales_discount_2025",
+            "title": "# 澜图智能销售折扣审批权限（2025版）",
+            "chunk": 0,
+            "score": 12.968,
+            "snippet": "# 澜图智能销售折扣审批权限（2025版）\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-12-18 09:00\n更新时间：2025-01-01 10:00\n版本号：v2.0\n文档类型：sales\n文档族：sales_discount\n生效日期：2025-01-01\n\n## 一、折扣区间\n\n标准价折扣 8% 以内（含）由销售经理审批；8%-15%（含）由销售副总裁审批；15%-25%（含）由总经理审批；超过 25% 必须提交董事会审议。\n\n## 二、申请材料\n\n折扣申请须附客户分级、竞品报价、项目毛利测算"
+          },
+          {
+            "doc_id": "lantu_policy_seal",
+            "title": "# 澜图智能印章管理办法",
+            "chunk": 0,
+            "score": 12.762,
+            "snippet": "# 澜图智能印章管理办法\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-02-10 09:00\n更新时间：2025-02-14 10:00\n版本号：v2.2\n文档类型：policy\n文档族：seal_management\n生效日期：2025-02-14\n\n## 一、印章种类\n\n公司印章包括公章、合同专用章、财务专用章、法人章与部门章。公章由董事会办公室保管，合同章由法务合规部保管，财务章由财务部保管。\n\n## 二、用印流程\n\n用印须在 OA 提交申请，说明用途、文件名称与份数，附审批完成的合同或文件；单份"
+          },
+          {
+            "doc_id": "lantu_sales_discount_2024",
+            "title": "# 澜图智能销售折扣审批权限（2024版）",
+            "chunk": 0,
+            "score": 12.598,
+            "snippet": "# 澜图智能销售折扣审批权限（2024版）\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-01-25 09:00\n更新时间：2024-02-01 10:00\n版本号：v1.0\n文档类型：sales\n文档族：sales_discount\n生效日期：2024-01-01\n\n## 一、折扣区间\n\n标准价折扣 10% 以内（含）由销售经理审批；10%-20%（含）由销售副总裁审批；超过 20% 由总经理审批。\n\n## 二、申请材料\n\n折扣申请须说明客户级别、竞争态势、项目毛利与战略价值，并附成本测算表。\n\n## "
+          },
+          {
+            "doc_id": "lantu_policy_contract",
+            "title": "# 澜图智能合同管理制度",
+            "chunk": 0,
+            "score": 9.044,
+            "snippet": "# 澜图智能合同管理制度\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-02-01 09:00\n更新时间：2025-05-12 15:00\n版本号：v3.0\n文档类型：policy\n文档族：contract_management\n生效日期：2025-05-12\n\n## 一、合同分类\n\n合同分为销售合同、采购合同、服务合同、保密协议、租赁合同与劳动合同。销售与采购合同须使用公司标准模板，非标条款须法务审核。\n\n## 二、审批权限\n\n合同金额 1,000 万元以上须法务合规部与 CFO 联合审批；5,000 "
+          },
+          {
+            "doc_id": "lantu_hr_resignation",
+            "title": "# 澜图智能离职与交接管理办法",
+            "chunk": 0,
+            "score": 8.818,
+            "snippet": "# 澜图智能离职与交接管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-15 09:00\n更新时间：2025-05-20 09:00\n版本号：v2.4\n文档类型：hr\n文档族：resignation\n生效日期：2025-05-20\n\n## 一、离职申请\n\n正式员工提前 30 日、试用期员工提前 3 日提交书面离职申请；关键岗位须提前 60 日。\n\n## 二、离职面谈\n\nHR 在收到申请后 3 个工作日内安排面谈，了解离职原因并记录改进建议；核心人才可启动挽留。\n\n## 三、工作交接\n\n交接内"
+          },
+          {
+            "doc_id": "lantu_policy_travel_2025h2",
+            "title": "# 澜图智能差旅费用报销标准（2025年7月修订）",
+            "chunk": 0,
+            "score": 8.23,
+            "snippet": "# 澜图智能差旅费用报销标准（2025年7月修订）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-06-10 09:00\n更新时间：2025-07-01 09:00\n版本号：v3.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2025-07-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 600 元/晚，二线城市 450 元/晚，其他城市 380 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 150 元/天，按自然日计算；客户"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_travel_2024",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_travel_2024",
+        "title": "# 澜图智能差旅费用报销标准（2024版）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 375,
+        "text": "# 澜图智能差旅费用报销标准（2024版）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-02-20 09:00\n更新时间：2024-03-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2024-03-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 450 元/晚，二线城市 350 元/晚，其他城市 300 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 100 元/天，按自然日计算；客户宴请须提前申请，不得重复领取补贴。\n\n## 三、出差补贴\n\n市内交通与通讯补贴合计 80 元/天，凭票据实报销，无票按标准发放。\n\n## 四、交通标准\n\n高铁二等座、飞机经济舱；总监及以上可乘坐高铁一等座。出差须提前 2 个工作日申请。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 0.667,
+    "cited": [
+      "lantu_policy_travel_2025",
+      "lantu_policy_travel_2025h2",
+      "lantu_policy_travel_2024"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.174,
+    "number_recall": 0.0
+  }
+}

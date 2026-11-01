@@ -1,0 +1,232 @@
+{
+  "qid": "M0307",
+  "question": "我们在苏州、东莞、成都三个基地分别做什么？年产能合计多少？2026 年扩产后呢？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"苏州 东莞 成都 产能\"}}",
+      "usage": {
+        "prompt_tokens": 375,
+        "total_tokens": 484,
+        "completion_tokens": 109,
+        "completion_tokens_details": {
+          "reasoning_tokens": 85,
+          "text_tokens": 109
+        }
+      },
+      "seconds": 1.422
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"苏州 东莞 成都 产能 扩产\"}}",
+      "usage": {
+        "prompt_tokens": 424,
+        "total_tokens": 662,
+        "completion_tokens": 238,
+        "completion_tokens_details": {
+          "reasoning_tokens": 211,
+          "text_tokens": 238
+        }
+      },
+      "seconds": 2.484
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_company_campus\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 2816,
+        "total_tokens": 3074,
+        "completion_tokens": 258,
+        "completion_tokens_details": {
+          "reasoning_tokens": 224,
+          "text_tokens": 258
+        }
+      },
+      "seconds": 2.219
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据《澜图智能制造基地与产能布局》文档：\\n\\n1. **各基地业务分工**：\\n   - **苏州总部基地**：承担六轴机器人总装、控制器生产与研发测试。\\n   - **东莞华南基地**：聚焦 SCARA、AMR 与焊接工作站。\\n   - **成都西部基地**：主要服务西部汽车与电子客户。\\n\\n2. **年产能情况**：\\n   - **当前合计**：三大基地合计年产能 **30,000 台**（其中苏州 18,000 台、东莞 8,000 台、成都 4,000 台）。\\n   - **2026 年扩产后**：计划通过苏州二期扩产，将总产能提升至 **36,000 台**。\",\"citations\":[\"lantu_company_campus\"],\"evidence\":[\"lantu_company_campus#0\"]}",
+      "usage": {
+        "prompt_tokens": 3303,
+        "total_tokens": 4122,
+        "completion_tokens": 819,
+        "completion_tokens_details": {
+          "reasoning_tokens": 596,
+          "text_tokens": 819
+        }
+      },
+      "seconds": 6.313
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "苏州 东莞 成都 产能"
+      },
+      "result_sha": "1290604daacc15212b4f59638c659261007a940d59ae4c9dd916d753b78e21de",
+      "result_chars": 12,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "苏州 东莞 成都 产能 扩产"
+      },
+      "result_sha": "2c195a6b6a7b795687b87c574e4e4c3445dfc960c800ef6181cd1f6606d9bd83",
+      "result_chars": 3907,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_company_campus",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "b991a0f6e405ada0f7d62138d18172acf9e06f841009be7393e2ef8a9df4b6d3",
+      "result_chars": 695,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《澜图智能制造基地与产能布局》文档：\n\n1. **各基地业务分工**：\n   - **苏州总部基地**：承担六轴机器人总装、控制器生产与研发测试。\n   - **东莞华南基地**：聚焦 SCARA、AMR 与焊接工作站。\n   - **成都西部基地**：主要服务西部汽车与电子客户。\n\n2. **年产能情况**：\n   - **当前合计**：三大基地合计年产能 **30,000 台**（其中苏州 18,000 台、东莞 8,000 台、成都 4,000 台）。\n   - **2026 年扩产后**：计划通过苏州二期扩产，将总产能提升至 **36,000 台**。",
+    "citations": [
+      "lantu_company_campus"
+    ],
+    "evidence": [
+      "lantu_company_campus#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 8342,
+  "started_at": "2026-11-01T06:26:39",
+  "elapsed_seconds": 12.44,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "苏州 东莞 成都 产能"
+      },
+      "result": {
+        "docs": []
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "苏州 东莞 成都 产能 扩产"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_company_campus",
+            "title": "# 澜图智能制造基地与产能布局",
+            "chunk": 0,
+            "score": 16.798,
+            "snippet": "# 澜图智能制造基地与产能布局\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2024-04-12 09:00\n更新时间：2025-11-20 15:00\n版本号：v3.0\n文档类型：company\n文档族：manufacturing_base\n生效日期：2025-11-20\n\n## 一、苏州总部基地\n\n位于苏州工业园区，占地 120 亩，建筑面积 9.6 万平方米，承担六轴机器人总装、控制器生产与研发测试，年产能 18,000 台。\n\n## 二、东莞华南基地\n\n位于东莞松山湖，占地 60 亩，聚焦 SCARA、A"
+          },
+          {
+            "doc_id": "lantu_support_spare_inventory",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 12.582,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能备件库存分布（2025Q4）\n所属部门\t售后服务部\n作者\t陆绍\n创建时间\t2025-12-25 09:00\n更新时间\t2026-01-02 10:00\n版本号\tv1.0\n文档类型\tsupport\n文档族\tspare_inventory_2025q4\n生效日期\t2026-01-02\n[工作表] 备件仓库存\n仓库\t所在城市\t库存金额（万元）\tSKU 数\t周转天数\n苏州中心仓\t苏州\t6,200\t4,860\t92\n东莞仓\t东莞\t2,800\t2,240\t105\n成都仓\t成都\t1,"
+          },
+          {
+            "doc_id": "lantu_org_headcount",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 9.26,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能员工分布统计（2025）\n所属部门\t人力资源部\n作者\t陈依然\n创建时间\t2025-12-31 18:00\n更新时间\t2026-01-09 09:30\n版本号\tv1.0\n文档类型\torg\n文档族\theadcount_2025\n生效日期\t2026-01-09\n[工作表] 基地分布\n基地\t员工数\t研发\t销售\t制造\t服务\t职能\n苏州总部\t2,450\t1,120\t310\t560\t250\t210\n东莞华南\t780\t86\t150\t300\t120\t124\n成都西部\t430\t80\t90\t"
+          },
+          {
+            "doc_id": "lantu_company_history",
+            "title": "# 澜图智能发展历程（2011—2025）",
+            "chunk": 0,
+            "score": 9.135,
+            "snippet": "# 澜图智能发展历程（2011—2025）\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2023-03-01 09:00\n更新时间：2026-01-05 14:00\n版本号：v4.0\n文档类型：company\n文档族：company_history\n生效日期：2026-01-05\n\n## 一、创业阶段（2011—2015）\n\n2011 年 6 月 18 日，公司在苏州工业园区成立，创始团队来自高校机器人实验室，首款产品为 LT-R6 六轴工业机器人，2012 年实现小批量交付 120 台。2014 年建成首条机"
+          },
+          {
+            "doc_id": "lantu_company_profile",
+            "title": "澜图智能装备公司简介",
+            "chunk": 0,
+            "score": 8.858,
+            "snippet": "澜图智能装备公司简介\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2023-03-01 09:00\n更新时间：2026-01-08 10:30\n版本号：v5.2\n文档类型：company\n文档族：company_profile\n生效日期：2026-01-08\n一、公司概况\n澜图智能装备股份有限公司成立于2011-06-18，总部位于江苏省苏州市工业园区星澜路88号，注册资本\n6.8 亿元，2023 年在上海证券交易所科创板上市（股票代码 688719）。公司专注工业机器人、智能产线\n与工业软件，为汽车、锂电、光伏"
+          },
+          {
+            "doc_id": "lantu_meeting_board",
+            "title": "# 2025 年第二次临时董事会决议",
+            "chunk": 0,
+            "score": 7.913,
+            "snippet": "# 2025 年第二次临时董事会决议\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-04-25 09:00\n更新时间：2025-04-25 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_board_2025\n生效日期：2025-04-25\n\n## 一、会议信息\n\n时间：2025 年 4 月 25 日；方式：现场加视频；应到董事 9 人，实到 9 人；列席：高管团队。\n\n## 二、审议事项\n\n审议通过《2024 年度利润分配方案》《2025 年度研发投入预算》《苏州二期"
+          },
+          {
+            "doc_id": "lantu_org_sales_regions",
+            "title": "# 澜图智能销售区域与渠道网络",
+            "chunk": 0,
+            "score": 7.816,
+            "snippet": "# 澜图智能销售区域与渠道网络\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-02-15 09:00\n更新时间：2025-12-05 15:00\n版本号：v3.1\n文档类型：org\n文档族：sales_regions\n生效日期：2025-12-05\n\n## 一、区域划分\n\n销售中心下设华东、华南、华北、西部、海外五个大区，覆盖 32 个国家和地区。华东大区总部苏州，华南大区总部东莞，华北大区总部北京，西部大区总部成都。\n\n## 二、团队规模\n\n销售团队 620 人，其中行业销售 280 人、渠道销售 16"
+          },
+          {
+            "doc_id": "lantu_meeting_ops_2025q3",
+            "title": "2025 年第三季度经营分析会纪要",
+            "chunk": 0,
+            "score": 7.432,
+            "snippet": "2025 年第三季度经营分析会纪要\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-10-10 09:00\n更新时间：2025-10-10 18:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_ops_2025q3\n生效日期：2025-10-10\n一、会议信息\n时间：2025 年 10 月 10 日 09:00-12:00；地点：苏州总部 3 楼会议室；主持：顾承澜；参会：沈亦舟、周敏仪、韩立恒、罗嘉树、陈依然、潘文博、邵岚。\n二、经营回顾\n第三季度营业收入 11.52 亿元，同"
+          },
+          {
+            "doc_id": "lantu_case_08_kangze",
+            "title": "# 客户案例：康泽制药无菌灌装项目",
+            "chunk": 0,
+            "score": 5.723,
+            "snippet": "# 客户案例：康泽制药无菌灌装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_kangze\n生效日期：2025-12-20\n\n## 一、客户背景\n\n康泽制药位于苏州，主营医药业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖3 条无"
+          },
+          {
+            "doc_id": "lantu_case_03_yaoyang",
+            "title": "# 客户案例：曜阳光能电池片串焊项目",
+            "chunk": 0,
+            "score": 4.527,
+            "snippet": "# 客户案例：曜阳光能电池片串焊项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_yaoyang\n生效日期：2025-12-20\n\n## 一、客户背景\n\n曜阳光能位于合肥，主营光伏业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖16"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_company_campus",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_company_campus",
+        "title": "# 澜图智能制造基地与产能布局",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 523,
+        "text": "# 澜图智能制造基地与产能布局\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2024-04-12 09:00\n更新时间：2025-11-20 15:00\n版本号：v3.0\n文档类型：company\n文档族：manufacturing_base\n生效日期：2025-11-20\n\n## 一、苏州总部基地\n\n位于苏州工业园区，占地 120 亩，建筑面积 9.6 万平方米，承担六轴机器人总装、控制器生产与研发测试，年产能 18,000 台。\n\n## 二、东莞华南基地\n\n位于东莞松山湖，占地 60 亩，聚焦 SCARA、AMR 与焊接工作站，年产能 8,000 台，2025 年产值 11.2 亿元。\n\n## 三、成都西部基地\n\n位于成都天府新区，占地 40 亩，2024 年投产，主要服务西部汽车与电子客户，年产能 4,000 台。\n\n## 四、产能规划\n\n三大基地合计年产能 30,000 台。2026 年计划通过苏州二期扩产将总产能提升至 36,000 台，预计资本开支 3.8 亿元。\n\n## 五、供应链配套\n\n核心供应商 186 家，其中战略供应商 22 家；减速器实现双源供应，伺服驱动器自研比例 61%，关键物料安全库存 45 天。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.5,
+    "cited": [
+      "lantu_company_campus"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.352,
+    "number_recall": 0.667
+  }
+}

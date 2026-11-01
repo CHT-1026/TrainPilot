@@ -1,0 +1,242 @@
+{
+  "qid": "A0036",
+  "question": "顾承澜的直接下属有哪些？韩立恒是否在其中？",
+  "question_type": "人物关系推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"顾承澜 下属\"}}",
+      "usage": {
+        "prompt_tokens": 362,
+        "total_tokens": 441,
+        "completion_tokens": 79,
+        "completion_tokens_details": {
+          "reasoning_tokens": 57,
+          "text_tokens": 79
+        }
+      },
+      "seconds": 1.219
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_org_reporting_lines\",\"offset\":4000,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 2700,
+        "total_tokens": 3542,
+        "completion_tokens": 842,
+        "completion_tokens_details": {
+          "reasoning_tokens": 805,
+          "text_tokens": 842
+        }
+      },
+      "seconds": 7.859
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_org_reporting_lines\",\"offset\":0,\"limit\":2000}}",
+      "usage": {
+        "prompt_tokens": 2820,
+        "total_tokens": 4524,
+        "completion_tokens": 1704,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1670,
+          "text_tokens": 1704
+        }
+      },
+      "seconds": 14.547
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"顾承澜的直接下属包括：沈亦舟、罗嘉树、韩立恒、周敏仪、陈依然、邵岚。韩立恒在其直接下属名单中。\",\"citations\":[\"lantu_org_reporting_lines\"],\"evidence\":[\"lantu_org_reporting_lines#0\"]}",
+      "usage": {
+        "prompt_tokens": 3571,
+        "total_tokens": 4215,
+        "completion_tokens": 644,
+        "completion_tokens_details": {
+          "reasoning_tokens": 570,
+          "text_tokens": 644
+        }
+      },
+      "seconds": 5.125
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "顾承澜 下属"
+      },
+      "result_sha": "74f37e66e6d4da0b37d134c8c1e22a12b6d2ed5d8f5c2645276e52931ce8c20d",
+      "result_chars": 3853,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_reporting_lines",
+        "offset": 4000,
+        "limit": 4000
+      },
+      "result_sha": "54961b8f92d73e30c9318d1651d3443c1ec9c73f3074ddbc5b75d02a1d8913aa",
+      "result_chars": 152,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_reporting_lines",
+        "offset": 0,
+        "limit": 2000
+      },
+      "result_sha": "20f20cc4753650d1d9e0f721a002c8833dfbcdb3c13c585a35e051d15eedce37",
+      "result_chars": 1155,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "顾承澜的直接下属包括：沈亦舟、罗嘉树、韩立恒、周敏仪、陈依然、邵岚。韩立恒在其直接下属名单中。",
+    "citations": [
+      "lantu_org_reporting_lines"
+    ],
+    "evidence": [
+      "lantu_org_reporting_lines#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 12722,
+  "started_at": "2026-11-01T03:49:57",
+  "elapsed_seconds": 28.75,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "顾承澜 下属"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_org_reporting_lines",
+            "title": "# 澜图智能员工汇报关系与业务分工",
+            "chunk": 0,
+            "score": 8.453,
+            "snippet": "# 澜图智能员工汇报关系与业务分工\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-02-10 09:00\n更新时间：2025-09-01 10:00\n版本号：v1.2\n文档类型：org\n文档族：org_reporting_lines\n生效日期：2025-09-01\n\n## 一、研发体系汇报链\n\n顾承澜是沈亦舟的上级。沈亦舟是程知远的上级。程知远是周启航的上级。周启航是林晓的上级。林晓是赵一鸣的上级。\n\n沈亦舟担任 CTO，负责研发体系。程知远担任研发中心总经理，负责研发中心整体经营管理。周启航担任控制器"
+          },
+          {
+            "doc_id": "lantu_strategy_2025",
+            "title": "# 澜图智能 2025 年度经营计划",
+            "chunk": 0,
+            "score": 5.669,
+            "snippet": "# 澜图智能 2025 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-01-10 09:00\n更新时间：2025-02-10 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2025\n生效日期：2025-02-10\n\n## 一、年度目标\n\n2025 年营业收入目标 41.5 亿元，力争 42.63 亿元；新签订单目标 46 亿元；机器人出货目标 20,000 台。\n\n## 二、重点任务\n\n锂电与半导体行业突破；LT-C800 控制器量产；海外收入占"
+          },
+          {
+            "doc_id": "lantu_strategy_2026",
+            "title": "# 澜图智能 2026 年度经营计划",
+            "chunk": 0,
+            "score": 5.601,
+            "snippet": "# 澜图智能 2026 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-12-15 09:00\n更新时间：2026-01-12 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2026\n生效日期：2026-01-12\n\n## 一、年度目标\n\n2026 年营业收入 52 亿元，归母净利润 5.2 亿元，新签订单 58 亿元，机器人出货 26,000 台。\n\n## 二、业务策略\n\n锂电保持领先，半导体翻倍增长，海外收入 7.2 亿元；软件与服务收入占比提"
+          },
+          {
+            "doc_id": "lantu_company_mission",
+            "title": "# 澜图智能使命、愿景与价值观",
+            "chunk": 0,
+            "score": 5.513,
+            "snippet": "# 澜图智能使命、愿景与价值观\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2023-05-10 10:00\n更新时间：2025-12-20 16:00\n版本号：v3.1\n文档类型：company\n文档族：company_mission\n生效日期：2025-12-20\n\n## 一、使命\n\n让每一座工厂拥有可靠、易用、可进化的智能生产力。\n\n## 二、愿景\n\n到 2030 年，成为全球工业机器人领域最值得信赖的中国品牌，服务 10,000 家制造企业。\n\n## 三、价值观\n\n客户成功、实事求是、长期主义、协同共赢"
+          },
+          {
+            "doc_id": "lantu_org_executives",
+            "title": "# 澜图智能高级管理人员名单",
+            "chunk": 0,
+            "score": 5.366,
+            "snippet": "# 澜图智能高级管理人员名单\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2024-03-01 09:00\n更新时间：2025-11-28 17:00\n版本号：v4.0\n文档类型：org\n文档族：executives\n生效日期：2025-11-28\n\n## 一、核心管理层\n\n顾承澜，董事长兼总经理，1968 年生，教授级高级工程师，持股 18.6%；沈亦舟，CTO，负责研发体系；周敏仪，CFO，负责财务与资本运作；韩立恒，COO，负责供应链与制造。\n\n## 二、业务分管\n\n罗嘉树，销售副总裁，分管销售中心、客"
+          },
+          {
+            "doc_id": "lantu_meeting_strategy",
+            "title": "# 2026 年战略研讨会纪要",
+            "chunk": 0,
+            "score": 5.305,
+            "snippet": "# 2026 年战略研讨会纪要\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-11-21 09:00\n更新时间：2025-11-22 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_strategy_2026\n生效日期：2025-11-22\n\n## 一、战略目标\n\n2026 年营业收入 52 亿元，2028 年 80 亿元；海外收入占比 2026 年提升至 17%，2028 年达到 25%。\n\n## 二、业务重点\n\n巩固锂电与汽车基本盘，突破半导体与具身智能；软件与服务收"
+          },
+          {
+            "doc_id": "lantu_org_committees",
+            "title": "# 澜图智能跨部门委员会与运作机制",
+            "chunk": 0,
+            "score": 5.177,
+            "snippet": "# 澜图智能跨部门委员会与运作机制\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2024-05-06 09:00\n更新时间：2025-10-18 11:00\n版本号：v2.1\n文档类型：org\n文档族：committees\n生效日期：2025-10-18\n\n## 一、产品决策委员会\n\n主任由 CTO 担任，成员包括产品部、研发中心、销售中心、质量部负责人，负责产品立项、版本发布与退市决策，每月召开一次。\n\n## 二、质量安全委员会\n\n主任由 COO 担任，负责重大质量事故、召回与安全生产事项，实行 24 小时响"
+          },
+          {
+            "doc_id": "lantu_org_board",
+            "title": "# 澜图智能董事会与治理结构",
+            "chunk": 0,
+            "score": 4.984,
+            "snippet": "# 澜图智能董事会与治理结构\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2023-09-01 09:00\n更新时间：2025-06-20 14:00\n版本号：v3.0\n文档类型：org\n文档族：board_structure\n生效日期：2025-06-20\n\n## 一、董事会构成\n\n董事会由 9 名董事组成，其中独立董事 3 名，职工董事 1 名。董事长顾承澜，副董事长由机构股东提名。\n\n## 二、专门委员会\n\n董事会下设战略委员会、审计委员会、薪酬与考核委员会、提名委员会。审计委员会主任由独立董事担任，负"
+          },
+          {
+            "doc_id": "lantu_meeting_ops_2025q3",
+            "title": "2025 年第三季度经营分析会纪要",
+            "chunk": 0,
+            "score": 4.724,
+            "snippet": "2025 年第三季度经营分析会纪要\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-10-10 09:00\n更新时间：2025-10-10 18:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_ops_2025q3\n生效日期：2025-10-10\n一、会议信息\n时间：2025 年 10 月 10 日 09:00-12:00；地点：苏州总部 3 楼会议室；主持：顾承澜；参会：沈亦舟、周敏仪、韩立恒、罗嘉树、陈依然、潘文博、邵岚。\n二、经营回顾\n第三季度营业收入 11.52 亿元，同"
+          },
+          {
+            "doc_id": "lantu_company_profile",
+            "title": "澜图智能装备公司简介",
+            "chunk": 0,
+            "score": 4.245,
+            "snippet": "澜图智能装备公司简介\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2023-03-01 09:00\n更新时间：2026-01-08 10:30\n版本号：v5.2\n文档类型：company\n文档族：company_profile\n生效日期：2026-01-08\n一、公司概况\n澜图智能装备股份有限公司成立于2011-06-18，总部位于江苏省苏州市工业园区星澜路88号，注册资本\n6.8 亿元，2023 年在上海证券交易所科创板上市（股票代码 688719）。公司专注工业机器人、智能产线\n与工业软件，为汽车、锂电、光伏"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_reporting_lines",
+        "offset": 4000,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_org_reporting_lines",
+        "title": "# 澜图智能员工汇报关系与业务分工",
+        "offset": 4000,
+        "limit": 4000,
+        "total_chars": 964,
+        "text": "",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_reporting_lines",
+        "offset": 0,
+        "limit": 2000
+      },
+      "result": {
+        "doc_id": "lantu_org_reporting_lines",
+        "title": "# 澜图智能员工汇报关系与业务分工",
+        "offset": 0,
+        "limit": 2000,
+        "total_chars": 964,
+        "text": "# 澜图智能员工汇报关系与业务分工\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-02-10 09:00\n更新时间：2025-09-01 10:00\n版本号：v1.2\n文档类型：org\n文档族：org_reporting_lines\n生效日期：2025-09-01\n\n## 一、研发体系汇报链\n\n顾承澜是沈亦舟的上级。沈亦舟是程知远的上级。程知远是周启航的上级。周启航是林晓的上级。林晓是赵一鸣的上级。\n\n沈亦舟担任 CTO，负责研发体系。程知远担任研发中心总经理，负责研发中心整体经营管理。周启航担任控制器研究所所长，负责控制器产品与技术路线。林晓担任伺服算法组组长，负责伺服控制算法与标定。赵一鸣是伺服控制工程师，负责伺服环参数整定与现场调试。\n\n## 二、销售与客户成功汇报链\n\n顾承澜是罗嘉树的上级。罗嘉树是唐婧的上级。唐婧是许博的上级。许博是陈璐的上级。\n\n罗嘉树担任销售副总裁，分管销售中心、客户成功部与售后服务部。唐婧担任销售中心总经理，负责销售中心整体业务。许博担任华东大区经理，负责华东区域客户与渠道。陈璐担任上海客户经理，负责上海区域重点客户。\n\n## 三、供应链与制造汇报链\n\n顾承澜是韩立恒的上级。韩立恒是方磊的上级。方磊是郭涛的上级。\n\n韩立恒担任 COO，负责供应链与制造。方磊担任制造中心总经理，负责制造中心生产运营。郭涛担任苏州工厂厂长，负责苏州工厂的生产、质量与交付。\n\n## 四、职能体系汇报链\n\n顾承澜是周敏仪的上级。顾承澜是陈依然的上级。顾承澜是邵岚的上级。陈依然是蒋雯的上级。\n\n周敏仪担任 CFO，负责财务与资本运作。陈依然担任人力资源副总裁，负责人力资源体系。蒋雯担任薪酬绩效经理，负责薪酬、绩效与员工关系。邵岚担任法务合规总监，负责法务、合规与知识产权。\n\n## 五、跨部门业务分工\n\n周启航同时担任新一代控制器 LT-C900 项目负责人，项目成员包括林晓与赵一鸣。唐婧负责销售中心，华东区域由许博管理，上海区域重点客户由陈璐维护。方磊负责制造中心，苏州工厂由郭涛管理。\n\n## 六、汇报关系使用说明\n\n本文件中的“上级”均指行政汇报关系中的直接上级；跨部门项目中的项目负责人关系不改变行政汇报关系。需要判断两人关系时，应沿着直接上级链逐级向上查找，不能跳级推断。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_org_reporting_lines"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.568,
+    "number_recall": 0.0
+  }
+}

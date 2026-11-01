@@ -1,0 +1,25 @@
+{
+  "qid": "G0070",
+  "question": "路线图的软件订阅占比 20% 与 2025 工业软件及服务占比 12.2% 相差多少个百分点？这个差能否直接视为同一指标的增长需求，为什么？",
+  "question_type": "跨文档推理",
+  "rounds": [],
+  "tool_calls": [],
+  "answer": null,
+  "status": "api_error",
+  "tokens": 0,
+  "started_at": "2026-11-01T03:05:30",
+  "error": "HTTPError: HTTP Error 503: Service Unavailable",
+  "elapsed_seconds": 0.0,
+  "tool_calls_detail": [],
+  "model_label": "D",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

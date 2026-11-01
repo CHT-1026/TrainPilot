@@ -1,0 +1,79 @@
+{
+  "qid": "C0089",
+  "question": "曜阳光能案例的组件产能由 4.2GW 提升至 6.5GW，增幅是多少？折算到每条串焊线的组件产能提升是多少？",
+  "question_type": "汇总计算",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>曜阳光能 4.2GW 6.5GW 组件产能</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 97,
+        "prompt_tokens": 381,
+        "total_tokens": 478,
+        "completion_tokens_details": {
+          "reasoning_tokens": 56
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.641
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>曜阳光能 组件产能 4.2GW 6.5GW</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 81,
+        "prompt_tokens": 459,
+        "total_tokens": 540,
+        "completion_tokens_details": {
+          "reasoning_tokens": 40
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.109
+    },
+    {
+      "round": 3,
+      "text": "{\"name\":\"search\",\"args\":{\"query\":\"曜阳光能 串焊线 组件产能 4.2GW 6.5GW 提升\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 97,
+        "prompt_tokens": 537,
+        "total_tokens": 634,
+        "completion_tokens_details": {
+          "reasoning_tokens": 57
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 5.328
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "name": "search",
+    "args": {
+      "query": "曜阳光能 串焊线 组件产能 4.2GW 6.5GW 提升",
+      "top_k": 10
+    }
+  },
+  "status": "answered",
+  "tokens": 1652,
+  "started_at": "2026-11-01T04:18:27",
+  "elapsed_seconds": 10.08,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

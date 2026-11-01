@@ -1,0 +1,680 @@
+{
+  "qid": "K0049",
+  "question": "12 个客户案例覆盖了哪些行业？各行业分别有几家客户？请指出这些行业与公司产品总览中「重点行业」清单之间的覆盖关系。",
+  "question_type": "汇总计算",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"12个客户案例\", \"top_k\":10}}",
+      "usage": {
+        "prompt_tokens": 383,
+        "total_tokens": 570,
+        "completion_tokens": 187,
+        "completion_tokens_details": {
+          "reasoning_tokens": 158,
+          "text_tokens": 187
+        }
+      },
+      "seconds": 1.859
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"\"}}",
+      "usage": {
+        "prompt_tokens": 2725,
+        "total_tokens": 3287,
+        "completion_tokens": 562,
+        "completion_tokens_details": {
+          "reasoning_tokens": 545,
+          "text_tokens": 562
+        }
+      },
+      "seconds": 4.578
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"case\"}}",
+      "usage": {
+        "prompt_tokens": 3857,
+        "total_tokens": 4420,
+        "completion_tokens": 563,
+        "completion_tokens_details": {
+          "reasoning_tokens": 545,
+          "text_tokens": 563
+        }
+      },
+      "seconds": 4.344
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\": \"lantu_company_profile\", \"offset\": 0, \"limit\": 4000}}",
+      "usage": {
+        "prompt_tokens": 4330,
+        "total_tokens": 4890,
+        "completion_tokens": 560,
+        "completion_tokens_details": {
+          "reasoning_tokens": 522,
+          "text_tokens": 560
+        }
+      },
+      "seconds": 3.969
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"重点行业\", \"top_k\":10}}",
+      "usage": {
+        "prompt_tokens": 4986,
+        "total_tokens": 5644,
+        "completion_tokens": 658,
+        "completion_tokens_details": {
+          "reasoning_tokens": 632,
+          "text_tokens": 658
+        }
+      },
+      "seconds": 4.64
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\": \"lantu_sales_customer_list\", \"offset\": 0, \"limit\": 4000}}",
+      "usage": {
+        "prompt_tokens": 7372,
+        "total_tokens": 8114,
+        "completion_tokens": 742,
+        "completion_tokens_details": {
+          "reasoning_tokens": 703,
+          "text_tokens": 742
+        }
+      },
+      "seconds": 5.485
+    },
+    {
+      "round": 7,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\": \"lantu_product_overview\", \"offset\": 0, \"limit\": 4000}}",
+      "usage": {
+        "prompt_tokens": 7840,
+        "total_tokens": 8290,
+        "completion_tokens": 450,
+        "completion_tokens_details": {
+          "reasoning_tokens": 411,
+          "text_tokens": 450
+        }
+      },
+      "seconds": 3.265
+    },
+    {
+      "round": 8,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"12 个客户案例共覆盖了 12 个不同的行业，每个行业各有 1 家客户。\\n\\n具体行业及客户如下：\\n1. **动力电池**（1 家：恒芯动力电池）\\n2. **汽车零部件**（1 家：澜岳汽车零部件）\\n3. **光伏**（1 家：曜阳光能）\\n4. **3C 电子**（1 家：星禾电子）\\n5. **家电**（1 家：海翎家电）\\n6. **半导体**（1 家：晶拓微电子）\\n7. **食品**（1 家：麦丰食品）\\n8. **医药**（1 家：康泽制药）\\n9. **物流**（1 家：顺捷供应链）\\n10. **金属加工**（1 家：恒锐精密）\\n11. **工程机械**（1 家：鼎重机械）\\n12. **电梯**（1 家：昇达电梯）\\n\\n**与「重点行业」的覆盖关系：**\\n根据《澜图智能产品与解决方案总览》，公司的重点行业包括：汽车及零部件、动力电池、光伏、3C 电子、半导体、家电、食品、医药、物流、金属加工、工程机械。\\n\\n对比发现，上述 12 个案例行业中，有 **11 个行业**（除电梯外）均属于公司的重点行业；仅有 **电梯** 行业不在重点行业清单中。\",\"citations\":[\"lantu_sales_customer_list\",\"lantu_product_overview\"],\"evidence\":[\"lantu_sales_customer_list#0\",\"lantu_product_overview#0\"]}",
+      "usage": {
+        "prompt_tokens": 8452,
+        "total_tokens": 9854,
+        "completion_tokens": 1402,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1016,
+          "text_tokens": 1402
+        }
+      },
+      "seconds": 9.453
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "12个客户案例",
+        "top_k": 10
+      },
+      "result_sha": "71e6bd7747265a6dae4d79d6b9219caf8add6c7baea2600d3360b10433dea6f0",
+      "result_chars": 3889,
+      "hits": 10
+    },
+    {
+      "name": "list",
+      "args": {
+        "keyword": ""
+      },
+      "result_sha": "ee5960dfc8f223ba9ffafd250ac7a048c5a08afb9d85298c7a0ba99417e816f1",
+      "result_chars": 2735,
+      "hits": 0
+    },
+    {
+      "name": "list",
+      "args": {
+        "keyword": "case"
+      },
+      "result_sha": "8bb0d8c0a86afac876dba1ea3f9c3c1945e42a413353919ec9066dbf84102f97",
+      "result_chars": 972,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_company_profile",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "a19d412d1b547b6fb3fa2aa84feb5a1f5e9c159b1043ba0d2563fd780251e4e4",
+      "result_chars": 972,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "重点行业",
+        "top_k": 10
+      },
+      "result_sha": "5134bd1058de101d0b7831628c3d2caf5c72ee1d17c04bb868bd0021392cbb0e",
+      "result_chars": 3891,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_sales_customer_list",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "2d56320f48edb23b6e8d9519055b2d5b8ea746f5a1e35e729eefeae65e5a3aad",
+      "result_chars": 652,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_overview",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "d7d8f6c4043c4e52922e6d0356cbd030aaed8b53b034333b0b96af5c08508c10",
+      "result_chars": 973,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "12 个客户案例共覆盖了 12 个不同的行业，每个行业各有 1 家客户。\n\n具体行业及客户如下：\n1. **动力电池**（1 家：恒芯动力电池）\n2. **汽车零部件**（1 家：澜岳汽车零部件）\n3. **光伏**（1 家：曜阳光能）\n4. **3C 电子**（1 家：星禾电子）\n5. **家电**（1 家：海翎家电）\n6. **半导体**（1 家：晶拓微电子）\n7. **食品**（1 家：麦丰食品）\n8. **医药**（1 家：康泽制药）\n9. **物流**（1 家：顺捷供应链）\n10. **金属加工**（1 家：恒锐精密）\n11. **工程机械**（1 家：鼎重机械）\n12. **电梯**（1 家：昇达电梯）\n\n**与「重点行业」的覆盖关系：**\n根据《澜图智能产品与解决方案总览》，公司的重点行业包括：汽车及零部件、动力电池、光伏、3C 电子、半导体、家电、食品、医药、物流、金属加工、工程机械。\n\n对比发现，上述 12 个案例行业中，有 **11 个行业**（除电梯外）均属于公司的重点行业；仅有 **电梯** 行业不在重点行业清单中。",
+    "citations": [
+      "lantu_sales_customer_list",
+      "lantu_product_overview"
+    ],
+    "evidence": [
+      "lantu_sales_customer_list#0",
+      "lantu_product_overview#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 45069,
+  "started_at": "2026-11-01T06:01:34",
+  "elapsed_seconds": 37.59,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "12个客户案例",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_case_10_hengrui",
+            "title": "# 客户案例：恒锐精密机床上下料项目",
+            "chunk": 0,
+            "score": 7.634,
+            "snippet": "# 客户案例：恒锐精密机床上下料项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2023-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_hengrui\n生效日期：2023-12-20\n\n## 一、客户背景\n\n恒锐精密位于宁波，主营金属加工业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2023 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖"
+          },
+          {
+            "doc_id": "lantu_case_09_shunjie",
+            "title": "# 客户案例：顺捷供应链仓储拣选项目",
+            "chunk": 0,
+            "score": 7.613,
+            "snippet": "# 客户案例：顺捷供应链仓储拣选项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_shunjie\n生效日期：2024-12-20\n\n## 一、客户背景\n\n顺捷供应链位于广州，主营物流业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖1"
+          },
+          {
+            "doc_id": "lantu_case_01_hengxin",
+            "title": "# 客户案例：恒芯动力电池电芯叠片与物流项目",
+            "chunk": 0,
+            "score": 7.522,
+            "snippet": "# 客户案例：恒芯动力电池电芯叠片与物流项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_hengxin\n生效日期：2025-12-20\n\n## 一、客户背景\n\n恒芯动力电池位于常州，主营动力电池业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追"
+          },
+          {
+            "doc_id": "lantu_case_07_maifeng",
+            "title": "# 客户案例：麦丰食品后端包装项目",
+            "chunk": 0,
+            "score": 7.516,
+            "snippet": "# 客户案例：麦丰食品后端包装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_maifeng\n生效日期：2024-12-20\n\n## 一、客户背景\n\n麦丰食品位于漯河，主营食品业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖6 条"
+          },
+          {
+            "doc_id": "lantu_case_04_xinghe",
+            "title": "# 客户案例：星禾电子精密组装项目",
+            "chunk": 0,
+            "score": 7.509,
+            "snippet": "# 客户案例：星禾电子精密组装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_xinghe\n生效日期：2024-12-20\n\n## 一、客户背景\n\n星禾电子位于昆山，主营3C 电子业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖8"
+          },
+          {
+            "doc_id": "lantu_case_03_yaoyang",
+            "title": "# 客户案例：曜阳光能电池片串焊项目",
+            "chunk": 0,
+            "score": 7.495,
+            "snippet": "# 客户案例：曜阳光能电池片串焊项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_yaoyang\n生效日期：2025-12-20\n\n## 一、客户背景\n\n曜阳光能位于合肥，主营光伏业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖16"
+          },
+          {
+            "doc_id": "lantu_case_12_shengda",
+            "title": "# 客户案例：昇达电梯门板装配项目",
+            "chunk": 0,
+            "score": 7.48,
+            "snippet": "# 客户案例：昇达电梯门板装配项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_shengda\n生效日期：2025-12-20\n\n## 一、客户背景\n\n昇达电梯位于湖州，主营电梯业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖3 条"
+          },
+          {
+            "doc_id": "lantu_case_08_kangze",
+            "title": "# 客户案例：康泽制药无菌灌装项目",
+            "chunk": 0,
+            "score": 7.473,
+            "snippet": "# 客户案例：康泽制药无菌灌装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_kangze\n生效日期：2025-12-20\n\n## 一、客户背景\n\n康泽制药位于苏州，主营医药业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖3 条无"
+          },
+          {
+            "doc_id": "lantu_case_02_lanyue",
+            "title": "# 客户案例：澜岳汽车零部件白车身焊装项目",
+            "chunk": 0,
+            "score": 7.467,
+            "snippet": "# 客户案例：澜岳汽车零部件白车身焊装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_lanyue\n生效日期：2024-12-20\n\n## 一、客户背景\n\n澜岳汽车零部件位于上海，主营汽车零部件业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追"
+          },
+          {
+            "doc_id": "lantu_case_05_hailing",
+            "title": "# 客户案例：海翎家电喷涂与打磨项目",
+            "chunk": 0,
+            "score": 7.466,
+            "snippet": "# 客户案例：海翎家电喷涂与打磨项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_hailing\n生效日期：2025-12-20\n\n## 一、客户背景\n\n海翎家电位于顺德，主营家电业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖4 "
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "list",
+      "args": {
+        "keyword": ""
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_company_brand",
+            "title": "# 澜图智能品牌视觉与传播规范"
+          },
+          {
+            "doc_id": "lantu_company_campus",
+            "title": "# 澜图智能制造基地与产能布局"
+          },
+          {
+            "doc_id": "lantu_company_global",
+            "title": "# 澜图智能全球化布局与海外业务"
+          },
+          {
+            "doc_id": "lantu_company_history",
+            "title": "# 澜图智能发展历程（2011—2025）"
+          },
+          {
+            "doc_id": "lantu_company_milestones_2025",
+            "title": "# 澜图智能 2025 年度大事记"
+          },
+          {
+            "doc_id": "lantu_company_mission",
+            "title": "# 澜图智能使命、愿景与价值观"
+          },
+          {
+            "doc_id": "lantu_company_profile",
+            "title": "澜图智能装备公司简介"
+          },
+          {
+            "doc_id": "lantu_investor_overview",
+            "title": "# 澜图智能投资者关系概览"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2024",
+            "title": "澜图智能 2024 年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2025",
+            "title": "澜图智能 2025 年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_budget_2026",
+            "title": "# 澜图智能 2026 年度经营预算"
+          },
+          {
+            "doc_id": "lantu_finance_cashflow",
+            "title": "# 澜图智能现金流与资金管理报告"
+          },
+          {
+            "doc_id": "lantu_finance_cost",
+            "title": "# 澜图智能成本管理与降本专项报告"
+          },
+          {
+            "doc_id": "lantu_finance_gross_margin",
+            "title": "# 澜图智能毛利率与成本结构分析"
+          },
+          {
+            "doc_id": "lantu_finance_h1_2025",
+            "title": "# 澜图智能 2025 年半年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_investor_qa",
+            "title": "# 澜图智能投资者常见问题答复"
+          },
+          {
+            "doc_id": "lantu_finance_monthly_2025",
+            "title": "[工作表] 文档信息"
+          },
+          {
+            "doc_id": "lantu_finance_q3_2025",
+            "title": "# 澜图智能 2025 年第三季度经营数据"
+          },
+          {
+            "doc_id": "lantu_finance_revenue_breakdown",
+            "title": "﻿维度,分类,收入（亿元）,占比,同比"
+          },
+          {
+            "doc_id": "lantu_hr_campus",
+            "title": "# 澜图智能 2026 届校园招聘方案"
+          },
+          {
+            "doc_id": "lantu_hr_compensation",
+            "title": "# 澜图智能薪酬与奖金管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_job_grades",
+            "title": "# 澜图智能职级体系与晋升规则"
+          },
+          {
+            "doc_id": "lantu_hr_manager_training",
+            "title": "澜图智能管理者领导力培训方案"
+          },
+          {
+            "doc_id": "lantu_hr_new_hire_training",
+            "title": "澜图智能新员工入职培训大纲"
+          },
+          {
+            "doc_id": "lantu_hr_performance",
+            "title": "# 澜图智能绩效管理制度"
+          },
+          {
+            "doc_id": "lantu_hr_recruitment",
+            "title": "# 澜图智能招聘管理制度"
+          },
+          {
+            "doc_id": "lantu_hr_resignation",
+            "title": "# 澜图智能离职与交接管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_social",
+            "title": "# 澜图智能社会招聘管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_training_system",
+            "title": "# 澜图智能培训体系与年度计划"
+          },
+          {
+            "doc_id": "lantu_legal_anti_bribery",
+            "title": "# 澜图智能反商业贿赂管理规定"
+          },
+          {
+            "doc_id": "lantu_legal_compliance_manual",
+            "title": "# 澜图智能合规管理手册"
+          },
+          {
+            "doc_id": "lantu_legal_data_compliance",
+            "title": "# 澜图智能数据合规与隐私保护规范"
+          },
+          {
+            "doc_id": "lantu_legal_export_control",
+            "title": "# 澜图智能出口管制与制裁合规指引"
+          },
+          {
+            "doc_id": "lantu_legal_nda_template",
+            "title": "澜图智能保密协议模板（NDA）"
+          },
+          {
+            "doc_id": "lantu_legal_purchase_contract_template",
+            "title": "澜图智能采购合同模板（2025版）"
+          },
+          {
+            "doc_id": "lantu_legal_sales_contract_template",
+            "title": "澜图智能设备销售合同模板（2025版）"
+          },
+          {
+            "doc_id": "lantu_legal_supplier_code",
+            "title": "# 澜图智能供应商行为准则"
+          },
+          {
+            "doc_id": "lantu_meeting_board",
+            "title": "# 2025 年第二次临时董事会决议"
+          },
+          {
+            "doc_id": "lantu_meeting_case_review",
+            "title": "# 恒芯动力电池项目复盘会纪要"
+          },
+          {
+            "doc_id": "lantu_meeting_ops_2025q3",
+            "title": "2025 年第三季度经营分析会纪要"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "list",
+      "args": {
+        "keyword": "case"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_meeting_case_review",
+            "title": "# 恒芯动力电池项目复盘会纪要"
+          },
+          {
+            "doc_id": "lantu_case_01_hengxin",
+            "title": "# 客户案例：恒芯动力电池电芯叠片与物流项目"
+          },
+          {
+            "doc_id": "lantu_case_02_lanyue",
+            "title": "# 客户案例：澜岳汽车零部件白车身焊装项目"
+          },
+          {
+            "doc_id": "lantu_case_03_yaoyang",
+            "title": "# 客户案例：曜阳光能电池片串焊项目"
+          },
+          {
+            "doc_id": "lantu_case_04_xinghe",
+            "title": "# 客户案例：星禾电子精密组装项目"
+          },
+          {
+            "doc_id": "lantu_case_05_hailing",
+            "title": "# 客户案例：海翎家电喷涂与打磨项目"
+          },
+          {
+            "doc_id": "lantu_case_06_jingtuo",
+            "title": "# 客户案例：晶拓微电子晶圆搬运项目"
+          },
+          {
+            "doc_id": "lantu_case_07_maifeng",
+            "title": "# 客户案例：麦丰食品后端包装项目"
+          },
+          {
+            "doc_id": "lantu_case_08_kangze",
+            "title": "# 客户案例：康泽制药无菌灌装项目"
+          },
+          {
+            "doc_id": "lantu_case_09_shunjie",
+            "title": "# 客户案例：顺捷供应链仓储拣选项目"
+          },
+          {
+            "doc_id": "lantu_case_10_hengrui",
+            "title": "# 客户案例：恒锐精密机床上下料项目"
+          },
+          {
+            "doc_id": "lantu_case_11_dingzhong",
+            "title": "# 客户案例：鼎重机械结构件焊接项目"
+          },
+          {
+            "doc_id": "lantu_case_12_shengda",
+            "title": "# 客户案例：昇达电梯门板装配项目"
+          },
+          {
+            "doc_id": "lantu_support_case_hengxin",
+            "title": "# 恒芯动力电池 48 小时复产服务案例"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_company_profile",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_company_profile",
+        "title": "澜图智能装备公司简介",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 805,
+        "text": "澜图智能装备公司简介\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2023-03-01 09:00\n更新时间：2026-01-08 10:30\n版本号：v5.2\n文档类型：company\n文档族：company_profile\n生效日期：2026-01-08\n一、公司概况\n澜图智能装备股份有限公司成立于2011-06-18，总部位于江苏省苏州市工业园区星澜路88号，注册资本\n6.8 亿元，2023 年在上海证券交易所科创板上市（股票代码 688719）。公司专注工业机器人、智能产线\n与工业软件，为汽车、锂电、光伏、3C、半导体等行业提供智能制造整体解决方案。\n二、经营规模\n截至 2025 年 12 月 31 日，公司员工 3,860 人，2025 年营业收入 42.63 亿元，同比增长 19.1%，归母净利润\n4.12 亿元。全年机器人出货 21,400 台，累计交付突破 10 万台。\n三、业务版图\n公司拥有苏州、东莞、成都三大制造基地，总产能 30,000\n台/年；在德国斯图加特设有欧洲技术中心，在越南、墨西哥、匈牙利设有服务网点。业务覆盖 32\n个国家和地区。\n四、核心能力\n公司掌握控制器、伺服驱动、机器视觉、运动规划与数字孪生五大核心技术，研发人员 1,286\n人，占员工总数 33.3%，2025 年研发投入 5.87 亿元，占营业收入 13.8%。\n五、质量与认证\n公司通过 ISO 9001、ISO 14001、ISO 45001、IATF 16949 与 ISO 27001 认证，产品符合 CE、UL 与 GB\n标准。2025 年客户投诉 3 起，一次交检合格率 98.6%。\n六、联系方式\n总部地址：江苏省苏州市工业园区星澜路88号；总机：0512-6688-2100；官网：www.lantu-robot.com；\n投资者关系邮箱：ir@lantu-robot.com。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "重点行业",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 0,
+            "score": 10.005,
+            "snippet": "# 澜图智能产品与解决方案总览\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-02-20 09:00\n更新时间：2025-12-22 10:00\n版本号：v6.0\n文档类型：product\n文档族：product_overview\n生效日期：2025-12-22\n\n## 一、产品矩阵\n\n公司产品覆盖六轴工业机器人、SCARA 机器人、自主移动机器人（AMR）、机器视觉、运动控制器、数字孪生平台与行业工作站，形成“本体+控制器+视觉+软件+工艺”的一体化方案。\n\n## 二、行业方案\n\n重点行业包括汽车及零部件、"
+          },
+          {
+            "doc_id": "lantu_finance_investor_qa",
+            "title": "# 澜图智能投资者常见问题答复",
+            "chunk": 0,
+            "score": 4.781,
+            "snippet": "# 澜图智能投资者常见问题答复\n\n所属部门：董事会办公室\n作者：周敏仪\n创建时间：2025-11-01 09:00\n更新时间：2025-12-30 16:00\n版本号：v2.0\n文档类型：finance\n文档族：investor_qa\n生效日期：2025-12-30\n\n## 一、增长来源\n\n2025 年增长主要来自动力电池与半导体行业，两项合计贡献收入增量的 61%；海外市场贡献 22%。\n\n## 二、毛利率趋势\n\n随着自研控制器与驱动器比例提升、标准工作站放量，预计 2026 年毛利率提升至 32.5% 左右。\n"
+          },
+          {
+            "doc_id": "lantu_strategy_2025",
+            "title": "# 澜图智能 2025 年度经营计划",
+            "chunk": 0,
+            "score": 4.57,
+            "snippet": "# 澜图智能 2025 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-01-10 09:00\n更新时间：2025-02-10 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2025\n生效日期：2025-02-10\n\n## 一、年度目标\n\n2025 年营业收入目标 41.5 亿元，力争 42.63 亿元；新签订单目标 46 亿元；机器人出货目标 20,000 台。\n\n## 二、重点任务\n\n锂电与半导体行业突破；LT-C800 控制器量产；海外收入占"
+          },
+          {
+            "doc_id": "lantu_finance_revenue_breakdown",
+            "title": "﻿维度,分类,收入（亿元）,占比,同比",
+            "chunk": 0,
+            "score": 4.309,
+            "snippet": "﻿维度,分类,收入（亿元）,占比,同比\n产品线,机器人本体,19.84,46.5%,+18.2%\n产品线,智能产线,14.92,35.0%,+21.6%\n产品线,工业软件与服务,5.21,12.2%,+26.8%\n产品线,备件及其他,2.66,6.3%,+9.4%\n行业,动力电池,13.64,32.0%,+24.1%\n行业,汽车及零部件,10.23,24.0%,+11.5%\n行业,半导体,5.12,12.0%,+38.6%\n行业,光伏,4.26,10.0%,+6.2%\n行业,3C 电子,3.41,8.0%,+14."
+          },
+          {
+            "doc_id": "lantu_meeting_strategy",
+            "title": "# 2026 年战略研讨会纪要",
+            "chunk": 0,
+            "score": 4.276,
+            "snippet": "# 2026 年战略研讨会纪要\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-11-21 09:00\n更新时间：2025-11-22 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_strategy_2026\n生效日期：2025-11-22\n\n## 一、战略目标\n\n2026 年营业收入 52 亿元，2028 年 80 亿元；海外收入占比 2026 年提升至 17%，2028 年达到 25%。\n\n## 二、业务重点\n\n巩固锂电与汽车基本盘，突破半导体与具身智能；软件与服务收"
+          },
+          {
+            "doc_id": "lantu_finance_h1_2025",
+            "title": "# 澜图智能 2025 年半年度报告摘要",
+            "chunk": 0,
+            "score": 3.073,
+            "snippet": "# 澜图智能 2025 年半年度报告摘要\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-08-25 09:00\n更新时间：2025-08-28 18:00\n版本号：v1.0\n文档类型：finance\n文档族：semiannual_2025\n生效日期：2025-08-28\n\n## 一、经营数据\n\n2025 年上半年营业收入 19.84 亿元，同比增长 21.3%；归母净利润 1.83 亿元，同比增长 24.6%；毛利率 31.2%。\n\n## 二、订单情况\n\n上半年新签订单 22.7 亿元，同比增长 18.5%"
+          },
+          {
+            "doc_id": "lantu_sales_customer_list",
+            "title": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态",
+            "chunk": 0,
+            "score": 3.053,
+            "snippet": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态\n恒芯动力电池,动力电池,常州,电芯叠片与物流,\"21,600\",2025,已验收\n澜岳汽车零部件,汽车零部件,上海,白车身焊装,\"14,800\",2024,已验收\n曜阳光能,光伏,合肥,电池片串焊,\"9,800\",2025,已验收\n星禾电子,3C 电子,昆山,精密组装,\"12,500\",2024,已验收\n海翎家电,家电,顺德,喷涂与打磨,\"6,300\",2025,已验收\n晶拓微电子,半导体,无锡,晶圆搬运,\"7,400\",2025,已验收\n麦丰食品,食品,漯河"
+          },
+          {
+            "doc_id": "lantu_tech_patents",
+            "title": "# 澜图智能知识产权与专利布局",
+            "chunk": 0,
+            "score": 2.95,
+            "snippet": "# 澜图智能知识产权与专利布局\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-04-26 09:00\n更新时间：2025-12-18 15:00\n版本号：v2.8\n文档类型：tech\n文档族：patent_portfolio\n生效日期：2025-12-18\n\n## 一、专利总量\n\n累计有效专利 1,286 件，其中发明专利 412 件、实用新型 726 件、外观设计 148 件；软件著作权 168 项。\n\n## 二、重点布局\n\n运动控制、伺服驱动、机器视觉、力控与具身智能五大方向；PCT 国际专利申请 3"
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 1,
+            "score": 2.855,
+            "snippet": "| 产品线 | 代表型号 | 负载 | 典型行业 |\n| --- | --- | --- | --- |\n| 六轴机器人 | LT-R6/R12/R20/R50/R210 | 6-210 kg | 汽车、锂电、金属加工 |\n| SCARA | LT-S4/S10 | 4-10 kg | 3C、光伏、食品 |\n| 移动机器人 | LT-AMR-500/1000/2000 | 500-2,000 kg | 物流、半导体 |\n| 机器视觉 | LT-V3D | — | 装配、检测 |\n| 控制器 | LT-C800 | "
+          },
+          {
+            "doc_id": "lantu_product_assembly",
+            "title": "# LT-Assembly 柔性装配工作站方案",
+            "chunk": 0,
+            "score": 2.43,
+            "snippet": "# LT-Assembly 柔性装配工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-07-15 09:00\n更新时间：2025-09-05 11:00\n版本号：v2.5\n文档类型：product\n文档族：solution_assembly\n生效日期：2025-09-05\n\n## 一、方案组成\n\n由 LT-R12/LT-R20 机器人、力控末端、LT-V3D 视觉与快换工装组成，支持多品种混线装配。\n\n## 二、工艺指标\n\n装配节拍 3.2 秒/件，力控精度 ±2 N，视觉定位精度 ±0.05 mm，"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_sales_customer_list",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_sales_customer_list",
+        "title": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 456,
+        "text": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态\n恒芯动力电池,动力电池,常州,电芯叠片与物流,\"21,600\",2025,已验收\n澜岳汽车零部件,汽车零部件,上海,白车身焊装,\"14,800\",2024,已验收\n曜阳光能,光伏,合肥,电池片串焊,\"9,800\",2025,已验收\n星禾电子,3C 电子,昆山,精密组装,\"12,500\",2024,已验收\n海翎家电,家电,顺德,喷涂与打磨,\"6,300\",2025,已验收\n晶拓微电子,半导体,无锡,晶圆搬运,\"7,400\",2025,已验收\n麦丰食品,食品,漯河,后端包装,\"3,900\",2024,已验收\n康泽制药,医药,苏州,无菌灌装,\"5,100\",2025,已验收\n顺捷供应链,物流,广州,仓储拣选,\"8,600\",2024,已验收\n恒锐精密,金属加工,宁波,机床上下料,\"4,200\",2023,已验收\n鼎重机械,工程机械,徐州,结构件焊接,\"11,200\",2024,已验收\n昇达电梯,电梯,湖州,门板装配,\"5,800\",2025,已验收\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_overview",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_product_overview",
+        "title": "# 澜图智能产品与解决方案总览",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 792,
+        "text": "# 澜图智能产品与解决方案总览\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-02-20 09:00\n更新时间：2025-12-22 10:00\n版本号：v6.0\n文档类型：product\n文档族：product_overview\n生效日期：2025-12-22\n\n## 一、产品矩阵\n\n公司产品覆盖六轴工业机器人、SCARA 机器人、自主移动机器人（AMR）、机器视觉、运动控制器、数字孪生平台与行业工作站，形成“本体+控制器+视觉+软件+工艺”的一体化方案。\n\n## 二、行业方案\n\n重点行业包括汽车及零部件、动力电池、光伏、3C 电子、半导体、家电、食品、医药、物流、金属加工与工程机械。\n\n## 三、交付模式\n\n提供标准产品、工作站、整线交付三种模式。整线项目由客户成功部牵头，研发、制造、质量与售后组成联合项目组。\n\n## 四、开放生态\n\n控制器支持 EtherCAT、Profinet、Modbus TCP 与 OPC UA；提供 Python/C++ SDK 与 ROS2 驱动，兼容主流 PLC 与 MES。\n\n## 产品线概览\n\n| 产品线 | 代表型号 | 负载 | 典型行业 |\n| --- | --- | --- | --- |\n| 六轴机器人 | LT-R6/R12/R20/R50/R210 | 6-210 kg | 汽车、锂电、金属加工 |\n| SCARA | LT-S4/S10 | 4-10 kg | 3C、光伏、食品 |\n| 移动机器人 | LT-AMR-500/1000/2000 | 500-2,000 kg | 物流、半导体 |\n| 机器视觉 | LT-V3D | — | 装配、检测 |\n| 控制器 | LT-C800 | 8 轴 | 全线产品 |\n| 数字孪生 | LantuTwin 3.0 | 500 台设备 | 整厂规划 |\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.667,
+    "cited": [
+      "lantu_sales_customer_list",
+      "lantu_product_overview"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.181,
+    "number_recall": 0.0
+  }
+}

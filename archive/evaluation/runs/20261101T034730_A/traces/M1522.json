@@ -1,0 +1,287 @@
+{
+  "qid": "M1522",
+  "question": "用户：LT-V3D 视觉系统的保修期是多久？\n助手：按产品参数矩阵，LT-V3D 标准交期 4 周、保修 12 个月、备件响应 72 小时。\n用户：那如果单独买它的相机备件呢？正式叫什么、多少钱、多久发货、质保多久？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=list><parameter=keyword>LT-V3D</parameter></tool_call>",
+      "usage": {
+        "completion_tokens": 47,
+        "prompt_tokens": 421,
+        "total_tokens": 468,
+        "completion_tokens_details": {
+          "reasoning_tokens": 28
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.953
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>LT-V3D 相机 备件</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 71,
+        "prompt_tokens": 477,
+        "total_tokens": 548,
+        "completion_tokens_details": {
+          "reasoning_tokens": 36
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.031
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>LT-V3D 相机 备件 更换料号</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 49,
+        "prompt_tokens": 549,
+        "total_tokens": 598,
+        "completion_tokens_details": {
+          "reasoning_tokens": 10
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.469
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>LT-V3D 相机备件 料号 价格 交期 质保</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 108,
+        "prompt_tokens": 625,
+        "total_tokens": 733,
+        "completion_tokens_details": {
+          "reasoning_tokens": 62
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 2.938
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search>\n<parameter name=\"query\">LT-V3D 相机备件</parameter>\n<parameter name=\"top_k\">10</parameter>\n</function></tool_call>",
+      "usage": {
+        "completion_tokens": 75,
+        "prompt_tokens": 708,
+        "total_tokens": 783,
+        "completion_tokens_details": {
+          "reasoning_tokens": 34
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 2.265
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"LT-V3D 相机备件 料号 价格\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 53,
+        "prompt_tokens": 786,
+        "total_tokens": 839,
+        "completion_tokens_details": {
+          "reasoning_tokens": 19
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 1.657
+    },
+    {
+      "round": 7,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_support_spare_parts_price\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 49,
+        "prompt_tokens": 3261,
+        "total_tokens": 3310,
+        "completion_tokens_details": {
+          "reasoning_tokens": 16
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 768
+        }
+      },
+      "seconds": 4.015
+    },
+    {
+      "round": 8,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"LT-V3D 的相机备件在备件价格表中正式名称为“工业相机模组”，单价 11,500 元，发货时效为 72 小时，质保期 12 个月。\",\"citations\":[\"lantu_support_spare_parts_price\"],\"evidence\":[\"lantu_support_spare_parts_price#片段0\"]}",
+      "usage": {
+        "completion_tokens": 150,
+        "prompt_tokens": 3716,
+        "total_tokens": 3866,
+        "completion_tokens_details": {
+          "reasoning_tokens": 59
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3200
+        }
+      },
+      "seconds": 4.0
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "LT-V3D 相机备件 料号 价格",
+        "top_k": 10
+      },
+      "result_sha": "b01c8ff8d5cc571ffc18be0155424f0ad0a81f881a400a4a45fb5922f595e59e",
+      "result_chars": 3837,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_spare_parts_price",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "ea77bd9086c1636fc0caceb2af506c6760461277d6847acbf6412e549658caa9",
+      "result_chars": 603,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "LT-V3D 的相机备件在备件价格表中正式名称为“工业相机模组”，单价 11,500 元，发货时效为 72 小时，质保期 12 个月。",
+    "citations": [
+      "lantu_support_spare_parts_price"
+    ],
+    "evidence": [
+      "lantu_support_spare_parts_price#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 11145,
+  "started_at": "2026-11-01T06:16:02",
+  "elapsed_seconds": 21.33,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "LT-V3D 相机备件 料号 价格",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_support_spare_parts_price",
+            "title": "﻿适配机型,备件名称,单价（元）,发货时效,质保期",
+            "chunk": 0,
+            "score": 11.629,
+            "snippet": "﻿适配机型,备件名称,单价（元）,发货时效,质保期\nLT-R20,减速器 RV-40E,\"12,800\",48 小时,12 个月\nLT-R20,伺服驱动器 LT-D4,\"8,600\",48 小时,18 个月\nLT-R20,示教器 LT-Pad3,\"5,200\",48 小时,12 个月\nLT-R12,减速器 RV-20E,\"7,900\",48 小时,12 个月\nLT-R12,伺服电机 750W,\"3,600\",48 小时,18 个月\nLT-R6,谐波减速器 CSF-17,\"6,400\",72 小时,12 个月\nLT-"
+          },
+          {
+            "doc_id": "lantu_product_vision",
+            "title": "# LT-V3D 工业视觉系统技术说明",
+            "chunk": 0,
+            "score": 10.033,
+            "snippet": "# LT-V3D 工业视觉系统技术说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-06-18 09:00\n更新时间：2025-07-15 14:00\n版本号：v2.6\n文档类型：product\n文档族：product_vision\n生效日期：2025-07-15\n\n## 一、系统组成\n\nLT-V3D 由结构光相机、视觉控制器与 LantuVision 软件组成，支持 3D 点云、2D 图像与深度学习缺陷检测。\n\n## 二、核心指标\n\n测量精度 0.05 mm，单帧点云 120 万点，帧率 30 fps"
+          },
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 1,
+            "score": 7.682,
+            "snippet": "0 kg\t1.5 m/s\nLT-AMR-2000\t2,000 kg\t—\t±10 mm\t420 kg\t1.2 m/s\n[工作表] 交付与保修\n产品线\t标准交期\t保修期\t备件响应\nLT-R 系列\t6-8 周\t24 个月/6,000 小时\t48 小时\nLT-S 系列\t4 周\t24 个月/6,000 小时\t48 小时\nLT-AMR 系列\t8 周\t24 个月\t72 小时\nLT-V3D\t4 周\t12 个月\t72 小时"
+          },
+          {
+            "doc_id": "lantu_product_s_series",
+            "title": "# LT-S 系列 SCARA 机器人产品说明",
+            "chunk": 0,
+            "score": 6.38,
+            "snippet": "# LT-S 系列 SCARA 机器人产品说明\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-03-01 09:00\n更新时间：2025-09-12 11:00\n版本号：v3.2\n文档类型：product\n文档族：product_s_series\n生效日期：2025-09-12\n\n## 一、产品定位\n\nLT-S 系列 SCARA 机器人面向 3C 组装、光伏串焊、食品包装等高速取放场景，标准循环时间 0.38 秒。\n\n## 二、型号参数\n\nLT-S4 负载 4 kg、臂展 600 mm、重复精度 ±0.02 "
+          },
+          {
+            "doc_id": "lantu_finance_budget_2026",
+            "title": "# 澜图智能 2026 年度经营预算",
+            "chunk": 0,
+            "score": 5.948,
+            "snippet": "# 澜图智能 2026 年度经营预算\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-12-20 09:00\n更新时间：2026-01-15 17:00\n版本号：v1.0\n文档类型：finance\n文档族：budget_2026\n生效日期：2026-01-15\n\n## 一、预算目标\n\n2026 年营业收入目标 52 亿元，同比增长 22%；归母净利润目标 5.2 亿元；综合毛利率目标 32.5%。\n\n## 二、收入分解\n\n机器人本体 24.2 亿元，智能产线 18.4 亿元，软件与服务 6.4 亿元，备件及其"
+          },
+          {
+            "doc_id": "lantu_product_amr",
+            "title": "# LT-AMR 自主移动机器人产品手册",
+            "chunk": 0,
+            "score": 5.507,
+            "snippet": "# LT-AMR 自主移动机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-05-10 09:00\n更新时间：2025-08-20 15:00\n版本号：v3.4\n文档类型：product\n文档族：product_amr\n生效日期：2025-08-20\n\n## 一、产品系列\n\nLT-AMR-500 负载 500 kg、速度 1.8 m/s、续航 8 小时；LT-AMR-1000 负载 1,000 kg、速度 1.5 m/s、续航 8 小时；LT-AMR-2000 负载 2,000 kg、速度 1.2"
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 1,
+            "score": 4.692,
+            "snippet": "| 产品线 | 代表型号 | 负载 | 典型行业 |\n| --- | --- | --- | --- |\n| 六轴机器人 | LT-R6/R12/R20/R50/R210 | 6-210 kg | 汽车、锂电、金属加工 |\n| SCARA | LT-S4/S10 | 4-10 kg | 3C、光伏、食品 |\n| 移动机器人 | LT-AMR-500/1000/2000 | 500-2,000 kg | 物流、半导体 |\n| 机器视觉 | LT-V3D | — | 装配、检测 |\n| 控制器 | LT-C800 | "
+          },
+          {
+            "doc_id": "lantu_finance_h1_2025",
+            "title": "# 澜图智能 2025 年半年度报告摘要",
+            "chunk": 0,
+            "score": 4.55,
+            "snippet": "# 澜图智能 2025 年半年度报告摘要\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-08-25 09:00\n更新时间：2025-08-28 18:00\n版本号：v1.0\n文档类型：finance\n文档族：semiannual_2025\n生效日期：2025-08-28\n\n## 一、经营数据\n\n2025 年上半年营业收入 19.84 亿元，同比增长 21.3%；归母净利润 1.83 亿元，同比增长 24.6%；毛利率 31.2%。\n\n## 二、订单情况\n\n上半年新签订单 22.7 亿元，同比增长 18.5%"
+          },
+          {
+            "doc_id": "lantu_sales_quote",
+            "title": "# 澜图智能报价与合同评审流程",
+            "chunk": 0,
+            "score": 4.427,
+            "snippet": "# 澜图智能报价与合同评审流程\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-02-10 09:00\n更新时间：2025-08-08 14:00\n版本号：v2.5\n文档类型：sales\n文档族：sales_quote\n生效日期：2025-08-08\n\n## 一、报价流程\n\n销售工程师在 CRM 创建报价单，系统自动校验标准价；非标项目由售前技术出具配置清单，产品部确认成本，财务部复核税率与汇率。\n\n## 二、评审节点\n\n合同金额 1,000 万元以上须法务合规部与 CFO 联合评审；涉及非标开发须 CTO"
+          },
+          {
+            "doc_id": "lantu_sales_policy",
+            "title": "# 澜图智能销售政策与客户分级管理办法",
+            "chunk": 0,
+            "score": 4.334,
+            "snippet": "# 澜图智能销售政策与客户分级管理办法\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-01-20 09:00\n更新时间：2025-09-25 15:00\n版本号：v3.4\n文档类型：sales\n文档族：sales_policy\n生效日期：2025-09-25\n\n## 一、客户分级\n\n客户分为 S、A、B、C 四级。S 级为年采购额 5,000 万元以上战略客户，由客户成功部直管；A 级 1,000-5,000 万元；B 级 300-1,000 万元；C 级 300 万元以下由渠道覆盖。\n\n## 二、价格体"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_spare_parts_price",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_support_spare_parts_price",
+        "title": "﻿适配机型,备件名称,单价（元）,发货时效,质保期",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 411,
+        "text": "﻿适配机型,备件名称,单价（元）,发货时效,质保期\nLT-R20,减速器 RV-40E,\"12,800\",48 小时,12 个月\nLT-R20,伺服驱动器 LT-D4,\"8,600\",48 小时,18 个月\nLT-R20,示教器 LT-Pad3,\"5,200\",48 小时,12 个月\nLT-R12,减速器 RV-20E,\"7,900\",48 小时,12 个月\nLT-R12,伺服电机 750W,\"3,600\",48 小时,18 个月\nLT-R6,谐波减速器 CSF-17,\"6,400\",72 小时,12 个月\nLT-S10,同步带组件,320,24 小时,6 个月\nLT-AMR-1000,锂电池组 48V/40Ah,\"4,800\",72 小时,12 个月\nLT-AMR-1000,激光雷达 LT-LS20,\"9,600\",72 小时,18 个月\nLT-V3D,工业相机模组,\"11,500\",72 小时,12 个月\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.333,
+    "cited": [
+      "lantu_support_spare_parts_price"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.122,
+    "number_recall": 0.333
+  }
+}

@@ -1,0 +1,247 @@
+{
+  "qid": "M0801",
+  "question": "客户设备到货后，按公司内部规范要经过哪几个时间节点才能完成交付验收？每个节点分别限多少个工作日？销售合同模板里对交期和验收期限是怎么承诺的，跟内部规范的口径有什么差别？",
+  "question_type": "时间与因果推断",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"交付验收 时间节点 工作日 销售合同模板 交期 验收期限\", \"top_k\":10}}",
+      "usage": {
+        "prompt_tokens": 394,
+        "total_tokens": 566,
+        "completion_tokens": 172,
+        "completion_tokens_details": {
+          "reasoning_tokens": 133,
+          "text_tokens": 172
+        }
+      },
+      "seconds": 1.953
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\": \"lantu_support_field_service\", \"offset\": 0, \"limit\": 4000}}",
+      "usage": {
+        "prompt_tokens": 2725,
+        "total_tokens": 3187,
+        "completion_tokens": 462,
+        "completion_tokens_details": {
+          "reasoning_tokens": 423,
+          "text_tokens": 462
+        }
+      },
+      "seconds": 3.891
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\": \"lantu_legal_sales_contract_template\", \"offset\": 0, \"limit\": 4000}}",
+      "usage": {
+        "prompt_tokens": 3070,
+        "total_tokens": 3412,
+        "completion_tokens": 342,
+        "completion_tokens_details": {
+          "reasoning_tokens": 302,
+          "text_tokens": 342
+        }
+      },
+      "seconds": 2.765
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"1. **内部规范时间节点及限定时长**（依据《澜图智能现场服务与安装调试规范》）：\\n- **开箱验收**：设备到货后 **3个工作日** 内完成。\\n- **安装**：到货后 **7个工作日** 内完成。\\n- **调试与试运行**：到货后 **14个工作日** 内完成。\\n\\n2. **销售合同模板承诺**（依据《澜图智能设备销售合同模板（2025版）》）：\\n- **交期**：标准产品为 **6-8周**，非标项目以项目计划为准。\\n- **验收期限**：到货后 **7日内** 完成开箱验收，**30日内** 完成终验收。\\n\\n3. **口径差异对比**：\\n- **开箱验收时限不同**：内部规范对内考核更严，限定为3个工作日；合同模板对外承诺较宽裕，为7日（自然日）。\\n- **验收流程颗粒度不同**：内部规范将交付实施拆分为“开箱验收→安装→调试与试运行”三个独立节点并分别限时；合同模板则对外简化为“开箱验收”和“终验收”两个节点，并将最终验收期限统一打包为30日。\",\"citations\":[\"lantu_support_field_service\",\"lantu_legal_sales_contract_template\"],\"evidence\":[\"lantu_support_field_service#0\",\"lantu_legal_sales_contract_template#0\"]}",
+      "usage": {
+        "prompt_tokens": 3533,
+        "total_tokens": 5056,
+        "completion_tokens": 1523,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1199,
+          "text_tokens": 1523
+        }
+      },
+      "seconds": 11.5
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "交付验收 时间节点 工作日 销售合同模板 交期 验收期限",
+        "top_k": 10
+      },
+      "result_sha": "7d656402d170335ca66f6972827beac040147a4bdff824d19f97bb5cc9f3396f",
+      "result_chars": 3942,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_field_service",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "c350f7379e01381942a15a2744b779d64a721ace81f22161ea38e7fb73d18a89",
+      "result_chars": 524,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_legal_sales_contract_template",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "ab9b3a40ef5e5e9fb3761d83f8a7220dc9e0376a25d4ec50cefaa0b39cb51205",
+      "result_chars": 702,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "1. **内部规范时间节点及限定时长**（依据《澜图智能现场服务与安装调试规范》）：\n- **开箱验收**：设备到货后 **3个工作日** 内完成。\n- **安装**：到货后 **7个工作日** 内完成。\n- **调试与试运行**：到货后 **14个工作日** 内完成。\n\n2. **销售合同模板承诺**（依据《澜图智能设备销售合同模板（2025版）》）：\n- **交期**：标准产品为 **6-8周**，非标项目以项目计划为准。\n- **验收期限**：到货后 **7日内** 完成开箱验收，**30日内** 完成终验收。\n\n3. **口径差异对比**：\n- **开箱验收时限不同**：内部规范对内考核更严，限定为3个工作日；合同模板对外承诺较宽裕，为7日（自然日）。\n- **验收流程颗粒度不同**：内部规范将交付实施拆分为“开箱验收→安装→调试与试运行”三个独立节点并分别限时；合同模板则对外简化为“开箱验收”和“终验收”两个节点，并将最终验收期限统一打包为30日。",
+    "citations": [
+      "lantu_support_field_service",
+      "lantu_legal_sales_contract_template"
+    ],
+    "evidence": [
+      "lantu_support_field_service#0",
+      "lantu_legal_sales_contract_template#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 12221,
+  "started_at": "2026-11-01T06:29:35",
+  "elapsed_seconds": 20.11,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "交付验收 时间节点 工作日 销售合同模板 交期 验收期限",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_legal_sales_contract_template",
+            "title": "澜图智能设备销售合同模板（2025版）",
+            "chunk": 0,
+            "score": 29.816,
+            "snippet": "澜图智能设备销售合同模板（2025版）\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-10 09:00\n更新时间：2025-03-01 09:00\n版本号：v4.0\n文档类型：legal\n文档族：sales_contract_template\n生效日期：2025-03-01\n第一条 合同标的\n乙方向甲方购买澜图智能工业机器人及配套设备，具体型号、数量、单价以附件《供货清单》为准。\n第二条 合同价款与支付\n合同总价为含税价。预付款 30%，发货前支付至 60%，验收合格后 30 日内支付至 95%，剩余"
+          },
+          {
+            "doc_id": "lantu_policy_contract",
+            "title": "# 澜图智能合同管理制度",
+            "chunk": 0,
+            "score": 20.767,
+            "snippet": "# 澜图智能合同管理制度\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-02-01 09:00\n更新时间：2025-05-12 15:00\n版本号：v3.0\n文档类型：policy\n文档族：contract_management\n生效日期：2025-05-12\n\n## 一、合同分类\n\n合同分为销售合同、采购合同、服务合同、保密协议、租赁合同与劳动合同。销售与采购合同须使用公司标准模板，非标条款须法务审核。\n\n## 二、审批权限\n\n合同金额 1,000 万元以上须法务合规部与 CFO 联合审批；5,000 "
+          },
+          {
+            "doc_id": "lantu_legal_purchase_contract_template",
+            "title": "澜图智能采购合同模板（2025版）",
+            "chunk": 0,
+            "score": 17.381,
+            "snippet": "澜图智能采购合同模板（2025版）\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-10 09:00\n更新时间：2025-03-01 09:00\n版本号：v3.2\n文档类型：legal\n文档族：purchase_contract_template\n生效日期：2025-03-01\n第一条 采购标的\n甲方向乙方采购原材料/零部件，品名、规格、数量、单价以采购订单为准。\n第二条 付款方式\n标准账期为月结 90 天，战略供应商可约定 120 天；预付款不超过 20%；质保金 5%-10%。\n第三条 质量要求\n乙"
+          },
+          {
+            "doc_id": "lantu_support_field_service",
+            "title": "# 澜图智能现场服务与安装调试规范",
+            "chunk": 0,
+            "score": 13.817,
+            "snippet": "# 澜图智能现场服务与安装调试规范\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-04-01 09:00\n更新时间：2025-05-30 10:00\n版本号：v3.0\n文档类型：support\n文档族：field_service\n生效日期：2025-05-30\n\n## 一、安装调试\n\n设备到货后 3 个工作日内完成开箱验收，7 个工作日内完成安装，14 个工作日内完成调试与试运行。\n\n## 二、现场管理\n\n服务工程师须佩戴工牌、遵守客户安全规定、每日提交服务日报；涉及动火、高处作业须办理许可。\n\n## 三"
+          },
+          {
+            "doc_id": "lantu_sales_quote",
+            "title": "# 澜图智能报价与合同评审流程",
+            "chunk": 0,
+            "score": 13.105,
+            "snippet": "# 澜图智能报价与合同评审流程\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-02-10 09:00\n更新时间：2025-08-08 14:00\n版本号：v2.5\n文档类型：sales\n文档族：sales_quote\n生效日期：2025-08-08\n\n## 一、报价流程\n\n销售工程师在 CRM 创建报价单，系统自动校验标准价；非标项目由售前技术出具配置清单，产品部确认成本，财务部复核税率与汇率。\n\n## 二、评审节点\n\n合同金额 1,000 万元以上须法务合规部与 CFO 联合评审；涉及非标开发须 CTO"
+          },
+          {
+            "doc_id": "lantu_legal_nda_template",
+            "title": "澜图智能保密协议模板（NDA）",
+            "chunk": 0,
+            "score": 11.432,
+            "snippet": "澜图智能保密协议模板（NDA）\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-10 09:00\n更新时间：2025-02-01 09:00\n版本号：v3.0\n文档类型：legal\n文档族：nda_template\n生效日期：2025-02-01\n第一条 保密信息\n保密信息包括技术资料、图纸、源代码、算法、客户信息、报价、成本与未公开财务数据。\n第二条 保密义务\n接收方仅可为合作目的使用保密信息，不得披露给第三方；接触人员须签署个人保密承诺。\n第三条 保密期限\n本协议保密期限为签署之日起 3 年，商业秘"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2024",
+            "title": "# 澜图智能采购管理制度（2024版）",
+            "chunk": 0,
+            "score": 10.594,
+            "snippet": "# 澜图智能采购管理制度（2024版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2024-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。\n\n## 二、付款账期\n\n标准供应商月结 60 天；预付款比例不超过 30%；质保金 5%-10%。\n\n## 三、供应商"
+          },
+          {
+            "doc_id": "lantu_sales_customer_list",
+            "title": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态",
+            "chunk": 0,
+            "score": 10.379,
+            "snippet": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态\n恒芯动力电池,动力电池,常州,电芯叠片与物流,\"21,600\",2025,已验收\n澜岳汽车零部件,汽车零部件,上海,白车身焊装,\"14,800\",2024,已验收\n曜阳光能,光伏,合肥,电池片串焊,\"9,800\",2025,已验收\n星禾电子,3C 电子,昆山,精密组装,\"12,500\",2024,已验收\n海翎家电,家电,顺德,喷涂与打磨,\"6,300\",2025,已验收\n晶拓微电子,半导体,无锡,晶圆搬运,\"7,400\",2025,已验收\n麦丰食品,食品,漯河"
+          },
+          {
+            "doc_id": "lantu_case_02_lanyue",
+            "title": "# 客户案例：澜岳汽车零部件白车身焊装项目",
+            "chunk": 0,
+            "score": 10.234,
+            "snippet": "# 客户案例：澜岳汽车零部件白车身焊装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_lanyue\n生效日期：2024-12-20\n\n## 一、客户背景\n\n澜岳汽车零部件位于上海，主营汽车零部件业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追"
+          },
+          {
+            "doc_id": "lantu_case_01_hengxin",
+            "title": "# 客户案例：恒芯动力电池电芯叠片与物流项目",
+            "chunk": 0,
+            "score": 9.255,
+            "snippet": "# 客户案例：恒芯动力电池电芯叠片与物流项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_hengxin\n生效日期：2025-12-20\n\n## 一、客户背景\n\n恒芯动力电池位于常州，主营动力电池业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_field_service",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_support_field_service",
+        "title": "# 澜图智能现场服务与安装调试规范",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 347,
+        "text": "# 澜图智能现场服务与安装调试规范\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-04-01 09:00\n更新时间：2025-05-30 10:00\n版本号：v3.0\n文档类型：support\n文档族：field_service\n生效日期：2025-05-30\n\n## 一、安装调试\n\n设备到货后 3 个工作日内完成开箱验收，7 个工作日内完成安装，14 个工作日内完成调试与试运行。\n\n## 二、现场管理\n\n服务工程师须佩戴工牌、遵守客户安全规定、每日提交服务日报；涉及动火、高处作业须办理许可。\n\n## 三、验收标准\n\n连续运行 72 小时无重大故障，节拍与良率达到合同要求，客户签署验收单。\n\n## 四、服务纪律\n\n禁止接受客户宴请与礼品，禁止私自收费；违反者按公司制度处理。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_legal_sales_contract_template",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_legal_sales_contract_template",
+        "title": "澜图智能设备销售合同模板（2025版）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 521,
+        "text": "澜图智能设备销售合同模板（2025版）\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-10 09:00\n更新时间：2025-03-01 09:00\n版本号：v4.0\n文档类型：legal\n文档族：sales_contract_template\n生效日期：2025-03-01\n第一条 合同标的\n乙方向甲方购买澜图智能工业机器人及配套设备，具体型号、数量、单价以附件《供货清单》为准。\n第二条 合同价款与支付\n合同总价为含税价。预付款 30%，发货前支付至 60%，验收合格后 30 日内支付至 95%，剩余 5% 作为质保金于质保期满后支付。\n第三条 交付与验收\n标准产品交期 6-8 周，非标项目以项目计划为准。到货后 7 日内完成开箱验收，30 日内完成终验收。\n第四条 质量与质保\n质保期为验收合格之日起 24 个月或 6,000 小时，以先到者为准。质保期内非人为损坏由乙方免费维修或更换。\n第五条 违约责任\n乙方逾期交付的，每逾期一日按合同总额 0.5% 支付违约金，累计不超过 10%；甲方逾期付款的，按日万分之五支付违约金。\n第六条 争议解决\n因本合同引起的争议，双方协商解决；协商不成的，提交苏州仲裁委员会仲裁。",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.667,
+    "cited": [
+      "lantu_support_field_service",
+      "lantu_legal_sales_contract_template"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.176,
+    "number_recall": 0.0
+  }
+}

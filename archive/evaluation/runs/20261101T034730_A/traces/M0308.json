@@ -1,0 +1,290 @@
+{
+  "qid": "M0308",
+  "question": "我们的售后服务网络覆盖到什么程度？有多少服务网点和备件仓？服务满意度怎么样？",
+  "question_type": "单文档多跳推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>售后服务网络 服务网点 备件仓</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 65,
+        "prompt_tokens": 362,
+        "total_tokens": 427,
+        "completion_tokens_details": {
+          "reasoning_tokens": 31
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.297
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>售后服务网络 服务网点 备件仓</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 69,
+        "prompt_tokens": 433,
+        "total_tokens": 502,
+        "completion_tokens_details": {
+          "reasoning_tokens": 35
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.25
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\": \"search\", \"args\": {\"query\": \"售后服务网络 服务网点 备件仓\", \"top_k\": 10}}",
+      "usage": {
+        "completion_tokens": 43,
+        "prompt_tokens": 504,
+        "total_tokens": 547,
+        "completion_tokens_details": {
+          "reasoning_tokens": 8
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 6.281
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\": \"read\", \"args\": {\"doc_id\": \"lantu_support_system\", \"offset\": 0, \"limit\": 4000}}",
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 3008,
+        "total_tokens": 3059,
+        "completion_tokens_details": {
+          "reasoning_tokens": 13
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.235
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\": \"read\", \"args\": {\"doc_id\": \"lantu_support_spare_inventory\", \"offset\": 0, \"limit\": 4000}}",
+      "usage": {
+        "completion_tokens": 117,
+        "prompt_tokens": 3426,
+        "total_tokens": 3543,
+        "completion_tokens_details": {
+          "reasoning_tokens": 77
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2944
+        }
+      },
+      "seconds": 3.047
+    },
+    {
+      "round": 6,
+      "text": "ANSWER {\"status\": \"answerable\",\"answer\":\"根据《澜图智能客户服务体系白皮书》（v3.2，2025-12-08 更新）：\\n\\n1）服务网络覆盖：全国设有 68 个服务网点、12 个备件仓，覆盖 31 个省级行政区；海外设有 3 个服务点（另据全球化布局文档，海外服务网点位于越南胡志明市、墨西哥蒙特雷、匈牙利布达佩斯）。售后服务团队 412 人，其中认证工程师 286 人。\\n\\n2）备件仓情况：共 12 个备件仓，含苏州中心仓（库存金额 6,200 万元、SKU 4,860 个、周转 92 天）、东莞仓（2,800 万元）、成都仓（1,600 万元）、上海仓（1,200 万元）、北京仓（980 万元）及其他 7 仓（合计 5,820 万元）（数据口径为 2025Q4 备件库存分布）。\\n\\n3）服务满意度：2025 年服务满意度 96.8%，同时首次修复率 92.4%、备件满足率 96%、远程诊断解决率 85%。\",\"citations\":[\"lantu_support_system\",\"lantu_support_spare_inventory\",\"lantu_company_global\"],\"evidence\":[\"lantu_support_system#片段0\",\"lantu_support_spare_inventory#片段0\",\"lantu_company_global#片段0\"]}",
+      "usage": {
+        "completion_tokens": 401,
+        "prompt_tokens": 3822,
+        "total_tokens": 4223,
+        "completion_tokens_details": {
+          "reasoning_tokens": 37
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3392
+        }
+      },
+      "seconds": 7.406
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "售后服务网络 服务网点 备件仓",
+        "top_k": 10
+      },
+      "result_sha": "5b1b8d366c78fd813a18fc8347ef607b549623143e0292af754ff513bb71c2d1",
+      "result_chars": 3925,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_system",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "4317c7b8be8a198991cf48adba22892fbc229f886249ed0a00fb498efafad9a9",
+      "result_chars": 587,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_spare_inventory",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "79d68b4266003391d23a2df6cf51353edeba7f0f55adf976952ee5b285fc7259",
+      "result_chars": 540,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《澜图智能客户服务体系白皮书》（v3.2，2025-12-08 更新）：\n\n1）服务网络覆盖：全国设有 68 个服务网点、12 个备件仓，覆盖 31 个省级行政区；海外设有 3 个服务点（另据全球化布局文档，海外服务网点位于越南胡志明市、墨西哥蒙特雷、匈牙利布达佩斯）。售后服务团队 412 人，其中认证工程师 286 人。\n\n2）备件仓情况：共 12 个备件仓，含苏州中心仓（库存金额 6,200 万元、SKU 4,860 个、周转 92 天）、东莞仓（2,800 万元）、成都仓（1,600 万元）、上海仓（1,200 万元）、北京仓（980 万元）及其他 7 仓（合计 5,820 万元）（数据口径为 2025Q4 备件库存分布）。\n\n3）服务满意度：2025 年服务满意度 96.8%，同时首次修复率 92.4%、备件满足率 96%、远程诊断解决率 85%。",
+    "citations": [
+      "lantu_support_system",
+      "lantu_support_spare_inventory",
+      "lantu_company_global"
+    ],
+    "evidence": [
+      "lantu_support_system#片段0",
+      "lantu_support_spare_inventory#片段0",
+      "lantu_company_global#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 12301,
+  "started_at": "2026-11-01T05:52:38",
+  "elapsed_seconds": 22.52,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "售后服务网络 服务网点 备件仓",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_support_system",
+            "title": "# 澜图智能客户服务体系白皮书",
+            "chunk": 0,
+            "score": 32.028,
+            "snippet": "# 澜图智能客户服务体系白皮书\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-03-01 09:00\n更新时间：2025-12-08 10:00\n版本号：v3.2\n文档类型：support\n文档族：service_system\n生效日期：2025-12-08\n\n## 一、服务网络\n\n公司在全国设有 68 个服务网点、12 个备件仓，覆盖 31 个省级行政区；海外设 3 个服务点。售后服务团队 412 人，认证工程师 286 人。\n\n## 二、服务内容\n\n提供安装调试、培训、预防性维护、故障维修、备件供应、"
+          },
+          {
+            "doc_id": "lantu_support_spare_inventory",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 13.933,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能备件库存分布（2025Q4）\n所属部门\t售后服务部\n作者\t陆绍\n创建时间\t2025-12-25 09:00\n更新时间\t2026-01-02 10:00\n版本号\tv1.0\n文档类型\tsupport\n文档族\tspare_inventory_2025q4\n生效日期\t2026-01-02\n[工作表] 备件仓库存\n仓库\t所在城市\t库存金额（万元）\tSKU 数\t周转天数\n苏州中心仓\t苏州\t6,200\t4,860\t92\n东莞仓\t东莞\t2,800\t2,240\t105\n成都仓\t成都\t1,"
+          },
+          {
+            "doc_id": "lantu_strategy_2026",
+            "title": "# 澜图智能 2026 年度经营计划",
+            "chunk": 0,
+            "score": 13.551,
+            "snippet": "# 澜图智能 2026 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-12-15 09:00\n更新时间：2026-01-12 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2026\n生效日期：2026-01-12\n\n## 一、年度目标\n\n2026 年营业收入 52 亿元，归母净利润 5.2 亿元，新签订单 58 亿元，机器人出货 26,000 台。\n\n## 二、业务策略\n\n锂电保持领先，半导体翻倍增长，海外收入 7.2 亿元；软件与服务收入占比提"
+          },
+          {
+            "doc_id": "lantu_meeting_strategy",
+            "title": "# 2026 年战略研讨会纪要",
+            "chunk": 0,
+            "score": 12.678,
+            "snippet": "# 2026 年战略研讨会纪要\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-11-21 09:00\n更新时间：2025-11-22 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_strategy_2026\n生效日期：2025-11-22\n\n## 一、战略目标\n\n2026 年营业收入 52 亿元，2028 年 80 亿元；海外收入占比 2026 年提升至 17%，2028 年达到 25%。\n\n## 二、业务重点\n\n巩固锂电与汽车基本盘，突破半导体与具身智能；软件与服务收"
+          },
+          {
+            "doc_id": "lantu_company_global",
+            "title": "# 澜图智能全球化布局与海外业务",
+            "chunk": 0,
+            "score": 11.544,
+            "snippet": "# 澜图智能全球化布局与海外业务\n\n所属部门：国际业务部\n作者：罗嘉树\n创建时间：2024-06-01 10:00\n更新时间：2025-12-10 14:30\n版本号：v2.2\n文档类型：company\n文档族：global_presence\n生效日期：2025-12-10\n\n## 一、海外机构\n\n公司在德国斯图加特设立欧洲技术中心（2025 年 3 月开业），在越南胡志明市、墨西哥蒙特雷、匈牙利布达佩斯设有服务网点，海外员工 200 人。\n\n## 二、海外业绩\n\n2025 年海外营业收入 4.86 亿元，占总收入"
+          },
+          {
+            "doc_id": "lantu_support_sla_2024",
+            "title": "# 澜图智能服务等级协议（SLA 2024版）",
+            "chunk": 0,
+            "score": 10.377,
+            "snippet": "# 澜图智能服务等级协议（SLA 2024版）\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v2.0\n文档类型：support\n文档族：service_sla\n生效日期：2024-01-01\n\n## 一、故障分级\n\nP1 为产线停机或安全风险；P2 为单机停机但产线可降级运行；P3 为一般故障或咨询。\n\n## 二、响应时效\n\nP1：2 小时内响应、24 小时内到场；P2：8 小时内响应、72 小时内到场；P3：24 小时内响应、"
+          },
+          {
+            "doc_id": "lantu_support_sla_2025",
+            "title": "# 澜图智能服务等级协议（SLA 2025版）",
+            "chunk": 0,
+            "score": 10.109,
+            "snippet": "# 澜图智能服务等级协议（SLA 2025版）\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2025-03-10 09:00\n更新时间：2025-04-01 09:00\n版本号：v3.0\n文档类型：support\n文档族：service_sla\n生效日期：2025-04-01\n\n## 一、故障分级\n\nP1 为产线停机或安全风险；P2 为单机停机但产线可降级运行；P3 为一般故障或咨询。\n\n## 二、响应时效\n\nP1：30 分钟内响应、12 小时内到场；P2：4 小时内响应、48 小时内到场；P3：12 小时内响应"
+          },
+          {
+            "doc_id": "lantu_company_profile",
+            "title": "澜图智能装备公司简介",
+            "chunk": 0,
+            "score": 9.709,
+            "snippet": "澜图智能装备公司简介\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2023-03-01 09:00\n更新时间：2026-01-08 10:30\n版本号：v5.2\n文档类型：company\n文档族：company_profile\n生效日期：2026-01-08\n一、公司概况\n澜图智能装备股份有限公司成立于2011-06-18，总部位于江苏省苏州市工业园区星澜路88号，注册资本\n6.8 亿元，2023 年在上海证券交易所科创板上市（股票代码 688719）。公司专注工业机器人、智能产线\n与工业软件，为汽车、锂电、光伏"
+          },
+          {
+            "doc_id": "lantu_support_training_certification",
+            "title": "# 澜图智能服务工程师培训与认证体系",
+            "chunk": 0,
+            "score": 8.762,
+            "snippet": "# 澜图智能服务工程师培训与认证体系\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-06-01 09:00\n更新时间：2025-08-08 10:00\n版本号：v2.4\n文档类型：support\n文档族：service_certification\n生效日期：2025-08-08\n\n## 一、认证等级\n\n服务工程师分为 L1 初级、L2 中级、L3 高级三级，分别对应常规维护、故障维修与整线调试。\n\n## 二、培训内容\n\nL1：安全、保养、备件更换（5 天）；L2：电气与控制系统维修（10 天）；L3：整线"
+          },
+          {
+            "doc_id": "lantu_org_department_duties",
+            "title": "# 澜图智能一级部门职责与编制",
+            "chunk": 0,
+            "score": 8.247,
+            "snippet": "# 澜图智能一级部门职责与编制\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-10 09:00\n更新时间：2025-09-30 16:00\n版本号：v3.2\n文档类型：org\n文档族：department_duties\n生效日期：2025-09-30\n\n## 一、研发中心\n\n负责机器人本体、控制器、伺服、视觉与具身智能技术研发，编制 1,286 人，下设 5 个研究所与 1 个测试中心。\n\n## 二、销售中心与客户成功部\n\n销售中心负责区域销售与渠道管理，编制 620 人；客户成功部负责重点客户经"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_system",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_support_system",
+        "title": "# 澜图智能客户服务体系白皮书",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 419,
+        "text": "# 澜图智能客户服务体系白皮书\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-03-01 09:00\n更新时间：2025-12-08 10:00\n版本号：v3.2\n文档类型：support\n文档族：service_system\n生效日期：2025-12-08\n\n## 一、服务网络\n\n公司在全国设有 68 个服务网点、12 个备件仓，覆盖 31 个省级行政区；海外设 3 个服务点。售后服务团队 412 人，认证工程师 286 人。\n\n## 二、服务内容\n\n提供安装调试、培训、预防性维护、故障维修、备件供应、远程诊断与产线优化服务。\n\n## 三、服务渠道\n\n客户可通过 400-820-6688 热线、服务邮箱 service@lantu-robot.com 或客户门户报修，系统自动生成工单。\n\n## 四、服务指标\n\n2025 年服务满意度 96.8%，首次修复率 92.4%，备件满足率 96%，远程诊断解决率 85%。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_spare_inventory",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_support_spare_inventory",
+        "title": "[工作表] 文档信息",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 338,
+        "text": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能备件库存分布（2025Q4）\n所属部门\t售后服务部\n作者\t陆绍\n创建时间\t2025-12-25 09:00\n更新时间\t2026-01-02 10:00\n版本号\tv1.0\n文档类型\tsupport\n文档族\tspare_inventory_2025q4\n生效日期\t2026-01-02\n[工作表] 备件仓库存\n仓库\t所在城市\t库存金额（万元）\tSKU 数\t周转天数\n苏州中心仓\t苏州\t6,200\t4,860\t92\n东莞仓\t东莞\t2,800\t2,240\t105\n成都仓\t成都\t1,600\t1,380\t126\n上海仓\t上海\t1,200\t960\t110\n北京仓\t北京\t980\t820\t132\n其他 7 仓\t—\t5,820\t3,640\t141",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_support_system",
+      "lantu_support_spare_inventory",
+      "lantu_company_global"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.838,
+    "number_recall": 1.0
+  }
+}

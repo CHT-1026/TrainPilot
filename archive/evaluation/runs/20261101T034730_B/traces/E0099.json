@@ -1,0 +1,527 @@
+{
+  "qid": "E0099",
+  "question": "同一笔 8,000 元的招待费，分别按业务招待管理办法与费用报销管理办法涉及哪些审批？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call>\n<function>list</function><parameter>keyword></parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 375,
+        "total_tokens": 551,
+        "completion_tokens": 176,
+        "completion_tokens_details": {
+          "reasoning_tokens": 148,
+          "text_tokens": 176
+        }
+      },
+      "seconds": 1.828
+    },
+    {
+      "round": 2,
+      "text": "<tool_call>\n<function>search</function><parameter=query>业务招待管理办法</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 1518,
+        "total_tokens": 1743,
+        "completion_tokens": 225,
+        "completion_tokens_details": {
+          "reasoning_tokens": 194,
+          "text_tokens": 225
+        }
+      },
+      "seconds": 2.407
+    },
+    {
+      "round": 3,
+      "text": "<tool_call>\n<function>search</function><parameter=query>业务招待</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 1574,
+        "total_tokens": 1904,
+        "completion_tokens": 330,
+        "completion_tokens_details": {
+          "reasoning_tokens": 300,
+          "text_tokens": 330
+        }
+      },
+      "seconds": 3.953
+    },
+    {
+      "round": 4,
+      "text": "<tool_call>\n<function>search</function><parameter=query>费用报销</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 1629,
+        "total_tokens": 1766,
+        "completion_tokens": 137,
+        "completion_tokens_details": {
+          "reasoning_tokens": 107,
+          "text_tokens": 137
+        }
+      },
+      "seconds": 1.515
+    },
+    {
+      "round": 5,
+      "text": "<tool_call>\n<function>search</function><parameter=query>招待费</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 1684,
+        "total_tokens": 2116,
+        "completion_tokens": 432,
+        "completion_tokens_details": {
+          "reasoning_tokens": 402,
+          "text_tokens": 432
+        }
+      },
+      "seconds": 4.391
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_finance_budget_2026\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 1739,
+        "total_tokens": 2583,
+        "completion_tokens": 844,
+        "completion_tokens_details": {
+          "reasoning_tokens": 805,
+          "text_tokens": 844
+        }
+      },
+      "seconds": 8.656
+    },
+    {
+      "round": 7,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"审批\"}}",
+      "usage": {
+        "prompt_tokens": 2161,
+        "total_tokens": 2423,
+        "completion_tokens": 262,
+        "completion_tokens_details": {
+          "reasoning_tokens": 244,
+          "text_tokens": 262
+        }
+      },
+      "seconds": 2.813
+    },
+    {
+      "round": 8,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_entertainment\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 4473,
+        "total_tokens": 4751,
+        "completion_tokens": 278,
+        "completion_tokens_details": {
+          "reasoning_tokens": 244,
+          "text_tokens": 278
+        }
+      },
+      "seconds": 2.984
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": ""
+      },
+      "result_sha": "ee5960dfc8f223ba9ffafd250ac7a048c5a08afb9d85298c7a0ba99417e816f1",
+      "result_chars": 2735,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result_sha": "5fc2d84c83980bdfdb622431503d60a4e21a961fe19252f171944fa6956f91c7",
+      "result_chars": 12,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result_sha": "5fc2d84c83980bdfdb622431503d60a4e21a961fe19252f171944fa6956f91c7",
+      "result_chars": 12,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result_sha": "5fc2d84c83980bdfdb622431503d60a4e21a961fe19252f171944fa6956f91c7",
+      "result_chars": 12,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result_sha": "5fc2d84c83980bdfdb622431503d60a4e21a961fe19252f171944fa6956f91c7",
+      "result_chars": 12,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_finance_budget_2026",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "1eef222c55599a6813dc352160c852d2baee0c26e411d05e714a1c2e25a5fd99",
+      "result_chars": 578,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "审批"
+      },
+      "result_sha": "64f2cb71faa6d1f780f96565a63568a8ddf33f404571f2d1c8e5b16d799aec45",
+      "result_chars": 3917,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_entertainment",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "84bddffe863921cb5c671e783b5148b33f189f71192a7df3b55e2b3937649a73",
+      "result_chars": 606,
+      "hits": 0
+    }
+  ],
+  "answer": null,
+  "status": "unfinished",
+  "tokens": 17837,
+  "started_at": "2026-11-01T04:52:34",
+  "elapsed_seconds": 28.55,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": ""
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_company_brand",
+            "title": "# 澜图智能品牌视觉与传播规范"
+          },
+          {
+            "doc_id": "lantu_company_campus",
+            "title": "# 澜图智能制造基地与产能布局"
+          },
+          {
+            "doc_id": "lantu_company_global",
+            "title": "# 澜图智能全球化布局与海外业务"
+          },
+          {
+            "doc_id": "lantu_company_history",
+            "title": "# 澜图智能发展历程（2011—2025）"
+          },
+          {
+            "doc_id": "lantu_company_milestones_2025",
+            "title": "# 澜图智能 2025 年度大事记"
+          },
+          {
+            "doc_id": "lantu_company_mission",
+            "title": "# 澜图智能使命、愿景与价值观"
+          },
+          {
+            "doc_id": "lantu_company_profile",
+            "title": "澜图智能装备公司简介"
+          },
+          {
+            "doc_id": "lantu_investor_overview",
+            "title": "# 澜图智能投资者关系概览"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2024",
+            "title": "澜图智能 2024 年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2025",
+            "title": "澜图智能 2025 年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_budget_2026",
+            "title": "# 澜图智能 2026 年度经营预算"
+          },
+          {
+            "doc_id": "lantu_finance_cashflow",
+            "title": "# 澜图智能现金流与资金管理报告"
+          },
+          {
+            "doc_id": "lantu_finance_cost",
+            "title": "# 澜图智能成本管理与降本专项报告"
+          },
+          {
+            "doc_id": "lantu_finance_gross_margin",
+            "title": "# 澜图智能毛利率与成本结构分析"
+          },
+          {
+            "doc_id": "lantu_finance_h1_2025",
+            "title": "# 澜图智能 2025 年半年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_investor_qa",
+            "title": "# 澜图智能投资者常见问题答复"
+          },
+          {
+            "doc_id": "lantu_finance_monthly_2025",
+            "title": "[工作表] 文档信息"
+          },
+          {
+            "doc_id": "lantu_finance_q3_2025",
+            "title": "# 澜图智能 2025 年第三季度经营数据"
+          },
+          {
+            "doc_id": "lantu_finance_revenue_breakdown",
+            "title": "﻿维度,分类,收入（亿元）,占比,同比"
+          },
+          {
+            "doc_id": "lantu_hr_campus",
+            "title": "# 澜图智能 2026 届校园招聘方案"
+          },
+          {
+            "doc_id": "lantu_hr_compensation",
+            "title": "# 澜图智能薪酬与奖金管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_job_grades",
+            "title": "# 澜图智能职级体系与晋升规则"
+          },
+          {
+            "doc_id": "lantu_hr_manager_training",
+            "title": "澜图智能管理者领导力培训方案"
+          },
+          {
+            "doc_id": "lantu_hr_new_hire_training",
+            "title": "澜图智能新员工入职培训大纲"
+          },
+          {
+            "doc_id": "lantu_hr_performance",
+            "title": "# 澜图智能绩效管理制度"
+          },
+          {
+            "doc_id": "lantu_hr_recruitment",
+            "title": "# 澜图智能招聘管理制度"
+          },
+          {
+            "doc_id": "lantu_hr_resignation",
+            "title": "# 澜图智能离职与交接管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_social",
+            "title": "# 澜图智能社会招聘管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_training_system",
+            "title": "# 澜图智能培训体系与年度计划"
+          },
+          {
+            "doc_id": "lantu_legal_anti_bribery",
+            "title": "# 澜图智能反商业贿赂管理规定"
+          },
+          {
+            "doc_id": "lantu_legal_compliance_manual",
+            "title": "# 澜图智能合规管理手册"
+          },
+          {
+            "doc_id": "lantu_legal_data_compliance",
+            "title": "# 澜图智能数据合规与隐私保护规范"
+          },
+          {
+            "doc_id": "lantu_legal_export_control",
+            "title": "# 澜图智能出口管制与制裁合规指引"
+          },
+          {
+            "doc_id": "lantu_legal_nda_template",
+            "title": "澜图智能保密协议模板（NDA）"
+          },
+          {
+            "doc_id": "lantu_legal_purchase_contract_template",
+            "title": "澜图智能采购合同模板（2025版）"
+          },
+          {
+            "doc_id": "lantu_legal_sales_contract_template",
+            "title": "澜图智能设备销售合同模板（2025版）"
+          },
+          {
+            "doc_id": "lantu_legal_supplier_code",
+            "title": "# 澜图智能供应商行为准则"
+          },
+          {
+            "doc_id": "lantu_meeting_board",
+            "title": "# 2025 年第二次临时董事会决议"
+          },
+          {
+            "doc_id": "lantu_meeting_case_review",
+            "title": "# 恒芯动力电池项目复盘会纪要"
+          },
+          {
+            "doc_id": "lantu_meeting_ops_2025q3",
+            "title": "2025 年第三季度经营分析会纪要"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result": {
+        "hits": []
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result": {
+        "hits": []
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result": {
+        "hits": []
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result": {
+        "hits": []
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_finance_budget_2026",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_finance_budget_2026",
+        "title": "# 澜图智能 2026 年度经营预算",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 402,
+        "text": "# 澜图智能 2026 年度经营预算\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-12-20 09:00\n更新时间：2026-01-15 17:00\n版本号：v1.0\n文档类型：finance\n文档族：budget_2026\n生效日期：2026-01-15\n\n## 一、预算目标\n\n2026 年营业收入目标 52 亿元，同比增长 22%；归母净利润目标 5.2 亿元；综合毛利率目标 32.5%。\n\n## 二、收入分解\n\n机器人本体 24.2 亿元，智能产线 18.4 亿元，软件与服务 6.4 亿元，备件及其他 3.0 亿元。\n\n## 三、费用预算\n\n研发投入 7.2 亿元（占收入 13.8%），销售费用 4.6 亿元，管理费用 2.4 亿元，资本开支 3.8 亿元。\n\n## 四、关键假设\n\n机器人出货 26,000 台；海外收入 7.2 亿元；原材料价格持平；汇率波动控制在 ±3%。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "审批"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_sales_discount_2024",
+            "title": "# 澜图智能销售折扣审批权限（2024版）",
+            "chunk": 0,
+            "score": 3.538,
+            "snippet": "# 澜图智能销售折扣审批权限（2024版）\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-01-25 09:00\n更新时间：2024-02-01 10:00\n版本号：v1.0\n文档类型：sales\n文档族：sales_discount\n生效日期：2024-01-01\n\n## 一、折扣区间\n\n标准价折扣 10% 以内（含）由销售经理审批；10%-20%（含）由销售副总裁审批；超过 20% 由总经理审批。\n\n## 二、申请材料\n\n折扣申请须说明客户级别、竞争态势、项目毛利与战略价值，并附成本测算表。\n\n## "
+          },
+          {
+            "doc_id": "lantu_policy_entertainment",
+            "title": "# 澜图智能业务招待管理办法",
+            "chunk": 0,
+            "score": 3.492,
+            "snippet": "# 澜图智能业务招待管理办法\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-04-15 09:00\n更新时间：2025-05-06 16:00\n版本号：v2.3\n文档类型：policy\n文档族：business_entertainment\n生效日期：2025-05-06\n\n## 一、招待原则\n\n业务招待须与业务直接相关，坚持简朴、适度、透明原则，禁止铺张浪费与高档消费。\n\n## 二、标准\n\n人均招待标准不超过 600 元，酒水不超过 300 元/瓶；S 级客户重要接待可上浮 20%，须提前审批。\n\n## 三"
+          },
+          {
+            "doc_id": "lantu_sales_discount_2025",
+            "title": "# 澜图智能销售折扣审批权限（2025版）",
+            "chunk": 0,
+            "score": 3.473,
+            "snippet": "# 澜图智能销售折扣审批权限（2025版）\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-12-18 09:00\n更新时间：2025-01-01 10:00\n版本号：v2.0\n文档类型：sales\n文档族：sales_discount\n生效日期：2025-01-01\n\n## 一、折扣区间\n\n标准价折扣 8% 以内（含）由销售经理审批；8%-15%（含）由销售副总裁审批；15%-25%（含）由总经理审批；超过 25% 必须提交董事会审议。\n\n## 二、申请材料\n\n折扣申请须附客户分级、竞品报价、项目毛利测算"
+          },
+          {
+            "doc_id": "lantu_policy_reimbursement",
+            "title": "# 澜图智能费用报销管理办法",
+            "chunk": 0,
+            "score": 3.118,
+            "snippet": "# 澜图智能费用报销管理办法\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-03-10 09:00\n更新时间：2025-06-18 10:00\n版本号：v3.2\n文档类型：policy\n文档族：reimbursement\n生效日期：2025-06-18\n\n## 一、报销范围\n\n差旅费、业务招待费、办公费、培训费、通讯费、车辆使用费及经批准的其他费用。个人消费、罚款与无票据支出不予报销。\n\n## 二、报销时限\n\n费用发生后 30 个自然日内提交报销，跨年度费用须在次年 1 月 15 日前完成，逾期需财务总监审"
+          },
+          {
+            "doc_id": "lantu_policy_contract",
+            "title": "# 澜图智能合同管理制度",
+            "chunk": 0,
+            "score": 3.092,
+            "snippet": "# 澜图智能合同管理制度\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-02-01 09:00\n更新时间：2025-05-12 15:00\n版本号：v3.0\n文档类型：policy\n文档族：contract_management\n生效日期：2025-05-12\n\n## 一、合同分类\n\n合同分为销售合同、采购合同、服务合同、保密协议、租赁合同与劳动合同。销售与采购合同须使用公司标准模板，非标条款须法务审核。\n\n## 二、审批权限\n\n合同金额 1,000 万元以上须法务合规部与 CFO 联合审批；5,000 "
+          },
+          {
+            "doc_id": "lantu_legal_anti_bribery",
+            "title": "# 澜图智能反商业贿赂管理规定",
+            "chunk": 0,
+            "score": 2.949,
+            "snippet": "# 澜图智能反商业贿赂管理规定\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-03-01 09:00\n更新时间：2025-01-15 10:00\n版本号：v2.4\n文档类型：legal\n文档族：anti_bribery\n生效日期：2025-01-15\n\n## 一、禁止行为\n\n禁止向客户、政府官员、供应商及其亲属提供现金、购物卡、有价证券、贵重礼品、旅游或娱乐安排。\n\n## 二、礼品与招待\n\n商务礼品单价不超过 200 元，须登记备案；业务招待人均不超过 600 元，禁止高消费娱乐。\n\n## 三、第三方管理"
+          },
+          {
+            "doc_id": "lantu_policy_seal",
+            "title": "# 澜图智能印章管理办法",
+            "chunk": 0,
+            "score": 2.599,
+            "snippet": "# 澜图智能印章管理办法\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-02-10 09:00\n更新时间：2025-02-14 10:00\n版本号：v2.2\n文档类型：policy\n文档族：seal_management\n生效日期：2025-02-14\n\n## 一、印章种类\n\n公司印章包括公章、合同专用章、财务专用章、法人章与部门章。公章由董事会办公室保管，合同章由法务合规部保管，财务章由财务部保管。\n\n## 二、用印流程\n\n用印须在 OA 提交申请，说明用途、文件名称与份数，附审批完成的合同或文件；单份"
+          },
+          {
+            "doc_id": "lantu_policy_attendance_2025",
+            "title": "# 澜图智能考勤管理制度（2025版）",
+            "chunk": 0,
+            "score": 2.566,
+            "snippet": "# 澜图智能考勤管理制度（2025版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-12-20 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：attendance\n生效日期：2025-01-01\n\n## 一、打卡规则\n\n员工每日上下班各打卡一次，漏打卡须在 3 个工作日内提交补卡申请，每月补卡不超过 4 次。\n\n## 二、弹性工作\n\n上班弹性 60 分钟，9:00-10:00 到岗均视为正常；每月可申请远程办公 4 天，须提前 1 个工作日审"
+          },
+          {
+            "doc_id": "lantu_legal_export_control",
+            "title": "# 澜图智能出口管制与制裁合规指引",
+            "chunk": 0,
+            "score": 2.47,
+            "snippet": "# 澜图智能出口管制与制裁合规指引\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-06-01 09:00\n更新时间：2025-08-01 09:00\n版本号：v2.2\n文档类型：legal\n文档族：export_control\n生效日期：2025-08-01\n\n## 一、适用范围\n\n适用于所有跨境销售、技术许可、境外投资与人员出境技术服务，覆盖中国、欧盟、美国出口管制要求。\n\n## 二、筛查要求\n\n交易前须对客户、最终用户与最终用途进行筛查，核对制裁名单与两用物项清单；涉及加密、视觉算法与高精度伺服的项目"
+          },
+          {
+            "doc_id": "lantu_policy_data_classification",
+            "title": "# 澜图智能数据分级与分类管理规范",
+            "chunk": 0,
+            "score": 2.432,
+            "snippet": "# 澜图智能数据分级与分类管理规范\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-05-20 09:00\n更新时间：2025-09-10 14:00\n版本号：v2.5\n文档类型：policy\n文档族：data_classification\n生效日期：2025-09-10\n\n## 一、分级定义\n\n数据分为 L1 公开、L2 内部、L3 机密、L4 绝密四级。L1 可对外发布；L2 限公司内部；L3 限授权岗位；L4 限特定人员并加密存储。\n\n## 二、典型数据\n\nL1：宣传资料、公开财报；L2：一般制度、会"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_entertainment",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_entertainment",
+        "title": "# 澜图智能业务招待管理办法",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 429,
+        "text": "# 澜图智能业务招待管理办法\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-04-15 09:00\n更新时间：2025-05-06 16:00\n版本号：v2.3\n文档类型：policy\n文档族：business_entertainment\n生效日期：2025-05-06\n\n## 一、招待原则\n\n业务招待须与业务直接相关，坚持简朴、适度、透明原则，禁止铺张浪费与高档消费。\n\n## 二、标准\n\n人均招待标准不超过 600 元，酒水不超过 300 元/瓶；S 级客户重要接待可上浮 20%，须提前审批。\n\n## 三、审批\n\n单次 3,000 元以下由部门经理审批；3,000-10,000 元由分管副总审批；10,000 元以上由总经理审批。\n\n## 四、禁止行为\n\n禁止向客户赠送现金、购物卡与贵重礼品；礼品单价不得超过 200 元；禁止安排高消费娱乐活动。\n\n## 五、报销\n\n报销须附招待申请单、发票与参与人员名单；无审批记录的招待费不予报销。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

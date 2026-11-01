@@ -1,0 +1,393 @@
+{
+  "qid": "F0070",
+  "question": "2025 年末应收账款余额、周转天数与逾期账款占比分别是多少？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"\"}}",
+      "usage": {
+        "prompt_tokens": 367,
+        "total_tokens": 472,
+        "completion_tokens": 105,
+        "completion_tokens_details": {
+          "reasoning_tokens": 88,
+          "text_tokens": 105
+        }
+      },
+      "seconds": 1.391
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"2025年末 应收账款 周转天数 逾期账款占比\"}}",
+      "usage": {
+        "prompt_tokens": 1499,
+        "total_tokens": 2070,
+        "completion_tokens": 571,
+        "completion_tokens_details": {
+          "reasoning_tokens": 540,
+          "text_tokens": 571
+        }
+      },
+      "seconds": 4.765
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\": \"lantu_finance_cashflow\", \"offset\": 0, \"limit\": 4000}}",
+      "usage": {
+        "prompt_tokens": 3953,
+        "total_tokens": 4848,
+        "completion_tokens": 895,
+        "completion_tokens_details": {
+          "reasoning_tokens": 855,
+          "text_tokens": 895
+        }
+      },
+      "seconds": 7.641
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据《澜图智能现金流与资金管理报告》，2025 年末的相关财务指标如下：\\n1. **应收账款余额**：10.24 亿元\\n2. **周转天数**：86 天\\n3. **逾期账款占比**：4.2%（较上年下降 1.8 个百分点）\",\"citations\":[\"lantu_finance_cashflow\"],\"evidence\":[\"lantu_finance_cashflow#0\"]}",
+      "usage": {
+        "prompt_tokens": 4373,
+        "total_tokens": 4786,
+        "completion_tokens": 413,
+        "completion_tokens_details": {
+          "reasoning_tokens": 302,
+          "text_tokens": 413
+        }
+      },
+      "seconds": 3.828
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": ""
+      },
+      "result_sha": "ee5960dfc8f223ba9ffafd250ac7a048c5a08afb9d85298c7a0ba99417e816f1",
+      "result_chars": 2735,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "2025年末 应收账款 周转天数 逾期账款占比"
+      },
+      "result_sha": "a5a59e810f9c9694f50714f6cdf29b50f4ff39acd1d09c3de89641bee9217379",
+      "result_chars": 3914,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_finance_cashflow",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "21a1f7ddc5cac5d03e9a4647b6e1784a7a2c1e7d65f10526adbd00b3059be225",
+      "result_chars": 585,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《澜图智能现金流与资金管理报告》，2025 年末的相关财务指标如下：\n1. **应收账款余额**：10.24 亿元\n2. **周转天数**：86 天\n3. **逾期账款占比**：4.2%（较上年下降 1.8 个百分点）",
+    "citations": [
+      "lantu_finance_cashflow"
+    ],
+    "evidence": [
+      "lantu_finance_cashflow#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 12176,
+  "started_at": "2026-11-01T04:59:17",
+  "elapsed_seconds": 17.62,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": ""
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_company_brand",
+            "title": "# 澜图智能品牌视觉与传播规范"
+          },
+          {
+            "doc_id": "lantu_company_campus",
+            "title": "# 澜图智能制造基地与产能布局"
+          },
+          {
+            "doc_id": "lantu_company_global",
+            "title": "# 澜图智能全球化布局与海外业务"
+          },
+          {
+            "doc_id": "lantu_company_history",
+            "title": "# 澜图智能发展历程（2011—2025）"
+          },
+          {
+            "doc_id": "lantu_company_milestones_2025",
+            "title": "# 澜图智能 2025 年度大事记"
+          },
+          {
+            "doc_id": "lantu_company_mission",
+            "title": "# 澜图智能使命、愿景与价值观"
+          },
+          {
+            "doc_id": "lantu_company_profile",
+            "title": "澜图智能装备公司简介"
+          },
+          {
+            "doc_id": "lantu_investor_overview",
+            "title": "# 澜图智能投资者关系概览"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2024",
+            "title": "澜图智能 2024 年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2025",
+            "title": "澜图智能 2025 年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_budget_2026",
+            "title": "# 澜图智能 2026 年度经营预算"
+          },
+          {
+            "doc_id": "lantu_finance_cashflow",
+            "title": "# 澜图智能现金流与资金管理报告"
+          },
+          {
+            "doc_id": "lantu_finance_cost",
+            "title": "# 澜图智能成本管理与降本专项报告"
+          },
+          {
+            "doc_id": "lantu_finance_gross_margin",
+            "title": "# 澜图智能毛利率与成本结构分析"
+          },
+          {
+            "doc_id": "lantu_finance_h1_2025",
+            "title": "# 澜图智能 2025 年半年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_investor_qa",
+            "title": "# 澜图智能投资者常见问题答复"
+          },
+          {
+            "doc_id": "lantu_finance_monthly_2025",
+            "title": "[工作表] 文档信息"
+          },
+          {
+            "doc_id": "lantu_finance_q3_2025",
+            "title": "# 澜图智能 2025 年第三季度经营数据"
+          },
+          {
+            "doc_id": "lantu_finance_revenue_breakdown",
+            "title": "﻿维度,分类,收入（亿元）,占比,同比"
+          },
+          {
+            "doc_id": "lantu_hr_campus",
+            "title": "# 澜图智能 2026 届校园招聘方案"
+          },
+          {
+            "doc_id": "lantu_hr_compensation",
+            "title": "# 澜图智能薪酬与奖金管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_job_grades",
+            "title": "# 澜图智能职级体系与晋升规则"
+          },
+          {
+            "doc_id": "lantu_hr_manager_training",
+            "title": "澜图智能管理者领导力培训方案"
+          },
+          {
+            "doc_id": "lantu_hr_new_hire_training",
+            "title": "澜图智能新员工入职培训大纲"
+          },
+          {
+            "doc_id": "lantu_hr_performance",
+            "title": "# 澜图智能绩效管理制度"
+          },
+          {
+            "doc_id": "lantu_hr_recruitment",
+            "title": "# 澜图智能招聘管理制度"
+          },
+          {
+            "doc_id": "lantu_hr_resignation",
+            "title": "# 澜图智能离职与交接管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_social",
+            "title": "# 澜图智能社会招聘管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_training_system",
+            "title": "# 澜图智能培训体系与年度计划"
+          },
+          {
+            "doc_id": "lantu_legal_anti_bribery",
+            "title": "# 澜图智能反商业贿赂管理规定"
+          },
+          {
+            "doc_id": "lantu_legal_compliance_manual",
+            "title": "# 澜图智能合规管理手册"
+          },
+          {
+            "doc_id": "lantu_legal_data_compliance",
+            "title": "# 澜图智能数据合规与隐私保护规范"
+          },
+          {
+            "doc_id": "lantu_legal_export_control",
+            "title": "# 澜图智能出口管制与制裁合规指引"
+          },
+          {
+            "doc_id": "lantu_legal_nda_template",
+            "title": "澜图智能保密协议模板（NDA）"
+          },
+          {
+            "doc_id": "lantu_legal_purchase_contract_template",
+            "title": "澜图智能采购合同模板（2025版）"
+          },
+          {
+            "doc_id": "lantu_legal_sales_contract_template",
+            "title": "澜图智能设备销售合同模板（2025版）"
+          },
+          {
+            "doc_id": "lantu_legal_supplier_code",
+            "title": "# 澜图智能供应商行为准则"
+          },
+          {
+            "doc_id": "lantu_meeting_board",
+            "title": "# 2025 年第二次临时董事会决议"
+          },
+          {
+            "doc_id": "lantu_meeting_case_review",
+            "title": "# 恒芯动力电池项目复盘会纪要"
+          },
+          {
+            "doc_id": "lantu_meeting_ops_2025q3",
+            "title": "2025 年第三季度经营分析会纪要"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "2025年末 应收账款 周转天数 逾期账款占比"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_finance_cashflow",
+            "title": "# 澜图智能现金流与资金管理报告",
+            "chunk": 0,
+            "score": 43.791,
+            "snippet": "# 澜图智能现金流与资金管理报告\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-12-10 09:00\n更新时间：2025-12-15 17:00\n版本号：v1.1\n文档类型：finance\n文档族：cashflow_2025\n生效日期：2025-12-15\n\n## 一、现金流概况\n\n2025 年经营活动现金流净额 5.34 亿元，投资活动现金流净额 -3.86 亿元，筹资活动现金流净额 -0.92 亿元。\n\n## 二、回款管理\n\n应收账款余额 10.24 亿元，周转天数 86 天；逾期账款占比 4.2%，"
+          },
+          {
+            "doc_id": "lantu_meeting_ops_2025q3",
+            "title": "2025 年第三季度经营分析会纪要",
+            "chunk": 0,
+            "score": 28.95,
+            "snippet": "2025 年第三季度经营分析会纪要\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-10-10 09:00\n更新时间：2025-10-10 18:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_ops_2025q3\n生效日期：2025-10-10\n一、会议信息\n时间：2025 年 10 月 10 日 09:00-12:00；地点：苏州总部 3 楼会议室；主持：顾承澜；参会：沈亦舟、周敏仪、韩立恒、罗嘉树、陈依然、潘文博、邵岚。\n二、经营回顾\n第三季度营业收入 11.52 亿元，同"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2025",
+            "title": "澜图智能 2025 年度报告摘要",
+            "chunk": 0,
+            "score": 25.323,
+            "snippet": "澜图智能 2025 年度报告摘要\n所属部门：财务部\n作者：周敏仪\n创建时间：2026-01-20 09:00\n更新时间：2026-01-28 18:00\n版本号：v1.0\n文档类型：finance\n文档族：annual_report_2025\n生效日期：2026-01-28\n一、经营概况\n2025 年公司实现营业收入 42.63 亿元，同比增长 19.1%；归属于母公司股东的净利润 4.12\n亿元，同比增长 26.4%；基本每股收益 0.98 元。\n二、收入结构\n机器人本体收入 19.84 亿元（46.5%），智能"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2024",
+            "title": "澜图智能 2024 年度报告摘要",
+            "chunk": 0,
+            "score": 24.278,
+            "snippet": "澜图智能 2024 年度报告摘要\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-01-22 09:00\n更新时间：2025-01-30 18:00\n版本号：v1.0\n文档类型：finance\n文档族：annual_report_2024\n生效日期：2025-01-30\n一、经营概况\n2024 年公司实现营业收入 35.80 亿元，同比增长 16.8%；归母净利润 3.26 亿元，同比增长 14.2%。\n二、收入结构\n机器人本体收入 16.72 亿元（46.7%），智能产线收入 12.36 亿元（34.5%），"
+          },
+          {
+            "doc_id": "lantu_strategy_2025",
+            "title": "# 澜图智能 2025 年度经营计划",
+            "chunk": 0,
+            "score": 19.323,
+            "snippet": "# 澜图智能 2025 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-01-10 09:00\n更新时间：2025-02-10 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2025\n生效日期：2025-02-10\n\n## 一、年度目标\n\n2025 年营业收入目标 41.5 亿元，力争 42.63 亿元；新签订单目标 46 亿元；机器人出货目标 20,000 台。\n\n## 二、重点任务\n\n锂电与半导体行业突破；LT-C800 控制器量产；海外收入占"
+          },
+          {
+            "doc_id": "lantu_meeting_board",
+            "title": "# 2025 年第二次临时董事会决议",
+            "chunk": 0,
+            "score": 13.168,
+            "snippet": "# 2025 年第二次临时董事会决议\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-04-25 09:00\n更新时间：2025-04-25 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_board_2025\n生效日期：2025-04-25\n\n## 一、会议信息\n\n时间：2025 年 4 月 25 日；方式：现场加视频；应到董事 9 人，实到 9 人；列席：高管团队。\n\n## 二、审议事项\n\n审议通过《2024 年度利润分配方案》《2025 年度研发投入预算》《苏州二期"
+          },
+          {
+            "doc_id": "lantu_support_spare_inventory",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 11.664,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能备件库存分布（2025Q4）\n所属部门\t售后服务部\n作者\t陆绍\n创建时间\t2025-12-25 09:00\n更新时间\t2026-01-02 10:00\n版本号\tv1.0\n文档类型\tsupport\n文档族\tspare_inventory_2025q4\n生效日期\t2026-01-02\n[工作表] 备件仓库存\n仓库\t所在城市\t库存金额（万元）\tSKU 数\t周转天数\n苏州中心仓\t苏州\t6,200\t4,860\t92\n东莞仓\t东莞\t2,800\t2,240\t105\n成都仓\t成都\t1,"
+          },
+          {
+            "doc_id": "lantu_legal_sales_contract_template",
+            "title": "澜图智能设备销售合同模板（2025版）",
+            "chunk": 0,
+            "score": 4.958,
+            "snippet": "澜图智能设备销售合同模板（2025版）\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-10 09:00\n更新时间：2025-03-01 09:00\n版本号：v4.0\n文档类型：legal\n文档族：sales_contract_template\n生效日期：2025-03-01\n第一条 合同标的\n乙方向甲方购买澜图智能工业机器人及配套设备，具体型号、数量、单价以附件《供货清单》为准。\n第二条 合同价款与支付\n合同总价为含税价。预付款 30%，发货前支付至 60%，验收合格后 30 日内支付至 95%，剩余"
+          },
+          {
+            "doc_id": "lantu_finance_h1_2025",
+            "title": "# 澜图智能 2025 年半年度报告摘要",
+            "chunk": 0,
+            "score": 3.887,
+            "snippet": "# 澜图智能 2025 年半年度报告摘要\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-08-25 09:00\n更新时间：2025-08-28 18:00\n版本号：v1.0\n文档类型：finance\n文档族：semiannual_2025\n生效日期：2025-08-28\n\n## 一、经营数据\n\n2025 年上半年营业收入 19.84 亿元，同比增长 21.3%；归母净利润 1.83 亿元，同比增长 24.6%；毛利率 31.2%。\n\n## 二、订单情况\n\n上半年新签订单 22.7 亿元，同比增长 18.5%"
+          },
+          {
+            "doc_id": "lantu_investor_overview",
+            "title": "# 澜图智能投资者关系概览",
+            "chunk": 0,
+            "score": 3.851,
+            "snippet": "# 澜图智能投资者关系概览\n\n所属部门：董事会办公室\n作者：周敏仪\n创建时间：2024-03-20 09:00\n更新时间：2026-01-10 17:00\n版本号：v4.1\n文档类型：company\n文档族：investor_overview\n生效日期：2026-01-10\n\n## 一、基本信息\n\n公司股票代码 688719，总股本 4.2 亿股，2025 年末总市值约 168 亿元。2025 年度拟每 10 股派发现金红利 3.2 元（含税）。\n\n## 二、经营数据\n\n2025 年营业收入 42.63 亿元，归母"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_finance_cashflow",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_finance_cashflow",
+        "title": "# 澜图智能现金流与资金管理报告",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 414,
+        "text": "# 澜图智能现金流与资金管理报告\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-12-10 09:00\n更新时间：2025-12-15 17:00\n版本号：v1.1\n文档类型：finance\n文档族：cashflow_2025\n生效日期：2025-12-15\n\n## 一、现金流概况\n\n2025 年经营活动现金流净额 5.34 亿元，投资活动现金流净额 -3.86 亿元，筹资活动现金流净额 -0.92 亿元。\n\n## 二、回款管理\n\n应收账款余额 10.24 亿元，周转天数 86 天；逾期账款占比 4.2%，较上年下降 1.8 个百分点。\n\n## 三、资金储备\n\n年末货币资金 18.62 亿元，授信额度 22 亿元，未使用额度 15.4 亿元，可覆盖 2026 年资本开支与运营需求。\n\n## 四、汇率风险\n\n海外收入以欧元与美元结算，公司通过远期结汇锁定 70% 汇率风险，2025 年汇兑损失 860 万元。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_finance_cashflow"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.615,
+    "number_recall": 0.0
+  }
+}

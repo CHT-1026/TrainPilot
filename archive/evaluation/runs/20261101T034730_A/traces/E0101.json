@@ -1,0 +1,424 @@
+{
+  "qid": "E0101",
+  "question": "L4 数据的访问审批和外发审批各由谁负责？它们是否为同一动作，能否只因审批人不同便判定制度冲突？",
+  "question_type": "矛盾与例外识别",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>L4 数据 访问审批 外发审批 审批人</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 82,
+        "prompt_tokens": 374,
+        "total_tokens": 456,
+        "completion_tokens_details": {
+          "reasoning_tokens": 43
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.875
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"L4 数据 访问审批 外发审批 负责人\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 44,
+        "prompt_tokens": 450,
+        "total_tokens": 494,
+        "completion_tokens_details": {
+          "reasoning_tokens": 8
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.047
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_data_classification\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 2826,
+        "total_tokens": 2876,
+        "completion_tokens_details": {
+          "reasoning_tokens": 19
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 1.531
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"L4 数据 外发 对外提供 审批\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 49,
+        "prompt_tokens": 3288,
+        "total_tokens": 3337,
+        "completion_tokens_details": {
+          "reasoning_tokens": 17
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2816
+        }
+      },
+      "seconds": 1.75
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_legal_data_compliance\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 66,
+        "prompt_tokens": 5673,
+        "total_tokens": 5739,
+        "completion_tokens_details": {
+          "reasoning_tokens": 34
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3264
+        }
+      },
+      "seconds": 1.875
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_infosec\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 148,
+        "prompt_tokens": 6075,
+        "total_tokens": 6223,
+        "completion_tokens_details": {
+          "reasoning_tokens": 117
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 5632
+        }
+      },
+      "seconds": 3.625
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"1）L4 数据访问审批：根据《数据分级与分类管理规范》（v2.5，2025-09-10 生效）第三节，L4 数据访问须“分管高管与信息安全委员会”双审批，且权限每季度复核。2）L3/L4 数据外发审批：根据《信息安全管理制度》（v4.0，2025-08-01 生效）第三节，涉及 L3、L4 级数据的外发须经“部门负责人与信息安全委员会”审批，并禁止通过个人邮箱、网盘、即时通讯工具传输。3）二者不是同一动作：访问审批管控的是内部最小权限授权（谁能看、用，权限需季度复核），外发审批管控的是数据向外部流转的出口控制，两者在触发条件、控制目标和监管环节上均不同，属于同一数据分级体系下的两个独立控制点。4）不能仅因审批人不同（分管高管 vs 部门负责人）就判定制度冲突——两份制度分别由信息技术部制定、针对不同场景，且都要求信息安全委员会参与，属于分层管控而非相互矛盾；只有在同一场景（如同为外发、或同为访问）下对同类事项给出不一致要求时，才构成冲突。\",\"citations\":[\"lantu_policy_data_classification\",\"lantu_policy_infosec\"],\"evidence\":[\"lantu_policy_data_classification#片段0\",\"lantu_policy_infosec#片段0\"]}",
+      "usage": {
+        "completion_tokens": 419,
+        "prompt_tokens": 6491,
+        "total_tokens": 6910,
+        "completion_tokens_details": {
+          "reasoning_tokens": 92
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 6016
+        }
+      },
+      "seconds": 10.953
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "L4 数据 访问审批 外发审批 负责人",
+        "top_k": 10
+      },
+      "result_sha": "d84d19232591b68c3ae33b35930c24520a42018e684cde3a147cafb43713fa44",
+      "result_chars": 3902,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_data_classification",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "771741860b42ad3363de125c9966bb920c2bd694a5a17e42d034e8f058400d5d",
+      "result_chars": 684,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "L4 数据 外发 对外提供 审批",
+        "top_k": 10
+      },
+      "result_sha": "813ba638dd90e8f31b70fe6ffb4991b03deb306b442d0cf4ad3a50a1e7609273",
+      "result_chars": 3911,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_legal_data_compliance",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "2539aa032c29385878495b009652d9241530d5efc3d82d84cee2cfbc3cd71554",
+      "result_chars": 609,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_infosec",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "eb5e872f6bcbc95bcf05a312eba16b5e31169eb6cd7ecb96b297a43f22926927",
+      "result_chars": 624,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "1）L4 数据访问审批：根据《数据分级与分类管理规范》（v2.5，2025-09-10 生效）第三节，L4 数据访问须“分管高管与信息安全委员会”双审批，且权限每季度复核。2）L3/L4 数据外发审批：根据《信息安全管理制度》（v4.0，2025-08-01 生效）第三节，涉及 L3、L4 级数据的外发须经“部门负责人与信息安全委员会”审批，并禁止通过个人邮箱、网盘、即时通讯工具传输。3）二者不是同一动作：访问审批管控的是内部最小权限授权（谁能看、用，权限需季度复核），外发审批管控的是数据向外部流转的出口控制，两者在触发条件、控制目标和监管环节上均不同，属于同一数据分级体系下的两个独立控制点。4）不能仅因审批人不同（分管高管 vs 部门负责人）就判定制度冲突——两份制度分别由信息技术部制定、针对不同场景，且都要求信息安全委员会参与，属于分层管控而非相互矛盾；只有在同一场景（如同为外发、或同为访问）下对同类事项给出不一致要求时，才构成冲突。",
+    "citations": [
+      "lantu_policy_data_classification",
+      "lantu_policy_infosec"
+    ],
+    "evidence": [
+      "lantu_policy_data_classification#片段0",
+      "lantu_policy_infosec#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 26035,
+  "started_at": "2026-11-01T04:52:32",
+  "elapsed_seconds": 23.66,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "L4 数据 访问审批 外发审批 负责人",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_policy_data_classification",
+            "title": "# 澜图智能数据分级与分类管理规范",
+            "chunk": 0,
+            "score": 26.66,
+            "snippet": "# 澜图智能数据分级与分类管理规范\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-05-20 09:00\n更新时间：2025-09-10 14:00\n版本号：v2.5\n文档类型：policy\n文档族：data_classification\n生效日期：2025-09-10\n\n## 一、分级定义\n\n数据分为 L1 公开、L2 内部、L3 机密、L4 绝密四级。L1 可对外发布；L2 限公司内部；L3 限授权岗位；L4 限特定人员并加密存储。\n\n## 二、典型数据\n\nL1：宣传资料、公开财报；L2：一般制度、会"
+          },
+          {
+            "doc_id": "lantu_policy_infosec",
+            "title": "# 澜图智能信息安全管理制度",
+            "chunk": 0,
+            "score": 17.772,
+            "snippet": "# 澜图智能信息安全管理制度\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-04-01 09:00\n更新时间：2025-08-01 09:00\n版本号：v4.0\n文档类型：policy\n文档族：information_security\n生效日期：2025-08-01\n\n## 一、账号与密码\n\n员工账号一人一号，密码长度不少于 12 位，包含大小写字母、数字与符号，每 90 天更换一次；禁止共享账号。\n\n## 二、终端安全\n\n办公电脑须安装公司统一的终端防护软件，开启磁盘加密与屏保锁定；禁止安装未授权软件与"
+          },
+          {
+            "doc_id": "lantu_org_committees",
+            "title": "# 澜图智能跨部门委员会与运作机制",
+            "chunk": 0,
+            "score": 12.599,
+            "snippet": "# 澜图智能跨部门委员会与运作机制\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2024-05-06 09:00\n更新时间：2025-10-18 11:00\n版本号：v2.1\n文档类型：org\n文档族：committees\n生效日期：2025-10-18\n\n## 一、产品决策委员会\n\n主任由 CTO 担任，成员包括产品部、研发中心、销售中心、质量部负责人，负责产品立项、版本发布与退市决策，每月召开一次。\n\n## 二、质量安全委员会\n\n主任由 COO 担任，负责重大质量事故、召回与安全生产事项，实行 24 小时响"
+          },
+          {
+            "doc_id": "lantu_policy_contract",
+            "title": "# 澜图智能合同管理制度",
+            "chunk": 0,
+            "score": 7.997,
+            "snippet": "# 澜图智能合同管理制度\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-02-01 09:00\n更新时间：2025-05-12 15:00\n版本号：v3.0\n文档类型：policy\n文档族：contract_management\n生效日期：2025-05-12\n\n## 一、合同分类\n\n合同分为销售合同、采购合同、服务合同、保密协议、租赁合同与劳动合同。销售与采购合同须使用公司标准模板，非标条款须法务审核。\n\n## 二、审批权限\n\n合同金额 1,000 万元以上须法务合规部与 CFO 联合审批；5,000 "
+          },
+          {
+            "doc_id": "lantu_policy_confidentiality",
+            "title": "# 澜图智能商业秘密与保密管理规范",
+            "chunk": 0,
+            "score": 7.99,
+            "snippet": "# 澜图智能商业秘密与保密管理规范\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-15 09:00\n更新时间：2025-03-28 11:00\n版本号：v3.1\n文档类型：policy\n文档族：confidentiality\n生效日期：2025-03-28\n\n## 一、保密范围\n\n技术秘密（源代码、算法、图纸、工艺参数）、经营秘密（客户名单、报价、成本、未披露财务数据）与人事秘密均属保密信息。\n\n## 二、保密义务\n\n员工在职期间及离职后 3 年内不得披露、使用或允许他人使用公司保密信息；竞业限制人"
+          },
+          {
+            "doc_id": "lantu_org_reporting_lines",
+            "title": "# 澜图智能员工汇报关系与业务分工",
+            "chunk": 1,
+            "score": 7.751,
+            "snippet": "周敏仪担任 CFO，负责财务与资本运作。陈依然担任人力资源副总裁，负责人力资源体系。蒋雯担任薪酬绩效经理，负责薪酬、绩效与员工关系。邵岚担任法务合规总监，负责法务、合规与知识产权。\n\n## 五、跨部门业务分工\n\n周启航同时担任新一代控制器 LT-C900 项目负责人，项目成员包括林晓与赵一鸣。唐婧负责销售中心，华东区域由许博管理，上海区域重点客户由陈璐维护。方磊负责制造中心，苏州工厂由郭涛管理。\n\n## 六、汇报关系使用说明\n\n本文件中的“上级”均指行政汇报关系中的直接上级；跨部门项目中的项目负责人关系不改变行政汇"
+          },
+          {
+            "doc_id": "lantu_sales_discount_2024",
+            "title": "# 澜图智能销售折扣审批权限（2024版）",
+            "chunk": 0,
+            "score": 7.076,
+            "snippet": "# 澜图智能销售折扣审批权限（2024版）\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-01-25 09:00\n更新时间：2024-02-01 10:00\n版本号：v1.0\n文档类型：sales\n文档族：sales_discount\n生效日期：2024-01-01\n\n## 一、折扣区间\n\n标准价折扣 10% 以内（含）由销售经理审批；10%-20%（含）由销售副总裁审批；超过 20% 由总经理审批。\n\n## 二、申请材料\n\n折扣申请须说明客户级别、竞争态势、项目毛利与战略价值，并附成本测算表。\n\n## "
+          },
+          {
+            "doc_id": "lantu_policy_entertainment",
+            "title": "# 澜图智能业务招待管理办法",
+            "chunk": 0,
+            "score": 6.984,
+            "snippet": "# 澜图智能业务招待管理办法\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-04-15 09:00\n更新时间：2025-05-06 16:00\n版本号：v2.3\n文档类型：policy\n文档族：business_entertainment\n生效日期：2025-05-06\n\n## 一、招待原则\n\n业务招待须与业务直接相关，坚持简朴、适度、透明原则，禁止铺张浪费与高档消费。\n\n## 二、标准\n\n人均招待标准不超过 600 元，酒水不超过 300 元/瓶；S 级客户重要接待可上浮 20%，须提前审批。\n\n## 三"
+          },
+          {
+            "doc_id": "lantu_sales_discount_2025",
+            "title": "# 澜图智能销售折扣审批权限（2025版）",
+            "chunk": 0,
+            "score": 6.946,
+            "snippet": "# 澜图智能销售折扣审批权限（2025版）\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-12-18 09:00\n更新时间：2025-01-01 10:00\n版本号：v2.0\n文档类型：sales\n文档族：sales_discount\n生效日期：2025-01-01\n\n## 一、折扣区间\n\n标准价折扣 8% 以内（含）由销售经理审批；8%-15%（含）由销售副总裁审批；15%-25%（含）由总经理审批；超过 25% 必须提交董事会审议。\n\n## 二、申请材料\n\n折扣申请须附客户分级、竞品报价、项目毛利测算"
+          },
+          {
+            "doc_id": "lantu_hr_recruitment",
+            "title": "# 澜图智能招聘管理制度",
+            "chunk": 0,
+            "score": 6.734,
+            "snippet": "# 澜图智能招聘管理制度\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-05 09:00\n更新时间：2025-06-10 10:00\n版本号：v3.1\n文档类型：hr\n文档族：recruitment\n生效日期：2025-06-10\n\n## 一、招聘原则\n\n坚持公开、公平、择优，优先内部推荐与内部转岗；关键岗位实行背景调查与多轮面试。\n\n## 二、招聘流程\n\n需求审批 → 简历筛选 → 专业面试 → 综合面试 → 薪酬沟通 → 背景调查 → 发放录用通知。研发岗位增加技术笔试与代码评审。\n\n## 三"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_data_classification",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_data_classification",
+        "title": "# 澜图智能数据分级与分类管理规范",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 498,
+        "text": "# 澜图智能数据分级与分类管理规范\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-05-20 09:00\n更新时间：2025-09-10 14:00\n版本号：v2.5\n文档类型：policy\n文档族：data_classification\n生效日期：2025-09-10\n\n## 一、分级定义\n\n数据分为 L1 公开、L2 内部、L3 机密、L4 绝密四级。L1 可对外发布；L2 限公司内部；L3 限授权岗位；L4 限特定人员并加密存储。\n\n## 二、典型数据\n\nL1：宣传资料、公开财报；L2：一般制度、会议纪要；L3：客户合同、报价、产品图纸；L4：核心技术源代码、并购方案、未披露财报。\n\n## 三、访问控制\n\n按最小权限原则授权，L3 数据访问须部门负责人审批，L4 数据须分管高管与信息安全委员会双审批，权限每季度复核。\n\n## 四、存储与传输\n\nL3/L4 数据须存储于公司加密服务器，传输使用加密通道；禁止存储于个人设备，确需离线的须申请加密笔记本。\n\n## 五、销毁\n\n数据销毁须采用多次覆写或物理销毁，保留销毁记录；离职人员账号在离职当日禁用，30 日内清理权限。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "L4 数据 外发 对外提供 审批",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_policy_data_classification",
+            "title": "# 澜图智能数据分级与分类管理规范",
+            "chunk": 0,
+            "score": 17.918,
+            "snippet": "# 澜图智能数据分级与分类管理规范\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-05-20 09:00\n更新时间：2025-09-10 14:00\n版本号：v2.5\n文档类型：policy\n文档族：data_classification\n生效日期：2025-09-10\n\n## 一、分级定义\n\n数据分为 L1 公开、L2 内部、L3 机密、L4 绝密四级。L1 可对外发布；L2 限公司内部；L3 限授权岗位；L4 限特定人员并加密存储。\n\n## 二、典型数据\n\nL1：宣传资料、公开财报；L2：一般制度、会"
+          },
+          {
+            "doc_id": "lantu_legal_data_compliance",
+            "title": "# 澜图智能数据合规与隐私保护规范",
+            "chunk": 0,
+            "score": 15.209,
+            "snippet": "# 澜图智能数据合规与隐私保护规范\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-07-01 09:00\n更新时间：2025-09-01 09:00\n版本号：v2.6\n文档类型：legal\n文档族：data_compliance\n生效日期：2025-09-01\n\n## 一、适用法律\n\n遵守《个人信息保护法》《数据安全法》《网络安全法》及欧盟 GDPR，处理个人信息须遵循最小必要与告知同意原则。\n\n## 二、数据出境\n\n向境外提供个人信息或重要数据须开展安全评估或签订标准合同，涉及研发数据的须经信息安全委员"
+          },
+          {
+            "doc_id": "lantu_policy_infosec",
+            "title": "# 澜图智能信息安全管理制度",
+            "chunk": 0,
+            "score": 11.911,
+            "snippet": "# 澜图智能信息安全管理制度\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-04-01 09:00\n更新时间：2025-08-01 09:00\n版本号：v4.0\n文档类型：policy\n文档族：information_security\n生效日期：2025-08-01\n\n## 一、账号与密码\n\n员工账号一人一号，密码长度不少于 12 位，包含大小写字母、数字与符号，每 90 天更换一次；禁止共享账号。\n\n## 二、终端安全\n\n办公电脑须安装公司统一的终端防护软件，开启磁盘加密与屏保锁定；禁止安装未授权软件与"
+          },
+          {
+            "doc_id": "lantu_policy_confidentiality",
+            "title": "# 澜图智能商业秘密与保密管理规范",
+            "chunk": 0,
+            "score": 9.251,
+            "snippet": "# 澜图智能商业秘密与保密管理规范\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-15 09:00\n更新时间：2025-03-28 11:00\n版本号：v3.1\n文档类型：policy\n文档族：confidentiality\n生效日期：2025-03-28\n\n## 一、保密范围\n\n技术秘密（源代码、算法、图纸、工艺参数）、经营秘密（客户名单、报价、成本、未披露财务数据）与人事秘密均属保密信息。\n\n## 二、保密义务\n\n员工在职期间及离职后 3 年内不得披露、使用或允许他人使用公司保密信息；竞业限制人"
+          },
+          {
+            "doc_id": "lantu_company_brand",
+            "title": "# 澜图智能品牌视觉与传播规范",
+            "chunk": 0,
+            "score": 7.755,
+            "snippet": "# 澜图智能品牌视觉与传播规范\n\n所属部门：市场部\n作者：苏婉清\n创建时间：2024-02-01 09:30\n更新时间：2025-08-15 11:00\n版本号：v2.3\n文档类型：company\n文档族：brand_manual\n生效日期：2025-08-15\n\n## 一、品牌定位\n\n澜图智能（LANTU）定位为“可信赖的智能制造伙伴”，核心传播主张为“稳、准、快”。品牌不得使用“全球第一”“绝对领先”等绝对化表述。\n\n## 二、视觉规范\n\n主色为澜图蓝（PANTONE 2728C，HEX #1F4FA8），辅助"
+          },
+          {
+            "doc_id": "lantu_legal_anti_bribery",
+            "title": "# 澜图智能反商业贿赂管理规定",
+            "chunk": 0,
+            "score": 4.339,
+            "snippet": "# 澜图智能反商业贿赂管理规定\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-03-01 09:00\n更新时间：2025-01-15 10:00\n版本号：v2.4\n文档类型：legal\n文档族：anti_bribery\n生效日期：2025-01-15\n\n## 一、禁止行为\n\n禁止向客户、政府官员、供应商及其亲属提供现金、购物卡、有价证券、贵重礼品、旅游或娱乐安排。\n\n## 二、礼品与招待\n\n商务礼品单价不超过 200 元，须登记备案；业务招待人均不超过 600 元，禁止高消费娱乐。\n\n## 三、第三方管理"
+          },
+          {
+            "doc_id": "lantu_tech_data_platform",
+            "title": "# 澜图智能工业数据平台建设方案",
+            "chunk": 0,
+            "score": 4.162,
+            "snippet": "# 澜图智能工业数据平台建设方案\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-10-01 09:00\n更新时间：2025-07-30 14:00\n版本号：v2.4\n文档类型：tech\n文档族：data_platform\n生效日期：2025-07-30\n\n## 一、平台定位\n\n构建统一工业数据湖仓，支撑设备运维、质量分析与经营决策，覆盖 3 大基地与客户现场。\n\n## 二、数据架构\n\n采集层支持 OPC UA、Modbus、MQTT；存储层采用数据湖 + 数仓分层；服务层提供 BI、API 与算法服务。\n"
+          },
+          {
+            "doc_id": "lantu_org_committees",
+            "title": "# 澜图智能跨部门委员会与运作机制",
+            "chunk": 0,
+            "score": 3.724,
+            "snippet": "# 澜图智能跨部门委员会与运作机制\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2024-05-06 09:00\n更新时间：2025-10-18 11:00\n版本号：v2.1\n文档类型：org\n文档族：committees\n生效日期：2025-10-18\n\n## 一、产品决策委员会\n\n主任由 CTO 担任，成员包括产品部、研发中心、销售中心、质量部负责人，负责产品立项、版本发布与退市决策，每月召开一次。\n\n## 二、质量安全委员会\n\n主任由 COO 担任，负责重大质量事故、召回与安全生产事项，实行 24 小时响"
+          },
+          {
+            "doc_id": "lantu_sales_discount_2024",
+            "title": "# 澜图智能销售折扣审批权限（2024版）",
+            "chunk": 0,
+            "score": 3.538,
+            "snippet": "# 澜图智能销售折扣审批权限（2024版）\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-01-25 09:00\n更新时间：2024-02-01 10:00\n版本号：v1.0\n文档类型：sales\n文档族：sales_discount\n生效日期：2024-01-01\n\n## 一、折扣区间\n\n标准价折扣 10% 以内（含）由销售经理审批；10%-20%（含）由销售副总裁审批；超过 20% 由总经理审批。\n\n## 二、申请材料\n\n折扣申请须说明客户级别、竞争态势、项目毛利与战略价值，并附成本测算表。\n\n## "
+          },
+          {
+            "doc_id": "lantu_tech_vision",
+            "title": "# 澜图智能机器视觉算法平台说明",
+            "chunk": 0,
+            "score": 3.503,
+            "snippet": "# 澜图智能机器视觉算法平台说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-08-01 09:00\n更新时间：2025-11-05 15:00\n版本号：v3.1\n文档类型：tech\n文档族：vision_algorithm\n生效日期：2025-11-05\n\n## 一、算法能力\n\n覆盖 2D/3D 定位、缺陷检测、OCR、分割与无序抓取，支持小样本学习与在线增量训练。\n\n## 二、性能指标\n\n3D 测量精度 0.05 mm，缺陷检测召回率 99.2%，误检率 0.8%，单帧推理延迟 35 ms。\n\n##"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_legal_data_compliance",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_legal_data_compliance",
+        "title": "# 澜图智能数据合规与隐私保护规范",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 428,
+        "text": "# 澜图智能数据合规与隐私保护规范\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-07-01 09:00\n更新时间：2025-09-01 09:00\n版本号：v2.6\n文档类型：legal\n文档族：data_compliance\n生效日期：2025-09-01\n\n## 一、适用法律\n\n遵守《个人信息保护法》《数据安全法》《网络安全法》及欧盟 GDPR，处理个人信息须遵循最小必要与告知同意原则。\n\n## 二、数据出境\n\n向境外提供个人信息或重要数据须开展安全评估或签订标准合同，涉及研发数据的须经信息安全委员会审批。\n\n## 三、客户数据\n\n为客户部署的系统采集的生产数据归客户所有，澜图智能仅可在授权范围内用于运维，不得用于训练或对外提供。\n\n## 四、个人权利\n\n员工与客户可查询、更正、删除其个人信息；请求由法务合规部在 15 个工作日内处理。\n\n## 五、事件通知\n\n发生数据泄露的，应在 24 小时内上报监管机构，并通知受影响个人。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_infosec",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_infosec",
+        "title": "# 澜图智能信息安全管理制度",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 453,
+        "text": "# 澜图智能信息安全管理制度\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-04-01 09:00\n更新时间：2025-08-01 09:00\n版本号：v4.0\n文档类型：policy\n文档族：information_security\n生效日期：2025-08-01\n\n## 一、账号与密码\n\n员工账号一人一号，密码长度不少于 12 位，包含大小写字母、数字与符号，每 90 天更换一次；禁止共享账号。\n\n## 二、终端安全\n\n办公电脑须安装公司统一的终端防护软件，开启磁盘加密与屏保锁定；禁止安装未授权软件与私人远程工具。\n\n## 三、数据外发\n\n涉及 L3、L4 级数据的外发须经部门负责人与信息安全委员会审批；禁止通过个人邮箱、网盘与即时通讯工具传输敏感数据。\n\n## 四、事件响应\n\n安全事件须在 1 小时内上报信息安全委员会，重大事件启动应急预案并在 24 小时内完成初步处置。\n\n## 五、审计与处罚\n\n公司每季度开展权限复核与日志审计；违规行为视情节给予警告、降级或解除劳动合同。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_policy_data_classification",
+      "lantu_policy_infosec"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.238,
+    "number_recall": 0.0
+  }
+}

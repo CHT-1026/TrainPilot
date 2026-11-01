@@ -1,0 +1,210 @@
+{
+  "qid": "M1506",
+  "question": "用户：公司综合毛利率现在多少？净利率呢？\n助手：2025 年综合毛利率 31.6%，同比提升 1.2 个百分点，净利率 9.7%，研发费用率 13.8%。\n用户：那 2024 年是多少？",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\": \"search\", \"query\": \"2024年 毛利率 净利率 同比\", \"top_k\": 10}",
+      "usage": {
+        "completion_tokens": 172,
+        "prompt_tokens": 408,
+        "total_tokens": 580,
+        "completion_tokens_details": {
+          "reasoning_tokens": 134
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 4.391
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\": \"read\", \"doc_id\": \"lantu_finance_annual_2024\", \"offset\": 0, \"limit\": 2000}",
+      "usage": {
+        "completion_tokens": 108,
+        "prompt_tokens": 2982,
+        "total_tokens": 3090,
+        "completion_tokens_details": {
+          "reasoning_tokens": 66
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 2.516
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"2024 年公司综合毛利率 30.4%，净利率 9.1%（研发投入 4.62 亿元，占营收 12.9%）。这与毛利率分析文档中「2025 年综合毛利率 31.6%，较 2024 年提升 1.2 个百分点」的口径一致（30.4% + 1.2pp ≈ 31.6%）。\",\"citations\":[\"lantu_finance_annual_2024\",\"lantu_finance_gross_margin\"],\"evidence\":[\"lantu_finance_annual_2024#三、盈利能力\",\"lantu_finance_gross_margin#一、整体毛利率\"]}",
+      "usage": {
+        "completion_tokens": 221,
+        "prompt_tokens": 3429,
+        "total_tokens": 3650,
+        "completion_tokens_details": {
+          "reasoning_tokens": 51
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2944
+        }
+      },
+      "seconds": 4.593
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "2024年 毛利率 净利率 同比",
+        "top_k": 10
+      },
+      "result_sha": "66bc10492752e5267ef1de948a2c7ffa07eb3639331658afda055299b96dbdd9",
+      "result_chars": 3912,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_finance_annual_2024",
+        "offset": 0,
+        "limit": 2000
+      },
+      "result_sha": "77194655324605da1dd1fac236aa29b92511d6642368a43fc8f7ff1220790e61",
+      "result_chars": 579,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "2024 年公司综合毛利率 30.4%，净利率 9.1%（研发投入 4.62 亿元，占营收 12.9%）。这与毛利率分析文档中「2025 年综合毛利率 31.6%，较 2024 年提升 1.2 个百分点」的口径一致（30.4% + 1.2pp ≈ 31.6%）。",
+    "citations": [
+      "lantu_finance_annual_2024",
+      "lantu_finance_gross_margin"
+    ],
+    "evidence": [
+      "lantu_finance_annual_2024#三、盈利能力",
+      "lantu_finance_gross_margin#一、整体毛利率"
+    ]
+  },
+  "status": "answered",
+  "tokens": 7320,
+  "started_at": "2026-11-01T06:12:05",
+  "elapsed_seconds": 11.5,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "2024年 毛利率 净利率 同比",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_finance_annual_2024",
+            "title": "澜图智能 2024 年度报告摘要",
+            "chunk": 0,
+            "score": 18.163,
+            "snippet": "澜图智能 2024 年度报告摘要\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-01-22 09:00\n更新时间：2025-01-30 18:00\n版本号：v1.0\n文档类型：finance\n文档族：annual_report_2024\n生效日期：2025-01-30\n一、经营概况\n2024 年公司实现营业收入 35.80 亿元，同比增长 16.8%；归母净利润 3.26 亿元，同比增长 14.2%。\n二、收入结构\n机器人本体收入 16.72 亿元（46.7%），智能产线收入 12.36 亿元（34.5%），"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2025",
+            "title": "澜图智能 2025 年度报告摘要",
+            "chunk": 0,
+            "score": 16.659,
+            "snippet": "澜图智能 2025 年度报告摘要\n所属部门：财务部\n作者：周敏仪\n创建时间：2026-01-20 09:00\n更新时间：2026-01-28 18:00\n版本号：v1.0\n文档类型：finance\n文档族：annual_report_2025\n生效日期：2026-01-28\n一、经营概况\n2025 年公司实现营业收入 42.63 亿元，同比增长 19.1%；归属于母公司股东的净利润 4.12\n亿元，同比增长 26.4%；基本每股收益 0.98 元。\n二、收入结构\n机器人本体收入 19.84 亿元（46.5%），智能"
+          },
+          {
+            "doc_id": "lantu_finance_q3_2025",
+            "title": "# 澜图智能 2025 年第三季度经营数据",
+            "chunk": 0,
+            "score": 15.781,
+            "snippet": "# 澜图智能 2025 年第三季度经营数据\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-10-22 09:00\n更新时间：2025-10-26 18:00\n版本号：v1.0\n文档类型：finance\n文档族：quarterly_2025_q3\n生效日期：2025-10-26\n\n## 一、季度业绩\n\n2025 年第三季度营业收入 11.52 亿元，同比增长 17.8%；归母净利润 1.21 亿元，同比增长 22.1%；毛利率 31.4%。\n\n## 二、累计业绩\n\n前三季度累计营业收入 31.36 亿元，归母"
+          },
+          {
+            "doc_id": "lantu_finance_h1_2025",
+            "title": "# 澜图智能 2025 年半年度报告摘要",
+            "chunk": 0,
+            "score": 14.543,
+            "snippet": "# 澜图智能 2025 年半年度报告摘要\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-08-25 09:00\n更新时间：2025-08-28 18:00\n版本号：v1.0\n文档类型：finance\n文档族：semiannual_2025\n生效日期：2025-08-28\n\n## 一、经营数据\n\n2025 年上半年营业收入 19.84 亿元，同比增长 21.3%；归母净利润 1.83 亿元，同比增长 24.6%；毛利率 31.2%。\n\n## 二、订单情况\n\n上半年新签订单 22.7 亿元，同比增长 18.5%"
+          },
+          {
+            "doc_id": "lantu_finance_gross_margin",
+            "title": "# 澜图智能毛利率与成本结构分析",
+            "chunk": 0,
+            "score": 14.335,
+            "snippet": "# 澜图智能毛利率与成本结构分析\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-11-15 09:00\n更新时间：2025-11-20 17:00\n版本号：v1.2\n文档类型：finance\n文档族：gross_margin_analysis\n生效日期：2025-11-20\n\n## 一、整体毛利率\n\n2025 年综合毛利率 31.6%，较 2024 年提升 1.2 个百分点。机器人本体毛利率 34.8%，智能产线 26.2%，软件与服务 52.4%。\n\n## 二、成本构成\n\n直接材料占营业成本 68.4%，"
+          },
+          {
+            "doc_id": "lantu_finance_budget_2026",
+            "title": "# 澜图智能 2026 年度经营预算",
+            "chunk": 0,
+            "score": 13.902,
+            "snippet": "# 澜图智能 2026 年度经营预算\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-12-20 09:00\n更新时间：2026-01-15 17:00\n版本号：v1.0\n文档类型：finance\n文档族：budget_2026\n生效日期：2026-01-15\n\n## 一、预算目标\n\n2026 年营业收入目标 52 亿元，同比增长 22%；归母净利润目标 5.2 亿元；综合毛利率目标 32.5%。\n\n## 二、收入分解\n\n机器人本体 24.2 亿元，智能产线 18.4 亿元，软件与服务 6.4 亿元，备件及其"
+          },
+          {
+            "doc_id": "lantu_finance_investor_qa",
+            "title": "# 澜图智能投资者常见问题答复",
+            "chunk": 0,
+            "score": 12.247,
+            "snippet": "# 澜图智能投资者常见问题答复\n\n所属部门：董事会办公室\n作者：周敏仪\n创建时间：2025-11-01 09:00\n更新时间：2025-12-30 16:00\n版本号：v2.0\n文档类型：finance\n文档族：investor_qa\n生效日期：2025-12-30\n\n## 一、增长来源\n\n2025 年增长主要来自动力电池与半导体行业，两项合计贡献收入增量的 61%；海外市场贡献 22%。\n\n## 二、毛利率趋势\n\n随着自研控制器与驱动器比例提升、标准工作站放量，预计 2026 年毛利率提升至 32.5% 左右。\n"
+          },
+          {
+            "doc_id": "lantu_investor_overview",
+            "title": "# 澜图智能投资者关系概览",
+            "chunk": 0,
+            "score": 10.762,
+            "snippet": "# 澜图智能投资者关系概览\n\n所属部门：董事会办公室\n作者：周敏仪\n创建时间：2024-03-20 09:00\n更新时间：2026-01-10 17:00\n版本号：v4.1\n文档类型：company\n文档族：investor_overview\n生效日期：2026-01-10\n\n## 一、基本信息\n\n公司股票代码 688719，总股本 4.2 亿股，2025 年末总市值约 168 亿元。2025 年度拟每 10 股派发现金红利 3.2 元（含税）。\n\n## 二、经营数据\n\n2025 年营业收入 42.63 亿元，归母"
+          },
+          {
+            "doc_id": "lantu_sales_discount_2024",
+            "title": "# 澜图智能销售折扣审批权限（2024版）",
+            "chunk": 0,
+            "score": 10.175,
+            "snippet": "# 澜图智能销售折扣审批权限（2024版）\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-01-25 09:00\n更新时间：2024-02-01 10:00\n版本号：v1.0\n文档类型：sales\n文档族：sales_discount\n生效日期：2024-01-01\n\n## 一、折扣区间\n\n标准价折扣 10% 以内（含）由销售经理审批；10%-20%（含）由销售副总裁审批；超过 20% 由总经理审批。\n\n## 二、申请材料\n\n折扣申请须说明客户级别、竞争态势、项目毛利与战略价值，并附成本测算表。\n\n## "
+          },
+          {
+            "doc_id": "lantu_meeting_ops_2025q3",
+            "title": "2025 年第三季度经营分析会纪要",
+            "chunk": 0,
+            "score": 10.002,
+            "snippet": "2025 年第三季度经营分析会纪要\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-10-10 09:00\n更新时间：2025-10-10 18:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_ops_2025q3\n生效日期：2025-10-10\n一、会议信息\n时间：2025 年 10 月 10 日 09:00-12:00；地点：苏州总部 3 楼会议室；主持：顾承澜；参会：沈亦舟、周敏仪、韩立恒、罗嘉树、陈依然、潘文博、邵岚。\n二、经营回顾\n第三季度营业收入 11.52 亿元，同"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_finance_annual_2024",
+        "offset": 0,
+        "limit": 2000
+      },
+      "result": {
+        "doc_id": "lantu_finance_annual_2024",
+        "title": "澜图智能 2024 年度报告摘要",
+        "offset": 0,
+        "limit": 2000,
+        "total_chars": 413,
+        "text": "澜图智能 2024 年度报告摘要\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-01-22 09:00\n更新时间：2025-01-30 18:00\n版本号：v1.0\n文档类型：finance\n文档族：annual_report_2024\n生效日期：2025-01-30\n一、经营概况\n2024 年公司实现营业收入 35.80 亿元，同比增长 16.8%；归母净利润 3.26 亿元，同比增长 14.2%。\n二、收入结构\n机器人本体收入 16.72 亿元（46.7%），智能产线收入 12.36 亿元（34.5%），工业软件与服务收入 4.36\n亿元（12.2%），备件及其他收入 2.36 亿元（6.6%）。\n三、盈利能力\n综合毛利率 30.4%；净利率 9.1%；研发投入 4.62 亿元，占营业收入 12.9%。\n四、现金流\n经营活动现金流净额 4.28 亿元；资产负债率 41.2%；应收账款周转天数 94 天。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.667,
+    "cited": [
+      "lantu_finance_annual_2024",
+      "lantu_finance_gross_margin"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.362,
+    "number_recall": 1.0
+  }
+}

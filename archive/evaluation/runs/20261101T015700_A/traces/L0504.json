@@ -1,0 +1,44 @@
+{
+  "qid": "L0504",
+  "question": "仓1 SKU清单A,B；仓2清单B,C,D。同一SKU编码代表同种物料。输出不同SKU数量unique_count及重复出现的编码duplicates（按字母排序）。\n只输出一个JSON对象，不使用代码块或额外解释。键名、数据类型和排列规则按题目；小数四舍五入到两位，整数可保持整数。未知值用null，不得猜测。",
+  "question_type": "entity_deduplication",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"unique_count=4，duplicates=[\\\"B\\\"]\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 55,
+        "prompt_tokens": 406,
+        "total_tokens": 461,
+        "completion_tokens_details": {
+          "reasoning_tokens": 23
+        },
+        "prompt_tokens_details": null
+      },
+      "seconds": 1.312
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "answerable",
+    "answer": "unique_count=4，duplicates=[\"B\"]",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 461,
+  "started_at": "2026-11-01T02:04:26",
+  "elapsed_seconds": 1.31,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": true,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": true,
+    "gold_recall": 1.0,
+    "number_recall": 0.0
+  }
+}

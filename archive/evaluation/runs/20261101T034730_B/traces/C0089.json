@@ -1,0 +1,237 @@
+{
+  "qid": "C0089",
+  "question": "曜阳光能案例的组件产能由 4.2GW 提升至 6.5GW，增幅是多少？折算到每条串焊线的组件产能提升是多少？",
+  "question_type": "汇总计算",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"曜阳光能\"}}",
+      "usage": {
+        "prompt_tokens": 384,
+        "total_tokens": 519,
+        "completion_tokens": 135,
+        "completion_tokens_details": {
+          "reasoning_tokens": 115,
+          "text_tokens": 135
+        }
+      },
+      "seconds": 1.438
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_case_03_yaoyang\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 462,
+        "total_tokens": 601,
+        "completion_tokens": 139,
+        "completion_tokens_details": {
+          "reasoning_tokens": 100,
+          "text_tokens": 139
+        }
+      },
+      "seconds": 1.312
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"曜阳光能 组件产能 4.2GW 6.5GW\"}}",
+      "usage": {
+        "prompt_tokens": 1013,
+        "total_tokens": 1903,
+        "completion_tokens": 890,
+        "completion_tokens_details": {
+          "reasoning_tokens": 857,
+          "text_tokens": 890
+        }
+      },
+      "seconds": 8.109
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据《客户案例：曜阳光能电池片串焊项目》（doc_id: lantu_case_03_yaoyang）记载，曜阳光能组件产能由 4.2GW 提升至 6.5GW。\\n\\n1. **增幅**：\\n   计算公式为 (6.5 - 4.2) / 4.2 × 100% ≈ **54.76%**。\\n\\n2. **每条串焊线的组件产能提升**：\\n   该项目覆盖 **16 条串焊线**。总提升产能为 6.5 - 4.2 = 2.3GW。\\n   折算到每条串焊线的提升量为 2.3GW / 16 = **0.14375GW**（即 143.75MW）。\",\"citations\":[\"lantu_case_03_yaoyang\"],\"evidence\":[\"lantu_case_03_yaoyang#0\"]}",
+      "usage": {
+        "prompt_tokens": 3427,
+        "total_tokens": 4335,
+        "completion_tokens": 908,
+        "completion_tokens_details": {
+          "reasoning_tokens": 677,
+          "text_tokens": 908
+        }
+      },
+      "seconds": 7.547
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "曜阳光能"
+      },
+      "result_sha": "e18d6e9fd7250abcbdddb6b83b6a17c2377c1df82ca41c6575f62fe8028e433f",
+      "result_chars": 78,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_case_03_yaoyang",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "198131f4f517093e27b87ff287685cd02761b4a8030acb9609322ebde2694c30",
+      "result_chars": 802,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "曜阳光能 组件产能 4.2GW 6.5GW"
+      },
+      "result_sha": "94ffbdf830d94751f0020b4a46cb4b26f7fa3f521054e61b6964d1171e89b405",
+      "result_chars": 3924,
+      "hits": 10
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《客户案例：曜阳光能电池片串焊项目》（doc_id: lantu_case_03_yaoyang）记载，曜阳光能组件产能由 4.2GW 提升至 6.5GW。\n\n1. **增幅**：\n   计算公式为 (6.5 - 4.2) / 4.2 × 100% ≈ **54.76%**。\n\n2. **每条串焊线的组件产能提升**：\n   该项目覆盖 **16 条串焊线**。总提升产能为 6.5 - 4.2 = 2.3GW。\n   折算到每条串焊线的提升量为 2.3GW / 16 = **0.14375GW**（即 143.75MW）。",
+    "citations": [
+      "lantu_case_03_yaoyang"
+    ],
+    "evidence": [
+      "lantu_case_03_yaoyang#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 7358,
+  "started_at": "2026-11-01T04:27:21",
+  "elapsed_seconds": 18.41,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "曜阳光能"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_case_03_yaoyang",
+            "title": "# 客户案例：曜阳光能电池片串焊项目"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_case_03_yaoyang",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_case_03_yaoyang",
+        "title": "# 客户案例：曜阳光能电池片串焊项目",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 622,
+        "text": "# 客户案例：曜阳光能电池片串焊项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_yaoyang\n生效日期：2025-12-20\n\n## 一、客户背景\n\n曜阳光能位于合肥，主营光伏业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖16 条串焊线，要求 6 个月内完成交付。\n\n## 三、方案配置\n\n澜图智能提供 220 台 LT-S10 SCARA 机器人，配套 LT-C800 控制器、LT-V3D 视觉与 LantuTwin 数字孪生仿真，整线合同金额 9,800 万元。\n\n## 四、实施过程\n\n项目由客户成功部牵头，联合研发、制造、质量与售后服务部组成 26 人项目组。完成现场勘测、虚拟调试、设备安装与 72 小时连续试运行，实际交付周期 5 个月。\n\n## 五、成效数据\n\n串焊良率 99.6%，组件产能由 4.2GW 提升至 6.5GW，单线人力减少 36 人。项目通过客户验收，并获得客户年度优秀供应商提名。\n\n## 六、客户评价\n\n曜阳光能工艺部经理 叶青表示：“澜图团队响应及时，方案在节拍与稳定性上达到预期，后续产线扩产将继续合作。”\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "曜阳光能 组件产能 4.2GW 6.5GW"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_case_03_yaoyang",
+            "title": "# 客户案例：曜阳光能电池片串焊项目",
+            "chunk": 0,
+            "score": 32.742,
+            "snippet": "# 客户案例：曜阳光能电池片串焊项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_yaoyang\n生效日期：2025-12-20\n\n## 一、客户背景\n\n曜阳光能位于合肥，主营光伏业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖16"
+          },
+          {
+            "doc_id": "lantu_solution_photovoltaic",
+            "title": "# 光伏电池片串焊整线解决方案",
+            "chunk": 0,
+            "score": 31.43,
+            "snippet": "# 光伏电池片串焊整线解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-09-20 09:00\n更新时间：2025-10-16 14:00\n版本号：v3.1\n文档类型：product\n文档族：solution_photovoltaic\n生效日期：2025-10-16\n\n## 一、方案概述\n\n面向 TOPCon/HJT 电池片串焊，提供上料、串焊、EL 检测与下料整线方案，核心设备为 LT-S10 SCARA 与 LT-V3D 视觉。\n\n## 二、产线指标\n\n串焊速度 4,200 片/小时，良率 99.6"
+          },
+          {
+            "doc_id": "lantu_sales_customer_list",
+            "title": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态",
+            "chunk": 0,
+            "score": 11.527,
+            "snippet": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态\n恒芯动力电池,动力电池,常州,电芯叠片与物流,\"21,600\",2025,已验收\n澜岳汽车零部件,汽车零部件,上海,白车身焊装,\"14,800\",2024,已验收\n曜阳光能,光伏,合肥,电池片串焊,\"9,800\",2025,已验收\n星禾电子,3C 电子,昆山,精密组装,\"12,500\",2024,已验收\n海翎家电,家电,顺德,喷涂与打磨,\"6,300\",2025,已验收\n晶拓微电子,半导体,无锡,晶圆搬运,\"7,400\",2025,已验收\n麦丰食品,食品,漯河"
+          },
+          {
+            "doc_id": "lantu_support_spare_parts_price",
+            "title": "﻿适配机型,备件名称,单价（元）,发货时效,质保期",
+            "chunk": 0,
+            "score": 4.253,
+            "snippet": "﻿适配机型,备件名称,单价（元）,发货时效,质保期\nLT-R20,减速器 RV-40E,\"12,800\",48 小时,12 个月\nLT-R20,伺服驱动器 LT-D4,\"8,600\",48 小时,18 个月\nLT-R20,示教器 LT-Pad3,\"5,200\",48 小时,12 个月\nLT-R12,减速器 RV-20E,\"7,900\",48 小时,12 个月\nLT-R12,伺服电机 750W,\"3,600\",48 小时,18 个月\nLT-R6,谐波减速器 CSF-17,\"6,400\",72 小时,12 个月\nLT-"
+          },
+          {
+            "doc_id": "lantu_product_assembly",
+            "title": "# LT-Assembly 柔性装配工作站方案",
+            "chunk": 0,
+            "score": 4.164,
+            "snippet": "# LT-Assembly 柔性装配工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-07-15 09:00\n更新时间：2025-09-05 11:00\n版本号：v2.5\n文档类型：product\n文档族：solution_assembly\n生效日期：2025-09-05\n\n## 一、方案组成\n\n由 LT-R12/LT-R20 机器人、力控末端、LT-V3D 视觉与快换工装组成，支持多品种混线装配。\n\n## 二、工艺指标\n\n装配节拍 3.2 秒/件，力控精度 ±2 N，视觉定位精度 ±0.05 mm，"
+          },
+          {
+            "doc_id": "lantu_company_campus",
+            "title": "# 澜图智能制造基地与产能布局",
+            "chunk": 0,
+            "score": 3.689,
+            "snippet": "# 澜图智能制造基地与产能布局\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2024-04-12 09:00\n更新时间：2025-11-20 15:00\n版本号：v3.0\n文档类型：company\n文档族：manufacturing_base\n生效日期：2025-11-20\n\n## 一、苏州总部基地\n\n位于苏州工业园区，占地 120 亩，建筑面积 9.6 万平方米，承担六轴机器人总装、控制器生产与研发测试，年产能 18,000 台。\n\n## 二、东莞华南基地\n\n位于东莞松山湖，占地 60 亩，聚焦 SCARA、A"
+          },
+          {
+            "doc_id": "lantu_meeting_ops_2025q3",
+            "title": "2025 年第三季度经营分析会纪要",
+            "chunk": 0,
+            "score": 2.498,
+            "snippet": "2025 年第三季度经营分析会纪要\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-10-10 09:00\n更新时间：2025-10-10 18:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_ops_2025q3\n生效日期：2025-10-10\n一、会议信息\n时间：2025 年 10 月 10 日 09:00-12:00；地点：苏州总部 3 楼会议室；主持：顾承澜；参会：沈亦舟、周敏仪、韩立恒、罗嘉树、陈依然、潘文博、邵岚。\n二、经营回顾\n第三季度营业收入 11.52 亿元，同"
+          },
+          {
+            "doc_id": "lantu_company_history",
+            "title": "# 澜图智能发展历程（2011—2025）",
+            "chunk": 0,
+            "score": 2.373,
+            "snippet": "# 澜图智能发展历程（2011—2025）\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2023-03-01 09:00\n更新时间：2026-01-05 14:00\n版本号：v4.0\n文档类型：company\n文档族：company_history\n生效日期：2026-01-05\n\n## 一、创业阶段（2011—2015）\n\n2011 年 6 月 18 日，公司在苏州工业园区成立，创始团队来自高校机器人实验室，首款产品为 LT-R6 六轴工业机器人，2012 年实现小批量交付 120 台。2014 年建成首条机"
+          },
+          {
+            "doc_id": "lantu_case_07_maifeng",
+            "title": "# 客户案例：麦丰食品后端包装项目",
+            "chunk": 0,
+            "score": 2.339,
+            "snippet": "# 客户案例：麦丰食品后端包装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_maifeng\n生效日期：2024-12-20\n\n## 一、客户背景\n\n麦丰食品位于漯河，主营食品业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖6 条"
+          },
+          {
+            "doc_id": "lantu_case_04_xinghe",
+            "title": "# 客户案例：星禾电子精密组装项目",
+            "chunk": 0,
+            "score": 2.336,
+            "snippet": "# 客户案例：星禾电子精密组装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_xinghe\n生效日期：2024-12-20\n\n## 一、客户背景\n\n星禾电子位于昆山，主营3C 电子业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖8"
+          }
+        ]
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.5,
+    "cited": [
+      "lantu_case_03_yaoyang"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.164,
+    "number_recall": 1.0
+  }
+}

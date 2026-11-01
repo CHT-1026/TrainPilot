@@ -1,0 +1,226 @@
+{
+  "qid": "A0118",
+  "question": "高管名单中列出的「业务分管」高管人数是多少？哪几位高管同时出现在部门编制表的负责人列中？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"高管名单 部门编制表\",\"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 374,
+        "total_tokens": 572,
+        "completion_tokens": 198,
+        "completion_tokens_details": {
+          "reasoning_tokens": 170,
+          "text_tokens": 198
+        }
+      },
+      "seconds": 1.953
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_org_executives\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 1571,
+        "total_tokens": 1896,
+        "completion_tokens": 325,
+        "completion_tokens_details": {
+          "reasoning_tokens": 290,
+          "text_tokens": 325
+        }
+      },
+      "seconds": 3.094
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_org_department_duties\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 1948,
+        "total_tokens": 2832,
+        "completion_tokens": 884,
+        "completion_tokens_details": {
+          "reasoning_tokens": 848,
+          "text_tokens": 884
+        }
+      },
+      "seconds": 7.203
+    },
+    {
+      "round": 4,
+      "text": "```json\n{\n  \"status\": \"answerable\",\n  \"answer\": \"高管名单中列出的「业务分管」高管人数为4人。同时出现在部门编制表负责人列中的高管共有7位，分别是：沈亦舟、周敏仪、韩立恒、罗嘉树、陈依然、潘文博、邵岚。\",\n  \"citations\": [\n    \"lantu_org_executives\",\n    \"lantu_org_department_duties\"\n  ],\n  \"evidence\": [\n    \"lantu_org_executives#0\",\n    \"lantu_org_department_duties#1\"\n  ]\n}\n```",
+      "usage": {
+        "prompt_tokens": 2704,
+        "total_tokens": 6979,
+        "completion_tokens": 4275,
+        "completion_tokens_details": {
+          "reasoning_tokens": 4125,
+          "text_tokens": 4275
+        }
+      },
+      "seconds": 36.328
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"高管名单中列出的「业务分管」高管人数为4人。同时出现在部门编制表负责人列中的高管有7位，分别是：沈亦舟、罗嘉树、韩立恒、潘文博、周敏仪、陈依然、邵岚。\",\"citations\":[\"lantu_org_executives\",\"lantu_org_department_duties\"],\"evidence\":[\"lantu_org_executives#0\",\"lantu_org_department_duties#1\"]}",
+      "usage": {
+        "prompt_tokens": 2888,
+        "total_tokens": 3932,
+        "completion_tokens": 1044,
+        "completion_tokens_details": {
+          "reasoning_tokens": 933,
+          "text_tokens": 1044
+        }
+      },
+      "seconds": 7.438
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "高管名单 部门编制表",
+        "top_k": 5
+      },
+      "result_sha": "2b7b36ca50ae9de4bd08ec937a72d62de73c271c7bf40f8546737340efbe5cae",
+      "result_chars": 1936,
+      "hits": 5
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_executives",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "93a3b9ad73ee68b6025ae561128b99033899fe0f2eb4e2be66463031a23aa85f",
+      "result_chars": 548,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_department_duties",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "b03bf6434f8cf95cb324619ab2059c2ab15c56c1bfc0f84fa5df644197c8c99d",
+      "result_chars": 1136,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "高管名单中列出的「业务分管」高管人数为4人。同时出现在部门编制表负责人列中的高管有7位，分别是：沈亦舟、罗嘉树、韩立恒、潘文博、周敏仪、陈依然、邵岚。",
+    "citations": [
+      "lantu_org_executives",
+      "lantu_org_department_duties"
+    ],
+    "evidence": [
+      "lantu_org_executives#0",
+      "lantu_org_department_duties#1"
+    ]
+  },
+  "status": "answered",
+  "tokens": 16211,
+  "started_at": "2026-11-01T04:05:34",
+  "elapsed_seconds": 56.02,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "高管名单 部门编制表",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_org_department_duties",
+            "title": "# 澜图智能一级部门职责与编制",
+            "chunk": 0,
+            "score": 15.434,
+            "snippet": "# 澜图智能一级部门职责与编制\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-10 09:00\n更新时间：2025-09-30 16:00\n版本号：v3.2\n文档类型：org\n文档族：department_duties\n生效日期：2025-09-30\n\n## 一、研发中心\n\n负责机器人本体、控制器、伺服、视觉与具身智能技术研发，编制 1,286 人，下设 5 个研究所与 1 个测试中心。\n\n## 二、销售中心与客户成功部\n\n销售中心负责区域销售与渠道管理，编制 620 人；客户成功部负责重点客户经"
+          },
+          {
+            "doc_id": "lantu_org_department_duties",
+            "title": "# 澜图智能一级部门职责与编制",
+            "chunk": 1,
+            "score": 5.286,
+            "snippet": "| 部门 | 负责人 | 编制（人） | 主要职责 |\n| --- | --- | --- | --- |\n| 研发中心 | 沈亦舟 | 1,286 | 本体/控制器/视觉/具身智能研发 |\n| 产品部 | 孟凡 | 96 | 产品规划与生命周期管理 |\n| 销售中心 | 罗嘉树 | 620 | 区域销售与渠道 |\n| 客户成功部 | 林可 | 86 | 重点客户经营 |\n| 供应链中心 | 韩立恒 | 210 | 采购、计划、物流 |\n| 制造中心 | 韩立恒 | 980 | 三大基地生产 |\n| 质量部 | 潘"
+          },
+          {
+            "doc_id": "lantu_org_executives",
+            "title": "# 澜图智能高级管理人员名单",
+            "chunk": 0,
+            "score": 4.915,
+            "snippet": "# 澜图智能高级管理人员名单\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2024-03-01 09:00\n更新时间：2025-11-28 17:00\n版本号：v4.0\n文档类型：org\n文档族：executives\n生效日期：2025-11-28\n\n## 一、核心管理层\n\n顾承澜，董事长兼总经理，1968 年生，教授级高级工程师，持股 18.6%；沈亦舟，CTO，负责研发体系；周敏仪，CFO，负责财务与资本运作；韩立恒，COO，负责供应链与制造。\n\n## 二、业务分管\n\n罗嘉树，销售副总裁，分管销售中心、客"
+          },
+          {
+            "doc_id": "lantu_meeting_board",
+            "title": "# 2025 年第二次临时董事会决议",
+            "chunk": 0,
+            "score": 4.276,
+            "snippet": "# 2025 年第二次临时董事会决议\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-04-25 09:00\n更新时间：2025-04-25 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_board_2025\n生效日期：2025-04-25\n\n## 一、会议信息\n\n时间：2025 年 4 月 25 日；方式：现场加视频；应到董事 9 人，实到 9 人；列席：高管团队。\n\n## 二、审议事项\n\n审议通过《2024 年度利润分配方案》《2025 年度研发投入预算》《苏州二期"
+          },
+          {
+            "doc_id": "lantu_meeting_rd",
+            "title": "# 2025 年 5 月研发例会纪要",
+            "chunk": 0,
+            "score": 3.784,
+            "snippet": "# 2025 年 5 月研发例会纪要\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2025-05-09 09:00\n更新时间：2025-05-09 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_rd_2025\n生效日期：2025-05-09\n\n## 一、项目进展\n\nLT-C800 控制器完成小批量验证；LantuTwin 3.0 进入客户试点；具身智能操作模型完成抓取数据集 12 万条。\n\n## 二、组织调整\n\n具身智能研究所正式成立，编制 48 人，重点研究视觉-语言-动作模型"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_executives",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_org_executives",
+        "title": "# 澜图智能高级管理人员名单",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 385,
+        "text": "# 澜图智能高级管理人员名单\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2024-03-01 09:00\n更新时间：2025-11-28 17:00\n版本号：v4.0\n文档类型：org\n文档族：executives\n生效日期：2025-11-28\n\n## 一、核心管理层\n\n顾承澜，董事长兼总经理，1968 年生，教授级高级工程师，持股 18.6%；沈亦舟，CTO，负责研发体系；周敏仪，CFO，负责财务与资本运作；韩立恒，COO，负责供应链与制造。\n\n## 二、业务分管\n\n罗嘉树，销售副总裁，分管销售中心、客户成功部与售后服务部；陈依然，人力资源副总裁；潘文博，质量总监；邵岚，法务合规总监。\n\n## 三、任期与考核\n\n高级管理人员任期三年，2025 年换届后任期至 2028 年 5 月。考核指标包括营业收入、净利润、研发投入占比、客户满意度与质量事故。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_department_duties",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_org_department_duties",
+        "title": "# 澜图智能一级部门职责与编制",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 940,
+        "text": "# 澜图智能一级部门职责与编制\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-10 09:00\n更新时间：2025-09-30 16:00\n版本号：v3.2\n文档类型：org\n文档族：department_duties\n生效日期：2025-09-30\n\n## 一、研发中心\n\n负责机器人本体、控制器、伺服、视觉与具身智能技术研发，编制 1,286 人，下设 5 个研究所与 1 个测试中心。\n\n## 二、销售中心与客户成功部\n\n销售中心负责区域销售与渠道管理，编制 620 人；客户成功部负责重点客户经营与续约，编制 86 人。\n\n## 三、供应链中心与制造中心\n\n供应链中心负责采购、计划与物流，编制 210 人；制造中心负责三大基地生产，编制 980 人。\n\n## 四、质量部与售后服务部\n\n质量部负责来料、过程与客户质量，编制 168 人；售后服务部负责安装、维保、备件与培训，编制 412 人。\n\n## 五、职能体系\n\n财务部 96 人、人力资源部 72 人、法务合规部 28 人、信息技术部 104 人、战略投资部 18 人、董事会办公室 6 人。\n\n## 部门编制表\n\n| 部门 | 负责人 | 编制（人） | 主要职责 |\n| --- | --- | --- | --- |\n| 研发中心 | 沈亦舟 | 1,286 | 本体/控制器/视觉/具身智能研发 |\n| 产品部 | 孟凡 | 96 | 产品规划与生命周期管理 |\n| 销售中心 | 罗嘉树 | 620 | 区域销售与渠道 |\n| 客户成功部 | 林可 | 86 | 重点客户经营 |\n| 供应链中心 | 韩立恒 | 210 | 采购、计划、物流 |\n| 制造中心 | 韩立恒 | 980 | 三大基地生产 |\n| 质量部 | 潘文博 | 168 | 全过程质量管理 |\n| 售后服务部 | 陆绍 | 412 | 安装、维保、备件、培训 |\n| 财务部 | 周敏仪 | 96 | 财务与资金 |\n| 人力资源部 | 陈依然 | 72 | 招聘、薪酬、培训 |\n| 法务合规部 | 邵岚 | 28 | 合同、合规、知识产权 |\n| 信息技术部 | 葛俊 | 104 | 数字化与信息安全 |\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_org_executives",
+      "lantu_org_department_duties"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.103,
+    "number_recall": 0.0
+  }
+}

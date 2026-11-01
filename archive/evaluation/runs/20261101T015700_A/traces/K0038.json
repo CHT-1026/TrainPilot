@@ -1,0 +1,482 @@
+{
+  "qid": "K0038",
+  "question": "请梳理 2023 年至 2025 年 12 月这段时间内，澜图智能发生的与「具身智能」相关的关键事件，并说明这些事件之间的因果与支撑关系。",
+  "question_type": "时间与因果推断",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=list><parameter=keyword>澜图智能</parameter></function></tool_call><tool_call><function=search><parameter=query>澜图智能 具身智能 事件</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 92,
+        "prompt_tokens": 364,
+        "total_tokens": 456,
+        "completion_tokens_details": {
+          "reasoning_tokens": 40
+        },
+        "prompt_tokens_details": null
+      },
+      "seconds": 2.765
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"澜图智能 具身智能 关键事件\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 47,
+        "prompt_tokens": 453,
+        "total_tokens": 500,
+        "completion_tokens_details": {
+          "reasoning_tokens": 17
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 6.688
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_company_history\",\"offset\":0,\"limit\":6000}}",
+      "usage": {
+        "completion_tokens": 72,
+        "prompt_tokens": 2966,
+        "total_tokens": 3038,
+        "completion_tokens_details": {
+          "reasoning_tokens": 42
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 2.906
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_tech_roadmap\",\"offset\":0,\"limit\":6000}}",
+      "usage": {
+        "completion_tokens": 71,
+        "prompt_tokens": 3601,
+        "total_tokens": 3672,
+        "completion_tokens_details": {
+          "reasoning_tokens": 38
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2944
+        }
+      },
+      "seconds": 10.234
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"2023 2024 具身智能 布局 人工智能 大模型\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 112,
+        "prompt_tokens": 4033,
+        "total_tokens": 4145,
+        "completion_tokens_details": {
+          "reasoning_tokens": 70
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3584
+        }
+      },
+      "seconds": 4.422
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_meeting_rd\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 54,
+        "prompt_tokens": 6522,
+        "total_tokens": 6576,
+        "completion_tokens_details": {
+          "reasoning_tokens": 23
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3968
+        }
+      },
+      "seconds": 1.985
+    },
+    {
+      "round": 7,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_tech_patents\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 92,
+        "prompt_tokens": 6909,
+        "total_tokens": 7001,
+        "completion_tokens_details": {
+          "reasoning_tokens": 60
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 6464
+        }
+      },
+      "seconds": 3.609
+    },
+    {
+      "round": 8,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_org_rd_system\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 146,
+        "prompt_tokens": 7300,
+        "total_tokens": 7446,
+        "completion_tokens_details": {
+          "reasoning_tokens": 115
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 6848
+        }
+      },
+      "seconds": 5.625
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "澜图智能 具身智能 关键事件",
+        "top_k": 10
+      },
+      "result_sha": "e96c6c0dda2f78cffc795e24ea53840f9928ad4aa874ae08e3eeacab9dec9269",
+      "result_chars": 3861,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_company_history",
+        "offset": 0,
+        "limit": 6000
+      },
+      "result_sha": "e8c31715ba91e70d09907b10e62208c3998e5c2da7e184848fd2d9e6a2c06ce0",
+      "result_chars": 873,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_roadmap",
+        "offset": 0,
+        "limit": 6000
+      },
+      "result_sha": "a26623caa93b4ff3b6a6f18fefbc6670a21bf9392c396a310d2ec98c9a44825d",
+      "result_chars": 590,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "2023 2024 具身智能 布局 人工智能 大模型",
+        "top_k": 10
+      },
+      "result_sha": "6488f8a2aac89e740245d6723234ab652c8e1d0b5591a6607b9861eeb2747e8b",
+      "result_chars": 3863,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_meeting_rd",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "9784afe893d45e915bdb31781081c391b68b8dc212358bfc7d44a0b63fcd1d35",
+      "result_chars": 548,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_patents",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "d0a230ea259cc2e27851b1b57ff41bd0aceee4eacf513aa78d205422647f4628",
+      "result_chars": 559,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_rd_system",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "4f16c99d9331b7a74c227587b61d99cae0d201b89f25fd252dab03b94d5d6fd9",
+      "result_chars": 681,
+      "hits": 0
+    }
+  ],
+  "answer": null,
+  "status": "unfinished",
+  "tokens": 32834,
+  "started_at": "2026-11-01T02:06:00",
+  "elapsed_seconds": 38.23,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "澜图智能 具身智能 关键事件",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_tech_roadmap",
+            "title": "# 澜图智能技术路线图（2025—2028）",
+            "chunk": 0,
+            "score": 9.314,
+            "snippet": "# 澜图智能技术路线图（2025—2028）\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-11-01 09:00\n更新时间：2025-12-05 16:00\n版本号：v2.2\n文档类型：tech\n文档族：tech_roadmap\n生效日期：2025-12-05\n\n## 一、总体路线\n\n以“本体+控制+视觉+软件”为基础，向具身智能与柔性制造演进，2026 年完成 LT-R20 Pro 与具身智能平台 1.0。\n\n## 二、2025 年\n\nLT-C800 控制器量产、LantuTwin 3.0 发布、LT"
+          },
+          {
+            "doc_id": "lantu_org_rd_system",
+            "title": "# 澜图智能研发体系与投入",
+            "chunk": 0,
+            "score": 8.91,
+            "snippet": "# 澜图智能研发体系与投入\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-02-01 09:00\n更新时间：2026-01-12 10:00\n版本号：v5.0\n文档类型：org\n文档族：rd_system\n生效日期：2026-01-12\n\n## 一、研发架构\n\n研发中心下设机器人本体研究所、控制器研究所、机器视觉研究所、工艺应用研究所、具身智能研究所，另设测试中心与可靠性实验室。\n\n## 二、人员结构\n\n研发人员 1,286 人，其中博士 48 人、硕士 612 人，35 岁以下占比 61%。2025 年"
+          },
+          {
+            "doc_id": "lantu_meeting_rd",
+            "title": "# 2025 年 5 月研发例会纪要",
+            "chunk": 0,
+            "score": 8.065,
+            "snippet": "# 2025 年 5 月研发例会纪要\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2025-05-09 09:00\n更新时间：2025-05-09 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_rd_2025\n生效日期：2025-05-09\n\n## 一、项目进展\n\nLT-C800 控制器完成小批量验证；LantuTwin 3.0 进入客户试点；具身智能操作模型完成抓取数据集 12 万条。\n\n## 二、组织调整\n\n具身智能研究所正式成立，编制 48 人，重点研究视觉-语言-动作模型"
+          },
+          {
+            "doc_id": "lantu_strategy_2025",
+            "title": "# 澜图智能 2025 年度经营计划",
+            "chunk": 0,
+            "score": 8.007,
+            "snippet": "# 澜图智能 2025 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-01-10 09:00\n更新时间：2025-02-10 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2025\n生效日期：2025-02-10\n\n## 一、年度目标\n\n2025 年营业收入目标 41.5 亿元，力争 42.63 亿元；新签订单目标 46 亿元；机器人出货目标 20,000 台。\n\n## 二、重点任务\n\n锂电与半导体行业突破；LT-C800 控制器量产；海外收入占"
+          },
+          {
+            "doc_id": "lantu_meeting_strategy",
+            "title": "# 2026 年战略研讨会纪要",
+            "chunk": 0,
+            "score": 6.866,
+            "snippet": "# 2026 年战略研讨会纪要\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-11-21 09:00\n更新时间：2025-11-22 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_strategy_2026\n生效日期：2025-11-22\n\n## 一、战略目标\n\n2026 年营业收入 52 亿元，2028 年 80 亿元；海外收入占比 2026 年提升至 17%，2028 年达到 25%。\n\n## 二、业务重点\n\n巩固锂电与汽车基本盘，突破半导体与具身智能；软件与服务收"
+          },
+          {
+            "doc_id": "lantu_company_history",
+            "title": "# 澜图智能发展历程（2011—2025）",
+            "chunk": 0,
+            "score": 6.695,
+            "snippet": "# 澜图智能发展历程（2011—2025）\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2023-03-01 09:00\n更新时间：2026-01-05 14:00\n版本号：v4.0\n文档类型：company\n文档族：company_history\n生效日期：2026-01-05\n\n## 一、创业阶段（2011—2015）\n\n2011 年 6 月 18 日，公司在苏州工业园区成立，创始团队来自高校机器人实验室，首款产品为 LT-R6 六轴工业机器人，2012 年实现小批量交付 120 台。2014 年建成首条机"
+          },
+          {
+            "doc_id": "lantu_org_department_duties",
+            "title": "# 澜图智能一级部门职责与编制",
+            "chunk": 1,
+            "score": 6.217,
+            "snippet": "| 部门 | 负责人 | 编制（人） | 主要职责 |\n| --- | --- | --- | --- |\n| 研发中心 | 沈亦舟 | 1,286 | 本体/控制器/视觉/具身智能研发 |\n| 产品部 | 孟凡 | 96 | 产品规划与生命周期管理 |\n| 销售中心 | 罗嘉树 | 620 | 区域销售与渠道 |\n| 客户成功部 | 林可 | 86 | 重点客户经营 |\n| 供应链中心 | 韩立恒 | 210 | 采购、计划、物流 |\n| 制造中心 | 韩立恒 | 980 | 三大基地生产 |\n| 质量部 | 潘"
+          },
+          {
+            "doc_id": "lantu_strategy_2026",
+            "title": "# 澜图智能 2026 年度经营计划",
+            "chunk": 0,
+            "score": 6.104,
+            "snippet": "# 澜图智能 2026 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-12-15 09:00\n更新时间：2026-01-12 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2026\n生效日期：2026-01-12\n\n## 一、年度目标\n\n2026 年营业收入 52 亿元，归母净利润 5.2 亿元，新签订单 58 亿元，机器人出货 26,000 台。\n\n## 二、业务策略\n\n锂电保持领先，半导体翻倍增长，海外收入 7.2 亿元；软件与服务收入占比提"
+          },
+          {
+            "doc_id": "lantu_tech_patents",
+            "title": "# 澜图智能知识产权与专利布局",
+            "chunk": 0,
+            "score": 6.082,
+            "snippet": "# 澜图智能知识产权与专利布局\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-04-26 09:00\n更新时间：2025-12-18 15:00\n版本号：v2.8\n文档类型：tech\n文档族：patent_portfolio\n生效日期：2025-12-18\n\n## 一、专利总量\n\n累计有效专利 1,286 件，其中发明专利 412 件、实用新型 726 件、外观设计 148 件；软件著作权 168 项。\n\n## 二、重点布局\n\n运动控制、伺服驱动、机器视觉、力控与具身智能五大方向；PCT 国际专利申请 3"
+          },
+          {
+            "doc_id": "lantu_finance_h1_2025",
+            "title": "# 澜图智能 2025 年半年度报告摘要",
+            "chunk": 0,
+            "score": 5.972,
+            "snippet": "# 澜图智能 2025 年半年度报告摘要\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-08-25 09:00\n更新时间：2025-08-28 18:00\n版本号：v1.0\n文档类型：finance\n文档族：semiannual_2025\n生效日期：2025-08-28\n\n## 一、经营数据\n\n2025 年上半年营业收入 19.84 亿元，同比增长 21.3%；归母净利润 1.83 亿元，同比增长 24.6%；毛利率 31.2%。\n\n## 二、订单情况\n\n上半年新签订单 22.7 亿元，同比增长 18.5%"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_company_history",
+        "offset": 0,
+        "limit": 6000
+      },
+      "result": {
+        "doc_id": "lantu_company_history",
+        "title": "# 澜图智能发展历程（2011—2025）",
+        "offset": 0,
+        "limit": 6000,
+        "total_chars": 694,
+        "text": "# 澜图智能发展历程（2011—2025）\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2023-03-01 09:00\n更新时间：2026-01-05 14:00\n版本号：v4.0\n文档类型：company\n文档族：company_history\n生效日期：2026-01-05\n\n## 一、创业阶段（2011—2015）\n\n2011 年 6 月 18 日，公司在苏州工业园区成立，创始团队来自高校机器人实验室，首款产品为 LT-R6 六轴工业机器人，2012 年实现小批量交付 120 台。2014 年建成首条机器人装配线，年产能 1,500 台。\n\n## 二、成长阶段（2016—2020）\n\n2016 年发布 LT-C600 控制器，实现核心部件自研；2018 年营收突破 10 亿元；2019 年东莞华南基地投产，年产能提升至 8,000 台；2020 年推出 AMR 移动机器人产品线。\n\n## 三、扩张阶段（2021—2023）\n\n2021 年完成股份制改造；2022 年成都基地开工；2023 年 9 月 28 日在科创板上市，募集资金 12.6 亿元，用于年产 18,000 台智能装备产业化项目。\n\n## 四、规模化阶段（2024—2025）\n\n2024 年营业收入 35.80 亿元；2025 年 3 月德国欧洲技术中心开业，5 月具身智能研究所成立，9 月第 10 万台机器人下线，全年营业收入 42.63 亿元。\n\n## 五、未来展望\n\n公司计划 2028 年实现营业收入 80 亿元，海外收入占比提升至 25%，并建成以具身智能为核心的下一代机器人平台。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_roadmap",
+        "offset": 0,
+        "limit": 6000
+      },
+      "result": {
+        "doc_id": "lantu_tech_roadmap",
+        "title": "# 澜图智能技术路线图（2025—2028）",
+        "offset": 0,
+        "limit": 6000,
+        "total_chars": 417,
+        "text": "# 澜图智能技术路线图（2025—2028）\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-11-01 09:00\n更新时间：2025-12-05 16:00\n版本号：v2.2\n文档类型：tech\n文档族：tech_roadmap\n生效日期：2025-12-05\n\n## 一、总体路线\n\n以“本体+控制+视觉+软件”为基础，向具身智能与柔性制造演进，2026 年完成 LT-R20 Pro 与具身智能平台 1.0。\n\n## 二、2025 年\n\nLT-C800 控制器量产、LantuTwin 3.0 发布、LT-R20 Pro 完成样机、具身智能操作模型实验室验证。\n\n## 三、2026 年\n\nLT-R20 Pro 量产、力控精度提升至 ±0.5 N、视觉-语言-动作模型在 3 个场景试点。\n\n## 四、2027—2028 年\n\n推出人形/轮式具身智能平台，实现多机协同与自主任务规划，软件订阅收入占比提升至 20%。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "2023 2024 具身智能 布局 人工智能 大模型",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_tech_roadmap",
+            "title": "# 澜图智能技术路线图（2025—2028）",
+            "chunk": 0,
+            "score": 13.219,
+            "snippet": "# 澜图智能技术路线图（2025—2028）\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-11-01 09:00\n更新时间：2025-12-05 16:00\n版本号：v2.2\n文档类型：tech\n文档族：tech_roadmap\n生效日期：2025-12-05\n\n## 一、总体路线\n\n以“本体+控制+视觉+软件”为基础，向具身智能与柔性制造演进，2026 年完成 LT-R20 Pro 与具身智能平台 1.0。\n\n## 二、2025 年\n\nLT-C800 控制器量产、LantuTwin 3.0 发布、LT"
+          },
+          {
+            "doc_id": "lantu_meeting_rd",
+            "title": "# 2025 年 5 月研发例会纪要",
+            "chunk": 0,
+            "score": 12.146,
+            "snippet": "# 2025 年 5 月研发例会纪要\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2025-05-09 09:00\n更新时间：2025-05-09 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_rd_2025\n生效日期：2025-05-09\n\n## 一、项目进展\n\nLT-C800 控制器完成小批量验证；LantuTwin 3.0 进入客户试点；具身智能操作模型完成抓取数据集 12 万条。\n\n## 二、组织调整\n\n具身智能研究所正式成立，编制 48 人，重点研究视觉-语言-动作模型"
+          },
+          {
+            "doc_id": "lantu_tech_patents",
+            "title": "# 澜图智能知识产权与专利布局",
+            "chunk": 0,
+            "score": 11.926,
+            "snippet": "# 澜图智能知识产权与专利布局\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-04-26 09:00\n更新时间：2025-12-18 15:00\n版本号：v2.8\n文档类型：tech\n文档族：patent_portfolio\n生效日期：2025-12-18\n\n## 一、专利总量\n\n累计有效专利 1,286 件，其中发明专利 412 件、实用新型 726 件、外观设计 148 件；软件著作权 168 项。\n\n## 二、重点布局\n\n运动控制、伺服驱动、机器视觉、力控与具身智能五大方向；PCT 国际专利申请 3"
+          },
+          {
+            "doc_id": "lantu_company_history",
+            "title": "# 澜图智能发展历程（2011—2025）",
+            "chunk": 0,
+            "score": 10.702,
+            "snippet": "# 澜图智能发展历程（2011—2025）\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2023-03-01 09:00\n更新时间：2026-01-05 14:00\n版本号：v4.0\n文档类型：company\n文档族：company_history\n生效日期：2026-01-05\n\n## 一、创业阶段（2011—2015）\n\n2011 年 6 月 18 日，公司在苏州工业园区成立，创始团队来自高校机器人实验室，首款产品为 LT-R6 六轴工业机器人，2012 年实现小批量交付 120 台。2014 年建成首条机"
+          },
+          {
+            "doc_id": "lantu_org_rd_system",
+            "title": "# 澜图智能研发体系与投入",
+            "chunk": 0,
+            "score": 9.803,
+            "snippet": "# 澜图智能研发体系与投入\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-02-01 09:00\n更新时间：2026-01-12 10:00\n版本号：v5.0\n文档类型：org\n文档族：rd_system\n生效日期：2026-01-12\n\n## 一、研发架构\n\n研发中心下设机器人本体研究所、控制器研究所、机器视觉研究所、工艺应用研究所、具身智能研究所，另设测试中心与可靠性实验室。\n\n## 二、人员结构\n\n研发人员 1,286 人，其中博士 48 人、硕士 612 人，35 岁以下占比 61%。2025 年"
+          },
+          {
+            "doc_id": "lantu_finance_h1_2025",
+            "title": "# 澜图智能 2025 年半年度报告摘要",
+            "chunk": 0,
+            "score": 8.321,
+            "snippet": "# 澜图智能 2025 年半年度报告摘要\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-08-25 09:00\n更新时间：2025-08-28 18:00\n版本号：v1.0\n文档类型：finance\n文档族：semiannual_2025\n生效日期：2025-08-28\n\n## 一、经营数据\n\n2025 年上半年营业收入 19.84 亿元，同比增长 21.3%；归母净利润 1.83 亿元，同比增长 24.6%；毛利率 31.2%。\n\n## 二、订单情况\n\n上半年新签订单 22.7 亿元，同比增长 18.5%"
+          },
+          {
+            "doc_id": "lantu_meeting_strategy",
+            "title": "# 2026 年战略研讨会纪要",
+            "chunk": 0,
+            "score": 6.866,
+            "snippet": "# 2026 年战略研讨会纪要\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-11-21 09:00\n更新时间：2025-11-22 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_strategy_2026\n生效日期：2025-11-22\n\n## 一、战略目标\n\n2026 年营业收入 52 亿元，2028 年 80 亿元；海外收入占比 2026 年提升至 17%，2028 年达到 25%。\n\n## 二、业务重点\n\n巩固锂电与汽车基本盘，突破半导体与具身智能；软件与服务收"
+          },
+          {
+            "doc_id": "lantu_company_campus",
+            "title": "# 澜图智能制造基地与产能布局",
+            "chunk": 0,
+            "score": 5.905,
+            "snippet": "# 澜图智能制造基地与产能布局\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2024-04-12 09:00\n更新时间：2025-11-20 15:00\n版本号：v3.0\n文档类型：company\n文档族：manufacturing_base\n生效日期：2025-11-20\n\n## 一、苏州总部基地\n\n位于苏州工业园区，占地 120 亩，建筑面积 9.6 万平方米，承担六轴机器人总装、控制器生产与研发测试，年产能 18,000 台。\n\n## 二、东莞华南基地\n\n位于东莞松山湖，占地 60 亩，聚焦 SCARA、A"
+          },
+          {
+            "doc_id": "lantu_company_global",
+            "title": "# 澜图智能全球化布局与海外业务",
+            "chunk": 0,
+            "score": 5.837,
+            "snippet": "# 澜图智能全球化布局与海外业务\n\n所属部门：国际业务部\n作者：罗嘉树\n创建时间：2024-06-01 10:00\n更新时间：2025-12-10 14:30\n版本号：v2.2\n文档类型：company\n文档族：global_presence\n生效日期：2025-12-10\n\n## 一、海外机构\n\n公司在德国斯图加特设立欧洲技术中心（2025 年 3 月开业），在越南胡志明市、墨西哥蒙特雷、匈牙利布达佩斯设有服务网点，海外员工 200 人。\n\n## 二、海外业绩\n\n2025 年海外营业收入 4.86 亿元，占总收入"
+          },
+          {
+            "doc_id": "lantu_org_department_duties",
+            "title": "# 澜图智能一级部门职责与编制",
+            "chunk": 1,
+            "score": 5.732,
+            "snippet": "| 部门 | 负责人 | 编制（人） | 主要职责 |\n| --- | --- | --- | --- |\n| 研发中心 | 沈亦舟 | 1,286 | 本体/控制器/视觉/具身智能研发 |\n| 产品部 | 孟凡 | 96 | 产品规划与生命周期管理 |\n| 销售中心 | 罗嘉树 | 620 | 区域销售与渠道 |\n| 客户成功部 | 林可 | 86 | 重点客户经营 |\n| 供应链中心 | 韩立恒 | 210 | 采购、计划、物流 |\n| 制造中心 | 韩立恒 | 980 | 三大基地生产 |\n| 质量部 | 潘"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_meeting_rd",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_meeting_rd",
+        "title": "# 2025 年 5 月研发例会纪要",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 381,
+        "text": "# 2025 年 5 月研发例会纪要\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2025-05-09 09:00\n更新时间：2025-05-09 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_rd_2025\n生效日期：2025-05-09\n\n## 一、项目进展\n\nLT-C800 控制器完成小批量验证；LantuTwin 3.0 进入客户试点；具身智能操作模型完成抓取数据集 12 万条。\n\n## 二、组织调整\n\n具身智能研究所正式成立，编制 48 人，重点研究视觉-语言-动作模型与灵巧操作。\n\n## 三、资源需求\n\nGPU 算力不足，申请新增 64 张训练卡；测试中心需要扩充可靠性试验台 2 套。\n\n## 四、决议\n\n优先保障 LT-R20 Pro 与具身智能项目；6 月底前完成算力采购；建立跨研究所技术评审机制。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_patents",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_tech_patents",
+        "title": "# 澜图智能知识产权与专利布局",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 393,
+        "text": "# 澜图智能知识产权与专利布局\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-04-26 09:00\n更新时间：2025-12-18 15:00\n版本号：v2.8\n文档类型：tech\n文档族：patent_portfolio\n生效日期：2025-12-18\n\n## 一、专利总量\n\n累计有效专利 1,286 件，其中发明专利 412 件、实用新型 726 件、外观设计 148 件；软件著作权 168 项。\n\n## 二、重点布局\n\n运动控制、伺服驱动、机器视觉、力控与具身智能五大方向；PCT 国际专利申请 36 件。\n\n## 三、管理体系\n\n执行《企业知识产权管理规范》GB/T 29490，设专利评审委员会，发明人奖励 5,000-30,000 元。\n\n## 四、风险防控\n\n新产品上市前开展 FTO 检索，重点市场进行侵权风险评估；年度知识产权预算 1,200 万元。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_rd_system",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_org_rd_system",
+        "title": "# 澜图智能研发体系与投入",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 512,
+        "text": "# 澜图智能研发体系与投入\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-02-01 09:00\n更新时间：2026-01-12 10:00\n版本号：v5.0\n文档类型：org\n文档族：rd_system\n生效日期：2026-01-12\n\n## 一、研发架构\n\n研发中心下设机器人本体研究所、控制器研究所、机器视觉研究所、工艺应用研究所、具身智能研究所，另设测试中心与可靠性实验室。\n\n## 二、人员结构\n\n研发人员 1,286 人，其中博士 48 人、硕士 612 人，35 岁以下占比 61%。2025 年研发投入 5.87 亿元，占营业收入 13.8%。\n\n## 三、重点项目\n\nLT-R20 Pro 本体轻量化、LT-C800 控制器、具身智能操作模型 Lantu-VLA、数字孪生平台 LantuTwin 3.0。\n\n## 四、知识产权\n\n累计有效专利 1,286 件，其中发明专利 412 件；软件著作权 168 项；2025 年新增授权专利 216 件。\n\n## 五、研发流程\n\n执行 IPD 集成产品开发流程，分为概念、计划、开发、验证、发布、生命周期管理六个阶段，关键节点由产品决策委员会评审。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

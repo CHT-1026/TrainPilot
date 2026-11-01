@@ -1,0 +1,142 @@
+{
+  "qid": "D0063",
+  "question": "哪些客户案例使用了 LT-R12 六轴机器人？各自用量是多少？",
+  "question_type": "清单枚举",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>LT-R12 六轴机器人 客户案例 用量</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 61,
+        "prompt_tokens": 360,
+        "total_tokens": 421,
+        "completion_tokens_details": {
+          "reasoning_tokens": 22
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.594
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>LT-R12 六轴机器人 客户案例 用量</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 436,
+        "total_tokens": 487,
+        "completion_tokens_details": {
+          "reasoning_tokens": 12
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.0
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>LT-R12 六轴机器人 客户案例 用量</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 512,
+        "total_tokens": 563,
+        "completion_tokens_details": {
+          "reasoning_tokens": 12
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.765
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>LT-R12 六轴机器人 客户案例 用量</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 588,
+        "total_tokens": 638,
+        "completion_tokens_details": {
+          "reasoning_tokens": 11
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 8.313
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>LT-R12 六轴机器人 客户案例 用量</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 58,
+        "prompt_tokens": 664,
+        "total_tokens": 722,
+        "completion_tokens_details": {
+          "reasoning_tokens": 19
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 5.547
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>LT-R12 六轴机器人 客户案例 用量</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 47,
+        "prompt_tokens": 740,
+        "total_tokens": 787,
+        "completion_tokens_details": {
+          "reasoning_tokens": 8
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 2.109
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"检索工具多次调用均未成功，未能获取任何关于 LT-R12 六轴机器人客户案例及用量的资料。基于现有可用资料，无法回答该问题，建议重新发起检索以获取客户案例和用量数据。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 110,
+        "prompt_tokens": 813,
+        "total_tokens": 923,
+        "completion_tokens_details": {
+          "reasoning_tokens": 38
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 3.031
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "检索工具多次调用均未成功，未能获取任何关于 LT-R12 六轴机器人客户案例及用量的资料。基于现有可用资料，无法回答该问题，建议重新发起检索以获取客户案例和用量数据。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4541,
+  "started_at": "2026-11-01T04:33:31",
+  "elapsed_seconds": 24.36,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.196,
+    "number_recall": 0.0
+  }
+}

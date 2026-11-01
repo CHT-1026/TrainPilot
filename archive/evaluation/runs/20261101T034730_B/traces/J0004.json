@@ -1,0 +1,189 @@
+{
+  "qid": "J0004",
+  "question": "恒芯项目复盘会纪要记录的项目结果是什么？部署了多少台设备、合同金额多少？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"恒芯项目复盘会纪要\"}}",
+      "usage": {
+        "prompt_tokens": 369,
+        "total_tokens": 468,
+        "completion_tokens": 99,
+        "completion_tokens_details": {
+          "reasoning_tokens": 76,
+          "text_tokens": 99
+        }
+      },
+      "seconds": 1.0
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"恒芯项目\"}}",
+      "usage": {
+        "prompt_tokens": 417,
+        "total_tokens": 580,
+        "completion_tokens": 163,
+        "completion_tokens_details": {
+          "reasoning_tokens": 143,
+          "text_tokens": 163
+        }
+      },
+      "seconds": 1.875
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据《恒芯动力电池项目复盘会纪要》的记录，项目结果为12条叠片线完成验收。共部署186台LT-R20与24台AMR-1000设备，合同金额为2.16亿元。\",\"citations\":[\"lantu_meeting_case_review\"],\"evidence\":[\"lantu_meeting_case_review#0\"]}",
+      "usage": {
+        "prompt_tokens": 2775,
+        "total_tokens": 3724,
+        "completion_tokens": 949,
+        "completion_tokens_details": {
+          "reasoning_tokens": 857,
+          "text_tokens": 949
+        }
+      },
+      "seconds": 8.454
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "恒芯项目复盘会纪要"
+      },
+      "result_sha": "1290604daacc15212b4f59638c659261007a940d59ae4c9dd916d753b78e21de",
+      "result_chars": 12,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "恒芯项目"
+      },
+      "result_sha": "6b8c0c704c5421bc4054d66dbdedb2b159ec821d28403e2633c96f5e568e7a71",
+      "result_chars": 3907,
+      "hits": 10
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《恒芯动力电池项目复盘会纪要》的记录，项目结果为12条叠片线完成验收。共部署186台LT-R20与24台AMR-1000设备，合同金额为2.16亿元。",
+    "citations": [
+      "lantu_meeting_case_review"
+    ],
+    "evidence": [
+      "lantu_meeting_case_review#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 4772,
+  "started_at": "2026-11-01T05:34:38",
+  "elapsed_seconds": 11.33,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "恒芯项目复盘会纪要"
+      },
+      "result": {
+        "docs": []
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "恒芯项目"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_meeting_case_review",
+            "title": "# 恒芯动力电池项目复盘会纪要",
+            "chunk": 0,
+            "score": 7.148,
+            "snippet": "# 恒芯动力电池项目复盘会纪要\n\n所属部门：客户成功部\n作者：林可\n创建时间：2025-03-18 09:00\n更新时间：2025-03-18 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_case_hengxin\n生效日期：2025-03-18\n\n## 一、项目结果\n\n恒芯动力电池 12 条叠片线完成验收，部署 186 台 LT-R20 与 24 台 AMR-1000，合同金额 2.16 亿元。\n\n## 二、成功经验\n\n虚拟调试提前发现 37 处干涉，现场调试周期缩短 12 天；"
+          },
+          {
+            "doc_id": "lantu_case_01_hengxin",
+            "title": "# 客户案例：恒芯动力电池电芯叠片与物流项目",
+            "chunk": 0,
+            "score": 7.063,
+            "snippet": "# 客户案例：恒芯动力电池电芯叠片与物流项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_hengxin\n生效日期：2025-12-20\n\n## 一、客户背景\n\n恒芯动力电池位于常州，主营动力电池业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追"
+          },
+          {
+            "doc_id": "lantu_sales_customer_list",
+            "title": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态",
+            "chunk": 0,
+            "score": 5.066,
+            "snippet": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态\n恒芯动力电池,动力电池,常州,电芯叠片与物流,\"21,600\",2025,已验收\n澜岳汽车零部件,汽车零部件,上海,白车身焊装,\"14,800\",2024,已验收\n曜阳光能,光伏,合肥,电池片串焊,\"9,800\",2025,已验收\n星禾电子,3C 电子,昆山,精密组装,\"12,500\",2024,已验收\n海翎家电,家电,顺德,喷涂与打磨,\"6,300\",2025,已验收\n晶拓微电子,半导体,无锡,晶圆搬运,\"7,400\",2025,已验收\n麦丰食品,食品,漯河"
+          },
+          {
+            "doc_id": "lantu_support_case_hengxin",
+            "title": "# 恒芯动力电池 48 小时复产服务案例",
+            "chunk": 0,
+            "score": 4.778,
+            "snippet": "# 恒芯动力电池 48 小时复产服务案例\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2025-04-10 09:00\n更新时间：2025-04-12 18:00\n版本号：v1.0\n文档类型：support\n文档族：service_case_hengxin\n生效日期：2025-04-12\n\n## 一、事件经过\n\n2025 年 4 月 8 日凌晨，恒芯动力电池 3 号叠片线报伺服过载停机，影响两条线体。客户通过 400 热线报修。\n\n## 二、响应过程\n\n远程诊断中心 12 分钟内定位为驱动器散热风扇故障，指导客户"
+          },
+          {
+            "doc_id": "lantu_meeting_sales",
+            "title": "2025 年华南大区销售复盘会纪要",
+            "chunk": 0,
+            "score": 3.254,
+            "snippet": "2025 年华南大区销售复盘会纪要\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2025-09-05 09:00\n更新时间：2025-09-05 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_sales_south\n生效日期：2025-09-05\n一、业绩完成\n华南大区前三季度收入 7.42 亿元，年度完成率 108%，位列五大区第一；新签订单 8.6 亿元。\n二、行业机会\n锂电客户扩产带来 3.2 亿元机会；3C 客户自动化改造预算增加；光伏客户资本开支放缓。\n三、渠道问题\n两家"
+          },
+          {
+            "doc_id": "lantu_solution_lithium",
+            "title": "# 动力电池叠片与物流整体解决方案",
+            "chunk": 0,
+            "score": 3.228,
+            "snippet": "# 动力电池叠片与物流整体解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-10-12 09:00\n更新时间：2025-12-01 10:00\n版本号：v3.6\n文档类型：product\n文档族：solution_lithium\n生效日期：2025-12-01\n\n## 一、方案概述\n\n面向动力电池电芯段，提供叠片、焊接、检测与物料配送一体化方案，核心设备包括 LT-R20 机器人、LT-AMR-1000 与 LT-V3D 视觉。\n\n## 二、产线配置\n\n单条叠片线配置 15-16 台 LT-R20、2 "
+          },
+          {
+            "doc_id": "lantu_case_07_maifeng",
+            "title": "# 客户案例：麦丰食品后端包装项目",
+            "chunk": 0,
+            "score": 2.353,
+            "snippet": "# 客户案例：麦丰食品后端包装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_maifeng\n生效日期：2024-12-20\n\n## 一、客户背景\n\n麦丰食品位于漯河，主营食品业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖6 条"
+          },
+          {
+            "doc_id": "lantu_case_04_xinghe",
+            "title": "# 客户案例：星禾电子精密组装项目",
+            "chunk": 0,
+            "score": 2.352,
+            "snippet": "# 客户案例：星禾电子精密组装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_xinghe\n生效日期：2024-12-20\n\n## 一、客户背景\n\n星禾电子位于昆山，主营3C 电子业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖8"
+          },
+          {
+            "doc_id": "lantu_case_03_yaoyang",
+            "title": "# 客户案例：曜阳光能电池片串焊项目",
+            "chunk": 0,
+            "score": 2.349,
+            "snippet": "# 客户案例：曜阳光能电池片串焊项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_yaoyang\n生效日期：2025-12-20\n\n## 一、客户背景\n\n曜阳光能位于合肥，主营光伏业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖16"
+          },
+          {
+            "doc_id": "lantu_case_12_shengda",
+            "title": "# 客户案例：昇达电梯门板装配项目",
+            "chunk": 0,
+            "score": 2.347,
+            "snippet": "# 客户案例：昇达电梯门板装配项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_shengda\n生效日期：2025-12-20\n\n## 一、客户背景\n\n昇达电梯位于湖州，主营电梯业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖3 条"
+          }
+        ]
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_meeting_case_review"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.765,
+    "number_recall": 1.0
+  }
+}

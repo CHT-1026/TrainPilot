@@ -1,0 +1,399 @@
+{
+  "qid": "C0046",
+  "question": "视觉系统兼容 LT-R 与 LT-S 全系列机器人，而 S 系列手册称配套 LT-V3D 视觉可实现 99.8% 识别率，两个 99.8% 是同一个指标吗？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"LT-R LT-S LT-V3D 99.8% 识别率\"}}",
+      "usage": {
+        "prompt_tokens": 399,
+        "total_tokens": 1031,
+        "completion_tokens": 632,
+        "completion_tokens_details": {
+          "reasoning_tokens": 598,
+          "text_tokens": 632
+        }
+      },
+      "seconds": 5.563
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"LT-S 99.8% 识别率\"}}",
+      "usage": {
+        "prompt_tokens": 2723,
+        "total_tokens": 3219,
+        "completion_tokens": 496,
+        "completion_tokens_details": {
+          "reasoning_tokens": 468,
+          "text_tokens": 496
+        }
+      },
+      "seconds": 4.141
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_product_s_series\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 5007,
+        "total_tokens": 5403,
+        "completion_tokens": 396,
+        "completion_tokens_details": {
+          "reasoning_tokens": 362,
+          "text_tokens": 396
+        }
+      },
+      "seconds": 3.578
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"99.8%\", \"top_k\":10}}",
+      "usage": {
+        "prompt_tokens": 5434,
+        "total_tokens": 5784,
+        "completion_tokens": 350,
+        "completion_tokens_details": {
+          "reasoning_tokens": 322,
+          "text_tokens": 350
+        }
+      },
+      "seconds": 3.125
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_product_vision\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 5936,
+        "total_tokens": 6566,
+        "completion_tokens": 630,
+        "completion_tokens_details": {
+          "reasoning_tokens": 596,
+          "text_tokens": 630
+        }
+      },
+      "seconds": 5.109
+    },
+    {
+      "round": 6,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"是同一个指标。LT-S 系列手册中提到的“99.8% 识别率”是指配套 LT-V3D 视觉系统后的应用效果，而 LT-V3D 视觉系统技术说明中明确标注其“识别准确率”为 99.8%。两者均指代视觉系统的识别准确率这一核心性能指标。\",\"citations\":[\"lantu_product_s_series\", \"lantu_product_vision\"],\"evidence\":[\"lantu_product_s_series#0\", \"lantu_product_vision#0\"]}",
+      "usage": {
+        "prompt_tokens": 6325,
+        "total_tokens": 6874,
+        "completion_tokens": 549,
+        "completion_tokens_details": {
+          "reasoning_tokens": 424,
+          "text_tokens": 549
+        }
+      },
+      "seconds": 5.234
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "LT-R LT-S LT-V3D 99.8% 识别率"
+      },
+      "result_sha": "67dada0cfa4422616b68a7b3e48cf03b926a499e26688fd5659f3b75680df6f5",
+      "result_chars": 3866,
+      "hits": 10
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "LT-S 99.8% 识别率"
+      },
+      "result_sha": "b4d97cc0d9747e542d9b2bf8efa52e18776dfc63840d03f14aa2831c14b5b1f9",
+      "result_chars": 3845,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_s_series",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "823e8028fb29d7e3b4f539bb678dbbb0af1afdafdf9d468262f82bb3c426b1d8",
+      "result_chars": 624,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "99.8%",
+        "top_k": 10
+      },
+      "result_sha": "4f63e26c2329e484990872d27744a6f32634e4b8340443fbcc007491ebf18af4",
+      "result_chars": 792,
+      "hits": 2
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_vision",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "0e7f943fb829f2ca9e8b7788d195ac313fa7c5ee1703c2bc2a83470804b33fef",
+      "result_chars": 587,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "是同一个指标。LT-S 系列手册中提到的“99.8% 识别率”是指配套 LT-V3D 视觉系统后的应用效果，而 LT-V3D 视觉系统技术说明中明确标注其“识别准确率”为 99.8%。两者均指代视觉系统的识别准确率这一核心性能指标。",
+    "citations": [
+      "lantu_product_s_series",
+      "lantu_product_vision"
+    ],
+    "evidence": [
+      "lantu_product_s_series#0",
+      "lantu_product_vision#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 28877,
+  "started_at": "2026-11-01T04:17:27",
+  "elapsed_seconds": 26.75,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "LT-R LT-S LT-V3D 99.8% 识别率"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_product_s_series",
+            "title": "# LT-S 系列 SCARA 机器人产品说明",
+            "chunk": 0,
+            "score": 25.107,
+            "snippet": "# LT-S 系列 SCARA 机器人产品说明\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-03-01 09:00\n更新时间：2025-09-12 11:00\n版本号：v3.2\n文档类型：product\n文档族：product_s_series\n生效日期：2025-09-12\n\n## 一、产品定位\n\nLT-S 系列 SCARA 机器人面向 3C 组装、光伏串焊、食品包装等高速取放场景，标准循环时间 0.38 秒。\n\n## 二、型号参数\n\nLT-S4 负载 4 kg、臂展 600 mm、重复精度 ±0.02 "
+          },
+          {
+            "doc_id": "lantu_product_vision",
+            "title": "# LT-V3D 工业视觉系统技术说明",
+            "chunk": 0,
+            "score": 22.569,
+            "snippet": "# LT-V3D 工业视觉系统技术说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-06-18 09:00\n更新时间：2025-07-15 14:00\n版本号：v2.6\n文档类型：product\n文档族：product_vision\n生效日期：2025-07-15\n\n## 一、系统组成\n\nLT-V3D 由结构光相机、视觉控制器与 LantuVision 软件组成，支持 3D 点云、2D 图像与深度学习缺陷检测。\n\n## 二、核心指标\n\n测量精度 0.05 mm，单帧点云 120 万点，帧率 30 fps"
+          },
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 1,
+            "score": 17.52,
+            "snippet": "0 kg\t1.5 m/s\nLT-AMR-2000\t2,000 kg\t—\t±10 mm\t420 kg\t1.2 m/s\n[工作表] 交付与保修\n产品线\t标准交期\t保修期\t备件响应\nLT-R 系列\t6-8 周\t24 个月/6,000 小时\t48 小时\nLT-S 系列\t4 周\t24 个月/6,000 小时\t48 小时\nLT-AMR 系列\t8 周\t24 个月\t72 小时\nLT-V3D\t4 周\t12 个月\t72 小时"
+          },
+          {
+            "doc_id": "lantu_product_r_series",
+            "title": "# LT-R 系列六轴工业机器人产品手册",
+            "chunk": 1,
+            "score": 14.936,
+            "snippet": "| 型号 | 负载 | 臂展 | 重复精度 | 本体重量 | 最大速度 |\n| --- | --- | --- | --- | --- | --- |\n| LT-R6 | 6 kg | 1,450 mm | ±0.02 mm | 165 kg | 3.2 m/s |\n| LT-R12 | 12 kg | 1,550 mm | ±0.03 mm | 210 kg | 3.0 m/s |\n| LT-R20 | 20 kg | 1,700 mm | ±0.03 mm | 285 kg | 2.8 m/s |\n| LT-R"
+          },
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 13.942,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能产品参数矩阵（2025）\n所属部门\t产品部\n作者\t孟凡\n创建时间\t2025-01-20 09:00\n更新时间\t2025-12-15 18:00\n版本号\tv2.0\n文档类型\tproduct\n文档族\tproduct_matrix\n生效日期\t2025-12-15\n[工作表] 六轴与SCARA\n型号\t负载\t臂展\t重复精度\t本体重量\t最大速度\nLT-R6\t6 kg\t1,450 mm\t±0.02 mm\t165 kg\t3.2 m/s\nLT-R12\t12 kg\t1,550 mm\t±0."
+          },
+          {
+            "doc_id": "lantu_product_r_series",
+            "title": "# LT-R 系列六轴工业机器人产品手册",
+            "chunk": 0,
+            "score": 13.261,
+            "snippet": "# LT-R 系列六轴工业机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-01-15 09:00\n更新时间：2025-10-30 16:00\n版本号：v4.3\n文档类型：product\n文档族：product_r_series\n生效日期：2025-10-30\n\n## 一、产品定位\n\nLT-R 系列覆盖 6 kg 至 210 kg 负载，适用于搬运、焊接、装配、喷涂、打磨等工序，重复定位精度最高 ±0.02 mm，防护等级 IP54，可选 IP67。\n\n## 二、型号与参数\n\nLT-R6 负载 6"
+          },
+          {
+            "doc_id": "lantu_solution_photovoltaic",
+            "title": "# 光伏电池片串焊整线解决方案",
+            "chunk": 0,
+            "score": 11.355,
+            "snippet": "# 光伏电池片串焊整线解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-09-20 09:00\n更新时间：2025-10-16 14:00\n版本号：v3.1\n文档类型：product\n文档族：solution_photovoltaic\n生效日期：2025-10-16\n\n## 一、方案概述\n\n面向 TOPCon/HJT 电池片串焊，提供上料、串焊、EL 检测与下料整线方案，核心设备为 LT-S10 SCARA 与 LT-V3D 视觉。\n\n## 二、产线指标\n\n串焊速度 4,200 片/小时，良率 99.6"
+          },
+          {
+            "doc_id": "lantu_tech_servo",
+            "title": "# 澜图智能伺服驱动与关节模组技术说明",
+            "chunk": 0,
+            "score": 10.765,
+            "snippet": "# 澜图智能伺服驱动与关节模组技术说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-07-01 09:00\n更新时间：2025-08-25 10:00\n版本号：v2.6\n文档类型：tech\n文档族：servo_drive\n生效日期：2025-08-25\n\n## 一、产品范围\n\n自研 400W-7.5kW 伺服驱动器与关节模组，覆盖 LT-R 与 LT-S 全系列，自研比例 61%。\n\n## 二、关键指标\n\n电流环带宽 2.5 kHz，速度环 1.2 kHz，位置精度 23 位，过载能力 300% 持续 "
+          },
+          {
+            "doc_id": "lantu_product_amr",
+            "title": "# LT-AMR 自主移动机器人产品手册",
+            "chunk": 0,
+            "score": 9.533,
+            "snippet": "# LT-AMR 自主移动机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-05-10 09:00\n更新时间：2025-08-20 15:00\n版本号：v3.4\n文档类型：product\n文档族：product_amr\n生效日期：2025-08-20\n\n## 一、产品系列\n\nLT-AMR-500 负载 500 kg、速度 1.8 m/s、续航 8 小时；LT-AMR-1000 负载 1,000 kg、速度 1.5 m/s、续航 8 小时；LT-AMR-2000 负载 2,000 kg、速度 1.2"
+          },
+          {
+            "doc_id": "lantu_support_spare_parts_price",
+            "title": "﻿适配机型,备件名称,单价（元）,发货时效,质保期",
+            "chunk": 0,
+            "score": 8.982,
+            "snippet": "﻿适配机型,备件名称,单价（元）,发货时效,质保期\nLT-R20,减速器 RV-40E,\"12,800\",48 小时,12 个月\nLT-R20,伺服驱动器 LT-D4,\"8,600\",48 小时,18 个月\nLT-R20,示教器 LT-Pad3,\"5,200\",48 小时,12 个月\nLT-R12,减速器 RV-20E,\"7,900\",48 小时,12 个月\nLT-R12,伺服电机 750W,\"3,600\",48 小时,18 个月\nLT-R6,谐波减速器 CSF-17,\"6,400\",72 小时,12 个月\nLT-"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "LT-S 99.8% 识别率"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_product_s_series",
+            "title": "# LT-S 系列 SCARA 机器人产品说明",
+            "chunk": 0,
+            "score": 18.932,
+            "snippet": "# LT-S 系列 SCARA 机器人产品说明\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-03-01 09:00\n更新时间：2025-09-12 11:00\n版本号：v3.2\n文档类型：product\n文档族：product_s_series\n生效日期：2025-09-12\n\n## 一、产品定位\n\nLT-S 系列 SCARA 机器人面向 3C 组装、光伏串焊、食品包装等高速取放场景，标准循环时间 0.38 秒。\n\n## 二、型号参数\n\nLT-S4 负载 4 kg、臂展 600 mm、重复精度 ±0.02 "
+          },
+          {
+            "doc_id": "lantu_product_vision",
+            "title": "# LT-V3D 工业视觉系统技术说明",
+            "chunk": 0,
+            "score": 12.239,
+            "snippet": "# LT-V3D 工业视觉系统技术说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-06-18 09:00\n更新时间：2025-07-15 14:00\n版本号：v2.6\n文档类型：product\n文档族：product_vision\n生效日期：2025-07-15\n\n## 一、系统组成\n\nLT-V3D 由结构光相机、视觉控制器与 LantuVision 软件组成，支持 3D 点云、2D 图像与深度学习缺陷检测。\n\n## 二、核心指标\n\n测量精度 0.05 mm，单帧点云 120 万点，帧率 30 fps"
+          },
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 6.644,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能产品参数矩阵（2025）\n所属部门\t产品部\n作者\t孟凡\n创建时间\t2025-01-20 09:00\n更新时间\t2025-12-15 18:00\n版本号\tv2.0\n文档类型\tproduct\n文档族\tproduct_matrix\n生效日期\t2025-12-15\n[工作表] 六轴与SCARA\n型号\t负载\t臂展\t重复精度\t本体重量\t最大速度\nLT-R6\t6 kg\t1,450 mm\t±0.02 mm\t165 kg\t3.2 m/s\nLT-R12\t12 kg\t1,550 mm\t±0."
+          },
+          {
+            "doc_id": "lantu_product_r_series",
+            "title": "# LT-R 系列六轴工业机器人产品手册",
+            "chunk": 1,
+            "score": 6.602,
+            "snippet": "| 型号 | 负载 | 臂展 | 重复精度 | 本体重量 | 最大速度 |\n| --- | --- | --- | --- | --- | --- |\n| LT-R6 | 6 kg | 1,450 mm | ±0.02 mm | 165 kg | 3.2 m/s |\n| LT-R12 | 12 kg | 1,550 mm | ±0.03 mm | 210 kg | 3.0 m/s |\n| LT-R20 | 20 kg | 1,700 mm | ±0.03 mm | 285 kg | 2.8 m/s |\n| LT-R"
+          },
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 1,
+            "score": 6.346,
+            "snippet": "0 kg\t1.5 m/s\nLT-AMR-2000\t2,000 kg\t—\t±10 mm\t420 kg\t1.2 m/s\n[工作表] 交付与保修\n产品线\t标准交期\t保修期\t备件响应\nLT-R 系列\t6-8 周\t24 个月/6,000 小时\t48 小时\nLT-S 系列\t4 周\t24 个月/6,000 小时\t48 小时\nLT-AMR 系列\t8 周\t24 个月\t72 小时\nLT-V3D\t4 周\t12 个月\t72 小时"
+          },
+          {
+            "doc_id": "lantu_product_amr",
+            "title": "# LT-AMR 自主移动机器人产品手册",
+            "chunk": 0,
+            "score": 5.617,
+            "snippet": "# LT-AMR 自主移动机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-05-10 09:00\n更新时间：2025-08-20 15:00\n版本号：v3.4\n文档类型：product\n文档族：product_amr\n生效日期：2025-08-20\n\n## 一、产品系列\n\nLT-AMR-500 负载 500 kg、速度 1.8 m/s、续航 8 小时；LT-AMR-1000 负载 1,000 kg、速度 1.5 m/s、续航 8 小时；LT-AMR-2000 负载 2,000 kg、速度 1.2"
+          },
+          {
+            "doc_id": "lantu_solution_photovoltaic",
+            "title": "# 光伏电池片串焊整线解决方案",
+            "chunk": 0,
+            "score": 5.607,
+            "snippet": "# 光伏电池片串焊整线解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-09-20 09:00\n更新时间：2025-10-16 14:00\n版本号：v3.1\n文档类型：product\n文档族：solution_photovoltaic\n生效日期：2025-10-16\n\n## 一、方案概述\n\n面向 TOPCon/HJT 电池片串焊，提供上料、串焊、EL 检测与下料整线方案，核心设备为 LT-S10 SCARA 与 LT-V3D 视觉。\n\n## 二、产线指标\n\n串焊速度 4,200 片/小时，良率 99.6"
+          },
+          {
+            "doc_id": "lantu_product_painting",
+            "title": "# LT-Paint 机器人喷涂工作站方案",
+            "chunk": 0,
+            "score": 4.27,
+            "snippet": "# LT-Paint 机器人喷涂工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-08-01 09:00\n更新时间：2025-04-18 15:00\n版本号：v2.2\n文档类型：product\n文档族：solution_painting\n生效日期：2025-04-18\n\n## 一、方案组成\n\n以 LT-R20 防爆机器人为核心，集成旋杯喷枪、供漆系统、防爆控制柜与 VOC 处理装置。\n\n## 二、工艺指标\n\n换色时间 6 分钟，涂料利用率提升 23%，膜厚均匀性 ±5 μm，VOC 排放下降 19%。"
+          },
+          {
+            "doc_id": "lantu_tech_servo",
+            "title": "# 澜图智能伺服驱动与关节模组技术说明",
+            "chunk": 0,
+            "score": 4.138,
+            "snippet": "# 澜图智能伺服驱动与关节模组技术说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-07-01 09:00\n更新时间：2025-08-25 10:00\n版本号：v2.6\n文档类型：tech\n文档族：servo_drive\n生效日期：2025-08-25\n\n## 一、产品范围\n\n自研 400W-7.5kW 伺服驱动器与关节模组，覆盖 LT-R 与 LT-S 全系列，自研比例 61%。\n\n## 二、关键指标\n\n电流环带宽 2.5 kHz，速度环 1.2 kHz，位置精度 23 位，过载能力 300% 持续 "
+          },
+          {
+            "doc_id": "lantu_product_r_series",
+            "title": "# LT-R 系列六轴工业机器人产品手册",
+            "chunk": 0,
+            "score": 4.134,
+            "snippet": "# LT-R 系列六轴工业机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-01-15 09:00\n更新时间：2025-10-30 16:00\n版本号：v4.3\n文档类型：product\n文档族：product_r_series\n生效日期：2025-10-30\n\n## 一、产品定位\n\nLT-R 系列覆盖 6 kg 至 210 kg 负载，适用于搬运、焊接、装配、喷涂、打磨等工序，重复定位精度最高 ±0.02 mm，防护等级 IP54，可选 IP67。\n\n## 二、型号与参数\n\nLT-R6 负载 6"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_s_series",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_product_s_series",
+        "title": "# LT-S 系列 SCARA 机器人产品说明",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 446,
+        "text": "# LT-S 系列 SCARA 机器人产品说明\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-03-01 09:00\n更新时间：2025-09-12 11:00\n版本号：v3.2\n文档类型：product\n文档族：product_s_series\n生效日期：2025-09-12\n\n## 一、产品定位\n\nLT-S 系列 SCARA 机器人面向 3C 组装、光伏串焊、食品包装等高速取放场景，标准循环时间 0.38 秒。\n\n## 二、型号参数\n\nLT-S4 负载 4 kg、臂展 600 mm、重复精度 ±0.02 mm、本体重量 38 kg；LT-S10 负载 10 kg、臂展 800 mm、重复精度 ±0.02 mm、最大速度 4.0 m/s。\n\n## 三、应用优势\n\n采用直驱电机与低惯量臂体，支持视觉飞拍与传送带跟踪，配套 LT-V3D 视觉可实现 99.8% 识别率。\n\n## 四、交付与服务\n\n标准交期 4 周，保修 24 个月或 6,000 小时，备件 48 小时发货。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "99.8%",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_product_s_series",
+            "title": "# LT-S 系列 SCARA 机器人产品说明",
+            "chunk": 0,
+            "score": 4.323,
+            "snippet": "# LT-S 系列 SCARA 机器人产品说明\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-03-01 09:00\n更新时间：2025-09-12 11:00\n版本号：v3.2\n文档类型：product\n文档族：product_s_series\n生效日期：2025-09-12\n\n## 一、产品定位\n\nLT-S 系列 SCARA 机器人面向 3C 组装、光伏串焊、食品包装等高速取放场景，标准循环时间 0.38 秒。\n\n## 二、型号参数\n\nLT-S4 负载 4 kg、臂展 600 mm、重复精度 ±0.02 "
+          },
+          {
+            "doc_id": "lantu_product_vision",
+            "title": "# LT-V3D 工业视觉系统技术说明",
+            "chunk": 0,
+            "score": 4.238,
+            "snippet": "# LT-V3D 工业视觉系统技术说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-06-18 09:00\n更新时间：2025-07-15 14:00\n版本号：v2.6\n文档类型：product\n文档族：product_vision\n生效日期：2025-07-15\n\n## 一、系统组成\n\nLT-V3D 由结构光相机、视觉控制器与 LantuVision 软件组成，支持 3D 点云、2D 图像与深度学习缺陷检测。\n\n## 二、核心指标\n\n测量精度 0.05 mm，单帧点云 120 万点，帧率 30 fps"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_vision",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_product_vision",
+        "title": "# LT-V3D 工业视觉系统技术说明",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 415,
+        "text": "# LT-V3D 工业视觉系统技术说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-06-18 09:00\n更新时间：2025-07-15 14:00\n版本号：v2.6\n文档类型：product\n文档族：product_vision\n生效日期：2025-07-15\n\n## 一、系统组成\n\nLT-V3D 由结构光相机、视觉控制器与 LantuVision 软件组成，支持 3D 点云、2D 图像与深度学习缺陷检测。\n\n## 二、核心指标\n\n测量精度 0.05 mm，单帧点云 120 万点，帧率 30 fps，识别准确率 99.8%，支持 12 种典型缺陷分类。\n\n## 三、软件能力\n\n提供可视化标定、手眼标定、模板匹配与缺陷标注工具，支持模型 OTA 更新，单台控制器可接入 8 路相机。\n\n## 四、应用场景\n\n广泛应用于装配定位、焊缝跟踪、表面缺陷检测与无序抓取，兼容 LT-R 与 LT-S 全系列机器人。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_product_s_series",
+      "lantu_product_vision"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.063,
+    "number_recall": 0.0
+  }
+}

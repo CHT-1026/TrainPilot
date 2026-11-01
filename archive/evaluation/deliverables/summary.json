@@ -1,0 +1,16 @@
+{
+  "A": {
+    "run": "20261101T034730_A",
+    "cases": 400,
+    "primary_success": 141,
+    "answer_correct": 147,
+    "citation_supported": 268
+  },
+  "B": {
+    "run": "20261101T034730_B",
+    "cases": 400,
+    "primary_success": 127,
+    "answer_correct": 130,
+    "citation_supported": 319
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "qid": "H0009",
+  "question": "备件价格表中单价最便宜的一项是什么？单价是多少？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"备件价格表\"}}",
+      "usage": {
+        "prompt_tokens": 361,
+        "total_tokens": 452,
+        "completion_tokens": 91,
+        "completion_tokens_details": {
+          "reasoning_tokens": 71,
+          "text_tokens": 91
+        }
+      },
+      "seconds": 1.266
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"备件\"}}",
+      "usage": {
+        "prompt_tokens": 406,
+        "total_tokens": 589,
+        "completion_tokens": 183,
+        "completion_tokens_details": {
+          "reasoning_tokens": 165,
+          "text_tokens": 183
+        }
+      },
+      "seconds": 2.0
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_support_spare_parts_price\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 484,
+        "total_tokens": 664,
+        "completion_tokens": 180,
+        "completion_tokens_details": {
+          "reasoning_tokens": 144,
+          "text_tokens": 180
+        }
+      },
+      "seconds": 1.875
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"备件价格表中单价最便宜的一项是**同步带组件**，单价为 **320** 元。\",\"citations\":[\"lantu_support_spare_parts_price\"],\"evidence\":[\"lantu_support_spare_parts_price#0\"]}",
+      "usage": {
+        "prompt_tokens": 920,
+        "total_tokens": 1703,
+        "completion_tokens": 783,
+        "completion_tokens_details": {
+          "reasoning_tokens": 720,
+          "text_tokens": 783
+        }
+      },
+      "seconds": 5.89
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "备件价格表"
+      },
+      "result_sha": "1290604daacc15212b4f59638c659261007a940d59ae4c9dd916d753b78e21de",
+      "result_chars": 12,
+      "hits": 0
+    },
+    {
+      "name": "list",
+      "args": {
+        "keyword": "备件"
+      },
+      "result_sha": "a1c3181fd66d7594e4321250b5bbb0de8eccefbec7a3175edb8cf465822af65b",
+      "result_chars": 95,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_spare_parts_price",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "ea77bd9086c1636fc0caceb2af506c6760461277d6847acbf6412e549658caa9",
+      "result_chars": 603,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "备件价格表中单价最便宜的一项是**同步带组件**，单价为 **320** 元。",
+    "citations": [
+      "lantu_support_spare_parts_price"
+    ],
+    "evidence": [
+      "lantu_support_spare_parts_price#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 3408,
+  "started_at": "2026-11-01T05:16:06",
+  "elapsed_seconds": 11.03,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "备件价格表"
+      },
+      "result": {
+        "docs": []
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "list",
+      "args": {
+        "keyword": "备件"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_support_spare_parts_price",
+            "title": "﻿适配机型,备件名称,单价（元）,发货时效,质保期"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_spare_parts_price",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_support_spare_parts_price",
+        "title": "﻿适配机型,备件名称,单价（元）,发货时效,质保期",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 411,
+        "text": "﻿适配机型,备件名称,单价（元）,发货时效,质保期\nLT-R20,减速器 RV-40E,\"12,800\",48 小时,12 个月\nLT-R20,伺服驱动器 LT-D4,\"8,600\",48 小时,18 个月\nLT-R20,示教器 LT-Pad3,\"5,200\",48 小时,12 个月\nLT-R12,减速器 RV-20E,\"7,900\",48 小时,12 个月\nLT-R12,伺服电机 750W,\"3,600\",48 小时,18 个月\nLT-R6,谐波减速器 CSF-17,\"6,400\",72 小时,12 个月\nLT-S10,同步带组件,320,24 小时,6 个月\nLT-AMR-1000,锂电池组 48V/40Ah,\"4,800\",72 小时,12 个月\nLT-AMR-1000,激光雷达 LT-LS20,\"9,600\",72 小时,18 个月\nLT-V3D,工业相机模组,\"11,500\",72 小时,12 个月\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_support_spare_parts_price"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.13,
+    "number_recall": 0.0
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "qid": "M1501",
+  "question": "用户：2025 年一线城市出差住宿标准是多少？\n助手：按现行（2025 年 7 月修订版）口径，一线城市住宿标准 600 元/晚，二线城市 450 元/晚，其他城市 380 元/晚，超标部分由个人承担。\n用户：等一下，我其实要查的是 2024 年的标准，那个年份一线城市一晚能报多少？",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>差旅住宿标准 2024 一线城市 每晚</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 77,
+        "prompt_tokens": 444,
+        "total_tokens": 521,
+        "completion_tokens_details": {
+          "reasoning_tokens": 46
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.922
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"2024年 差旅住宿报销标准 一线城市 每晚\"}}\n\n接下来检索后我会给出结论。",
+      "usage": {
+        "completion_tokens": 61,
+        "prompt_tokens": 512,
+        "total_tokens": 573,
+        "completion_tokens_details": {
+          "reasoning_tokens": 22
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.578
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"2024 年适用《澜图智能差旅费用报销标准（2024版）》（v1.0，生效日期 2024-03-01）：一线城市（北京、上海、广州、深圳）住宿标准为 450 元/晚（二线城市 350 元/晚，其他城市 300 元/晚），超标部分由个人承担。注意：该版本自 2024-03-01 起生效，若费用发生在 2024 年 1—2 月，应适用当时生效的更早版本，需另行核实。\",\"citations\":[\"lantu_policy_travel_2024\"],\"evidence\":[\"lantu_policy_travel_2024#片段0\"]}",
+      "usage": {
+        "completion_tokens": 390,
+        "prompt_tokens": 3000,
+        "total_tokens": 3390,
+        "completion_tokens_details": {
+          "reasoning_tokens": 203
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 8.328
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "2024年 差旅住宿报销标准 一线城市 每晚"
+      },
+      "result_sha": "16a2ad9f1af2b3efb4d102f21e46d6bd9c8c14369451ccb6a54b0008183dfca3",
+      "result_chars": 3950,
+      "hits": 10
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "2024 年适用《澜图智能差旅费用报销标准（2024版）》（v1.0，生效日期 2024-03-01）：一线城市（北京、上海、广州、深圳）住宿标准为 450 元/晚（二线城市 350 元/晚，其他城市 300 元/晚），超标部分由个人承担。注意：该版本自 2024-03-01 起生效，若费用发生在 2024 年 1—2 月，应适用当时生效的更早版本，需另行核实。",
+    "citations": [
+      "lantu_policy_travel_2024"
+    ],
+    "evidence": [
+      "lantu_policy_travel_2024#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 4484,
+  "started_at": "2026-11-01T06:10:48",
+  "elapsed_seconds": 12.83,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "2024年 差旅住宿报销标准 一线城市 每晚"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_policy_travel_2024",
+            "title": "# 澜图智能差旅费用报销标准（2024版）",
+            "chunk": 0,
+            "score": 38.756,
+            "snippet": "# 澜图智能差旅费用报销标准（2024版）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-02-20 09:00\n更新时间：2024-03-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2024-03-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 450 元/晚，二线城市 350 元/晚，其他城市 300 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 100 元/天，按自然日计算；客户宴请须提"
+          },
+          {
+            "doc_id": "lantu_policy_travel_2025",
+            "title": "# 澜图智能差旅费用报销标准（2025版）",
+            "chunk": 0,
+            "score": 37.789,
+            "snippet": "# 澜图智能差旅费用报销标准（2025版）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-12-15 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2025-01-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 550 元/晚，二线城市 420 元/晚，其他城市 350 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 120 元/天，按自然日计算；客户宴请须提"
+          },
+          {
+            "doc_id": "lantu_policy_travel_2025h2",
+            "title": "# 澜图智能差旅费用报销标准（2025年7月修订）",
+            "chunk": 0,
+            "score": 36.461,
+            "snippet": "# 澜图智能差旅费用报销标准（2025年7月修订）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-06-10 09:00\n更新时间：2025-07-01 09:00\n版本号：v3.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2025-07-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 600 元/晚，二线城市 450 元/晚，其他城市 380 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 150 元/天，按自然日计算；客户"
+          },
+          {
+            "doc_id": "lantu_policy_reimbursement",
+            "title": "# 澜图智能费用报销管理办法",
+            "chunk": 0,
+            "score": 9.211,
+            "snippet": "# 澜图智能费用报销管理办法\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-03-10 09:00\n更新时间：2025-06-18 10:00\n版本号：v3.2\n文档类型：policy\n文档族：reimbursement\n生效日期：2025-06-18\n\n## 一、报销范围\n\n差旅费、业务招待费、办公费、培训费、通讯费、车辆使用费及经批准的其他费用。个人消费、罚款与无票据支出不予报销。\n\n## 二、报销时限\n\n费用发生后 30 个自然日内提交报销，跨年度费用须在次年 1 月 15 日前完成，逾期需财务总监审"
+          },
+          {
+            "doc_id": "lantu_policy_entertainment",
+            "title": "# 澜图智能业务招待管理办法",
+            "chunk": 0,
+            "score": 7.079,
+            "snippet": "# 澜图智能业务招待管理办法\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-04-15 09:00\n更新时间：2025-05-06 16:00\n版本号：v2.3\n文档类型：policy\n文档族：business_entertainment\n生效日期：2025-05-06\n\n## 一、招待原则\n\n业务招待须与业务直接相关，坚持简朴、适度、透明原则，禁止铺张浪费与高档消费。\n\n## 二、标准\n\n人均招待标准不超过 600 元，酒水不超过 300 元/瓶；S 级客户重要接待可上浮 20%，须提前审批。\n\n## 三"
+          },
+          {
+            "doc_id": "lantu_sales_customer_list",
+            "title": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态",
+            "chunk": 0,
+            "score": 5.308,
+            "snippet": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态\n恒芯动力电池,动力电池,常州,电芯叠片与物流,\"21,600\",2025,已验收\n澜岳汽车零部件,汽车零部件,上海,白车身焊装,\"14,800\",2024,已验收\n曜阳光能,光伏,合肥,电池片串焊,\"9,800\",2025,已验收\n星禾电子,3C 电子,昆山,精密组装,\"12,500\",2024,已验收\n海翎家电,家电,顺德,喷涂与打磨,\"6,300\",2025,已验收\n晶拓微电子,半导体,无锡,晶圆搬运,\"7,400\",2025,已验收\n麦丰食品,食品,漯河"
+          },
+          {
+            "doc_id": "lantu_policy_vehicle",
+            "title": "# 澜图智能公务用车管理办法",
+            "chunk": 0,
+            "score": 4.895,
+            "snippet": "# 澜图智能公务用车管理办法\n\n所属部门：行政部\n作者：陈依然\n创建时间：2024-03-01 09:00\n更新时间：2025-04-02 09:00\n版本号：v2.4\n文档类型：policy\n文档族：vehicle_management\n生效日期：2025-04-02\n\n## 一、用车范围\n\n公务用车用于客户接待、机场接送、跨园区办公与紧急事务；上下班通勤原则上不使用公务车。\n\n## 二、申请流程\n\n用车须提前 1 个工作日在 OA 申请，注明事由、路线、人数与时间；临时用车须部门负责人电话批准后补单。\n\n## "
+          },
+          {
+            "doc_id": "lantu_legal_anti_bribery",
+            "title": "# 澜图智能反商业贿赂管理规定",
+            "chunk": 0,
+            "score": 4.367,
+            "snippet": "# 澜图智能反商业贿赂管理规定\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-03-01 09:00\n更新时间：2025-01-15 10:00\n版本号：v2.4\n文档类型：legal\n文档族：anti_bribery\n生效日期：2025-01-15\n\n## 一、禁止行为\n\n禁止向客户、政府官员、供应商及其亲属提供现金、购物卡、有价证券、贵重礼品、旅游或娱乐安排。\n\n## 二、礼品与招待\n\n商务礼品单价不超过 200 元，须登记备案；业务招待人均不超过 600 元，禁止高消费娱乐。\n\n## 三、第三方管理"
+          },
+          {
+            "doc_id": "lantu_support_spare_inventory",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 3.948,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能备件库存分布（2025Q4）\n所属部门\t售后服务部\n作者\t陆绍\n创建时间\t2025-12-25 09:00\n更新时间\t2026-01-02 10:00\n版本号\tv1.0\n文档类型\tsupport\n文档族\tspare_inventory_2025q4\n生效日期\t2026-01-02\n[工作表] 备件仓库存\n仓库\t所在城市\t库存金额（万元）\tSKU 数\t周转天数\n苏州中心仓\t苏州\t6,200\t4,860\t92\n东莞仓\t东莞\t2,800\t2,240\t105\n成都仓\t成都\t1,"
+          },
+          {
+            "doc_id": "lantu_sales_quote",
+            "title": "# 澜图智能报价与合同评审流程",
+            "chunk": 0,
+            "score": 2.709,
+            "snippet": "# 澜图智能报价与合同评审流程\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-02-10 09:00\n更新时间：2025-08-08 14:00\n版本号：v2.5\n文档类型：sales\n文档族：sales_quote\n生效日期：2025-08-08\n\n## 一、报价流程\n\n销售工程师在 CRM 创建报价单，系统自动校验标准价；非标项目由售前技术出具配置清单，产品部确认成本，财务部复核税率与汇率。\n\n## 二、评审节点\n\n合同金额 1,000 万元以上须法务合规部与 CFO 联合评审；涉及非标开发须 CTO"
+          }
+        ]
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.333,
+    "cited": [
+      "lantu_policy_travel_2024"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.385,
+    "number_recall": 0.5
+  }
+}

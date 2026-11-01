@@ -1,0 +1,242 @@
+{
+  "qid": "M1516",
+  "question": "用户：芯片和减速器这些关键物料，断供风险大吗？我们怎么应对？\n助手：芯片与减速器存在单一来源风险；公司已对减速器实现双源供应，伺服驱动器自研比例 61%，关键物料安全库存 45 天。\n用户：那具体到 2026 年的双源替代目标是多少？芯片备库要备多久？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>2026 双源 替代 目标 覆盖率</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=search><parameter=query>芯片 备库 安全库存 天数</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 105,
+        "prompt_tokens": 429,
+        "total_tokens": 534,
+        "completion_tokens_details": {
+          "reasoning_tokens": 28
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.312
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>2026 双源 替代 目标 覆盖率</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 65,
+        "prompt_tokens": 543,
+        "total_tokens": 608,
+        "completion_tokens_details": {
+          "reasoning_tokens": 22
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 2.625
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"2026 双源 替代 目标 覆盖率\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 623,
+        "total_tokens": 674,
+        "completion_tokens_details": {
+          "reasoning_tokens": 13
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 2.0
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_strategy_supply_chain_resilience\",\"offset\":0,\"limit\":3000}}",
+      "usage": {
+        "completion_tokens": 175,
+        "prompt_tokens": 3135,
+        "total_tokens": 3310,
+        "completion_tokens_details": {
+          "reasoning_tokens": 141
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 5.297
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"双源替代目标：减速器在 2026 年实现 30% 的第二来源供应，其中供应链韧性专题会明确节奏为 2026 年一季度实现 30% 替代。芯片备库：关键芯片备库周期为 6 个月（约 180 天）；作为对照，通用物料安全库存为 30 天，关键物料库存周转目前约 92 天、高于 75 天目标。配套措施包括与 22 家战略供应商签订年度框架协议、缺料 48 小时内启动替代方案、每季度开展供应链压力测试。\",\"citations\":[\"lantu_strategy_supply_chain_resilience\",\"lantu_meeting_supply_chain\"],\"evidence\":[\"lantu_strategy_supply_chain_resilience#片段0\",\"lantu_meeting_supply_chain#片段0\"]}",
+      "usage": {
+        "completion_tokens": 265,
+        "prompt_tokens": 3505,
+        "total_tokens": 3770,
+        "completion_tokens_details": {
+          "reasoning_tokens": 65
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3072
+        }
+      },
+      "seconds": 4.906
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "2026 双源 替代 目标 覆盖率",
+        "top_k": 10
+      },
+      "result_sha": "dac16adf85ec3675c729be20299c45c5c8c517dcf05a192b937effe127757fbe",
+      "result_chars": 3891,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_strategy_supply_chain_resilience",
+        "offset": 0,
+        "limit": 3000
+      },
+      "result_sha": "7ca04570dd9fba600fd9585b778d1f6d5281abbd22b572c96442af685e1e4c6a",
+      "result_chars": 548,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "双源替代目标：减速器在 2026 年实现 30% 的第二来源供应，其中供应链韧性专题会明确节奏为 2026 年一季度实现 30% 替代。芯片备库：关键芯片备库周期为 6 个月（约 180 天）；作为对照，通用物料安全库存为 30 天，关键物料库存周转目前约 92 天、高于 75 天目标。配套措施包括与 22 家战略供应商签订年度框架协议、缺料 48 小时内启动替代方案、每季度开展供应链压力测试。",
+    "citations": [
+      "lantu_strategy_supply_chain_resilience",
+      "lantu_meeting_supply_chain"
+    ],
+    "evidence": [
+      "lantu_strategy_supply_chain_resilience#片段0",
+      "lantu_meeting_supply_chain#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 8896,
+  "started_at": "2026-11-01T06:14:11",
+  "elapsed_seconds": 17.14,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "2026 双源 替代 目标 覆盖率",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_meeting_supply_chain",
+            "title": "2025 年供应链韧性专题会纪要",
+            "chunk": 0,
+            "score": 12.032,
+            "snippet": "2025 年供应链韧性专题会纪要\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-10-16 09:00\n更新时间：2025-10-16 15:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_supply_chain\n生效日期：2025-10-16\n一、供应形势\n减速器交期由 8 周延长至 12 周，芯片交期 20 周；关键物料库存周转 92 天，高于目标 75 天。\n二、双源策略\n减速器已引入第二供应商，2026 年一季度实现 30% 替代；伺服驱动器自研比例提升至 61%。\n三"
+          },
+          {
+            "doc_id": "lantu_finance_cost",
+            "title": "# 澜图智能成本管理与降本专项报告",
+            "chunk": 0,
+            "score": 10.356,
+            "snippet": "# 澜图智能成本管理与降本专项报告\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-09-05 09:00\n更新时间：2025-09-12 17:00\n版本号：v1.3\n文档类型：finance\n文档族：cost_management\n生效日期：2025-09-12\n\n## 一、降本目标\n\n2025 年降本目标 1.8 亿元，前三季度完成 1.48 亿元，完成率 82%。\n\n## 二、主要项目\n\n减速器国产替代降本 4,200 万元，伺服驱动器自研降本 3,800 万元，结构件轻量化降本 2,600 万元，物"
+          },
+          {
+            "doc_id": "lantu_strategy_quality_system",
+            "title": "澜图智能质量管理体系手册",
+            "chunk": 0,
+            "score": 8.929,
+            "snippet": "澜图智能质量管理体系手册\n所属部门：质量部\n作者：潘文博\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v4.2\n文档类型：strategy\n文档族：quality_system\n生效日期：2025-06-01\n一、质量方针\n以客户为中心，以零缺陷为目标，持续改进，追求卓越。公司通过 ISO 9001、IATF 16949 与 ISO 13485\n认证。\n二、质量目标\n2025 年一次交检合格率不低于 98.5%，客户投诉不超过 6 起，MTBF 不低于 12,00"
+          },
+          {
+            "doc_id": "lantu_strategy_supply_chain_resilience",
+            "title": "# 澜图智能供应链韧性建设方案",
+            "chunk": 0,
+            "score": 8.713,
+            "snippet": "# 澜图智能供应链韧性建设方案\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-02-01 09:00\n更新时间：2025-09-30 16:00\n版本号：v1.5\n文档类型：strategy\n文档族：supply_chain_resilience\n生效日期：2025-09-30\n\n## 一、风险识别\n\n关键物料包括减速器、伺服电机、芯片与视觉相机，其中芯片与减速器存在单一来源风险。\n\n## 二、双源与备库\n\n减速器 2026 年实现 30% 第二来源；关键芯片备库 6 个月；通用物料安全库存 30 天。"
+          },
+          {
+            "doc_id": "lantu_strategy_esg",
+            "title": "# 澜图智能 ESG 与可持续发展报告",
+            "chunk": 0,
+            "score": 8.608,
+            "snippet": "# 澜图智能 ESG 与可持续发展报告\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2025-04-22 09:00\n更新时间：2025-04-25 10:00\n版本号：v2.0\n文档类型：strategy\n文档族：esg_report\n生效日期：2025-04-25\n\n## 一、环境\n\n2025 年苏州基地光伏装机 6.2MW，绿电占比 28%；单位产值能耗下降 9.6%；危废合规处置率 100%。\n\n## 二、社会\n\n员工培训人均 32 小时；安全生产投入 1,200 万元；公益捐赠 380 万元，支持职业"
+          },
+          {
+            "doc_id": "lantu_strategy_2025",
+            "title": "# 澜图智能 2025 年度经营计划",
+            "chunk": 0,
+            "score": 7.13,
+            "snippet": "# 澜图智能 2025 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-01-10 09:00\n更新时间：2025-02-10 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2025\n生效日期：2025-02-10\n\n## 一、年度目标\n\n2025 年营业收入目标 41.5 亿元，力争 42.63 亿元；新签订单目标 46 亿元；机器人出货目标 20,000 台。\n\n## 二、重点任务\n\n锂电与半导体行业突破；LT-C800 控制器量产；海外收入占"
+          },
+          {
+            "doc_id": "lantu_finance_budget_2026",
+            "title": "# 澜图智能 2026 年度经营预算",
+            "chunk": 0,
+            "score": 6.82,
+            "snippet": "# 澜图智能 2026 年度经营预算\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-12-20 09:00\n更新时间：2026-01-15 17:00\n版本号：v1.0\n文档类型：finance\n文档族：budget_2026\n生效日期：2026-01-15\n\n## 一、预算目标\n\n2026 年营业收入目标 52 亿元，同比增长 22%；归母净利润目标 5.2 亿元；综合毛利率目标 32.5%。\n\n## 二、收入分解\n\n机器人本体 24.2 亿元，智能产线 18.4 亿元，软件与服务 6.4 亿元，备件及其"
+          },
+          {
+            "doc_id": "lantu_finance_gross_margin",
+            "title": "# 澜图智能毛利率与成本结构分析",
+            "chunk": 0,
+            "score": 6.765,
+            "snippet": "# 澜图智能毛利率与成本结构分析\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-11-15 09:00\n更新时间：2025-11-20 17:00\n版本号：v1.2\n文档类型：finance\n文档族：gross_margin_analysis\n生效日期：2025-11-20\n\n## 一、整体毛利率\n\n2025 年综合毛利率 31.6%，较 2024 年提升 1.2 个百分点。机器人本体毛利率 34.8%，智能产线 26.2%，软件与服务 52.4%。\n\n## 二、成本构成\n\n直接材料占营业成本 68.4%，"
+          },
+          {
+            "doc_id": "lantu_hr_campus",
+            "title": "# 澜图智能 2026 届校园招聘方案",
+            "chunk": 0,
+            "score": 5.43,
+            "snippet": "# 澜图智能 2026 届校园招聘方案\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-08-15 09:00\n更新时间：2025-09-20 15:00\n版本号：v1.0\n文档类型：hr\n文档族：campus_recruitment_2026\n生效日期：2025-09-20\n\n## 一、招聘计划\n\n2026 届校招计划 120 人，其中研发 78 人、产品 12 人、销售 18 人、职能 12 人；重点院校 18 所。\n\n## 二、岗位方向\n\n机器人算法、运动控制、机器视觉、嵌入式软件、机械结构、售前技"
+          },
+          {
+            "doc_id": "lantu_strategy_2026",
+            "title": "# 澜图智能 2026 年度经营计划",
+            "chunk": 0,
+            "score": 5.35,
+            "snippet": "# 澜图智能 2026 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-12-15 09:00\n更新时间：2026-01-12 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2026\n生效日期：2026-01-12\n\n## 一、年度目标\n\n2026 年营业收入 52 亿元，归母净利润 5.2 亿元，新签订单 58 亿元，机器人出货 26,000 台。\n\n## 二、业务策略\n\n锂电保持领先，半导体翻倍增长，海外收入 7.2 亿元；软件与服务收入占比提"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_strategy_supply_chain_resilience",
+        "offset": 0,
+        "limit": 3000
+      },
+      "result": {
+        "doc_id": "lantu_strategy_supply_chain_resilience",
+        "title": "# 澜图智能供应链韧性建设方案",
+        "offset": 0,
+        "limit": 3000,
+        "total_chars": 362,
+        "text": "# 澜图智能供应链韧性建设方案\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-02-01 09:00\n更新时间：2025-09-30 16:00\n版本号：v1.5\n文档类型：strategy\n文档族：supply_chain_resilience\n生效日期：2025-09-30\n\n## 一、风险识别\n\n关键物料包括减速器、伺服电机、芯片与视觉相机，其中芯片与减速器存在单一来源风险。\n\n## 二、双源与备库\n\n减速器 2026 年实现 30% 第二来源；关键芯片备库 6 个月；通用物料安全库存 30 天。\n\n## 三、供应商协同\n\n与 22 家战略供应商签订年度框架协议，建立联合预测与产能预留机制。\n\n## 四、应急机制\n\n建立断供应急预案，缺料 48 小时内启动替代方案；每季度开展一次供应链压力测试。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.667,
+    "cited": [
+      "lantu_strategy_supply_chain_resilience",
+      "lantu_meeting_supply_chain"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.277,
+    "number_recall": 1.0
+  }
+}

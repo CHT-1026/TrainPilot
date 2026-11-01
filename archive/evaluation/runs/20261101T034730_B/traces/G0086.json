@@ -1,0 +1,315 @@
+{
+  "qid": "G0086",
+  "question": "控制架构 v2.4 与 v3.3 都强调振动抑制能力，这一项指标是否发生了变化？",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"控制架构 v2.4 v3.3 振动抑制\"}}",
+      "usage": {
+        "prompt_tokens": 374,
+        "total_tokens": 550,
+        "completion_tokens": 176,
+        "completion_tokens_details": {
+          "reasoning_tokens": 146,
+          "text_tokens": 176
+        }
+      },
+      "seconds": 1.421
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_tech_control_architecture\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 2534,
+        "total_tokens": 2945,
+        "completion_tokens": 411,
+        "completion_tokens_details": {
+          "reasoning_tokens": 375,
+          "text_tokens": 411
+        }
+      },
+      "seconds": 3.204
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_tech_control_architecture_v2\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 3225,
+        "total_tokens": 3512,
+        "completion_tokens": 287,
+        "completion_tokens_details": {
+          "reasoning_tokens": 249,
+          "text_tokens": 287
+        }
+      },
+      "seconds": 2.515
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"基础振动抑制\"}}",
+      "usage": {
+        "prompt_tokens": 3833,
+        "total_tokens": 7765,
+        "completion_tokens": 3932,
+        "completion_tokens_details": {
+          "reasoning_tokens": 3912,
+          "text_tokens": 3932
+        }
+      },
+      "seconds": 28.719
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"是的，这一指标发生了变化。根据资料对比：\\n\\n1. **功能描述变化**：\\n   - **v2.4**：仅支持“基础振动抑制”，且明确注明“不具备重力补偿”。\\n   - **v3.3**：支持“振动抑制”（去除了“基础”限定词），并新增了“重力补偿”功能。\\n\\n2. **性能参数变化**：\\n   - **v2.4**：速度环带宽为 600 Hz。\\n   - **v3.3**：速度环带宽提升至 1.2 kHz。\\n\\n综上，v3.3 在保留原有振动抑制能力的基础上，通过增加重力补偿功能和将速度环带宽翻倍，显著增强了系统的抑振性能。\",\"citations\":[\"lantu_tech_control_architecture\",\"lantu_tech_control_architecture_v2\"],\"evidence\":[\"lantu_tech_control_architecture#chunk_2\",\"lantu_tech_control_architecture#chunk_5\",\"lantu_tech_control_architecture_v2#chunk_2\"]}",
+      "usage": {
+        "prompt_tokens": 5028,
+        "total_tokens": 6336,
+        "completion_tokens": 1308,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1064,
+          "text_tokens": 1308
+        }
+      },
+      "seconds": 10.016
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "控制架构 v2.4 v3.3 振动抑制"
+      },
+      "result_sha": "f506fc76e1bcbadb315044e6dce62577ecc12f4093e22219ec61620265d1cdef",
+      "result_chars": 3725,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_control_architecture",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "24de2a6c87ca39a3c2381b94f6200099b7bb75ce6bd516f77f19910064bdca72",
+      "result_chars": 1085,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_control_architecture_v2",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "581bc85faa5be9bad43b62183aef0806a93e437252c90ff8999b75e945a85df3",
+      "result_chars": 913,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "基础振动抑制"
+      },
+      "result_sha": "11683fdfcd1884cf175eb5d4e6edf9a380b04bff6000118a9f60d9a1975a6eac",
+      "result_chars": 1978,
+      "hits": 5
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "是的，这一指标发生了变化。根据资料对比：\n\n1. **功能描述变化**：\n   - **v2.4**：仅支持“基础振动抑制”，且明确注明“不具备重力补偿”。\n   - **v3.3**：支持“振动抑制”（去除了“基础”限定词），并新增了“重力补偿”功能。\n\n2. **性能参数变化**：\n   - **v2.4**：速度环带宽为 600 Hz。\n   - **v3.3**：速度环带宽提升至 1.2 kHz。\n\n综上，v3.3 在保留原有振动抑制能力的基础上，通过增加重力补偿功能和将速度环带宽翻倍，显著增强了系统的抑振性能。",
+    "citations": [
+      "lantu_tech_control_architecture",
+      "lantu_tech_control_architecture_v2"
+    ],
+    "evidence": [
+      "lantu_tech_control_architecture#chunk_2",
+      "lantu_tech_control_architecture#chunk_5",
+      "lantu_tech_control_architecture_v2#chunk_2"
+    ]
+  },
+  "status": "answered",
+  "tokens": 21108,
+  "started_at": "2026-11-01T05:14:41",
+  "elapsed_seconds": 45.88,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "控制架构 v2.4 v3.3 振动抑制"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_tech_control_architecture",
+            "title": "# 澜图智能机器人控制系统架构",
+            "chunk": 0,
+            "score": 23.898,
+            "snippet": "# 澜图智能机器人控制系统架构\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-06-01 09:00\n更新时间：2025-10-20 14:00\n版本号：v3.3\n文档类型：tech\n文档族：control_architecture\n生效日期：2025-10-20\n\n## 一、总体架构\n\n控制系统分为感知层、决策层、运动控制层与执行层，采用 EtherCAT 总线连接伺服与 I/O，总线周期 1 ms。\n\n## 二、控制器\n\nLT-C800 采用双核 ARM + FPGA 架构，支持 8 轴联动、0.5 "
+          },
+          {
+            "doc_id": "lantu_tech_control_architecture_v2",
+            "title": "# 澜图智能机器人控制系统架构（旧版 v2.4）",
+            "chunk": 0,
+            "score": 19.094,
+            "snippet": "# 澜图智能机器人控制系统架构（旧版 v2.4）\n\n所属部门：研发中心\n作者：程知远\n创建时间：2023-08-01 09:00\n更新时间：2024-05-10 18:00\n版本号：v2.4\n文档类型：tech\n文档族：control_architecture\n生效日期：2024-05-10\n\n## 一、总体架构（旧版）\n\n旧版控制系统采用“工控机 + 运动控制卡”的两层结构：上位工控机负责任务调度与人机界面，下位运动控制卡负责插补与伺服闭环。现场总线采用 CANopen，总线周期 2 ms，单条总线最多连接 16"
+          },
+          {
+            "doc_id": "lantu_tech_control_architecture_v2",
+            "title": "# 澜图智能机器人控制系统架构（旧版 v2.4）",
+            "chunk": 1,
+            "score": 15.306,
+            "snippet": "本版本于 2024-05-10 生效，2025-10-20 被 v3.3 取代，仅用于历史版本对比与旧项目维护。"
+          },
+          {
+            "doc_id": "lantu_product_r20_pro_whitepaper",
+            "title": "LT-R20 Pro 机器人技术白皮书",
+            "chunk": 0,
+            "score": 12.787,
+            "snippet": "LT-R20 Pro 机器人技术白皮书\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2025-11-20 09:00\n更新时间：2025-11-28 18:00\n版本号：v0.9\n文档类型：product\n文档族：product_r20_pro\n生效日期：2025-11-28\n一、研发背景\n面向锂电叠片、汽车装配等高频节拍场景，澜图智能研发新一代中型六轴机器人 LT-R20 Pro，计划\n2026 年第二季度量产。\n二、技术指标\n额定负载 22 kg，臂展 1,750 mm，重复定位精度 ±0.02 mm，本体重量"
+          },
+          {
+            "doc_id": "lantu_tech_control_architecture",
+            "title": "# 澜图智能机器人控制系统架构",
+            "chunk": 1,
+            "score": 12.138,
+            "snippet": "与旧版 v2.4 相比，v3.3 的主要变化：现场总线由 CANopen 升级为 EtherCAT，总线周期由 2 ms 缩短到 1 ms；控制器由 LT-C600 单核 ARM + 4 轴运动控制卡升级为 LT-C800 双核 ARM + FPGA，联动轴数由 4 轴增加到 8 轴，插补周期由 1 ms 缩短到 0.5 ms；伺服采样频率由 8 kHz 提升到 16 kHz，编码器由 17 位增量式升级为 23 位绝对值，速度环带宽由 600 Hz 提升到 1.2 kHz；软件栈由 Windows + RTX 迁"
+          },
+          {
+            "doc_id": "lantu_tech_data_platform",
+            "title": "# 澜图智能工业数据平台建设方案",
+            "chunk": 0,
+            "score": 5.827,
+            "snippet": "# 澜图智能工业数据平台建设方案\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-10-01 09:00\n更新时间：2025-07-30 14:00\n版本号：v2.4\n文档类型：tech\n文档族：data_platform\n生效日期：2025-07-30\n\n## 一、平台定位\n\n构建统一工业数据湖仓，支撑设备运维、质量分析与经营决策，覆盖 3 大基地与客户现场。\n\n## 二、数据架构\n\n采集层支持 OPC UA、Modbus、MQTT；存储层采用数据湖 + 数仓分层；服务层提供 BI、API 与算法服务。\n"
+          },
+          {
+            "doc_id": "lantu_org_chart_2024",
+            "title": "# 澜图智能组织架构（2024版）",
+            "chunk": 0,
+            "score": 5.068,
+            "snippet": "# 澜图智能组织架构（2024版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-05 09:00\n更新时间：2024-01-15 10:00\n版本号：v1.0\n文档类型：org\n文档族：org_chart\n生效日期：2024-01-01\n\n## 一、一级部门\n\n2024 年公司设 11 个一级部门：研发中心、产品部、销售中心、供应链中心、制造中心、质量部、财务部、人力资源部、法务合规部、信息技术部、战略投资部。售后服务部隶属销售中心。\n\n## 二、研发体系\n\n研发中心下设 4 个研究所：机器人本"
+          },
+          {
+            "doc_id": "lantu_tech_cloud_platform",
+            "title": "# 澜图智能云平台架构设计",
+            "chunk": 0,
+            "score": 4.785,
+            "snippet": "# 澜图智能云平台架构设计\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-09-01 09:00\n更新时间：2025-09-18 16:00\n版本号：v3.0\n文档类型：tech\n文档族：cloud_platform\n生效日期：2025-09-18\n\n## 一、总体架构\n\n云平台采用微服务架构，基于 Kubernetes 部署，分为设备接入、数据服务、应用服务与开放 API 四层。\n\n## 二、接入能力\n\n单集群支持 5,000 台设备接入，MQTT 消息吞吐 20 万条/秒，设备离线缓存 7 天。\n\n#"
+          },
+          {
+            "doc_id": "lantu_org_chart_2025",
+            "title": "# 澜图智能组织架构（2025版）",
+            "chunk": 0,
+            "score": 4.524,
+            "snippet": "# 澜图智能组织架构（2025版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-03-20 09:00\n更新时间：2025-04-10 10:00\n版本号：v2.0\n文档类型：org\n文档族：org_chart\n生效日期：2025-04-01\n\n## 一、一级部门\n\n2025 年 4 月起公司设 12 个一级部门：研发中心、产品部、销售中心、客户成功部、供应链中心、制造中心、质量部、财务部、人力资源部、法务合规部、信息技术部、售后服务部。售后服务部由销售中心下属部门升级为一级部门。\n\n## 二、研发体"
+          },
+          {
+            "doc_id": "lantu_support_training_certification",
+            "title": "# 澜图智能服务工程师培训与认证体系",
+            "chunk": 0,
+            "score": 4.048,
+            "snippet": "# 澜图智能服务工程师培训与认证体系\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-06-01 09:00\n更新时间：2025-08-08 10:00\n版本号：v2.4\n文档类型：support\n文档族：service_certification\n生效日期：2025-08-08\n\n## 一、认证等级\n\n服务工程师分为 L1 初级、L2 中级、L3 高级三级，分别对应常规维护、故障维修与整线调试。\n\n## 二、培训内容\n\nL1：安全、保养、备件更换（5 天）；L2：电气与控制系统维修（10 天）；L3：整线"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_control_architecture",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_tech_control_architecture",
+        "title": "# 澜图智能机器人控制系统架构",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 898,
+        "text": "# 澜图智能机器人控制系统架构\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-06-01 09:00\n更新时间：2025-10-20 14:00\n版本号：v3.3\n文档类型：tech\n文档族：control_architecture\n生效日期：2025-10-20\n\n## 一、总体架构\n\n控制系统分为感知层、决策层、运动控制层与执行层，采用 EtherCAT 总线连接伺服与 I/O，总线周期 1 ms。\n\n## 二、控制器\n\nLT-C800 采用双核 ARM + FPGA 架构，支持 8 轴联动、0.5 ms 插补周期，内置安全限速与碰撞检测。\n\n## 三、 servo 与编码器\n\n伺服驱动器采样频率 16 kHz，编码器 23 位绝对值，速度环带宽 1.2 kHz，支持振动抑制与重力补偿。\n\n## 四、软件栈\n\n实时内核基于 PREEMPT_RT，运动规划采用 RRT* 与时间最优轨迹，提供 Python/C++ SDK 与 ROS2 驱动。\n\n## 五、可靠性\n\n控制器 MTBF 50,000 小时，工作温度 -10℃ 至 55℃，通过 EMC 4 级测试。\n\n## 六、版本演进（相对旧版 v2.4）\n\n与旧版 v2.4 相比，v3.3 的主要变化：现场总线由 CANopen 升级为 EtherCAT，总线周期由 2 ms 缩短到 1 ms；控制器由 LT-C600 单核 ARM + 4 轴运动控制卡升级为 LT-C800 双核 ARM + FPGA，联动轴数由 4 轴增加到 8 轴，插补周期由 1 ms 缩短到 0.5 ms；伺服采样频率由 8 kHz 提升到 16 kHz，编码器由 17 位增量式升级为 23 位绝对值，速度环带宽由 600 Hz 提升到 1.2 kHz；软件栈由 Windows + RTX 迁移到 PREEMPT_RT，并新增 RRT* 规划、Python/C++ SDK 与 ROS2 驱动；可靠性由 MTBF 30,000 小时、0℃ 至 45℃、EMC 3 级提升到 50,000 小时、-10℃ 至 55℃、EMC 4 级。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_control_architecture_v2",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_tech_control_architecture_v2",
+        "title": "# 澜图智能机器人控制系统架构（旧版 v2.4）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 714,
+        "text": "# 澜图智能机器人控制系统架构（旧版 v2.4）\n\n所属部门：研发中心\n作者：程知远\n创建时间：2023-08-01 09:00\n更新时间：2024-05-10 18:00\n版本号：v2.4\n文档类型：tech\n文档族：control_architecture\n生效日期：2024-05-10\n\n## 一、总体架构（旧版）\n\n旧版控制系统采用“工控机 + 运动控制卡”的两层结构：上位工控机负责任务调度与人机界面，下位运动控制卡负责插补与伺服闭环。现场总线采用 CANopen，总线周期 2 ms，单条总线最多连接 16 个从站，未使用 EtherCAT。\n\n## 二、控制器（旧版）\n\n旧版主控为 LT-C600 工控机，搭载单核 ARM Cortex-A9 处理器，配置 4 轴运动控制卡，支持 4 轴联动，插补周期 1 ms。安全功能依赖外部安全继电器，未内置安全限速与碰撞检测。\n\n## 三、伺服与编码器（旧版）\n\n伺服驱动器采样频率 8 kHz，编码器为 17 位增量式，速度环带宽 600 Hz，支持基础振动抑制，不具备重力补偿。\n\n## 四、软件栈（旧版）\n\n上位机运行 Windows + RTX 实时扩展，运动规划采用梯形加减速与直线插补，提供 C# SDK，未提供 Python/C++ SDK 与 ROS2 驱动。\n\n## 五、可靠性（旧版）\n\n控制器 MTBF 30,000 小时，工作温度 0℃ 至 45℃，通过 EMC 3 级测试，防护等级 IP20。\n\n## 六、版本说明（旧版）\n\n本版本于 2024-05-10 生效，2025-10-20 被 v3.3 取代，仅用于历史版本对比与旧项目维护。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "基础振动抑制"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_tech_control_architecture_v2",
+            "title": "# 澜图智能机器人控制系统架构（旧版 v2.4）",
+            "chunk": 0,
+            "score": 16.744,
+            "snippet": "# 澜图智能机器人控制系统架构（旧版 v2.4）\n\n所属部门：研发中心\n作者：程知远\n创建时间：2023-08-01 09:00\n更新时间：2024-05-10 18:00\n版本号：v2.4\n文档类型：tech\n文档族：control_architecture\n生效日期：2024-05-10\n\n## 一、总体架构（旧版）\n\n旧版控制系统采用“工控机 + 运动控制卡”的两层结构：上位工控机负责任务调度与人机界面，下位运动控制卡负责插补与伺服闭环。现场总线采用 CANopen，总线周期 2 ms，单条总线最多连接 16"
+          },
+          {
+            "doc_id": "lantu_product_r20_pro_whitepaper",
+            "title": "LT-R20 Pro 机器人技术白皮书",
+            "chunk": 0,
+            "score": 11.46,
+            "snippet": "LT-R20 Pro 机器人技术白皮书\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2025-11-20 09:00\n更新时间：2025-11-28 18:00\n版本号：v0.9\n文档类型：product\n文档族：product_r20_pro\n生效日期：2025-11-28\n一、研发背景\n面向锂电叠片、汽车装配等高频节拍场景，澜图智能研发新一代中型六轴机器人 LT-R20 Pro，计划\n2026 年第二季度量产。\n二、技术指标\n额定负载 22 kg，臂展 1,750 mm，重复定位精度 ±0.02 mm，本体重量"
+          },
+          {
+            "doc_id": "lantu_tech_control_architecture",
+            "title": "# 澜图智能机器人控制系统架构",
+            "chunk": 0,
+            "score": 10.95,
+            "snippet": "# 澜图智能机器人控制系统架构\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-06-01 09:00\n更新时间：2025-10-20 14:00\n版本号：v3.3\n文档类型：tech\n文档族：control_architecture\n生效日期：2025-10-20\n\n## 一、总体架构\n\n控制系统分为感知层、决策层、运动控制层与执行层，采用 EtherCAT 总线连接伺服与 I/O，总线周期 1 ms。\n\n## 二、控制器\n\nLT-C800 采用双核 ARM + FPGA 架构，支持 8 轴联动、0.5 "
+          },
+          {
+            "doc_id": "lantu_tech_roadmap",
+            "title": "# 澜图智能技术路线图（2025—2028）",
+            "chunk": 0,
+            "score": 4.367,
+            "snippet": "# 澜图智能技术路线图（2025—2028）\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-11-01 09:00\n更新时间：2025-12-05 16:00\n版本号：v2.2\n文档类型：tech\n文档族：tech_roadmap\n生效日期：2025-12-05\n\n## 一、总体路线\n\n以“本体+控制+视觉+软件”为基础，向具身智能与柔性制造演进，2026 年完成 LT-R20 Pro 与具身智能平台 1.0。\n\n## 二、2025 年\n\nLT-C800 控制器量产、LantuTwin 3.0 发布、LT"
+          },
+          {
+            "doc_id": "lantu_tech_servo",
+            "title": "# 澜图智能伺服驱动与关节模组技术说明",
+            "chunk": 0,
+            "score": 3.819,
+            "snippet": "# 澜图智能伺服驱动与关节模组技术说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-07-01 09:00\n更新时间：2025-08-25 10:00\n版本号：v2.6\n文档类型：tech\n文档族：servo_drive\n生效日期：2025-08-25\n\n## 一、产品范围\n\n自研 400W-7.5kW 伺服驱动器与关节模组，覆盖 LT-R 与 LT-S 全系列，自研比例 61%。\n\n## 二、关键指标\n\n电流环带宽 2.5 kHz，速度环 1.2 kHz，位置精度 23 位，过载能力 300% 持续 "
+          }
+        ]
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_tech_control_architecture",
+      "lantu_tech_control_architecture_v2"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.062,
+    "number_recall": 0.0
+  }
+}

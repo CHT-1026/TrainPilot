@@ -1,0 +1,142 @@
+{
+  "qid": "C0115",
+  "question": "产品参数矩阵（2025）交付与保修表中，LT-V3D 的标准交期、保修期与备件响应分别是多少？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>LT-V3D 交付 保修 备件</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list><parameter=keyword>参数矩阵</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 94,
+        "prompt_tokens": 375,
+        "total_tokens": 469,
+        "completion_tokens_details": {
+          "reasoning_tokens": 41
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.375
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>LT-V3D 标准交期 保修期 备件响应</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list><parameter=keyword>产品参数矩阵</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 72,
+        "prompt_tokens": 465,
+        "total_tokens": 537,
+        "completion_tokens_details": {
+          "reasoning_tokens": 13
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.11
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>LT-V3D 标准交期 保修期 备件响应</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 53,
+        "prompt_tokens": 561,
+        "total_tokens": 614,
+        "completion_tokens_details": {
+          "reasoning_tokens": 12
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.687
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>LT-V3D 交期 保修 备件</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 52,
+        "prompt_tokens": 639,
+        "total_tokens": 691,
+        "completion_tokens_details": {
+          "reasoning_tokens": 15
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 1.188
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>LT-V3D 交期 保修 备件</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 46,
+        "prompt_tokens": 713,
+        "total_tokens": 759,
+        "completion_tokens_details": {
+          "reasoning_tokens": 9
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 1.328
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>LT-V3D 交期 保修 备件</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 787,
+        "total_tokens": 838,
+        "completion_tokens_details": {
+          "reasoning_tokens": 14
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 1.515
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"很抱歉，在当前可用的资料库中未能检索到《产品参数矩阵（2025）》交付与保修表的相关内容，因此无法确认 LT-V3D 的标准交期、保修期与备件响应时间。检索过程中因工具调用未能成功执行，未获取到任何文档片段或原文证据。建议您提供该参数矩阵的文档编号、具体章节名称或相关关键词（如文档标题、发布日期等），以便进一步查证；或确认该资料是否已上传至本系统。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 140,
+        "prompt_tokens": 858,
+        "total_tokens": 998,
+        "completion_tokens_details": {
+          "reasoning_tokens": 7
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 768
+        }
+      },
+      "seconds": 3.782
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "很抱歉，在当前可用的资料库中未能检索到《产品参数矩阵（2025）》交付与保修表的相关内容，因此无法确认 LT-V3D 的标准交期、保修期与备件响应时间。检索过程中因工具调用未能成功执行，未获取到任何文档片段或原文证据。建议您提供该参数矩阵的文档编号、具体章节名称或相关关键词（如文档标题、发布日期等），以便进一步查证；或确认该资料是否已上传至本系统。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4906,
+  "started_at": "2026-11-01T04:21:17",
+  "elapsed_seconds": 14.99,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.321,
+    "number_recall": 0.0
+  }
+}

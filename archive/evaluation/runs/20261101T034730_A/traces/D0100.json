@@ -1,0 +1,245 @@
+{
+  "qid": "D0100",
+  "question": "什么样的渠道商会被予以退出？",
+  "question_type": "条件判断与边界",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>渠道商 退出</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 74,
+        "prompt_tokens": 349,
+        "total_tokens": 423,
+        "completion_tokens_details": {
+          "reasoning_tokens": 45
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.203
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=TOOL><parameter=name>search</parameter><parameter=args>{\"query\": \"渠道商 退出\", \"top_k\": 10}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 56,
+        "prompt_tokens": 415,
+        "total_tokens": 471,
+        "completion_tokens_details": {
+          "reasoning_tokens": 16
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.844
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>渠道商 退出 条件</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 46,
+        "prompt_tokens": 492,
+        "total_tokens": 538,
+        "completion_tokens_details": {
+          "reasoning_tokens": 14
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.859
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"渠道商 退出\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 561,
+        "total_tokens": 611,
+        "completion_tokens_details": {
+          "reasoning_tokens": 26
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 6.375
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=read><parameter=args>{\"doc_id\": \"lantu_sales_channel\", \"offset\": 0, \"limit\": 4000}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 2992,
+        "total_tokens": 3042,
+        "completion_tokens_details": {
+          "reasoning_tokens": 11
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.25
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=read><parameter=doc_id>lantu_sales_channel</parameter><parameter=offset>0</parameter><parameter=limit>4000</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 46,
+        "prompt_tokens": 3068,
+        "total_tokens": 3114,
+        "completion_tokens_details": {
+          "reasoning_tokens": 5
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2944
+        }
+      },
+      "seconds": 1.688
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"根据《澜图智能渠道管理办法》（lantu_sales_channel，v2.7，2025-11-06 生效）\\\"二、准入与退出\\\"章节，退出条款以\\\"连续 12 个月……\\\"为条件开头，但可检索到的文档片段在此处被截断，完整的渠道商退出情形（如连续 12 个月采购额/业绩未达标、违规行为等具体判定标准）未能读取到原文。另外《反商业贿赂管理规定》中\\\"第三方管理\\\"部分可能涉及渠道商违规退出，但其具体内容同样未能获取。因此，目前资料不足以完整回答\\\"什么样的渠道商会被予以退出\\\"，建议直接调阅 lantu_sales_channel 文档\\\"二、准入与退出\\\"章节全文以获取准确口径。\",\"citations\":[\"lantu_sales_channel\",\"lantu_legal_anti_bribery\"],\"evidence\":[\"lantu_sales_channel#片段0\",\"lantu_legal_anti_bribery#片段0\"]}",
+      "usage": {
+        "completion_tokens": 346,
+        "prompt_tokens": 3143,
+        "total_tokens": 3489,
+        "completion_tokens_details": {
+          "reasoning_tokens": 121
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3008
+        }
+      },
+      "seconds": 8.594
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "渠道商 退出",
+        "top_k": 10
+      },
+      "result_sha": "2ab21f0262a695c7d3113369e33fd128571610bc56207a6d39f23ab1ab655b7f",
+      "result_chars": 3853,
+      "hits": 10
+    }
+  ],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "根据《澜图智能渠道管理办法》（lantu_sales_channel，v2.7，2025-11-06 生效）\"二、准入与退出\"章节，退出条款以\"连续 12 个月……\"为条件开头，但可检索到的文档片段在此处被截断，完整的渠道商退出情形（如连续 12 个月采购额/业绩未达标、违规行为等具体判定标准）未能读取到原文。另外《反商业贿赂管理规定》中\"第三方管理\"部分可能涉及渠道商违规退出，但其具体内容同样未能获取。因此，目前资料不足以完整回答\"什么样的渠道商会被予以退出\"，建议直接调阅 lantu_sales_channel 文档\"二、准入与退出\"章节全文以获取准确口径。",
+    "citations": [
+      "lantu_sales_channel",
+      "lantu_legal_anti_bribery"
+    ],
+    "evidence": [
+      "lantu_sales_channel#片段0",
+      "lantu_legal_anti_bribery#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 11688,
+  "started_at": "2026-11-01T04:36:56",
+  "elapsed_seconds": 24.81,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "渠道商 退出",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_sales_channel",
+            "title": "# 澜图智能渠道管理办法",
+            "chunk": 0,
+            "score": 14.59,
+            "snippet": "# 澜图智能渠道管理办法\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-03-05 09:00\n更新时间：2025-11-06 10:00\n版本号：v2.7\n文档类型：sales\n文档族：sales_channel\n生效日期：2025-11-06\n\n## 一、渠道分级\n\n渠道商分为金牌、银牌、认证三级。金牌渠道年度采购额不低于 3,000 万元，享受 82 折拿货价、优先技术支持与联合市场活动。\n\n## 二、准入与退出\n\n新渠道需具备 3 年以上自动化行业经验、专职技术团队不少于 5 人。连续 12 个月"
+          },
+          {
+            "doc_id": "lantu_org_sales_regions",
+            "title": "# 澜图智能销售区域与渠道网络",
+            "chunk": 0,
+            "score": 9.791,
+            "snippet": "# 澜图智能销售区域与渠道网络\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-02-15 09:00\n更新时间：2025-12-05 15:00\n版本号：v3.1\n文档类型：org\n文档族：sales_regions\n生效日期：2025-12-05\n\n## 一、区域划分\n\n销售中心下设华东、华南、华北、西部、海外五个大区，覆盖 32 个国家和地区。华东大区总部苏州，华南大区总部东莞，华北大区总部北京，西部大区总部成都。\n\n## 二、团队规模\n\n销售团队 620 人，其中行业销售 280 人、渠道销售 16"
+          },
+          {
+            "doc_id": "lantu_legal_anti_bribery",
+            "title": "# 澜图智能反商业贿赂管理规定",
+            "chunk": 0,
+            "score": 5.978,
+            "snippet": "# 澜图智能反商业贿赂管理规定\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-03-01 09:00\n更新时间：2025-01-15 10:00\n版本号：v2.4\n文档类型：legal\n文档族：anti_bribery\n生效日期：2025-01-15\n\n## 一、禁止行为\n\n禁止向客户、政府官员、供应商及其亲属提供现金、购物卡、有价证券、贵重礼品、旅游或娱乐安排。\n\n## 二、礼品与招待\n\n商务礼品单价不超过 200 元，须登记备案；业务招待人均不超过 600 元，禁止高消费娱乐。\n\n## 三、第三方管理"
+          },
+          {
+            "doc_id": "lantu_meeting_sales",
+            "title": "2025 年华南大区销售复盘会纪要",
+            "chunk": 0,
+            "score": 4.42,
+            "snippet": "2025 年华南大区销售复盘会纪要\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2025-09-05 09:00\n更新时间：2025-09-05 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_sales_south\n生效日期：2025-09-05\n一、业绩完成\n华南大区前三季度收入 7.42 亿元，年度完成率 108%，位列五大区第一；新签订单 8.6 亿元。\n二、行业机会\n锂电客户扩产带来 3.2 亿元机会；3C 客户自动化改造预算增加；光伏客户资本开支放缓。\n三、渠道问题\n两家"
+          },
+          {
+            "doc_id": "lantu_meeting_ops_2025q3",
+            "title": "2025 年第三季度经营分析会纪要",
+            "chunk": 0,
+            "score": 3.13,
+            "snippet": "2025 年第三季度经营分析会纪要\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-10-10 09:00\n更新时间：2025-10-10 18:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_ops_2025q3\n生效日期：2025-10-10\n一、会议信息\n时间：2025 年 10 月 10 日 09:00-12:00；地点：苏州总部 3 楼会议室；主持：顾承澜；参会：沈亦舟、周敏仪、韩立恒、罗嘉树、陈依然、潘文博、邵岚。\n二、经营回顾\n第三季度营业收入 11.52 亿元，同"
+          },
+          {
+            "doc_id": "lantu_org_department_duties",
+            "title": "# 澜图智能一级部门职责与编制",
+            "chunk": 1,
+            "score": 2.77,
+            "snippet": "| 部门 | 负责人 | 编制（人） | 主要职责 |\n| --- | --- | --- | --- |\n| 研发中心 | 沈亦舟 | 1,286 | 本体/控制器/视觉/具身智能研发 |\n| 产品部 | 孟凡 | 96 | 产品规划与生命周期管理 |\n| 销售中心 | 罗嘉树 | 620 | 区域销售与渠道 |\n| 客户成功部 | 林可 | 86 | 重点客户经营 |\n| 供应链中心 | 韩立恒 | 210 | 采购、计划、物流 |\n| 制造中心 | 韩立恒 | 980 | 三大基地生产 |\n| 质量部 | 潘"
+          },
+          {
+            "doc_id": "lantu_hr_social",
+            "title": "# 澜图智能社会招聘管理办法",
+            "chunk": 0,
+            "score": 2.646,
+            "snippet": "# 澜图智能社会招聘管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-02-01 09:00\n更新时间：2025-07-15 11:00\n版本号：v2.5\n文档类型：hr\n文档族：social_recruitment\n生效日期：2025-07-15\n\n## 一、适用岗位\n\n适用于经理级及以上、高级技术专家与紧缺岗位；年度社招计划 200 人。\n\n## 二、渠道管理\n\n使用猎头、招聘平台、内部推荐与行业社群。猎头费用为年薪的 20%-25%，保证期 90 天。\n\n## 三、内部推荐\n\n员工推荐成功入"
+          },
+          {
+            "doc_id": "lantu_support_complaint",
+            "title": "# 澜图智能客户投诉处理管理办法",
+            "chunk": 0,
+            "score": 2.589,
+            "snippet": "# 澜图智能客户投诉处理管理办法\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-02-01 09:00\n更新时间：2025-09-01 09:00\n版本号：v2.8\n文档类型：support\n文档族：complaint_management\n生效日期：2025-09-01\n\n## 一、受理渠道\n\n客户可通过 400 热线、服务邮箱、客户门户或销售转达投诉，受理后 1 小时内录入系统。\n\n## 二、分级处理\n\n一般投诉 24 小时内响应、3 个工作日内闭环；重大投诉 2 小时内上报总经理并成立专项小组。\n\n"
+          },
+          {
+            "doc_id": "lantu_support_system",
+            "title": "# 澜图智能客户服务体系白皮书",
+            "chunk": 0,
+            "score": 2.574,
+            "snippet": "# 澜图智能客户服务体系白皮书\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-03-01 09:00\n更新时间：2025-12-08 10:00\n版本号：v3.2\n文档类型：support\n文档族：service_system\n生效日期：2025-12-08\n\n## 一、服务网络\n\n公司在全国设有 68 个服务网点、12 个备件仓，覆盖 31 个省级行政区；海外设 3 个服务点。售后服务团队 412 人，认证工程师 286 人。\n\n## 二、服务内容\n\n提供安装调试、培训、预防性维护、故障维修、备件供应、"
+          },
+          {
+            "doc_id": "lantu_sales_policy",
+            "title": "# 澜图智能销售政策与客户分级管理办法",
+            "chunk": 0,
+            "score": 2.322,
+            "snippet": "# 澜图智能销售政策与客户分级管理办法\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-01-20 09:00\n更新时间：2025-09-25 15:00\n版本号：v3.4\n文档类型：sales\n文档族：sales_policy\n生效日期：2025-09-25\n\n## 一、客户分级\n\n客户分为 S、A、B、C 四级。S 级为年采购额 5,000 万元以上战略客户，由客户成功部直管；A 级 1,000-5,000 万元；B 级 300-1,000 万元；C 级 300 万元以下由渠道覆盖。\n\n## 二、价格体"
+          }
+        ]
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_sales_channel",
+      "lantu_legal_anti_bribery"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.263,
+    "number_recall": 0.0
+  }
+}

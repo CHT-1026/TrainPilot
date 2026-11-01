@@ -1,0 +1,142 @@
+{
+  "qid": "A0066",
+  "question": "按《一级部门职责与编制》的部门编制表，供应链中心的主要职责是什么？",
+  "question_type": "事实检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=list><parameter=keyword>一级部门职责与编制</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 43,
+        "prompt_tokens": 361,
+        "total_tokens": 404,
+        "completion_tokens_details": {
+          "reasoning_tokens": 21
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.734
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=list><parameter=keyword>一级部门</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 420,
+        "total_tokens": 470,
+        "completion_tokens_details": {
+          "reasoning_tokens": 31
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.094
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=list><parameter=keyword>部门职责</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 28,
+        "prompt_tokens": 476,
+        "total_tokens": 504,
+        "completion_tokens_details": {
+          "reasoning_tokens": 9
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.016
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=list><parameter=keyword>部门职责</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 42,
+        "prompt_tokens": 532,
+        "total_tokens": 574,
+        "completion_tokens_details": {
+          "reasoning_tokens": 23
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.718
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=list><parameter=keyword>一级部门职责与编制</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 47,
+        "prompt_tokens": 588,
+        "total_tokens": 635,
+        "completion_tokens_details": {
+          "reasoning_tokens": 25
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 2.375
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>一级部门职责与编制 供应链中心</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 59,
+        "prompt_tokens": 647,
+        "total_tokens": 706,
+        "completion_tokens_details": {
+          "reasoning_tokens": 26
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 1.578
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"未能检索到《一级部门职责与编制》文档，无法给出供应链中心的主要职责。此前多次检索调用均未能成功返回文档内容，资料不足，无法作答。建议提供该文档或其准确名称/doc_id 后重新查询。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 103,
+        "prompt_tokens": 714,
+        "total_tokens": 817,
+        "completion_tokens_details": {
+          "reasoning_tokens": 28
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 3.547
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "未能检索到《一级部门职责与编制》文档，无法给出供应链中心的主要职责。此前多次检索调用均未能成功返回文档内容，资料不足，无法作答。建议提供该文档或其准确名称/doc_id 后重新查询。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4110,
+  "started_at": "2026-11-01T03:51:42",
+  "elapsed_seconds": 14.06,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.5,
+    "number_recall": 0.0
+  }
+}

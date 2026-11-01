@@ -1,0 +1,282 @@
+{
+  "qid": "B0016",
+  "question": "将社会招聘文档的 200 人计划和 2026 届校招 120 人计划作算术合并，两者各占多少？能否直接称为同一年度实际招聘总量？",
+  "question_type": "汇总计算",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=list><parameter=keyword>招聘</parameter></function></tool_call><tool_call><function=search><parameter=query>社会招聘 200人 计划</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 89,
+        "prompt_tokens": 391,
+        "total_tokens": 480,
+        "completion_tokens_details": {
+          "reasoning_tokens": 38
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.593
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"招聘\"}}",
+      "usage": {
+        "completion_tokens": 25,
+        "prompt_tokens": 479,
+        "total_tokens": 504,
+        "completion_tokens_details": {
+          "reasoning_tokens": 10
+        },
+        "prompt_tokens_details": null
+      },
+      "seconds": 2.047
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"200人 社会招聘 计划 年度\",\"top_k\":5}}",
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 599,
+        "total_tokens": 650,
+        "completion_tokens_details": {
+          "reasoning_tokens": 18
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 2.906
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_hr_social\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 105,
+        "prompt_tokens": 1883,
+        "total_tokens": 1988,
+        "completion_tokens_details": {
+          "reasoning_tokens": 75
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 3.235
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_hr_campus\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 129,
+        "prompt_tokens": 2256,
+        "total_tokens": 2385,
+        "completion_tokens_details": {
+          "reasoning_tokens": 98
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 1856
+        }
+      },
+      "seconds": 3.922
+    },
+    {
+      "round": 6,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"算术合并：200（年度社招计划）+120（2026 届校招计划）=320 人。其中社招占 200/320=62.5%，校招占 120/320=37.5%。\\n\\n但不能直接称为“同一年度实际招聘总量”，理由有三：① 口径不同——社招文件写的是“年度社招计划”（按自然年度），校招文件写的是“2026 届校招计划”（按毕业届次，2026 年 7 月才入职，实习可提前至 2026 年 3 月），两者统计周期并未对齐到同一年度；② 性质不同——两份均为“计划”数，文档中没有实际到岗/入职人数，不能把计划当实际；③ 人群不同——社招面向经理级及以上、高级技术专家与紧缺岗位，与校招应届生不重叠，简单相加只能作为“计划规模粗略合并”的参考值，若要表述实际招聘总量，需另行取人力资源部的实际入职统计口径。\",\"citations\":[\"lantu_hr_social\",\"lantu_hr_campus\"],\"evidence\":[\"lantu_hr_social#片段0\",\"lantu_hr_campus#片段0\"]}",
+      "usage": {
+        "completion_tokens": 476,
+        "prompt_tokens": 2696,
+        "total_tokens": 3172,
+        "completion_tokens_details": {
+          "reasoning_tokens": 162
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2240
+        }
+      },
+      "seconds": 13.812
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "招聘"
+      },
+      "result_sha": "5f577af7fd30e7fce2ab977e918841b26f9125b33948f5f15c6955e8af7c56c0",
+      "result_chars": 192,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "200人 社会招聘 计划 年度",
+        "top_k": 5
+      },
+      "result_sha": "e7aa85f78b858b2e1472b8aa03630e1c36022b9ddbcdbfb002d66765a85485f8",
+      "result_chars": 1938,
+      "hits": 5
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_social",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "e00c79a3977c466da0e80513c23a4438a4111dd6a973eb2997a88a803081cd3e",
+      "result_chars": 523,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_campus",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "415063ec5603af595fd42fb6d2d50495d9ccc3115e76849f00ed281aa6536c68",
+      "result_chars": 584,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "算术合并：200（年度社招计划）+120（2026 届校招计划）=320 人。其中社招占 200/320=62.5%，校招占 120/320=37.5%。\n\n但不能直接称为“同一年度实际招聘总量”，理由有三：① 口径不同——社招文件写的是“年度社招计划”（按自然年度），校招文件写的是“2026 届校招计划”（按毕业届次，2026 年 7 月才入职，实习可提前至 2026 年 3 月），两者统计周期并未对齐到同一年度；② 性质不同——两份均为“计划”数，文档中没有实际到岗/入职人数，不能把计划当实际；③ 人群不同——社招面向经理级及以上、高级技术专家与紧缺岗位，与校招应届生不重叠，简单相加只能作为“计划规模粗略合并”的参考值，若要表述实际招聘总量，需另行取人力资源部的实际入职统计口径。",
+    "citations": [
+      "lantu_hr_social",
+      "lantu_hr_campus"
+    ],
+    "evidence": [
+      "lantu_hr_social#片段0",
+      "lantu_hr_campus#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 9179,
+  "started_at": "2026-11-01T03:44:54",
+  "elapsed_seconds": 29.51,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "招聘"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_hr_campus",
+            "title": "# 澜图智能 2026 届校园招聘方案"
+          },
+          {
+            "doc_id": "lantu_hr_recruitment",
+            "title": "# 澜图智能招聘管理制度"
+          },
+          {
+            "doc_id": "lantu_hr_social",
+            "title": "# 澜图智能社会招聘管理办法"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "200人 社会招聘 计划 年度",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_hr_social",
+            "title": "# 澜图智能社会招聘管理办法",
+            "chunk": 0,
+            "score": 23.671,
+            "snippet": "# 澜图智能社会招聘管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-02-01 09:00\n更新时间：2025-07-15 11:00\n版本号：v2.5\n文档类型：hr\n文档族：social_recruitment\n生效日期：2025-07-15\n\n## 一、适用岗位\n\n适用于经理级及以上、高级技术专家与紧缺岗位；年度社招计划 200 人。\n\n## 二、渠道管理\n\n使用猎头、招聘平台、内部推荐与行业社群。猎头费用为年薪的 20%-25%，保证期 90 天。\n\n## 三、内部推荐\n\n员工推荐成功入"
+          },
+          {
+            "doc_id": "lantu_hr_campus",
+            "title": "# 澜图智能 2026 届校园招聘方案",
+            "chunk": 0,
+            "score": 8.884,
+            "snippet": "# 澜图智能 2026 届校园招聘方案\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-08-15 09:00\n更新时间：2025-09-20 15:00\n版本号：v1.0\n文档类型：hr\n文档族：campus_recruitment_2026\n生效日期：2025-09-20\n\n## 一、招聘计划\n\n2026 届校招计划 120 人，其中研发 78 人、产品 12 人、销售 18 人、职能 12 人；重点院校 18 所。\n\n## 二、岗位方向\n\n机器人算法、运动控制、机器视觉、嵌入式软件、机械结构、售前技"
+          },
+          {
+            "doc_id": "lantu_company_milestones_2025",
+            "title": "# 澜图智能 2025 年度大事记",
+            "chunk": 0,
+            "score": 7.14,
+            "snippet": "# 澜图智能 2025 年度大事记\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-12-31 18:00\n更新时间：2026-01-06 09:00\n版本号：v1.0\n文档类型：company\n文档族：annual_milestones_2025\n生效日期：2026-01-06\n\n## 一、经营里程碑\n\n2025 年营业收入 42.63 亿元，同比增长 19.1%；新签订单 48.90 亿元；机器人出货 21,400 台；第 10 万台机器人于 9 月 12 日下线。\n\n## 二、组织里程碑\n\n3 月"
+          },
+          {
+            "doc_id": "lantu_strategy_esg",
+            "title": "# 澜图智能 ESG 与可持续发展报告",
+            "chunk": 0,
+            "score": 6.697,
+            "snippet": "# 澜图智能 ESG 与可持续发展报告\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2025-04-22 09:00\n更新时间：2025-04-25 10:00\n版本号：v2.0\n文档类型：strategy\n文档族：esg_report\n生效日期：2025-04-25\n\n## 一、环境\n\n2025 年苏州基地光伏装机 6.2MW，绿电占比 28%；单位产值能耗下降 9.6%；危废合规处置率 100%。\n\n## 二、社会\n\n员工培训人均 32 小时；安全生产投入 1,200 万元；公益捐赠 380 万元，支持职业"
+          },
+          {
+            "doc_id": "lantu_org_department_duties",
+            "title": "# 澜图智能一级部门职责与编制",
+            "chunk": 1,
+            "score": 6.081,
+            "snippet": "| 部门 | 负责人 | 编制（人） | 主要职责 |\n| --- | --- | --- | --- |\n| 研发中心 | 沈亦舟 | 1,286 | 本体/控制器/视觉/具身智能研发 |\n| 产品部 | 孟凡 | 96 | 产品规划与生命周期管理 |\n| 销售中心 | 罗嘉树 | 620 | 区域销售与渠道 |\n| 客户成功部 | 林可 | 86 | 重点客户经营 |\n| 供应链中心 | 韩立恒 | 210 | 采购、计划、物流 |\n| 制造中心 | 韩立恒 | 980 | 三大基地生产 |\n| 质量部 | 潘"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_social",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_hr_social",
+        "title": "# 澜图智能社会招聘管理办法",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 361,
+        "text": "# 澜图智能社会招聘管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-02-01 09:00\n更新时间：2025-07-15 11:00\n版本号：v2.5\n文档类型：hr\n文档族：social_recruitment\n生效日期：2025-07-15\n\n## 一、适用岗位\n\n适用于经理级及以上、高级技术专家与紧缺岗位；年度社招计划 200 人。\n\n## 二、渠道管理\n\n使用猎头、招聘平台、内部推荐与行业社群。猎头费用为年薪的 20%-25%，保证期 90 天。\n\n## 三、内部推荐\n\n员工推荐成功入职并转正后，奖励 3,000-10,000 元；关键技术岗位奖励 15,000 元。\n\n## 四、定级与薪酬\n\n依据岗位价值与候选人能力定级，薪酬在带宽内浮动；超出带宽须 HRVP 与 CFO 审批。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_campus",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_hr_campus",
+        "title": "# 澜图智能 2026 届校园招聘方案",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 417,
+        "text": "# 澜图智能 2026 届校园招聘方案\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-08-15 09:00\n更新时间：2025-09-20 15:00\n版本号：v1.0\n文档类型：hr\n文档族：campus_recruitment_2026\n生效日期：2025-09-20\n\n## 一、招聘计划\n\n2026 届校招计划 120 人，其中研发 78 人、产品 12 人、销售 18 人、职能 12 人；重点院校 18 所。\n\n## 二、岗位方向\n\n机器人算法、运动控制、机器视觉、嵌入式软件、机械结构、售前技术。硕士及以上占比目标 65%。\n\n## 三、薪酬方案\n\n本科年薪 18-24 万元，硕士 25-35 万元，博士 40-60 万元；提供苏州落户、人才公寓与安家补贴。\n\n## 四、招聘节奏\n\n9 月宣讲、10 月笔试面试、11 月发放 offer、2026 年 7 月入职；实习可提前至 2026 年 3 月。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_hr_social",
+      "lantu_hr_campus"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.298,
+    "number_recall": 1.0
+  }
+}

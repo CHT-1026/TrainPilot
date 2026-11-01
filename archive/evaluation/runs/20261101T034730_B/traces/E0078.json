@@ -1,0 +1,166 @@
+{
+  "qid": "E0078",
+  "question": "履约异常事项的上报时限与法务抽查频次是什么？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"履约异常 上报时限 法务抽查\",\"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 361,
+        "total_tokens": 559,
+        "completion_tokens": 198,
+        "completion_tokens_details": {
+          "reasoning_tokens": 168,
+          "text_tokens": 198
+        }
+      },
+      "seconds": 2.047
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_contract\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 1496,
+        "total_tokens": 1833,
+        "completion_tokens": 337,
+        "completion_tokens_details": {
+          "reasoning_tokens": 304,
+          "text_tokens": 337
+        }
+      },
+      "seconds": 3.187
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据《澜图智能合同管理制度》，履约异常事项（如逾期交付、质量争议与回款异常）须在 **3 个工作日**内上报；法务合规部的履约抽查频次为 **每季度**一次。\",\"citations\":[\"lantu_policy_contract\"],\"evidence\":[\"lantu_policy_contract#chunk 0\"]}",
+      "usage": {
+        "prompt_tokens": 1911,
+        "total_tokens": 2120,
+        "completion_tokens": 209,
+        "completion_tokens_details": {
+          "reasoning_tokens": 129,
+          "text_tokens": 209
+        }
+      },
+      "seconds": 1.954
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "履约异常 上报时限 法务抽查",
+        "top_k": 5
+      },
+      "result_sha": "e7b86655892b1e2600a3ee907ff6ff3b482595ed9c9e94f49ec9ea474761ba0e",
+      "result_chars": 1947,
+      "hits": 5
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_contract",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "b7a523207c2ba34d6415d7b2020f81c04aee3ed988ed2c9bb76a1080d9733c5f",
+      "result_chars": 649,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《澜图智能合同管理制度》，履约异常事项（如逾期交付、质量争议与回款异常）须在 **3 个工作日**内上报；法务合规部的履约抽查频次为 **每季度**一次。",
+    "citations": [
+      "lantu_policy_contract"
+    ],
+    "evidence": [
+      "lantu_policy_contract#chunk 0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 4512,
+  "started_at": "2026-11-01T04:50:43",
+  "elapsed_seconds": 7.19,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "履约异常 上报时限 法务抽查",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_policy_contract",
+            "title": "# 澜图智能合同管理制度",
+            "chunk": 0,
+            "score": 19.945,
+            "snippet": "# 澜图智能合同管理制度\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-02-01 09:00\n更新时间：2025-05-12 15:00\n版本号：v3.0\n文档类型：policy\n文档族：contract_management\n生效日期：2025-05-12\n\n## 一、合同分类\n\n合同分为销售合同、采购合同、服务合同、保密协议、租赁合同与劳动合同。销售与采购合同须使用公司标准模板，非标条款须法务审核。\n\n## 二、审批权限\n\n合同金额 1,000 万元以上须法务合规部与 CFO 联合审批；5,000 "
+          },
+          {
+            "doc_id": "lantu_legal_data_compliance",
+            "title": "# 澜图智能数据合规与隐私保护规范",
+            "chunk": 0,
+            "score": 5.426,
+            "snippet": "# 澜图智能数据合规与隐私保护规范\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-07-01 09:00\n更新时间：2025-09-01 09:00\n版本号：v2.6\n文档类型：legal\n文档族：data_compliance\n生效日期：2025-09-01\n\n## 一、适用法律\n\n遵守《个人信息保护法》《数据安全法》《网络安全法》及欧盟 GDPR，处理个人信息须遵循最小必要与告知同意原则。\n\n## 二、数据出境\n\n向境外提供个人信息或重要数据须开展安全评估或签订标准合同，涉及研发数据的须经信息安全委员"
+          },
+          {
+            "doc_id": "lantu_policy_reimbursement",
+            "title": "# 澜图智能费用报销管理办法",
+            "chunk": 0,
+            "score": 4.212,
+            "snippet": "# 澜图智能费用报销管理办法\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-03-10 09:00\n更新时间：2025-06-18 10:00\n版本号：v3.2\n文档类型：policy\n文档族：reimbursement\n生效日期：2025-06-18\n\n## 一、报销范围\n\n差旅费、业务招待费、办公费、培训费、通讯费、车辆使用费及经批准的其他费用。个人消费、罚款与无票据支出不予报销。\n\n## 二、报销时限\n\n费用发生后 30 个自然日内提交报销，跨年度费用须在次年 1 月 15 日前完成，逾期需财务总监审"
+          },
+          {
+            "doc_id": "lantu_hr_recruitment",
+            "title": "# 澜图智能招聘管理制度",
+            "chunk": 0,
+            "score": 4.173,
+            "snippet": "# 澜图智能招聘管理制度\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-05 09:00\n更新时间：2025-06-10 10:00\n版本号：v3.1\n文档类型：hr\n文档族：recruitment\n生效日期：2025-06-10\n\n## 一、招聘原则\n\n坚持公开、公平、择优，优先内部推荐与内部转岗；关键岗位实行背景调查与多轮面试。\n\n## 二、招聘流程\n\n需求审批 → 简历筛选 → 专业面试 → 综合面试 → 薪酬沟通 → 背景调查 → 发放录用通知。研发岗位增加技术笔试与代码评审。\n\n## 三"
+          },
+          {
+            "doc_id": "lantu_support_complaint",
+            "title": "# 澜图智能客户投诉处理管理办法",
+            "chunk": 0,
+            "score": 3.28,
+            "snippet": "# 澜图智能客户投诉处理管理办法\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-02-01 09:00\n更新时间：2025-09-01 09:00\n版本号：v2.8\n文档类型：support\n文档族：complaint_management\n生效日期：2025-09-01\n\n## 一、受理渠道\n\n客户可通过 400 热线、服务邮箱、客户门户或销售转达投诉，受理后 1 小时内录入系统。\n\n## 二、分级处理\n\n一般投诉 24 小时内响应、3 个工作日内闭环；重大投诉 2 小时内上报总经理并成立专项小组。\n\n"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_contract",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_contract",
+        "title": "# 澜图智能合同管理制度",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 479,
+        "text": "# 澜图智能合同管理制度\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-02-01 09:00\n更新时间：2025-05-12 15:00\n版本号：v3.0\n文档类型：policy\n文档族：contract_management\n生效日期：2025-05-12\n\n## 一、合同分类\n\n合同分为销售合同、采购合同、服务合同、保密协议、租赁合同与劳动合同。销售与采购合同须使用公司标准模板，非标条款须法务审核。\n\n## 二、审批权限\n\n合同金额 1,000 万元以上须法务合规部与 CFO 联合审批；5,000 万元以上须总经理审批；涉及知识产权许可的合同须 CTO 会签。\n\n## 三、用印与归档\n\n合同用印须在 OA 提交用印申请，附审批记录与合同终稿；合同正本 15 个工作日内归档，保存期限不少于 10 年。\n\n## 四、履约管理\n\n业务部门负责履约跟踪，法务合规部每季度抽查；逾期交付、质量争议与回款异常须在 3 个工作日内上报。\n\n## 五、违约与争议\n\n违约金按合同约定执行，单方解除须经法务评估；诉讼与仲裁案件由法务合规部统一管理。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_policy_contract"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.415,
+    "number_recall": 0.0
+  }
+}

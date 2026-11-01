@@ -1,0 +1,334 @@
+{
+  "qid": "M0206",
+  "question": "客户说的“数字孪生”平台，正式名字和版本号是什么？它现在能做到什么程度？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>数字孪生 平台 版本</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 56,
+        "prompt_tokens": 365,
+        "total_tokens": 421,
+        "completion_tokens_details": {
+          "reasoning_tokens": 22
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.891
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"数字孪生\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 39,
+        "prompt_tokens": 436,
+        "total_tokens": 475,
+        "completion_tokens_details": {
+          "reasoning_tokens": 16
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.547
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_product_digital_twin\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 43,
+        "prompt_tokens": 2828,
+        "total_tokens": 2871,
+        "completion_tokens_details": {
+          "reasoning_tokens": 10
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.187
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"LantuTwin 路线图 下一代 版本\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 109,
+        "prompt_tokens": 3241,
+        "total_tokens": 3350,
+        "completion_tokens_details": {
+          "reasoning_tokens": 75
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2816
+        }
+      },
+      "seconds": 2.578
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"客户所说的“数字孪生”平台正式名称为 **LantuTwin**，当前版本为 **LantuTwin 3.0**（文档版本号 v3.0，生效日期 2025-06-30）。该平台是面向智能工厂规划、调试与运维的数字孪生平台，支持机器人、产线与物流系统的虚实同步。目前能力包括：单项目支持 500 台设备接入，数据刷新延迟低于 80ms，仿真精度 99.5%，支持 3D 可视化、碰撞检测与节拍仿真；支持私有化与云端部署，提供 Kubernetes 编排方案，单集群可支撑 5,000 台设备；与 MES、WMS、ERP 通过标准接口集成。实际价值方面，某汽车零部件客户通过虚拟调试将现场调试周期由 21 天缩短至 9 天，停线风险下降 46%。\",\"citations\":[\"lantu_product_digital_twin\",\"lantu_tech_roadmap\"],\"evidence\":[\"lantu_product_digital_twin#片段0\",\"lantu_tech_roadmap#片段0\"]}",
+      "usage": {
+        "completion_tokens": 510,
+        "prompt_tokens": 5628,
+        "total_tokens": 6138,
+        "completion_tokens_details": {
+          "reasoning_tokens": 242
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3200
+        }
+      },
+      "seconds": 12.297
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "数字孪生",
+        "top_k": 10
+      },
+      "result_sha": "9af0332ef7a9718942c38fa7bbbc80b6b9108b74059541a5220217fdcd287c29",
+      "result_chars": 3878,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_digital_twin",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "f782850027392ad8403562cdf5505d94ed1aab5c5dd19d879f8e55be44d8397c",
+      "result_chars": 611,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "LantuTwin 路线图 下一代 版本",
+        "top_k": 10
+      },
+      "result_sha": "a4dd1a8ab429c9733111d17e72c250794fbc43590f70a54a1841be3e1bfb1f0b",
+      "result_chars": 3902,
+      "hits": 10
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "客户所说的“数字孪生”平台正式名称为 **LantuTwin**，当前版本为 **LantuTwin 3.0**（文档版本号 v3.0，生效日期 2025-06-30）。该平台是面向智能工厂规划、调试与运维的数字孪生平台，支持机器人、产线与物流系统的虚实同步。目前能力包括：单项目支持 500 台设备接入，数据刷新延迟低于 80ms，仿真精度 99.5%，支持 3D 可视化、碰撞检测与节拍仿真；支持私有化与云端部署，提供 Kubernetes 编排方案，单集群可支撑 5,000 台设备；与 MES、WMS、ERP 通过标准接口集成。实际价值方面，某汽车零部件客户通过虚拟调试将现场调试周期由 21 天缩短至 9 天，停线风险下降 46%。",
+    "citations": [
+      "lantu_product_digital_twin",
+      "lantu_tech_roadmap"
+    ],
+    "evidence": [
+      "lantu_product_digital_twin#片段0",
+      "lantu_tech_roadmap#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 13255,
+  "started_at": "2026-11-01T05:41:58",
+  "elapsed_seconds": 19.5,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "数字孪生",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_product_digital_twin",
+            "title": "# LantuTwin 数字孪生平台介绍",
+            "chunk": 0,
+            "score": 9.534,
+            "snippet": "# LantuTwin 数字孪生平台介绍\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-09-01 09:00\n更新时间：2025-06-30 16:00\n版本号：v3.0\n文档类型：product\n文档族：product_digital_twin\n生效日期：2025-06-30\n\n## 一、平台定位\n\nLantuTwin 3.0 是面向智能工厂规划、调试与运维的数字孪生平台，支持机器人、产线与物流系统的虚实同步。\n\n## 二、核心能力\n\n单项目支持 500 台设备接入，数据刷新延迟低于 80 ms，仿真"
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 1,
+            "score": 7.856,
+            "snippet": "| 产品线 | 代表型号 | 负载 | 典型行业 |\n| --- | --- | --- | --- |\n| 六轴机器人 | LT-R6/R12/R20/R50/R210 | 6-210 kg | 汽车、锂电、金属加工 |\n| SCARA | LT-S4/S10 | 4-10 kg | 3C、光伏、食品 |\n| 移动机器人 | LT-AMR-500/1000/2000 | 500-2,000 kg | 物流、半导体 |\n| 机器视觉 | LT-V3D | — | 装配、检测 |\n| 控制器 | LT-C800 | "
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 0,
+            "score": 5.952,
+            "snippet": "# 澜图智能产品与解决方案总览\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-02-20 09:00\n更新时间：2025-12-22 10:00\n版本号：v6.0\n文档类型：product\n文档族：product_overview\n生效日期：2025-12-22\n\n## 一、产品矩阵\n\n公司产品覆盖六轴工业机器人、SCARA 机器人、自主移动机器人（AMR）、机器视觉、运动控制器、数字孪生平台与行业工作站，形成“本体+控制器+视觉+软件+工艺”的一体化方案。\n\n## 二、行业方案\n\n重点行业包括汽车及零部件、"
+          },
+          {
+            "doc_id": "lantu_org_rd_system",
+            "title": "# 澜图智能研发体系与投入",
+            "chunk": 0,
+            "score": 5.708,
+            "snippet": "# 澜图智能研发体系与投入\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-02-01 09:00\n更新时间：2026-01-12 10:00\n版本号：v5.0\n文档类型：org\n文档族：rd_system\n生效日期：2026-01-12\n\n## 一、研发架构\n\n研发中心下设机器人本体研究所、控制器研究所、机器视觉研究所、工艺应用研究所、具身智能研究所，另设测试中心与可靠性实验室。\n\n## 二、人员结构\n\n研发人员 1,286 人，其中博士 48 人、硕士 612 人，35 岁以下占比 61%。2025 年"
+          },
+          {
+            "doc_id": "lantu_company_milestones_2025",
+            "title": "# 澜图智能 2025 年度大事记",
+            "chunk": 0,
+            "score": 5.708,
+            "snippet": "# 澜图智能 2025 年度大事记\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-12-31 18:00\n更新时间：2026-01-06 09:00\n版本号：v1.0\n文档类型：company\n文档族：annual_milestones_2025\n生效日期：2026-01-06\n\n## 一、经营里程碑\n\n2025 年营业收入 42.63 亿元，同比增长 19.1%；新签订单 48.90 亿元；机器人出货 21,400 台；第 10 万台机器人于 9 月 12 日下线。\n\n## 二、组织里程碑\n\n3 月"
+          },
+          {
+            "doc_id": "lantu_case_07_maifeng",
+            "title": "# 客户案例：麦丰食品后端包装项目",
+            "chunk": 0,
+            "score": 4.909,
+            "snippet": "# 客户案例：麦丰食品后端包装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_maifeng\n生效日期：2024-12-20\n\n## 一、客户背景\n\n麦丰食品位于漯河，主营食品业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖6 条"
+          },
+          {
+            "doc_id": "lantu_case_04_xinghe",
+            "title": "# 客户案例：星禾电子精密组装项目",
+            "chunk": 0,
+            "score": 4.902,
+            "snippet": "# 客户案例：星禾电子精密组装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_xinghe\n生效日期：2024-12-20\n\n## 一、客户背景\n\n星禾电子位于昆山，主营3C 电子业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖8"
+          },
+          {
+            "doc_id": "lantu_case_03_yaoyang",
+            "title": "# 客户案例：曜阳光能电池片串焊项目",
+            "chunk": 0,
+            "score": 4.887,
+            "snippet": "# 客户案例：曜阳光能电池片串焊项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_yaoyang\n生效日期：2025-12-20\n\n## 一、客户背景\n\n曜阳光能位于合肥，主营光伏业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖16"
+          },
+          {
+            "doc_id": "lantu_case_12_shengda",
+            "title": "# 客户案例：昇达电梯门板装配项目",
+            "chunk": 0,
+            "score": 4.872,
+            "snippet": "# 客户案例：昇达电梯门板装配项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_shengda\n生效日期：2025-12-20\n\n## 一、客户背景\n\n昇达电梯位于湖州，主营电梯业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖3 条"
+          },
+          {
+            "doc_id": "lantu_case_10_hengrui",
+            "title": "# 客户案例：恒锐精密机床上下料项目",
+            "chunk": 0,
+            "score": 4.864,
+            "snippet": "# 客户案例：恒锐精密机床上下料项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2023-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_hengrui\n生效日期：2023-12-20\n\n## 一、客户背景\n\n恒锐精密位于宁波，主营金属加工业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2023 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_digital_twin",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_product_digital_twin",
+        "title": "# LantuTwin 数字孪生平台介绍",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 432,
+        "text": "# LantuTwin 数字孪生平台介绍\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-09-01 09:00\n更新时间：2025-06-30 16:00\n版本号：v3.0\n文档类型：product\n文档族：product_digital_twin\n生效日期：2025-06-30\n\n## 一、平台定位\n\nLantuTwin 3.0 是面向智能工厂规划、调试与运维的数字孪生平台，支持机器人、产线与物流系统的虚实同步。\n\n## 二、核心能力\n\n单项目支持 500 台设备接入，数据刷新延迟低于 80 ms，仿真精度 99.5%，支持 3D 可视化、碰撞检测与节拍仿真。\n\n## 三、部署方式\n\n支持私有化与云端部署，提供 Kubernetes 编排方案，单集群可支撑 5,000 台设备；与 MES、WMS、ERP 通过标准接口集成。\n\n## 四、客户价值\n\n某汽车零部件客户通过虚拟调试将现场调试周期由 21 天缩短至 9 天，停线风险下降 46%。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "LantuTwin 路线图 下一代 版本",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_tech_roadmap",
+            "title": "# 澜图智能技术路线图（2025—2028）",
+            "chunk": 0,
+            "score": 13.388,
+            "snippet": "# 澜图智能技术路线图（2025—2028）\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-11-01 09:00\n更新时间：2025-12-05 16:00\n版本号：v2.2\n文档类型：tech\n文档族：tech_roadmap\n生效日期：2025-12-05\n\n## 一、总体路线\n\n以“本体+控制+视觉+软件”为基础，向具身智能与柔性制造演进，2026 年完成 LT-R20 Pro 与具身智能平台 1.0。\n\n## 二、2025 年\n\nLT-C800 控制器量产、LantuTwin 3.0 发布、LT"
+          },
+          {
+            "doc_id": "lantu_meeting_strategy",
+            "title": "# 2026 年战略研讨会纪要",
+            "chunk": 0,
+            "score": 7.484,
+            "snippet": "# 2026 年战略研讨会纪要\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-11-21 09:00\n更新时间：2025-11-22 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_strategy_2026\n生效日期：2025-11-22\n\n## 一、战略目标\n\n2026 年营业收入 52 亿元，2028 年 80 亿元；海外收入占比 2026 年提升至 17%，2028 年达到 25%。\n\n## 二、业务重点\n\n巩固锂电与汽车基本盘，突破半导体与具身智能；软件与服务收"
+          },
+          {
+            "doc_id": "lantu_company_history",
+            "title": "# 澜图智能发展历程（2011—2025）",
+            "chunk": 0,
+            "score": 6.204,
+            "snippet": "# 澜图智能发展历程（2011—2025）\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2023-03-01 09:00\n更新时间：2026-01-05 14:00\n版本号：v4.0\n文档类型：company\n文档族：company_history\n生效日期：2026-01-05\n\n## 一、创业阶段（2011—2015）\n\n2011 年 6 月 18 日，公司在苏州工业园区成立，创始团队来自高校机器人实验室，首款产品为 LT-R6 六轴工业机器人，2012 年实现小批量交付 120 台。2014 年建成首条机"
+          },
+          {
+            "doc_id": "lantu_product_controller",
+            "title": "# LT-C800 运动控制器产品说明",
+            "chunk": 0,
+            "score": 4.762,
+            "snippet": "# LT-C800 运动控制器产品说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2025-04-08 09:00\n更新时间：2025-10-10 10:00\n版本号：v1.5\n文档类型：product\n文档族：product_controller\n生效日期：2025-10-10\n\n## 一、产品定位\n\nLT-C800 是澜图智能自研的新一代八轴运动控制器，面向机器人、工作站与小型产线，替代上一代 LT-C600。\n\n## 二、性能指标\n\n支持 8 轴联动，EtherCAT 总线周期 1 ms，插补周期 0.5"
+          },
+          {
+            "doc_id": "lantu_tech_rd_process",
+            "title": "# 澜图智能 IPD 研发流程说明",
+            "chunk": 0,
+            "score": 4.377,
+            "snippet": "# 澜图智能 IPD 研发流程说明\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-03-01 09:00\n更新时间：2025-05-15 10:00\n版本号：v3.0\n文档类型：tech\n文档族：ipd_process\n生效日期：2025-05-15\n\n## 一、流程框架\n\n执行 IPD 集成产品开发流程，分为概念、计划、开发、验证、发布、生命周期管理六个阶段。\n\n## 二、决策评审\n\n每个阶段设置决策评审点（DCP），由产品决策委员会评审市场、技术、成本与风险，未通过不得进入下一阶段。\n\n## 三、跨部"
+          },
+          {
+            "doc_id": "lantu_product_r20_pro_whitepaper",
+            "title": "LT-R20 Pro 机器人技术白皮书",
+            "chunk": 0,
+            "score": 4.345,
+            "snippet": "LT-R20 Pro 机器人技术白皮书\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2025-11-20 09:00\n更新时间：2025-11-28 18:00\n版本号：v0.9\n文档类型：product\n文档族：product_r20_pro\n生效日期：2025-11-28\n一、研发背景\n面向锂电叠片、汽车装配等高频节拍场景，澜图智能研发新一代中型六轴机器人 LT-R20 Pro，计划\n2026 年第二季度量产。\n二、技术指标\n额定负载 22 kg，臂展 1,750 mm，重复定位精度 ±0.02 mm，本体重量"
+          },
+          {
+            "doc_id": "lantu_policy_vehicle",
+            "title": "# 澜图智能公务用车管理办法",
+            "chunk": 0,
+            "score": 3.375,
+            "snippet": "# 澜图智能公务用车管理办法\n\n所属部门：行政部\n作者：陈依然\n创建时间：2024-03-01 09:00\n更新时间：2025-04-02 09:00\n版本号：v2.4\n文档类型：policy\n文档族：vehicle_management\n生效日期：2025-04-02\n\n## 一、用车范围\n\n公务用车用于客户接待、机场接送、跨园区办公与紧急事务；上下班通勤原则上不使用公务车。\n\n## 二、申请流程\n\n用车须提前 1 个工作日在 OA 申请，注明事由、路线、人数与时间；临时用车须部门负责人电话批准后补单。\n\n## "
+          },
+          {
+            "doc_id": "lantu_meeting_product_review",
+            "title": "LT-R20 Pro 产品评审会纪要",
+            "chunk": 0,
+            "score": 3.217,
+            "snippet": "LT-R20 Pro 产品评审会纪要\n所属部门：产品部\n作者：孟凡\n创建时间：2025-08-18 09:00\n更新时间：2025-08-18 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_product_review\n生效日期：2025-08-18\n一、会议信息\n时间：2025 年 8 月 18 日；主持：沈亦舟；参会：产品部、研发中心、质量部、销售中心、售后服务部。\n二、评审结论\nLT-R20 Pro 通过概念与计划阶段评审，进入开发阶段。目标负载 22 kg、臂展 1,750"
+          },
+          {
+            "doc_id": "lantu_org_reporting_lines",
+            "title": "# 澜图智能员工汇报关系与业务分工",
+            "chunk": 1,
+            "score": 3.197,
+            "snippet": "周敏仪担任 CFO，负责财务与资本运作。陈依然担任人力资源副总裁，负责人力资源体系。蒋雯担任薪酬绩效经理，负责薪酬、绩效与员工关系。邵岚担任法务合规总监，负责法务、合规与知识产权。\n\n## 五、跨部门业务分工\n\n周启航同时担任新一代控制器 LT-C900 项目负责人，项目成员包括林晓与赵一鸣。唐婧负责销售中心，华东区域由许博管理，上海区域重点客户由陈璐维护。方磊负责制造中心，苏州工厂由郭涛管理。\n\n## 六、汇报关系使用说明\n\n本文件中的“上级”均指行政汇报关系中的直接上级；跨部门项目中的项目负责人关系不改变行政汇"
+          },
+          {
+            "doc_id": "lantu_product_digital_twin",
+            "title": "# LantuTwin 数字孪生平台介绍",
+            "chunk": 0,
+            "score": 3.196,
+            "snippet": "# LantuTwin 数字孪生平台介绍\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-09-01 09:00\n更新时间：2025-06-30 16:00\n版本号：v3.0\n文档类型：product\n文档族：product_digital_twin\n生效日期：2025-06-30\n\n## 一、平台定位\n\nLantuTwin 3.0 是面向智能工厂规划、调试与运维的数字孪生平台，支持机器人、产线与物流系统的虚实同步。\n\n## 二、核心能力\n\n单项目支持 500 台设备接入，数据刷新延迟低于 80 ms，仿真"
+          }
+        ]
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 0.5,
+    "cited": [
+      "lantu_product_digital_twin",
+      "lantu_tech_roadmap"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.892,
+    "number_recall": 1.0
+  }
+}

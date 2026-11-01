@@ -1,0 +1,448 @@
+{
+  "qid": "L0702",
+  "question": "同族制度v1：2024-01-01起450元；v2：2025-01-01起600元且明确替代v1。问2024-12-31的有效限额ceiling。\n只输出一个JSON对象，不使用代码块或额外解释。键名、数据类型和排列规则按题目；小数四舍五入到两位，整数可保持整数。未知值用null，不得猜测。",
+  "question_type": "conflict_resolution",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "{\"tool\":\"search\",\"args\":{\"query\":\"同族制度 限额 ceiling 版本 替代\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 267,
+        "prompt_tokens": 427,
+        "total_tokens": 694,
+        "completion_tokens_details": {
+          "reasoning_tokens": 237
+        },
+        "prompt_tokens_details": null
+      },
+      "seconds": 8.281
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"同族制度 限额 ceiling 版本 替代\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 42,
+        "prompt_tokens": 494,
+        "total_tokens": 536,
+        "completion_tokens_details": {
+          "reasoning_tokens": 10
+        },
+        "prompt_tokens_details": null
+      },
+      "seconds": 1.438
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"同族制度 450元 600元 限额 ceiling 替代\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 91,
+        "prompt_tokens": 2964,
+        "total_tokens": 3055,
+        "completion_tokens_details": {
+          "reasoning_tokens": 52
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 9.5
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"travel_expense\"}}",
+      "usage": {
+        "completion_tokens": 88,
+        "prompt_tokens": 5466,
+        "total_tokens": 5554,
+        "completion_tokens_details": {
+          "reasoning_tokens": 71
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2944
+        }
+      },
+      "seconds": 4.172
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"差旅费用报销标准 2024版 住宿 450元\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 63,
+        "prompt_tokens": 5500,
+        "total_tokens": 5563,
+        "completion_tokens_details": {
+          "reasoning_tokens": 25
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 5440
+        }
+      },
+      "seconds": 2.515
+    },
+    {
+      "round": 6,
+      "text": "{\"status\":\"answerable\",\"answer\":\"截至2024-12-31，v2（2025版）于2025-01-01才生效，尚未适用；当期有效版本为v1（2024版），其住宿限额上限为一线城市450元/晚，故有效ceiling为450元。\",\"citations\":[\"lantu_policy_travel_2024\",\"lantu_policy_travel_2025\"],\"evidence\":[\"lantu_policy_travel_2024#片段0\",\"lantu_policy_travel_2025#片段0\"]}",
+      "usage": {
+        "completion_tokens": 510,
+        "prompt_tokens": 7946,
+        "total_tokens": 8456,
+        "completion_tokens_details": {
+          "reasoning_tokens": 372
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 5440
+        }
+      },
+      "seconds": 12.891
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"截至2024-12-31，v2（2025版）于2025-01-01才生效，尚未适用；当期有效版本为v1（2024版），其一线城市住宿限额为450元/晚（二线城市350元/晚，其他城市300元/晚），故有效ceiling为450元。\",\"citations\":[\"lantu_policy_travel_2024\",\"lantu_policy_travel_2025\"],\"evidence\":[\"lantu_policy_travel_2024#片段0\",\"lantu_policy_travel_2025#片段0\"]}",
+      "usage": {
+        "completion_tokens": 165,
+        "prompt_tokens": 8118,
+        "total_tokens": 8283,
+        "completion_tokens_details": {
+          "reasoning_tokens": 9
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 7936
+        }
+      },
+      "seconds": 3.328
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "同族制度 限额 ceiling 版本 替代",
+        "top_k": 10
+      },
+      "result_sha": "02784b62c3602872a3091ddc9bd2ed52b3c0f7252a858db4180f99dd44f9a38d",
+      "result_chars": 3925,
+      "hits": 10
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "同族制度 450元 600元 限额 ceiling 替代",
+        "top_k": 10
+      },
+      "result_sha": "2bae8173545c6da6f843d29ad0c2d1546cded864cbb29e5b1552840d56cdeb69",
+      "result_chars": 3935,
+      "hits": 10
+    },
+    {
+      "name": "list",
+      "args": {
+        "keyword": "travel_expense"
+      },
+      "result_sha": "1290604daacc15212b4f59638c659261007a940d59ae4c9dd916d753b78e21de",
+      "result_chars": 12,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "差旅费用报销标准 2024版 住宿 450元",
+        "top_k": 10
+      },
+      "result_sha": "72b10c6f7a9ce6b57c88fcf2e8851a2ace2fa1ccb90ec70d367738c5260e0806",
+      "result_chars": 3937,
+      "hits": 10
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "截至2024-12-31，v2（2025版）于2025-01-01才生效，尚未适用；当期有效版本为v1（2024版），其一线城市住宿限额为450元/晚（二线城市350元/晚，其他城市300元/晚），故有效ceiling为450元。",
+    "citations": [
+      "lantu_policy_travel_2024",
+      "lantu_policy_travel_2025"
+    ],
+    "evidence": [
+      "lantu_policy_travel_2024#片段0",
+      "lantu_policy_travel_2025#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 32141,
+  "started_at": "2026-11-01T00:28:51",
+  "elapsed_seconds": 42.12,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "同族制度 限额 ceiling 版本 替代",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_meeting_supply_chain",
+            "title": "2025 年供应链韧性专题会纪要",
+            "chunk": 0,
+            "score": 4.718,
+            "snippet": "2025 年供应链韧性专题会纪要\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-10-16 09:00\n更新时间：2025-10-16 15:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_supply_chain\n生效日期：2025-10-16\n一、供应形势\n减速器交期由 8 周延长至 12 周，芯片交期 20 周；关键物料库存周转 92 天，高于目标 75 天。\n二、双源策略\n减速器已引入第二供应商，2026 年一季度实现 30% 替代；伺服驱动器自研比例提升至 61%。\n三"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2025",
+            "title": "# 澜图智能采购管理制度（2025版）",
+            "chunk": 0,
+            "score": 3.917,
+            "snippet": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付"
+          },
+          {
+            "doc_id": "lantu_policy_attendance_2025",
+            "title": "# 澜图智能考勤管理制度（2025版）",
+            "chunk": 0,
+            "score": 3.859,
+            "snippet": "# 澜图智能考勤管理制度（2025版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-12-20 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：attendance\n生效日期：2025-01-01\n\n## 一、打卡规则\n\n员工每日上下班各打卡一次，漏打卡须在 3 个工作日内提交补卡申请，每月补卡不超过 4 次。\n\n## 二、弹性工作\n\n上班弹性 60 分钟，9:00-10:00 到岗均视为正常；每月可申请远程办公 4 天，须提前 1 个工作日审"
+          },
+          {
+            "doc_id": "lantu_hr_performance",
+            "title": "# 澜图智能绩效管理制度",
+            "chunk": 0,
+            "score": 3.662,
+            "snippet": "# 澜图智能绩效管理制度\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v3.4\n文档类型：hr\n文档族：performance\n生效日期：2025-06-01\n\n## 一、考核周期\n\n实行季度考核与年度考核，季度占 40%，年度占 60%。试用期员工参加转正考核。\n\n## 二、考核维度\n\n业绩目标 60%、价值观 20%、能力成长 20%。销售岗位业绩权重 70%。\n\n## 三、绩效分布\n\nS 级 10%、A 级 30%、B "
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2024",
+            "title": "# 澜图智能采购管理制度（2024版）",
+            "chunk": 0,
+            "score": 3.622,
+            "snippet": "# 澜图智能采购管理制度（2024版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2024-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。\n\n## 二、付款账期\n\n标准供应商月结 60 天；预付款比例不超过 30%；质保金 5%-10%。\n\n## 三、供应商"
+          },
+          {
+            "doc_id": "lantu_product_controller",
+            "title": "# LT-C800 运动控制器产品说明",
+            "chunk": 0,
+            "score": 3.549,
+            "snippet": "# LT-C800 运动控制器产品说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2025-04-08 09:00\n更新时间：2025-10-10 10:00\n版本号：v1.5\n文档类型：product\n文档族：product_controller\n生效日期：2025-10-10\n\n## 一、产品定位\n\nLT-C800 是澜图智能自研的新一代八轴运动控制器，面向机器人、工作站与小型产线，替代上一代 LT-C600。\n\n## 二、性能指标\n\n支持 8 轴联动，EtherCAT 总线周期 1 ms，插补周期 0.5"
+          },
+          {
+            "doc_id": "lantu_finance_cost",
+            "title": "# 澜图智能成本管理与降本专项报告",
+            "chunk": 0,
+            "score": 3.542,
+            "snippet": "# 澜图智能成本管理与降本专项报告\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-09-05 09:00\n更新时间：2025-09-12 17:00\n版本号：v1.3\n文档类型：finance\n文档族：cost_management\n生效日期：2025-09-12\n\n## 一、降本目标\n\n2025 年降本目标 1.8 亿元，前三季度完成 1.48 亿元，完成率 82%。\n\n## 二、主要项目\n\n减速器国产替代降本 4,200 万元，伺服驱动器自研降本 3,800 万元，结构件轻量化降本 2,600 万元，物"
+          },
+          {
+            "doc_id": "lantu_policy_attendance_2024",
+            "title": "# 澜图智能考勤管理制度（2024版）",
+            "chunk": 0,
+            "score": 3.525,
+            "snippet": "# 澜图智能考勤管理制度（2024版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：attendance\n生效日期：2024-01-01\n\n## 一、打卡规则\n\n员工每日上下班各打卡一次，漏打卡须在 3 个工作日内提交补卡申请，每月补卡不超过 3 次。\n\n## 二、弹性工作\n\n上班弹性 30 分钟，9:00-9:30 到岗均视为正常；每月可申请远程办公 2 天，须提前 1 个工作日审批"
+          },
+          {
+            "doc_id": "lantu_strategy_supply_chain_resilience",
+            "title": "# 澜图智能供应链韧性建设方案",
+            "chunk": 0,
+            "score": 3.521,
+            "snippet": "# 澜图智能供应链韧性建设方案\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-02-01 09:00\n更新时间：2025-09-30 16:00\n版本号：v1.5\n文档类型：strategy\n文档族：supply_chain_resilience\n生效日期：2025-09-30\n\n## 一、风险识别\n\n关键物料包括减速器、伺服电机、芯片与视觉相机，其中芯片与减速器存在单一来源风险。\n\n## 二、双源与备库\n\n减速器 2026 年实现 30% 第二来源；关键芯片备库 6 个月；通用物料安全库存 30 天。"
+          },
+          {
+            "doc_id": "lantu_hr_recruitment",
+            "title": "# 澜图智能招聘管理制度",
+            "chunk": 0,
+            "score": 3.511,
+            "snippet": "# 澜图智能招聘管理制度\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-05 09:00\n更新时间：2025-06-10 10:00\n版本号：v3.1\n文档类型：hr\n文档族：recruitment\n生效日期：2025-06-10\n\n## 一、招聘原则\n\n坚持公开、公平、择优，优先内部推荐与内部转岗；关键岗位实行背景调查与多轮面试。\n\n## 二、招聘流程\n\n需求审批 → 简历筛选 → 专业面试 → 综合面试 → 薪酬沟通 → 背景调查 → 发放录用通知。研发岗位增加技术笔试与代码评审。\n\n## 三"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "同族制度 450元 600元 限额 ceiling 替代",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_finance_cost",
+            "title": "# 澜图智能成本管理与降本专项报告",
+            "chunk": 0,
+            "score": 6.057,
+            "snippet": "# 澜图智能成本管理与降本专项报告\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-09-05 09:00\n更新时间：2025-09-12 17:00\n版本号：v1.3\n文档类型：finance\n文档族：cost_management\n生效日期：2025-09-12\n\n## 一、降本目标\n\n2025 年降本目标 1.8 亿元，前三季度完成 1.48 亿元，完成率 82%。\n\n## 二、主要项目\n\n减速器国产替代降本 4,200 万元，伺服驱动器自研降本 3,800 万元，结构件轻量化降本 2,600 万元，物"
+          },
+          {
+            "doc_id": "lantu_policy_travel_2025h2",
+            "title": "# 澜图智能差旅费用报销标准（2025年7月修订）",
+            "chunk": 0,
+            "score": 5.427,
+            "snippet": "# 澜图智能差旅费用报销标准（2025年7月修订）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-06-10 09:00\n更新时间：2025-07-01 09:00\n版本号：v3.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2025-07-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 600 元/晚，二线城市 450 元/晚，其他城市 380 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 150 元/天，按自然日计算；客户"
+          },
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 5.203,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能产品参数矩阵（2025）\n所属部门\t产品部\n作者\t孟凡\n创建时间\t2025-01-20 09:00\n更新时间\t2025-12-15 18:00\n版本号\tv2.0\n文档类型\tproduct\n文档族\tproduct_matrix\n生效日期\t2025-12-15\n[工作表] 六轴与SCARA\n型号\t负载\t臂展\t重复精度\t本体重量\t最大速度\nLT-R6\t6 kg\t1,450 mm\t±0.02 mm\t165 kg\t3.2 m/s\nLT-R12\t12 kg\t1,550 mm\t±0."
+          },
+          {
+            "doc_id": "lantu_meeting_supply_chain",
+            "title": "2025 年供应链韧性专题会纪要",
+            "chunk": 0,
+            "score": 4.639,
+            "snippet": "2025 年供应链韧性专题会纪要\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-10-16 09:00\n更新时间：2025-10-16 15:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_supply_chain\n生效日期：2025-10-16\n一、供应形势\n减速器交期由 8 周延长至 12 周，芯片交期 20 周；关键物料库存周转 92 天，高于目标 75 天。\n二、双源策略\n减速器已引入第二供应商，2026 年一季度实现 30% 替代；伺服驱动器自研比例提升至 61%。\n三"
+          },
+          {
+            "doc_id": "lantu_support_spare_parts_price",
+            "title": "﻿适配机型,备件名称,单价（元）,发货时效,质保期",
+            "chunk": 0,
+            "score": 4.12,
+            "snippet": "﻿适配机型,备件名称,单价（元）,发货时效,质保期\nLT-R20,减速器 RV-40E,\"12,800\",48 小时,12 个月\nLT-R20,伺服驱动器 LT-D4,\"8,600\",48 小时,18 个月\nLT-R20,示教器 LT-Pad3,\"5,200\",48 小时,12 个月\nLT-R12,减速器 RV-20E,\"7,900\",48 小时,12 个月\nLT-R12,伺服电机 750W,\"3,600\",48 小时,18 个月\nLT-R6,谐波减速器 CSF-17,\"6,400\",72 小时,12 个月\nLT-"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2025",
+            "title": "# 澜图智能采购管理制度（2025版）",
+            "chunk": 0,
+            "score": 3.842,
+            "snippet": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付"
+          },
+          {
+            "doc_id": "lantu_product_r_series",
+            "title": "# LT-R 系列六轴工业机器人产品手册",
+            "chunk": 1,
+            "score": 3.834,
+            "snippet": "| 型号 | 负载 | 臂展 | 重复精度 | 本体重量 | 最大速度 |\n| --- | --- | --- | --- | --- | --- |\n| LT-R6 | 6 kg | 1,450 mm | ±0.02 mm | 165 kg | 3.2 m/s |\n| LT-R12 | 12 kg | 1,550 mm | ±0.03 mm | 210 kg | 3.0 m/s |\n| LT-R20 | 20 kg | 1,700 mm | ±0.03 mm | 285 kg | 2.8 m/s |\n| LT-R"
+          },
+          {
+            "doc_id": "lantu_policy_attendance_2025",
+            "title": "# 澜图智能考勤管理制度（2025版）",
+            "chunk": 0,
+            "score": 3.786,
+            "snippet": "# 澜图智能考勤管理制度（2025版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-12-20 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：attendance\n生效日期：2025-01-01\n\n## 一、打卡规则\n\n员工每日上下班各打卡一次，漏打卡须在 3 个工作日内提交补卡申请，每月补卡不超过 4 次。\n\n## 二、弹性工作\n\n上班弹性 60 分钟，9:00-10:00 到岗均视为正常；每月可申请远程办公 4 天，须提前 1 个工作日审"
+          },
+          {
+            "doc_id": "lantu_hr_performance",
+            "title": "# 澜图智能绩效管理制度",
+            "chunk": 0,
+            "score": 3.58,
+            "snippet": "# 澜图智能绩效管理制度\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v3.4\n文档类型：hr\n文档族：performance\n生效日期：2025-06-01\n\n## 一、考核周期\n\n实行季度考核与年度考核，季度占 40%，年度占 60%。试用期员工参加转正考核。\n\n## 二、考核维度\n\n业绩目标 60%、价值观 20%、能力成长 20%。销售岗位业绩权重 70%。\n\n## 三、绩效分布\n\nS 级 10%、A 级 30%、B "
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2024",
+            "title": "# 澜图智能采购管理制度（2024版）",
+            "chunk": 0,
+            "score": 3.541,
+            "snippet": "# 澜图智能采购管理制度（2024版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2024-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。\n\n## 二、付款账期\n\n标准供应商月结 60 天；预付款比例不超过 30%；质保金 5%-10%。\n\n## 三、供应商"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "list",
+      "args": {
+        "keyword": "travel_expense"
+      },
+      "result": {
+        "docs": []
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "差旅费用报销标准 2024版 住宿 450元",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_policy_travel_2024",
+            "title": "# 澜图智能差旅费用报销标准（2024版）",
+            "chunk": 0,
+            "score": 40.905,
+            "snippet": "# 澜图智能差旅费用报销标准（2024版）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-02-20 09:00\n更新时间：2024-03-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2024-03-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 450 元/晚，二线城市 350 元/晚，其他城市 300 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 100 元/天，按自然日计算；客户宴请须提"
+          },
+          {
+            "doc_id": "lantu_policy_travel_2025h2",
+            "title": "# 澜图智能差旅费用报销标准（2025年7月修订）",
+            "chunk": 0,
+            "score": 38.477,
+            "snippet": "# 澜图智能差旅费用报销标准（2025年7月修订）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-06-10 09:00\n更新时间：2025-07-01 09:00\n版本号：v3.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2025-07-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 600 元/晚，二线城市 450 元/晚，其他城市 380 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 150 元/天，按自然日计算；客户"
+          },
+          {
+            "doc_id": "lantu_policy_travel_2025",
+            "title": "# 澜图智能差旅费用报销标准（2025版）",
+            "chunk": 0,
+            "score": 36.802,
+            "snippet": "# 澜图智能差旅费用报销标准（2025版）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-12-15 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2025-01-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 550 元/晚，二线城市 420 元/晚，其他城市 350 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 120 元/天，按自然日计算；客户宴请须提"
+          },
+          {
+            "doc_id": "lantu_policy_reimbursement",
+            "title": "# 澜图智能费用报销管理办法",
+            "chunk": 0,
+            "score": 21.285,
+            "snippet": "# 澜图智能费用报销管理办法\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-03-10 09:00\n更新时间：2025-06-18 10:00\n版本号：v3.2\n文档类型：policy\n文档族：reimbursement\n生效日期：2025-06-18\n\n## 一、报销范围\n\n差旅费、业务招待费、办公费、培训费、通讯费、车辆使用费及经批准的其他费用。个人消费、罚款与无票据支出不予报销。\n\n## 二、报销时限\n\n费用发生后 30 个自然日内提交报销，跨年度费用须在次年 1 月 15 日前完成，逾期需财务总监审"
+          },
+          {
+            "doc_id": "lantu_policy_vehicle",
+            "title": "# 澜图智能公务用车管理办法",
+            "chunk": 0,
+            "score": 7.45,
+            "snippet": "# 澜图智能公务用车管理办法\n\n所属部门：行政部\n作者：陈依然\n创建时间：2024-03-01 09:00\n更新时间：2025-04-02 09:00\n版本号：v2.4\n文档类型：policy\n文档族：vehicle_management\n生效日期：2025-04-02\n\n## 一、用车范围\n\n公务用车用于客户接待、机场接送、跨园区办公与紧急事务；上下班通勤原则上不使用公务车。\n\n## 二、申请流程\n\n用车须提前 1 个工作日在 OA 申请，注明事由、路线、人数与时间；临时用车须部门负责人电话批准后补单。\n\n## "
+          },
+          {
+            "doc_id": "lantu_policy_entertainment",
+            "title": "# 澜图智能业务招待管理办法",
+            "chunk": 0,
+            "score": 7.079,
+            "snippet": "# 澜图智能业务招待管理办法\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-04-15 09:00\n更新时间：2025-05-06 16:00\n版本号：v2.3\n文档类型：policy\n文档族：business_entertainment\n生效日期：2025-05-06\n\n## 一、招待原则\n\n业务招待须与业务直接相关，坚持简朴、适度、透明原则，禁止铺张浪费与高档消费。\n\n## 二、标准\n\n人均招待标准不超过 600 元，酒水不超过 300 元/瓶；S 级客户重要接待可上浮 20%，须提前审批。\n\n## 三"
+          },
+          {
+            "doc_id": "lantu_finance_gross_margin",
+            "title": "# 澜图智能毛利率与成本结构分析",
+            "chunk": 0,
+            "score": 4.576,
+            "snippet": "# 澜图智能毛利率与成本结构分析\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-11-15 09:00\n更新时间：2025-11-20 17:00\n版本号：v1.2\n文档类型：finance\n文档族：gross_margin_analysis\n生效日期：2025-11-20\n\n## 一、整体毛利率\n\n2025 年综合毛利率 31.6%，较 2024 年提升 1.2 个百分点。机器人本体毛利率 34.8%，智能产线 26.2%，软件与服务 52.4%。\n\n## 二、成本构成\n\n直接材料占营业成本 68.4%，"
+          },
+          {
+            "doc_id": "lantu_product_r_series",
+            "title": "# LT-R 系列六轴工业机器人产品手册",
+            "chunk": 0,
+            "score": 4.404,
+            "snippet": "# LT-R 系列六轴工业机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-01-15 09:00\n更新时间：2025-10-30 16:00\n版本号：v4.3\n文档类型：product\n文档族：product_r_series\n生效日期：2025-10-30\n\n## 一、产品定位\n\nLT-R 系列覆盖 6 kg 至 210 kg 负载，适用于搬运、焊接、装配、喷涂、打磨等工序，重复定位精度最高 ±0.02 mm，防护等级 IP54，可选 IP67。\n\n## 二、型号与参数\n\nLT-R6 负载 6"
+          },
+          {
+            "doc_id": "lantu_legal_anti_bribery",
+            "title": "# 澜图智能反商业贿赂管理规定",
+            "chunk": 0,
+            "score": 4.367,
+            "snippet": "# 澜图智能反商业贿赂管理规定\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-03-01 09:00\n更新时间：2025-01-15 10:00\n版本号：v2.4\n文档类型：legal\n文档族：anti_bribery\n生效日期：2025-01-15\n\n## 一、禁止行为\n\n禁止向客户、政府官员、供应商及其亲属提供现金、购物卡、有价证券、贵重礼品、旅游或娱乐安排。\n\n## 二、礼品与招待\n\n商务礼品单价不超过 200 元，须登记备案；业务招待人均不超过 600 元，禁止高消费娱乐。\n\n## 三、第三方管理"
+          },
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 4.284,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能产品参数矩阵（2025）\n所属部门\t产品部\n作者\t孟凡\n创建时间\t2025-01-20 09:00\n更新时间\t2025-12-15 18:00\n版本号\tv2.0\n文档类型\tproduct\n文档族\tproduct_matrix\n生效日期\t2025-12-15\n[工作表] 六轴与SCARA\n型号\t负载\t臂展\t重复精度\t本体重量\t最大速度\nLT-R6\t6 kg\t1,450 mm\t±0.02 mm\t165 kg\t3.2 m/s\nLT-R12\t12 kg\t1,550 mm\t±0."
+          }
+        ]
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [
+      "lantu_policy_travel_2024",
+      "lantu_policy_travel_2025"
+    ],
+    "cited_all_retrieved": true,
+    "number_recall": 0.0,
+    "f1": 0.035,
+    "gold_numbers": [],
+    "answer_numbers": [
+      2024,
+      2025
+    ]
+  }
+}

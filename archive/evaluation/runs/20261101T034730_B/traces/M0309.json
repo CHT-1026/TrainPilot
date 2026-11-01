@@ -1,0 +1,169 @@
+{
+  "qid": "M0309",
+  "question": "我们给供应商的付款账期怎么算？预付款最多能付多少比例？",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"付款账期 预付款 供应商\", \"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 367,
+        "total_tokens": 601,
+        "completion_tokens": 234,
+        "completion_tokens_details": {
+          "reasoning_tokens": 203,
+          "text_tokens": 234
+        }
+      },
+      "seconds": 2.156
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\": \"lantu_policy_purchase_2025\", \"offset\": 0, \"limit\": 4000}}",
+      "usage": {
+        "prompt_tokens": 1598,
+        "total_tokens": 2072,
+        "completion_tokens": 474,
+        "completion_tokens_details": {
+          "reasoning_tokens": 431,
+          "text_tokens": 474
+        }
+      },
+      "seconds": 3.437
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据《澜图智能采购管理制度（2025版）》，付款账期规定如下：\\n1. **付款账期**：标准供应商实行**月结 90 天**；战略供应商可延长至**120 天**。\\n2. **预付款比例**：预付款比例**不超过 20%**。\",\"citations\":[\"lantu_policy_purchase_2025\",\"lantu_legal_purchase_contract_template\"],\"evidence\":[\"lantu_policy_purchase_2025#chunk 0\",\"lantu_legal_purchase_contract_template#chunk 0\"]}",
+      "usage": {
+        "prompt_tokens": 2050,
+        "total_tokens": 2431,
+        "completion_tokens": 381,
+        "completion_tokens_details": {
+          "reasoning_tokens": 241,
+          "text_tokens": 381
+        }
+      },
+      "seconds": 3.36
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "付款账期 预付款 供应商",
+        "top_k": 5
+      },
+      "result_sha": "fad20a7ec117bd14a244b5e59399f32745ad23d3bc3f0ae95cef2a1d7d10537a",
+      "result_chars": 1987,
+      "hits": 5
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_purchase_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "a43282daf04801f0f16f7d64d197206dfa10185ee100b1a3054935cc73749d1f",
+      "result_chars": 635,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《澜图智能采购管理制度（2025版）》，付款账期规定如下：\n1. **付款账期**：标准供应商实行**月结 90 天**；战略供应商可延长至**120 天**。\n2. **预付款比例**：预付款比例**不超过 20%**。",
+    "citations": [
+      "lantu_policy_purchase_2025",
+      "lantu_legal_purchase_contract_template"
+    ],
+    "evidence": [
+      "lantu_policy_purchase_2025#chunk 0",
+      "lantu_legal_purchase_contract_template#chunk 0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 5104,
+  "started_at": "2026-11-01T06:26:58",
+  "elapsed_seconds": 8.95,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "付款账期 预付款 供应商",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_policy_purchase_2024",
+            "title": "# 澜图智能采购管理制度（2024版）",
+            "chunk": 0,
+            "score": 26.585,
+            "snippet": "# 澜图智能采购管理制度（2024版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2024-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。\n\n## 二、付款账期\n\n标准供应商月结 60 天；预付款比例不超过 30%；质保金 5%-10%。\n\n## 三、供应商"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2025",
+            "title": "# 澜图智能采购管理制度（2025版）",
+            "chunk": 0,
+            "score": 25.575,
+            "snippet": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付"
+          },
+          {
+            "doc_id": "lantu_legal_purchase_contract_template",
+            "title": "澜图智能采购合同模板（2025版）",
+            "chunk": 0,
+            "score": 18.648,
+            "snippet": "澜图智能采购合同模板（2025版）\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-10 09:00\n更新时间：2025-03-01 09:00\n版本号：v3.2\n文档类型：legal\n文档族：purchase_contract_template\n生效日期：2025-03-01\n第一条 采购标的\n甲方向乙方采购原材料/零部件，品名、规格、数量、单价以采购订单为准。\n第二条 付款方式\n标准账期为月结 90 天，战略供应商可约定 120 天；预付款不超过 20%；质保金 5%-10%。\n第三条 质量要求\n乙"
+          },
+          {
+            "doc_id": "lantu_legal_sales_contract_template",
+            "title": "澜图智能设备销售合同模板（2025版）",
+            "chunk": 0,
+            "score": 10.801,
+            "snippet": "澜图智能设备销售合同模板（2025版）\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-10 09:00\n更新时间：2025-03-01 09:00\n版本号：v4.0\n文档类型：legal\n文档族：sales_contract_template\n生效日期：2025-03-01\n第一条 合同标的\n乙方向甲方购买澜图智能工业机器人及配套设备，具体型号、数量、单价以附件《供货清单》为准。\n第二条 合同价款与支付\n合同总价为含税价。预付款 30%，发货前支付至 60%，验收合格后 30 日内支付至 95%，剩余"
+          },
+          {
+            "doc_id": "lantu_sales_policy",
+            "title": "# 澜图智能销售政策与客户分级管理办法",
+            "chunk": 0,
+            "score": 9.301,
+            "snippet": "# 澜图智能销售政策与客户分级管理办法\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-01-20 09:00\n更新时间：2025-09-25 15:00\n版本号：v3.4\n文档类型：sales\n文档族：sales_policy\n生效日期：2025-09-25\n\n## 一、客户分级\n\n客户分为 S、A、B、C 四级。S 级为年采购额 5,000 万元以上战略客户，由客户成功部直管；A 级 1,000-5,000 万元；B 级 300-1,000 万元；C 级 300 万元以下由渠道覆盖。\n\n## 二、价格体"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_purchase_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_purchase_2025",
+        "title": "# 澜图智能采购管理制度（2025版）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 453,
+        "text": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付款比例不超过 20%；质保金 5%-10%。\n\n## 三、供应商准入\n\n供应商须通过资质审查、现场审核与小批量试用，签署质量协议、廉洁协议与数据安全协议。\n\n## 四、库存与交付\n\n关键物料安全库存 45 天，通用物料 30 天；供应商交付准时率目标 96%，年度考核末位 5% 启动整改。\n\n## 五、生效说明\n\n本制度自 2025 年 1 月 1 日起生效，2024 版同时废止。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.5,
+    "cited": [
+      "lantu_policy_purchase_2025",
+      "lantu_legal_purchase_contract_template"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.217,
+    "number_recall": 0.0
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "qid": "A0090",
+  "question": "苏州总部共有多少员工？其中研发人员多少人？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"苏州总部\",\"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 360,
+        "total_tokens": 517,
+        "completion_tokens": 157,
+        "completion_tokens_details": {
+          "reasoning_tokens": 133,
+          "text_tokens": 157
+        }
+      },
+      "seconds": 1.969
+    },
+    {
+      "round": 2,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"苏州总部共有员工2,450人，其中研发人员1,120人。\",\"citations\":[\"lantu_org_headcount\"],\"evidence\":[\"lantu_org_headcount#0\"]}",
+      "usage": {
+        "prompt_tokens": 1558,
+        "total_tokens": 2111,
+        "completion_tokens": 553,
+        "completion_tokens_details": {
+          "reasoning_tokens": 496,
+          "text_tokens": 553
+        }
+      },
+      "seconds": 4.781
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "苏州总部",
+        "top_k": 5
+      },
+      "result_sha": "77f8d90eece0fc6daf3ef8a66bbce072f5d7a3b29cfbd39cdf1701b05f83688c",
+      "result_chars": 1908,
+      "hits": 5
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "苏州总部共有员工2,450人，其中研发人员1,120人。",
+    "citations": [
+      "lantu_org_headcount"
+    ],
+    "evidence": [
+      "lantu_org_headcount#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 2628,
+  "started_at": "2026-11-01T04:04:07",
+  "elapsed_seconds": 6.75,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "苏州总部",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_org_headcount",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 10.134,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能员工分布统计（2025）\n所属部门\t人力资源部\n作者\t陈依然\n创建时间\t2025-12-31 18:00\n更新时间\t2026-01-09 09:30\n版本号\tv1.0\n文档类型\torg\n文档族\theadcount_2025\n生效日期\t2026-01-09\n[工作表] 基地分布\n基地\t员工数\t研发\t销售\t制造\t服务\t职能\n苏州总部\t2,450\t1,120\t310\t560\t250\t210\n东莞华南\t780\t86\t150\t300\t120\t124\n成都西部\t430\t80\t90\t"
+          },
+          {
+            "doc_id": "lantu_company_campus",
+            "title": "# 澜图智能制造基地与产能布局",
+            "chunk": 0,
+            "score": 9.491,
+            "snippet": "# 澜图智能制造基地与产能布局\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2024-04-12 09:00\n更新时间：2025-11-20 15:00\n版本号：v3.0\n文档类型：company\n文档族：manufacturing_base\n生效日期：2025-11-20\n\n## 一、苏州总部基地\n\n位于苏州工业园区，占地 120 亩，建筑面积 9.6 万平方米，承担六轴机器人总装、控制器生产与研发测试，年产能 18,000 台。\n\n## 二、东莞华南基地\n\n位于东莞松山湖，占地 60 亩，聚焦 SCARA、A"
+          },
+          {
+            "doc_id": "lantu_meeting_ops_2025q3",
+            "title": "2025 年第三季度经营分析会纪要",
+            "chunk": 0,
+            "score": 9.122,
+            "snippet": "2025 年第三季度经营分析会纪要\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-10-10 09:00\n更新时间：2025-10-10 18:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_ops_2025q3\n生效日期：2025-10-10\n一、会议信息\n时间：2025 年 10 月 10 日 09:00-12:00；地点：苏州总部 3 楼会议室；主持：顾承澜；参会：沈亦舟、周敏仪、韩立恒、罗嘉树、陈依然、潘文博、邵岚。\n二、经营回顾\n第三季度营业收入 11.52 亿元，同"
+          },
+          {
+            "doc_id": "lantu_org_sales_regions",
+            "title": "# 澜图智能销售区域与渠道网络",
+            "chunk": 0,
+            "score": 7.125,
+            "snippet": "# 澜图智能销售区域与渠道网络\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-02-15 09:00\n更新时间：2025-12-05 15:00\n版本号：v3.1\n文档类型：org\n文档族：sales_regions\n生效日期：2025-12-05\n\n## 一、区域划分\n\n销售中心下设华东、华南、华北、西部、海外五个大区，覆盖 32 个国家和地区。华东大区总部苏州，华南大区总部东莞，华北大区总部北京，西部大区总部成都。\n\n## 二、团队规模\n\n销售团队 620 人，其中行业销售 280 人、渠道销售 16"
+          },
+          {
+            "doc_id": "lantu_company_profile",
+            "title": "澜图智能装备公司简介",
+            "chunk": 1,
+            "score": 6.848,
+            "snippet": "入 13.8%。\n五、质量与认证\n公司通过 ISO 9001、ISO 14001、ISO 45001、IATF 16949 与 ISO 27001 认证，产品符合 CE、UL 与 GB\n标准。2025 年客户投诉 3 起，一次交检合格率 98.6%。\n六、联系方式\n总部地址：江苏省苏州市工业园区星澜路88号；总机：0512-6688-2100；官网：www.lantu-robot.com；\n投资者关系邮箱：ir@lantu-robot.com。"
+          }
+        ]
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_org_headcount"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.684,
+    "number_recall": 1.0
+  }
+}

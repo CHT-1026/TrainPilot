@@ -1,0 +1,405 @@
+{
+  "qid": "M0301",
+  "question": "我们对供应商做年度考核，考核结果怎么用？末位多少比例的供应商会被处理？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>供应商年度考核 末位处理 比例</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list><parameter=keyword>供应商</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 77,
+        "prompt_tokens": 363,
+        "total_tokens": 440,
+        "completion_tokens_details": {
+          "reasoning_tokens": 25
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.359
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"供应商\"}}",
+      "usage": {
+        "completion_tokens": 62,
+        "prompt_tokens": 452,
+        "total_tokens": 514,
+        "completion_tokens_details": {
+          "reasoning_tokens": 47
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.203
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"供应商 年度考核 末位 比例 淘汰\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 45,
+        "prompt_tokens": 519,
+        "total_tokens": 564,
+        "completion_tokens_details": {
+          "reasoning_tokens": 9
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.516
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_purchase_2025\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 60,
+        "prompt_tokens": 2955,
+        "total_tokens": 3015,
+        "completion_tokens_details": {
+          "reasoning_tokens": 25
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 10.937
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_purchase_2024\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 141,
+        "prompt_tokens": 3419,
+        "total_tokens": 3560,
+        "completion_tokens_details": {
+          "reasoning_tokens": 106
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2944
+        }
+      },
+      "seconds": 4.656
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"供应商 考核 结果 应用 整改 淘汰 分级\",\"top_k\":8}}",
+      "usage": {
+        "completion_tokens": 79,
+        "prompt_tokens": 3809,
+        "total_tokens": 3888,
+        "completion_tokens_details": {
+          "reasoning_tokens": 41
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3392
+        }
+      },
+      "seconds": 2.454
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据现行《澜图智能采购管理制度（2025版）》（v2.0，2025年1月1日生效）第四节规定：供应商年度考核的目标是交付准时率不低于96%；年度考核排名末位 5% 的供应商将启动整改。需要说明的是，该条款仅规定末位5%“启动整改”，现有资料中未见对末位供应商直接淘汰或降级的具体处理细则，具体处理流程建议进一步向供应链中心确认。另注：2024版采购管理制度中并无供应商年度考核末位条款，该制度已于2025年1月1日随2025版生效而废止。\",\"citations\":[\"lantu_policy_purchase_2025\",\"lantu_policy_purchase_2024\"],\"evidence\":[\"lantu_policy_purchase_2025#片段0\",\"lantu_policy_purchase_2024#片段0\"]}",
+      "usage": {
+        "completion_tokens": 306,
+        "prompt_tokens": 5819,
+        "total_tokens": 6125,
+        "completion_tokens_details": {
+          "reasoning_tokens": 91
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3776
+        }
+      },
+      "seconds": 6.406
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "供应商"
+      },
+      "result_sha": "3ce56d86d82a6bef1e6aa3eb612cf27d0f0b98e5ae9d685c5f7ab29ab0ccfc45",
+      "result_chars": 77,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "供应商 年度考核 末位 比例 淘汰",
+        "top_k": 10
+      },
+      "result_sha": "9b08e3284019d196ec2115bb8b0fb657e09e6e2fd555cb6d66637fde05fdda26",
+      "result_chars": 3913,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_purchase_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "a43282daf04801f0f16f7d64d197206dfa10185ee100b1a3054935cc73749d1f",
+      "result_chars": 635,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_purchase_2024",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "9988bc9676c6a8d622f60972376f11c60c99802984cd5996d26709d8dc203e03",
+      "result_chars": 536,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "供应商 考核 结果 应用 整改 淘汰 分级",
+        "top_k": 8
+      },
+      "result_sha": "240736b8dce3662f90454b7051332f7aaaa82b7e74440fa52655334b22bb8372",
+      "result_chars": 3134,
+      "hits": 8
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据现行《澜图智能采购管理制度（2025版）》（v2.0，2025年1月1日生效）第四节规定：供应商年度考核的目标是交付准时率不低于96%；年度考核排名末位 5% 的供应商将启动整改。需要说明的是，该条款仅规定末位5%“启动整改”，现有资料中未见对末位供应商直接淘汰或降级的具体处理细则，具体处理流程建议进一步向供应链中心确认。另注：2024版采购管理制度中并无供应商年度考核末位条款，该制度已于2025年1月1日随2025版生效而废止。",
+    "citations": [
+      "lantu_policy_purchase_2025",
+      "lantu_policy_purchase_2024"
+    ],
+    "evidence": [
+      "lantu_policy_purchase_2025#片段0",
+      "lantu_policy_purchase_2024#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 18106,
+  "started_at": "2026-11-01T05:49:08",
+  "elapsed_seconds": 30.53,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "供应商"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_legal_supplier_code",
+            "title": "# 澜图智能供应商行为准则"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "供应商 年度考核 末位 比例 淘汰",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_policy_purchase_2025",
+            "title": "# 澜图智能采购管理制度（2025版）",
+            "chunk": 0,
+            "score": 20.535,
+            "snippet": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付"
+          },
+          {
+            "doc_id": "lantu_strategy_quality_system",
+            "title": "澜图智能质量管理体系手册",
+            "chunk": 0,
+            "score": 14.255,
+            "snippet": "澜图智能质量管理体系手册\n所属部门：质量部\n作者：潘文博\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v4.2\n文档类型：strategy\n文档族：quality_system\n生效日期：2025-06-01\n一、质量方针\n以客户为中心，以零缺陷为目标，持续改进，追求卓越。公司通过 ISO 9001、IATF 16949 与 ISO 13485\n认证。\n二、质量目标\n2025 年一次交检合格率不低于 98.5%，客户投诉不超过 6 起，MTBF 不低于 12,00"
+          },
+          {
+            "doc_id": "lantu_hr_performance",
+            "title": "# 澜图智能绩效管理制度",
+            "chunk": 0,
+            "score": 12.351,
+            "snippet": "# 澜图智能绩效管理制度\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v3.4\n文档类型：hr\n文档族：performance\n生效日期：2025-06-01\n\n## 一、考核周期\n\n实行季度考核与年度考核，季度占 40%，年度占 60%。试用期员工参加转正考核。\n\n## 二、考核维度\n\n业绩目标 60%、价值观 20%、能力成长 20%。销售岗位业绩权重 70%。\n\n## 三、绩效分布\n\nS 级 10%、A 级 30%、B "
+          },
+          {
+            "doc_id": "lantu_meeting_supply_chain",
+            "title": "2025 年供应链韧性专题会纪要",
+            "chunk": 0,
+            "score": 10.051,
+            "snippet": "2025 年供应链韧性专题会纪要\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-10-16 09:00\n更新时间：2025-10-16 15:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_supply_chain\n生效日期：2025-10-16\n一、供应形势\n减速器交期由 8 周延长至 12 周，芯片交期 20 周；关键物料库存周转 92 天，高于目标 75 天。\n二、双源策略\n减速器已引入第二供应商，2026 年一季度实现 30% 替代；伺服驱动器自研比例提升至 61%。\n三"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2024",
+            "title": "# 澜图智能采购管理制度（2024版）",
+            "chunk": 0,
+            "score": 8.58,
+            "snippet": "# 澜图智能采购管理制度（2024版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2024-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。\n\n## 二、付款账期\n\n标准供应商月结 60 天；预付款比例不超过 30%；质保金 5%-10%。\n\n## 三、供应商"
+          },
+          {
+            "doc_id": "lantu_company_campus",
+            "title": "# 澜图智能制造基地与产能布局",
+            "chunk": 0,
+            "score": 7.496,
+            "snippet": "# 澜图智能制造基地与产能布局\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2024-04-12 09:00\n更新时间：2025-11-20 15:00\n版本号：v3.0\n文档类型：company\n文档族：manufacturing_base\n生效日期：2025-11-20\n\n## 一、苏州总部基地\n\n位于苏州工业园区，占地 120 亩，建筑面积 9.6 万平方米，承担六轴机器人总装、控制器生产与研发测试，年产能 18,000 台。\n\n## 二、东莞华南基地\n\n位于东莞松山湖，占地 60 亩，聚焦 SCARA、A"
+          },
+          {
+            "doc_id": "lantu_strategy_2025",
+            "title": "# 澜图智能 2025 年度经营计划",
+            "chunk": 0,
+            "score": 6.812,
+            "snippet": "# 澜图智能 2025 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-01-10 09:00\n更新时间：2025-02-10 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2025\n生效日期：2025-02-10\n\n## 一、年度目标\n\n2025 年营业收入目标 41.5 亿元，力争 42.63 亿元；新签订单目标 46 亿元；机器人出货目标 20,000 台。\n\n## 二、重点任务\n\n锂电与半导体行业突破；LT-C800 控制器量产；海外收入占"
+          },
+          {
+            "doc_id": "lantu_strategy_supply_chain_resilience",
+            "title": "# 澜图智能供应链韧性建设方案",
+            "chunk": 0,
+            "score": 6.495,
+            "snippet": "# 澜图智能供应链韧性建设方案\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-02-01 09:00\n更新时间：2025-09-30 16:00\n版本号：v1.5\n文档类型：strategy\n文档族：supply_chain_resilience\n生效日期：2025-09-30\n\n## 一、风险识别\n\n关键物料包括减速器、伺服电机、芯片与视觉相机，其中芯片与减速器存在单一来源风险。\n\n## 二、双源与备库\n\n减速器 2026 年实现 30% 第二来源；关键芯片备库 6 个月；通用物料安全库存 30 天。"
+          },
+          {
+            "doc_id": "lantu_legal_supplier_code",
+            "title": "# 澜图智能供应商行为准则",
+            "chunk": 0,
+            "score": 5.871,
+            "snippet": "# 澜图智能供应商行为准则\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-04-01 09:00\n更新时间：2025-05-01 09:00\n版本号：v2.0\n文档类型：legal\n文档族：supplier_code\n生效日期：2025-05-01\n\n## 一、劳工与人权\n\n供应商不得使用童工、强迫劳动，须保障结社自由与最低工资，工作时间符合当地法律。\n\n## 二、健康与安全\n\n供应商须提供安全的工作环境，配备必要的防护设施，定期开展安全培训与应急演练。\n\n## 三、环境要求\n\n供应商须遵守环保法规，优"
+          },
+          {
+            "doc_id": "lantu_policy_employee_handbook",
+            "title": "# 澜图智能员工手册",
+            "chunk": 0,
+            "score": 5.489,
+            "snippet": "# 澜图智能员工手册\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-07-01 09:00\n版本号：v6.0\n文档类型：policy\n文档族：employee_handbook\n生效日期：2025-07-01\n\n## 一、适用范围\n\n本手册适用于澜图智能装备股份有限公司及下属子公司全体正式员工、试用期员工与实习生。劳务派遣与外包人员参照执行。\n\n## 二、入职与试用\n\n新员工入职当日签署劳动合同、保密协议与廉洁承诺书，试用期 3-6 个月。试用期内需完成入职培"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_purchase_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_purchase_2025",
+        "title": "# 澜图智能采购管理制度（2025版）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 453,
+        "text": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付款比例不超过 20%；质保金 5%-10%。\n\n## 三、供应商准入\n\n供应商须通过资质审查、现场审核与小批量试用，签署质量协议、廉洁协议与数据安全协议。\n\n## 四、库存与交付\n\n关键物料安全库存 45 天，通用物料 30 天；供应商交付准时率目标 96%，年度考核末位 5% 启动整改。\n\n## 五、生效说明\n\n本制度自 2025 年 1 月 1 日起生效，2024 版同时废止。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_purchase_2024",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_purchase_2024",
+        "title": "# 澜图智能采购管理制度（2024版）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 358,
+        "text": "# 澜图智能采购管理制度（2024版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2024-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。\n\n## 二、付款账期\n\n标准供应商月结 60 天；预付款比例不超过 30%；质保金 5%-10%。\n\n## 三、供应商准入\n\n供应商须通过资质审查、现场审核与小批量试用，签署质量协议与廉洁协议。\n\n## 四、验收与对账\n\n到货后 3 个工作日内完成数量与外观验收，30 日内完成质量验收；每月 5 日前完成对账。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "供应商 考核 结果 应用 整改 淘汰 分级",
+        "top_k": 8
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_policy_purchase_2025",
+            "title": "# 澜图智能采购管理制度（2025版）",
+            "chunk": 0,
+            "score": 13.746,
+            "snippet": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付"
+          },
+          {
+            "doc_id": "lantu_hr_performance",
+            "title": "# 澜图智能绩效管理制度",
+            "chunk": 0,
+            "score": 12.132,
+            "snippet": "# 澜图智能绩效管理制度\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v3.4\n文档类型：hr\n文档族：performance\n生效日期：2025-06-01\n\n## 一、考核周期\n\n实行季度考核与年度考核，季度占 40%，年度占 60%。试用期员工参加转正考核。\n\n## 二、考核维度\n\n业绩目标 60%、价值观 20%、能力成长 20%。销售岗位业绩权重 70%。\n\n## 三、绩效分布\n\nS 级 10%、A 级 30%、B "
+          },
+          {
+            "doc_id": "lantu_strategy_quality_system",
+            "title": "澜图智能质量管理体系手册",
+            "chunk": 0,
+            "score": 11.971,
+            "snippet": "澜图智能质量管理体系手册\n所属部门：质量部\n作者：潘文博\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v4.2\n文档类型：strategy\n文档族：quality_system\n生效日期：2025-06-01\n一、质量方针\n以客户为中心，以零缺陷为目标，持续改进，追求卓越。公司通过 ISO 9001、IATF 16949 与 ISO 13485\n认证。\n二、质量目标\n2025 年一次交检合格率不低于 98.5%，客户投诉不超过 6 起，MTBF 不低于 12,00"
+          },
+          {
+            "doc_id": "lantu_legal_supplier_code",
+            "title": "# 澜图智能供应商行为准则",
+            "chunk": 0,
+            "score": 10.077,
+            "snippet": "# 澜图智能供应商行为准则\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-04-01 09:00\n更新时间：2025-05-01 09:00\n版本号：v2.0\n文档类型：legal\n文档族：supplier_code\n生效日期：2025-05-01\n\n## 一、劳工与人权\n\n供应商不得使用童工、强迫劳动，须保障结社自由与最低工资，工作时间符合当地法律。\n\n## 二、健康与安全\n\n供应商须提供安全的工作环境，配备必要的防护设施，定期开展安全培训与应急演练。\n\n## 三、环境要求\n\n供应商须遵守环保法规，优"
+          },
+          {
+            "doc_id": "lantu_support_sla_2025",
+            "title": "# 澜图智能服务等级协议（SLA 2025版）",
+            "chunk": 0,
+            "score": 8.219,
+            "snippet": "# 澜图智能服务等级协议（SLA 2025版）\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2025-03-10 09:00\n更新时间：2025-04-01 09:00\n版本号：v3.0\n文档类型：support\n文档族：service_sla\n生效日期：2025-04-01\n\n## 一、故障分级\n\nP1 为产线停机或安全风险；P2 为单机停机但产线可降级运行；P3 为一般故障或咨询。\n\n## 二、响应时效\n\nP1：30 分钟内响应、12 小时内到场；P2：4 小时内响应、48 小时内到场；P3：12 小时内响应"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2024",
+            "title": "# 澜图智能采购管理制度（2024版）",
+            "chunk": 0,
+            "score": 8.064,
+            "snippet": "# 澜图智能采购管理制度（2024版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2024-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。\n\n## 二、付款账期\n\n标准供应商月结 60 天；预付款比例不超过 30%；质保金 5%-10%。\n\n## 三、供应商"
+          },
+          {
+            "doc_id": "lantu_sales_policy",
+            "title": "# 澜图智能销售政策与客户分级管理办法",
+            "chunk": 0,
+            "score": 6.332,
+            "snippet": "# 澜图智能销售政策与客户分级管理办法\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-01-20 09:00\n更新时间：2025-09-25 15:00\n版本号：v3.4\n文档类型：sales\n文档族：sales_policy\n生效日期：2025-09-25\n\n## 一、客户分级\n\n客户分为 S、A、B、C 四级。S 级为年采购额 5,000 万元以上战略客户，由客户成功部直管；A 级 1,000-5,000 万元；B 级 300-1,000 万元；C 级 300 万元以下由渠道覆盖。\n\n## 二、价格体"
+          },
+          {
+            "doc_id": "lantu_support_complaint",
+            "title": "# 澜图智能客户投诉处理管理办法",
+            "chunk": 0,
+            "score": 6.271,
+            "snippet": "# 澜图智能客户投诉处理管理办法\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-02-01 09:00\n更新时间：2025-09-01 09:00\n版本号：v2.8\n文档类型：support\n文档族：complaint_management\n生效日期：2025-09-01\n\n## 一、受理渠道\n\n客户可通过 400 热线、服务邮箱、客户门户或销售转达投诉，受理后 1 小时内录入系统。\n\n## 二、分级处理\n\n一般投诉 24 小时内响应、3 个工作日内闭环；重大投诉 2 小时内上报总经理并成立专项小组。\n\n"
+          }
+        ]
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.5,
+    "cited": [
+      "lantu_policy_purchase_2025",
+      "lantu_policy_purchase_2024"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.213,
+    "number_recall": 0.0
+  }
+}

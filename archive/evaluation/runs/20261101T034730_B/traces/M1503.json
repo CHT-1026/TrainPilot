@@ -1,0 +1,156 @@
+{
+  "qid": "M1503",
+  "question": "用户：客户产线停机，我们对外承诺工程师多久到现场？\n助手：按现行（2025 年 4 月 1 日起生效）版本，P1 故障 30 分钟内响应、12 小时内到场。\n用户：那是新口径吧？我要看 2024 年版当时承诺的到场时间。",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"2024 SLA 服务标准 P1 到场时间\"}}",
+      "usage": {
+        "prompt_tokens": 427,
+        "total_tokens": 611,
+        "completion_tokens": 184,
+        "completion_tokens_details": {
+          "reasoning_tokens": 153,
+          "text_tokens": 184
+        }
+      },
+      "seconds": 1.578
+    },
+    {
+      "round": 2,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"按2024年版SLA标准，P1故障（产线停机）承诺24小时内到场。\",\"citations\":[\"lantu_support_sla_2024\"],\"evidence\":[\"lantu_support_sla_2024#0\"]}",
+      "usage": {
+        "prompt_tokens": 2809,
+        "total_tokens": 3050,
+        "completion_tokens": 241,
+        "completion_tokens_details": {
+          "reasoning_tokens": 171,
+          "text_tokens": 241
+        }
+      },
+      "seconds": 1.812
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "2024 SLA 服务标准 P1 到场时间"
+      },
+      "result_sha": "4573f5c389d64c99d53ee0647becac5bf1b0fe3b5e700f8a0f025cf610397fbd",
+      "result_chars": 3932,
+      "hits": 10
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "按2024年版SLA标准，P1故障（产线停机）承诺24小时内到场。",
+    "citations": [
+      "lantu_support_sla_2024"
+    ],
+    "evidence": [
+      "lantu_support_sla_2024#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 3661,
+  "started_at": "2026-11-01T06:50:08",
+  "elapsed_seconds": 3.39,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "2024 SLA 服务标准 P1 到场时间"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_support_sla_2024",
+            "title": "# 澜图智能服务等级协议（SLA 2024版）",
+            "chunk": 0,
+            "score": 18.802,
+            "snippet": "# 澜图智能服务等级协议（SLA 2024版）\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v2.0\n文档类型：support\n文档族：service_sla\n生效日期：2024-01-01\n\n## 一、故障分级\n\nP1 为产线停机或安全风险；P2 为单机停机但产线可降级运行；P3 为一般故障或咨询。\n\n## 二、响应时效\n\nP1：2 小时内响应、24 小时内到场；P2：8 小时内响应、72 小时内到场；P3：24 小时内响应、"
+          },
+          {
+            "doc_id": "lantu_support_sla_2025",
+            "title": "# 澜图智能服务等级协议（SLA 2025版）",
+            "chunk": 0,
+            "score": 17.915,
+            "snippet": "# 澜图智能服务等级协议（SLA 2025版）\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2025-03-10 09:00\n更新时间：2025-04-01 09:00\n版本号：v3.0\n文档类型：support\n文档族：service_sla\n生效日期：2025-04-01\n\n## 一、故障分级\n\nP1 为产线停机或安全风险；P2 为单机停机但产线可降级运行；P3 为一般故障或咨询。\n\n## 二、响应时效\n\nP1：30 分钟内响应、12 小时内到场；P2：4 小时内响应、48 小时内到场；P3：12 小时内响应"
+          },
+          {
+            "doc_id": "lantu_support_remote_diagnostics",
+            "title": "# 澜图智能远程诊断服务说明",
+            "chunk": 0,
+            "score": 6.062,
+            "snippet": "# 澜图智能远程诊断服务说明\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-05-01 09:00\n更新时间：2025-07-18 15:00\n版本号：v2.6\n文档类型：support\n文档族：remote_diagnostics\n生效日期：2025-07-18\n\n## 一、服务能力\n\n远程诊断中心 7×24 小时值守，通过安全网关接入客户设备，实时读取报警、日志与运行数据。\n\n## 二、解决率\n\n2025 年远程诊断解决率 85%，平均故障定位时间 18 分钟，减少现场出勤 2,100 次。\n\n## "
+          },
+          {
+            "doc_id": "lantu_support_case_hengxin",
+            "title": "# 恒芯动力电池 48 小时复产服务案例",
+            "chunk": 0,
+            "score": 5.349,
+            "snippet": "# 恒芯动力电池 48 小时复产服务案例\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2025-04-10 09:00\n更新时间：2025-04-12 18:00\n版本号：v1.0\n文档类型：support\n文档族：service_case_hengxin\n生效日期：2025-04-12\n\n## 一、事件经过\n\n2025 年 4 月 8 日凌晨，恒芯动力电池 3 号叠片线报伺服过载停机，影响两条线体。客户通过 400 热线报修。\n\n## 二、响应过程\n\n远程诊断中心 12 分钟内定位为驱动器散热风扇故障，指导客户"
+          },
+          {
+            "doc_id": "lantu_hr_job_grades",
+            "title": "# 澜图智能职级体系与晋升规则",
+            "chunk": 0,
+            "score": 4.255,
+            "snippet": "# 澜图智能职级体系与晋升规则\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-03-01 09:00\n更新时间：2025-03-01 09:00\n版本号：v3.0\n文档类型：hr\n文档族：job_grades\n生效日期：2025-03-01\n\n## 一、职级序列\n\n设管理序列（M1-M5）、专业序列（P1-P7）与技能序列（T1-T5）。研发、产品、销售、职能分别对应不同通道。\n\n## 二、晋升条件\n\n晋升需满足当前职级任职满 2 年、连续两次绩效 A 及以上、通过晋升评审；破格晋升须总经理审批。\n\n#"
+          },
+          {
+            "doc_id": "lantu_support_field_service",
+            "title": "# 澜图智能现场服务与安装调试规范",
+            "chunk": 0,
+            "score": 3.914,
+            "snippet": "# 澜图智能现场服务与安装调试规范\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-04-01 09:00\n更新时间：2025-05-30 10:00\n版本号：v3.0\n文档类型：support\n文档族：field_service\n生效日期：2025-05-30\n\n## 一、安装调试\n\n设备到货后 3 个工作日内完成开箱验收，7 个工作日内完成安装，14 个工作日内完成调试与试运行。\n\n## 二、现场管理\n\n服务工程师须佩戴工牌、遵守客户安全规定、每日提交服务日报；涉及动火、高处作业须办理许可。\n\n## 三"
+          },
+          {
+            "doc_id": "lantu_sales_quote",
+            "title": "# 澜图智能报价与合同评审流程",
+            "chunk": 0,
+            "score": 3.795,
+            "snippet": "# 澜图智能报价与合同评审流程\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-02-10 09:00\n更新时间：2025-08-08 14:00\n版本号：v2.5\n文档类型：sales\n文档族：sales_quote\n生效日期：2025-08-08\n\n## 一、报价流程\n\n销售工程师在 CRM 创建报价单，系统自动校验标准价；非标项目由售前技术出具配置清单，产品部确认成本，财务部复核税率与汇率。\n\n## 二、评审节点\n\n合同金额 1,000 万元以上须法务合规部与 CFO 联合评审；涉及非标开发须 CTO"
+          },
+          {
+            "doc_id": "lantu_product_s_series",
+            "title": "# LT-S 系列 SCARA 机器人产品说明",
+            "chunk": 0,
+            "score": 3.764,
+            "snippet": "# LT-S 系列 SCARA 机器人产品说明\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-03-01 09:00\n更新时间：2025-09-12 11:00\n版本号：v3.2\n文档类型：product\n文档族：product_s_series\n生效日期：2025-09-12\n\n## 一、产品定位\n\nLT-S 系列 SCARA 机器人面向 3C 组装、光伏串焊、食品包装等高速取放场景，标准循环时间 0.38 秒。\n\n## 二、型号参数\n\nLT-S4 负载 4 kg、臂展 600 mm、重复精度 ±0.02 "
+          },
+          {
+            "doc_id": "lantu_policy_travel_2024",
+            "title": "# 澜图智能差旅费用报销标准（2024版）",
+            "chunk": 0,
+            "score": 3.639,
+            "snippet": "# 澜图智能差旅费用报销标准（2024版）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-02-20 09:00\n更新时间：2024-03-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2024-03-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 450 元/晚，二线城市 350 元/晚，其他城市 300 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 100 元/天，按自然日计算；客户宴请须提"
+          },
+          {
+            "doc_id": "lantu_finance_gross_margin",
+            "title": "# 澜图智能毛利率与成本结构分析",
+            "chunk": 0,
+            "score": 3.475,
+            "snippet": "# 澜图智能毛利率与成本结构分析\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-11-15 09:00\n更新时间：2025-11-20 17:00\n版本号：v1.2\n文档类型：finance\n文档族：gross_margin_analysis\n生效日期：2025-11-20\n\n## 一、整体毛利率\n\n2025 年综合毛利率 31.6%，较 2024 年提升 1.2 个百分点。机器人本体毛利率 34.8%，智能产线 26.2%，软件与服务 52.4%。\n\n## 二、成本构成\n\n直接材料占营业成本 68.4%，"
+          }
+        ]
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.5,
+    "cited": [
+      "lantu_support_sla_2024"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.072,
+    "number_recall": 0.5
+  }
+}

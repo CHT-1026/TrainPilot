@@ -1,0 +1,222 @@
+# 反思补搜  先生成 审批健脾 自我评估  补充搜索 重新生成
+import json
+import logging
+import os
+from typing import TypedDict
+
+from dotenv import load_dotenv
+from langchain_core.messages import SystemMessage, HumanMessage
+from langchain_openai import ChatOpenAI
+from langgraph.constants import START, END
+from langgraph.graph import StateGraph
+
+#加载虚拟环境便利
+load_dotenv()
+
+logger = logging.getLogger()
+
+
+#状态定义
+class ReflectionState(TypedDict):
+    #申请类型
+    application_type: str
+    #申请信息摘要
+    application_summary: str
+    #政策文档（从 Store 读取）
+    policy_info: str
+    #生成审批建议
+    suggestion: str
+    #自我评估结果
+    self_evaluation: str
+    #搜索查询
+    search_query: str
+    #补充搜索到的信息
+    supplementary_info: str
+    #反思轮次 （限制最多 2 轮）
+    iteration: int
+    #最终建议
+    final_suggestion: str
+
+
+#构建图
+def build_reflection_graph():
+    """构建反思补搜工作流图"""
+
+    #初始化LLM
+    logger.info("初始化反思补搜工作流LLM")
+
+    llm = ChatOpenAI(
+        model=os.getenv("OPENAI_MODEL","qwen3.5-plus"),
+        openai_api_key=os.getenv("OPENAI_API_KEY"),
+        openai_api_base=os.getenv("OPENAI_API_BASE"),
+        temperature=0.3
+    )
+
+    #构建图
+    builder = StateGraph(ReflectionState)
+
+    #节点1： 生成初步建议
+
+    def generate_initial_suggestion(state:ReflectionState)->dict:
+        """生成初步审批建议节点"""
+
+        logger.info(f"反思补搜-开始生成初步建议，申请类型:{state['application_type']}")
+
+        #政策文档（直接硬编码）
+        policy_text = """
+        公司请假政策：
+        - 年假：最长15天，超过3天需要HR审批，带薪
+        - 病假：最长30天，需要提供医院证明，带薪
+        - 事假：最长10天，无薪
+        - 员工年假余额： 普通员工每年10天，入职满5年15天
+        """
+
+        #构建信息
+
+        messages = [
+            SystemMessage(content="""
+            你是一个专业的OA审批助手，根据申请信息和公司政策给出审批建议。
+            要求： 1.结论明确（建议批准/建议驳回） 2.列出 2-3 条核心依据 3.提示1-2个关键核实项 保持简洁，不超过200字。
+            """),
+            HumanMessage(content=f"""
+                申请类型:{state['application_type']}
+                申请信息:{state['application_summary']}
+                公司政策:{policy_text}
+                请给出简洁的审批建议:
+            """)
+        ]
+
+        logger.info("反思补搜-调用LLM生成初步建议")
+
+        response = llm.invoke(messages)
+
+        logger.info(f"反思补搜-初步建议生成完成，长度：{len(response.content)}")
+
+        return {
+            "suggestion": response.content,
+            "iteration": 1
+        }
+
+    #节点2： 自我评估
+
+    def self_evaluate(state:ReflectionState)->dict:
+        """自我评估：评估建议质量"""
+
+        logger.info(f"反思补搜- 开始自我评估，当前迭代：{state.get('iteration',1)}")
+
+        messages = [
+            SystemMessage(content="""
+                评估审批建议质量，判断是否需要补充更多信息。只回复 '需要补充' 或 '建议充分'。
+                如果需要补充，请同时说明需要补充什么信息。
+                注意：只关注核心政策合规性和关键风险，不要过度追求细节。
+            """),
+            HumanMessage(f"""
+                当前建议:{state['suggestion']}
+                评估这个建议是否充分？是否还有信息需要补充搜索的地方？
+            """)
+        ]
+        logger.info("反思补搜-调用llm进行自我评估")
+        response = llm.invoke(messages)
+        content = response.content
+        logger.info(f"反思补搜-自我评估结果:{content}")
+
+        return {"self_evaluation": content}
+
+    #节点3  补充搜索 （简化未 默认提示）
+    def supplementary_search(state:ReflectionState)->dict:
+        """补充搜索节点：使用默认提示信息"""
+        logger.info(f"反思不够-开始进行补充搜索，查询：{state.get('self_evaluation')[:50]}...")
+
+        #直接使用默认提示
+        supp_info = {
+            "补充说明":"根据公司标准流程，此类申请需要关注合规性和完整性",
+            "政策提示":"建议参考公司相关政策文档确认是否符合规定"
+        }
+
+        return {
+            "supplementary_info": json.dumps(supp_info, ensure_ascii=False),
+            "iteration": state.get("iteration", 1) + 1
+        }
+
+
+    #节点4： 重新生成建议
+    def regenerate_suggestion(state:ReflectionState)->dict:
+        """重新生成建议节点：基于补充信息优化建议"""
+        logger.info("反思补搜-开始重新生成建议（基于补充信息）")
+
+        messages = [
+            SystemMessage(content="""
+                你是一个专业的OA审批助手，优化你的审批建议。
+                要求：保持简洁，突出重点，不超过200字
+            """),
+            HumanMessage(content=f"""
+                原始建议:{state['suggestion']}
+                补充信息:{state.get('supplementary_info','无')}
+                请基于补充信息给出更准确的审批建议 （简洁版）:
+            """)
+        ]
+        logger.info("反思补搜-调用LLM重新生成建议")
+        response = llm.invoke(messages)
+
+        logger.info(f"反思补搜-优化后的建议生成完成，长度:{len(response.content)} 字符")
+        return {
+            "suggestion": response.content
+        }
+
+    #节点5 输出最终建议
+    def output_suggestion(state:ReflectionState)->dict:
+        """输出最终建议节点"""
+        logger.info(f"反思补搜-输出最终建议，长度:{state.get('suggestion','')} 字符")
+        return {"final_suggestion": state.get("suggestion", "")}
+
+
+    builder.add_node("generate",generate_initial_suggestion)
+    builder.add_node("evaluate",self_evaluate)
+    builder.add_node("search",supplementary_search)
+    builder.add_node("regenerate",regenerate_suggestion)
+    builder.add_node("output",output_suggestion)
+
+    #路由函数 根据评估结果决定进入补充搜索还是输出结果
+    def route_after_evaluation(state:ReflectionState)->dict:
+        """路由函数:根据评估结果决定进入补充搜索还是输出结果"""
+
+        evaluation = state.get("self_evaluation","")
+        iteration = state.get("iteration",1)
+        neads_search = "需要补充" in evaluation or "不足" in evaluation
+
+        if neads_search and iteration <2:
+            logger.info(f"反思补搜- 路由决策： 需要补充搜索 第{iteration} 轮")
+            state["search_query"] = evaluation
+            return "supplementary_search"
+        logger.info(f"反思补搜 路由决策： 输出最终结果")
+        return "output_suggestion"
+
+    #添加边
+    builder.add_edge(START,"generate")
+    builder.add_edge("generate","evaluate")
+
+    builder.add_conditional_edges("evaluate",
+                                  route_after_evaluation,{
+            "supplementary_search": "search",
+            "output_suggestion": "output"
+                                  })
+    
+    builder.add_edge("search","regenerate")
+    builder.add_edge("regenerate","evaluate")
+    builder.add_edge("output",END)
+    
+    logger.info("编译工作流图")
+    graph = builder.compile()
+    
+    return graph
+
+#单例模式
+
+_reflection_graph = None
+
+def get_reflection_graph():
+    """获取反思补搜图 单例"""
+    global _reflection_graph
+    if _reflection_graph is None:
+        _reflection_graph = build_reflection_graph()
+    return _reflection_graph

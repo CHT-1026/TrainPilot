@@ -1,0 +1,329 @@
+{
+  "qid": "A0120",
+  "question": "高管任期从哪一年开始？到哪一年结束？考核指标包括哪几项？",
+  "question_type": "事实检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=list><parameter=keyword>高管</parameter></function></tool_call><tool_call><function=search><parameter=query>高管任期 考核指标</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 67,
+        "prompt_tokens": 335,
+        "total_tokens": 402,
+        "completion_tokens_details": {
+          "reasoning_tokens": 19
+        },
+        "prompt_tokens_details": null
+      },
+      "seconds": 5.875
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"高管 任期 考核指标 起止年份\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 54,
+        "prompt_tokens": 420,
+        "total_tokens": 474,
+        "completion_tokens_details": {
+          "reasoning_tokens": 20
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 9.328
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"高管 薪酬 考聘 考核方案 董事会\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 71,
+        "prompt_tokens": 2820,
+        "total_tokens": 2891,
+        "completion_tokens_details": {
+          "reasoning_tokens": 32
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 2.407
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_org_executives\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 68,
+        "prompt_tokens": 5297,
+        "total_tokens": 5365,
+        "completion_tokens_details": {
+          "reasoning_tokens": 36
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2816
+        }
+      },
+      "seconds": 3.062
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"高管任期为三年：2025 年换届后开始，至 2028 年 5 月结束。考核指标共 5 项：营业收入、净利润、研发投入占比、客户满意度、质量事故。\",\"citations\":[\"lantu_org_executives\"],\"evidence\":[\"lantu_org_executives#片段0\"]}",
+      "usage": {
+        "completion_tokens": 147,
+        "prompt_tokens": 5675,
+        "total_tokens": 5822,
+        "completion_tokens_details": {
+          "reasoning_tokens": 61
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 5248
+        }
+      },
+      "seconds": 4.203
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "高管 任期 考核指标 起止年份",
+        "top_k": 10
+      },
+      "result_sha": "0203d92530836135b0be0b592aa1b85f1a44e420d00b266daa7f0afbb950ad69",
+      "result_chars": 3931,
+      "hits": 10
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "高管 薪酬 考聘 考核方案 董事会",
+        "top_k": 10
+      },
+      "result_sha": "001fddfbb1cea829ef640bdf0d31f3eab07112d49d18ce61b56c49630e5171e8",
+      "result_chars": 3906,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_executives",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "93a3b9ad73ee68b6025ae561128b99033899fe0f2eb4e2be66463031a23aa85f",
+      "result_chars": 548,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "高管任期为三年：2025 年换届后开始，至 2028 年 5 月结束。考核指标共 5 项：营业收入、净利润、研发投入占比、客户满意度、质量事故。",
+    "citations": [
+      "lantu_org_executives"
+    ],
+    "evidence": [
+      "lantu_org_executives#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 14954,
+  "started_at": "2026-11-01T01:57:00",
+  "elapsed_seconds": 24.88,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "高管 任期 考核指标 起止年份",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_org_executives",
+            "title": "# 澜图智能高级管理人员名单",
+            "chunk": 0,
+            "score": 17.783,
+            "snippet": "# 澜图智能高级管理人员名单\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2024-03-01 09:00\n更新时间：2025-11-28 17:00\n版本号：v4.0\n文档类型：org\n文档族：executives\n生效日期：2025-11-28\n\n## 一、核心管理层\n\n顾承澜，董事长兼总经理，1968 年生，教授级高级工程师，持股 18.6%；沈亦舟，CTO，负责研发体系；周敏仪，CFO，负责财务与资本运作；韩立恒，COO，负责供应链与制造。\n\n## 二、业务分管\n\n罗嘉树，销售副总裁，分管销售中心、客"
+          },
+          {
+            "doc_id": "lantu_sales_customer_list",
+            "title": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态",
+            "chunk": 0,
+            "score": 6.421,
+            "snippet": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态\n恒芯动力电池,动力电池,常州,电芯叠片与物流,\"21,600\",2025,已验收\n澜岳汽车零部件,汽车零部件,上海,白车身焊装,\"14,800\",2024,已验收\n曜阳光能,光伏,合肥,电池片串焊,\"9,800\",2025,已验收\n星禾电子,3C 电子,昆山,精密组装,\"12,500\",2024,已验收\n海翎家电,家电,顺德,喷涂与打磨,\"6,300\",2025,已验收\n晶拓微电子,半导体,无锡,晶圆搬运,\"7,400\",2025,已验收\n麦丰食品,食品,漯河"
+          },
+          {
+            "doc_id": "lantu_hr_performance",
+            "title": "# 澜图智能绩效管理制度",
+            "chunk": 0,
+            "score": 4.484,
+            "snippet": "# 澜图智能绩效管理制度\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v3.4\n文档类型：hr\n文档族：performance\n生效日期：2025-06-01\n\n## 一、考核周期\n\n实行季度考核与年度考核，季度占 40%，年度占 60%。试用期员工参加转正考核。\n\n## 二、考核维度\n\n业绩目标 60%、价值观 20%、能力成长 20%。销售岗位业绩权重 70%。\n\n## 三、绩效分布\n\nS 级 10%、A 级 30%、B "
+          },
+          {
+            "doc_id": "lantu_meeting_board",
+            "title": "# 2025 年第二次临时董事会决议",
+            "chunk": 0,
+            "score": 4.206,
+            "snippet": "# 2025 年第二次临时董事会决议\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-04-25 09:00\n更新时间：2025-04-25 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_board_2025\n生效日期：2025-04-25\n\n## 一、会议信息\n\n时间：2025 年 4 月 25 日；方式：现场加视频；应到董事 9 人，实到 9 人；列席：高管团队。\n\n## 二、审议事项\n\n审议通过《2024 年度利润分配方案》《2025 年度研发投入预算》《苏州二期"
+          },
+          {
+            "doc_id": "lantu_policy_data_classification",
+            "title": "# 澜图智能数据分级与分类管理规范",
+            "chunk": 0,
+            "score": 3.641,
+            "snippet": "# 澜图智能数据分级与分类管理规范\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-05-20 09:00\n更新时间：2025-09-10 14:00\n版本号：v2.5\n文档类型：policy\n文档族：data_classification\n生效日期：2025-09-10\n\n## 一、分级定义\n\n数据分为 L1 公开、L2 内部、L3 机密、L4 绝密四级。L1 可对外发布；L2 限公司内部；L3 限授权岗位；L4 限特定人员并加密存储。\n\n## 二、典型数据\n\nL1：宣传资料、公开财报；L2：一般制度、会"
+          },
+          {
+            "doc_id": "lantu_support_training_certification",
+            "title": "# 澜图智能服务工程师培训与认证体系",
+            "chunk": 0,
+            "score": 3.555,
+            "snippet": "# 澜图智能服务工程师培训与认证体系\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-06-01 09:00\n更新时间：2025-08-08 10:00\n版本号：v2.4\n文档类型：support\n文档族：service_certification\n生效日期：2025-08-08\n\n## 一、认证等级\n\n服务工程师分为 L1 初级、L2 中级、L3 高级三级，分别对应常规维护、故障维修与整线调试。\n\n## 二、培训内容\n\nL1：安全、保养、备件更换（5 天）；L2：电气与控制系统维修（10 天）；L3：整线"
+          },
+          {
+            "doc_id": "lantu_support_complaint",
+            "title": "# 澜图智能客户投诉处理管理办法",
+            "chunk": 0,
+            "score": 3.498,
+            "snippet": "# 澜图智能客户投诉处理管理办法\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-02-01 09:00\n更新时间：2025-09-01 09:00\n版本号：v2.8\n文档类型：support\n文档族：complaint_management\n生效日期：2025-09-01\n\n## 一、受理渠道\n\n客户可通过 400 热线、服务邮箱、客户门户或销售转达投诉，受理后 1 小时内录入系统。\n\n## 二、分级处理\n\n一般投诉 24 小时内响应、3 个工作日内闭环；重大投诉 2 小时内上报总经理并成立专项小组。\n\n"
+          },
+          {
+            "doc_id": "lantu_tech_data_platform",
+            "title": "# 澜图智能工业数据平台建设方案",
+            "chunk": 0,
+            "score": 3.416,
+            "snippet": "# 澜图智能工业数据平台建设方案\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-10-01 09:00\n更新时间：2025-07-30 14:00\n版本号：v2.4\n文档类型：tech\n文档族：data_platform\n生效日期：2025-07-30\n\n## 一、平台定位\n\n构建统一工业数据湖仓，支撑设备运维、质量分析与经营决策，覆盖 3 大基地与客户现场。\n\n## 二、数据架构\n\n采集层支持 OPC UA、Modbus、MQTT；存储层采用数据湖 + 数仓分层；服务层提供 BI、API 与算法服务。\n"
+          },
+          {
+            "doc_id": "lantu_policy_employee_handbook",
+            "title": "# 澜图智能员工手册",
+            "chunk": 0,
+            "score": 2.93,
+            "snippet": "# 澜图智能员工手册\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-07-01 09:00\n版本号：v6.0\n文档类型：policy\n文档族：employee_handbook\n生效日期：2025-07-01\n\n## 一、适用范围\n\n本手册适用于澜图智能装备股份有限公司及下属子公司全体正式员工、试用期员工与实习生。劳务派遣与外包人员参照执行。\n\n## 二、入职与试用\n\n新员工入职当日签署劳动合同、保密协议与廉洁承诺书，试用期 3-6 个月。试用期内需完成入职培"
+          },
+          {
+            "doc_id": "lantu_product_assembly",
+            "title": "# LT-Assembly 柔性装配工作站方案",
+            "chunk": 0,
+            "score": 2.655,
+            "snippet": "# LT-Assembly 柔性装配工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-07-15 09:00\n更新时间：2025-09-05 11:00\n版本号：v2.5\n文档类型：product\n文档族：solution_assembly\n生效日期：2025-09-05\n\n## 一、方案组成\n\n由 LT-R12/LT-R20 机器人、力控末端、LT-V3D 视觉与快换工装组成，支持多品种混线装配。\n\n## 二、工艺指标\n\n装配节拍 3.2 秒/件，力控精度 ±2 N，视觉定位精度 ±0.05 mm，"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "高管 薪酬 考聘 考核方案 董事会",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_org_board",
+            "title": "# 澜图智能董事会与治理结构",
+            "chunk": 0,
+            "score": 13.919,
+            "snippet": "# 澜图智能董事会与治理结构\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2023-09-01 09:00\n更新时间：2025-06-20 14:00\n版本号：v3.0\n文档类型：org\n文档族：board_structure\n生效日期：2025-06-20\n\n## 一、董事会构成\n\n董事会由 9 名董事组成，其中独立董事 3 名，职工董事 1 名。董事长顾承澜，副董事长由机构股东提名。\n\n## 二、专门委员会\n\n董事会下设战略委员会、审计委员会、薪酬与考核委员会、提名委员会。审计委员会主任由独立董事担任，负"
+          },
+          {
+            "doc_id": "lantu_meeting_board",
+            "title": "# 2025 年第二次临时董事会决议",
+            "chunk": 0,
+            "score": 13.814,
+            "snippet": "# 2025 年第二次临时董事会决议\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-04-25 09:00\n更新时间：2025-04-25 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_board_2025\n生效日期：2025-04-25\n\n## 一、会议信息\n\n时间：2025 年 4 月 25 日；方式：现场加视频；应到董事 9 人，实到 9 人；列席：高管团队。\n\n## 二、审议事项\n\n审议通过《2024 年度利润分配方案》《2025 年度研发投入预算》《苏州二期"
+          },
+          {
+            "doc_id": "lantu_org_executives",
+            "title": "# 澜图智能高级管理人员名单",
+            "chunk": 0,
+            "score": 8.987,
+            "snippet": "# 澜图智能高级管理人员名单\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2024-03-01 09:00\n更新时间：2025-11-28 17:00\n版本号：v4.0\n文档类型：org\n文档族：executives\n生效日期：2025-11-28\n\n## 一、核心管理层\n\n顾承澜，董事长兼总经理，1968 年生，教授级高级工程师，持股 18.6%；沈亦舟，CTO，负责研发体系；周敏仪，CFO，负责财务与资本运作；韩立恒，COO，负责供应链与制造。\n\n## 二、业务分管\n\n罗嘉树，销售副总裁，分管销售中心、客"
+          },
+          {
+            "doc_id": "lantu_support_training_certification",
+            "title": "# 澜图智能服务工程师培训与认证体系",
+            "chunk": 0,
+            "score": 8.501,
+            "snippet": "# 澜图智能服务工程师培训与认证体系\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-06-01 09:00\n更新时间：2025-08-08 10:00\n版本号：v2.4\n文档类型：support\n文档族：service_certification\n生效日期：2025-08-08\n\n## 一、认证等级\n\n服务工程师分为 L1 初级、L2 中级、L3 高级三级，分别对应常规维护、故障维修与整线调试。\n\n## 二、培训内容\n\nL1：安全、保养、备件更换（5 天）；L2：电气与控制系统维修（10 天）；L3：整线"
+          },
+          {
+            "doc_id": "lantu_strategy_esg",
+            "title": "# 澜图智能 ESG 与可持续发展报告",
+            "chunk": 0,
+            "score": 8.146,
+            "snippet": "# 澜图智能 ESG 与可持续发展报告\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2025-04-22 09:00\n更新时间：2025-04-25 10:00\n版本号：v2.0\n文档类型：strategy\n文档族：esg_report\n生效日期：2025-04-25\n\n## 一、环境\n\n2025 年苏州基地光伏装机 6.2MW，绿电占比 28%；单位产值能耗下降 9.6%；危废合规处置率 100%。\n\n## 二、社会\n\n员工培训人均 32 小时；安全生产投入 1,200 万元；公益捐赠 380 万元，支持职业"
+          },
+          {
+            "doc_id": "lantu_meeting_ops_2025q3",
+            "title": "2025 年第三季度经营分析会纪要",
+            "chunk": 0,
+            "score": 6.014,
+            "snippet": "2025 年第三季度经营分析会纪要\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-10-10 09:00\n更新时间：2025-10-10 18:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_ops_2025q3\n生效日期：2025-10-10\n一、会议信息\n时间：2025 年 10 月 10 日 09:00-12:00；地点：苏州总部 3 楼会议室；主持：顾承澜；参会：沈亦舟、周敏仪、韩立恒、罗嘉树、陈依然、潘文博、邵岚。\n二、经营回顾\n第三季度营业收入 11.52 亿元，同"
+          },
+          {
+            "doc_id": "lantu_hr_campus",
+            "title": "# 澜图智能 2026 届校园招聘方案",
+            "chunk": 0,
+            "score": 5.389,
+            "snippet": "# 澜图智能 2026 届校园招聘方案\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-08-15 09:00\n更新时间：2025-09-20 15:00\n版本号：v1.0\n文档类型：hr\n文档族：campus_recruitment_2026\n生效日期：2025-09-20\n\n## 一、招聘计划\n\n2026 届校招计划 120 人，其中研发 78 人、产品 12 人、销售 18 人、职能 12 人；重点院校 18 所。\n\n## 二、岗位方向\n\n机器人算法、运动控制、机器视觉、嵌入式软件、机械结构、售前技"
+          },
+          {
+            "doc_id": "lantu_sales_discount_2024",
+            "title": "# 澜图智能销售折扣审批权限（2024版）",
+            "chunk": 0,
+            "score": 5.237,
+            "snippet": "# 澜图智能销售折扣审批权限（2024版）\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-01-25 09:00\n更新时间：2024-02-01 10:00\n版本号：v1.0\n文档类型：sales\n文档族：sales_discount\n生效日期：2024-01-01\n\n## 一、折扣区间\n\n标准价折扣 10% 以内（含）由销售经理审批；10%-20%（含）由销售副总裁审批；超过 20% 由总经理审批。\n\n## 二、申请材料\n\n折扣申请须说明客户级别、竞争态势、项目毛利与战略价值，并附成本测算表。\n\n## "
+          },
+          {
+            "doc_id": "lantu_policy_data_classification",
+            "title": "# 澜图智能数据分级与分类管理规范",
+            "chunk": 0,
+            "score": 4.954,
+            "snippet": "# 澜图智能数据分级与分类管理规范\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-05-20 09:00\n更新时间：2025-09-10 14:00\n版本号：v2.5\n文档类型：policy\n文档族：data_classification\n生效日期：2025-09-10\n\n## 一、分级定义\n\n数据分为 L1 公开、L2 内部、L3 机密、L4 绝密四级。L1 可对外发布；L2 限公司内部；L3 限授权岗位；L4 限特定人员并加密存储。\n\n## 二、典型数据\n\nL1：宣传资料、公开财报；L2：一般制度、会"
+          },
+          {
+            "doc_id": "lantu_sales_discount_2025",
+            "title": "# 澜图智能销售折扣审批权限（2025版）",
+            "chunk": 0,
+            "score": 4.952,
+            "snippet": "# 澜图智能销售折扣审批权限（2025版）\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-12-18 09:00\n更新时间：2025-01-01 10:00\n版本号：v2.0\n文档类型：sales\n文档族：sales_discount\n生效日期：2025-01-01\n\n## 一、折扣区间\n\n标准价折扣 8% 以内（含）由销售经理审批；8%-15%（含）由销售副总裁审批；15%-25%（含）由总经理审批；超过 25% 必须提交董事会审议。\n\n## 二、申请材料\n\n折扣申请须附客户分级、竞品报价、项目毛利测算"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_executives",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_org_executives",
+        "title": "# 澜图智能高级管理人员名单",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 385,
+        "text": "# 澜图智能高级管理人员名单\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2024-03-01 09:00\n更新时间：2025-11-28 17:00\n版本号：v4.0\n文档类型：org\n文档族：executives\n生效日期：2025-11-28\n\n## 一、核心管理层\n\n顾承澜，董事长兼总经理，1968 年生，教授级高级工程师，持股 18.6%；沈亦舟，CTO，负责研发体系；周敏仪，CFO，负责财务与资本运作；韩立恒，COO，负责供应链与制造。\n\n## 二、业务分管\n\n罗嘉树，销售副总裁，分管销售中心、客户成功部与售后服务部；陈依然，人力资源副总裁；潘文博，质量总监；邵岚，法务合规总监。\n\n## 三、任期与考核\n\n高级管理人员任期三年，2025 年换届后任期至 2028 年 5 月。考核指标包括营业收入、净利润、研发投入占比、客户满意度与质量事故。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_org_executives"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.537,
+    "number_recall": 1.0
+  }
+}

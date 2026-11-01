@@ -1,0 +1,411 @@
+{
+  "qid": "C0029",
+  "question": "AMR 手册的「任务分配延迟低于 80 ms」与数字孪生平台的「数据刷新延迟低于 80 ms」是同一个指标吗？",
+  "question_type": "矛盾与例外识别",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>AMR 任务分配延迟 80ms</parameter><parameter=top_k>8</parameter></function></tool_call><tool_call><function=search><parameter=query>数字孪生 数据刷新延迟</parameter><parameter=top_k>8</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 98,
+        "prompt_tokens": 379,
+        "total_tokens": 477,
+        "completion_tokens_details": {
+          "reasoning_tokens": 36
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.391
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>AMR 任务分配延迟 数字孪生 数据刷新延迟 指标定义</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 478,
+        "total_tokens": 529,
+        "completion_tokens_details": {
+          "reasoning_tokens": 8
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.484
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"AMR 任务分配延迟 80ms 指标\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 85,
+        "prompt_tokens": 558,
+        "total_tokens": 643,
+        "completion_tokens_details": {
+          "reasoning_tokens": 51
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 3.406
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=read><parameter=args>{\"doc_id\": \"lantu_product_amr\", \"offset\": 0, \"limit\": 4000}</parameter></function></tool_call><tool_call><function=search><parameter=args>{\"query\": \"数字孪生 平台 刷新延迟 ms 实时\", \"top_k\": 8}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 105,
+        "prompt_tokens": 2966,
+        "total_tokens": 3071,
+        "completion_tokens_details": {
+          "reasoning_tokens": 29
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 2.828
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_product_amr\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 44,
+        "prompt_tokens": 3079,
+        "total_tokens": 3123,
+        "completion_tokens_details": {
+          "reasoning_tokens": 13
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2944
+        }
+      },
+      "seconds": 1.813
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"数字孪生平台\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 106,
+        "prompt_tokens": 3561,
+        "total_tokens": 3667,
+        "completion_tokens_details": {
+          "reasoning_tokens": 82
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3072
+        }
+      },
+      "seconds": 3.234
+    },
+    {
+      "round": 7,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_product_digital_twin\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 49,
+        "prompt_tokens": 5943,
+        "total_tokens": 5992,
+        "completion_tokens_details": {
+          "reasoning_tokens": 16
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3520
+        }
+      },
+      "seconds": 1.407
+    },
+    {
+      "round": 8,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"不是同一个指标。二者数值相同（均为 <80 ms），但分属不同产品、不同系统、度量对象不同：① AMR 手册（LT-AMR v3.4，LantuFleet 调度系统）的「任务分配延迟低于 80 ms」指调度系统在单仓 500 台 AMR 协同场景下，将搬运任务下发/分配给机器人的响应延迟，属于调度控制链路指标；② 数字孪生平台（LantuTwin 3.0，信息技术部）的「数据刷新延迟低于 80 ms」指单项目 500 台设备接入时，物理设备状态到孪生模型之间的数据同步/虚实刷新延迟，属于数据同步链路指标。两者只是数值口径巧合相同，指标定义、所属系统与考核对象均不同，不能互相替代或引用。\",\"citations\":[\"lantu_product_amr\",\"lantu_product_digital_twin\"],\"evidence\":[\"lantu_product_amr#三、调度能力：LantuFleet 调度系统单仓支持 500 台 AMR 协同，任务分配延迟低于 80 ms\",\"lantu_product_digital_twin#二、核心能力：单项目支持 500 台设备接入，数据刷新延迟低于 80 ms，仿真精度 99.5%\"]}",
+      "usage": {
+        "completion_tokens": 373,
+        "prompt_tokens": 6356,
+        "total_tokens": 6729,
+        "completion_tokens_details": {
+          "reasoning_tokens": 57
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 5888
+        }
+      },
+      "seconds": 8.734
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "AMR 任务分配延迟 80ms 指标",
+        "top_k": 10
+      },
+      "result_sha": "3844e7e44f3b276684ba59040cfc0798f15fca6923a0dbeefce4fb8338b61c95",
+      "result_chars": 3813,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_amr",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "547fc67df7c235bab6fdd7de0529730e0286b17ec46d4ba4b850d306a74ca286",
+      "result_chars": 669,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "数字孪生平台",
+        "top_k": 10
+      },
+      "result_sha": "8365802157b9c080b4c96114840453d4bbb26af5814c27b09565e6773779b39c",
+      "result_chars": 3894,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_digital_twin",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "f782850027392ad8403562cdf5505d94ed1aab5c5dd19d879f8e55be44d8397c",
+      "result_chars": 611,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "不是同一个指标。二者数值相同（均为 <80 ms），但分属不同产品、不同系统、度量对象不同：① AMR 手册（LT-AMR v3.4，LantuFleet 调度系统）的「任务分配延迟低于 80 ms」指调度系统在单仓 500 台 AMR 协同场景下，将搬运任务下发/分配给机器人的响应延迟，属于调度控制链路指标；② 数字孪生平台（LantuTwin 3.0，信息技术部）的「数据刷新延迟低于 80 ms」指单项目 500 台设备接入时，物理设备状态到孪生模型之间的数据同步/虚实刷新延迟，属于数据同步链路指标。两者只是数值口径巧合相同，指标定义、所属系统与考核对象均不同，不能互相替代或引用。",
+    "citations": [
+      "lantu_product_amr",
+      "lantu_product_digital_twin"
+    ],
+    "evidence": [
+      "lantu_product_amr#三、调度能力：LantuFleet 调度系统单仓支持 500 台 AMR 协同，任务分配延迟低于 80 ms",
+      "lantu_product_digital_twin#二、核心能力：单项目支持 500 台设备接入，数据刷新延迟低于 80 ms，仿真精度 99.5%"
+    ]
+  },
+  "status": "answered",
+  "tokens": 24231,
+  "started_at": "2026-11-01T04:12:29",
+  "elapsed_seconds": 25.3,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "AMR 任务分配延迟 80ms 指标",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_product_amr",
+            "title": "# LT-AMR 自主移动机器人产品手册",
+            "chunk": 0,
+            "score": 22.996,
+            "snippet": "# LT-AMR 自主移动机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-05-10 09:00\n更新时间：2025-08-20 15:00\n版本号：v3.4\n文档类型：product\n文档族：product_amr\n生效日期：2025-08-20\n\n## 一、产品系列\n\nLT-AMR-500 负载 500 kg、速度 1.8 m/s、续航 8 小时；LT-AMR-1000 负载 1,000 kg、速度 1.5 m/s、续航 8 小时；LT-AMR-2000 负载 2,000 kg、速度 1.2"
+          },
+          {
+            "doc_id": "lantu_solution_semiconductor",
+            "title": "# 半导体晶圆搬运洁净解决方案",
+            "chunk": 0,
+            "score": 9.218,
+            "snippet": "# 半导体晶圆搬运洁净解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2025-02-14 09:00\n更新时间：2025-11-11 09:30\n版本号：v2.0\n文档类型：product\n文档族：solution_semiconductor\n生效日期：2025-11-11\n\n## 一、方案概述\n\n面向 8/12 英寸晶圆厂，提供晶圆盒搬运、机台上下料与跨区物流方案，采用 LT-AMR-500 洁净版与 LT-R12 洁净机器人。\n\n## 二、洁净指标\n\n洁净等级 Class 10，颗粒物控制 0.1 μm，"
+          },
+          {
+            "doc_id": "lantu_tech_vision",
+            "title": "# 澜图智能机器视觉算法平台说明",
+            "chunk": 0,
+            "score": 6.3,
+            "snippet": "# 澜图智能机器视觉算法平台说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-08-01 09:00\n更新时间：2025-11-05 15:00\n版本号：v3.1\n文档类型：tech\n文档族：vision_algorithm\n生效日期：2025-11-05\n\n## 一、算法能力\n\n覆盖 2D/3D 定位、缺陷检测、OCR、分割与无序抓取，支持小样本学习与在线增量训练。\n\n## 二、性能指标\n\n3D 测量精度 0.05 mm，缺陷检测召回率 99.2%，误检率 0.8%，单帧推理延迟 35 ms。\n\n##"
+          },
+          {
+            "doc_id": "lantu_org_executives",
+            "title": "# 澜图智能高级管理人员名单",
+            "chunk": 0,
+            "score": 5.975,
+            "snippet": "# 澜图智能高级管理人员名单\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2024-03-01 09:00\n更新时间：2025-11-28 17:00\n版本号：v4.0\n文档类型：org\n文档族：executives\n生效日期：2025-11-28\n\n## 一、核心管理层\n\n顾承澜，董事长兼总经理，1968 年生，教授级高级工程师，持股 18.6%；沈亦舟，CTO，负责研发体系；周敏仪，CFO，负责财务与资本运作；韩立恒，COO，负责供应链与制造。\n\n## 二、业务分管\n\n罗嘉树，销售副总裁，分管销售中心、客"
+          },
+          {
+            "doc_id": "lantu_meeting_board",
+            "title": "# 2025 年第二次临时董事会决议",
+            "chunk": 0,
+            "score": 5.245,
+            "snippet": "# 2025 年第二次临时董事会决议\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-04-25 09:00\n更新时间：2025-04-25 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_board_2025\n生效日期：2025-04-25\n\n## 一、会议信息\n\n时间：2025 年 4 月 25 日；方式：现场加视频；应到董事 9 人，实到 9 人；列席：高管团队。\n\n## 二、审议事项\n\n审议通过《2024 年度利润分配方案》《2025 年度研发投入预算》《苏州二期"
+          },
+          {
+            "doc_id": "lantu_org_reporting_lines",
+            "title": "# 澜图智能员工汇报关系与业务分工",
+            "chunk": 1,
+            "score": 4.699,
+            "snippet": "周敏仪担任 CFO，负责财务与资本运作。陈依然担任人力资源副总裁，负责人力资源体系。蒋雯担任薪酬绩效经理，负责薪酬、绩效与员工关系。邵岚担任法务合规总监，负责法务、合规与知识产权。\n\n## 五、跨部门业务分工\n\n周启航同时担任新一代控制器 LT-C900 项目负责人，项目成员包括林晓与赵一鸣。唐婧负责销售中心，华东区域由许博管理，上海区域重点客户由陈璐维护。方磊负责制造中心，苏州工厂由郭涛管理。\n\n## 六、汇报关系使用说明\n\n本文件中的“上级”均指行政汇报关系中的直接上级；跨部门项目中的项目负责人关系不改变行政汇"
+          },
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 1,
+            "score": 3.871,
+            "snippet": "0 kg\t1.5 m/s\nLT-AMR-2000\t2,000 kg\t—\t±10 mm\t420 kg\t1.2 m/s\n[工作表] 交付与保修\n产品线\t标准交期\t保修期\t备件响应\nLT-R 系列\t6-8 周\t24 个月/6,000 小时\t48 小时\nLT-S 系列\t4 周\t24 个月/6,000 小时\t48 小时\nLT-AMR 系列\t8 周\t24 个月\t72 小时\nLT-V3D\t4 周\t12 个月\t72 小时"
+          },
+          {
+            "doc_id": "lantu_tech_edge",
+            "title": "# 澜图智能边缘计算产品 LT-Edge 说明",
+            "chunk": 0,
+            "score": 3.827,
+            "snippet": "# 澜图智能边缘计算产品 LT-Edge 说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2025-01-10 09:00\n更新时间：2025-06-12 11:00\n版本号：v1.3\n文档类型：tech\n文档族：edge_computing\n生效日期：2025-06-12\n\n## 一、产品定位\n\nLT-Edge 是面向产线的边缘计算单元，承载视觉推理、数据采集与协议转换，支持断网续传。\n\n## 二、硬件规格\n\n8 核 ARM 处理器，32 TOPS NPU，16 GB 内存，256 GB 存储，支持 4 路千"
+          },
+          {
+            "doc_id": "lantu_solution_lithium",
+            "title": "# 动力电池叠片与物流整体解决方案",
+            "chunk": 0,
+            "score": 3.692,
+            "snippet": "# 动力电池叠片与物流整体解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-10-12 09:00\n更新时间：2025-12-01 10:00\n版本号：v3.6\n文档类型：product\n文档族：solution_lithium\n生效日期：2025-12-01\n\n## 一、方案概述\n\n面向动力电池电芯段，提供叠片、焊接、检测与物料配送一体化方案，核心设备包括 LT-R20 机器人、LT-AMR-1000 与 LT-V3D 视觉。\n\n## 二、产线配置\n\n单条叠片线配置 15-16 台 LT-R20、2 "
+          },
+          {
+            "doc_id": "lantu_finance_annual_2025",
+            "title": "澜图智能 2025 年度报告摘要",
+            "chunk": 0,
+            "score": 3.652,
+            "snippet": "澜图智能 2025 年度报告摘要\n所属部门：财务部\n作者：周敏仪\n创建时间：2026-01-20 09:00\n更新时间：2026-01-28 18:00\n版本号：v1.0\n文档类型：finance\n文档族：annual_report_2025\n生效日期：2026-01-28\n一、经营概况\n2025 年公司实现营业收入 42.63 亿元，同比增长 19.1%；归属于母公司股东的净利润 4.12\n亿元，同比增长 26.4%；基本每股收益 0.98 元。\n二、收入结构\n机器人本体收入 19.84 亿元（46.5%），智能"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_amr",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_product_amr",
+        "title": "# LT-AMR 自主移动机器人产品手册",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 499,
+        "text": "# LT-AMR 自主移动机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-05-10 09:00\n更新时间：2025-08-20 15:00\n版本号：v3.4\n文档类型：product\n文档族：product_amr\n生效日期：2025-08-20\n\n## 一、产品系列\n\nLT-AMR-500 负载 500 kg、速度 1.8 m/s、续航 8 小时；LT-AMR-1000 负载 1,000 kg、速度 1.5 m/s、续航 8 小时；LT-AMR-2000 负载 2,000 kg、速度 1.2 m/s、续航 10 小时。\n\n## 二、导航与安全\n\n采用激光 SLAM + 视觉融合导航，定位精度 ±10 mm，支持 360° 避障、3D 相机与安全激光，符合 ISO 3691-4 标准。\n\n## 三、调度能力\n\nLantuFleet 调度系统单仓支持 500 台 AMR 协同，任务分配延迟低于 80 ms，支持与 WMS、MES 对接。\n\n## 四、行业应用\n\n已应用于物流仓储、半导体晶圆搬运、锂电物料配送与汽车零部件线边物流，洁净室版本达到 Class 10。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "数字孪生平台",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_product_digital_twin",
+            "title": "# LantuTwin 数字孪生平台介绍",
+            "chunk": 0,
+            "score": 18.79,
+            "snippet": "# LantuTwin 数字孪生平台介绍\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-09-01 09:00\n更新时间：2025-06-30 16:00\n版本号：v3.0\n文档类型：product\n文档族：product_digital_twin\n生效日期：2025-06-30\n\n## 一、平台定位\n\nLantuTwin 3.0 是面向智能工厂规划、调试与运维的数字孪生平台，支持机器人、产线与物流系统的虚实同步。\n\n## 二、核心能力\n\n单项目支持 500 台设备接入，数据刷新延迟低于 80 ms，仿真"
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 0,
+            "score": 11.571,
+            "snippet": "# 澜图智能产品与解决方案总览\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-02-20 09:00\n更新时间：2025-12-22 10:00\n版本号：v6.0\n文档类型：product\n文档族：product_overview\n生效日期：2025-12-22\n\n## 一、产品矩阵\n\n公司产品覆盖六轴工业机器人、SCARA 机器人、自主移动机器人（AMR）、机器视觉、运动控制器、数字孪生平台与行业工作站，形成“本体+控制器+视觉+软件+工艺”的一体化方案。\n\n## 二、行业方案\n\n重点行业包括汽车及零部件、"
+          },
+          {
+            "doc_id": "lantu_org_rd_system",
+            "title": "# 澜图智能研发体系与投入",
+            "chunk": 0,
+            "score": 11.096,
+            "snippet": "# 澜图智能研发体系与投入\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-02-01 09:00\n更新时间：2026-01-12 10:00\n版本号：v5.0\n文档类型：org\n文档族：rd_system\n生效日期：2026-01-12\n\n## 一、研发架构\n\n研发中心下设机器人本体研究所、控制器研究所、机器视觉研究所、工艺应用研究所、具身智能研究所，另设测试中心与可靠性实验室。\n\n## 二、人员结构\n\n研发人员 1,286 人，其中博士 48 人、硕士 612 人，35 岁以下占比 61%。2025 年"
+          },
+          {
+            "doc_id": "lantu_company_milestones_2025",
+            "title": "# 澜图智能 2025 年度大事记",
+            "chunk": 0,
+            "score": 11.096,
+            "snippet": "# 澜图智能 2025 年度大事记\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-12-31 18:00\n更新时间：2026-01-06 09:00\n版本号：v1.0\n文档类型：company\n文档族：annual_milestones_2025\n生效日期：2026-01-06\n\n## 一、经营里程碑\n\n2025 年营业收入 42.63 亿元，同比增长 19.1%；新签订单 48.90 亿元；机器人出货 21,400 台；第 10 万台机器人于 9 月 12 日下线。\n\n## 二、组织里程碑\n\n3 月"
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 1,
+            "score": 7.856,
+            "snippet": "| 产品线 | 代表型号 | 负载 | 典型行业 |\n| --- | --- | --- | --- |\n| 六轴机器人 | LT-R6/R12/R20/R50/R210 | 6-210 kg | 汽车、锂电、金属加工 |\n| SCARA | LT-S4/S10 | 4-10 kg | 3C、光伏、食品 |\n| 移动机器人 | LT-AMR-500/1000/2000 | 500-2,000 kg | 物流、半导体 |\n| 机器视觉 | LT-V3D | — | 装配、检测 |\n| 控制器 | LT-C800 | "
+          },
+          {
+            "doc_id": "lantu_strategy_digital_transformation",
+            "title": "# 澜图智能数字化转型规划",
+            "chunk": 0,
+            "score": 5.472,
+            "snippet": "# 澜图智能数字化转型规划\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-08-01 09:00\n更新时间：2025-10-10 14:00\n版本号：v2.3\n文档类型：strategy\n文档族：digital_transformation\n生效日期：2025-10-10\n\n## 一、转型目标\n\n三年内实现研发、供应链、制造、销售与服务的全流程数字化，运营效率提升 20%。\n\n## 二、重点工程\n\nPLM 研发协同、SRM 供应链协同、MES 制造执行、CRM 客户经营与数据中台五大工程。\n\n## 三、技"
+          },
+          {
+            "doc_id": "lantu_case_07_maifeng",
+            "title": "# 客户案例：麦丰食品后端包装项目",
+            "chunk": 0,
+            "score": 4.909,
+            "snippet": "# 客户案例：麦丰食品后端包装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_maifeng\n生效日期：2024-12-20\n\n## 一、客户背景\n\n麦丰食品位于漯河，主营食品业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖6 条"
+          },
+          {
+            "doc_id": "lantu_case_04_xinghe",
+            "title": "# 客户案例：星禾电子精密组装项目",
+            "chunk": 0,
+            "score": 4.902,
+            "snippet": "# 客户案例：星禾电子精密组装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_xinghe\n生效日期：2024-12-20\n\n## 一、客户背景\n\n星禾电子位于昆山，主营3C 电子业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖8"
+          },
+          {
+            "doc_id": "lantu_case_03_yaoyang",
+            "title": "# 客户案例：曜阳光能电池片串焊项目",
+            "chunk": 0,
+            "score": 4.887,
+            "snippet": "# 客户案例：曜阳光能电池片串焊项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_yaoyang\n生效日期：2025-12-20\n\n## 一、客户背景\n\n曜阳光能位于合肥，主营光伏业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖16"
+          },
+          {
+            "doc_id": "lantu_case_12_shengda",
+            "title": "# 客户案例：昇达电梯门板装配项目",
+            "chunk": 0,
+            "score": 4.872,
+            "snippet": "# 客户案例：昇达电梯门板装配项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_shengda\n生效日期：2025-12-20\n\n## 一、客户背景\n\n昇达电梯位于湖州，主营电梯业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖3 条"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_digital_twin",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_product_digital_twin",
+        "title": "# LantuTwin 数字孪生平台介绍",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 432,
+        "text": "# LantuTwin 数字孪生平台介绍\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-09-01 09:00\n更新时间：2025-06-30 16:00\n版本号：v3.0\n文档类型：product\n文档族：product_digital_twin\n生效日期：2025-06-30\n\n## 一、平台定位\n\nLantuTwin 3.0 是面向智能工厂规划、调试与运维的数字孪生平台，支持机器人、产线与物流系统的虚实同步。\n\n## 二、核心能力\n\n单项目支持 500 台设备接入，数据刷新延迟低于 80 ms，仿真精度 99.5%，支持 3D 可视化、碰撞检测与节拍仿真。\n\n## 三、部署方式\n\n支持私有化与云端部署，提供 Kubernetes 编排方案，单集群可支撑 5,000 台设备；与 MES、WMS、ERP 通过标准接口集成。\n\n## 四、客户价值\n\n某汽车零部件客户通过虚拟调试将现场调试周期由 21 天缩短至 9 天，停线风险下降 46%。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_product_amr",
+      "lantu_product_digital_twin"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.257,
+    "number_recall": 0.0
+  }
+}

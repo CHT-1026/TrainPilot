@@ -1,0 +1,210 @@
+{
+  "qid": "A0032",
+  "question": "周启航的直接下属有哪些？林晓是否在其中？",
+  "question_type": "人物关系推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>周启航 直接下属</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 60,
+        "prompt_tokens": 356,
+        "total_tokens": 416,
+        "completion_tokens_details": {
+          "reasoning_tokens": 28
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.734
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"周启航 直接下属\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 56,
+        "prompt_tokens": 425,
+        "total_tokens": 481,
+        "completion_tokens_details": {
+          "reasoning_tokens": 29
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.672
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_org_reporting_lines\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 80,
+        "prompt_tokens": 2331,
+        "total_tokens": 2411,
+        "completion_tokens_details": {
+          "reasoning_tokens": 49
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 2.734
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据《澜图智能员工汇报关系与业务分工》（v1.2，生效日期 2025-09-01），周启航担任控制器研究所所长，其直接下属为林晓（伺服算法组组长）。林晓确在其中；赵一鸣（伺服控制工程师）是林晓的下属，属周启航的间接下级而非直接下属。注：周启航还是 LT-C900 项目负责人，林晓、赵一鸣为项目成员，但项目关系不改变行政汇报关系。\",\"citations\":[\"lantu_org_reporting_lines\"],\"evidence\":[\"lantu_org_reporting_lines#片段0\",\"lantu_org_reporting_lines#片段1\"]}",
+      "usage": {
+        "completion_tokens": 262,
+        "prompt_tokens": 3112,
+        "total_tokens": 3374,
+        "completion_tokens_details": {
+          "reasoning_tokens": 100
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2304
+        }
+      },
+      "seconds": 5.0
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "周启航 直接下属",
+        "top_k": 10
+      },
+      "result_sha": "c5010db32ac662b383b2c967207288aa4eeca9e3b0bf9abe5fbf691f80af0682",
+      "result_chars": 3118,
+      "hits": 8
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_reporting_lines",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "945ab253a903017ab88c6d4ebc67cacc27152fd521624427b1fa28a1d107be50",
+      "result_chars": 1155,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《澜图智能员工汇报关系与业务分工》（v1.2，生效日期 2025-09-01），周启航担任控制器研究所所长，其直接下属为林晓（伺服算法组组长）。林晓确在其中；赵一鸣（伺服控制工程师）是林晓的下属，属周启航的间接下级而非直接下属。注：周启航还是 LT-C900 项目负责人，林晓、赵一鸣为项目成员，但项目关系不改变行政汇报关系。",
+    "citations": [
+      "lantu_org_reporting_lines"
+    ],
+    "evidence": [
+      "lantu_org_reporting_lines#片段0",
+      "lantu_org_reporting_lines#片段1"
+    ]
+  },
+  "status": "answered",
+  "tokens": 6682,
+  "started_at": "2026-11-01T03:50:00",
+  "elapsed_seconds": 11.14,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "周启航 直接下属",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_org_reporting_lines",
+            "title": "# 澜图智能员工汇报关系与业务分工",
+            "chunk": 1,
+            "score": 12.633,
+            "snippet": "周敏仪担任 CFO，负责财务与资本运作。陈依然担任人力资源副总裁，负责人力资源体系。蒋雯担任薪酬绩效经理，负责薪酬、绩效与员工关系。邵岚担任法务合规总监，负责法务、合规与知识产权。\n\n## 五、跨部门业务分工\n\n周启航同时担任新一代控制器 LT-C900 项目负责人，项目成员包括林晓与赵一鸣。唐婧负责销售中心，华东区域由许博管理，上海区域重点客户由陈璐维护。方磊负责制造中心，苏州工厂由郭涛管理。\n\n## 六、汇报关系使用说明\n\n本文件中的“上级”均指行政汇报关系中的直接上级；跨部门项目中的项目负责人关系不改变行政汇"
+          },
+          {
+            "doc_id": "lantu_org_reporting_lines",
+            "title": "# 澜图智能员工汇报关系与业务分工",
+            "chunk": 0,
+            "score": 10.308,
+            "snippet": "# 澜图智能员工汇报关系与业务分工\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-02-10 09:00\n更新时间：2025-09-01 10:00\n版本号：v1.2\n文档类型：org\n文档族：org_reporting_lines\n生效日期：2025-09-01\n\n## 一、研发体系汇报链\n\n顾承澜是沈亦舟的上级。沈亦舟是程知远的上级。程知远是周启航的上级。周启航是林晓的上级。林晓是赵一鸣的上级。\n\n沈亦舟担任 CTO，负责研发体系。程知远担任研发中心总经理，负责研发中心整体经营管理。周启航担任控制器"
+          },
+          {
+            "doc_id": "lantu_finance_gross_margin",
+            "title": "# 澜图智能毛利率与成本结构分析",
+            "chunk": 0,
+            "score": 4.885,
+            "snippet": "# 澜图智能毛利率与成本结构分析\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-11-15 09:00\n更新时间：2025-11-20 17:00\n版本号：v1.2\n文档类型：finance\n文档族：gross_margin_analysis\n生效日期：2025-11-20\n\n## 一、整体毛利率\n\n2025 年综合毛利率 31.6%，较 2024 年提升 1.2 个百分点。机器人本体毛利率 34.8%，智能产线 26.2%，软件与服务 52.4%。\n\n## 二、成本构成\n\n直接材料占营业成本 68.4%，"
+          },
+          {
+            "doc_id": "lantu_strategy_safety",
+            "title": "# 澜图智能安全生产管理制度",
+            "chunk": 0,
+            "score": 3.562,
+            "snippet": "# 澜图智能安全生产管理制度\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2024-01-01 09:00\n更新时间：2025-05-01 09:00\n版本号：v3.5\n文档类型：strategy\n文档族：safety_production\n生效日期：2025-05-01\n\n## 一、安全责任\n\n实行总经理全面负责、分管领导直接负责、部门负责人具体负责的安全责任制，签订年度安全目标责任书。\n\n## 二、风险管控\n\n建立危险源清单，对机器人调试、电气作业、高处作业与危化品实施专项管控，每季度开展风险评估。\n\n## "
+          },
+          {
+            "doc_id": "lantu_company_milestones_2025",
+            "title": "# 澜图智能 2025 年度大事记",
+            "chunk": 0,
+            "score": 3.554,
+            "snippet": "# 澜图智能 2025 年度大事记\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-12-31 18:00\n更新时间：2026-01-06 09:00\n版本号：v1.0\n文档类型：company\n文档族：annual_milestones_2025\n生效日期：2026-01-06\n\n## 一、经营里程碑\n\n2025 年营业收入 42.63 亿元，同比增长 19.1%；新签订单 48.90 亿元；机器人出货 21,400 台；第 10 万台机器人于 9 月 12 日下线。\n\n## 二、组织里程碑\n\n3 月"
+          },
+          {
+            "doc_id": "lantu_org_chart_2025",
+            "title": "# 澜图智能组织架构（2025版）",
+            "chunk": 0,
+            "score": 3.479,
+            "snippet": "# 澜图智能组织架构（2025版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-03-20 09:00\n更新时间：2025-04-10 10:00\n版本号：v2.0\n文档类型：org\n文档族：org_chart\n生效日期：2025-04-01\n\n## 一、一级部门\n\n2025 年 4 月起公司设 12 个一级部门：研发中心、产品部、销售中心、客户成功部、供应链中心、制造中心、质量部、财务部、人力资源部、法务合规部、信息技术部、售后服务部。售后服务部由销售中心下属部门升级为一级部门。\n\n## 二、研发体"
+          },
+          {
+            "doc_id": "lantu_policy_entertainment",
+            "title": "# 澜图智能业务招待管理办法",
+            "chunk": 0,
+            "score": 3.45,
+            "snippet": "# 澜图智能业务招待管理办法\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-04-15 09:00\n更新时间：2025-05-06 16:00\n版本号：v2.3\n文档类型：policy\n文档族：business_entertainment\n生效日期：2025-05-06\n\n## 一、招待原则\n\n业务招待须与业务直接相关，坚持简朴、适度、透明原则，禁止铺张浪费与高档消费。\n\n## 二、标准\n\n人均招待标准不超过 600 元，酒水不超过 300 元/瓶；S 级客户重要接待可上浮 20%，须提前审批。\n\n## 三"
+          },
+          {
+            "doc_id": "lantu_policy_employee_handbook",
+            "title": "# 澜图智能员工手册",
+            "chunk": 0,
+            "score": 3.057,
+            "snippet": "# 澜图智能员工手册\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-07-01 09:00\n版本号：v6.0\n文档类型：policy\n文档族：employee_handbook\n生效日期：2025-07-01\n\n## 一、适用范围\n\n本手册适用于澜图智能装备股份有限公司及下属子公司全体正式员工、试用期员工与实习生。劳务派遣与外包人员参照执行。\n\n## 二、入职与试用\n\n新员工入职当日签署劳动合同、保密协议与廉洁承诺书，试用期 3-6 个月。试用期内需完成入职培"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_reporting_lines",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_org_reporting_lines",
+        "title": "# 澜图智能员工汇报关系与业务分工",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 964,
+        "text": "# 澜图智能员工汇报关系与业务分工\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-02-10 09:00\n更新时间：2025-09-01 10:00\n版本号：v1.2\n文档类型：org\n文档族：org_reporting_lines\n生效日期：2025-09-01\n\n## 一、研发体系汇报链\n\n顾承澜是沈亦舟的上级。沈亦舟是程知远的上级。程知远是周启航的上级。周启航是林晓的上级。林晓是赵一鸣的上级。\n\n沈亦舟担任 CTO，负责研发体系。程知远担任研发中心总经理，负责研发中心整体经营管理。周启航担任控制器研究所所长，负责控制器产品与技术路线。林晓担任伺服算法组组长，负责伺服控制算法与标定。赵一鸣是伺服控制工程师，负责伺服环参数整定与现场调试。\n\n## 二、销售与客户成功汇报链\n\n顾承澜是罗嘉树的上级。罗嘉树是唐婧的上级。唐婧是许博的上级。许博是陈璐的上级。\n\n罗嘉树担任销售副总裁，分管销售中心、客户成功部与售后服务部。唐婧担任销售中心总经理，负责销售中心整体业务。许博担任华东大区经理，负责华东区域客户与渠道。陈璐担任上海客户经理，负责上海区域重点客户。\n\n## 三、供应链与制造汇报链\n\n顾承澜是韩立恒的上级。韩立恒是方磊的上级。方磊是郭涛的上级。\n\n韩立恒担任 COO，负责供应链与制造。方磊担任制造中心总经理，负责制造中心生产运营。郭涛担任苏州工厂厂长，负责苏州工厂的生产、质量与交付。\n\n## 四、职能体系汇报链\n\n顾承澜是周敏仪的上级。顾承澜是陈依然的上级。顾承澜是邵岚的上级。陈依然是蒋雯的上级。\n\n周敏仪担任 CFO，负责财务与资本运作。陈依然担任人力资源副总裁，负责人力资源体系。蒋雯担任薪酬绩效经理，负责薪酬、绩效与员工关系。邵岚担任法务合规总监，负责法务、合规与知识产权。\n\n## 五、跨部门业务分工\n\n周启航同时担任新一代控制器 LT-C900 项目负责人，项目成员包括林晓与赵一鸣。唐婧负责销售中心，华东区域由许博管理，上海区域重点客户由陈璐维护。方磊负责制造中心，苏州工厂由郭涛管理。\n\n## 六、汇报关系使用说明\n\n本文件中的“上级”均指行政汇报关系中的直接上级；跨部门项目中的项目负责人关系不改变行政汇报关系。需要判断两人关系时，应沿着直接上级链逐级向上查找，不能跳级推断。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_org_reporting_lines"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.095,
+    "number_recall": 0.0
+  }
+}

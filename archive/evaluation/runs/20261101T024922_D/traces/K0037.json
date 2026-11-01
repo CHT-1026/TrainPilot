@@ -1,0 +1,25 @@
+{
+  "qid": "K0037",
+  "question": "「产品决策委员会」主任是 CTO 沈亦舟，而「产品部」负责人是孟凡，编制 96 人。另据 2026 年经营计划，2026 年要「增设半导体事业部」。请判断：产品决策委员会的主任与产品部负责人是同一人吗？增设半导体事业部后，现有的一级部门清单需要做什么调整？该调整是否需要董事会审议？",
+  "question_type": "跨文档推理",
+  "rounds": [],
+  "tool_calls": [],
+  "answer": null,
+  "status": "api_error",
+  "tokens": 0,
+  "started_at": "2026-11-01T03:05:30",
+  "error": "HTTPError: HTTP Error 503: Service Unavailable",
+  "elapsed_seconds": 0.0,
+  "tool_calls_detail": [],
+  "model_label": "D",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

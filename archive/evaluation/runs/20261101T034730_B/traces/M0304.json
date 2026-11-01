@@ -1,0 +1,141 @@
+{
+  "qid": "M0304",
+  "question": "按目前执行的口径，员工出差住一线城市最多能订多少钱一晚？超标的钱谁承担？",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"差旅\"}}",
+      "usage": {
+        "prompt_tokens": 370,
+        "total_tokens": 498,
+        "completion_tokens": 128,
+        "completion_tokens_details": {
+          "reasoning_tokens": 110,
+          "text_tokens": 128
+        }
+      },
+      "seconds": 1.39
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_travel_2025h2\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 523,
+        "total_tokens": 737,
+        "completion_tokens": 214,
+        "completion_tokens_details": {
+          "reasoning_tokens": 174,
+          "text_tokens": 214
+        }
+      },
+      "seconds": 1.875
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"按目前执行的《澜图智能差旅费用报销标准（2025年7月修订）》口径，一线城市（北京、上海、广州、深圳）的住宿标准为 600 元/晚，即最多可预订 600 元一晚的住宿；若超过该标准，超标部分由个人承担。\",\"citations\":[\"lantu_policy_travel_2025h2\"],\"evidence\":[\"lantu_policy_travel_2025h2#一、住宿标准\"]}",
+      "usage": {
+        "prompt_tokens": 982,
+        "total_tokens": 1292,
+        "completion_tokens": 310,
+        "completion_tokens_details": {
+          "reasoning_tokens": 188,
+          "text_tokens": 310
+        }
+      },
+      "seconds": 2.406
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "差旅"
+      },
+      "result_sha": "f6bd4e78035d1f78b6af6f4de6206b6b43fb4933accc232d1fd34fe741731b5a",
+      "result_chars": 238,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_travel_2025h2",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "cd892ed8038ab44deaedda8457a73e71e1401350b20b3259ba550d0bbcdbd0f9",
+      "result_chars": 631,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "按目前执行的《澜图智能差旅费用报销标准（2025年7月修订）》口径，一线城市（北京、上海、广州、深圳）的住宿标准为 600 元/晚，即最多可预订 600 元一晚的住宿；若超过该标准，超标部分由个人承担。",
+    "citations": [
+      "lantu_policy_travel_2025h2"
+    ],
+    "evidence": [
+      "lantu_policy_travel_2025h2#一、住宿标准"
+    ]
+  },
+  "status": "answered",
+  "tokens": 2527,
+  "started_at": "2026-11-01T06:26:17",
+  "elapsed_seconds": 5.69,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "差旅"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_policy_travel_2024",
+            "title": "# 澜图智能差旅费用报销标准（2024版）"
+          },
+          {
+            "doc_id": "lantu_policy_travel_2025",
+            "title": "# 澜图智能差旅费用报销标准（2025版）"
+          },
+          {
+            "doc_id": "lantu_policy_travel_2025h2",
+            "title": "# 澜图智能差旅费用报销标准（2025年7月修订）"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_travel_2025h2",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_travel_2025h2",
+        "title": "# 澜图智能差旅费用报销标准（2025年7月修订）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 443,
+        "text": "# 澜图智能差旅费用报销标准（2025年7月修订）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-06-10 09:00\n更新时间：2025-07-01 09:00\n版本号：v3.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2025-07-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 600 元/晚，二线城市 450 元/晚，其他城市 380 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 150 元/天，按自然日计算；客户宴请须提前申请，不得重复领取补贴。\n\n## 三、出差补贴\n\n市内交通与通讯补贴合计 120 元/天，凭票据实报销，无票按标准发放。\n\n## 四、交通标准\n\n高铁二等座、飞机经济舱；总监及以上可乘坐高铁一等座。出差须提前 3 个工作日申请，并同步提交行程与预算。\n\n## 五、生效说明\n\n本版本自 2025 年 7 月 1 日起生效，2025 年 1 月版同时废止。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.333,
+    "cited": [
+      "lantu_policy_travel_2025h2"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.243,
+    "number_recall": 0.5
+  }
+}

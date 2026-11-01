@@ -1,0 +1,245 @@
+{
+  "qid": "C0047",
+  "question": "视觉系统的测量精度 0.05 mm 与动力电池方案的在线检测精度 0.05 mm 数值相同，是否说明两者是同一项检测？",
+  "question_type": "矛盾与例外识别",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>视觉系统 测量精度 0.05 mm</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list><parameter=keyword>动力电池</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 109,
+        "prompt_tokens": 378,
+        "total_tokens": 487,
+        "completion_tokens_details": {
+          "reasoning_tokens": 56
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.546
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>视觉系统 测量精度 0.05 mm 动力电池 在线检测精度</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 57,
+        "prompt_tokens": 468,
+        "total_tokens": 525,
+        "completion_tokens_details": {
+          "reasoning_tokens": 12
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.672
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"视觉系统 测量精度 0.05 mm 动力电池 在线检测精度\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 69,
+        "prompt_tokens": 550,
+        "total_tokens": 619,
+        "completion_tokens_details": {
+          "reasoning_tokens": 29
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 4.078
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_solution_lithium\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 59,
+        "prompt_tokens": 2977,
+        "total_tokens": 3036,
+        "completion_tokens_details": {
+          "reasoning_tokens": 27
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.813
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"不是同一项检测。两者只是数值相同，含义不同：(1) 视觉系统的 0.05 mm 是 LT-V3D 工业视觉系统（及澜图视觉算法平台）的硬件/算法通用指标——\\\"测量精度 0.05 mm\\\"（3D 测量精度），描述的是设备本身的测量能力；(2) 动力电池方案的 0.05 mm 是应用层的工艺指标——方案中\\\"在线检测极片对齐度、毛刺与褶皱，检测精度 0.05 mm\\\"，描述的是叠片产线上对具体缺陷（对齐度/毛刺/褶皱）的检测能力。二者是\\\"通用测量能力\\\"与\\\"具体场景检测应用\\\"的关系（后者通常由前者实现），而非同一项检测任务，不能仅因数值相同就认为是同一检测。\",\"citations\":[\"lantu_product_vision\",\"lantu_tech_vision\",\"lantu_solution_lithium\"],\"evidence\":[\"lantu_product_vision#片段0: 测量精度 0.05 mm，单帧点云 120 万点，帧率 30 fps\",\"lantu_tech_vision#片段0: 3D 测量精度 0.05 mm，缺陷检测召回率 99.2%\",\"lantu_solution_lithium#片段0: 在线检测极片对齐度、毛刺与褶皱，检测精度 0.05 mm，NG 自动剔除并记录追溯码\"]}",
+      "usage": {
+        "completion_tokens": 483,
+        "prompt_tokens": 3435,
+        "total_tokens": 3918,
+        "completion_tokens_details": {
+          "reasoning_tokens": 138
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2944
+        }
+      },
+      "seconds": 11.766
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "视觉系统 测量精度 0.05 mm 动力电池 在线检测精度",
+        "top_k": 10
+      },
+      "result_sha": "acdde8425913c5433fe541b9c66c53377bffa24e165001b0d5341a2e483294d8",
+      "result_chars": 3921,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_solution_lithium",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "3eae315ba7aa8706c483dc1921de404bff7da719c225aac8b43b8f7fd7a59e61",
+      "result_chars": 622,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "不是同一项检测。两者只是数值相同，含义不同：(1) 视觉系统的 0.05 mm 是 LT-V3D 工业视觉系统（及澜图视觉算法平台）的硬件/算法通用指标——\"测量精度 0.05 mm\"（3D 测量精度），描述的是设备本身的测量能力；(2) 动力电池方案的 0.05 mm 是应用层的工艺指标——方案中\"在线检测极片对齐度、毛刺与褶皱，检测精度 0.05 mm\"，描述的是叠片产线上对具体缺陷（对齐度/毛刺/褶皱）的检测能力。二者是\"通用测量能力\"与\"具体场景检测应用\"的关系（后者通常由前者实现），而非同一项检测任务，不能仅因数值相同就认为是同一检测。",
+    "citations": [
+      "lantu_product_vision",
+      "lantu_tech_vision",
+      "lantu_solution_lithium"
+    ],
+    "evidence": [
+      "lantu_product_vision#片段0: 测量精度 0.05 mm，单帧点云 120 万点，帧率 30 fps",
+      "lantu_tech_vision#片段0: 3D 测量精度 0.05 mm，缺陷检测召回率 99.2%",
+      "lantu_solution_lithium#片段0: 在线检测极片对齐度、毛刺与褶皱，检测精度 0.05 mm，NG 自动剔除并记录追溯码"
+    ]
+  },
+  "status": "answered",
+  "tokens": 8585,
+  "started_at": "2026-11-01T04:14:17",
+  "elapsed_seconds": 22.88,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "视觉系统 测量精度 0.05 mm 动力电池 在线检测精度",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_solution_lithium",
+            "title": "# 动力电池叠片与物流整体解决方案",
+            "chunk": 0,
+            "score": 43.159,
+            "snippet": "# 动力电池叠片与物流整体解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-10-12 09:00\n更新时间：2025-12-01 10:00\n版本号：v3.6\n文档类型：product\n文档族：solution_lithium\n生效日期：2025-12-01\n\n## 一、方案概述\n\n面向动力电池电芯段，提供叠片、焊接、检测与物料配送一体化方案，核心设备包括 LT-R20 机器人、LT-AMR-1000 与 LT-V3D 视觉。\n\n## 二、产线配置\n\n单条叠片线配置 15-16 台 LT-R20、2 "
+          },
+          {
+            "doc_id": "lantu_product_vision",
+            "title": "# LT-V3D 工业视觉系统技术说明",
+            "chunk": 0,
+            "score": 34.015,
+            "snippet": "# LT-V3D 工业视觉系统技术说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-06-18 09:00\n更新时间：2025-07-15 14:00\n版本号：v2.6\n文档类型：product\n文档族：product_vision\n生效日期：2025-07-15\n\n## 一、系统组成\n\nLT-V3D 由结构光相机、视觉控制器与 LantuVision 软件组成，支持 3D 点云、2D 图像与深度学习缺陷检测。\n\n## 二、核心指标\n\n测量精度 0.05 mm，单帧点云 120 万点，帧率 30 fps"
+          },
+          {
+            "doc_id": "lantu_tech_vision",
+            "title": "# 澜图智能机器视觉算法平台说明",
+            "chunk": 0,
+            "score": 28.623,
+            "snippet": "# 澜图智能机器视觉算法平台说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-08-01 09:00\n更新时间：2025-11-05 15:00\n版本号：v3.1\n文档类型：tech\n文档族：vision_algorithm\n生效日期：2025-11-05\n\n## 一、算法能力\n\n覆盖 2D/3D 定位、缺陷检测、OCR、分割与无序抓取，支持小样本学习与在线增量训练。\n\n## 二、性能指标\n\n3D 测量精度 0.05 mm，缺陷检测召回率 99.2%，误检率 0.8%，单帧推理延迟 35 ms。\n\n##"
+          },
+          {
+            "doc_id": "lantu_product_assembly",
+            "title": "# LT-Assembly 柔性装配工作站方案",
+            "chunk": 0,
+            "score": 17.24,
+            "snippet": "# LT-Assembly 柔性装配工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-07-15 09:00\n更新时间：2025-09-05 11:00\n版本号：v2.5\n文档类型：product\n文档族：solution_assembly\n生效日期：2025-09-05\n\n## 一、方案组成\n\n由 LT-R12/LT-R20 机器人、力控末端、LT-V3D 视觉与快换工装组成，支持多品种混线装配。\n\n## 二、工艺指标\n\n装配节拍 3.2 秒/件，力控精度 ±2 N，视觉定位精度 ±0.05 mm，"
+          },
+          {
+            "doc_id": "lantu_meeting_case_review",
+            "title": "# 恒芯动力电池项目复盘会纪要",
+            "chunk": 0,
+            "score": 15.092,
+            "snippet": "# 恒芯动力电池项目复盘会纪要\n\n所属部门：客户成功部\n作者：林可\n创建时间：2025-03-18 09:00\n更新时间：2025-03-18 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_case_hengxin\n生效日期：2025-03-18\n\n## 一、项目结果\n\n恒芯动力电池 12 条叠片线完成验收，部署 186 台 LT-R20 与 24 台 AMR-1000，合同金额 2.16 亿元。\n\n## 二、成功经验\n\n虚拟调试提前发现 37 处干涉，现场调试周期缩短 12 天；"
+          },
+          {
+            "doc_id": "lantu_case_01_hengxin",
+            "title": "# 客户案例：恒芯动力电池电芯叠片与物流项目",
+            "chunk": 0,
+            "score": 14.367,
+            "snippet": "# 客户案例：恒芯动力电池电芯叠片与物流项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_hengxin\n生效日期：2025-12-20\n\n## 一、客户背景\n\n恒芯动力电池位于常州，主营动力电池业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追"
+          },
+          {
+            "doc_id": "lantu_product_r_series",
+            "title": "# LT-R 系列六轴工业机器人产品手册",
+            "chunk": 1,
+            "score": 14.09,
+            "snippet": "| 型号 | 负载 | 臂展 | 重复精度 | 本体重量 | 最大速度 |\n| --- | --- | --- | --- | --- | --- |\n| LT-R6 | 6 kg | 1,450 mm | ±0.02 mm | 165 kg | 3.2 m/s |\n| LT-R12 | 12 kg | 1,550 mm | ±0.03 mm | 210 kg | 3.0 m/s |\n| LT-R20 | 20 kg | 1,700 mm | ±0.03 mm | 285 kg | 2.8 m/s |\n| LT-R"
+          },
+          {
+            "doc_id": "lantu_product_r_series",
+            "title": "# LT-R 系列六轴工业机器人产品手册",
+            "chunk": 0,
+            "score": 13.627,
+            "snippet": "# LT-R 系列六轴工业机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-01-15 09:00\n更新时间：2025-10-30 16:00\n版本号：v4.3\n文档类型：product\n文档族：product_r_series\n生效日期：2025-10-30\n\n## 一、产品定位\n\nLT-R 系列覆盖 6 kg 至 210 kg 负载，适用于搬运、焊接、装配、喷涂、打磨等工序，重复定位精度最高 ±0.02 mm，防护等级 IP54，可选 IP67。\n\n## 二、型号与参数\n\nLT-R6 负载 6"
+          },
+          {
+            "doc_id": "lantu_support_case_hengxin",
+            "title": "# 恒芯动力电池 48 小时复产服务案例",
+            "chunk": 0,
+            "score": 12.631,
+            "snippet": "# 恒芯动力电池 48 小时复产服务案例\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2025-04-10 09:00\n更新时间：2025-04-12 18:00\n版本号：v1.0\n文档类型：support\n文档族：service_case_hengxin\n生效日期：2025-04-12\n\n## 一、事件经过\n\n2025 年 4 月 8 日凌晨，恒芯动力电池 3 号叠片线报伺服过载停机，影响两条线体。客户通过 400 热线报修。\n\n## 二、响应过程\n\n远程诊断中心 12 分钟内定位为驱动器散热风扇故障，指导客户"
+          },
+          {
+            "doc_id": "lantu_sales_customer_list",
+            "title": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态",
+            "chunk": 0,
+            "score": 12.017,
+            "snippet": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态\n恒芯动力电池,动力电池,常州,电芯叠片与物流,\"21,600\",2025,已验收\n澜岳汽车零部件,汽车零部件,上海,白车身焊装,\"14,800\",2024,已验收\n曜阳光能,光伏,合肥,电池片串焊,\"9,800\",2025,已验收\n星禾电子,3C 电子,昆山,精密组装,\"12,500\",2024,已验收\n海翎家电,家电,顺德,喷涂与打磨,\"6,300\",2025,已验收\n晶拓微电子,半导体,无锡,晶圆搬运,\"7,400\",2025,已验收\n麦丰食品,食品,漯河"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_solution_lithium",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_solution_lithium",
+        "title": "# 动力电池叠片与物流整体解决方案",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 450,
+        "text": "# 动力电池叠片与物流整体解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-10-12 09:00\n更新时间：2025-12-01 10:00\n版本号：v3.6\n文档类型：product\n文档族：solution_lithium\n生效日期：2025-12-01\n\n## 一、方案概述\n\n面向动力电池电芯段，提供叠片、焊接、检测与物料配送一体化方案，核心设备包括 LT-R20 机器人、LT-AMR-1000 与 LT-V3D 视觉。\n\n## 二、产线配置\n\n单条叠片线配置 15-16 台 LT-R20、2 台 AMR，节拍 0.12 秒/片，良率 99.5%，支持 12 条线集群调度。\n\n## 三、质量检测\n\n在线检测极片对齐度、毛刺与褶皱，检测精度 0.05 mm，NG 自动剔除并记录追溯码。\n\n## 四、标杆案例\n\n恒芯动力电池 12 条叠片线使用 186 台 LT-R20 与 24 台 AMR-1000，叠片良率由 98.1% 提升至 99.3%，投资回收期 18 个月。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_product_vision",
+      "lantu_tech_vision",
+      "lantu_solution_lithium"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.154,
+    "number_recall": 0.0
+  }
+}

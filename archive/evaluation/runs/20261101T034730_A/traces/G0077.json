@@ -1,0 +1,110 @@
+{
+  "qid": "G0077",
+  "question": "专利布局的五大方向与公司的技术主线是否一致？请给出对应关系。",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>专利布局 五大方向</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list><parameter=keyword>专利</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 73,
+        "prompt_tokens": 359,
+        "total_tokens": 432,
+        "completion_tokens_details": {
+          "reasoning_tokens": 27
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.562
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>专利布局 五大方向 技术主线</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 58,
+        "prompt_tokens": 442,
+        "total_tokens": 500,
+        "completion_tokens_details": {
+          "reasoning_tokens": 24
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.641
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search>{\"query\":\"专利布局 五大方向 技术主线\",\"top_k\":10}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 44,
+        "prompt_tokens": 513,
+        "total_tokens": 557,
+        "completion_tokens_details": {
+          "reasoning_tokens": 14
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.422
+    },
+    {
+      "round": 4,
+      "text": "我没有检索到您所提到的具体公司资料（当前对话中没有附带相关文档），因此无法直接给出该公司\"专利布局五大方向\"与\"技术主线\"的逐一对应关系。不过可以为您提供一个通用的分析框架，您把具体材料贴出来后我可以帮您做精确映射。\n\n**通用对应关系框架**\n\n| 专利布局方向 | 通常对应的技术主线 | 关注点 |\n|---|---|---|\n| 核心关键技术 | 主营产品的底层技术/算法/工艺 | 保护强度最高，围绕产品必争之地布局 |\n| 平台/架构技术 | 支撑多产品线复用的技术平台 | 覆盖衍生产品，防止竞品绕开 |\n| 应用/场景方案 | 面向行业客户的应用解决方案 | 与商业模式、客户场景绑定 |\n| 前沿/储备技术 | 未来3-5年的研发方向 | 数量型布局，抢占未来赛道 |\n| 支撑/防御技术 | 供应链、制造、品控等环节 | 成本控制与风险规避 |\n\n**判断一致性的方法**\n\n1. 逐一列出专利布局各方向的IPC/技术标签，与技术主线清单做交叉比对；\n2. 识别\"有布局无主线\"（资源分散）和\"有主线无布局\"（保护漏洞）两类偏差；\n3. 看资源分配比例：核心方向的专利申请量、研发投入占比是否与技术主线优先级匹配。\n\n如果您能提供该公司的技术路线图、专利清单或年报/招股书等材料，我可以帮您做成具体的对应关系表。",
+      "usage": {
+        "completion_tokens": 475,
+        "prompt_tokens": 580,
+        "total_tokens": 1055,
+        "completion_tokens_details": {
+          "reasoning_tokens": 132
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 12.125
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"needs_clarification\",\"answer\":\"当前资料库中未检索到该公司的专利布局方向或技术主线相关文档，无法给出具体对应关系。请提供公司名称或上传技术路线图、专利清单等材料；同时建议明确'五大方向'的具体所指，以便进行精确映射。附上通用分析框架：专利布局五大方向（核心技术、平台技术、应用方案、前沿储备、支撑防御技术）通常与技术主线（底层技术、平台复用、行业应用、未来赛道、供应链制造）形成对应，判断一致性需交叉比对专利技术标签与技术主线清单，并核对资源分配比例。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 181,
+        "prompt_tokens": 960,
+        "total_tokens": 1141,
+        "completion_tokens_details": {
+          "reasoning_tokens": 32
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 4.843
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "needs_clarification",
+    "answer": "当前资料库中未检索到该公司的专利布局方向或技术主线相关文档，无法给出具体对应关系。请提供公司名称或上传技术路线图、专利清单等材料；同时建议明确'五大方向'的具体所指，以便进行精确映射。附上通用分析框架：专利布局五大方向（核心技术、平台技术、应用方案、前沿储备、支撑防御技术）通常与技术主线（底层技术、平台复用、行业应用、未来赛道、供应链制造）形成对应，判断一致性需交叉比对专利技术标签与技术主线清单，并核对资源分配比例。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 3685,
+  "started_at": "2026-11-01T05:07:08",
+  "elapsed_seconds": 22.59,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.031,
+    "number_recall": 0.0
+  }
+}

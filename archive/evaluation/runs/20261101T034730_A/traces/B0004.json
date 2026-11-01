@@ -1,0 +1,142 @@
+{
+  "qid": "B0004",
+  "question": "校招对本科、硕士、博士三类学历分别给出什么年薪区间？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>校招 年薪 本科 硕士 博士</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 62,
+        "prompt_tokens": 359,
+        "total_tokens": 421,
+        "completion_tokens_details": {
+          "reasoning_tokens": 23
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.641
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search>{\"query\": \"校招 年薪 本科 硕士 博士 薪资区间\", \"top_k\": 10}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 100,
+        "prompt_tokens": 435,
+        "total_tokens": 535,
+        "completion_tokens_details": {
+          "reasoning_tokens": 57
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.671
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search>{\"query\":\"校园招聘 薪酬 学历 年薪\",\"top_k\":10}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 42,
+        "prompt_tokens": 515,
+        "total_tokens": 557,
+        "completion_tokens_details": {
+          "reasoning_tokens": 9
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.782
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search>{\"query\": \"校招年薪区间 本科 硕士 博士\", \"top_k\": 10}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 72,
+        "prompt_tokens": 585,
+        "total_tokens": 657,
+        "completion_tokens_details": {
+          "reasoning_tokens": 35
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 3.015
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search>{\"query\": \"校招 年薪 本科 硕士 博士\", \"top_k\": 10}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 64,
+        "prompt_tokens": 659,
+        "total_tokens": 723,
+        "completion_tokens_details": {
+          "reasoning_tokens": 26
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 2.844
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>校招 年薪 本科 硕士 博士</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 62,
+        "prompt_tokens": 734,
+        "total_tokens": 796,
+        "completion_tokens_details": {
+          "reasoning_tokens": 23
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 3.406
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"无法回答：本次会话中检索工具多次调用均未成功返回任何文档内容，因此没有获取到关于校招本科、硕士、博士年薪区间的任何企业资料。若贵司资料库中有对应薪酬表（如《校园招聘薪酬标准》或录用通知模板），请提供文档名称或关键词（如'校招薪资''薪酬等级''offer年薪'），我可以重新检索核对原文后再作答，避免凭记忆臆测数字。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 141,
+        "prompt_tokens": 807,
+        "total_tokens": 948,
+        "completion_tokens_details": {
+          "reasoning_tokens": 21
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 5.032
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "无法回答：本次会话中检索工具多次调用均未成功返回任何文档内容，因此没有获取到关于校招本科、硕士、博士年薪区间的任何企业资料。若贵司资料库中有对应薪酬表（如《校园招聘薪酬标准》或录用通知模板），请提供文档名称或关键词（如'校招薪资''薪酬等级''offer年薪'），我可以重新检索核对原文后再作答，避免凭记忆臆测数字。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4637,
+  "started_at": "2026-11-01T04:03:32",
+  "elapsed_seconds": 21.39,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

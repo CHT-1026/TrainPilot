@@ -1,0 +1,195 @@
+{
+  "qid": "C0136",
+  "question": "LT-R20 Pro 白皮书从研发背景到验证计划的完整逻辑链是什么？请按时间与因果顺序串联五章内容。",
+  "question_type": "单文档多跳推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=list><parameter=keyword>LT-R20 Pro</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 53,
+        "prompt_tokens": 374,
+        "total_tokens": 427,
+        "completion_tokens_details": {
+          "reasoning_tokens": 31
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.5
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=list><parameter=keyword>LT-R20 Pro</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 37,
+        "prompt_tokens": 433,
+        "total_tokens": 470,
+        "completion_tokens_details": {
+          "reasoning_tokens": 15
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.375
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"LT-R20 Pro\"}}",
+      "usage": {
+        "completion_tokens": 28,
+        "prompt_tokens": 492,
+        "total_tokens": 520,
+        "completion_tokens_details": {
+          "reasoning_tokens": 9
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 1.219
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_product_r20_pro_whitepaper\",\"offset\":0,\"limit\":6000}}",
+      "usage": {
+        "completion_tokens": 42,
+        "prompt_tokens": 598,
+        "total_tokens": 640,
+        "completion_tokens_details": {
+          "reasoning_tokens": 7
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.094
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"按时间与因果顺序，五章逻辑链如下：\\n第一章·研发背景（因）：面向锂电叠片、汽车装配等高频节拍场景，需要新一代中型六轴机器人，因此立项研发 LT-R20 Pro，并设定 2026 年第二季度量产的总目标——这一场景需求与量产时点是后续所有技术指标与验证节点的出发点。\\n第二章·技术指标（承接需求→量化目标）：为满足高频节拍与量产竞争力，指标上定为额定负载 22 kg、臂展 1,750 mm、重复定位精度 ±0.02 mm；同时以\"较上一代本体减重 6%、典型循环节拍提升 15%、单位能耗下降 18%\"直接回应第一章的节拍与效率诉求。\\n第三章·结构与防护（指标的物理实现途径）：为达成减重与场景适应性，采用中空腕部与轻量化铸铝大臂实现减重；防护等级提升至 IP67、支持食品级润滑与洁净室选配、适应 -5℃~50℃ 环境，从而支撑第二章指标在真实产线环境中的落地。\\n第四章·控制与智能（指标的算法与电控实现途径）：搭载 LT-C800 Pro 控制器，提供 1 kHz 力控环路、视觉伺服与在线轨迹修正，保证 ±0.02 mm 精度与节拍提升；内置振动抑制算法使末端残余振动降低 40%，与第三章轻量化结构带来的刚度变化相配套，确保精度指标可兑现。\\n第五章·验证计划（果·对前四章的闭环检验）：2026 年 1 月完成 2,000 小时可靠性测试（检验第二、三章的指标与结构耐久性），3 月通过 CE 认证（检验第三章 IP67 等防护与合规性），4 月小批量交付首批 50 台（兑现第一章量产节奏的关键节点，指向 2026 年 Q2 全面量产）。\\n整体链条：场景与节拍需求（一）→ 量化性能目标（二）→ 结构/防护实现（三）→ 控制/算法实现（四）→ 可靠性、认证、交付验证（五），形成'需求—指标—实现—验证—量产'的闭环。\",\"citations\":[\"lantu_product_r20_pro_whitepaper\"],\"evidence\":[\"lantu_product_r20_pro_whitepaper#1\",\"lantu_product_r20_pro_whitepaper#2\",\"lantu_product_r20_pro_whitepaper#3\",\"lantu_product_r20_pro_whitepaper#4\",\"lantu_product_r20_pro_whitepaper#5\"]}",
+      "usage": {
+        "completion_tokens": 805,
+        "prompt_tokens": 1091,
+        "total_tokens": 1896,
+        "completion_tokens_details": {
+          "reasoning_tokens": 175
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 15.203
+    },
+    {
+      "round": 6,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"按时间与因果顺序，五章逻辑链如下：\\n第一章·研发背景（因）：面向锂电叠片、汽车装配等高频节拍场景，需研发新一代中型六轴机器人 LT-R20 Pro，并设定 2026 年 Q2 量产目标，是后续指标与验证节点的出发点。\\n第二章·技术指标（需求→量化目标）：为满足节拍诉求，额定负载 22 kg、臂展 1,750 mm、重复定位精度 ±0.02 mm；较上一代减重 6%、节拍提升 15%、能耗下降 18%，直接回应第一章的效率需求。\\n第三章·结构与防护（物理实现）：中空腕部+轻量化铸铝大臂实现减重；IP67、食品级润滑与洁净室选配、-5℃~50℃ 适应性，支撑第二章指标在真实产线落地。\\n第四章·控制与智能（算法/电控实现）：LT-C800 Pro 控制器提供 1 kHz 力控、视觉伺服、在线轨迹修正，保证精度与节拍；振动抑制算法使末端残余振动降低 40%，与第三章轻量化结构配套。\\n第五章·验证计划（果·闭环检验）：2026 年 1 月 2,000 小时可靠性测试（检验二、三章），3 月 CE 认证（检验第三章防护与合规），4 月首批 50 台小批量交付（兑现第一章量产节奏，指向 Q2 量产）。\\n整体链条：场景需求(一)→量化指标(二)→结构实现(三)→控制实现(四)→验证与交付(五)，形成需求—指标—实现—验证—量产闭环。\",\"citations\":[\"lantu_product_r20_pro_whitepaper\"],\"evidence\":[\"lantu_product_r20_pro_whitepaper#1\",\"lantu_product_r20_pro_whitepaper#2\",\"lantu_product_r20_pro_whitepaper#3\",\"lantu_product_r20_pro_whitepaper#4\",\"lantu_product_r20_pro_whitepaper#5\"]}",
+      "usage": {
+        "completion_tokens": 606,
+        "prompt_tokens": 1758,
+        "total_tokens": 2364,
+        "completion_tokens_details": {
+          "reasoning_tokens": 112
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 1088
+        }
+      },
+      "seconds": 43.844
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "LT-R20 Pro"
+      },
+      "result_sha": "feba25bb1e914db742f351f9662c5f25b437c7eaa511a37062db21e700392fc3",
+      "result_chars": 165,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_r20_pro_whitepaper",
+        "offset": 0,
+        "limit": 6000
+      },
+      "result_sha": "22ba5b990e5e488c927c128a0a283cb2987a17e0b0892b1623e77357f7ba25d3",
+      "result_chars": 690,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "按时间与因果顺序，五章逻辑链如下：\n第一章·研发背景（因）：面向锂电叠片、汽车装配等高频节拍场景，需研发新一代中型六轴机器人 LT-R20 Pro，并设定 2026 年 Q2 量产目标，是后续指标与验证节点的出发点。\n第二章·技术指标（需求→量化目标）：为满足节拍诉求，额定负载 22 kg、臂展 1,750 mm、重复定位精度 ±0.02 mm；较上一代减重 6%、节拍提升 15%、能耗下降 18%，直接回应第一章的效率需求。\n第三章·结构与防护（物理实现）：中空腕部+轻量化铸铝大臂实现减重；IP67、食品级润滑与洁净室选配、-5℃~50℃ 适应性，支撑第二章指标在真实产线落地。\n第四章·控制与智能（算法/电控实现）：LT-C800 Pro 控制器提供 1 kHz 力控、视觉伺服、在线轨迹修正，保证精度与节拍；振动抑制算法使末端残余振动降低 40%，与第三章轻量化结构配套。\n第五章·验证计划（果·闭环检验）：2026 年 1 月 2,000 小时可靠性测试（检验二、三章），3 月 CE 认证（检验第三章防护与合规），4 月首批 50 台小批量交付（兑现第一章量产节奏，指向 Q2 量产）。\n整体链条：场景需求(一)→量化指标(二)→结构实现(三)→控制实现(四)→验证与交付(五)，形成需求—指标—实现—验证—量产闭环。",
+    "citations": [
+      "lantu_product_r20_pro_whitepaper"
+    ],
+    "evidence": [
+      "lantu_product_r20_pro_whitepaper#1",
+      "lantu_product_r20_pro_whitepaper#2",
+      "lantu_product_r20_pro_whitepaper#3",
+      "lantu_product_r20_pro_whitepaper#4",
+      "lantu_product_r20_pro_whitepaper#5"
+    ]
+  },
+  "status": "answered",
+  "tokens": 6317,
+  "started_at": "2026-11-01T04:24:15",
+  "elapsed_seconds": 64.24,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "LT-R20 Pro"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_meeting_product_review",
+            "title": "LT-R20 Pro 产品评审会纪要"
+          },
+          {
+            "doc_id": "lantu_product_r20_pro_whitepaper",
+            "title": "LT-R20 Pro 机器人技术白皮书"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_r20_pro_whitepaper",
+        "offset": 0,
+        "limit": 6000
+      },
+      "result": {
+        "doc_id": "lantu_product_r20_pro_whitepaper",
+        "title": "LT-R20 Pro 机器人技术白皮书",
+        "offset": 0,
+        "limit": 6000,
+        "total_chars": 509,
+        "text": "LT-R20 Pro 机器人技术白皮书\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2025-11-20 09:00\n更新时间：2025-11-28 18:00\n版本号：v0.9\n文档类型：product\n文档族：product_r20_pro\n生效日期：2025-11-28\n一、研发背景\n面向锂电叠片、汽车装配等高频节拍场景，澜图智能研发新一代中型六轴机器人 LT-R20 Pro，计划\n2026 年第二季度量产。\n二、技术指标\n额定负载 22 kg，臂展 1,750 mm，重复定位精度 ±0.02 mm，本体重量 268 kg，较上一代降低\n6%；典型循环节拍提升 15%，单位能耗下降 18%。\n三、结构与防护\n采用中空腕部与轻量化铸铝大臂，防护等级提升至 IP67，支持食品级润滑与洁净室选配，适应 -5℃ 至\n50℃ 环境。\n四、控制与智能\n搭载 LT-C800 Pro 控制器，支持 1 kHz\n力控环路、视觉伺服与在线轨迹修正；内置振动抑制算法，末端残余振动降低 40%。\n五、验证计划\n2026 年 1 月完成 2,000 小时可靠性测试，3 月通过 CE 认证，4 月小批量交付首批 50 台。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_product_r20_pro_whitepaper"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.42,
+    "number_recall": 1.0
+  }
+}

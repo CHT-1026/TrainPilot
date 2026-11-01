@@ -1,0 +1,271 @@
+{
+  "qid": "F0084",
+  "question": "2026 年预算研发投入 7.2 亿元相对 2025 年实际 5.87 亿元增长多少？研发费用率有何变化？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>研发投入 2026年预算 2025年实际</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 96,
+        "prompt_tokens": 381,
+        "total_tokens": 477,
+        "completion_tokens_details": {
+          "reasoning_tokens": 56
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.704
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"研发费用率\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 79,
+        "prompt_tokens": 458,
+        "total_tokens": 537,
+        "completion_tokens_details": {
+          "reasoning_tokens": 56
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.828
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_finance_budget_2026\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 67,
+        "prompt_tokens": 2969,
+        "total_tokens": 3036,
+        "completion_tokens_details": {
+          "reasoning_tokens": 31
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.562
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_finance_annual_2025\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 76,
+        "prompt_tokens": 3406,
+        "total_tokens": 3482,
+        "completion_tokens_details": {
+          "reasoning_tokens": 39
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2944
+        }
+      },
+      "seconds": 1.953
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据《2026 年度经营预算》，2026 年研发投入预算 7.2 亿元（占收入 13.8%）；2025 年实际：营业收入 42.63 亿元、研发费用率 13.8%，据此推算 2025 年研发投入约 5.88 亿元（与题述 5.87 亿元口径基本一致）。增长幅度：7.2 ÷ 5.88 − 1 ≈ +22.4%（按题给 5.87 亿元计算约为 +22.7%）。研发费用率方面：2025 年实际为 13.8%，2026 年预算为 13.8%（7.2/52 亿元），即研发费用率基本持平、无明显变化；但需注意这是基于预算收入 52 亿元（同比+22%）测算的，若收入未达标，实际研发费用率将高于 13.8%。\",\"citations\":[\"lantu_finance_budget_2026\",\"lantu_finance_annual_2025\"],\"evidence\":[\"lantu_finance_budget_2026#三、费用预算\",\"lantu_finance_annual_2025#三、盈利能力\"]}",
+      "usage": {
+        "completion_tokens": 542,
+        "prompt_tokens": 3935,
+        "total_tokens": 4477,
+        "completion_tokens_details": {
+          "reasoning_tokens": 232
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3392
+        }
+      },
+      "seconds": 10.844
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "研发费用率",
+        "top_k": 10
+      },
+      "result_sha": "bc95a9f7b2554bcaf60c4007cfce0a4edb5eb4c1669eb263703101b25f5af4ee",
+      "result_chars": 3915,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_finance_budget_2026",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "1eef222c55599a6813dc352160c852d2baee0c26e411d05e714a1c2e25a5fd99",
+      "result_chars": 578,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_finance_annual_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "282bd0d8ed89a26ab10c250898474d1181ce35168532f488a172ca936399e712",
+      "result_chars": 693,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《2026 年度经营预算》，2026 年研发投入预算 7.2 亿元（占收入 13.8%）；2025 年实际：营业收入 42.63 亿元、研发费用率 13.8%，据此推算 2025 年研发投入约 5.88 亿元（与题述 5.87 亿元口径基本一致）。增长幅度：7.2 ÷ 5.88 − 1 ≈ +22.4%（按题给 5.87 亿元计算约为 +22.7%）。研发费用率方面：2025 年实际为 13.8%，2026 年预算为 13.8%（7.2/52 亿元），即研发费用率基本持平、无明显变化；但需注意这是基于预算收入 52 亿元（同比+22%）测算的，若收入未达标，实际研发费用率将高于 13.8%。",
+    "citations": [
+      "lantu_finance_budget_2026",
+      "lantu_finance_annual_2025"
+    ],
+    "evidence": [
+      "lantu_finance_budget_2026#三、费用预算",
+      "lantu_finance_annual_2025#三、盈利能力"
+    ]
+  },
+  "status": "answered",
+  "tokens": 12009,
+  "started_at": "2026-11-01T04:59:36",
+  "elapsed_seconds": 19.89,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "研发费用率",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_finance_annual_2025",
+            "title": "澜图智能 2025 年度报告摘要",
+            "chunk": 0,
+            "score": 13.072,
+            "snippet": "澜图智能 2025 年度报告摘要\n所属部门：财务部\n作者：周敏仪\n创建时间：2026-01-20 09:00\n更新时间：2026-01-28 18:00\n版本号：v1.0\n文档类型：finance\n文档族：annual_report_2025\n生效日期：2026-01-28\n一、经营概况\n2025 年公司实现营业收入 42.63 亿元，同比增长 19.1%；归属于母公司股东的净利润 4.12\n亿元，同比增长 26.4%；基本每股收益 0.98 元。\n二、收入结构\n机器人本体收入 19.84 亿元（46.5%），智能"
+          },
+          {
+            "doc_id": "lantu_finance_investor_qa",
+            "title": "# 澜图智能投资者常见问题答复",
+            "chunk": 0,
+            "score": 10.879,
+            "snippet": "# 澜图智能投资者常见问题答复\n\n所属部门：董事会办公室\n作者：周敏仪\n创建时间：2025-11-01 09:00\n更新时间：2025-12-30 16:00\n版本号：v2.0\n文档类型：finance\n文档族：investor_qa\n生效日期：2025-12-30\n\n## 一、增长来源\n\n2025 年增长主要来自动力电池与半导体行业，两项合计贡献收入增量的 61%；海外市场贡献 22%。\n\n## 二、毛利率趋势\n\n随着自研控制器与驱动器比例提升、标准工作站放量，预计 2026 年毛利率提升至 32.5% 左右。\n"
+          },
+          {
+            "doc_id": "lantu_finance_budget_2026",
+            "title": "# 澜图智能 2026 年度经营预算",
+            "chunk": 0,
+            "score": 5.25,
+            "snippet": "# 澜图智能 2026 年度经营预算\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-12-20 09:00\n更新时间：2026-01-15 17:00\n版本号：v1.0\n文档类型：finance\n文档族：budget_2026\n生效日期：2026-01-15\n\n## 一、预算目标\n\n2026 年营业收入目标 52 亿元，同比增长 22%；归母净利润目标 5.2 亿元；综合毛利率目标 32.5%。\n\n## 二、收入分解\n\n机器人本体 24.2 亿元，智能产线 18.4 亿元，软件与服务 6.4 亿元，备件及其"
+          },
+          {
+            "doc_id": "lantu_policy_reimbursement",
+            "title": "# 澜图智能费用报销管理办法",
+            "chunk": 0,
+            "score": 4.364,
+            "snippet": "# 澜图智能费用报销管理办法\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-03-10 09:00\n更新时间：2025-06-18 10:00\n版本号：v3.2\n文档类型：policy\n文档族：reimbursement\n生效日期：2025-06-18\n\n## 一、报销范围\n\n差旅费、业务招待费、办公费、培训费、通讯费、车辆使用费及经批准的其他费用。个人消费、罚款与无票据支出不予报销。\n\n## 二、报销时限\n\n费用发生后 30 个自然日内提交报销，跨年度费用须在次年 1 月 15 日前完成，逾期需财务总监审"
+          },
+          {
+            "doc_id": "lantu_product_painting",
+            "title": "# LT-Paint 机器人喷涂工作站方案",
+            "chunk": 0,
+            "score": 3.742,
+            "snippet": "# LT-Paint 机器人喷涂工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-08-01 09:00\n更新时间：2025-04-18 15:00\n版本号：v2.2\n文档类型：product\n文档族：solution_painting\n生效日期：2025-04-18\n\n## 一、方案组成\n\n以 LT-R20 防爆机器人为核心，集成旋杯喷枪、供漆系统、防爆控制柜与 VOC 处理装置。\n\n## 二、工艺指标\n\n换色时间 6 分钟，涂料利用率提升 23%，膜厚均匀性 ±5 μm，VOC 排放下降 19%。"
+          },
+          {
+            "doc_id": "lantu_policy_travel_2024",
+            "title": "# 澜图智能差旅费用报销标准（2024版）",
+            "chunk": 0,
+            "score": 3.651,
+            "snippet": "# 澜图智能差旅费用报销标准（2024版）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-02-20 09:00\n更新时间：2024-03-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2024-03-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 450 元/晚，二线城市 350 元/晚，其他城市 300 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 100 元/天，按自然日计算；客户宴请须提"
+          },
+          {
+            "doc_id": "lantu_policy_travel_2025",
+            "title": "# 澜图智能差旅费用报销标准（2025版）",
+            "chunk": 0,
+            "score": 3.569,
+            "snippet": "# 澜图智能差旅费用报销标准（2025版）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-12-15 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2025-01-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 550 元/晚，二线城市 420 元/晚，其他城市 350 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 120 元/天，按自然日计算；客户宴请须提"
+          },
+          {
+            "doc_id": "lantu_policy_travel_2025h2",
+            "title": "# 澜图智能差旅费用报销标准（2025年7月修订）",
+            "chunk": 0,
+            "score": 3.491,
+            "snippet": "# 澜图智能差旅费用报销标准（2025年7月修订）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-06-10 09:00\n更新时间：2025-07-01 09:00\n版本号：v3.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2025-07-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 600 元/晚，二线城市 450 元/晚，其他城市 380 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 150 元/天，按自然日计算；客户"
+          },
+          {
+            "doc_id": "lantu_meeting_ops_2025q3",
+            "title": "2025 年第三季度经营分析会纪要",
+            "chunk": 0,
+            "score": 3.124,
+            "snippet": "2025 年第三季度经营分析会纪要\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-10-10 09:00\n更新时间：2025-10-10 18:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_ops_2025q3\n生效日期：2025-10-10\n一、会议信息\n时间：2025 年 10 月 10 日 09:00-12:00；地点：苏州总部 3 楼会议室；主持：顾承澜；参会：沈亦舟、周敏仪、韩立恒、罗嘉树、陈依然、潘文博、邵岚。\n二、经营回顾\n第三季度营业收入 11.52 亿元，同"
+          },
+          {
+            "doc_id": "lantu_hr_social",
+            "title": "# 澜图智能社会招聘管理办法",
+            "chunk": 0,
+            "score": 2.736,
+            "snippet": "# 澜图智能社会招聘管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-02-01 09:00\n更新时间：2025-07-15 11:00\n版本号：v2.5\n文档类型：hr\n文档族：social_recruitment\n生效日期：2025-07-15\n\n## 一、适用岗位\n\n适用于经理级及以上、高级技术专家与紧缺岗位；年度社招计划 200 人。\n\n## 二、渠道管理\n\n使用猎头、招聘平台、内部推荐与行业社群。猎头费用为年薪的 20%-25%，保证期 90 天。\n\n## 三、内部推荐\n\n员工推荐成功入"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_finance_budget_2026",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_finance_budget_2026",
+        "title": "# 澜图智能 2026 年度经营预算",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 402,
+        "text": "# 澜图智能 2026 年度经营预算\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-12-20 09:00\n更新时间：2026-01-15 17:00\n版本号：v1.0\n文档类型：finance\n文档族：budget_2026\n生效日期：2026-01-15\n\n## 一、预算目标\n\n2026 年营业收入目标 52 亿元，同比增长 22%；归母净利润目标 5.2 亿元；综合毛利率目标 32.5%。\n\n## 二、收入分解\n\n机器人本体 24.2 亿元，智能产线 18.4 亿元，软件与服务 6.4 亿元，备件及其他 3.0 亿元。\n\n## 三、费用预算\n\n研发投入 7.2 亿元（占收入 13.8%），销售费用 4.6 亿元，管理费用 2.4 亿元，资本开支 3.8 亿元。\n\n## 四、关键假设\n\n机器人出货 26,000 台；海外收入 7.2 亿元；原材料价格持平；汇率波动控制在 ±3%。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_finance_annual_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_finance_annual_2025",
+        "title": "澜图智能 2025 年度报告摘要",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 524,
+        "text": "澜图智能 2025 年度报告摘要\n所属部门：财务部\n作者：周敏仪\n创建时间：2026-01-20 09:00\n更新时间：2026-01-28 18:00\n版本号：v1.0\n文档类型：finance\n文档族：annual_report_2025\n生效日期：2026-01-28\n一、经营概况\n2025 年公司实现营业收入 42.63 亿元，同比增长 19.1%；归属于母公司股东的净利润 4.12\n亿元，同比增长 26.4%；基本每股收益 0.98 元。\n二、收入结构\n机器人本体收入 19.84 亿元（46.5%），智能产线收入 14.92 亿元（35.0%），工业软件与服务收入 5.21\n亿元（12.2%），备件及其他收入 2.66 亿元（6.3%）。\n三、盈利能力\n综合毛利率 31.6%，同比提升 1.2 个百分点；净利率 9.7%；期间费用率 20.1%，其中研发费用率 13.8%。\n四、现金流与资产\n经营活动现金流净额 5.34 亿元；资产负债率 38.6%；应收账款周转天数 86 天；存货周转天数 92 天。\n五、利润分配\n拟以总股本 4.2 亿股为基数，每 10 股派发现金红利 3.2 元（含税），合计派现 1.34 亿元。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.333,
+    "cited": [
+      "lantu_finance_budget_2026",
+      "lantu_finance_annual_2025"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.238,
+    "number_recall": 1.0
+  }
+}

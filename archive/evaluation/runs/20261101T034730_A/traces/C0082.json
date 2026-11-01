@@ -1,0 +1,352 @@
+{
+  "qid": "C0082",
+  "question": "锂电方案标称叠片线良率 99.5%，恒芯案例实测叠片良率由 98.1% 提升至 99.3%，两者是否矛盾？",
+  "question_type": "矛盾与例外识别",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "我需要检索资料来核实这两个数据的口径与出处。<tool_call><function=search><parameter=query>叠片良率 99.5% 锂电方案 标称</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 116,
+        "prompt_tokens": 387,
+        "total_tokens": 503,
+        "completion_tokens_details": {
+          "reasoning_tokens": 61
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.109
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>叠片良率 99.5% 锂电方案 标称</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 57,
+        "prompt_tokens": 479,
+        "total_tokens": 536,
+        "completion_tokens_details": {
+          "reasoning_tokens": 15
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 1.703
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"叠片良率 99.5% 锂电方案 标称\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 46,
+        "prompt_tokens": 558,
+        "total_tokens": 604,
+        "completion_tokens_details": {
+          "reasoning_tokens": 9
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 4.329
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=TOOL IGNORE></function></tool_call>",
+      "usage": {
+        "completion_tokens": 31,
+        "prompt_tokens": 2988,
+        "total_tokens": 3019,
+        "completion_tokens_details": {
+          "reasoning_tokens": 17
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 4.64
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_solution_lithium\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 60,
+        "prompt_tokens": 3038,
+        "total_tokens": 3098,
+        "completion_tokens_details": {
+          "reasoning_tokens": 28
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2944
+        }
+      },
+      "seconds": 3.156
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_case_01_hengxin\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 82,
+        "prompt_tokens": 3496,
+        "total_tokens": 3578,
+        "completion_tokens_details": {
+          "reasoning_tokens": 47
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2944
+        }
+      },
+      "seconds": 2.031
+    },
+    {
+      "round": 7,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_meeting_case_review\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 123,
+        "prompt_tokens": 4077,
+        "total_tokens": 4200,
+        "completion_tokens_details": {
+          "reasoning_tokens": 91
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3456
+        }
+      },
+      "seconds": 3.172
+    },
+    {
+      "round": 8,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"不矛盾，两者是同一份方案文档中不同口径的指标。锂电方案 v3.6（动力电池叠片与物流整体解决方案）在“二、产线配置”中给出的 99.5% 是该方案在标准配置下的产线标称良率（理论/设计指标）；而“四、标杆案例”及恒芯客户案例文档中 98.1%→99.3% 是恒芯项目 12 条叠片线在客户现场的实际实测/验收良率（改造前→改造后）。方案文档本身同时收录这两个数据，说明标称值与现场实测值并存是文档的既有口径，并非数据冲突：标称良率代表标准工况下的方案能力上限，实测良率受客户现场来料、工艺、爬坡与验收标准等实际条件影响，通常略低于标称值。恒芯改造后 99.3% 已接近但仍低于 99.5% 的标称值，属于合理区间。若要对外引用，建议明确区分“方案标称良率”与“项目实测验收良率”两个口径。\",\"citations\":[\"lantu_solution_lithium\",\"lantu_case_01_hengxin\",\"lantu_meeting_case_review\"],\"evidence\":[\"lantu_solution_lithium#片段0-产线配置节拍0.12秒/片良率99.5%\",\"lantu_solution_lithium#片段0-标杆案例恒芯叠片良率由98.1%提升至99.3%\",\"lantu_case_01_hengxin#片段0-成效数据叠片良率由98.1%提升至99.3%\",\"lantu_meeting_case_review#片段0-12条叠片线完成验收\"]}",
+      "usage": {
+        "completion_tokens": 578,
+        "prompt_tokens": 4480,
+        "total_tokens": 5058,
+        "completion_tokens_details": {
+          "reasoning_tokens": 170
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 4032
+        }
+      },
+      "seconds": 18.438
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "叠片良率 99.5% 锂电方案 标称",
+        "top_k": 10
+      },
+      "result_sha": "5c3a6b83479daf531ed984f340bbb95e53121a851c260361ba363b37024e0b3b",
+      "result_chars": 3898,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_solution_lithium",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "3eae315ba7aa8706c483dc1921de404bff7da719c225aac8b43b8f7fd7a59e61",
+      "result_chars": 622,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_case_01_hengxin",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "e1955426cc1bf895d641ea6f16e59d38427653ee0ffa3501c90b4e965cb8f3a2",
+      "result_chars": 829,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_meeting_case_review",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "781cb1d9ab97d872698b46a889850dc345c0f3f211952a4bd3e830c5fd3db88c",
+      "result_chars": 566,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "不矛盾，两者是同一份方案文档中不同口径的指标。锂电方案 v3.6（动力电池叠片与物流整体解决方案）在“二、产线配置”中给出的 99.5% 是该方案在标准配置下的产线标称良率（理论/设计指标）；而“四、标杆案例”及恒芯客户案例文档中 98.1%→99.3% 是恒芯项目 12 条叠片线在客户现场的实际实测/验收良率（改造前→改造后）。方案文档本身同时收录这两个数据，说明标称值与现场实测值并存是文档的既有口径，并非数据冲突：标称良率代表标准工况下的方案能力上限，实测良率受客户现场来料、工艺、爬坡与验收标准等实际条件影响，通常略低于标称值。恒芯改造后 99.3% 已接近但仍低于 99.5% 的标称值，属于合理区间。若要对外引用，建议明确区分“方案标称良率”与“项目实测验收良率”两个口径。",
+    "citations": [
+      "lantu_solution_lithium",
+      "lantu_case_01_hengxin",
+      "lantu_meeting_case_review"
+    ],
+    "evidence": [
+      "lantu_solution_lithium#片段0-产线配置节拍0.12秒/片良率99.5%",
+      "lantu_solution_lithium#片段0-标杆案例恒芯叠片良率由98.1%提升至99.3%",
+      "lantu_case_01_hengxin#片段0-成效数据叠片良率由98.1%提升至99.3%",
+      "lantu_meeting_case_review#片段0-12条叠片线完成验收"
+    ]
+  },
+  "status": "answered",
+  "tokens": 20596,
+  "started_at": "2026-11-01T04:17:46",
+  "elapsed_seconds": 40.59,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "叠片良率 99.5% 锂电方案 标称",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_solution_lithium",
+            "title": "# 动力电池叠片与物流整体解决方案",
+            "chunk": 0,
+            "score": 19.881,
+            "snippet": "# 动力电池叠片与物流整体解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-10-12 09:00\n更新时间：2025-12-01 10:00\n版本号：v3.6\n文档类型：product\n文档族：solution_lithium\n生效日期：2025-12-01\n\n## 一、方案概述\n\n面向动力电池电芯段，提供叠片、焊接、检测与物料配送一体化方案，核心设备包括 LT-R20 机器人、LT-AMR-1000 与 LT-V3D 视觉。\n\n## 二、产线配置\n\n单条叠片线配置 15-16 台 LT-R20、2 "
+          },
+          {
+            "doc_id": "lantu_case_01_hengxin",
+            "title": "# 客户案例：恒芯动力电池电芯叠片与物流项目",
+            "chunk": 0,
+            "score": 12.277,
+            "snippet": "# 客户案例：恒芯动力电池电芯叠片与物流项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_hengxin\n生效日期：2025-12-20\n\n## 一、客户背景\n\n恒芯动力电池位于常州，主营动力电池业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追"
+          },
+          {
+            "doc_id": "lantu_meeting_case_review",
+            "title": "# 恒芯动力电池项目复盘会纪要",
+            "chunk": 0,
+            "score": 8.314,
+            "snippet": "# 恒芯动力电池项目复盘会纪要\n\n所属部门：客户成功部\n作者：林可\n创建时间：2025-03-18 09:00\n更新时间：2025-03-18 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_case_hengxin\n生效日期：2025-03-18\n\n## 一、项目结果\n\n恒芯动力电池 12 条叠片线完成验收，部署 186 台 LT-R20 与 24 台 AMR-1000，合同金额 2.16 亿元。\n\n## 二、成功经验\n\n虚拟调试提前发现 37 处干涉，现场调试周期缩短 12 天；"
+          },
+          {
+            "doc_id": "lantu_solution_photovoltaic",
+            "title": "# 光伏电池片串焊整线解决方案",
+            "chunk": 0,
+            "score": 5.844,
+            "snippet": "# 光伏电池片串焊整线解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-09-20 09:00\n更新时间：2025-10-16 14:00\n版本号：v3.1\n文档类型：product\n文档族：solution_photovoltaic\n生效日期：2025-10-16\n\n## 一、方案概述\n\n面向 TOPCon/HJT 电池片串焊，提供上料、串焊、EL 检测与下料整线方案，核心设备为 LT-S10 SCARA 与 LT-V3D 视觉。\n\n## 二、产线指标\n\n串焊速度 4,200 片/小时，良率 99.6"
+          },
+          {
+            "doc_id": "lantu_product_digital_twin",
+            "title": "# LantuTwin 数字孪生平台介绍",
+            "chunk": 0,
+            "score": 5.679,
+            "snippet": "# LantuTwin 数字孪生平台介绍\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-09-01 09:00\n更新时间：2025-06-30 16:00\n版本号：v3.0\n文档类型：product\n文档族：product_digital_twin\n生效日期：2025-06-30\n\n## 一、平台定位\n\nLantuTwin 3.0 是面向智能工厂规划、调试与运维的数字孪生平台，支持机器人、产线与物流系统的虚实同步。\n\n## 二、核心能力\n\n单项目支持 500 台设备接入，数据刷新延迟低于 80 ms，仿真"
+          },
+          {
+            "doc_id": "lantu_product_r20_pro_whitepaper",
+            "title": "LT-R20 Pro 机器人技术白皮书",
+            "chunk": 0,
+            "score": 4.964,
+            "snippet": "LT-R20 Pro 机器人技术白皮书\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2025-11-20 09:00\n更新时间：2025-11-28 18:00\n版本号：v0.9\n文档类型：product\n文档族：product_r20_pro\n生效日期：2025-11-28\n一、研发背景\n面向锂电叠片、汽车装配等高频节拍场景，澜图智能研发新一代中型六轴机器人 LT-R20 Pro，计划\n2026 年第二季度量产。\n二、技术指标\n额定负载 22 kg，臂展 1,750 mm，重复定位精度 ±0.02 mm，本体重量"
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 1,
+            "score": 4.861,
+            "snippet": "| 产品线 | 代表型号 | 负载 | 典型行业 |\n| --- | --- | --- | --- |\n| 六轴机器人 | LT-R6/R12/R20/R50/R210 | 6-210 kg | 汽车、锂电、金属加工 |\n| SCARA | LT-S4/S10 | 4-10 kg | 3C、光伏、食品 |\n| 移动机器人 | LT-AMR-500/1000/2000 | 500-2,000 kg | 物流、半导体 |\n| 机器视觉 | LT-V3D | — | 装配、检测 |\n| 控制器 | LT-C800 | "
+          },
+          {
+            "doc_id": "lantu_meeting_ops_2025q3",
+            "title": "2025 年第三季度经营分析会纪要",
+            "chunk": 0,
+            "score": 4.726,
+            "snippet": "2025 年第三季度经营分析会纪要\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-10-10 09:00\n更新时间：2025-10-10 18:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_ops_2025q3\n生效日期：2025-10-10\n一、会议信息\n时间：2025 年 10 月 10 日 09:00-12:00；地点：苏州总部 3 楼会议室；主持：顾承澜；参会：沈亦舟、周敏仪、韩立恒、罗嘉树、陈依然、潘文博、邵岚。\n二、经营回顾\n第三季度营业收入 11.52 亿元，同"
+          },
+          {
+            "doc_id": "lantu_case_03_yaoyang",
+            "title": "# 客户案例：曜阳光能电池片串焊项目",
+            "chunk": 0,
+            "score": 4.41,
+            "snippet": "# 客户案例：曜阳光能电池片串焊项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_yaoyang\n生效日期：2025-12-20\n\n## 一、客户背景\n\n曜阳光能位于合肥，主营光伏业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖16"
+          },
+          {
+            "doc_id": "lantu_case_10_hengrui",
+            "title": "# 客户案例：恒锐精密机床上下料项目",
+            "chunk": 0,
+            "score": 4.395,
+            "snippet": "# 客户案例：恒锐精密机床上下料项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2023-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_hengrui\n生效日期：2023-12-20\n\n## 一、客户背景\n\n恒锐精密位于宁波，主营金属加工业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2023 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_solution_lithium",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_solution_lithium",
+        "title": "# 动力电池叠片与物流整体解决方案",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 450,
+        "text": "# 动力电池叠片与物流整体解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-10-12 09:00\n更新时间：2025-12-01 10:00\n版本号：v3.6\n文档类型：product\n文档族：solution_lithium\n生效日期：2025-12-01\n\n## 一、方案概述\n\n面向动力电池电芯段，提供叠片、焊接、检测与物料配送一体化方案，核心设备包括 LT-R20 机器人、LT-AMR-1000 与 LT-V3D 视觉。\n\n## 二、产线配置\n\n单条叠片线配置 15-16 台 LT-R20、2 台 AMR，节拍 0.12 秒/片，良率 99.5%，支持 12 条线集群调度。\n\n## 三、质量检测\n\n在线检测极片对齐度、毛刺与褶皱，检测精度 0.05 mm，NG 自动剔除并记录追溯码。\n\n## 四、标杆案例\n\n恒芯动力电池 12 条叠片线使用 186 台 LT-R20 与 24 台 AMR-1000，叠片良率由 98.1% 提升至 99.3%，投资回收期 18 个月。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_case_01_hengxin",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_case_01_hengxin",
+        "title": "# 客户案例：恒芯动力电池电芯叠片与物流项目",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 645,
+        "text": "# 客户案例：恒芯动力电池电芯叠片与物流项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_hengxin\n生效日期：2025-12-20\n\n## 一、客户背景\n\n恒芯动力电池位于常州，主营动力电池业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖12 条叠片线，要求 6 个月内完成交付。\n\n## 三、方案配置\n\n澜图智能提供 186 台 LT-R20 六轴机器人 + 24 台 LT-AMR-1000，配套 LT-C800 控制器、LT-V3D 视觉与 LantuTwin 数字孪生仿真，整线合同金额 2.16 亿元。\n\n## 四、实施过程\n\n项目由客户成功部牵头，联合研发、制造、质量与售后服务部组成 26 人项目组。完成现场勘测、虚拟调试、设备安装与 72 小时连续试运行，实际交付周期 5 个月。\n\n## 五、成效数据\n\n产线节拍提升 42%，叠片良率由 98.1% 提升至 99.3%，投资回收期 18 个月。项目通过客户验收，并获得客户年度优秀供应商提名。\n\n## 六、客户评价\n\n恒芯动力电池生产总监 邵宏表示：“澜图团队响应及时，方案在节拍与稳定性上达到预期，后续产线扩产将继续合作。”\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_meeting_case_review",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_meeting_case_review",
+        "title": "# 恒芯动力电池项目复盘会纪要",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 393,
+        "text": "# 恒芯动力电池项目复盘会纪要\n\n所属部门：客户成功部\n作者：林可\n创建时间：2025-03-18 09:00\n更新时间：2025-03-18 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_case_hengxin\n生效日期：2025-03-18\n\n## 一、项目结果\n\n恒芯动力电池 12 条叠片线完成验收，部署 186 台 LT-R20 与 24 台 AMR-1000，合同金额 2.16 亿元。\n\n## 二、成功经验\n\n虚拟调试提前发现 37 处干涉，现场调试周期缩短 12 天；备件提前铺货，停机时间控制在 4 小时内。\n\n## 三、问题不足\n\n初期节拍未达标，原因是视觉节拍与机器人节拍不匹配，后续通过轨迹优化提升 8%。\n\n## 四、复用建议\n\n形成锂电叠片标准包，固化 12 条线配置与调试 checklist；将视觉节拍纳入方案仿真。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_solution_lithium",
+      "lantu_case_01_hengxin",
+      "lantu_meeting_case_review"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.045,
+    "number_recall": 0.0
+  }
+}

@@ -1,0 +1,503 @@
+{
+  "qid": "K0010",
+  "question": "产品部负责人孟凡是《LT-R 系列六轴工业机器人产品手册》的作者，而研发中心总经理程知远是《LT-C800 运动控制器产品说明》的作者。LT-R 手册称采用自研 LT-C800 控制器与 23 位绝对值编码器伺服电机，支持 EtherCAT 1 ms 总线周期。请判断：产品手册中的控制器与控制架构文档中的控制器是否为同一产品线？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"\"}}",
+      "usage": {
+        "prompt_tokens": 441,
+        "total_tokens": 1238,
+        "completion_tokens": 797,
+        "completion_tokens_details": {
+          "reasoning_tokens": 780,
+          "text_tokens": 797
+        }
+      },
+      "seconds": 7.594
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"LT-R 系列六轴工业机器人 LT-C800\"}}",
+      "usage": {
+        "prompt_tokens": 1573,
+        "total_tokens": 1808,
+        "completion_tokens": 235,
+        "completion_tokens_details": {
+          "reasoning_tokens": 206,
+          "text_tokens": 235
+        }
+      },
+      "seconds": 2.328
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"LT-C800 运动控制器\"}}",
+      "usage": {
+        "prompt_tokens": 3828,
+        "total_tokens": 4107,
+        "completion_tokens": 279,
+        "completion_tokens_details": {
+          "reasoning_tokens": 254,
+          "text_tokens": 279
+        }
+      },
+      "seconds": 2.5
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_product_r_series\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 6119,
+        "total_tokens": 7773,
+        "completion_tokens": 1654,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1620,
+          "text_tokens": 1654
+        }
+      },
+      "seconds": 13.797
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"是同一产品线。根据《LT-R 系列六轴工业机器人产品手册》，该系列机器人采用自研的 LT-C800 控制器；同时，《澜图智能机器人控制系统架构》及《LT-C800 运动控制器产品说明》中也明确指出 LT-C800 是公司的新一代自研运动控制器，支持 EtherCAT 1 ms 总线周期等技术指标，两者描述一致，确认为同一控制器产品。\",\"citations\":[\"lantu_product_r_series\",\"lantu_tech_control_architecture\",\"lantu_product_controller\"],\"evidence\":[\"lantu_product_r_series\",\"lantu_tech_control_architecture#1\",\"lantu_product_controller#0\"]}",
+      "usage": {
+        "prompt_tokens": 6918,
+        "total_tokens": 10953,
+        "completion_tokens": 4035,
+        "completion_tokens_details": {
+          "reasoning_tokens": 3880,
+          "text_tokens": 4035
+        }
+      },
+      "seconds": 30.969
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": ""
+      },
+      "result_sha": "ee5960dfc8f223ba9ffafd250ac7a048c5a08afb9d85298c7a0ba99417e816f1",
+      "result_chars": 2735,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "LT-R 系列六轴工业机器人 LT-C800"
+      },
+      "result_sha": "f6fc23b8a742a92f6efa348200a69c29132727995c3a3b17beb0dec72b684964",
+      "result_chars": 3849,
+      "hits": 10
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "LT-C800 运动控制器"
+      },
+      "result_sha": "e50b4ecf05b93d336dc95778098955a1f7ab08f46e56f05f33973404e87ad40d",
+      "result_chars": 3875,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_r_series",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "5c5eb726380ebdafb358cb6eedee62fd291890837646665d55d1f5b0ef52e697",
+      "result_chars": 1218,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "是同一产品线。根据《LT-R 系列六轴工业机器人产品手册》，该系列机器人采用自研的 LT-C800 控制器；同时，《澜图智能机器人控制系统架构》及《LT-C800 运动控制器产品说明》中也明确指出 LT-C800 是公司的新一代自研运动控制器，支持 EtherCAT 1 ms 总线周期等技术指标，两者描述一致，确认为同一控制器产品。",
+    "citations": [
+      "lantu_product_r_series",
+      "lantu_tech_control_architecture",
+      "lantu_product_controller"
+    ],
+    "evidence": [
+      "lantu_product_r_series",
+      "lantu_tech_control_architecture#1",
+      "lantu_product_controller#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 25879,
+  "started_at": "2026-11-01T02:46:46",
+  "elapsed_seconds": 57.19,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": ""
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_company_brand",
+            "title": "# 澜图智能品牌视觉与传播规范"
+          },
+          {
+            "doc_id": "lantu_company_campus",
+            "title": "# 澜图智能制造基地与产能布局"
+          },
+          {
+            "doc_id": "lantu_company_global",
+            "title": "# 澜图智能全球化布局与海外业务"
+          },
+          {
+            "doc_id": "lantu_company_history",
+            "title": "# 澜图智能发展历程（2011—2025）"
+          },
+          {
+            "doc_id": "lantu_company_milestones_2025",
+            "title": "# 澜图智能 2025 年度大事记"
+          },
+          {
+            "doc_id": "lantu_company_mission",
+            "title": "# 澜图智能使命、愿景与价值观"
+          },
+          {
+            "doc_id": "lantu_company_profile",
+            "title": "澜图智能装备公司简介"
+          },
+          {
+            "doc_id": "lantu_investor_overview",
+            "title": "# 澜图智能投资者关系概览"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2024",
+            "title": "澜图智能 2024 年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2025",
+            "title": "澜图智能 2025 年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_budget_2026",
+            "title": "# 澜图智能 2026 年度经营预算"
+          },
+          {
+            "doc_id": "lantu_finance_cashflow",
+            "title": "# 澜图智能现金流与资金管理报告"
+          },
+          {
+            "doc_id": "lantu_finance_cost",
+            "title": "# 澜图智能成本管理与降本专项报告"
+          },
+          {
+            "doc_id": "lantu_finance_gross_margin",
+            "title": "# 澜图智能毛利率与成本结构分析"
+          },
+          {
+            "doc_id": "lantu_finance_h1_2025",
+            "title": "# 澜图智能 2025 年半年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_investor_qa",
+            "title": "# 澜图智能投资者常见问题答复"
+          },
+          {
+            "doc_id": "lantu_finance_monthly_2025",
+            "title": "[工作表] 文档信息"
+          },
+          {
+            "doc_id": "lantu_finance_q3_2025",
+            "title": "# 澜图智能 2025 年第三季度经营数据"
+          },
+          {
+            "doc_id": "lantu_finance_revenue_breakdown",
+            "title": "﻿维度,分类,收入（亿元）,占比,同比"
+          },
+          {
+            "doc_id": "lantu_hr_campus",
+            "title": "# 澜图智能 2026 届校园招聘方案"
+          },
+          {
+            "doc_id": "lantu_hr_compensation",
+            "title": "# 澜图智能薪酬与奖金管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_job_grades",
+            "title": "# 澜图智能职级体系与晋升规则"
+          },
+          {
+            "doc_id": "lantu_hr_manager_training",
+            "title": "澜图智能管理者领导力培训方案"
+          },
+          {
+            "doc_id": "lantu_hr_new_hire_training",
+            "title": "澜图智能新员工入职培训大纲"
+          },
+          {
+            "doc_id": "lantu_hr_performance",
+            "title": "# 澜图智能绩效管理制度"
+          },
+          {
+            "doc_id": "lantu_hr_recruitment",
+            "title": "# 澜图智能招聘管理制度"
+          },
+          {
+            "doc_id": "lantu_hr_resignation",
+            "title": "# 澜图智能离职与交接管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_social",
+            "title": "# 澜图智能社会招聘管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_training_system",
+            "title": "# 澜图智能培训体系与年度计划"
+          },
+          {
+            "doc_id": "lantu_legal_anti_bribery",
+            "title": "# 澜图智能反商业贿赂管理规定"
+          },
+          {
+            "doc_id": "lantu_legal_compliance_manual",
+            "title": "# 澜图智能合规管理手册"
+          },
+          {
+            "doc_id": "lantu_legal_data_compliance",
+            "title": "# 澜图智能数据合规与隐私保护规范"
+          },
+          {
+            "doc_id": "lantu_legal_export_control",
+            "title": "# 澜图智能出口管制与制裁合规指引"
+          },
+          {
+            "doc_id": "lantu_legal_nda_template",
+            "title": "澜图智能保密协议模板（NDA）"
+          },
+          {
+            "doc_id": "lantu_legal_purchase_contract_template",
+            "title": "澜图智能采购合同模板（2025版）"
+          },
+          {
+            "doc_id": "lantu_legal_sales_contract_template",
+            "title": "澜图智能设备销售合同模板（2025版）"
+          },
+          {
+            "doc_id": "lantu_legal_supplier_code",
+            "title": "# 澜图智能供应商行为准则"
+          },
+          {
+            "doc_id": "lantu_meeting_board",
+            "title": "# 2025 年第二次临时董事会决议"
+          },
+          {
+            "doc_id": "lantu_meeting_case_review",
+            "title": "# 恒芯动力电池项目复盘会纪要"
+          },
+          {
+            "doc_id": "lantu_meeting_ops_2025q3",
+            "title": "2025 年第三季度经营分析会纪要"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "LT-R 系列六轴工业机器人 LT-C800"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_product_r_series",
+            "title": "# LT-R 系列六轴工业机器人产品手册",
+            "chunk": 0,
+            "score": 36.634,
+            "snippet": "# LT-R 系列六轴工业机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-01-15 09:00\n更新时间：2025-10-30 16:00\n版本号：v4.3\n文档类型：product\n文档族：product_r_series\n生效日期：2025-10-30\n\n## 一、产品定位\n\nLT-R 系列覆盖 6 kg 至 210 kg 负载，适用于搬运、焊接、装配、喷涂、打磨等工序，重复定位精度最高 ±0.02 mm，防护等级 IP54，可选 IP67。\n\n## 二、型号与参数\n\nLT-R6 负载 6"
+          },
+          {
+            "doc_id": "lantu_product_r_series",
+            "title": "# LT-R 系列六轴工业机器人产品手册",
+            "chunk": 1,
+            "score": 33.495,
+            "snippet": "| 型号 | 负载 | 臂展 | 重复精度 | 本体重量 | 最大速度 |\n| --- | --- | --- | --- | --- | --- |\n| LT-R6 | 6 kg | 1,450 mm | ±0.02 mm | 165 kg | 3.2 m/s |\n| LT-R12 | 12 kg | 1,550 mm | ±0.03 mm | 210 kg | 3.0 m/s |\n| LT-R20 | 20 kg | 1,700 mm | ±0.03 mm | 285 kg | 2.8 m/s |\n| LT-R"
+          },
+          {
+            "doc_id": "lantu_company_history",
+            "title": "# 澜图智能发展历程（2011—2025）",
+            "chunk": 0,
+            "score": 15.662,
+            "snippet": "# 澜图智能发展历程（2011—2025）\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2023-03-01 09:00\n更新时间：2026-01-05 14:00\n版本号：v4.0\n文档类型：company\n文档族：company_history\n生效日期：2026-01-05\n\n## 一、创业阶段（2011—2015）\n\n2011 年 6 月 18 日，公司在苏州工业园区成立，创始团队来自高校机器人实验室，首款产品为 LT-R6 六轴工业机器人，2012 年实现小批量交付 120 台。2014 年建成首条机"
+          },
+          {
+            "doc_id": "lantu_product_vision",
+            "title": "# LT-V3D 工业视觉系统技术说明",
+            "chunk": 0,
+            "score": 15.192,
+            "snippet": "# LT-V3D 工业视觉系统技术说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-06-18 09:00\n更新时间：2025-07-15 14:00\n版本号：v2.6\n文档类型：product\n文档族：product_vision\n生效日期：2025-07-15\n\n## 一、系统组成\n\nLT-V3D 由结构光相机、视觉控制器与 LantuVision 软件组成，支持 3D 点云、2D 图像与深度学习缺陷检测。\n\n## 二、核心指标\n\n测量精度 0.05 mm，单帧点云 120 万点，帧率 30 fps"
+          },
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 1,
+            "score": 13.689,
+            "snippet": "0 kg\t1.5 m/s\nLT-AMR-2000\t2,000 kg\t—\t±10 mm\t420 kg\t1.2 m/s\n[工作表] 交付与保修\n产品线\t标准交期\t保修期\t备件响应\nLT-R 系列\t6-8 周\t24 个月/6,000 小时\t48 小时\nLT-S 系列\t4 周\t24 个月/6,000 小时\t48 小时\nLT-AMR 系列\t8 周\t24 个月\t72 小时\nLT-V3D\t4 周\t12 个月\t72 小时"
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 0,
+            "score": 13.672,
+            "snippet": "# 澜图智能产品与解决方案总览\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-02-20 09:00\n更新时间：2025-12-22 10:00\n版本号：v6.0\n文档类型：product\n文档族：product_overview\n生效日期：2025-12-22\n\n## 一、产品矩阵\n\n公司产品覆盖六轴工业机器人、SCARA 机器人、自主移动机器人（AMR）、机器视觉、运动控制器、数字孪生平台与行业工作站，形成“本体+控制器+视觉+软件+工艺”的一体化方案。\n\n## 二、行业方案\n\n重点行业包括汽车及零部件、"
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 1,
+            "score": 12.624,
+            "snippet": "| 产品线 | 代表型号 | 负载 | 典型行业 |\n| --- | --- | --- | --- |\n| 六轴机器人 | LT-R6/R12/R20/R50/R210 | 6-210 kg | 汽车、锂电、金属加工 |\n| SCARA | LT-S4/S10 | 4-10 kg | 3C、光伏、食品 |\n| 移动机器人 | LT-AMR-500/1000/2000 | 500-2,000 kg | 物流、半导体 |\n| 机器视觉 | LT-V3D | — | 装配、检测 |\n| 控制器 | LT-C800 | "
+          },
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 12.113,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能产品参数矩阵（2025）\n所属部门\t产品部\n作者\t孟凡\n创建时间\t2025-01-20 09:00\n更新时间\t2025-12-15 18:00\n版本号\tv2.0\n文档类型\tproduct\n文档族\tproduct_matrix\n生效日期\t2025-12-15\n[工作表] 六轴与SCARA\n型号\t负载\t臂展\t重复精度\t本体重量\t最大速度\nLT-R6\t6 kg\t1,450 mm\t±0.02 mm\t165 kg\t3.2 m/s\nLT-R12\t12 kg\t1,550 mm\t±0."
+          },
+          {
+            "doc_id": "lantu_product_s_series",
+            "title": "# LT-S 系列 SCARA 机器人产品说明",
+            "chunk": 0,
+            "score": 11.756,
+            "snippet": "# LT-S 系列 SCARA 机器人产品说明\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-03-01 09:00\n更新时间：2025-09-12 11:00\n版本号：v3.2\n文档类型：product\n文档族：product_s_series\n生效日期：2025-09-12\n\n## 一、产品定位\n\nLT-S 系列 SCARA 机器人面向 3C 组装、光伏串焊、食品包装等高速取放场景，标准循环时间 0.38 秒。\n\n## 二、型号参数\n\nLT-S4 负载 4 kg、臂展 600 mm、重复精度 ±0.02 "
+          },
+          {
+            "doc_id": "lantu_product_r20_pro_whitepaper",
+            "title": "LT-R20 Pro 机器人技术白皮书",
+            "chunk": 0,
+            "score": 10.076,
+            "snippet": "LT-R20 Pro 机器人技术白皮书\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2025-11-20 09:00\n更新时间：2025-11-28 18:00\n版本号：v0.9\n文档类型：product\n文档族：product_r20_pro\n生效日期：2025-11-28\n一、研发背景\n面向锂电叠片、汽车装配等高频节拍场景，澜图智能研发新一代中型六轴机器人 LT-R20 Pro，计划\n2026 年第二季度量产。\n二、技术指标\n额定负载 22 kg，臂展 1,750 mm，重复定位精度 ±0.02 mm，本体重量"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "LT-C800 运动控制器"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_product_controller",
+            "title": "# LT-C800 运动控制器产品说明",
+            "chunk": 0,
+            "score": 17.656,
+            "snippet": "# LT-C800 运动控制器产品说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2025-04-08 09:00\n更新时间：2025-10-10 10:00\n版本号：v1.5\n文档类型：product\n文档族：product_controller\n生效日期：2025-10-10\n\n## 一、产品定位\n\nLT-C800 是澜图智能自研的新一代八轴运动控制器，面向机器人、工作站与小型产线，替代上一代 LT-C600。\n\n## 二、性能指标\n\n支持 8 轴联动，EtherCAT 总线周期 1 ms，插补周期 0.5"
+          },
+          {
+            "doc_id": "lantu_tech_control_architecture",
+            "title": "# 澜图智能机器人控制系统架构",
+            "chunk": 1,
+            "score": 13.254,
+            "snippet": "与旧版 v2.4 相比，v3.3 的主要变化：现场总线由 CANopen 升级为 EtherCAT，总线周期由 2 ms 缩短到 1 ms；控制器由 LT-C600 单核 ARM + 4 轴运动控制卡升级为 LT-C800 双核 ARM + FPGA，联动轴数由 4 轴增加到 8 轴，插补周期由 1 ms 缩短到 0.5 ms；伺服采样频率由 8 kHz 提升到 16 kHz，编码器由 17 位增量式升级为 23 位绝对值，速度环带宽由 600 Hz 提升到 1.2 kHz；软件栈由 Windows + RTX 迁"
+          },
+          {
+            "doc_id": "lantu_tech_control_architecture",
+            "title": "# 澜图智能机器人控制系统架构",
+            "chunk": 0,
+            "score": 13.248,
+            "snippet": "# 澜图智能机器人控制系统架构\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-06-01 09:00\n更新时间：2025-10-20 14:00\n版本号：v3.3\n文档类型：tech\n文档族：control_architecture\n生效日期：2025-10-20\n\n## 一、总体架构\n\n控制系统分为感知层、决策层、运动控制层与执行层，采用 EtherCAT 总线连接伺服与 I/O，总线周期 1 ms。\n\n## 二、控制器\n\nLT-C800 采用双核 ARM + FPGA 架构，支持 8 轴联动、0.5 "
+          },
+          {
+            "doc_id": "lantu_tech_control_architecture_v2",
+            "title": "# 澜图智能机器人控制系统架构（旧版 v2.4）",
+            "chunk": 0,
+            "score": 12.99,
+            "snippet": "# 澜图智能机器人控制系统架构（旧版 v2.4）\n\n所属部门：研发中心\n作者：程知远\n创建时间：2023-08-01 09:00\n更新时间：2024-05-10 18:00\n版本号：v2.4\n文档类型：tech\n文档族：control_architecture\n生效日期：2024-05-10\n\n## 一、总体架构（旧版）\n\n旧版控制系统采用“工控机 + 运动控制卡”的两层结构：上位工控机负责任务调度与人机界面，下位运动控制卡负责插补与伺服闭环。现场总线采用 CANopen，总线周期 2 ms，单条总线最多连接 16"
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 0,
+            "score": 9.277,
+            "snippet": "# 澜图智能产品与解决方案总览\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-02-20 09:00\n更新时间：2025-12-22 10:00\n版本号：v6.0\n文档类型：product\n文档族：product_overview\n生效日期：2025-12-22\n\n## 一、产品矩阵\n\n公司产品覆盖六轴工业机器人、SCARA 机器人、自主移动机器人（AMR）、机器视觉、运动控制器、数字孪生平台与行业工作站，形成“本体+控制器+视觉+软件+工艺”的一体化方案。\n\n## 二、行业方案\n\n重点行业包括汽车及零部件、"
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 1,
+            "score": 7.448,
+            "snippet": "| 产品线 | 代表型号 | 负载 | 典型行业 |\n| --- | --- | --- | --- |\n| 六轴机器人 | LT-R6/R12/R20/R50/R210 | 6-210 kg | 汽车、锂电、金属加工 |\n| SCARA | LT-S4/S10 | 4-10 kg | 3C、光伏、食品 |\n| 移动机器人 | LT-AMR-500/1000/2000 | 500-2,000 kg | 物流、半导体 |\n| 机器视觉 | LT-V3D | — | 装配、检测 |\n| 控制器 | LT-C800 | "
+          },
+          {
+            "doc_id": "lantu_hr_campus",
+            "title": "# 澜图智能 2026 届校园招聘方案",
+            "chunk": 0,
+            "score": 7.311,
+            "snippet": "# 澜图智能 2026 届校园招聘方案\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-08-15 09:00\n更新时间：2025-09-20 15:00\n版本号：v1.0\n文档类型：hr\n文档族：campus_recruitment_2026\n生效日期：2025-09-20\n\n## 一、招聘计划\n\n2026 届校招计划 120 人，其中研发 78 人、产品 12 人、销售 18 人、职能 12 人；重点院校 18 所。\n\n## 二、岗位方向\n\n机器人算法、运动控制、机器视觉、嵌入式软件、机械结构、售前技"
+          },
+          {
+            "doc_id": "lantu_tech_patents",
+            "title": "# 澜图智能知识产权与专利布局",
+            "chunk": 0,
+            "score": 7.108,
+            "snippet": "# 澜图智能知识产权与专利布局\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-04-26 09:00\n更新时间：2025-12-18 15:00\n版本号：v2.8\n文档类型：tech\n文档族：patent_portfolio\n生效日期：2025-12-18\n\n## 一、专利总量\n\n累计有效专利 1,286 件，其中发明专利 412 件、实用新型 726 件、外观设计 148 件；软件著作权 168 项。\n\n## 二、重点布局\n\n运动控制、伺服驱动、机器视觉、力控与具身智能五大方向；PCT 国际专利申请 3"
+          },
+          {
+            "doc_id": "lantu_tech_roadmap",
+            "title": "# 澜图智能技术路线图（2025—2028）",
+            "chunk": 0,
+            "score": 6.645,
+            "snippet": "# 澜图智能技术路线图（2025—2028）\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-11-01 09:00\n更新时间：2025-12-05 16:00\n版本号：v2.2\n文档类型：tech\n文档族：tech_roadmap\n生效日期：2025-12-05\n\n## 一、总体路线\n\n以“本体+控制+视觉+软件”为基础，向具身智能与柔性制造演进，2026 年完成 LT-R20 Pro 与具身智能平台 1.0。\n\n## 二、2025 年\n\nLT-C800 控制器量产、LantuTwin 3.0 发布、LT"
+          },
+          {
+            "doc_id": "lantu_org_rd_system",
+            "title": "# 澜图智能研发体系与投入",
+            "chunk": 0,
+            "score": 6.2,
+            "snippet": "# 澜图智能研发体系与投入\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-02-01 09:00\n更新时间：2026-01-12 10:00\n版本号：v5.0\n文档类型：org\n文档族：rd_system\n生效日期：2026-01-12\n\n## 一、研发架构\n\n研发中心下设机器人本体研究所、控制器研究所、机器视觉研究所、工艺应用研究所、具身智能研究所，另设测试中心与可靠性实验室。\n\n## 二、人员结构\n\n研发人员 1,286 人，其中博士 48 人、硕士 612 人，35 岁以下占比 61%。2025 年"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_r_series",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_product_r_series",
+        "title": "# LT-R 系列六轴工业机器人产品手册",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 1028,
+        "text": "# LT-R 系列六轴工业机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-01-15 09:00\n更新时间：2025-10-30 16:00\n版本号：v4.3\n文档类型：product\n文档族：product_r_series\n生效日期：2025-10-30\n\n## 一、产品定位\n\nLT-R 系列覆盖 6 kg 至 210 kg 负载，适用于搬运、焊接、装配、喷涂、打磨等工序，重复定位精度最高 ±0.02 mm，防护等级 IP54，可选 IP67。\n\n## 二、型号与参数\n\nLT-R6 负载 6 kg、臂展 1,450 mm、重复精度 ±0.02 mm、本体重量 165 kg；LT-R12 负载 12 kg、臂展 1,550 mm、精度 ±0.03 mm；LT-R20 负载 20 kg、臂展 1,700 mm、精度 ±0.03 mm、重量 285 kg、最大速度 2.8 m/s。\n\n## 三、核心部件\n\n采用自研 LT-C800 控制器与 23 位绝对值编码器伺服电机，支持 EtherCAT 1 ms 总线周期，内置碰撞检测与安全限速功能。\n\n## 四、可靠性与维护\n\n平均无故障时间（MTBF）12,000 小时，减速器寿命 20,000 小时，建议每 4,000 小时更换润滑脂，每 12 个月进行精度校准。\n\n## 五、交付与认证\n\n标准交期 6-8 周，整机通过 CE、UL 认证，防护等级 IP54，工作温度 0-45℃。\n\n## LT-R 系列参数表\n\n| 型号 | 负载 | 臂展 | 重复精度 | 本体重量 | 最大速度 |\n| --- | --- | --- | --- | --- | --- |\n| LT-R6 | 6 kg | 1,450 mm | ±0.02 mm | 165 kg | 3.2 m/s |\n| LT-R12 | 12 kg | 1,550 mm | ±0.03 mm | 210 kg | 3.0 m/s |\n| LT-R20 | 20 kg | 1,700 mm | ±0.03 mm | 285 kg | 2.8 m/s |\n| LT-R50 | 50 kg | 2,100 mm | ±0.05 mm | 540 kg | 2.2 m/s |\n| LT-R210 | 210 kg | 2,650 mm | ±0.08 mm | 1,180 kg | 1.8 m/s |\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_product_r_series",
+      "lantu_tech_control_architecture",
+      "lantu_product_controller"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.124,
+    "number_recall": 0.0
+  }
+}

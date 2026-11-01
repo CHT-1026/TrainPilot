@@ -1,0 +1,199 @@
+{
+  "qid": "M1518",
+  "question": "用户：客户问我们 LT-R50 的臂展和最大速度是多少？\n助手：按 LT-R 系列手册与产品参数矩阵，LT-R50 负载 50 kg、臂展 2,100 mm、重复精度 ±0.05 mm、本体重量 540 kg、最大速度 2.2 m/s。\n用户：等一下，我要问的不是 50 公斤那台，是 210 公斤那台——它的臂展和最大速度呢？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"LT-R 210\"}}",
+      "usage": {
+        "prompt_tokens": 462,
+        "total_tokens": 690,
+        "completion_tokens": 228,
+        "completion_tokens_details": {
+          "reasoning_tokens": 205,
+          "text_tokens": 228
+        }
+      },
+      "seconds": 2.015
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_product_r_series\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 2731,
+        "total_tokens": 3345,
+        "completion_tokens": 614,
+        "completion_tokens_details": {
+          "reasoning_tokens": 580,
+          "text_tokens": 614
+        }
+      },
+      "seconds": 4.813
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"LT-R210（210公斤负载）的臂展为 2,650 mm，最大速度为 1.8 m/s。\",\"citations\":[\"lantu_product_r_series\"],\"evidence\":[\"lantu_product_r_series#chunk 0\"]}",
+      "usage": {
+        "prompt_tokens": 3530,
+        "total_tokens": 3757,
+        "completion_tokens": 227,
+        "completion_tokens_details": {
+          "reasoning_tokens": 155,
+          "text_tokens": 227
+        }
+      },
+      "seconds": 1.875
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "LT-R 210"
+      },
+      "result_sha": "e800053732f7bc517585280ad4c739e2a90199716c861515689ed9ac38ac410d",
+      "result_chars": 3839,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_r_series",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "5c5eb726380ebdafb358cb6eedee62fd291890837646665d55d1f5b0ef52e697",
+      "result_chars": 1218,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "LT-R210（210公斤负载）的臂展为 2,650 mm，最大速度为 1.8 m/s。",
+    "citations": [
+      "lantu_product_r_series"
+    ],
+    "evidence": [
+      "lantu_product_r_series#chunk 0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 7792,
+  "started_at": "2026-11-01T06:53:11",
+  "elapsed_seconds": 8.7,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "LT-R 210"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_product_r_series",
+            "title": "# LT-R 系列六轴工业机器人产品手册",
+            "chunk": 1,
+            "score": 10.8,
+            "snippet": "| 型号 | 负载 | 臂展 | 重复精度 | 本体重量 | 最大速度 |\n| --- | --- | --- | --- | --- | --- |\n| LT-R6 | 6 kg | 1,450 mm | ±0.02 mm | 165 kg | 3.2 m/s |\n| LT-R12 | 12 kg | 1,550 mm | ±0.03 mm | 210 kg | 3.0 m/s |\n| LT-R20 | 20 kg | 1,700 mm | ±0.03 mm | 285 kg | 2.8 m/s |\n| LT-R"
+          },
+          {
+            "doc_id": "lantu_product_r_series",
+            "title": "# LT-R 系列六轴工业机器人产品手册",
+            "chunk": 0,
+            "score": 9.655,
+            "snippet": "# LT-R 系列六轴工业机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-01-15 09:00\n更新时间：2025-10-30 16:00\n版本号：v4.3\n文档类型：product\n文档族：product_r_series\n生效日期：2025-10-30\n\n## 一、产品定位\n\nLT-R 系列覆盖 6 kg 至 210 kg 负载，适用于搬运、焊接、装配、喷涂、打磨等工序，重复定位精度最高 ±0.02 mm，防护等级 IP54，可选 IP67。\n\n## 二、型号与参数\n\nLT-R6 负载 6"
+          },
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 8.936,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能产品参数矩阵（2025）\n所属部门\t产品部\n作者\t孟凡\n创建时间\t2025-01-20 09:00\n更新时间\t2025-12-15 18:00\n版本号\tv2.0\n文档类型\tproduct\n文档族\tproduct_matrix\n生效日期\t2025-12-15\n[工作表] 六轴与SCARA\n型号\t负载\t臂展\t重复精度\t本体重量\t最大速度\nLT-R6\t6 kg\t1,450 mm\t±0.02 mm\t165 kg\t3.2 m/s\nLT-R12\t12 kg\t1,550 mm\t±0."
+          },
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 1,
+            "score": 6.368,
+            "snippet": "0 kg\t1.5 m/s\nLT-AMR-2000\t2,000 kg\t—\t±10 mm\t420 kg\t1.2 m/s\n[工作表] 交付与保修\n产品线\t标准交期\t保修期\t备件响应\nLT-R 系列\t6-8 周\t24 个月/6,000 小时\t48 小时\nLT-S 系列\t4 周\t24 个月/6,000 小时\t48 小时\nLT-AMR 系列\t8 周\t24 个月\t72 小时\nLT-V3D\t4 周\t12 个月\t72 小时"
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 1,
+            "score": 5.849,
+            "snippet": "| 产品线 | 代表型号 | 负载 | 典型行业 |\n| --- | --- | --- | --- |\n| 六轴机器人 | LT-R6/R12/R20/R50/R210 | 6-210 kg | 汽车、锂电、金属加工 |\n| SCARA | LT-S4/S10 | 4-10 kg | 3C、光伏、食品 |\n| 移动机器人 | LT-AMR-500/1000/2000 | 500-2,000 kg | 物流、半导体 |\n| 机器视觉 | LT-V3D | — | 装配、检测 |\n| 控制器 | LT-C800 | "
+          },
+          {
+            "doc_id": "lantu_product_vision",
+            "title": "# LT-V3D 工业视觉系统技术说明",
+            "chunk": 0,
+            "score": 5.214,
+            "snippet": "# LT-V3D 工业视觉系统技术说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-06-18 09:00\n更新时间：2025-07-15 14:00\n版本号：v2.6\n文档类型：product\n文档族：product_vision\n生效日期：2025-07-15\n\n## 一、系统组成\n\nLT-V3D 由结构光相机、视觉控制器与 LantuVision 软件组成，支持 3D 点云、2D 图像与深度学习缺陷检测。\n\n## 二、核心指标\n\n测量精度 0.05 mm，单帧点云 120 万点，帧率 30 fps"
+          },
+          {
+            "doc_id": "lantu_tech_servo",
+            "title": "# 澜图智能伺服驱动与关节模组技术说明",
+            "chunk": 0,
+            "score": 5.021,
+            "snippet": "# 澜图智能伺服驱动与关节模组技术说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-07-01 09:00\n更新时间：2025-08-25 10:00\n版本号：v2.6\n文档类型：tech\n文档族：servo_drive\n生效日期：2025-08-25\n\n## 一、产品范围\n\n自研 400W-7.5kW 伺服驱动器与关节模组，覆盖 LT-R 与 LT-S 全系列，自研比例 61%。\n\n## 二、关键指标\n\n电流环带宽 2.5 kHz，速度环 1.2 kHz，位置精度 23 位，过载能力 300% 持续 "
+          },
+          {
+            "doc_id": "lantu_solution_photovoltaic",
+            "title": "# 光伏电池片串焊整线解决方案",
+            "chunk": 0,
+            "score": 4.91,
+            "snippet": "# 光伏电池片串焊整线解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-09-20 09:00\n更新时间：2025-10-16 14:00\n版本号：v3.1\n文档类型：product\n文档族：solution_photovoltaic\n生效日期：2025-10-16\n\n## 一、方案概述\n\n面向 TOPCon/HJT 电池片串焊，提供上料、串焊、EL 检测与下料整线方案，核心设备为 LT-S10 SCARA 与 LT-V3D 视觉。\n\n## 二、产线指标\n\n串焊速度 4,200 片/小时，良率 99.6"
+          },
+          {
+            "doc_id": "lantu_org_headcount",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 3.254,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能员工分布统计（2025）\n所属部门\t人力资源部\n作者\t陈依然\n创建时间\t2025-12-31 18:00\n更新时间\t2026-01-09 09:30\n版本号\tv1.0\n文档类型\torg\n文档族\theadcount_2025\n生效日期\t2026-01-09\n[工作表] 基地分布\n基地\t员工数\t研发\t销售\t制造\t服务\t职能\n苏州总部\t2,450\t1,120\t310\t560\t250\t210\n东莞华南\t780\t86\t150\t300\t120\t124\n成都西部\t430\t80\t90\t"
+          },
+          {
+            "doc_id": "lantu_org_department_duties",
+            "title": "# 澜图智能一级部门职责与编制",
+            "chunk": 1,
+            "score": 3.205,
+            "snippet": "| 部门 | 负责人 | 编制（人） | 主要职责 |\n| --- | --- | --- | --- |\n| 研发中心 | 沈亦舟 | 1,286 | 本体/控制器/视觉/具身智能研发 |\n| 产品部 | 孟凡 | 96 | 产品规划与生命周期管理 |\n| 销售中心 | 罗嘉树 | 620 | 区域销售与渠道 |\n| 客户成功部 | 林可 | 86 | 重点客户经营 |\n| 供应链中心 | 韩立恒 | 210 | 采购、计划、物流 |\n| 制造中心 | 韩立恒 | 980 | 三大基地生产 |\n| 质量部 | 潘"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_r_series",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_product_r_series",
+        "title": "# LT-R 系列六轴工业机器人产品手册",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 1028,
+        "text": "# LT-R 系列六轴工业机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-01-15 09:00\n更新时间：2025-10-30 16:00\n版本号：v4.3\n文档类型：product\n文档族：product_r_series\n生效日期：2025-10-30\n\n## 一、产品定位\n\nLT-R 系列覆盖 6 kg 至 210 kg 负载，适用于搬运、焊接、装配、喷涂、打磨等工序，重复定位精度最高 ±0.02 mm，防护等级 IP54，可选 IP67。\n\n## 二、型号与参数\n\nLT-R6 负载 6 kg、臂展 1,450 mm、重复精度 ±0.02 mm、本体重量 165 kg；LT-R12 负载 12 kg、臂展 1,550 mm、精度 ±0.03 mm；LT-R20 负载 20 kg、臂展 1,700 mm、精度 ±0.03 mm、重量 285 kg、最大速度 2.8 m/s。\n\n## 三、核心部件\n\n采用自研 LT-C800 控制器与 23 位绝对值编码器伺服电机，支持 EtherCAT 1 ms 总线周期，内置碰撞检测与安全限速功能。\n\n## 四、可靠性与维护\n\n平均无故障时间（MTBF）12,000 小时，减速器寿命 20,000 小时，建议每 4,000 小时更换润滑脂，每 12 个月进行精度校准。\n\n## 五、交付与认证\n\n标准交期 6-8 周，整机通过 CE、UL 认证，防护等级 IP54，工作温度 0-45℃。\n\n## LT-R 系列参数表\n\n| 型号 | 负载 | 臂展 | 重复精度 | 本体重量 | 最大速度 |\n| --- | --- | --- | --- | --- | --- |\n| LT-R6 | 6 kg | 1,450 mm | ±0.02 mm | 165 kg | 3.2 m/s |\n| LT-R12 | 12 kg | 1,550 mm | ±0.03 mm | 210 kg | 3.0 m/s |\n| LT-R20 | 20 kg | 1,700 mm | ±0.03 mm | 285 kg | 2.8 m/s |\n| LT-R50 | 50 kg | 2,100 mm | ±0.05 mm | 540 kg | 2.2 m/s |\n| LT-R210 | 210 kg | 2,650 mm | ±0.08 mm | 1,180 kg | 1.8 m/s |\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.5,
+    "cited": [
+      "lantu_product_r_series"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.047,
+    "number_recall": 0.2
+  }
+}

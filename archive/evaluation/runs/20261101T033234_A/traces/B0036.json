@@ -1,0 +1,271 @@
+{
+  "qid": "B0036",
+  "question": "薪酬办法中的绩效奖金系数（B 级 1.0、A 级 1.2、C 级 0.5）应如何结合「绩效奖金（0-6 个月）」理解？",
+  "question_type": "单文档多跳推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>绩效奖金系数 0-6个月 薪酬办法</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 70,
+        "prompt_tokens": 392,
+        "total_tokens": 462,
+        "completion_tokens_details": {
+          "reasoning_tokens": 32
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.313
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"绩效奖金系数 B级 A级 C级 0-6个月\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 55,
+        "prompt_tokens": 467,
+        "total_tokens": 522,
+        "completion_tokens_details": {
+          "reasoning_tokens": 21
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 2.781
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_hr_compensation\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 53,
+        "prompt_tokens": 2922,
+        "total_tokens": 2975,
+        "completion_tokens_details": {
+          "reasoning_tokens": 22
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.797
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_hr_performance\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 121,
+        "prompt_tokens": 3316,
+        "total_tokens": 3437,
+        "completion_tokens_details": {
+          "reasoning_tokens": 91
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2880
+        }
+      },
+      "seconds": 5.797
+    },
+    {
+      "round": 5,
+      "text": "{\"status\":\"needs_clarification\",\"answer\":\"根据《澜图智能薪酬与奖金管理办法》(v3.2)，薪酬结构中明确「年度薪酬 = 12 个月基本工资 + 1 个月年终双薪 + 绩效奖金（0-6 个月）+ 专项奖励」，并在「绩效奖金」条款中说明奖金与公司、部门、个人绩效挂钩，系数为 S 级 1.5、A 级 1.2、B 级 1.0、C 级 0.5、D 级无奖金。\\n\\n按此逻辑合理理解：0-6 个月是绩效奖金的浮动区间（上限为 6 个月基本工资），各绩效等级系数是对某个基数奖金（目标值，B 级 1.0 对应基准月数）的乘数——A 级 1.2 即基准的 1.2 倍，C 级 0.5 即基准的一半，D 级为 0。但现有制度文件中并未写明 B 级 1.0 对应的基数月数（例如是 3 个月还是 6 个月），也未说明 S 级 1.5 是否允许超过 6 个月上限，因此无法给出具体金额换算公式。建议向人力资源部（文档作者陈依然）确认基数月数及上限口径。\",\"citations\":[\"lantu_hr_compensation\",\"lantu_hr_performance\"],\"evidence\":[\"lantu_hr_compensation#片段0\",\"lantu_hr_performance#片段0\"]}",
+      "usage": {
+        "completion_tokens": 415,
+        "prompt_tokens": 3703,
+        "total_tokens": 4118,
+        "completion_tokens_details": {
+          "reasoning_tokens": 65
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3264
+        }
+      },
+      "seconds": 12.156
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "绩效奖金系数 B级 A级 C级 0-6个月",
+        "top_k": 10
+      },
+      "result_sha": "c66bb91d7bc49ec57fad1657e9973d27e3a5eb5e55283394d746cf6e3cdd20f5",
+      "result_chars": 3851,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_compensation",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "80636806aa8fcc2d075a7ce0027ff8acb45eff1f9ea2bcdc4b17c791e2763584",
+      "result_chars": 531,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_performance",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "2949827eb43570a6b48bec631a1e99e188b0d418432782d7f932b1e7330f9a2d",
+      "result_chars": 526,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "needs_clarification",
+    "answer": "根据《澜图智能薪酬与奖金管理办法》(v3.2)，薪酬结构中明确「年度薪酬 = 12 个月基本工资 + 1 个月年终双薪 + 绩效奖金（0-6 个月）+ 专项奖励」，并在「绩效奖金」条款中说明奖金与公司、部门、个人绩效挂钩，系数为 S 级 1.5、A 级 1.2、B 级 1.0、C 级 0.5、D 级无奖金。\n\n按此逻辑合理理解：0-6 个月是绩效奖金的浮动区间（上限为 6 个月基本工资），各绩效等级系数是对某个基数奖金（目标值，B 级 1.0 对应基准月数）的乘数——A 级 1.2 即基准的 1.2 倍，C 级 0.5 即基准的一半，D 级为 0。但现有制度文件中并未写明 B 级 1.0 对应的基数月数（例如是 3 个月还是 6 个月），也未说明 S 级 1.5 是否允许超过 6 个月上限，因此无法给出具体金额换算公式。建议向人力资源部（文档作者陈依然）确认基数月数及上限口径。",
+    "citations": [
+      "lantu_hr_compensation",
+      "lantu_hr_performance"
+    ],
+    "evidence": [
+      "lantu_hr_compensation#片段0",
+      "lantu_hr_performance#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 11514,
+  "started_at": "2026-11-01T03:46:19",
+  "elapsed_seconds": 24.84,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "绩效奖金系数 B级 A级 C级 0-6个月",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_hr_compensation",
+            "title": "# 澜图智能薪酬与奖金管理办法",
+            "chunk": 0,
+            "score": 42.511,
+            "snippet": "# 澜图智能薪酬与奖金管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-01-01 09:00\n版本号：v3.2\n文档类型：hr\n文档族：compensation\n生效日期：2025-01-01\n\n## 一、薪酬结构\n\n年度薪酬 = 12 个月基本工资 + 1 个月年终双薪 + 绩效奖金（0-6 个月）+ 专项奖励。\n\n## 二、调薪机制\n\n每年 4 月调薪，依据市场分位、绩效与职级；调薪预算为工资总额的 5%-8%。\n\n## 三、绩效奖金\n\n与公司、部"
+          },
+          {
+            "doc_id": "lantu_hr_performance",
+            "title": "# 澜图智能绩效管理制度",
+            "chunk": 0,
+            "score": 21.6,
+            "snippet": "# 澜图智能绩效管理制度\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v3.4\n文档类型：hr\n文档族：performance\n生效日期：2025-06-01\n\n## 一、考核周期\n\n实行季度考核与年度考核，季度占 40%，年度占 60%。试用期员工参加转正考核。\n\n## 二、考核维度\n\n业绩目标 60%、价值观 20%、能力成长 20%。销售岗位业绩权重 70%。\n\n## 三、绩效分布\n\nS 级 10%、A 级 30%、B "
+          },
+          {
+            "doc_id": "lantu_sales_policy",
+            "title": "# 澜图智能销售政策与客户分级管理办法",
+            "chunk": 0,
+            "score": 13.853,
+            "snippet": "# 澜图智能销售政策与客户分级管理办法\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-01-20 09:00\n更新时间：2025-09-25 15:00\n版本号：v3.4\n文档类型：sales\n文档族：sales_policy\n生效日期：2025-09-25\n\n## 一、客户分级\n\n客户分为 S、A、B、C 四级。S 级为年采购额 5,000 万元以上战略客户，由客户成功部直管；A 级 1,000-5,000 万元；B 级 300-1,000 万元；C 级 300 万元以下由渠道覆盖。\n\n## 二、价格体"
+          },
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 1,
+            "score": 9.836,
+            "snippet": "0 kg\t1.5 m/s\nLT-AMR-2000\t2,000 kg\t—\t±10 mm\t420 kg\t1.2 m/s\n[工作表] 交付与保修\n产品线\t标准交期\t保修期\t备件响应\nLT-R 系列\t6-8 周\t24 个月/6,000 小时\t48 小时\nLT-S 系列\t4 周\t24 个月/6,000 小时\t48 小时\nLT-AMR 系列\t8 周\t24 个月\t72 小时\nLT-V3D\t4 周\t12 个月\t72 小时"
+          },
+          {
+            "doc_id": "lantu_tech_control_architecture",
+            "title": "# 澜图智能机器人控制系统架构",
+            "chunk": 1,
+            "score": 6.899,
+            "snippet": "与旧版 v2.4 相比，v3.3 的主要变化：现场总线由 CANopen 升级为 EtherCAT，总线周期由 2 ms 缩短到 1 ms；控制器由 LT-C600 单核 ARM + 4 轴运动控制卡升级为 LT-C800 双核 ARM + FPGA，联动轴数由 4 轴增加到 8 轴，插补周期由 1 ms 缩短到 0.5 ms；伺服采样频率由 8 kHz 提升到 16 kHz，编码器由 17 位增量式升级为 23 位绝对值，速度环带宽由 600 Hz 提升到 1.2 kHz；软件栈由 Windows + RTX 迁"
+          },
+          {
+            "doc_id": "lantu_hr_job_grades",
+            "title": "# 澜图智能职级体系与晋升规则",
+            "chunk": 0,
+            "score": 6.53,
+            "snippet": "# 澜图智能职级体系与晋升规则\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-03-01 09:00\n更新时间：2025-03-01 09:00\n版本号：v3.0\n文档类型：hr\n文档族：job_grades\n生效日期：2025-03-01\n\n## 一、职级序列\n\n设管理序列（M1-M5）、专业序列（P1-P7）与技能序列（T1-T5）。研发、产品、销售、职能分别对应不同通道。\n\n## 二、晋升条件\n\n晋升需满足当前职级任职满 2 年、连续两次绩效 A 及以上、通过晋升评审；破格晋升须总经理审批。\n\n#"
+          },
+          {
+            "doc_id": "lantu_tech_control_architecture_v2",
+            "title": "# 澜图智能机器人控制系统架构（旧版 v2.4）",
+            "chunk": 0,
+            "score": 6.31,
+            "snippet": "# 澜图智能机器人控制系统架构（旧版 v2.4）\n\n所属部门：研发中心\n作者：程知远\n创建时间：2023-08-01 09:00\n更新时间：2024-05-10 18:00\n版本号：v2.4\n文档类型：tech\n文档族：control_architecture\n生效日期：2024-05-10\n\n## 一、总体架构（旧版）\n\n旧版控制系统采用“工控机 + 运动控制卡”的两层结构：上位工控机负责任务调度与人机界面，下位运动控制卡负责插补与伺服闭环。现场总线采用 CANopen，总线周期 2 ms，单条总线最多连接 16"
+          },
+          {
+            "doc_id": "lantu_product_r_series",
+            "title": "# LT-R 系列六轴工业机器人产品手册",
+            "chunk": 0,
+            "score": 6.299,
+            "snippet": "# LT-R 系列六轴工业机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-01-15 09:00\n更新时间：2025-10-30 16:00\n版本号：v4.3\n文档类型：product\n文档族：product_r_series\n生效日期：2025-10-30\n\n## 一、产品定位\n\nLT-R 系列覆盖 6 kg 至 210 kg 负载，适用于搬运、焊接、装配、喷涂、打磨等工序，重复定位精度最高 ±0.02 mm，防护等级 IP54，可选 IP67。\n\n## 二、型号与参数\n\nLT-R6 负载 6"
+          },
+          {
+            "doc_id": "lantu_case_08_kangze",
+            "title": "# 客户案例：康泽制药无菌灌装项目",
+            "chunk": 0,
+            "score": 5.737,
+            "snippet": "# 客户案例：康泽制药无菌灌装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_kangze\n生效日期：2025-12-20\n\n## 一、客户背景\n\n康泽制药位于苏州，主营医药业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖3 条无"
+          },
+          {
+            "doc_id": "lantu_support_spare_parts_price",
+            "title": "﻿适配机型,备件名称,单价（元）,发货时效,质保期",
+            "chunk": 0,
+            "score": 5.377,
+            "snippet": "﻿适配机型,备件名称,单价（元）,发货时效,质保期\nLT-R20,减速器 RV-40E,\"12,800\",48 小时,12 个月\nLT-R20,伺服驱动器 LT-D4,\"8,600\",48 小时,18 个月\nLT-R20,示教器 LT-Pad3,\"5,200\",48 小时,12 个月\nLT-R12,减速器 RV-20E,\"7,900\",48 小时,12 个月\nLT-R12,伺服电机 750W,\"3,600\",48 小时,18 个月\nLT-R6,谐波减速器 CSF-17,\"6,400\",72 小时,12 个月\nLT-"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_compensation",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_hr_compensation",
+        "title": "# 澜图智能薪酬与奖金管理办法",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 362,
+        "text": "# 澜图智能薪酬与奖金管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-01-01 09:00\n版本号：v3.2\n文档类型：hr\n文档族：compensation\n生效日期：2025-01-01\n\n## 一、薪酬结构\n\n年度薪酬 = 12 个月基本工资 + 1 个月年终双薪 + 绩效奖金（0-6 个月）+ 专项奖励。\n\n## 二、调薪机制\n\n每年 4 月调薪，依据市场分位、绩效与职级；调薪预算为工资总额的 5%-8%。\n\n## 三、绩效奖金\n\n与公司、部门、个人绩效挂钩，S 级系数 1.5，A 级 1.2，B 级 1.0，C 级 0.5，D 级无奖金。\n\n## 四、专项奖励\n\n设置项目交付奖、专利奖、质量奖与销售冠军奖；单个项目奖励不超过 50 万元。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_performance",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_hr_performance",
+        "title": "# 澜图智能绩效管理制度",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 361,
+        "text": "# 澜图智能绩效管理制度\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v3.4\n文档类型：hr\n文档族：performance\n生效日期：2025-06-01\n\n## 一、考核周期\n\n实行季度考核与年度考核，季度占 40%，年度占 60%。试用期员工参加转正考核。\n\n## 二、考核维度\n\n业绩目标 60%、价值观 20%、能力成长 20%。销售岗位业绩权重 70%。\n\n## 三、绩效分布\n\nS 级 10%、A 级 30%、B 级 55%、C 级 4%、D 级 1%，部门人数少于 10 人的按绝对值控制。\n\n## 四、结果应用\n\n绩效结果与奖金、调薪、晋升、培训挂钩；连续两次 C 级启动绩效改进计划，改进无效的依法解除合同。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_hr_compensation",
+      "lantu_hr_performance"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.021,
+    "number_recall": 0.0
+  }
+}

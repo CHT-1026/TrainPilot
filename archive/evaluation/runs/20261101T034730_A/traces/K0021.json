@@ -1,0 +1,242 @@
+{
+  "qid": "K0021",
+  "question": "海翎家电案例是 4 条喷涂线、72 台 LT-R20，成效为涂料消耗降低 23%、换色时间由 18 分钟缩短至 6 分钟、VOC 排放下降 19%；喷涂方案写明涂料利用率提升 23%、换色时间 6 分钟、VOC 排放下降 19%。请判断两处「23%」是否指同一个指标，为什么一个写「降低」、一个写「提升」？",
+  "question_type": "矛盾与例外识别",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>海翎家电 涂料消耗降低 23%</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=search><parameter=query>喷涂方案 涂料利用率提升 换色时间 6分钟 VOC</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 100,
+        "prompt_tokens": 458,
+        "total_tokens": 558,
+        "completion_tokens_details": {
+          "reasoning_tokens": 23
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.266
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>海翎家电 涂料消耗降低 23%</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 65,
+        "prompt_tokens": 572,
+        "total_tokens": 637,
+        "completion_tokens_details": {
+          "reasoning_tokens": 28
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.078
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"海翎家电 涂料消耗降低 23%\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 42,
+        "prompt_tokens": 646,
+        "total_tokens": 688,
+        "completion_tokens_details": {
+          "reasoning_tokens": 9
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.203
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_case_05_hailing\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 3060,
+        "total_tokens": 3111,
+        "completion_tokens_details": {
+          "reasoning_tokens": 17
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 1.64
+    },
+    {
+      "round": 5,
+      "text": "{\"status\":\"answerable\",\"answer\":\"两处的「23%」不是同一个指标的同义表述，字面上是两个方向相反的不同指标。海翎案例（lantu_case_05_hailing 第五节「成效数据」）写的是『涂料消耗降低 23%』——即单位产品涂料投入量下降 23%，是投入端的负向指标；喷涂方案（lantu_product_painting 第二节「工艺指标」）写的是『涂料利用率提升 23%』——即涂料有效附着/成膜比例上升 23%，是效率端的正向指标。一个『降低』、一个『提升』，是因为两者度量对象不同：消耗量下降和利用率上升在概念上并不等价（利用率 = 有效消耗/总消耗，若利用率相对提升 23%，消耗量未必恰好降低 23%，除非原利用率恰好为 77% 这一特定基线）。两份文档数值同为 23% 且其他两项指标（换色时间 6 分钟、VOC 下降 19%）完全一致，说明案例很可能引用/改写了方案的工艺指标，但在改写时把『利用率提升』误写或简化成了『消耗降低』，造成了口径不一致。建议向方案作者（孟凡，产品部）或案例作者（林可，客户成功部）确认：案例的 23% 是实测涂料消耗降幅，还是对方案『利用率提升 23%』的转述。\",\"citations\":[\"lantu_case_05_hailing\",\"lantu_product_painting\"],\"evidence\":[\"lantu_case_05_hailing#片段0（成效数据：涂料消耗降低 23%，换色时间由 18 分钟缩短至 6 分钟，VOC 排放下降 19%）\",\"lantu_product_painting#片段0（工艺指标：换色时间 6 分钟，涂料利用率提升 23%，VOC 排放下降 19%）\"]}",
+      "usage": {
+        "completion_tokens": 582,
+        "prompt_tokens": 3613,
+        "total_tokens": 4195,
+        "completion_tokens_details": {
+          "reasoning_tokens": 139
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3008
+        }
+      },
+      "seconds": 16.219
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "海翎家电 涂料消耗降低 23%",
+        "top_k": 10
+      },
+      "result_sha": "88a9c2a914f1e441a71ecc63c7003350c9740676644223811ac0d34010c062e7",
+      "result_chars": 3922,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_case_05_hailing",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "7294369382ceb13329713c72b943f7e31d0c95fdb81a68411d1182ed8ac69042",
+      "result_chars": 794,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "两处的「23%」不是同一个指标的同义表述，字面上是两个方向相反的不同指标。海翎案例（lantu_case_05_hailing 第五节「成效数据」）写的是『涂料消耗降低 23%』——即单位产品涂料投入量下降 23%，是投入端的负向指标；喷涂方案（lantu_product_painting 第二节「工艺指标」）写的是『涂料利用率提升 23%』——即涂料有效附着/成膜比例上升 23%，是效率端的正向指标。一个『降低』、一个『提升』，是因为两者度量对象不同：消耗量下降和利用率上升在概念上并不等价（利用率 = 有效消耗/总消耗，若利用率相对提升 23%，消耗量未必恰好降低 23%，除非原利用率恰好为 77% 这一特定基线）。两份文档数值同为 23% 且其他两项指标（换色时间 6 分钟、VOC 下降 19%）完全一致，说明案例很可能引用/改写了方案的工艺指标，但在改写时把『利用率提升』误写或简化成了『消耗降低』，造成了口径不一致。建议向方案作者（孟凡，产品部）或案例作者（林可，客户成功部）确认：案例的 23% 是实测涂料消耗降幅，还是对方案『利用率提升 23%』的转述。",
+    "citations": [
+      "lantu_case_05_hailing",
+      "lantu_product_painting"
+    ],
+    "evidence": [
+      "lantu_case_05_hailing#片段0（成效数据：涂料消耗降低 23%，换色时间由 18 分钟缩短至 6 分钟，VOC 排放下降 19%）",
+      "lantu_product_painting#片段0（工艺指标：换色时间 6 分钟，涂料利用率提升 23%，VOC 排放下降 19%）"
+    ]
+  },
+  "status": "answered",
+  "tokens": 9189,
+  "started_at": "2026-11-01T05:29:57",
+  "elapsed_seconds": 23.41,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "海翎家电 涂料消耗降低 23%",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_product_painting",
+            "title": "# LT-Paint 机器人喷涂工作站方案",
+            "chunk": 0,
+            "score": 39.228,
+            "snippet": "# LT-Paint 机器人喷涂工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-08-01 09:00\n更新时间：2025-04-18 15:00\n版本号：v2.2\n文档类型：product\n文档族：solution_painting\n生效日期：2025-04-18\n\n## 一、方案组成\n\n以 LT-R20 防爆机器人为核心，集成旋杯喷枪、供漆系统、防爆控制柜与 VOC 处理装置。\n\n## 二、工艺指标\n\n换色时间 6 分钟，涂料利用率提升 23%，膜厚均匀性 ±5 μm，VOC 排放下降 19%。"
+          },
+          {
+            "doc_id": "lantu_case_05_hailing",
+            "title": "# 客户案例：海翎家电喷涂与打磨项目",
+            "chunk": 0,
+            "score": 35.306,
+            "snippet": "# 客户案例：海翎家电喷涂与打磨项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_hailing\n生效日期：2025-12-20\n\n## 一、客户背景\n\n海翎家电位于顺德，主营家电业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖4 "
+          },
+          {
+            "doc_id": "lantu_sales_customer_list",
+            "title": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态",
+            "chunk": 0,
+            "score": 12.046,
+            "snippet": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态\n恒芯动力电池,动力电池,常州,电芯叠片与物流,\"21,600\",2025,已验收\n澜岳汽车零部件,汽车零部件,上海,白车身焊装,\"14,800\",2024,已验收\n曜阳光能,光伏,合肥,电池片串焊,\"9,800\",2025,已验收\n星禾电子,3C 电子,昆山,精密组装,\"12,500\",2024,已验收\n海翎家电,家电,顺德,喷涂与打磨,\"6,300\",2025,已验收\n晶拓微电子,半导体,无锡,晶圆搬运,\"7,400\",2025,已验收\n麦丰食品,食品,漯河"
+          },
+          {
+            "doc_id": "lantu_finance_gross_margin",
+            "title": "# 澜图智能毛利率与成本结构分析",
+            "chunk": 0,
+            "score": 4.367,
+            "snippet": "# 澜图智能毛利率与成本结构分析\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-11-15 09:00\n更新时间：2025-11-20 17:00\n版本号：v1.2\n文档类型：finance\n文档族：gross_margin_analysis\n生效日期：2025-11-20\n\n## 一、整体毛利率\n\n2025 年综合毛利率 31.6%，较 2024 年提升 1.2 个百分点。机器人本体毛利率 34.8%，智能产线 26.2%，软件与服务 52.4%。\n\n## 二、成本构成\n\n直接材料占营业成本 68.4%，"
+          },
+          {
+            "doc_id": "lantu_product_r20_pro_whitepaper",
+            "title": "LT-R20 Pro 机器人技术白皮书",
+            "chunk": 0,
+            "score": 4.057,
+            "snippet": "LT-R20 Pro 机器人技术白皮书\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2025-11-20 09:00\n更新时间：2025-11-28 18:00\n版本号：v0.9\n文档类型：product\n文档族：product_r20_pro\n生效日期：2025-11-28\n一、研发背景\n面向锂电叠片、汽车装配等高频节拍场景，澜图智能研发新一代中型六轴机器人 LT-R20 Pro，计划\n2026 年第二季度量产。\n二、技术指标\n额定负载 22 kg，臂展 1,750 mm，重复定位精度 ±0.02 mm，本体重量"
+          },
+          {
+            "doc_id": "lantu_product_assembly",
+            "title": "# LT-Assembly 柔性装配工作站方案",
+            "chunk": 0,
+            "score": 3.472,
+            "snippet": "# LT-Assembly 柔性装配工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-07-15 09:00\n更新时间：2025-09-05 11:00\n版本号：v2.5\n文档类型：product\n文档族：solution_assembly\n生效日期：2025-09-05\n\n## 一、方案组成\n\n由 LT-R12/LT-R20 机器人、力控末端、LT-V3D 视觉与快换工装组成，支持多品种混线装配。\n\n## 二、工艺指标\n\n装配节拍 3.2 秒/件，力控精度 ±2 N，视觉定位精度 ±0.05 mm，"
+          },
+          {
+            "doc_id": "lantu_tech_edge",
+            "title": "# 澜图智能边缘计算产品 LT-Edge 说明",
+            "chunk": 0,
+            "score": 3.422,
+            "snippet": "# 澜图智能边缘计算产品 LT-Edge 说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2025-01-10 09:00\n更新时间：2025-06-12 11:00\n版本号：v1.3\n文档类型：tech\n文档族：edge_computing\n生效日期：2025-06-12\n\n## 一、产品定位\n\nLT-Edge 是面向产线的边缘计算单元，承载视觉推理、数据采集与协议转换，支持断网续传。\n\n## 二、硬件规格\n\n8 核 ARM 处理器，32 TOPS NPU，16 GB 内存，256 GB 存储，支持 4 路千"
+          },
+          {
+            "doc_id": "lantu_tech_servo",
+            "title": "# 澜图智能伺服驱动与关节模组技术说明",
+            "chunk": 0,
+            "score": 3.415,
+            "snippet": "# 澜图智能伺服驱动与关节模组技术说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-07-01 09:00\n更新时间：2025-08-25 10:00\n版本号：v2.6\n文档类型：tech\n文档族：servo_drive\n生效日期：2025-08-25\n\n## 一、产品范围\n\n自研 400W-7.5kW 伺服驱动器与关节模组，覆盖 LT-R 与 LT-S 全系列，自研比例 61%。\n\n## 二、关键指标\n\n电流环带宽 2.5 kHz，速度环 1.2 kHz，位置精度 23 位，过载能力 300% 持续 "
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 0,
+            "score": 3.09,
+            "snippet": "# 澜图智能产品与解决方案总览\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-02-20 09:00\n更新时间：2025-12-22 10:00\n版本号：v6.0\n文档类型：product\n文档族：product_overview\n生效日期：2025-12-22\n\n## 一、产品矩阵\n\n公司产品覆盖六轴工业机器人、SCARA 机器人、自主移动机器人（AMR）、机器视觉、运动控制器、数字孪生平台与行业工作站，形成“本体+控制器+视觉+软件+工艺”的一体化方案。\n\n## 二、行业方案\n\n重点行业包括汽车及零部件、"
+          },
+          {
+            "doc_id": "lantu_case_11_dingzhong",
+            "title": "# 客户案例：鼎重机械结构件焊接项目",
+            "chunk": 0,
+            "score": 3.02,
+            "snippet": "# 客户案例：鼎重机械结构件焊接项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_dingzhong\n生效日期：2024-12-20\n\n## 一、客户背景\n\n鼎重机械位于徐州，主营工程机械业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_case_05_hailing",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_case_05_hailing",
+        "title": "# 客户案例：海翎家电喷涂与打磨项目",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 614,
+        "text": "# 客户案例：海翎家电喷涂与打磨项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_hailing\n生效日期：2025-12-20\n\n## 一、客户背景\n\n海翎家电位于顺德，主营家电业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖4 条喷涂线，要求 6 个月内完成交付。\n\n## 三、方案配置\n\n澜图智能提供 72 台 LT-R20 六轴机器人，配套 LT-C800 控制器、LT-V3D 视觉与 LantuTwin 数字孪生仿真，整线合同金额 6,300 万元。\n\n## 四、实施过程\n\n项目由客户成功部牵头，联合研发、制造、质量与售后服务部组成 26 人项目组。完成现场勘测、虚拟调试、设备安装与 72 小时连续试运行，实际交付周期 5 个月。\n\n## 五、成效数据\n\n涂料消耗降低 23%，换色时间由 18 分钟缩短至 6 分钟，VOC 排放下降 19%。项目通过客户验收，并获得客户年度优秀供应商提名。\n\n## 六、客户评价\n\n海翎家电涂装厂长 麦嘉表示：“澜图团队响应及时，方案在节拍与稳定性上达到预期，后续产线扩产将继续合作。”\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_case_05_hailing",
+      "lantu_product_painting"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.096,
+    "number_recall": 0.0
+  }
+}

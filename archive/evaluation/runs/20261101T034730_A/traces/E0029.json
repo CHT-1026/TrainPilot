@@ -1,0 +1,142 @@
+{
+  "qid": "E0029",
+  "question": "采购月结账期从 2024 版到 2025 版延长了多少天？战略供应商又是多少天？",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>月结账期 2024版 2025版</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 93,
+        "prompt_tokens": 373,
+        "total_tokens": 466,
+        "completion_tokens_details": {
+          "reasoning_tokens": 52
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 4.515
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search>{\"query\":\"采购月结账期 2024版 2025版 天数\",\"top_k\":10}</parameter></tool_call>",
+      "usage": {
+        "completion_tokens": 75,
+        "prompt_tokens": 451,
+        "total_tokens": 526,
+        "completion_tokens_details": {
+          "reasoning_tokens": 36
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.969
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search>{\"query\": \"采购月结账期 2024版 2025版 天数\", \"top_k\": 10}</parameter></tool_call>",
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 527,
+        "total_tokens": 578,
+        "completion_tokens_details": {
+          "reasoning_tokens": 9
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 4.391
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>采购月结账期 2024版 2025版 天数</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 61,
+        "prompt_tokens": 606,
+        "total_tokens": 667,
+        "completion_tokens_details": {
+          "reasoning_tokens": 16
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 3.047
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>采购月结账期 2024版 2025版 天数</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 70,
+        "prompt_tokens": 688,
+        "total_tokens": 758,
+        "completion_tokens_details": {
+          "reasoning_tokens": 25
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 2.171
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query:采购月结账期 2024版 2025版 天数>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 56,
+        "prompt_tokens": 770,
+        "total_tokens": 826,
+        "completion_tokens_details": {
+          "reasoning_tokens": 17
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 2.86
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"无法确定。检索工具调用多次未能成功执行，未能获取任何关于2024版与2025版采购月结账期天数的原始资料，因此无法计算延长天数，也无法确定战略供应商的账期天数。建议提供《采购付款管理制度》2024版与2025版原文，或其中关于账期（月结天数、战略供应商条款）的章节后再行核对。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 175,
+        "prompt_tokens": 843,
+        "total_tokens": 1018,
+        "completion_tokens_details": {
+          "reasoning_tokens": 56
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 5.297
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "无法确定。检索工具调用多次未能成功执行，未能获取任何关于2024版与2025版采购月结账期天数的原始资料，因此无法计算延长天数，也无法确定战略供应商的账期天数。建议提供《采购付款管理制度》2024版与2025版原文，或其中关于账期（月结天数、战略供应商条款）的章节后再行核对。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4839,
+  "started_at": "2026-11-01T04:43:00",
+  "elapsed_seconds": 24.25,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.093,
+    "number_recall": 1.0
+  }
+}

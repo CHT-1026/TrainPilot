@@ -1,0 +1,25 @@
+{
+  "qid": "M0309",
+  "question": "我们给供应商的付款账期怎么算？预付款最多能付多少比例？",
+  "question_type": "版本对比",
+  "rounds": [],
+  "tool_calls": [],
+  "answer": null,
+  "status": "api_error",
+  "tokens": 0,
+  "started_at": "2026-11-01T03:01:24",
+  "error": "ConnectionResetError: [WinError 10054] 远程主机强迫关闭了一个现有的连接。",
+  "elapsed_seconds": 225.45,
+  "tool_calls_detail": [],
+  "model_label": "D",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

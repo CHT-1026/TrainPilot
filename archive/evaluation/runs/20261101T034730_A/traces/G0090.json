@@ -1,0 +1,79 @@
+{
+  "qid": "G0090",
+  "question": "从 IPD 的 DCP 门禁看，2025 年度大事记中 LT-C800 发布与 LantuTwin 3.0 发布这两个里程碑应落在 IPD 的哪个阶段？",
+  "question_type": "单文档多跳推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>IPD DCP 阶段 门禁</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 128,
+        "prompt_tokens": 391,
+        "total_tokens": 519,
+        "completion_tokens_details": {
+          "reasoning_tokens": 92
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.094
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>IPD DCP 阶段 门禁 里程碑</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 464,
+        "total_tokens": 514,
+        "completion_tokens_details": {
+          "reasoning_tokens": 12
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.031
+    },
+    {
+      "round": 3,
+      "text": "{\"name\":\"search\",\"args\":{\"query\":\"IPD DCP 阶段 门禁 里程碑\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 40,
+        "prompt_tokens": 539,
+        "total_tokens": 579,
+        "completion_tokens_details": {
+          "reasoning_tokens": 9
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 1.063
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "name": "search",
+    "args": {
+      "query": "IPD DCP 阶段 门禁 里程碑",
+      "top_k": 10
+    }
+  },
+  "status": "answered",
+  "tokens": 1612,
+  "started_at": "2026-11-01T05:09:28",
+  "elapsed_seconds": 4.19,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

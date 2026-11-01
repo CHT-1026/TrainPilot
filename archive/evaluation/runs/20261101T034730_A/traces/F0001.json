@@ -1,0 +1,184 @@
+{
+  "qid": "F0001",
+  "question": "2024 年与 2025 年公司营业收入分别是多少？两年增加了多少亿元，增幅多少？",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>2025年 营业收入</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=search><parameter=query>2024年 营业收入</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list><parameter=keyword>年报</parameter></function></tool_call><tool_call><function=search><parameter=query>年度报告 主要会计数据</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=search><parameter=query>2025年年度报告 营业收入</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list><parameter=keyword></parameter></function></tool_call><tool_call><function=search><parameter=query>营业收入 同比增长</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=read><parameter=doc_id>10001</parameter><parameter=offset>0</parameter><parameter=limit>4000</parameter></function></tool_call><tool_call><function=read><parameter=doc_id>10000</parameter><parameter=offset>0</parameter><parameter=limit>4000</parameter></function></tool_call><tool_call><function=search><parameter=query>亿元 收入</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=read><parameter=doc_id>10003</parameter><parameter=offset>0</parameter><parameter=limit>4000</parameter></function></tool_call><tool_call><function=ANSWER>{\"status\":\"not_in_corpus\"}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 383,
+        "prompt_tokens": 369,
+        "total_tokens": 752,
+        "completion_tokens_details": {
+          "reasoning_tokens": 27
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 7.078
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"2024年 2025年 营业收入\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 127,
+        "prompt_tokens": 762,
+        "total_tokens": 889,
+        "completion_tokens_details": {
+          "reasoning_tokens": 91
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 5.031
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"2024 年公司营业收入 35.80 亿元，2025 年营业收入 42.63 亿元。两年相比增加 6.83 亿元，增幅约 19.1%（42.63/35.80-1≈19.08%，与年报披露的同比增长 19.1% 一致）。\",\"citations\":[\"lantu_finance_annual_2024\",\"lantu_finance_annual_2025\",\"lantu_investor_overview\"],\"evidence\":[\"lantu_finance_annual_2024#片段0\",\"lantu_finance_annual_2025#片段0\",\"lantu_investor_overview#片段0\"]}",
+      "usage": {
+        "completion_tokens": 307,
+        "prompt_tokens": 3331,
+        "total_tokens": 3638,
+        "completion_tokens_details": {
+          "reasoning_tokens": 128
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 5.969
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "2024年 2025年 营业收入",
+        "top_k": 10
+      },
+      "result_sha": "fdde2463d713cde3111f6bccc7ed1d133668919a5cb6c700fe1197d6fa363e57",
+      "result_chars": 3882,
+      "hits": 10
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "2024 年公司营业收入 35.80 亿元，2025 年营业收入 42.63 亿元。两年相比增加 6.83 亿元，增幅约 19.1%（42.63/35.80-1≈19.08%，与年报披露的同比增长 19.1% 一致）。",
+    "citations": [
+      "lantu_finance_annual_2024",
+      "lantu_finance_annual_2025",
+      "lantu_investor_overview"
+    ],
+    "evidence": [
+      "lantu_finance_annual_2024#片段0",
+      "lantu_finance_annual_2025#片段0",
+      "lantu_investor_overview#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 5279,
+  "started_at": "2026-11-01T04:53:58",
+  "elapsed_seconds": 18.08,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "2024年 2025年 营业收入",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_finance_annual_2024",
+            "title": "澜图智能 2024 年度报告摘要",
+            "chunk": 0,
+            "score": 10.52,
+            "snippet": "澜图智能 2024 年度报告摘要\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-01-22 09:00\n更新时间：2025-01-30 18:00\n版本号：v1.0\n文档类型：finance\n文档族：annual_report_2024\n生效日期：2025-01-30\n一、经营概况\n2024 年公司实现营业收入 35.80 亿元，同比增长 16.8%；归母净利润 3.26 亿元，同比增长 14.2%。\n二、收入结构\n机器人本体收入 16.72 亿元（46.7%），智能产线收入 12.36 亿元（34.5%），"
+          },
+          {
+            "doc_id": "lantu_company_history",
+            "title": "# 澜图智能发展历程（2011—2025）",
+            "chunk": 0,
+            "score": 9.532,
+            "snippet": "# 澜图智能发展历程（2011—2025）\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2023-03-01 09:00\n更新时间：2026-01-05 14:00\n版本号：v4.0\n文档类型：company\n文档族：company_history\n生效日期：2026-01-05\n\n## 一、创业阶段（2011—2015）\n\n2011 年 6 月 18 日，公司在苏州工业园区成立，创始团队来自高校机器人实验室，首款产品为 LT-R6 六轴工业机器人，2012 年实现小批量交付 120 台。2014 年建成首条机"
+          },
+          {
+            "doc_id": "lantu_finance_q3_2025",
+            "title": "# 澜图智能 2025 年第三季度经营数据",
+            "chunk": 0,
+            "score": 9.253,
+            "snippet": "# 澜图智能 2025 年第三季度经营数据\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-10-22 09:00\n更新时间：2025-10-26 18:00\n版本号：v1.0\n文档类型：finance\n文档族：quarterly_2025_q3\n生效日期：2025-10-26\n\n## 一、季度业绩\n\n2025 年第三季度营业收入 11.52 亿元，同比增长 17.8%；归母净利润 1.21 亿元，同比增长 22.1%；毛利率 31.4%。\n\n## 二、累计业绩\n\n前三季度累计营业收入 31.36 亿元，归母"
+          },
+          {
+            "doc_id": "lantu_investor_overview",
+            "title": "# 澜图智能投资者关系概览",
+            "chunk": 0,
+            "score": 9.091,
+            "snippet": "# 澜图智能投资者关系概览\n\n所属部门：董事会办公室\n作者：周敏仪\n创建时间：2024-03-20 09:00\n更新时间：2026-01-10 17:00\n版本号：v4.1\n文档类型：company\n文档族：investor_overview\n生效日期：2026-01-10\n\n## 一、基本信息\n\n公司股票代码 688719，总股本 4.2 亿股，2025 年末总市值约 168 亿元。2025 年度拟每 10 股派发现金红利 3.2 元（含税）。\n\n## 二、经营数据\n\n2025 年营业收入 42.63 亿元，归母"
+          },
+          {
+            "doc_id": "lantu_finance_h1_2025",
+            "title": "# 澜图智能 2025 年半年度报告摘要",
+            "chunk": 0,
+            "score": 8.772,
+            "snippet": "# 澜图智能 2025 年半年度报告摘要\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-08-25 09:00\n更新时间：2025-08-28 18:00\n版本号：v1.0\n文档类型：finance\n文档族：semiannual_2025\n生效日期：2025-08-28\n\n## 一、经营数据\n\n2025 年上半年营业收入 19.84 亿元，同比增长 21.3%；归母净利润 1.83 亿元，同比增长 24.6%；毛利率 31.2%。\n\n## 二、订单情况\n\n上半年新签订单 22.7 亿元，同比增长 18.5%"
+          },
+          {
+            "doc_id": "lantu_finance_budget_2026",
+            "title": "# 澜图智能 2026 年度经营预算",
+            "chunk": 0,
+            "score": 7.994,
+            "snippet": "# 澜图智能 2026 年度经营预算\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-12-20 09:00\n更新时间：2026-01-15 17:00\n版本号：v1.0\n文档类型：finance\n文档族：budget_2026\n生效日期：2026-01-15\n\n## 一、预算目标\n\n2026 年营业收入目标 52 亿元，同比增长 22%；归母净利润目标 5.2 亿元；综合毛利率目标 32.5%。\n\n## 二、收入分解\n\n机器人本体 24.2 亿元，智能产线 18.4 亿元，软件与服务 6.4 亿元，备件及其"
+          },
+          {
+            "doc_id": "lantu_company_global",
+            "title": "# 澜图智能全球化布局与海外业务",
+            "chunk": 0,
+            "score": 7.857,
+            "snippet": "# 澜图智能全球化布局与海外业务\n\n所属部门：国际业务部\n作者：罗嘉树\n创建时间：2024-06-01 10:00\n更新时间：2025-12-10 14:30\n版本号：v2.2\n文档类型：company\n文档族：global_presence\n生效日期：2025-12-10\n\n## 一、海外机构\n\n公司在德国斯图加特设立欧洲技术中心（2025 年 3 月开业），在越南胡志明市、墨西哥蒙特雷、匈牙利布达佩斯设有服务网点，海外员工 200 人。\n\n## 二、海外业绩\n\n2025 年海外营业收入 4.86 亿元，占总收入"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2025",
+            "title": "澜图智能 2025 年度报告摘要",
+            "chunk": 0,
+            "score": 7.658,
+            "snippet": "澜图智能 2025 年度报告摘要\n所属部门：财务部\n作者：周敏仪\n创建时间：2026-01-20 09:00\n更新时间：2026-01-28 18:00\n版本号：v1.0\n文档类型：finance\n文档族：annual_report_2025\n生效日期：2026-01-28\n一、经营概况\n2025 年公司实现营业收入 42.63 亿元，同比增长 19.1%；归属于母公司股东的净利润 4.12\n亿元，同比增长 26.4%；基本每股收益 0.98 元。\n二、收入结构\n机器人本体收入 19.84 亿元（46.5%），智能"
+          },
+          {
+            "doc_id": "lantu_strategy_2026",
+            "title": "# 澜图智能 2026 年度经营计划",
+            "chunk": 0,
+            "score": 7.58,
+            "snippet": "# 澜图智能 2026 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-12-15 09:00\n更新时间：2026-01-12 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2026\n生效日期：2026-01-12\n\n## 一、年度目标\n\n2026 年营业收入 52 亿元，归母净利润 5.2 亿元，新签订单 58 亿元，机器人出货 26,000 台。\n\n## 二、业务策略\n\n锂电保持领先，半导体翻倍增长，海外收入 7.2 亿元；软件与服务收入占比提"
+          },
+          {
+            "doc_id": "lantu_strategy_2025",
+            "title": "# 澜图智能 2025 年度经营计划",
+            "chunk": 0,
+            "score": 7.443,
+            "snippet": "# 澜图智能 2025 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-01-10 09:00\n更新时间：2025-02-10 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2025\n生效日期：2025-02-10\n\n## 一、年度目标\n\n2025 年营业收入目标 41.5 亿元，力争 42.63 亿元；新签订单目标 46 亿元；机器人出货目标 20,000 台。\n\n## 二、重点任务\n\n锂电与半导体行业突破；LT-C800 控制器量产；海外收入占"
+          }
+        ]
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_finance_annual_2024",
+      "lantu_finance_annual_2025",
+      "lantu_investor_overview"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.578,
+    "number_recall": 1.0
+  }
+}

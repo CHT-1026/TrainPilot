@@ -1,0 +1,25 @@
+{
+  "qid": "M0213",
+  "question": "候选人薪酬谈高了、超出公司带宽的时候，人力资源负责人和财务那边得谁点头才能定？",
+  "question_type": "跨文档推理",
+  "rounds": [],
+  "tool_calls": [],
+  "answer": null,
+  "status": "api_error",
+  "tokens": 0,
+  "started_at": "2026-11-01T03:05:31",
+  "error": "HTTPError: HTTP Error 503: Service Unavailable",
+  "elapsed_seconds": 0.0,
+  "tool_calls_detail": [],
+  "model_label": "D",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

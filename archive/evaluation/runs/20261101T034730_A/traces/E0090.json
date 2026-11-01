@@ -1,0 +1,142 @@
+{
+  "qid": "E0090",
+  "question": "涉及 L3、L4 级数据的外发需要谁审批？可以通过个人邮箱或网盘传输吗？",
+  "question_type": "条件判断与边界",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>L3 L4 数据外发 审批</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 66,
+        "prompt_tokens": 368,
+        "total_tokens": 434,
+        "completion_tokens_details": {
+          "reasoning_tokens": 32
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.734
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=TOOL><parameter=name>search</parameter><parameter=args>{\"query\": \"L3 L4 级数据 外发 审批\", \"top_k\": 10}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 66,
+        "prompt_tokens": 439,
+        "total_tokens": 505,
+        "completion_tokens_details": {
+          "reasoning_tokens": 16
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.625
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=TOOL>{\"name\": \"search\", \"args\": {\"query\": \"L3 L4 级数据 外发 审批\", \"top_k\": 10}}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 62,
+        "prompt_tokens": 526,
+        "total_tokens": 588,
+        "completion_tokens_details": {
+          "reasoning_tokens": 13
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.609
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>L3 L4 级数据 外发 审批</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 45,
+        "prompt_tokens": 612,
+        "total_tokens": 657,
+        "completion_tokens_details": {
+          "reasoning_tokens": 7
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.719
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>L3 L4 级数据 外发 审批</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 60,
+        "prompt_tokens": 687,
+        "total_tokens": 747,
+        "completion_tokens_details": {
+          "reasoning_tokens": 22
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 1.547
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=TOOL><parameter=name>search</parameter><parameter=args>{\"query\": \"L3 L4 级数据 外发 审批\", \"top_k\": 10}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 56,
+        "prompt_tokens": 762,
+        "total_tokens": 818,
+        "completion_tokens_details": {
+          "reasoning_tokens": 6
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 1.219
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"在当前可用的语料中未能检索到关于 L3、L4 级数据外发审批人及是否允许个人邮箱/网盘传输的明确规定，因此无法给出有据可依的结论。建议补充或确认相关数据安全/数据分级管理制度文档后再次检索。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 95,
+        "prompt_tokens": 846,
+        "total_tokens": 941,
+        "completion_tokens_details": {
+          "reasoning_tokens": 11
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 2.187
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "在当前可用的语料中未能检索到关于 L3、L4 级数据外发审批人及是否允许个人邮箱/网盘传输的明确规定，因此无法给出有据可依的结论。建议补充或确认相关数据安全/数据分级管理制度文档后再次检索。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4690,
+  "started_at": "2026-11-01T04:51:09",
+  "elapsed_seconds": 11.64,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.026,
+    "number_recall": 0.0
+  }
+}

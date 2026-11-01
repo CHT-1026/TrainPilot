@@ -1,0 +1,142 @@
+{
+  "qid": "A0051",
+  "question": "许博与陈璐分别负责什么？陈璐的汇报路径是怎样的？",
+  "question_type": "人物关系推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"许博 陈璐\",\"top_k\":10}}",
+      "usage": {
+        "prompt_tokens": 365,
+        "total_tokens": 531,
+        "completion_tokens": 166,
+        "completion_tokens_details": {
+          "reasoning_tokens": 138,
+          "text_tokens": 166
+        }
+      },
+      "seconds": 1.703
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"陈璐 汇报 上级\",\"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 848,
+        "total_tokens": 1314,
+        "completion_tokens": 466,
+        "completion_tokens_details": {
+          "reasoning_tokens": 438,
+          "text_tokens": 466
+        }
+      },
+      "seconds": 4.734
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "许博 陈璐",
+        "top_k": 10
+      },
+      "result_sha": "3234a649e538eb24005973c2cceeb69b41393865c10df54f25fc39eb91247482",
+      "result_chars": 781,
+      "hits": 2
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "陈璐 汇报 上级",
+        "top_k": 5
+      },
+      "result_sha": "ae3bc331ec0c13b25d9f4f0aafb91834c4760eb4a0e18df66e5577a05008618a",
+      "result_chars": 1552,
+      "hits": 4
+    }
+  ],
+  "answer": null,
+  "status": "api_error",
+  "tokens": 1845,
+  "started_at": "2026-11-01T03:41:29",
+  "error": "TimeoutError: The read operation timed out",
+  "elapsed_seconds": 306.47,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "许博 陈璐",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_org_reporting_lines",
+            "title": "# 澜图智能员工汇报关系与业务分工",
+            "chunk": 0,
+            "score": 9.409,
+            "snippet": "# 澜图智能员工汇报关系与业务分工\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-02-10 09:00\n更新时间：2025-09-01 10:00\n版本号：v1.2\n文档类型：org\n文档族：org_reporting_lines\n生效日期：2025-09-01\n\n## 一、研发体系汇报链\n\n顾承澜是沈亦舟的上级。沈亦舟是程知远的上级。程知远是周启航的上级。周启航是林晓的上级。林晓是赵一鸣的上级。\n\n沈亦舟担任 CTO，负责研发体系。程知远担任研发中心总经理，负责研发中心整体经营管理。周启航担任控制器"
+          },
+          {
+            "doc_id": "lantu_org_reporting_lines",
+            "title": "# 澜图智能员工汇报关系与业务分工",
+            "chunk": 1,
+            "score": 7.934,
+            "snippet": "周敏仪担任 CFO，负责财务与资本运作。陈依然担任人力资源副总裁，负责人力资源体系。蒋雯担任薪酬绩效经理，负责薪酬、绩效与员工关系。邵岚担任法务合规总监，负责法务、合规与知识产权。\n\n## 五、跨部门业务分工\n\n周启航同时担任新一代控制器 LT-C900 项目负责人，项目成员包括林晓与赵一鸣。唐婧负责销售中心，华东区域由许博管理，上海区域重点客户由陈璐维护。方磊负责制造中心，苏州工厂由郭涛管理。\n\n## 六、汇报关系使用说明\n\n本文件中的“上级”均指行政汇报关系中的直接上级；跨部门项目中的项目负责人关系不改变行政汇"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "陈璐 汇报 上级",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_org_reporting_lines",
+            "title": "# 澜图智能员工汇报关系与业务分工",
+            "chunk": 0,
+            "score": 17.698,
+            "snippet": "# 澜图智能员工汇报关系与业务分工\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-02-10 09:00\n更新时间：2025-09-01 10:00\n版本号：v1.2\n文档类型：org\n文档族：org_reporting_lines\n生效日期：2025-09-01\n\n## 一、研发体系汇报链\n\n顾承澜是沈亦舟的上级。沈亦舟是程知远的上级。程知远是周启航的上级。周启航是林晓的上级。林晓是赵一鸣的上级。\n\n沈亦舟担任 CTO，负责研发体系。程知远担任研发中心总经理，负责研发中心整体经营管理。周启航担任控制器"
+          },
+          {
+            "doc_id": "lantu_org_reporting_lines",
+            "title": "# 澜图智能员工汇报关系与业务分工",
+            "chunk": 1,
+            "score": 16.089,
+            "snippet": "周敏仪担任 CFO，负责财务与资本运作。陈依然担任人力资源副总裁，负责人力资源体系。蒋雯担任薪酬绩效经理，负责薪酬、绩效与员工关系。邵岚担任法务合规总监，负责法务、合规与知识产权。\n\n## 五、跨部门业务分工\n\n周启航同时担任新一代控制器 LT-C900 项目负责人，项目成员包括林晓与赵一鸣。唐婧负责销售中心，华东区域由许博管理，上海区域重点客户由陈璐维护。方磊负责制造中心，苏州工厂由郭涛管理。\n\n## 六、汇报关系使用说明\n\n本文件中的“上级”均指行政汇报关系中的直接上级；跨部门项目中的项目负责人关系不改变行政汇"
+          },
+          {
+            "doc_id": "lantu_org_chart_2025",
+            "title": "# 澜图智能组织架构（2025版）",
+            "chunk": 0,
+            "score": 4.555,
+            "snippet": "# 澜图智能组织架构（2025版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-03-20 09:00\n更新时间：2025-04-10 10:00\n版本号：v2.0\n文档类型：org\n文档族：org_chart\n生效日期：2025-04-01\n\n## 一、一级部门\n\n2025 年 4 月起公司设 12 个一级部门：研发中心、产品部、销售中心、客户成功部、供应链中心、制造中心、质量部、财务部、人力资源部、法务合规部、信息技术部、售后服务部。售后服务部由销售中心下属部门升级为一级部门。\n\n## 二、研发体"
+          },
+          {
+            "doc_id": "lantu_hr_manager_training",
+            "title": "澜图智能管理者领导力培训方案",
+            "chunk": 0,
+            "score": 3.742,
+            "snippet": "澜图智能管理者领导力培训方案\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-05-01 09:00\n更新时间：2025-09-01 10:00\n版本号：v2.0\n文档类型：hr\n文档族：manager_training\n生效日期：2025-09-01\n一、培养对象\n新任经理、部门总监与高潜后备，每期 30 人，全年 3 期。\n二、课程模块\n战略解码、团队管理、绩效辅导、跨部门协作、财务思维与变革管理，共 6 个模块 12 天。\n三、行动学习\n每位学员围绕真实业务问题组建立项，结业时汇报成果；优秀项目可获得"
+          }
+        ]
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

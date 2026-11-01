@@ -1,0 +1,383 @@
+{
+  "qid": "M1306",
+  "question": "同一台机器人，销售合同模板、保修政策和产品参数矩阵三处写的质保期一致吗？有没有哪个产品线的口径不一样？延保又是怎么算的？",
+  "question_type": "条件判断与边界",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>质保期 保修</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 61,
+        "prompt_tokens": 380,
+        "total_tokens": 441,
+        "completion_tokens_details": {
+          "reasoning_tokens": 31
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.359
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"质保期 保修期限 机器人\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 39,
+        "prompt_tokens": 447,
+        "total_tokens": 486,
+        "completion_tokens_details": {
+          "reasoning_tokens": 11
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.391
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_legal_sales_contract_template\",\"offset\":0,\"limit\":6000}}",
+      "usage": {
+        "completion_tokens": 66,
+        "prompt_tokens": 2872,
+        "total_tokens": 2938,
+        "completion_tokens_details": {
+          "reasoning_tokens": 34
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.078
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"延保 延长保修 服务\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 3371,
+        "total_tokens": 3419,
+        "completion_tokens_details": {
+          "reasoning_tokens": 19
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2816
+        }
+      },
+      "seconds": 1.453
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_support_warranty\",\"offset\":0,\"limit\":6000}}",
+      "usage": {
+        "completion_tokens": 44,
+        "prompt_tokens": 5836,
+        "total_tokens": 5880,
+        "completion_tokens_details": {
+          "reasoning_tokens": 13
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3328
+        }
+      },
+      "seconds": 1.531
+    },
+    {
+      "round": 6,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"三处对“机器人本体”的质保期是一致的，但并非对所有产品线都一致：\\n\\n1) 销售合同模板（v4.0，2025-03-01 生效）第四条：质保期为验收合格之日起 24 个月或 6,000 小时，以先到者为准（另设 5% 质保金，质保期满后支付）。\\n2) 保修政策（v3.0，2025-04-01 生效）：机器人本体 24 个月或 6,000 小时先到为准；但细化出不同部件口径——控制器 18 个月、易损件 6 个月、软件 12 个月免费升级。合同模板未区分这些部件。\\n3) 产品参数矩阵（v2.0，2025-12-15 生效）按产品线区分：LT-R 系列与 LT-S 系列为 24 个月/6,000 小时（与合同、政策一致）；LT-AMR 系列为 24 个月（无 6,000 小时上限口径）；LT-V3D 为 12 个月，明显短于其他产品线。\\n\\n口径差异总结：六轴（LT-R）和 SCARA（LT-S）三条文件完全对齐；LT-AMR 少了“6,000 小时先到”限制；LT-V3D 只有 12 个月；合同是统一模板，未体现 LT-AMR/LT-V3D 的差异，签约时需注意按产品线核对。\\n\\n延保：保修政策第四节规定，客户可购买延保服务，费用为设备价格的 3%-5%/年，最长延保至 5 年。合同模板与参数矩阵中未见延保条款。\",\"citations\":[\"lantu_legal_sales_contract_template\",\"lantu_support_warranty\",\"lantu_product_matrix\"],\"evidence\":[\"lantu_legal_sales_contract_template#第四条 质量与质保\",\"lantu_support_warranty#一、保修期限\",\"lantu_support_warranty#四、延保服务\",\"lantu_product_matrix#1[工作表] 交付与保修\"]}",
+      "usage": {
+        "completion_tokens": 739,
+        "prompt_tokens": 6205,
+        "total_tokens": 6944,
+        "completion_tokens_details": {
+          "reasoning_tokens": 208
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 5824
+        }
+      },
+      "seconds": 14.313
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "质保期 保修期限 机器人",
+        "top_k": 10
+      },
+      "result_sha": "0b26eacdac2eb131f9e8669cec801821c73c624f58d28a4f8c86fe4c02e50209",
+      "result_chars": 3878,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_legal_sales_contract_template",
+        "offset": 0,
+        "limit": 6000
+      },
+      "result_sha": "04c09cf997d2475b948ef397447abc7638029959eab3ed6a9ffa71817277af5d",
+      "result_chars": 702,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "延保 延长保修 服务",
+        "top_k": 10
+      },
+      "result_sha": "8a149e4c31544f7a24f2d100b7f233e092d364557eb274573b2c07717f830f88",
+      "result_chars": 3868,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_warranty",
+        "offset": 0,
+        "limit": 6000
+      },
+      "result_sha": "baf4e86d42612ac2a40f0a3cdbd3c2813aff636948b4f9d062fbb767290c7b36",
+      "result_chars": 524,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "三处对“机器人本体”的质保期是一致的，但并非对所有产品线都一致：\n\n1) 销售合同模板（v4.0，2025-03-01 生效）第四条：质保期为验收合格之日起 24 个月或 6,000 小时，以先到者为准（另设 5% 质保金，质保期满后支付）。\n2) 保修政策（v3.0，2025-04-01 生效）：机器人本体 24 个月或 6,000 小时先到为准；但细化出不同部件口径——控制器 18 个月、易损件 6 个月、软件 12 个月免费升级。合同模板未区分这些部件。\n3) 产品参数矩阵（v2.0，2025-12-15 生效）按产品线区分：LT-R 系列与 LT-S 系列为 24 个月/6,000 小时（与合同、政策一致）；LT-AMR 系列为 24 个月（无 6,000 小时上限口径）；LT-V3D 为 12 个月，明显短于其他产品线。\n\n口径差异总结：六轴（LT-R）和 SCARA（LT-S）三条文件完全对齐；LT-AMR 少了“6,000 小时先到”限制；LT-V3D 只有 12 个月；合同是统一模板，未体现 LT-AMR/LT-V3D 的差异，签约时需注意按产品线核对。\n\n延保：保修政策第四节规定，客户可购买延保服务，费用为设备价格的 3%-5%/年，最长延保至 5 年。合同模板与参数矩阵中未见延保条款。",
+    "citations": [
+      "lantu_legal_sales_contract_template",
+      "lantu_support_warranty",
+      "lantu_product_matrix"
+    ],
+    "evidence": [
+      "lantu_legal_sales_contract_template#第四条 质量与质保",
+      "lantu_support_warranty#一、保修期限",
+      "lantu_support_warranty#四、延保服务",
+      "lantu_product_matrix#1[工作表] 交付与保修"
+    ]
+  },
+  "status": "answered",
+  "tokens": 20108,
+  "started_at": "2026-11-01T06:01:46",
+  "elapsed_seconds": 24.12,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "质保期 保修期限 机器人",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_support_warranty",
+            "title": "# 澜图智能产品保修政策",
+            "chunk": 0,
+            "score": 16.522,
+            "snippet": "# 澜图智能产品保修政策\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-01-01 09:00\n更新时间：2025-04-01 09:00\n版本号：v3.0\n文档类型：support\n文档族：warranty_policy\n生效日期：2025-04-01\n\n## 一、保修期限\n\n机器人本体保修 24 个月或 6,000 小时，以先到者为准；控制器保修 18 个月；易损件保修 6 个月。\n\n## 二、保修范围\n\n因产品设计、制造或材料缺陷导致的故障免费维修或更换；软件提供 12 个月免费升级。\n\n## 三、"
+          },
+          {
+            "doc_id": "lantu_legal_sales_contract_template",
+            "title": "澜图智能设备销售合同模板（2025版）",
+            "chunk": 0,
+            "score": 11.692,
+            "snippet": "澜图智能设备销售合同模板（2025版）\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-10 09:00\n更新时间：2025-03-01 09:00\n版本号：v4.0\n文档类型：legal\n文档族：sales_contract_template\n生效日期：2025-03-01\n第一条 合同标的\n乙方向甲方购买澜图智能工业机器人及配套设备，具体型号、数量、单价以附件《供货清单》为准。\n第二条 合同价款与支付\n合同总价为含税价。预付款 30%，发货前支付至 60%，验收合格后 30 日内支付至 95%，剩余"
+          },
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 1,
+            "score": 10.904,
+            "snippet": "0 kg\t1.5 m/s\nLT-AMR-2000\t2,000 kg\t—\t±10 mm\t420 kg\t1.2 m/s\n[工作表] 交付与保修\n产品线\t标准交期\t保修期\t备件响应\nLT-R 系列\t6-8 周\t24 个月/6,000 小时\t48 小时\nLT-S 系列\t4 周\t24 个月/6,000 小时\t48 小时\nLT-AMR 系列\t8 周\t24 个月\t72 小时\nLT-V3D\t4 周\t12 个月\t72 小时"
+          },
+          {
+            "doc_id": "lantu_support_spare_parts_price",
+            "title": "﻿适配机型,备件名称,单价（元）,发货时效,质保期",
+            "chunk": 0,
+            "score": 9.865,
+            "snippet": "﻿适配机型,备件名称,单价（元）,发货时效,质保期\nLT-R20,减速器 RV-40E,\"12,800\",48 小时,12 个月\nLT-R20,伺服驱动器 LT-D4,\"8,600\",48 小时,18 个月\nLT-R20,示教器 LT-Pad3,\"5,200\",48 小时,12 个月\nLT-R12,减速器 RV-20E,\"7,900\",48 小时,12 个月\nLT-R12,伺服电机 750W,\"3,600\",48 小时,18 个月\nLT-R6,谐波减速器 CSF-17,\"6,400\",72 小时,12 个月\nLT-"
+          },
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 8.225,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能产品参数矩阵（2025）\n所属部门\t产品部\n作者\t孟凡\n创建时间\t2025-01-20 09:00\n更新时间\t2025-12-15 18:00\n版本号\tv2.0\n文档类型\tproduct\n文档族\tproduct_matrix\n生效日期\t2025-12-15\n[工作表] 六轴与SCARA\n型号\t负载\t臂展\t重复精度\t本体重量\t最大速度\nLT-R6\t6 kg\t1,450 mm\t±0.02 mm\t165 kg\t3.2 m/s\nLT-R12\t12 kg\t1,550 mm\t±0."
+          },
+          {
+            "doc_id": "lantu_sales_policy",
+            "title": "# 澜图智能销售政策与客户分级管理办法",
+            "chunk": 0,
+            "score": 7.286,
+            "snippet": "# 澜图智能销售政策与客户分级管理办法\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-01-20 09:00\n更新时间：2025-09-25 15:00\n版本号：v3.4\n文档类型：sales\n文档族：sales_policy\n生效日期：2025-09-25\n\n## 一、客户分级\n\n客户分为 S、A、B、C 四级。S 级为年采购额 5,000 万元以上战略客户，由客户成功部直管；A 级 1,000-5,000 万元；B 级 300-1,000 万元；C 级 300 万元以下由渠道覆盖。\n\n## 二、价格体"
+          },
+          {
+            "doc_id": "lantu_product_s_series",
+            "title": "# LT-S 系列 SCARA 机器人产品说明",
+            "chunk": 0,
+            "score": 6.757,
+            "snippet": "# LT-S 系列 SCARA 机器人产品说明\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-03-01 09:00\n更新时间：2025-09-12 11:00\n版本号：v3.2\n文档类型：product\n文档族：product_s_series\n生效日期：2025-09-12\n\n## 一、产品定位\n\nLT-S 系列 SCARA 机器人面向 3C 组装、光伏串焊、食品包装等高速取放场景，标准循环时间 0.38 秒。\n\n## 二、型号参数\n\nLT-S4 负载 4 kg、臂展 600 mm、重复精度 ±0.02 "
+          },
+          {
+            "doc_id": "lantu_legal_nda_template",
+            "title": "澜图智能保密协议模板（NDA）",
+            "chunk": 0,
+            "score": 5.406,
+            "snippet": "澜图智能保密协议模板（NDA）\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-10 09:00\n更新时间：2025-02-01 09:00\n版本号：v3.0\n文档类型：legal\n文档族：nda_template\n生效日期：2025-02-01\n第一条 保密信息\n保密信息包括技术资料、图纸、源代码、算法、客户信息、报价、成本与未公开财务数据。\n第二条 保密义务\n接收方仅可为合作目的使用保密信息，不得披露给第三方；接触人员须签署个人保密承诺。\n第三条 保密期限\n本协议保密期限为签署之日起 3 年，商业秘"
+          },
+          {
+            "doc_id": "lantu_finance_gross_margin",
+            "title": "# 澜图智能毛利率与成本结构分析",
+            "chunk": 0,
+            "score": 4.881,
+            "snippet": "# 澜图智能毛利率与成本结构分析\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-11-15 09:00\n更新时间：2025-11-20 17:00\n版本号：v1.2\n文档类型：finance\n文档族：gross_margin_analysis\n生效日期：2025-11-20\n\n## 一、整体毛利率\n\n2025 年综合毛利率 31.6%，较 2024 年提升 1.2 个百分点。机器人本体毛利率 34.8%，智能产线 26.2%，软件与服务 52.4%。\n\n## 二、成本构成\n\n直接材料占营业成本 68.4%，"
+          },
+          {
+            "doc_id": "lantu_hr_resignation",
+            "title": "# 澜图智能离职与交接管理办法",
+            "chunk": 0,
+            "score": 3.326,
+            "snippet": "# 澜图智能离职与交接管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-15 09:00\n更新时间：2025-05-20 09:00\n版本号：v2.4\n文档类型：hr\n文档族：resignation\n生效日期：2025-05-20\n\n## 一、离职申请\n\n正式员工提前 30 日、试用期员工提前 3 日提交书面离职申请；关键岗位须提前 60 日。\n\n## 二、离职面谈\n\nHR 在收到申请后 3 个工作日内安排面谈，了解离职原因并记录改进建议；核心人才可启动挽留。\n\n## 三、工作交接\n\n交接内"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_legal_sales_contract_template",
+        "offset": 0,
+        "limit": 6000
+      },
+      "result": {
+        "doc_id": "lantu_legal_sales_contract_template",
+        "title": "澜图智能设备销售合同模板（2025版）",
+        "offset": 0,
+        "limit": 6000,
+        "total_chars": 521,
+        "text": "澜图智能设备销售合同模板（2025版）\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-10 09:00\n更新时间：2025-03-01 09:00\n版本号：v4.0\n文档类型：legal\n文档族：sales_contract_template\n生效日期：2025-03-01\n第一条 合同标的\n乙方向甲方购买澜图智能工业机器人及配套设备，具体型号、数量、单价以附件《供货清单》为准。\n第二条 合同价款与支付\n合同总价为含税价。预付款 30%，发货前支付至 60%，验收合格后 30 日内支付至 95%，剩余 5% 作为质保金于质保期满后支付。\n第三条 交付与验收\n标准产品交期 6-8 周，非标项目以项目计划为准。到货后 7 日内完成开箱验收，30 日内完成终验收。\n第四条 质量与质保\n质保期为验收合格之日起 24 个月或 6,000 小时，以先到者为准。质保期内非人为损坏由乙方免费维修或更换。\n第五条 违约责任\n乙方逾期交付的，每逾期一日按合同总额 0.5% 支付违约金，累计不超过 10%；甲方逾期付款的，按日万分之五支付违约金。\n第六条 争议解决\n因本合同引起的争议，双方协商解决；协商不成的，提交苏州仲裁委员会仲裁。",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "延保 延长保修 服务",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_support_warranty",
+            "title": "# 澜图智能产品保修政策",
+            "chunk": 0,
+            "score": 15.88,
+            "snippet": "# 澜图智能产品保修政策\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-01-01 09:00\n更新时间：2025-04-01 09:00\n版本号：v3.0\n文档类型：support\n文档族：warranty_policy\n生效日期：2025-04-01\n\n## 一、保修期限\n\n机器人本体保修 24 个月或 6,000 小时，以先到者为准；控制器保修 18 个月；易损件保修 6 个月。\n\n## 二、保修范围\n\n因产品设计、制造或材料缺陷导致的故障免费维修或更换；软件提供 12 个月免费升级。\n\n## 三、"
+          },
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 1,
+            "score": 5.838,
+            "snippet": "0 kg\t1.5 m/s\nLT-AMR-2000\t2,000 kg\t—\t±10 mm\t420 kg\t1.2 m/s\n[工作表] 交付与保修\n产品线\t标准交期\t保修期\t备件响应\nLT-R 系列\t6-8 周\t24 个月/6,000 小时\t48 小时\nLT-S 系列\t4 周\t24 个月/6,000 小时\t48 小时\nLT-AMR 系列\t8 周\t24 个月\t72 小时\nLT-V3D\t4 周\t12 个月\t72 小时"
+          },
+          {
+            "doc_id": "lantu_product_s_series",
+            "title": "# LT-S 系列 SCARA 机器人产品说明",
+            "chunk": 0,
+            "score": 4.759,
+            "snippet": "# LT-S 系列 SCARA 机器人产品说明\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-03-01 09:00\n更新时间：2025-09-12 11:00\n版本号：v3.2\n文档类型：product\n文档族：product_s_series\n生效日期：2025-09-12\n\n## 一、产品定位\n\nLT-S 系列 SCARA 机器人面向 3C 组装、光伏串焊、食品包装等高速取放场景，标准循环时间 0.38 秒。\n\n## 二、型号参数\n\nLT-S4 负载 4 kg、臂展 600 mm、重复精度 ±0.02 "
+          },
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 4.646,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能产品参数矩阵（2025）\n所属部门\t产品部\n作者\t孟凡\n创建时间\t2025-01-20 09:00\n更新时间\t2025-12-15 18:00\n版本号\tv2.0\n文档类型\tproduct\n文档族\tproduct_matrix\n生效日期\t2025-12-15\n[工作表] 六轴与SCARA\n型号\t负载\t臂展\t重复精度\t本体重量\t最大速度\nLT-R6\t6 kg\t1,450 mm\t±0.02 mm\t165 kg\t3.2 m/s\nLT-R12\t12 kg\t1,550 mm\t±0."
+          },
+          {
+            "doc_id": "lantu_meeting_supply_chain",
+            "title": "2025 年供应链韧性专题会纪要",
+            "chunk": 0,
+            "score": 4.247,
+            "snippet": "2025 年供应链韧性专题会纪要\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-10-16 09:00\n更新时间：2025-10-16 15:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_supply_chain\n生效日期：2025-10-16\n一、供应形势\n减速器交期由 8 周延长至 12 周，芯片交期 20 周；关键物料库存周转 92 天，高于目标 75 天。\n二、双源策略\n减速器已引入第二供应商，2026 年一季度实现 30% 替代；伺服驱动器自研比例提升至 61%。\n三"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2025",
+            "title": "# 澜图智能采购管理制度（2025版）",
+            "chunk": 0,
+            "score": 4.041,
+            "snippet": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付"
+          },
+          {
+            "doc_id": "lantu_support_system",
+            "title": "# 澜图智能客户服务体系白皮书",
+            "chunk": 0,
+            "score": 2.023,
+            "snippet": "# 澜图智能客户服务体系白皮书\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-03-01 09:00\n更新时间：2025-12-08 10:00\n版本号：v3.2\n文档类型：support\n文档族：service_system\n生效日期：2025-12-08\n\n## 一、服务网络\n\n公司在全国设有 68 个服务网点、12 个备件仓，覆盖 31 个省级行政区；海外设 3 个服务点。售后服务团队 412 人，认证工程师 286 人。\n\n## 二、服务内容\n\n提供安装调试、培训、预防性维护、故障维修、备件供应、"
+          },
+          {
+            "doc_id": "lantu_support_sla_2024",
+            "title": "# 澜图智能服务等级协议（SLA 2024版）",
+            "chunk": 0,
+            "score": 1.9,
+            "snippet": "# 澜图智能服务等级协议（SLA 2024版）\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v2.0\n文档类型：support\n文档族：service_sla\n生效日期：2024-01-01\n\n## 一、故障分级\n\nP1 为产线停机或安全风险；P2 为单机停机但产线可降级运行；P3 为一般故障或咨询。\n\n## 二、响应时效\n\nP1：2 小时内响应、24 小时内到场；P2：8 小时内响应、72 小时内到场；P3：24 小时内响应、"
+          },
+          {
+            "doc_id": "lantu_support_sla_2025",
+            "title": "# 澜图智能服务等级协议（SLA 2025版）",
+            "chunk": 0,
+            "score": 1.875,
+            "snippet": "# 澜图智能服务等级协议（SLA 2025版）\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2025-03-10 09:00\n更新时间：2025-04-01 09:00\n版本号：v3.0\n文档类型：support\n文档族：service_sla\n生效日期：2025-04-01\n\n## 一、故障分级\n\nP1 为产线停机或安全风险；P2 为单机停机但产线可降级运行；P3 为一般故障或咨询。\n\n## 二、响应时效\n\nP1：30 分钟内响应、12 小时内到场；P2：4 小时内响应、48 小时内到场；P3：12 小时内响应"
+          },
+          {
+            "doc_id": "lantu_support_field_service",
+            "title": "# 澜图智能现场服务与安装调试规范",
+            "chunk": 0,
+            "score": 1.845,
+            "snippet": "# 澜图智能现场服务与安装调试规范\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-04-01 09:00\n更新时间：2025-05-30 10:00\n版本号：v3.0\n文档类型：support\n文档族：field_service\n生效日期：2025-05-30\n\n## 一、安装调试\n\n设备到货后 3 个工作日内完成开箱验收，7 个工作日内完成安装，14 个工作日内完成调试与试运行。\n\n## 二、现场管理\n\n服务工程师须佩戴工牌、遵守客户安全规定、每日提交服务日报；涉及动火、高处作业须办理许可。\n\n## 三"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_warranty",
+        "offset": 0,
+        "limit": 6000
+      },
+      "result": {
+        "doc_id": "lantu_support_warranty",
+        "title": "# 澜图智能产品保修政策",
+        "offset": 0,
+        "limit": 6000,
+        "total_chars": 357,
+        "text": "# 澜图智能产品保修政策\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-01-01 09:00\n更新时间：2025-04-01 09:00\n版本号：v3.0\n文档类型：support\n文档族：warranty_policy\n生效日期：2025-04-01\n\n## 一、保修期限\n\n机器人本体保修 24 个月或 6,000 小时，以先到者为准；控制器保修 18 个月；易损件保修 6 个月。\n\n## 二、保修范围\n\n因产品设计、制造或材料缺陷导致的故障免费维修或更换；软件提供 12 个月免费升级。\n\n## 三、非保修情形\n\n人为损坏、超负荷使用、未经授权改装、自然灾害与未按要求保养的设备不在保修范围。\n\n## 四、延保服务\n\n客户可购买延保服务，费用为设备价格的 3%-5%/年，最长延保至 5 年。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_legal_sales_contract_template",
+      "lantu_support_warranty",
+      "lantu_product_matrix"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.34,
+    "number_recall": 1.0
+  }
+}

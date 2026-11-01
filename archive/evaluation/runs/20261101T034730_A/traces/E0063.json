@@ -1,0 +1,79 @@
+{
+  "qid": "E0063",
+  "question": "单笔 25,000 元的报销由谁审批？",
+  "question_type": "条件判断与边界",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>报销 审批 权限 金额</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 66,
+        "prompt_tokens": 359,
+        "total_tokens": 425,
+        "completion_tokens_details": {
+          "reasoning_tokens": 32
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.797
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>报销 审批 权限 金额</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 73,
+        "prompt_tokens": 430,
+        "total_tokens": 503,
+        "completion_tokens_details": {
+          "reasoning_tokens": 39
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.14
+    },
+    {
+      "round": 3,
+      "text": "{\"name\": \"search\", \"args\": {\"query\": \"报销 审批 权限 金额\", \"top_k\": 10}}",
+      "usage": {
+        "completion_tokens": 59,
+        "prompt_tokens": 501,
+        "total_tokens": 560,
+        "completion_tokens_details": {
+          "reasoning_tokens": 26
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.797
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "name": "search",
+    "args": {
+      "query": "报销 审批 权限 金额",
+      "top_k": 10
+    }
+  },
+  "status": "answered",
+  "tokens": 1488,
+  "started_at": "2026-11-01T04:47:04",
+  "elapsed_seconds": 6.73,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

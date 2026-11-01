@@ -1,0 +1,223 @@
+{
+  "qid": "M1521",
+  "question": "用户：恒芯动力那个叠片项目用了多少台机器人？合同金额多少？\n助手：12 条叠片线部署 186 台 LT-R20 与 24 台 AMR-1000，合同金额 2.16 亿元，叠片良率由 98.1% 提升至 99.3%。\n用户：那顺捷供应链的仓储拣选项目呢？用的什么型号、多少台、多少钱？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>顺捷供应链 仓储拣选</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list><parameter=keyword>顺捷</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 66,
+        "prompt_tokens": 449,
+        "total_tokens": 515,
+        "completion_tokens_details": {
+          "reasoning_tokens": 17
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 3.172
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"顺捷供应链 仓储拣选\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 40,
+        "prompt_tokens": 535,
+        "total_tokens": 575,
+        "completion_tokens_details": {
+          "reasoning_tokens": 13
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 1.391
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_case_09_shunjie\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 112,
+        "prompt_tokens": 2976,
+        "total_tokens": 3088,
+        "completion_tokens_details": {
+          "reasoning_tokens": 77
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.656
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"顺捷供应链仓储拣选项目（2024 年，广州）由澜图智能提供 320 台 LT-AMR-1000 移动机器人，配套 LT-C800 控制器、LT-V3D 视觉与 LantuTwin 数字孪生仿真，整线合同金额 8,600 万元。项目覆盖 12 万平方米智能仓，实际 5 个月完成交付；成效为拣选效率提升 52%、差错率降至 0.03%、夜间无人作业 8 小时，并通过客户验收。\",\"citations\":[\"lantu_case_09_shunjie\"],\"evidence\":[\"lantu_case_09_shunjie#片段0\"]}",
+      "usage": {
+        "completion_tokens": 228,
+        "prompt_tokens": 3529,
+        "total_tokens": 3757,
+        "completion_tokens_details": {
+          "reasoning_tokens": 50
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2944
+        }
+      },
+      "seconds": 5.594
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "顺捷供应链 仓储拣选",
+        "top_k": 10
+      },
+      "result_sha": "3859a5f1c84dcdf0921d221d71e02b1b807371314d8f1d43bdd8c1bb1f11e09f",
+      "result_chars": 3946,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_case_09_shunjie",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "b98425a2eaa73b56d90ae4d4affcf8ad5a885a1828969311049a92194e1a0a8e",
+      "result_chars": 797,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "顺捷供应链仓储拣选项目（2024 年，广州）由澜图智能提供 320 台 LT-AMR-1000 移动机器人，配套 LT-C800 控制器、LT-V3D 视觉与 LantuTwin 数字孪生仿真，整线合同金额 8,600 万元。项目覆盖 12 万平方米智能仓，实际 5 个月完成交付；成效为拣选效率提升 52%、差错率降至 0.03%、夜间无人作业 8 小时，并通过客户验收。",
+    "citations": [
+      "lantu_case_09_shunjie"
+    ],
+    "evidence": [
+      "lantu_case_09_shunjie#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 7935,
+  "started_at": "2026-11-01T06:15:49",
+  "elapsed_seconds": 12.81,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "顺捷供应链 仓储拣选",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_case_09_shunjie",
+            "title": "# 客户案例：顺捷供应链仓储拣选项目",
+            "chunk": 0,
+            "score": 32.908,
+            "snippet": "# 客户案例：顺捷供应链仓储拣选项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_shunjie\n生效日期：2024-12-20\n\n## 一、客户背景\n\n顺捷供应链位于广州，主营物流业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖1"
+          },
+          {
+            "doc_id": "lantu_sales_customer_list",
+            "title": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态",
+            "chunk": 0,
+            "score": 24.205,
+            "snippet": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态\n恒芯动力电池,动力电池,常州,电芯叠片与物流,\"21,600\",2025,已验收\n澜岳汽车零部件,汽车零部件,上海,白车身焊装,\"14,800\",2024,已验收\n曜阳光能,光伏,合肥,电池片串焊,\"9,800\",2025,已验收\n星禾电子,3C 电子,昆山,精密组装,\"12,500\",2024,已验收\n海翎家电,家电,顺德,喷涂与打磨,\"6,300\",2025,已验收\n晶拓微电子,半导体,无锡,晶圆搬运,\"7,400\",2025,已验收\n麦丰食品,食品,漯河"
+          },
+          {
+            "doc_id": "lantu_strategy_supply_chain_resilience",
+            "title": "# 澜图智能供应链韧性建设方案",
+            "chunk": 0,
+            "score": 6.28,
+            "snippet": "# 澜图智能供应链韧性建设方案\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-02-01 09:00\n更新时间：2025-09-30 16:00\n版本号：v1.5\n文档类型：strategy\n文档族：supply_chain_resilience\n生效日期：2025-09-30\n\n## 一、风险识别\n\n关键物料包括减速器、伺服电机、芯片与视觉相机，其中芯片与减速器存在单一来源风险。\n\n## 二、双源与备库\n\n减速器 2026 年实现 30% 第二来源；关键芯片备库 6 个月；通用物料安全库存 30 天。"
+          },
+          {
+            "doc_id": "lantu_meeting_supply_chain",
+            "title": "2025 年供应链韧性专题会纪要",
+            "chunk": 0,
+            "score": 6.022,
+            "snippet": "2025 年供应链韧性专题会纪要\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-10-16 09:00\n更新时间：2025-10-16 15:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_supply_chain\n生效日期：2025-10-16\n一、供应形势\n减速器交期由 8 周延长至 12 周，芯片交期 20 周；关键物料库存周转 92 天，高于目标 75 天。\n二、双源策略\n减速器已引入第二供应商，2026 年一季度实现 30% 替代；伺服驱动器自研比例提升至 61%。\n三"
+          },
+          {
+            "doc_id": "lantu_strategy_digital_transformation",
+            "title": "# 澜图智能数字化转型规划",
+            "chunk": 0,
+            "score": 5.131,
+            "snippet": "# 澜图智能数字化转型规划\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-08-01 09:00\n更新时间：2025-10-10 14:00\n版本号：v2.3\n文档类型：strategy\n文档族：digital_transformation\n生效日期：2025-10-10\n\n## 一、转型目标\n\n三年内实现研发、供应链、制造、销售与服务的全流程数字化，运营效率提升 20%。\n\n## 二、重点工程\n\nPLM 研发协同、SRM 供应链协同、MES 制造执行、CRM 客户经营与数据中台五大工程。\n\n## 三、技"
+          },
+          {
+            "doc_id": "lantu_legal_supplier_code",
+            "title": "# 澜图智能供应商行为准则",
+            "chunk": 0,
+            "score": 4.695,
+            "snippet": "# 澜图智能供应商行为准则\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-04-01 09:00\n更新时间：2025-05-01 09:00\n版本号：v2.0\n文档类型：legal\n文档族：supplier_code\n生效日期：2025-05-01\n\n## 一、劳工与人权\n\n供应商不得使用童工、强迫劳动，须保障结社自由与最低工资，工作时间符合当地法律。\n\n## 二、健康与安全\n\n供应商须提供安全的工作环境，配备必要的防护设施，定期开展安全培训与应急演练。\n\n## 三、环境要求\n\n供应商须遵守环保法规，优"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2024",
+            "title": "# 澜图智能采购管理制度（2024版）",
+            "chunk": 0,
+            "score": 4.68,
+            "snippet": "# 澜图智能采购管理制度（2024版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2024-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。\n\n## 二、付款账期\n\n标准供应商月结 60 天；预付款比例不超过 30%；质保金 5%-10%。\n\n## 三、供应商"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2025",
+            "title": "# 澜图智能采购管理制度（2025版）",
+            "chunk": 0,
+            "score": 4.63,
+            "snippet": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付"
+          },
+          {
+            "doc_id": "lantu_org_department_duties",
+            "title": "# 澜图智能一级部门职责与编制",
+            "chunk": 0,
+            "score": 4.599,
+            "snippet": "# 澜图智能一级部门职责与编制\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-10 09:00\n更新时间：2025-09-30 16:00\n版本号：v3.2\n文档类型：org\n文档族：department_duties\n生效日期：2025-09-30\n\n## 一、研发中心\n\n负责机器人本体、控制器、伺服、视觉与具身智能技术研发，编制 1,286 人，下设 5 个研究所与 1 个测试中心。\n\n## 二、销售中心与客户成功部\n\n销售中心负责区域销售与渠道管理，编制 620 人；客户成功部负责重点客户经"
+          },
+          {
+            "doc_id": "lantu_org_chart_2025",
+            "title": "# 澜图智能组织架构（2025版）",
+            "chunk": 0,
+            "score": 4.583,
+            "snippet": "# 澜图智能组织架构（2025版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-03-20 09:00\n更新时间：2025-04-10 10:00\n版本号：v2.0\n文档类型：org\n文档族：org_chart\n生效日期：2025-04-01\n\n## 一、一级部门\n\n2025 年 4 月起公司设 12 个一级部门：研发中心、产品部、销售中心、客户成功部、供应链中心、制造中心、质量部、财务部、人力资源部、法务合规部、信息技术部、售后服务部。售后服务部由销售中心下属部门升级为一级部门。\n\n## 二、研发体"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_case_09_shunjie",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_case_09_shunjie",
+        "title": "# 客户案例：顺捷供应链仓储拣选项目",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 617,
+        "text": "# 客户案例：顺捷供应链仓储拣选项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_shunjie\n生效日期：2024-12-20\n\n## 一、客户背景\n\n顺捷供应链位于广州，主营物流业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖12 万平方米智能仓，要求 6 个月内完成交付。\n\n## 三、方案配置\n\n澜图智能提供 320 台 LT-AMR-1000 移动机器人，配套 LT-C800 控制器、LT-V3D 视觉与 LantuTwin 数字孪生仿真，整线合同金额 8,600 万元。\n\n## 四、实施过程\n\n项目由客户成功部牵头，联合研发、制造、质量与售后服务部组成 26 人项目组。完成现场勘测、虚拟调试、设备安装与 72 小时连续试运行，实际交付周期 5 个月。\n\n## 五、成效数据\n\n拣选效率提升 52%，差错率降至 0.03%，夜间无人作业 8 小时。项目通过客户验收，并获得客户年度优秀供应商提名。\n\n## 六、客户评价\n\n顺捷供应链运营总监 黄维表示：“澜图团队响应及时，方案在节拍与稳定性上达到预期，后续产线扩产将继续合作。”\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.333,
+    "cited": [
+      "lantu_case_09_shunjie"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.389,
+    "number_recall": 1.0
+  }
+}

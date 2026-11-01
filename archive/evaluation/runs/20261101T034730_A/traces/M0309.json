@@ -1,0 +1,142 @@
+{
+  "qid": "M0309",
+  "question": "我们给供应商的付款账期怎么算？预付款最多能付多少比例？",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>供应商付款账期</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=search><parameter=query>预付款比例</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 74,
+        "prompt_tokens": 360,
+        "total_tokens": 434,
+        "completion_tokens_details": {
+          "reasoning_tokens": 19
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.344
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=TOOL><parameter=name>search</parameter><parameter=args>{\"query\":\"供应商付款账期\", \"top_k\":10}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 101,
+        "prompt_tokens": 452,
+        "total_tokens": 553,
+        "completion_tokens_details": {
+          "reasoning_tokens": 63
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.562
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>供应商付款账期 预付款比例</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 39,
+        "prompt_tokens": 527,
+        "total_tokens": 566,
+        "completion_tokens_details": {
+          "reasoning_tokens": 5
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.844
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>供应商付款账期 预付款比例</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 39,
+        "prompt_tokens": 598,
+        "total_tokens": 637,
+        "completion_tokens_details": {
+          "reasoning_tokens": 5
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.219
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>供应商付款账期预付款比例</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 669,
+        "total_tokens": 719,
+        "completion_tokens_details": {
+          "reasoning_tokens": 18
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 1.25
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>供应商付款账期预付款比例</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 59,
+        "prompt_tokens": 738,
+        "total_tokens": 797,
+        "completion_tokens_details": {
+          "reasoning_tokens": 27
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 1.672
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corporate_corpus_or_query_failed\",\"answer\":\"未能成功检索到相关制度文件（多次检索调用均因格式问题未返回结果），因此无法确认付款账期的计算方式与预付款比例上限。建议：1) 明确是哪类采购（货物/服务/工程）、合同类型及供应商等级，不同类别账期与预付上限通常不同；2) 直接查阅公司《采购与付款管理制度》《合同管理办法》或联系财务/采购部门获取最新版条款。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 185,
+        "prompt_tokens": 804,
+        "total_tokens": 989,
+        "completion_tokens_details": {
+          "reasoning_tokens": 60
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 5.922
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corporate_corpus_or_query_failed",
+    "answer": "未能成功检索到相关制度文件（多次检索调用均因格式问题未返回结果），因此无法确认付款账期的计算方式与预付款比例上限。建议：1) 明确是哪类采购（货物/服务/工程）、合同类型及供应商等级，不同类别账期与预付上限通常不同；2) 直接查阅公司《采购与付款管理制度》《合同管理办法》或联系财务/采购部门获取最新版条款。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4695,
+  "started_at": "2026-11-01T05:53:00",
+  "elapsed_seconds": 17.81,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.024,
+    "number_recall": 0.0
+  }
+}

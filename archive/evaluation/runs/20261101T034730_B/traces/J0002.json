@@ -1,0 +1,166 @@
+{
+  "qid": "J0002",
+  "question": "董事会决议的利润分配方案具体是多少？它对应的是哪个年度？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"董事会决议 利润分配\",\"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 363,
+        "total_tokens": 498,
+        "completion_tokens": 135,
+        "completion_tokens_details": {
+          "reasoning_tokens": 109,
+          "text_tokens": 135
+        }
+      },
+      "seconds": 1.641
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_meeting_board\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 1569,
+        "total_tokens": 2105,
+        "completion_tokens": 536,
+        "completion_tokens_details": {
+          "reasoning_tokens": 502,
+          "text_tokens": 536
+        }
+      },
+      "seconds": 5.0
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"董事会决议的利润分配方案对应的是 **2024 年度**。具体方案为：**每 10 股派发现金红利 3.0 元（含税）**，合计派现 **1.26 亿元**，占 2024 年归母净利润的 38.7%。\",\"citations\":[\"lantu_meeting_board\"],\"evidence\":[\"lantu_meeting_board\"]}",
+      "usage": {
+        "prompt_tokens": 2005,
+        "total_tokens": 3241,
+        "completion_tokens": 1236,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1134,
+          "text_tokens": 1236
+        }
+      },
+      "seconds": 10.656
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "董事会决议 利润分配",
+        "top_k": 5
+      },
+      "result_sha": "46a131be03d67f548cd49cdc1578fa1943b6cdf0154c124043dc7781062db4f7",
+      "result_chars": 1930,
+      "hits": 5
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_meeting_board",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "5a536b896e28dfdc5fc7a039577552044e472337f7770f2d694166004852b55c",
+      "result_chars": 617,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "董事会决议的利润分配方案对应的是 **2024 年度**。具体方案为：**每 10 股派发现金红利 3.0 元（含税）**，合计派现 **1.26 亿元**，占 2024 年归母净利润的 38.7%。",
+    "citations": [
+      "lantu_meeting_board"
+    ],
+    "evidence": [
+      "lantu_meeting_board"
+    ]
+  },
+  "status": "answered",
+  "tokens": 5844,
+  "started_at": "2026-11-01T05:34:21",
+  "elapsed_seconds": 17.3,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "董事会决议 利润分配",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_meeting_board",
+            "title": "# 2025 年第二次临时董事会决议",
+            "chunk": 0,
+            "score": 34.439,
+            "snippet": "# 2025 年第二次临时董事会决议\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-04-25 09:00\n更新时间：2025-04-25 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_board_2025\n生效日期：2025-04-25\n\n## 一、会议信息\n\n时间：2025 年 4 月 25 日；方式：现场加视频；应到董事 9 人，实到 9 人；列席：高管团队。\n\n## 二、审议事项\n\n审议通过《2024 年度利润分配方案》《2025 年度研发投入预算》《苏州二期"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2025",
+            "title": "澜图智能 2025 年度报告摘要",
+            "chunk": 0,
+            "score": 11.071,
+            "snippet": "澜图智能 2025 年度报告摘要\n所属部门：财务部\n作者：周敏仪\n创建时间：2026-01-20 09:00\n更新时间：2026-01-28 18:00\n版本号：v1.0\n文档类型：finance\n文档族：annual_report_2025\n生效日期：2026-01-28\n一、经营概况\n2025 年公司实现营业收入 42.63 亿元，同比增长 19.1%；归属于母公司股东的净利润 4.12\n亿元，同比增长 26.4%；基本每股收益 0.98 元。\n二、收入结构\n机器人本体收入 19.84 亿元（46.5%），智能"
+          },
+          {
+            "doc_id": "lantu_org_board",
+            "title": "# 澜图智能董事会与治理结构",
+            "chunk": 0,
+            "score": 9.006,
+            "snippet": "# 澜图智能董事会与治理结构\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2023-09-01 09:00\n更新时间：2025-06-20 14:00\n版本号：v3.0\n文档类型：org\n文档族：board_structure\n生效日期：2025-06-20\n\n## 一、董事会构成\n\n董事会由 9 名董事组成，其中独立董事 3 名，职工董事 1 名。董事长顾承澜，副董事长由机构股东提名。\n\n## 二、专门委员会\n\n董事会下设战略委员会、审计委员会、薪酬与考核委员会、提名委员会。审计委员会主任由独立董事担任，负"
+          },
+          {
+            "doc_id": "lantu_org_executives",
+            "title": "# 澜图智能高级管理人员名单",
+            "chunk": 0,
+            "score": 8.156,
+            "snippet": "# 澜图智能高级管理人员名单\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2024-03-01 09:00\n更新时间：2025-11-28 17:00\n版本号：v4.0\n文档类型：org\n文档族：executives\n生效日期：2025-11-28\n\n## 一、核心管理层\n\n顾承澜，董事长兼总经理，1968 年生，教授级高级工程师，持股 18.6%；沈亦舟，CTO，负责研发体系；周敏仪，CFO，负责财务与资本运作；韩立恒，COO，负责供应链与制造。\n\n## 二、业务分管\n\n罗嘉树，销售副总裁，分管销售中心、客"
+          },
+          {
+            "doc_id": "lantu_investor_overview",
+            "title": "# 澜图智能投资者关系概览",
+            "chunk": 0,
+            "score": 7.352,
+            "snippet": "# 澜图智能投资者关系概览\n\n所属部门：董事会办公室\n作者：周敏仪\n创建时间：2024-03-20 09:00\n更新时间：2026-01-10 17:00\n版本号：v4.1\n文档类型：company\n文档族：investor_overview\n生效日期：2026-01-10\n\n## 一、基本信息\n\n公司股票代码 688719，总股本 4.2 亿股，2025 年末总市值约 168 亿元。2025 年度拟每 10 股派发现金红利 3.2 元（含税）。\n\n## 二、经营数据\n\n2025 年营业收入 42.63 亿元，归母"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_meeting_board",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_meeting_board",
+        "title": "# 2025 年第二次临时董事会决议",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 443,
+        "text": "# 2025 年第二次临时董事会决议\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-04-25 09:00\n更新时间：2025-04-25 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_board_2025\n生效日期：2025-04-25\n\n## 一、会议信息\n\n时间：2025 年 4 月 25 日；方式：现场加视频；应到董事 9 人，实到 9 人；列席：高管团队。\n\n## 二、审议事项\n\n审议通过《2024 年度利润分配方案》《2025 年度研发投入预算》《苏州二期扩产项目议案》。\n\n## 三、利润分配\n\n每 10 股派发现金红利 3.0 元（含税），合计派现 1.26 亿元，占 2024 年归母净利润 38.7%。\n\n## 四、扩产项目\n\n苏州二期投资 3.8 亿元，新增年产能 6,000 台，预计 2026 年四季度投产。\n\n## 五、风险提示\n\n董事会要求管理层关注行业周期与应收账款风险，每季度报告经营与现金流情况。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.333,
+    "cited": [
+      "lantu_meeting_board"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.337,
+    "number_recall": 0.5
+  }
+}

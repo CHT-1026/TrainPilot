@@ -1,0 +1,353 @@
+{
+  "qid": "M0315",
+  "question": "我们怎么审供应商？查出问题后多久要整改？",
+  "question_type": "事实检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"供应商审核 整改\", \"top_k\":10}}",
+      "usage": {
+        "prompt_tokens": 361,
+        "total_tokens": 458,
+        "completion_tokens": 97,
+        "completion_tokens_details": {
+          "reasoning_tokens": 69,
+          "text_tokens": 97
+        }
+      },
+      "seconds": 1.141
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"供应商审核流程 整改期限\", \"top_k\":10}}",
+      "usage": {
+        "prompt_tokens": 2688,
+        "total_tokens": 2967,
+        "completion_tokens": 279,
+        "completion_tokens_details": {
+          "reasoning_tokens": 249,
+          "text_tokens": 279
+        }
+      },
+      "seconds": 2.406
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\": \"lantu_policy_purchase_2025\", \"offset\": 0, \"limit\": 4000}}",
+      "usage": {
+        "prompt_tokens": 4988,
+        "total_tokens": 5381,
+        "completion_tokens": 393,
+        "completion_tokens_details": {
+          "reasoning_tokens": 350,
+          "text_tokens": 393
+        }
+      },
+      "seconds": 3.484
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\": \"lantu_legal_supplier_code\", \"offset\": 0, \"limit\": 4000}}",
+      "usage": {
+        "prompt_tokens": 5440,
+        "total_tokens": 5794,
+        "completion_tokens": 354,
+        "completion_tokens_details": {
+          "reasoning_tokens": 315,
+          "text_tokens": 354
+        }
+      },
+      "seconds": 2.875
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"供应商审核及整改要求如下：\\n\\n1. **审核方式**：\\n   - **准入审核**：新供应商须通过资质审查、现场审核以及小批量试用。\\n   - **定期审核**：澜图智能每年对战略供应商开展一次现场审核。\\n\\n2. **整改期限**：\\n   - 审核中发现的不符合项，须在 **90 天内**完成整改；若存在严重违规，将终止合作。\",\"citations\":[\"lantu_policy_purchase_2025\", \"lantu_legal_supplier_code\"], \"evidence\":[\"lantu_policy_purchase_2025#0\", \"lantu_legal_supplier_code#0\"]}",
+      "usage": {
+        "prompt_tokens": 5812,
+        "total_tokens": 6352,
+        "completion_tokens": 540,
+        "completion_tokens_details": {
+          "reasoning_tokens": 380,
+          "text_tokens": 540
+        }
+      },
+      "seconds": 3.86
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "供应商审核 整改",
+        "top_k": 10
+      },
+      "result_sha": "f6513ede1c0b867e1b2ce15cddb8849da2d140601dd901059c4a68a9fe734bc7",
+      "result_chars": 3910,
+      "hits": 10
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "供应商审核流程 整改期限",
+        "top_k": 10
+      },
+      "result_sha": "6d48171cc941a4a26519b30b2a9cfd7bdf1c8947540dd778e62889510620af00",
+      "result_chars": 3920,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_purchase_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "a43282daf04801f0f16f7d64d197206dfa10185ee100b1a3054935cc73749d1f",
+      "result_chars": 635,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_legal_supplier_code",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "fee223a708282e89b9959294793eda2149e8c78f0aed2efe247a531f79bcb0f7",
+      "result_chars": 574,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "供应商审核及整改要求如下：\n\n1. **审核方式**：\n   - **准入审核**：新供应商须通过资质审查、现场审核以及小批量试用。\n   - **定期审核**：澜图智能每年对战略供应商开展一次现场审核。\n\n2. **整改期限**：\n   - 审核中发现的不符合项，须在 **90 天内**完成整改；若存在严重违规，将终止合作。",
+    "citations": [
+      "lantu_policy_purchase_2025",
+      "lantu_legal_supplier_code"
+    ],
+    "evidence": [
+      "lantu_policy_purchase_2025#0",
+      "lantu_legal_supplier_code#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 20952,
+  "started_at": "2026-11-01T06:28:04",
+  "elapsed_seconds": 13.77,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "供应商审核 整改",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_legal_supplier_code",
+            "title": "# 澜图智能供应商行为准则",
+            "chunk": 0,
+            "score": 12.976,
+            "snippet": "# 澜图智能供应商行为准则\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-04-01 09:00\n更新时间：2025-05-01 09:00\n版本号：v2.0\n文档类型：legal\n文档族：supplier_code\n生效日期：2025-05-01\n\n## 一、劳工与人权\n\n供应商不得使用童工、强迫劳动，须保障结社自由与最低工资，工作时间符合当地法律。\n\n## 二、健康与安全\n\n供应商须提供安全的工作环境，配备必要的防护设施，定期开展安全培训与应急演练。\n\n## 三、环境要求\n\n供应商须遵守环保法规，优"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2025",
+            "title": "# 澜图智能采购管理制度（2025版）",
+            "chunk": 0,
+            "score": 11.641,
+            "snippet": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付"
+          },
+          {
+            "doc_id": "lantu_strategy_quality_system",
+            "title": "澜图智能质量管理体系手册",
+            "chunk": 0,
+            "score": 10.361,
+            "snippet": "澜图智能质量管理体系手册\n所属部门：质量部\n作者：潘文博\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v4.2\n文档类型：strategy\n文档族：quality_system\n生效日期：2025-06-01\n一、质量方针\n以客户为中心，以零缺陷为目标，持续改进，追求卓越。公司通过 ISO 9001、IATF 16949 与 ISO 13485\n认证。\n二、质量目标\n2025 年一次交检合格率不低于 98.5%，客户投诉不超过 6 起，MTBF 不低于 12,00"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2024",
+            "title": "# 澜图智能采购管理制度（2024版）",
+            "chunk": 0,
+            "score": 8.426,
+            "snippet": "# 澜图智能采购管理制度（2024版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2024-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。\n\n## 二、付款账期\n\n标准供应商月结 60 天；预付款比例不超过 30%；质保金 5%-10%。\n\n## 三、供应商"
+          },
+          {
+            "doc_id": "lantu_meeting_supply_chain",
+            "title": "2025 年供应链韧性专题会纪要",
+            "chunk": 0,
+            "score": 5.417,
+            "snippet": "2025 年供应链韧性专题会纪要\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-10-16 09:00\n更新时间：2025-10-16 15:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_supply_chain\n生效日期：2025-10-16\n一、供应形势\n减速器交期由 8 周延长至 12 周，芯片交期 20 周；关键物料库存周转 92 天，高于目标 75 天。\n二、双源策略\n减速器已引入第二供应商，2026 年一季度实现 30% 替代；伺服驱动器自研比例提升至 61%。\n三"
+          },
+          {
+            "doc_id": "lantu_strategy_supply_chain_resilience",
+            "title": "# 澜图智能供应链韧性建设方案",
+            "chunk": 0,
+            "score": 5.1,
+            "snippet": "# 澜图智能供应链韧性建设方案\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-02-01 09:00\n更新时间：2025-09-30 16:00\n版本号：v1.5\n文档类型：strategy\n文档族：supply_chain_resilience\n生效日期：2025-09-30\n\n## 一、风险识别\n\n关键物料包括减速器、伺服电机、芯片与视觉相机，其中芯片与减速器存在单一来源风险。\n\n## 二、双源与备库\n\n减速器 2026 年实现 30% 第二来源；关键芯片备库 6 个月；通用物料安全库存 30 天。"
+          },
+          {
+            "doc_id": "lantu_company_campus",
+            "title": "# 澜图智能制造基地与产能布局",
+            "chunk": 0,
+            "score": 4.569,
+            "snippet": "# 澜图智能制造基地与产能布局\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2024-04-12 09:00\n更新时间：2025-11-20 15:00\n版本号：v3.0\n文档类型：company\n文档族：manufacturing_base\n生效日期：2025-11-20\n\n## 一、苏州总部基地\n\n位于苏州工业园区，占地 120 亩，建筑面积 9.6 万平方米，承担六轴机器人总装、控制器生产与研发测试，年产能 18,000 台。\n\n## 二、东莞华南基地\n\n位于东莞松山湖，占地 60 亩，聚焦 SCARA、A"
+          },
+          {
+            "doc_id": "lantu_meeting_quality",
+            "title": "2025 年第三季度质量专题会纪要",
+            "chunk": 0,
+            "score": 4.25,
+            "snippet": "2025 年第三季度质量专题会纪要\n所属部门：质量部\n作者：潘文博\n创建时间：2025-07-22 09:00\n更新时间：2025-07-22 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_quality_q3\n生效日期：2025-07-22\n一、质量数据\n上半年一次交检合格率 98.4%，客户投诉 1 起；第三季度首月投诉 1 起，为 LT-R12 线束磨损问题。\n二、问题分析\n线束磨损源于走线路径与防护套选型不当，涉及 2025 年 3 月生产的 120 台 LT-R12，已启"
+          },
+          {
+            "doc_id": "lantu_case_09_shunjie",
+            "title": "# 客户案例：顺捷供应链仓储拣选项目",
+            "chunk": 0,
+            "score": 3.666,
+            "snippet": "# 客户案例：顺捷供应链仓储拣选项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_shunjie\n生效日期：2024-12-20\n\n## 一、客户背景\n\n顺捷供应链位于广州，主营物流业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖1"
+          },
+          {
+            "doc_id": "lantu_meeting_product_review",
+            "title": "LT-R20 Pro 产品评审会纪要",
+            "chunk": 0,
+            "score": 3.516,
+            "snippet": "LT-R20 Pro 产品评审会纪要\n所属部门：产品部\n作者：孟凡\n创建时间：2025-08-18 09:00\n更新时间：2025-08-18 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_product_review\n生效日期：2025-08-18\n一、会议信息\n时间：2025 年 8 月 18 日；主持：沈亦舟；参会：产品部、研发中心、质量部、销售中心、售后服务部。\n二、评审结论\nLT-R20 Pro 通过概念与计划阶段评审，进入开发阶段。目标负载 22 kg、臂展 1,750"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "供应商审核流程 整改期限",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_legal_supplier_code",
+            "title": "# 澜图智能供应商行为准则",
+            "chunk": 0,
+            "score": 12.976,
+            "snippet": "# 澜图智能供应商行为准则\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-04-01 09:00\n更新时间：2025-05-01 09:00\n版本号：v2.0\n文档类型：legal\n文档族：supplier_code\n生效日期：2025-05-01\n\n## 一、劳工与人权\n\n供应商不得使用童工、强迫劳动，须保障结社自由与最低工资，工作时间符合当地法律。\n\n## 二、健康与安全\n\n供应商须提供安全的工作环境，配备必要的防护设施，定期开展安全培训与应急演练。\n\n## 三、环境要求\n\n供应商须遵守环保法规，优"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2025",
+            "title": "# 澜图智能采购管理制度（2025版）",
+            "chunk": 0,
+            "score": 11.641,
+            "snippet": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付"
+          },
+          {
+            "doc_id": "lantu_strategy_quality_system",
+            "title": "澜图智能质量管理体系手册",
+            "chunk": 0,
+            "score": 10.361,
+            "snippet": "澜图智能质量管理体系手册\n所属部门：质量部\n作者：潘文博\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v4.2\n文档类型：strategy\n文档族：quality_system\n生效日期：2025-06-01\n一、质量方针\n以客户为中心，以零缺陷为目标，持续改进，追求卓越。公司通过 ISO 9001、IATF 16949 与 ISO 13485\n认证。\n二、质量目标\n2025 年一次交检合格率不低于 98.5%，客户投诉不超过 6 起，MTBF 不低于 12,00"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2024",
+            "title": "# 澜图智能采购管理制度（2024版）",
+            "chunk": 0,
+            "score": 8.426,
+            "snippet": "# 澜图智能采购管理制度（2024版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2024-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。\n\n## 二、付款账期\n\n标准供应商月结 60 天；预付款比例不超过 30%；质保金 5%-10%。\n\n## 三、供应商"
+          },
+          {
+            "doc_id": "lantu_hr_job_grades",
+            "title": "# 澜图智能职级体系与晋升规则",
+            "chunk": 0,
+            "score": 5.875,
+            "snippet": "# 澜图智能职级体系与晋升规则\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-03-01 09:00\n更新时间：2025-03-01 09:00\n版本号：v3.0\n文档类型：hr\n文档族：job_grades\n生效日期：2025-03-01\n\n## 一、职级序列\n\n设管理序列（M1-M5）、专业序列（P1-P7）与技能序列（T1-T5）。研发、产品、销售、职能分别对应不同通道。\n\n## 二、晋升条件\n\n晋升需满足当前职级任职满 2 年、连续两次绩效 A 及以上、通过晋升评审；破格晋升须总经理审批。\n\n#"
+          },
+          {
+            "doc_id": "lantu_policy_contract",
+            "title": "# 澜图智能合同管理制度",
+            "chunk": 0,
+            "score": 5.818,
+            "snippet": "# 澜图智能合同管理制度\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-02-01 09:00\n更新时间：2025-05-12 15:00\n版本号：v3.0\n文档类型：policy\n文档族：contract_management\n生效日期：2025-05-12\n\n## 一、合同分类\n\n合同分为销售合同、采购合同、服务合同、保密协议、租赁合同与劳动合同。销售与采购合同须使用公司标准模板，非标条款须法务审核。\n\n## 二、审批权限\n\n合同金额 1,000 万元以上须法务合规部与 CFO 联合审批；5,000 "
+          },
+          {
+            "doc_id": "lantu_meeting_supply_chain",
+            "title": "2025 年供应链韧性专题会纪要",
+            "chunk": 0,
+            "score": 5.417,
+            "snippet": "2025 年供应链韧性专题会纪要\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-10-16 09:00\n更新时间：2025-10-16 15:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_supply_chain\n生效日期：2025-10-16\n一、供应形势\n减速器交期由 8 周延长至 12 周，芯片交期 20 周；关键物料库存周转 92 天，高于目标 75 天。\n二、双源策略\n减速器已引入第二供应商，2026 年一季度实现 30% 替代；伺服驱动器自研比例提升至 61%。\n三"
+          },
+          {
+            "doc_id": "lantu_legal_nda_template",
+            "title": "澜图智能保密协议模板（NDA）",
+            "chunk": 0,
+            "score": 5.406,
+            "snippet": "澜图智能保密协议模板（NDA）\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-10 09:00\n更新时间：2025-02-01 09:00\n版本号：v3.0\n文档类型：legal\n文档族：nda_template\n生效日期：2025-02-01\n第一条 保密信息\n保密信息包括技术资料、图纸、源代码、算法、客户信息、报价、成本与未公开财务数据。\n第二条 保密义务\n接收方仅可为合作目的使用保密信息，不得披露给第三方；接触人员须签署个人保密承诺。\n第三条 保密期限\n本协议保密期限为签署之日起 3 年，商业秘"
+          },
+          {
+            "doc_id": "lantu_strategy_supply_chain_resilience",
+            "title": "# 澜图智能供应链韧性建设方案",
+            "chunk": 0,
+            "score": 5.1,
+            "snippet": "# 澜图智能供应链韧性建设方案\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-02-01 09:00\n更新时间：2025-09-30 16:00\n版本号：v1.5\n文档类型：strategy\n文档族：supply_chain_resilience\n生效日期：2025-09-30\n\n## 一、风险识别\n\n关键物料包括减速器、伺服电机、芯片与视觉相机，其中芯片与减速器存在单一来源风险。\n\n## 二、双源与备库\n\n减速器 2026 年实现 30% 第二来源；关键芯片备库 6 个月；通用物料安全库存 30 天。"
+          },
+          {
+            "doc_id": "lantu_strategy_digital_transformation",
+            "title": "# 澜图智能数字化转型规划",
+            "chunk": 0,
+            "score": 4.819,
+            "snippet": "# 澜图智能数字化转型规划\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-08-01 09:00\n更新时间：2025-10-10 14:00\n版本号：v2.3\n文档类型：strategy\n文档族：digital_transformation\n生效日期：2025-10-10\n\n## 一、转型目标\n\n三年内实现研发、供应链、制造、销售与服务的全流程数字化，运营效率提升 20%。\n\n## 二、重点工程\n\nPLM 研发协同、SRM 供应链协同、MES 制造执行、CRM 客户经营与数据中台五大工程。\n\n## 三、技"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_purchase_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_purchase_2025",
+        "title": "# 澜图智能采购管理制度（2025版）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 453,
+        "text": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付款比例不超过 20%；质保金 5%-10%。\n\n## 三、供应商准入\n\n供应商须通过资质审查、现场审核与小批量试用，签署质量协议、廉洁协议与数据安全协议。\n\n## 四、库存与交付\n\n关键物料安全库存 45 天，通用物料 30 天；供应商交付准时率目标 96%，年度考核末位 5% 启动整改。\n\n## 五、生效说明\n\n本制度自 2025 年 1 月 1 日起生效，2024 版同时废止。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_legal_supplier_code",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_legal_supplier_code",
+        "title": "# 澜图智能供应商行为准则",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 399,
+        "text": "# 澜图智能供应商行为准则\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-04-01 09:00\n更新时间：2025-05-01 09:00\n版本号：v2.0\n文档类型：legal\n文档族：supplier_code\n生效日期：2025-05-01\n\n## 一、劳工与人权\n\n供应商不得使用童工、强迫劳动，须保障结社自由与最低工资，工作时间符合当地法律。\n\n## 二、健康与安全\n\n供应商须提供安全的工作环境，配备必要的防护设施，定期开展安全培训与应急演练。\n\n## 三、环境要求\n\n供应商须遵守环保法规，优先使用可回收材料，限制有害物质，鼓励通过 ISO 14001 认证。\n\n## 四、商业道德\n\n禁止贿赂、腐败、欺诈与利益冲突；供应商须签署廉洁协议并配合审计。\n\n## 五、监督与整改\n\n澜图智能每年对战略供应商开展一次现场审核，不符合项须在 90 天内整改，严重违规终止合作。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_policy_purchase_2025",
+      "lantu_legal_supplier_code"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.267,
+    "number_recall": 0.0
+  }
+}

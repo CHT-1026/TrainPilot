@@ -1,0 +1,247 @@
+{
+  "qid": "H0020",
+  "question": "产品保修政策与 2025 版销售合同模板在机器人本体质保期上的表述是否完全一致？",
+  "question_type": "矛盾与例外识别",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"机器人本体质保期\",\"top_k\":10}}",
+      "usage": {
+        "prompt_tokens": 375,
+        "total_tokens": 888,
+        "completion_tokens": 513,
+        "completion_tokens_details": {
+          "reasoning_tokens": 485,
+          "text_tokens": 513
+        }
+      },
+      "seconds": 4.594
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_legal_sales_contract_template\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 2809,
+        "total_tokens": 3164,
+        "completion_tokens": 355,
+        "completion_tokens_details": {
+          "reasoning_tokens": 320,
+          "text_tokens": 355
+        }
+      },
+      "seconds": 2.875
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_support_warranty\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 3267,
+        "total_tokens": 4231,
+        "completion_tokens": 964,
+        "completion_tokens_details": {
+          "reasoning_tokens": 930,
+          "text_tokens": 964
+        }
+      },
+      "seconds": 7.609
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"是，两者在机器人本体质保期上的表述完全一致。根据《澜图智能设备销售合同模板（2025版）》第四条及《澜图智能产品保修政策》第一条的规定，机器人本体的质保期/保修期均为“24 个月或 6,000 小时，以先到者为准”。\",\"citations\":[\"lantu_legal_sales_contract_template\",\"lantu_support_warranty\"],\"evidence\":[\"lantu_legal_sales_contract_template#第四条\",\"lantu_support_warranty#一、保修期限\"]}",
+      "usage": {
+        "prompt_tokens": 3624,
+        "total_tokens": 4071,
+        "completion_tokens": 447,
+        "completion_tokens_details": {
+          "reasoning_tokens": 319,
+          "text_tokens": 447
+        }
+      },
+      "seconds": 3.297
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "机器人本体质保期",
+        "top_k": 10
+      },
+      "result_sha": "6642833242fb7be32d7ea2b429cfcfd5b30f5a138586f8a90975177d31387c10",
+      "result_chars": 3911,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_legal_sales_contract_template",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "ab9b3a40ef5e5e9fb3761d83f8a7220dc9e0376a25d4ec50cefaa0b39cb51205",
+      "result_chars": 702,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_warranty",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "1b5e0dc8bfbe2b053d375fb23edb099f132efe7a3681b9301e7b530f945bd884",
+      "result_chars": 524,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "是，两者在机器人本体质保期上的表述完全一致。根据《澜图智能设备销售合同模板（2025版）》第四条及《澜图智能产品保修政策》第一条的规定，机器人本体的质保期/保修期均为“24 个月或 6,000 小时，以先到者为准”。",
+    "citations": [
+      "lantu_legal_sales_contract_template",
+      "lantu_support_warranty"
+    ],
+    "evidence": [
+      "lantu_legal_sales_contract_template#第四条",
+      "lantu_support_warranty#一、保修期限"
+    ]
+  },
+  "status": "answered",
+  "tokens": 12354,
+  "started_at": "2026-11-01T05:16:33",
+  "elapsed_seconds": 18.38,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "机器人本体质保期",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_legal_sales_contract_template",
+            "title": "澜图智能设备销售合同模板（2025版）",
+            "chunk": 0,
+            "score": 11.692,
+            "snippet": "澜图智能设备销售合同模板（2025版）\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-10 09:00\n更新时间：2025-03-01 09:00\n版本号：v4.0\n文档类型：legal\n文档族：sales_contract_template\n生效日期：2025-03-01\n第一条 合同标的\n乙方向甲方购买澜图智能工业机器人及配套设备，具体型号、数量、单价以附件《供货清单》为准。\n第二条 合同价款与支付\n合同总价为含税价。预付款 30%，发货前支付至 60%，验收合格后 30 日内支付至 95%，剩余"
+          },
+          {
+            "doc_id": "lantu_support_spare_parts_price",
+            "title": "﻿适配机型,备件名称,单价（元）,发货时效,质保期",
+            "chunk": 0,
+            "score": 9.865,
+            "snippet": "﻿适配机型,备件名称,单价（元）,发货时效,质保期\nLT-R20,减速器 RV-40E,\"12,800\",48 小时,12 个月\nLT-R20,伺服驱动器 LT-D4,\"8,600\",48 小时,18 个月\nLT-R20,示教器 LT-Pad3,\"5,200\",48 小时,12 个月\nLT-R12,减速器 RV-20E,\"7,900\",48 小时,12 个月\nLT-R12,伺服电机 750W,\"3,600\",48 小时,18 个月\nLT-R6,谐波减速器 CSF-17,\"6,400\",72 小时,12 个月\nLT-"
+          },
+          {
+            "doc_id": "lantu_finance_gross_margin",
+            "title": "# 澜图智能毛利率与成本结构分析",
+            "chunk": 0,
+            "score": 9.724,
+            "snippet": "# 澜图智能毛利率与成本结构分析\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-11-15 09:00\n更新时间：2025-11-20 17:00\n版本号：v1.2\n文档类型：finance\n文档族：gross_margin_analysis\n生效日期：2025-11-20\n\n## 一、整体毛利率\n\n2025 年综合毛利率 31.6%，较 2024 年提升 1.2 个百分点。机器人本体毛利率 34.8%，智能产线 26.2%，软件与服务 52.4%。\n\n## 二、成本构成\n\n直接材料占营业成本 68.4%，"
+          },
+          {
+            "doc_id": "lantu_finance_revenue_breakdown",
+            "title": "﻿维度,分类,收入（亿元）,占比,同比",
+            "chunk": 0,
+            "score": 8.715,
+            "snippet": "﻿维度,分类,收入（亿元）,占比,同比\n产品线,机器人本体,19.84,46.5%,+18.2%\n产品线,智能产线,14.92,35.0%,+21.6%\n产品线,工业软件与服务,5.21,12.2%,+26.8%\n产品线,备件及其他,2.66,6.3%,+9.4%\n行业,动力电池,13.64,32.0%,+24.1%\n行业,汽车及零部件,10.23,24.0%,+11.5%\n行业,半导体,5.12,12.0%,+38.6%\n行业,光伏,4.26,10.0%,+6.2%\n行业,3C 电子,3.41,8.0%,+14."
+          },
+          {
+            "doc_id": "lantu_finance_budget_2026",
+            "title": "# 澜图智能 2026 年度经营预算",
+            "chunk": 0,
+            "score": 7.945,
+            "snippet": "# 澜图智能 2026 年度经营预算\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-12-20 09:00\n更新时间：2026-01-15 17:00\n版本号：v1.0\n文档类型：finance\n文档族：budget_2026\n生效日期：2026-01-15\n\n## 一、预算目标\n\n2026 年营业收入目标 52 亿元，同比增长 22%；归母净利润目标 5.2 亿元；综合毛利率目标 32.5%。\n\n## 二、收入分解\n\n机器人本体 24.2 亿元，智能产线 18.4 亿元，软件与服务 6.4 亿元，备件及其"
+          },
+          {
+            "doc_id": "lantu_org_chart_2024",
+            "title": "# 澜图智能组织架构（2024版）",
+            "chunk": 0,
+            "score": 7.477,
+            "snippet": "# 澜图智能组织架构（2024版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-05 09:00\n更新时间：2024-01-15 10:00\n版本号：v1.0\n文档类型：org\n文档族：org_chart\n生效日期：2024-01-01\n\n## 一、一级部门\n\n2024 年公司设 11 个一级部门：研发中心、产品部、销售中心、供应链中心、制造中心、质量部、财务部、人力资源部、法务合规部、信息技术部、战略投资部。售后服务部隶属销售中心。\n\n## 二、研发体系\n\n研发中心下设 4 个研究所：机器人本"
+          },
+          {
+            "doc_id": "lantu_org_rd_system",
+            "title": "# 澜图智能研发体系与投入",
+            "chunk": 0,
+            "score": 7.394,
+            "snippet": "# 澜图智能研发体系与投入\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-02-01 09:00\n更新时间：2026-01-12 10:00\n版本号：v5.0\n文档类型：org\n文档族：rd_system\n生效日期：2026-01-12\n\n## 一、研发架构\n\n研发中心下设机器人本体研究所、控制器研究所、机器视觉研究所、工艺应用研究所、具身智能研究所，另设测试中心与可靠性实验室。\n\n## 二、人员结构\n\n研发人员 1,286 人，其中博士 48 人、硕士 612 人，35 岁以下占比 61%。2025 年"
+          },
+          {
+            "doc_id": "lantu_sales_policy",
+            "title": "# 澜图智能销售政策与客户分级管理办法",
+            "chunk": 0,
+            "score": 7.286,
+            "snippet": "# 澜图智能销售政策与客户分级管理办法\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-01-20 09:00\n更新时间：2025-09-25 15:00\n版本号：v3.4\n文档类型：sales\n文档族：sales_policy\n生效日期：2025-09-25\n\n## 一、客户分级\n\n客户分为 S、A、B、C 四级。S 级为年采购额 5,000 万元以上战略客户，由客户成功部直管；A 级 1,000-5,000 万元；B 级 300-1,000 万元；C 级 300 万元以下由渠道覆盖。\n\n## 二、价格体"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2024",
+            "title": "澜图智能 2024 年度报告摘要",
+            "chunk": 0,
+            "score": 7.195,
+            "snippet": "澜图智能 2024 年度报告摘要\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-01-22 09:00\n更新时间：2025-01-30 18:00\n版本号：v1.0\n文档类型：finance\n文档族：annual_report_2024\n生效日期：2025-01-30\n一、经营概况\n2024 年公司实现营业收入 35.80 亿元，同比增长 16.8%；归母净利润 3.26 亿元，同比增长 14.2%。\n二、收入结构\n机器人本体收入 16.72 亿元（46.7%），智能产线收入 12.36 亿元（34.5%），"
+          },
+          {
+            "doc_id": "lantu_support_warranty",
+            "title": "# 澜图智能产品保修政策",
+            "chunk": 0,
+            "score": 7.008,
+            "snippet": "# 澜图智能产品保修政策\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-01-01 09:00\n更新时间：2025-04-01 09:00\n版本号：v3.0\n文档类型：support\n文档族：warranty_policy\n生效日期：2025-04-01\n\n## 一、保修期限\n\n机器人本体保修 24 个月或 6,000 小时，以先到者为准；控制器保修 18 个月；易损件保修 6 个月。\n\n## 二、保修范围\n\n因产品设计、制造或材料缺陷导致的故障免费维修或更换；软件提供 12 个月免费升级。\n\n## 三、"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_legal_sales_contract_template",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_legal_sales_contract_template",
+        "title": "澜图智能设备销售合同模板（2025版）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 521,
+        "text": "澜图智能设备销售合同模板（2025版）\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-10 09:00\n更新时间：2025-03-01 09:00\n版本号：v4.0\n文档类型：legal\n文档族：sales_contract_template\n生效日期：2025-03-01\n第一条 合同标的\n乙方向甲方购买澜图智能工业机器人及配套设备，具体型号、数量、单价以附件《供货清单》为准。\n第二条 合同价款与支付\n合同总价为含税价。预付款 30%，发货前支付至 60%，验收合格后 30 日内支付至 95%，剩余 5% 作为质保金于质保期满后支付。\n第三条 交付与验收\n标准产品交期 6-8 周，非标项目以项目计划为准。到货后 7 日内完成开箱验收，30 日内完成终验收。\n第四条 质量与质保\n质保期为验收合格之日起 24 个月或 6,000 小时，以先到者为准。质保期内非人为损坏由乙方免费维修或更换。\n第五条 违约责任\n乙方逾期交付的，每逾期一日按合同总额 0.5% 支付违约金，累计不超过 10%；甲方逾期付款的，按日万分之五支付违约金。\n第六条 争议解决\n因本合同引起的争议，双方协商解决；协商不成的，提交苏州仲裁委员会仲裁。",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_warranty",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_support_warranty",
+        "title": "# 澜图智能产品保修政策",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 357,
+        "text": "# 澜图智能产品保修政策\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-01-01 09:00\n更新时间：2025-04-01 09:00\n版本号：v3.0\n文档类型：support\n文档族：warranty_policy\n生效日期：2025-04-01\n\n## 一、保修期限\n\n机器人本体保修 24 个月或 6,000 小时，以先到者为准；控制器保修 18 个月；易损件保修 6 个月。\n\n## 二、保修范围\n\n因产品设计、制造或材料缺陷导致的故障免费维修或更换；软件提供 12 个月免费升级。\n\n## 三、非保修情形\n\n人为损坏、超负荷使用、未经授权改装、自然灾害与未按要求保养的设备不在保修范围。\n\n## 四、延保服务\n\n客户可购买延保服务，费用为设备价格的 3%-5%/年，最长延保至 5 年。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_legal_sales_contract_template",
+      "lantu_support_warranty"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.224,
+    "number_recall": 1.0
+  }
+}

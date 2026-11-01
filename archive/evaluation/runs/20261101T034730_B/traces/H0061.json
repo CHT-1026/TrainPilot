@@ -1,0 +1,406 @@
+{
+  "qid": "H0061",
+  "question": "合规管理手册与跨部门委员会运作机制文档对合规委员会的描述是否一致？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"\"}}",
+      "usage": {
+        "prompt_tokens": 366,
+        "total_tokens": 526,
+        "completion_tokens": 160,
+        "completion_tokens_details": {
+          "reasoning_tokens": 143,
+          "text_tokens": 160
+        }
+      },
+      "seconds": 1.672
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"跨部门委员会运作机制\", \"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 1498,
+        "total_tokens": 1641,
+        "completion_tokens": 143,
+        "completion_tokens_details": {
+          "reasoning_tokens": 115,
+          "text_tokens": 143
+        }
+      },
+      "seconds": 1.453
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\": \"lantu_legal_compliance_manual\", \"offset\": 0, \"limit\": 4000}}",
+      "usage": {
+        "prompt_tokens": 2644,
+        "total_tokens": 2961,
+        "completion_tokens": 317,
+        "completion_tokens_details": {
+          "reasoning_tokens": 277,
+          "text_tokens": 317
+        }
+      },
+      "seconds": 2.359
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_org_committees\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 2998,
+        "total_tokens": 3538,
+        "completion_tokens": 540,
+        "completion_tokens_details": {
+          "reasoning_tokens": 506,
+          "text_tokens": 540
+        }
+      },
+      "seconds": 4.688
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"两份文档对合规委员会的描述在核心要素上是一致的，但在细节侧重上有所不同。\\n\\n1. **一致点**：两份文档均确认公司设立了合规委员会，且明确规定**主任由法务合规总监担任**。\\n2. **差异点**：\\n   - **《合规管理手册》**侧重于组织架构，详细列出了委员会的**成员构成**，包括财务、销售、采购、人力与信息技术负责人。\\n   - **《跨部门委员会运作机制文档》**侧重于职能与流程，描述了委员会的**职责范围**（审查出口管制、反商业贿赂、数据出境等）以及**汇报关系**（重大事项报董事会），未列出具体成员名单。\\n\\n综上，两份文档内容互补，不存在矛盾。\",\"citations\":[\"lantu_legal_compliance_manual\",\"lantu_org_committees\"],\"evidence\":[\"lantu_legal_compliance_manual#0\",\"lantu_org_committees#0\"]}",
+      "usage": {
+        "prompt_tokens": 3357,
+        "total_tokens": 4999,
+        "completion_tokens": 1642,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1433,
+          "text_tokens": 1642
+        }
+      },
+      "seconds": 12.594
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": ""
+      },
+      "result_sha": "ee5960dfc8f223ba9ffafd250ac7a048c5a08afb9d85298c7a0ba99417e816f1",
+      "result_chars": 2735,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "跨部门委员会运作机制",
+        "top_k": 5
+      },
+      "result_sha": "47ae8900f073ef5642858d5b4c31a0650d6b2fa6c7ff502976a44a7dce93d0a4",
+      "result_chars": 1934,
+      "hits": 5
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_legal_compliance_manual",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "b541004e3f01dc52ebd6873288bd78e4647e00ffdba25786c95796c1cd683655",
+      "result_chars": 563,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_committees",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "ad457d933d30f00990d06108080b4d9a3ab6fc91e317bc7fabbcadb098551708",
+      "result_chars": 552,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "两份文档对合规委员会的描述在核心要素上是一致的，但在细节侧重上有所不同。\n\n1. **一致点**：两份文档均确认公司设立了合规委员会，且明确规定**主任由法务合规总监担任**。\n2. **差异点**：\n   - **《合规管理手册》**侧重于组织架构，详细列出了委员会的**成员构成**，包括财务、销售、采购、人力与信息技术负责人。\n   - **《跨部门委员会运作机制文档》**侧重于职能与流程，描述了委员会的**职责范围**（审查出口管制、反商业贿赂、数据出境等）以及**汇报关系**（重大事项报董事会），未列出具体成员名单。\n\n综上，两份文档内容互补，不存在矛盾。",
+    "citations": [
+      "lantu_legal_compliance_manual",
+      "lantu_org_committees"
+    ],
+    "evidence": [
+      "lantu_legal_compliance_manual#0",
+      "lantu_org_committees#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 13665,
+  "started_at": "2026-11-01T05:23:22",
+  "elapsed_seconds": 22.77,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": ""
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_company_brand",
+            "title": "# 澜图智能品牌视觉与传播规范"
+          },
+          {
+            "doc_id": "lantu_company_campus",
+            "title": "# 澜图智能制造基地与产能布局"
+          },
+          {
+            "doc_id": "lantu_company_global",
+            "title": "# 澜图智能全球化布局与海外业务"
+          },
+          {
+            "doc_id": "lantu_company_history",
+            "title": "# 澜图智能发展历程（2011—2025）"
+          },
+          {
+            "doc_id": "lantu_company_milestones_2025",
+            "title": "# 澜图智能 2025 年度大事记"
+          },
+          {
+            "doc_id": "lantu_company_mission",
+            "title": "# 澜图智能使命、愿景与价值观"
+          },
+          {
+            "doc_id": "lantu_company_profile",
+            "title": "澜图智能装备公司简介"
+          },
+          {
+            "doc_id": "lantu_investor_overview",
+            "title": "# 澜图智能投资者关系概览"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2024",
+            "title": "澜图智能 2024 年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2025",
+            "title": "澜图智能 2025 年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_budget_2026",
+            "title": "# 澜图智能 2026 年度经营预算"
+          },
+          {
+            "doc_id": "lantu_finance_cashflow",
+            "title": "# 澜图智能现金流与资金管理报告"
+          },
+          {
+            "doc_id": "lantu_finance_cost",
+            "title": "# 澜图智能成本管理与降本专项报告"
+          },
+          {
+            "doc_id": "lantu_finance_gross_margin",
+            "title": "# 澜图智能毛利率与成本结构分析"
+          },
+          {
+            "doc_id": "lantu_finance_h1_2025",
+            "title": "# 澜图智能 2025 年半年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_investor_qa",
+            "title": "# 澜图智能投资者常见问题答复"
+          },
+          {
+            "doc_id": "lantu_finance_monthly_2025",
+            "title": "[工作表] 文档信息"
+          },
+          {
+            "doc_id": "lantu_finance_q3_2025",
+            "title": "# 澜图智能 2025 年第三季度经营数据"
+          },
+          {
+            "doc_id": "lantu_finance_revenue_breakdown",
+            "title": "﻿维度,分类,收入（亿元）,占比,同比"
+          },
+          {
+            "doc_id": "lantu_hr_campus",
+            "title": "# 澜图智能 2026 届校园招聘方案"
+          },
+          {
+            "doc_id": "lantu_hr_compensation",
+            "title": "# 澜图智能薪酬与奖金管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_job_grades",
+            "title": "# 澜图智能职级体系与晋升规则"
+          },
+          {
+            "doc_id": "lantu_hr_manager_training",
+            "title": "澜图智能管理者领导力培训方案"
+          },
+          {
+            "doc_id": "lantu_hr_new_hire_training",
+            "title": "澜图智能新员工入职培训大纲"
+          },
+          {
+            "doc_id": "lantu_hr_performance",
+            "title": "# 澜图智能绩效管理制度"
+          },
+          {
+            "doc_id": "lantu_hr_recruitment",
+            "title": "# 澜图智能招聘管理制度"
+          },
+          {
+            "doc_id": "lantu_hr_resignation",
+            "title": "# 澜图智能离职与交接管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_social",
+            "title": "# 澜图智能社会招聘管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_training_system",
+            "title": "# 澜图智能培训体系与年度计划"
+          },
+          {
+            "doc_id": "lantu_legal_anti_bribery",
+            "title": "# 澜图智能反商业贿赂管理规定"
+          },
+          {
+            "doc_id": "lantu_legal_compliance_manual",
+            "title": "# 澜图智能合规管理手册"
+          },
+          {
+            "doc_id": "lantu_legal_data_compliance",
+            "title": "# 澜图智能数据合规与隐私保护规范"
+          },
+          {
+            "doc_id": "lantu_legal_export_control",
+            "title": "# 澜图智能出口管制与制裁合规指引"
+          },
+          {
+            "doc_id": "lantu_legal_nda_template",
+            "title": "澜图智能保密协议模板（NDA）"
+          },
+          {
+            "doc_id": "lantu_legal_purchase_contract_template",
+            "title": "澜图智能采购合同模板（2025版）"
+          },
+          {
+            "doc_id": "lantu_legal_sales_contract_template",
+            "title": "澜图智能设备销售合同模板（2025版）"
+          },
+          {
+            "doc_id": "lantu_legal_supplier_code",
+            "title": "# 澜图智能供应商行为准则"
+          },
+          {
+            "doc_id": "lantu_meeting_board",
+            "title": "# 2025 年第二次临时董事会决议"
+          },
+          {
+            "doc_id": "lantu_meeting_case_review",
+            "title": "# 恒芯动力电池项目复盘会纪要"
+          },
+          {
+            "doc_id": "lantu_meeting_ops_2025q3",
+            "title": "2025 年第三季度经营分析会纪要"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "跨部门委员会运作机制",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_org_committees",
+            "title": "# 澜图智能跨部门委员会与运作机制",
+            "chunk": 0,
+            "score": 33.94,
+            "snippet": "# 澜图智能跨部门委员会与运作机制\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2024-05-06 09:00\n更新时间：2025-10-18 11:00\n版本号：v2.1\n文档类型：org\n文档族：committees\n生效日期：2025-10-18\n\n## 一、产品决策委员会\n\n主任由 CTO 担任，成员包括产品部、研发中心、销售中心、质量部负责人，负责产品立项、版本发布与退市决策，每月召开一次。\n\n## 二、质量安全委员会\n\n主任由 COO 担任，负责重大质量事故、召回与安全生产事项，实行 24 小时响"
+          },
+          {
+            "doc_id": "lantu_org_board",
+            "title": "# 澜图智能董事会与治理结构",
+            "chunk": 0,
+            "score": 12.226,
+            "snippet": "# 澜图智能董事会与治理结构\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2023-09-01 09:00\n更新时间：2025-06-20 14:00\n版本号：v3.0\n文档类型：org\n文档族：board_structure\n生效日期：2025-06-20\n\n## 一、董事会构成\n\n董事会由 9 名董事组成，其中独立董事 3 名，职工董事 1 名。董事长顾承澜，副董事长由机构股东提名。\n\n## 二、专门委员会\n\n董事会下设战略委员会、审计委员会、薪酬与考核委员会、提名委员会。审计委员会主任由独立董事担任，负"
+          },
+          {
+            "doc_id": "lantu_tech_rd_process",
+            "title": "# 澜图智能 IPD 研发流程说明",
+            "chunk": 0,
+            "score": 8.434,
+            "snippet": "# 澜图智能 IPD 研发流程说明\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-03-01 09:00\n更新时间：2025-05-15 10:00\n版本号：v3.0\n文档类型：tech\n文档族：ipd_process\n生效日期：2025-05-15\n\n## 一、流程框架\n\n执行 IPD 集成产品开发流程，分为概念、计划、开发、验证、发布、生命周期管理六个阶段。\n\n## 二、决策评审\n\n每个阶段设置决策评审点（DCP），由产品决策委员会评审市场、技术、成本与风险，未通过不得进入下一阶段。\n\n## 三、跨部"
+          },
+          {
+            "doc_id": "lantu_org_reporting_lines",
+            "title": "# 澜图智能员工汇报关系与业务分工",
+            "chunk": 1,
+            "score": 8.157,
+            "snippet": "周敏仪担任 CFO，负责财务与资本运作。陈依然担任人力资源副总裁，负责人力资源体系。蒋雯担任薪酬绩效经理，负责薪酬、绩效与员工关系。邵岚担任法务合规总监，负责法务、合规与知识产权。\n\n## 五、跨部门业务分工\n\n周启航同时担任新一代控制器 LT-C900 项目负责人，项目成员包括林晓与赵一鸣。唐婧负责销售中心，华东区域由许博管理，上海区域重点客户由陈璐维护。方磊负责制造中心，苏州工厂由郭涛管理。\n\n## 六、汇报关系使用说明\n\n本文件中的“上级”均指行政汇报关系中的直接上级；跨部门项目中的项目负责人关系不改变行政汇"
+          },
+          {
+            "doc_id": "lantu_meeting_safety",
+            "title": "# 2025 年安全生产委员会会议纪要",
+            "chunk": 0,
+            "score": 6.548,
+            "snippet": "# 2025 年安全生产委员会会议纪要\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2025-06-12 09:00\n更新时间：2025-06-12 15:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_safety_2025\n生效日期：2025-06-12\n\n## 一、安全形势\n\n上半年未发生重伤及以上事故，轻伤 2 起，同比下降 50%；排查隐患 27 项，整改完成 25 项。\n\n## 二、重点风险\n\n机器人调试区域误入风险、锂电物料存储消防风险、高处作业风险；需完善安全围栏与联锁。"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_legal_compliance_manual",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_legal_compliance_manual",
+        "title": "# 澜图智能合规管理手册",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 389,
+        "text": "# 澜图智能合规管理手册\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-02-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v3.1\n文档类型：legal\n文档族：compliance_manual\n生效日期：2025-06-01\n\n## 一、合规组织\n\n公司设合规委员会，主任由法务合规总监担任，成员包括财务、销售、采购、人力与信息技术负责人。\n\n## 二、重点领域\n\n反商业贿赂、出口管制、数据保护、反垄断、劳动用工与环境保护。各领域每年至少开展一次风险评估。\n\n## 三、培训与举报\n\n全体员工每年接受不少于 4 小时合规培训；设举报邮箱 compliance@lantu-robot.com，举报人信息严格保密。\n\n## 四、调查与处理\n\n合规调查由法务合规部牵头，必要时聘请外部机构；违规行为视情节给予处分、解除合同或移送司法机关。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_committees",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_org_committees",
+        "title": "# 澜图智能跨部门委员会与运作机制",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 382,
+        "text": "# 澜图智能跨部门委员会与运作机制\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2024-05-06 09:00\n更新时间：2025-10-18 11:00\n版本号：v2.1\n文档类型：org\n文档族：committees\n生效日期：2025-10-18\n\n## 一、产品决策委员会\n\n主任由 CTO 担任，成员包括产品部、研发中心、销售中心、质量部负责人，负责产品立项、版本发布与退市决策，每月召开一次。\n\n## 二、质量安全委员会\n\n主任由 COO 担任，负责重大质量事故、召回与安全生产事项，实行 24 小时响应机制。\n\n## 三、信息安全委员会\n\n主任由信息技术部负责人担任，负责数据分级、权限审批与安全事件处置，每季度开展一次攻防演练。\n\n## 四、合规委员会\n\n主任由法务合规总监担任，审查出口管制、反商业贿赂、数据出境等事项，重大事项报董事会。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_legal_compliance_manual",
+      "lantu_org_committees"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.43,
+    "number_recall": 0.0
+  }
+}

@@ -1,0 +1,243 @@
+{
+  "qid": "E0104",
+  "question": "报销办法与保密规范均提到移交司法机关。两者各以什么文字条件触发，是否可据共同处理去向认定触发条件相同？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=list><parameter=keyword>报销</parameter></function></tool_call><tool_call><function=list><parameter=keyword>保密</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 77,
+        "prompt_tokens": 373,
+        "total_tokens": 450,
+        "completion_tokens_details": {
+          "reasoning_tokens": 43
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.062
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"移交司法机关\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 34,
+        "prompt_tokens": 444,
+        "total_tokens": 478,
+        "completion_tokens_details": {
+          "reasoning_tokens": 11
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.719
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_reimbursement\",\"offset\":0,\"limit\":6000}}",
+      "usage": {
+        "completion_tokens": 52,
+        "prompt_tokens": 1882,
+        "total_tokens": 1934,
+        "completion_tokens_details": {
+          "reasoning_tokens": 20
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 1.828
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_confidentiality\",\"offset\":0,\"limit\":6000}}",
+      "usage": {
+        "completion_tokens": 99,
+        "prompt_tokens": 2340,
+        "total_tokens": 2439,
+        "completion_tokens_details": {
+          "reasoning_tokens": 67
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 1856
+        }
+      },
+      "seconds": 2.766
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"两者的触发文字条件不同，不能因处理去向相同（均为移交司法机关）就认定触发条件相同。《费用报销管理办法》（v3.2，2025-06-18生效）第五条的触发条件是行为+金额双重标准：针对'虚报、重复报销或伪造票据'的行为，且'金额超过5,000元'才移交司法机关（5,000元以下仅追回款项并给予纪律处分），触发门槛是客观可量化的金额。《商业秘密与保密管理规范》（v3.1，2025-03-28生效）第五条的触发条件是定性+主观嫌疑标准：'违反保密义务的'公司有权解除劳动合同、要求赔偿损失并追究法律责任，'涉嫌犯罪的'才移交司法机关，其触发点是'涉嫌犯罪'这一主观判断，没有金额门槛。因此，'移交司法机关'只是两制度共有的最终处理去向之一，前者以金额达5,000元为必要条件，后者以涉嫌犯罪为必要条件，两者构成要件、判断标准（量化 vs 定性）均不同，属于典型的'同果不同因'，不可类推认定。\",\"citations\":[\"lantu_policy_reimbursement\",\"lantu_policy_confidentiality\"],\"evidence\":[\"lantu_policy_reimbursement#五、违规处理\",\"lantu_policy_confidentiality#五、违约处理\"]}",
+      "usage": {
+        "completion_tokens": 407,
+        "prompt_tokens": 2755,
+        "total_tokens": 3162,
+        "completion_tokens_details": {
+          "reasoning_tokens": 82
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2304
+        }
+      },
+      "seconds": 13.234
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "移交司法机关",
+        "top_k": 10
+      },
+      "result_sha": "93681c2e6f7c7205df40681a1f0bfa982b35e7ac38ce26dc95d32e38bbf6e906",
+      "result_chars": 2349,
+      "hits": 6
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_reimbursement",
+        "offset": 0,
+        "limit": 6000
+      },
+      "result_sha": "5e1a38d52f8b243375a1d19414d22cca90e74103c9c14d771c8a93d9735a98e5",
+      "result_chars": 646,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_confidentiality",
+        "offset": 0,
+        "limit": 6000
+      },
+      "result_sha": "32d2621524243d3b6a59bb16c316e08970123f3a81b7a5a2528a6e13bdf84730",
+      "result_chars": 616,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "两者的触发文字条件不同，不能因处理去向相同（均为移交司法机关）就认定触发条件相同。《费用报销管理办法》（v3.2，2025-06-18生效）第五条的触发条件是行为+金额双重标准：针对'虚报、重复报销或伪造票据'的行为，且'金额超过5,000元'才移交司法机关（5,000元以下仅追回款项并给予纪律处分），触发门槛是客观可量化的金额。《商业秘密与保密管理规范》（v3.1，2025-03-28生效）第五条的触发条件是定性+主观嫌疑标准：'违反保密义务的'公司有权解除劳动合同、要求赔偿损失并追究法律责任，'涉嫌犯罪的'才移交司法机关，其触发点是'涉嫌犯罪'这一主观判断，没有金额门槛。因此，'移交司法机关'只是两制度共有的最终处理去向之一，前者以金额达5,000元为必要条件，后者以涉嫌犯罪为必要条件，两者构成要件、判断标准（量化 vs 定性）均不同，属于典型的'同果不同因'，不可类推认定。",
+    "citations": [
+      "lantu_policy_reimbursement",
+      "lantu_policy_confidentiality"
+    ],
+    "evidence": [
+      "lantu_policy_reimbursement#五、违规处理",
+      "lantu_policy_confidentiality#五、违约处理"
+    ]
+  },
+  "status": "answered",
+  "tokens": 8463,
+  "started_at": "2026-11-01T02:29:19",
+  "elapsed_seconds": 23.61,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "移交司法机关",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_legal_anti_bribery",
+            "title": "# 澜图智能反商业贿赂管理规定",
+            "chunk": 0,
+            "score": 16.066,
+            "snippet": "# 澜图智能反商业贿赂管理规定\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-03-01 09:00\n更新时间：2025-01-15 10:00\n版本号：v2.4\n文档类型：legal\n文档族：anti_bribery\n生效日期：2025-01-15\n\n## 一、禁止行为\n\n禁止向客户、政府官员、供应商及其亲属提供现金、购物卡、有价证券、贵重礼品、旅游或娱乐安排。\n\n## 二、礼品与招待\n\n商务礼品单价不超过 200 元，须登记备案；业务招待人均不超过 600 元，禁止高消费娱乐。\n\n## 三、第三方管理"
+          },
+          {
+            "doc_id": "lantu_policy_confidentiality",
+            "title": "# 澜图智能商业秘密与保密管理规范",
+            "chunk": 0,
+            "score": 15.342,
+            "snippet": "# 澜图智能商业秘密与保密管理规范\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-15 09:00\n更新时间：2025-03-28 11:00\n版本号：v3.1\n文档类型：policy\n文档族：confidentiality\n生效日期：2025-03-28\n\n## 一、保密范围\n\n技术秘密（源代码、算法、图纸、工艺参数）、经营秘密（客户名单、报价、成本、未披露财务数据）与人事秘密均属保密信息。\n\n## 二、保密义务\n\n员工在职期间及离职后 3 年内不得披露、使用或允许他人使用公司保密信息；竞业限制人"
+          },
+          {
+            "doc_id": "lantu_policy_reimbursement",
+            "title": "# 澜图智能费用报销管理办法",
+            "chunk": 0,
+            "score": 15.289,
+            "snippet": "# 澜图智能费用报销管理办法\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-03-10 09:00\n更新时间：2025-06-18 10:00\n版本号：v3.2\n文档类型：policy\n文档族：reimbursement\n生效日期：2025-06-18\n\n## 一、报销范围\n\n差旅费、业务招待费、办公费、培训费、通讯费、车辆使用费及经批准的其他费用。个人消费、罚款与无票据支出不予报销。\n\n## 二、报销时限\n\n费用发生后 30 个自然日内提交报销，跨年度费用须在次年 1 月 15 日前完成，逾期需财务总监审"
+          },
+          {
+            "doc_id": "lantu_legal_export_control",
+            "title": "# 澜图智能出口管制与制裁合规指引",
+            "chunk": 0,
+            "score": 15.211,
+            "snippet": "# 澜图智能出口管制与制裁合规指引\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-06-01 09:00\n更新时间：2025-08-01 09:00\n版本号：v2.2\n文档类型：legal\n文档族：export_control\n生效日期：2025-08-01\n\n## 一、适用范围\n\n适用于所有跨境销售、技术许可、境外投资与人员出境技术服务，覆盖中国、欧盟、美国出口管制要求。\n\n## 二、筛查要求\n\n交易前须对客户、最终用户与最终用途进行筛查，核对制裁名单与两用物项清单；涉及加密、视觉算法与高精度伺服的项目"
+          },
+          {
+            "doc_id": "lantu_legal_compliance_manual",
+            "title": "# 澜图智能合规管理手册",
+            "chunk": 0,
+            "score": 9.804,
+            "snippet": "# 澜图智能合规管理手册\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-02-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v3.1\n文档类型：legal\n文档族：compliance_manual\n生效日期：2025-06-01\n\n## 一、合规组织\n\n公司设合规委员会，主任由法务合规总监担任，成员包括财务、销售、采购、人力与信息技术负责人。\n\n## 二、重点领域\n\n反商业贿赂、出口管制、数据保护、反垄断、劳动用工与环境保护。各领域每年至少开展一次风险评估。\n\n## 三、培训与举"
+          },
+          {
+            "doc_id": "lantu_policy_seal",
+            "title": "# 澜图智能印章管理办法",
+            "chunk": 0,
+            "score": 3.062,
+            "snippet": "# 澜图智能印章管理办法\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-02-10 09:00\n更新时间：2025-02-14 10:00\n版本号：v2.2\n文档类型：policy\n文档族：seal_management\n生效日期：2025-02-14\n\n## 一、印章种类\n\n公司印章包括公章、合同专用章、财务专用章、法人章与部门章。公章由董事会办公室保管，合同章由法务合规部保管，财务章由财务部保管。\n\n## 二、用印流程\n\n用印须在 OA 提交申请，说明用途、文件名称与份数，附审批完成的合同或文件；单份"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_reimbursement",
+        "offset": 0,
+        "limit": 6000
+      },
+      "result": {
+        "doc_id": "lantu_policy_reimbursement",
+        "title": "# 澜图智能费用报销管理办法",
+        "offset": 0,
+        "limit": 6000,
+        "total_chars": 469,
+        "text": "# 澜图智能费用报销管理办法\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-03-10 09:00\n更新时间：2025-06-18 10:00\n版本号：v3.2\n文档类型：policy\n文档族：reimbursement\n生效日期：2025-06-18\n\n## 一、报销范围\n\n差旅费、业务招待费、办公费、培训费、通讯费、车辆使用费及经批准的其他费用。个人消费、罚款与无票据支出不予报销。\n\n## 二、报销时限\n\n费用发生后 30 个自然日内提交报销，跨年度费用须在次年 1 月 15 日前完成，逾期需财务总监审批。\n\n## 三、审批流程\n\n单笔 5,000 元以下由部门经理审批；5,000-20,000 元加签财务经理；20,000 元以上由 CFO 审批。所有报销须上传发票与行程单。\n\n## 四、发票要求\n\n增值税专用发票须填写公司全称与税号；电子发票须查验真伪并避免重复报销；发票抬头错误的一律退回。\n\n## 五、违规处理\n\n虚报、重复报销或伪造票据的，追回款项并给予纪律处分；金额超过 5,000 元的移交司法机关。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_confidentiality",
+        "offset": 0,
+        "limit": 6000
+      },
+      "result": {
+        "doc_id": "lantu_policy_confidentiality",
+        "title": "# 澜图智能商业秘密与保密管理规范",
+        "offset": 0,
+        "limit": 6000,
+        "total_chars": 434,
+        "text": "# 澜图智能商业秘密与保密管理规范\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-15 09:00\n更新时间：2025-03-28 11:00\n版本号：v3.1\n文档类型：policy\n文档族：confidentiality\n生效日期：2025-03-28\n\n## 一、保密范围\n\n技术秘密（源代码、算法、图纸、工艺参数）、经营秘密（客户名单、报价、成本、未披露财务数据）与人事秘密均属保密信息。\n\n## 二、保密义务\n\n员工在职期间及离职后 3 年内不得披露、使用或允许他人使用公司保密信息；竞业限制人员按协议执行。\n\n## 三、涉密载体\n\n涉密文件须标注密级，存放于带锁文件柜或加密系统；复印、拍照与外发须审批并登记。\n\n## 四、对外交流\n\n技术交流、展会与论文发表须经法务合规部与研发中心审核，禁止披露未公开的技术路线与参数。\n\n## 五、违约处理\n\n违反保密义务的，公司有权解除劳动合同、要求赔偿损失并追究法律责任；涉嫌犯罪的移交司法机关。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_policy_reimbursement",
+      "lantu_policy_confidentiality"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.195,
+    "number_recall": 1.0
+  }
+}

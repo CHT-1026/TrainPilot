@@ -1,0 +1,142 @@
+{
+  "qid": "A0128",
+  "question": "认证渠道商 186 家与核心渠道 32 家分别来自哪份文档？公司基地布局中核心供应商 186 家的数字与之是否属于同一口径？",
+  "question_type": "矛盾与例外识别",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>认证渠道商 186 家</parameter></function></tool_call><tool_call><function=search><parameter=query>核心渠道 32 家</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 101,
+        "prompt_tokens": 386,
+        "total_tokens": 487,
+        "completion_tokens_details": {
+          "reasoning_tokens": 55
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.625
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>认证渠道商 186 家 核心渠道 32 家</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 56,
+        "prompt_tokens": 469,
+        "total_tokens": 525,
+        "completion_tokens_details": {
+          "reasoning_tokens": 22
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 1.469
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>认证渠道商 核心渠道 186 32</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 42,
+        "prompt_tokens": 540,
+        "total_tokens": 582,
+        "completion_tokens_details": {
+          "reasoning_tokens": 12
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.187
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>认证渠道商 核心渠道</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 56,
+        "prompt_tokens": 607,
+        "total_tokens": 663,
+        "completion_tokens_details": {
+          "reasoning_tokens": 33
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.375
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>认证渠道商 核心渠道 供应商</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 667,
+        "total_tokens": 718,
+        "completion_tokens_details": {
+          "reasoning_tokens": 17
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 2.016
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>认证渠道商 核心渠道 186</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 79,
+        "prompt_tokens": 738,
+        "total_tokens": 817,
+        "completion_tokens_details": {
+          "reasoning_tokens": 43
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 2.203
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"未能获取任何检索结果，无法确认『认证渠道商186家』与『核心渠道32家』分别出自哪份文档，也无法判断公司基地布局中『核心供应商186家』与前者是否为同一口径。本次检索调用均未成功返回文档片段，缺少可引用的原文证据，因此不对数字来源和口径一致性作出推断。如需结论，请补充或重试检索后再次提问。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 151,
+        "prompt_tokens": 808,
+        "total_tokens": 959,
+        "completion_tokens_details": {
+          "reasoning_tokens": 35
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 4.188
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "未能获取任何检索结果，无法确认『认证渠道商186家』与『核心渠道32家』分别出自哪份文档，也无法判断公司基地布局中『核心供应商186家』与前者是否为同一口径。本次检索调用均未成功返回文档片段，缺少可引用的原文证据，因此不对数字来源和口径一致性作出推断。如需结论，请补充或重试检索后再次提问。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4751,
+  "started_at": "2026-11-01T04:03:17",
+  "elapsed_seconds": 15.06,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.16,
+    "number_recall": 0.0
+  }
+}

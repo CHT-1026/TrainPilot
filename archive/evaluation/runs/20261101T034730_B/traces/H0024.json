@@ -1,0 +1,270 @@
+{
+  "qid": "H0024",
+  "question": "康泽制药 2025 年项目使用了 36 台 LT-R12，能否判断这些设备是否落入本次召回范围？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"LT-R12 召回\", \"top_k\": 10}}",
+      "usage": {
+        "prompt_tokens": 381,
+        "total_tokens": 638,
+        "completion_tokens": 257,
+        "completion_tokens_details": {
+          "reasoning_tokens": 226,
+          "text_tokens": 257
+        }
+      },
+      "seconds": 2.625
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\": \"康泽制药\", \"top_k\": 10}}",
+      "usage": {
+        "prompt_tokens": 2686,
+        "total_tokens": 2992,
+        "completion_tokens": 306,
+        "completion_tokens_details": {
+          "reasoning_tokens": 277,
+          "text_tokens": 306
+        }
+      },
+      "seconds": 3.125
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\": \"lantu_case_08_kangze\", \"offset\": 400, \"limit\": 4000}}",
+      "usage": {
+        "prompt_tokens": 3216,
+        "total_tokens": 3498,
+        "completion_tokens": 282,
+        "completion_tokens_details": {
+          "reasoning_tokens": 237,
+          "text_tokens": 282
+        }
+      },
+      "seconds": 2.547
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\": \"lantu_case_08_kangze\", \"offset\": 0, \"limit\": 2000}}",
+      "usage": {
+        "prompt_tokens": 3482,
+        "total_tokens": 4073,
+        "completion_tokens": 591,
+        "completion_tokens_details": {
+          "reasoning_tokens": 548,
+          "text_tokens": 591
+        }
+      },
+      "seconds": 5.187
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "LT-R12 召回",
+        "top_k": 10
+      },
+      "result_sha": "f53f1ed65b02b4344ce5e9af857cdd2cc0e507a316ef22cd38f9fc0692a6523d",
+      "result_chars": 3904,
+      "hits": 10
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "康泽制药",
+        "top_k": 10
+      },
+      "result_sha": "b4b67d2ba4e6cce7919dbfab445b35801a2c4ce1f2b213887e4e4df7f4a7e853",
+      "result_chars": 800,
+      "hits": 2
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_case_08_kangze",
+        "offset": 400,
+        "limit": 4000
+      },
+      "result_sha": "9de8a439f6eaee020c4c11c8c8d56ea5ad0eaffcd392962e8635a714b8a7a494",
+      "result_chars": 362,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_case_08_kangze",
+        "offset": 0,
+        "limit": 2000
+      },
+      "result_sha": "77f0de7efed294fb26d348316097660d28f8d728ea8b40b903722842e78fdc14",
+      "result_chars": 785,
+      "hits": 0
+    }
+  ],
+  "answer": null,
+  "status": "api_error",
+  "tokens": 11201,
+  "started_at": "2026-11-01T05:16:51",
+  "error": "TimeoutError: The read operation timed out",
+  "elapsed_seconds": 313.52,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "LT-R12 召回",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_support_recall_2025",
+            "title": "# LT-R12 线束磨损召回通知",
+            "chunk": 0,
+            "score": 11.626,
+            "snippet": "# LT-R12 线束磨损召回通知\n\n所属部门：质量部\n作者：潘文博\n创建时间：2025-07-25 09:00\n更新时间：2025-07-28 10:00\n版本号：v1.0\n文档类型：support\n文档族：recall_lt_r12_2025\n生效日期：2025-07-28\n\n## 一、召回范围\n\n2025 年 3 月 1 日至 3 月 31 日生产的 LT-R12 机器人，共计 120 台，涉及客户 18 家。\n\n## 二、问题描述\n\n部分设备腕部线束与护套摩擦，长期运行可能导致绝缘磨损与报警，存在停机风险。"
+          },
+          {
+            "doc_id": "lantu_meeting_quality",
+            "title": "2025 年第三季度质量专题会纪要",
+            "chunk": 0,
+            "score": 9.721,
+            "snippet": "2025 年第三季度质量专题会纪要\n所属部门：质量部\n作者：潘文博\n创建时间：2025-07-22 09:00\n更新时间：2025-07-22 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_quality_q3\n生效日期：2025-07-22\n一、质量数据\n上半年一次交检合格率 98.4%，客户投诉 1 起；第三季度首月投诉 1 起，为 LT-R12 线束磨损问题。\n二、问题分析\n线束磨损源于走线路径与防护套选型不当，涉及 2025 年 3 月生产的 120 台 LT-R12，已启"
+          },
+          {
+            "doc_id": "lantu_support_spare_parts_price",
+            "title": "﻿适配机型,备件名称,单价（元）,发货时效,质保期",
+            "chunk": 0,
+            "score": 6.06,
+            "snippet": "﻿适配机型,备件名称,单价（元）,发货时效,质保期\nLT-R20,减速器 RV-40E,\"12,800\",48 小时,12 个月\nLT-R20,伺服驱动器 LT-D4,\"8,600\",48 小时,18 个月\nLT-R20,示教器 LT-Pad3,\"5,200\",48 小时,12 个月\nLT-R12,减速器 RV-20E,\"7,900\",48 小时,12 个月\nLT-R12,伺服电机 750W,\"3,600\",48 小时,18 个月\nLT-R6,谐波减速器 CSF-17,\"6,400\",72 小时,12 个月\nLT-"
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 1,
+            "score": 5.452,
+            "snippet": "| 产品线 | 代表型号 | 负载 | 典型行业 |\n| --- | --- | --- | --- |\n| 六轴机器人 | LT-R6/R12/R20/R50/R210 | 6-210 kg | 汽车、锂电、金属加工 |\n| SCARA | LT-S4/S10 | 4-10 kg | 3C、光伏、食品 |\n| 移动机器人 | LT-AMR-500/1000/2000 | 500-2,000 kg | 物流、半导体 |\n| 机器视觉 | LT-V3D | — | 装配、检测 |\n| 控制器 | LT-C800 | "
+          },
+          {
+            "doc_id": "lantu_product_r_series",
+            "title": "# LT-R 系列六轴工业机器人产品手册",
+            "chunk": 1,
+            "score": 5.438,
+            "snippet": "| 型号 | 负载 | 臂展 | 重复精度 | 本体重量 | 最大速度 |\n| --- | --- | --- | --- | --- | --- |\n| LT-R6 | 6 kg | 1,450 mm | ±0.02 mm | 165 kg | 3.2 m/s |\n| LT-R12 | 12 kg | 1,550 mm | ±0.03 mm | 210 kg | 3.0 m/s |\n| LT-R20 | 20 kg | 1,700 mm | ±0.03 mm | 285 kg | 2.8 m/s |\n| LT-R"
+          },
+          {
+            "doc_id": "lantu_tech_vision",
+            "title": "# 澜图智能机器视觉算法平台说明",
+            "chunk": 0,
+            "score": 4.922,
+            "snippet": "# 澜图智能机器视觉算法平台说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-08-01 09:00\n更新时间：2025-11-05 15:00\n版本号：v3.1\n文档类型：tech\n文档族：vision_algorithm\n生效日期：2025-11-05\n\n## 一、算法能力\n\n覆盖 2D/3D 定位、缺陷检测、OCR、分割与无序抓取，支持小样本学习与在线增量训练。\n\n## 二、性能指标\n\n3D 测量精度 0.05 mm，缺陷检测召回率 99.2%，误检率 0.8%，单帧推理延迟 35 ms。\n\n##"
+          },
+          {
+            "doc_id": "lantu_product_assembly",
+            "title": "# LT-Assembly 柔性装配工作站方案",
+            "chunk": 0,
+            "score": 4.853,
+            "snippet": "# LT-Assembly 柔性装配工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-07-15 09:00\n更新时间：2025-09-05 11:00\n版本号：v2.5\n文档类型：product\n文档族：solution_assembly\n生效日期：2025-09-05\n\n## 一、方案组成\n\n由 LT-R12/LT-R20 机器人、力控末端、LT-V3D 视觉与快换工装组成，支持多品种混线装配。\n\n## 二、工艺指标\n\n装配节拍 3.2 秒/件，力控精度 ±2 N，视觉定位精度 ±0.05 mm，"
+          },
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 4.593,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能产品参数矩阵（2025）\n所属部门\t产品部\n作者\t孟凡\n创建时间\t2025-01-20 09:00\n更新时间\t2025-12-15 18:00\n版本号\tv2.0\n文档类型\tproduct\n文档族\tproduct_matrix\n生效日期\t2025-12-15\n[工作表] 六轴与SCARA\n型号\t负载\t臂展\t重复精度\t本体重量\t最大速度\nLT-R6\t6 kg\t1,450 mm\t±0.02 mm\t165 kg\t3.2 m/s\nLT-R12\t12 kg\t1,550 mm\t±0."
+          },
+          {
+            "doc_id": "lantu_solution_semiconductor",
+            "title": "# 半导体晶圆搬运洁净解决方案",
+            "chunk": 0,
+            "score": 4.512,
+            "snippet": "# 半导体晶圆搬运洁净解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2025-02-14 09:00\n更新时间：2025-11-11 09:30\n版本号：v2.0\n文档类型：product\n文档族：solution_semiconductor\n生效日期：2025-11-11\n\n## 一、方案概述\n\n面向 8/12 英寸晶圆厂，提供晶圆盒搬运、机台上下料与跨区物流方案，采用 LT-AMR-500 洁净版与 LT-R12 洁净机器人。\n\n## 二、洁净指标\n\n洁净等级 Class 10，颗粒物控制 0.1 μm，"
+          },
+          {
+            "doc_id": "lantu_product_r_series",
+            "title": "# LT-R 系列六轴工业机器人产品手册",
+            "chunk": 0,
+            "score": 4.345,
+            "snippet": "# LT-R 系列六轴工业机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-01-15 09:00\n更新时间：2025-10-30 16:00\n版本号：v4.3\n文档类型：product\n文档族：product_r_series\n生效日期：2025-10-30\n\n## 一、产品定位\n\nLT-R 系列覆盖 6 kg 至 210 kg 负载，适用于搬运、焊接、装配、喷涂、打磨等工序，重复定位精度最高 ±0.02 mm，防护等级 IP54，可选 IP67。\n\n## 二、型号与参数\n\nLT-R6 负载 6"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "康泽制药",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_case_08_kangze",
+            "title": "# 客户案例：康泽制药无菌灌装项目",
+            "chunk": 0,
+            "score": 18.79,
+            "snippet": "# 客户案例：康泽制药无菌灌装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_kangze\n生效日期：2025-12-20\n\n## 一、客户背景\n\n康泽制药位于苏州，主营医药业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖3 条无"
+          },
+          {
+            "doc_id": "lantu_sales_customer_list",
+            "title": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态",
+            "chunk": 0,
+            "score": 12.568,
+            "snippet": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态\n恒芯动力电池,动力电池,常州,电芯叠片与物流,\"21,600\",2025,已验收\n澜岳汽车零部件,汽车零部件,上海,白车身焊装,\"14,800\",2024,已验收\n曜阳光能,光伏,合肥,电池片串焊,\"9,800\",2025,已验收\n星禾电子,3C 电子,昆山,精密组装,\"12,500\",2024,已验收\n海翎家电,家电,顺德,喷涂与打磨,\"6,300\",2025,已验收\n晶拓微电子,半导体,无锡,晶圆搬运,\"7,400\",2025,已验收\n麦丰食品,食品,漯河"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_case_08_kangze",
+        "offset": 400,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_case_08_kangze",
+        "title": "# 客户案例：康泽制药无菌灌装项目",
+        "offset": 400,
+        "limit": 4000,
+        "total_chars": 607,
+        "text": "合研发、制造、质量与售后服务部组成 26 人项目组。完成现场勘测、虚拟调试、设备安装与 72 小时连续试运行，实际交付周期 5 个月。\n\n## 五、成效数据\n\n满足 A 级洁净区要求，批次记录完整率 100%，灌装偏差下降 27%。项目通过客户验收，并获得客户年度优秀供应商提名。\n\n## 六、客户评价\n\n康泽制药质量负责人 沈蕾表示：“澜图团队响应及时，方案在节拍与稳定性上达到预期，后续产线扩产将继续合作。”\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_case_08_kangze",
+        "offset": 0,
+        "limit": 2000
+      },
+      "result": {
+        "doc_id": "lantu_case_08_kangze",
+        "title": "# 客户案例：康泽制药无菌灌装项目",
+        "offset": 0,
+        "limit": 2000,
+        "total_chars": 607,
+        "text": "# 客户案例：康泽制药无菌灌装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_kangze\n生效日期：2025-12-20\n\n## 一、客户背景\n\n康泽制药位于苏州，主营医药业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖3 条无菌灌装线，要求 6 个月内完成交付。\n\n## 三、方案配置\n\n澜图智能提供 36 台 LT-R12 六轴机器人，配套 LT-C800 控制器、LT-V3D 视觉与 LantuTwin 数字孪生仿真，整线合同金额 5,100 万元。\n\n## 四、实施过程\n\n项目由客户成功部牵头，联合研发、制造、质量与售后服务部组成 26 人项目组。完成现场勘测、虚拟调试、设备安装与 72 小时连续试运行，实际交付周期 5 个月。\n\n## 五、成效数据\n\n满足 A 级洁净区要求，批次记录完整率 100%，灌装偏差下降 27%。项目通过客户验收，并获得客户年度优秀供应商提名。\n\n## 六、客户评价\n\n康泽制药质量负责人 沈蕾表示：“澜图团队响应及时，方案在节拍与稳定性上达到预期，后续产线扩产将继续合作。”\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

@@ -1,0 +1,321 @@
+{
+  "qid": "M1416",
+  "question": "专利发明人奖励、猎头服务费、内部推荐奖金，这三笔钱的公司口径分别是什么？注意数字别串。",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>专利发明人奖励</parameter><parameter=top_k>8</parameter></function></tool_call><tool_call><function=list><parameter=keyword>猎头</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 72,
+        "prompt_tokens": 371,
+        "total_tokens": 443,
+        "completion_tokens_details": {
+          "reasoning_tokens": 27
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.125
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>专利发明人奖励 奖金 标准</parameter><parameter=top_k>8</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 453,
+        "total_tokens": 504,
+        "completion_tokens_details": {
+          "reasoning_tokens": 16
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.828
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"专利发明人奖励 奖金 标准\",\"top_k\":8}}",
+      "usage": {
+        "completion_tokens": 53,
+        "prompt_tokens": 525,
+        "total_tokens": 578,
+        "completion_tokens_details": {
+          "reasoning_tokens": 23
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.61
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_hr_social\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 60,
+        "prompt_tokens": 2530,
+        "total_tokens": 2590,
+        "completion_tokens_details": {
+          "reasoning_tokens": 30
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.14
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_tech_patents\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 46,
+        "prompt_tokens": 2903,
+        "total_tokens": 2949,
+        "completion_tokens_details": {
+          "reasoning_tokens": 14
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2496
+        }
+      },
+      "seconds": 1.719
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_hr_compensation\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 71,
+        "prompt_tokens": 3305,
+        "total_tokens": 3376,
+        "completion_tokens_details": {
+          "reasoning_tokens": 40
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2880
+        }
+      },
+      "seconds": 2.141
+    },
+    {
+      "round": 7,
+      "text": "{\"status\":\"answerable\",\"answer\":\"三笔钱的公司口径分别如下（注意各自出处与口径，不要混用）：\\n1）专利发明人奖励：执行《企业知识产权管理规范》GB/T 29490、设专利评审委员会，发明人奖励 5,000-30,000 元（《澜图智能知识产权与专利布局》v2.8，生效 2025-12-18）。另注：《薪酬与奖金管理办法》v3.2 中另有\\\"专利奖\\\"属于专项奖励，规定单个项目奖励不超过 50 万元，与发明人奖励是两个不同口径，勿与 5,000-30,000 元混淆。\\n2）猎头服务费：猎头费用为候选人年薪的 20%-25%，保证期 90 天（《社会招聘管理办法》v2.5，生效 2025-07-15）。\\n3）内部推荐奖金：员工推荐成功入职并转正后奖励 3,000-10,000 元；关键技术岗位奖励 15,000 元（同一文档 v2.5）。\",\"citations\":[\"lantu_tech_patents\",\"lantu_hr_social\",\"lantu_hr_compensation\"],\"evidence\":[\"lantu_tech_patents#片段0\",\"lantu_hr_social#片段0\",\"lantu_hr_compensation#片段0\"]}",
+      "usage": {
+        "completion_tokens": 520,
+        "prompt_tokens": 3699,
+        "total_tokens": 4219,
+        "completion_tokens_details": {
+          "reasoning_tokens": 194
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3264
+        }
+      },
+      "seconds": 9.937
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "专利发明人奖励 奖金 标准",
+        "top_k": 8
+      },
+      "result_sha": "47d9adc7706adff05435b43754322b805acd9e0904b80910e3c0ea41d6d83288",
+      "result_chars": 3103,
+      "hits": 8
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_social",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "e00c79a3977c466da0e80513c23a4438a4111dd6a973eb2997a88a803081cd3e",
+      "result_chars": 523,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_patents",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "d0a230ea259cc2e27851b1b57ff41bd0aceee4eacf513aa78d205422647f4628",
+      "result_chars": 559,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_compensation",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "80636806aa8fcc2d075a7ce0027ff8acb45eff1f9ea2bcdc4b17c791e2763584",
+      "result_chars": 531,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "三笔钱的公司口径分别如下（注意各自出处与口径，不要混用）：\n1）专利发明人奖励：执行《企业知识产权管理规范》GB/T 29490、设专利评审委员会，发明人奖励 5,000-30,000 元（《澜图智能知识产权与专利布局》v2.8，生效 2025-12-18）。另注：《薪酬与奖金管理办法》v3.2 中另有\"专利奖\"属于专项奖励，规定单个项目奖励不超过 50 万元，与发明人奖励是两个不同口径，勿与 5,000-30,000 元混淆。\n2）猎头服务费：猎头费用为候选人年薪的 20%-25%，保证期 90 天（《社会招聘管理办法》v2.5，生效 2025-07-15）。\n3）内部推荐奖金：员工推荐成功入职并转正后奖励 3,000-10,000 元；关键技术岗位奖励 15,000 元（同一文档 v2.5）。",
+    "citations": [
+      "lantu_tech_patents",
+      "lantu_hr_social",
+      "lantu_hr_compensation"
+    ],
+    "evidence": [
+      "lantu_tech_patents#片段0",
+      "lantu_hr_social#片段0",
+      "lantu_hr_compensation#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 14659,
+  "started_at": "2026-11-01T06:09:38",
+  "elapsed_seconds": 23.5,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "专利发明人奖励 奖金 标准",
+        "top_k": 8
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_tech_patents",
+            "title": "# 澜图智能知识产权与专利布局",
+            "chunk": 0,
+            "score": 26.116,
+            "snippet": "# 澜图智能知识产权与专利布局\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-04-26 09:00\n更新时间：2025-12-18 15:00\n版本号：v2.8\n文档类型：tech\n文档族：patent_portfolio\n生效日期：2025-12-18\n\n## 一、专利总量\n\n累计有效专利 1,286 件，其中发明专利 412 件、实用新型 726 件、外观设计 148 件；软件著作权 168 项。\n\n## 二、重点布局\n\n运动控制、伺服驱动、机器视觉、力控与具身智能五大方向；PCT 国际专利申请 3"
+          },
+          {
+            "doc_id": "lantu_hr_compensation",
+            "title": "# 澜图智能薪酬与奖金管理办法",
+            "chunk": 0,
+            "score": 17.33,
+            "snippet": "# 澜图智能薪酬与奖金管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-01-01 09:00\n版本号：v3.2\n文档类型：hr\n文档族：compensation\n生效日期：2025-01-01\n\n## 一、薪酬结构\n\n年度薪酬 = 12 个月基本工资 + 1 个月年终双薪 + 绩效奖金（0-6 个月）+ 专项奖励。\n\n## 二、调薪机制\n\n每年 4 月调薪，依据市场分位、绩效与职级；调薪预算为工资总额的 5%-8%。\n\n## 三、绩效奖金\n\n与公司、部"
+          },
+          {
+            "doc_id": "lantu_org_rd_system",
+            "title": "# 澜图智能研发体系与投入",
+            "chunk": 0,
+            "score": 9.198,
+            "snippet": "# 澜图智能研发体系与投入\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-02-01 09:00\n更新时间：2026-01-12 10:00\n版本号：v5.0\n文档类型：org\n文档族：rd_system\n生效日期：2026-01-12\n\n## 一、研发架构\n\n研发中心下设机器人本体研究所、控制器研究所、机器视觉研究所、工艺应用研究所、具身智能研究所，另设测试中心与可靠性实验室。\n\n## 二、人员结构\n\n研发人员 1,286 人，其中博士 48 人、硕士 612 人，35 岁以下占比 61%。2025 年"
+          },
+          {
+            "doc_id": "lantu_hr_social",
+            "title": "# 澜图智能社会招聘管理办法",
+            "chunk": 0,
+            "score": 5.394,
+            "snippet": "# 澜图智能社会招聘管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-02-01 09:00\n更新时间：2025-07-15 11:00\n版本号：v2.5\n文档类型：hr\n文档族：social_recruitment\n生效日期：2025-07-15\n\n## 一、适用岗位\n\n适用于经理级及以上、高级技术专家与紧缺岗位；年度社招计划 200 人。\n\n## 二、渠道管理\n\n使用猎头、招聘平台、内部推荐与行业社群。猎头费用为年薪的 20%-25%，保证期 90 天。\n\n## 三、内部推荐\n\n员工推荐成功入"
+          },
+          {
+            "doc_id": "lantu_investor_overview",
+            "title": "# 澜图智能投资者关系概览",
+            "chunk": 0,
+            "score": 4.872,
+            "snippet": "# 澜图智能投资者关系概览\n\n所属部门：董事会办公室\n作者：周敏仪\n创建时间：2024-03-20 09:00\n更新时间：2026-01-10 17:00\n版本号：v4.1\n文档类型：company\n文档族：investor_overview\n生效日期：2026-01-10\n\n## 一、基本信息\n\n公司股票代码 688719，总股本 4.2 亿股，2025 年末总市值约 168 亿元。2025 年度拟每 10 股派发现金红利 3.2 元（含税）。\n\n## 二、经营数据\n\n2025 年营业收入 42.63 亿元，归母"
+          },
+          {
+            "doc_id": "lantu_hr_performance",
+            "title": "# 澜图智能绩效管理制度",
+            "chunk": 0,
+            "score": 4.438,
+            "snippet": "# 澜图智能绩效管理制度\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v3.4\n文档类型：hr\n文档族：performance\n生效日期：2025-06-01\n\n## 一、考核周期\n\n实行季度考核与年度考核，季度占 40%，年度占 60%。试用期员工参加转正考核。\n\n## 二、考核维度\n\n业绩目标 60%、价值观 20%、能力成长 20%。销售岗位业绩权重 70%。\n\n## 三、绩效分布\n\nS 级 10%、A 级 30%、B "
+          },
+          {
+            "doc_id": "lantu_policy_travel_2024",
+            "title": "# 澜图智能差旅费用报销标准（2024版）",
+            "chunk": 0,
+            "score": 2.798,
+            "snippet": "# 澜图智能差旅费用报销标准（2024版）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-02-20 09:00\n更新时间：2024-03-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2024-03-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 450 元/晚，二线城市 350 元/晚，其他城市 300 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 100 元/天，按自然日计算；客户宴请须提"
+          },
+          {
+            "doc_id": "lantu_policy_travel_2025",
+            "title": "# 澜图智能差旅费用报销标准（2025版）",
+            "chunk": 0,
+            "score": 2.771,
+            "snippet": "# 澜图智能差旅费用报销标准（2025版）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-12-15 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2025-01-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 550 元/晚，二线城市 420 元/晚，其他城市 350 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 120 元/天，按自然日计算；客户宴请须提"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_social",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_hr_social",
+        "title": "# 澜图智能社会招聘管理办法",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 361,
+        "text": "# 澜图智能社会招聘管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-02-01 09:00\n更新时间：2025-07-15 11:00\n版本号：v2.5\n文档类型：hr\n文档族：social_recruitment\n生效日期：2025-07-15\n\n## 一、适用岗位\n\n适用于经理级及以上、高级技术专家与紧缺岗位；年度社招计划 200 人。\n\n## 二、渠道管理\n\n使用猎头、招聘平台、内部推荐与行业社群。猎头费用为年薪的 20%-25%，保证期 90 天。\n\n## 三、内部推荐\n\n员工推荐成功入职并转正后，奖励 3,000-10,000 元；关键技术岗位奖励 15,000 元。\n\n## 四、定级与薪酬\n\n依据岗位价值与候选人能力定级，薪酬在带宽内浮动；超出带宽须 HRVP 与 CFO 审批。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_patents",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_tech_patents",
+        "title": "# 澜图智能知识产权与专利布局",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 393,
+        "text": "# 澜图智能知识产权与专利布局\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-04-26 09:00\n更新时间：2025-12-18 15:00\n版本号：v2.8\n文档类型：tech\n文档族：patent_portfolio\n生效日期：2025-12-18\n\n## 一、专利总量\n\n累计有效专利 1,286 件，其中发明专利 412 件、实用新型 726 件、外观设计 148 件；软件著作权 168 项。\n\n## 二、重点布局\n\n运动控制、伺服驱动、机器视觉、力控与具身智能五大方向；PCT 国际专利申请 36 件。\n\n## 三、管理体系\n\n执行《企业知识产权管理规范》GB/T 29490，设专利评审委员会，发明人奖励 5,000-30,000 元。\n\n## 四、风险防控\n\n新产品上市前开展 FTO 检索，重点市场进行侵权风险评估；年度知识产权预算 1,200 万元。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_compensation",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_hr_compensation",
+        "title": "# 澜图智能薪酬与奖金管理办法",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 362,
+        "text": "# 澜图智能薪酬与奖金管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-01-01 09:00\n版本号：v3.2\n文档类型：hr\n文档族：compensation\n生效日期：2025-01-01\n\n## 一、薪酬结构\n\n年度薪酬 = 12 个月基本工资 + 1 个月年终双薪 + 绩效奖金（0-6 个月）+ 专项奖励。\n\n## 二、调薪机制\n\n每年 4 月调薪，依据市场分位、绩效与职级；调薪预算为工资总额的 5%-8%。\n\n## 三、绩效奖金\n\n与公司、部门、个人绩效挂钩，S 级系数 1.5，A 级 1.2，B 级 1.0，C 级 0.5，D 级无奖金。\n\n## 四、专项奖励\n\n设置项目交付奖、专利奖、质量奖与销售冠军奖；单个项目奖励不超过 50 万元。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_tech_patents",
+      "lantu_hr_social",
+      "lantu_hr_compensation"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.292,
+    "number_recall": 0.75
+  }
+}

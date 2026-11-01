@@ -1,0 +1,142 @@
+{
+  "qid": "H0004",
+  "question": "SLA 2025 版中 P3 故障的响应与处理时限各是多少？相比 2024 版变化了多少？",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>SLA P3 故障 响应时间 处理时限</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list><parameter=keyword>SLA</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 80,
+        "prompt_tokens": 376,
+        "total_tokens": 456,
+        "completion_tokens_details": {
+          "reasoning_tokens": 23
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.484
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>SLA 2025 P3 响应时限</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 74,
+        "prompt_tokens": 470,
+        "total_tokens": 544,
+        "completion_tokens_details": {
+          "reasoning_tokens": 36
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.766
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>SLA 2025 P3 故障 响应时间 处理时限</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 60,
+        "prompt_tokens": 545,
+        "total_tokens": 605,
+        "completion_tokens_details": {
+          "reasoning_tokens": 15
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.578
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>SLA 2025 P3 故障 响应时间 处理时限</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 76,
+        "prompt_tokens": 627,
+        "total_tokens": 703,
+        "completion_tokens_details": {
+          "reasoning_tokens": 31
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.906
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>SLA 2025 P3 故障 响应时间 处理时限</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 69,
+        "prompt_tokens": 709,
+        "total_tokens": 778,
+        "completion_tokens_details": {
+          "reasoning_tokens": 24
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 2.547
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>SLA 2025 P3 故障 响应时间 处理时限</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 63,
+        "prompt_tokens": 791,
+        "total_tokens": 854,
+        "completion_tokens_details": {
+          "reasoning_tokens": 18
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 7.875
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"未能检索到任何与『SLA 2025 版』『SLA 2024 版』或『P3 故障响应与处理时限』相关的文档片段，无法确认 2025 版 P3 故障的响应时限、处理时限，也无法对比 2024 版的变化情况。请提供 SLA 文档的具体名称、编号或相关关键词（如服务级别协议、故障等级、P1/P2/P3/P4、恢复时间目标等），以便重新检索。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 156,
+        "prompt_tokens": 870,
+        "total_tokens": 1026,
+        "completion_tokens_details": {
+          "reasoning_tokens": 18
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 768
+        }
+      },
+      "seconds": 5.094
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "未能检索到任何与『SLA 2025 版』『SLA 2024 版』或『P3 故障响应与处理时限』相关的文档片段，无法确认 2025 版 P3 故障的响应时限、处理时限，也无法对比 2024 版的变化情况。请提供 SLA 文档的具体名称、编号或相关关键词（如服务级别协议、故障等级、P1/P2/P3/P4、恢复时间目标等），以便重新检索。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4966,
+  "started_at": "2026-11-01T05:09:55",
+  "elapsed_seconds": 26.25,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.152,
+    "number_recall": 1.0
+  }
+}

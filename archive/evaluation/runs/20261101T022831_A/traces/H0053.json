@@ -1,0 +1,239 @@
+{
+  "qid": "H0053",
+  "question": "反商业贿赂管理规定明确禁止哪些行为？",
+  "question_type": "清单枚举",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>反商业贿赂管理规定 禁止行为</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 352,
+        "total_tokens": 402,
+        "completion_tokens_details": {
+          "reasoning_tokens": 15
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.578
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>反商业贿赂管理规定 禁止行为</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 60,
+        "prompt_tokens": 424,
+        "total_tokens": 484,
+        "completion_tokens_details": {
+          "reasoning_tokens": 25
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.484
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"反商业贿赂管理规定 禁止行为\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 37,
+        "prompt_tokens": 496,
+        "total_tokens": 533,
+        "completion_tokens_details": {
+          "reasoning_tokens": 7
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 1.922
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_legal_anti_bribery\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 70,
+        "prompt_tokens": 2849,
+        "total_tokens": 2919,
+        "completion_tokens_details": {
+          "reasoning_tokens": 36
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 3.203
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"《澜图智能反商业贿赂管理规定》（v2.4，法务合规部，2025-01-15 生效）明确禁止的行为主要包括：\\n1. 严禁向客户、政府官员、供应商及其亲属提供现金、购物卡、有价证券、贵重礼品、旅游或娱乐安排（第一节“禁止行为”）。\\n2. 禁止高消费娱乐；商务礼品单价不得超过 200 元并须登记备案，业务招待人均不得超过 600 元（第二节“礼品与招待”）。\\n3. 第三方（代理商、渠道商、咨询顾问）须签署廉洁协议，发现违规立即终止合作并追究连带责任（第三节“第三方管理”）。\\n4. 礼品、招待与赞助须在 OA 系统审批并保留凭证；财务报销须核对审批记录，无记录不予报销（第四节“审批与记录”）。\\n违规处理：违反规定者解除劳动合同并追偿损失；涉嫌行贿的移交司法机关，同时追究管理责任。\",\"citations\":[\"lantu_legal_anti_bribery\"],\"evidence\":[\"lantu_legal_anti_bribery#片段0\"]}",
+      "usage": {
+        "completion_tokens": 286,
+        "prompt_tokens": 3255,
+        "total_tokens": 3541,
+        "completion_tokens_details": {
+          "reasoning_tokens": 15
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2816
+        }
+      },
+      "seconds": 7.359
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "反商业贿赂管理规定 禁止行为",
+        "top_k": 10
+      },
+      "result_sha": "0454a3169125bf921a096992dd37907f86188000cc7fcc156727551898f98949",
+      "result_chars": 3915,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_legal_anti_bribery",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "57727ab2b35396f8001a9d259562464fb42af6b84a4b7131442e7b5bc59a1316",
+      "result_chars": 584,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "《澜图智能反商业贿赂管理规定》（v2.4，法务合规部，2025-01-15 生效）明确禁止的行为主要包括：\n1. 严禁向客户、政府官员、供应商及其亲属提供现金、购物卡、有价证券、贵重礼品、旅游或娱乐安排（第一节“禁止行为”）。\n2. 禁止高消费娱乐；商务礼品单价不得超过 200 元并须登记备案，业务招待人均不得超过 600 元（第二节“礼品与招待”）。\n3. 第三方（代理商、渠道商、咨询顾问）须签署廉洁协议，发现违规立即终止合作并追究连带责任（第三节“第三方管理”）。\n4. 礼品、招待与赞助须在 OA 系统审批并保留凭证；财务报销须核对审批记录，无记录不予报销（第四节“审批与记录”）。\n违规处理：违反规定者解除劳动合同并追偿损失；涉嫌行贿的移交司法机关，同时追究管理责任。",
+    "citations": [
+      "lantu_legal_anti_bribery"
+    ],
+    "evidence": [
+      "lantu_legal_anti_bribery#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 7879,
+  "started_at": "2026-11-01T02:36:48",
+  "elapsed_seconds": 16.55,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "反商业贿赂管理规定 禁止行为",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_legal_anti_bribery",
+            "title": "# 澜图智能反商业贿赂管理规定",
+            "chunk": 0,
+            "score": 47.147,
+            "snippet": "# 澜图智能反商业贿赂管理规定\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-03-01 09:00\n更新时间：2025-01-15 10:00\n版本号：v2.4\n文档类型：legal\n文档族：anti_bribery\n生效日期：2025-01-15\n\n## 一、禁止行为\n\n禁止向客户、政府官员、供应商及其亲属提供现金、购物卡、有价证券、贵重礼品、旅游或娱乐安排。\n\n## 二、礼品与招待\n\n商务礼品单价不超过 200 元，须登记备案；业务招待人均不超过 600 元，禁止高消费娱乐。\n\n## 三、第三方管理"
+          },
+          {
+            "doc_id": "lantu_sales_channel",
+            "title": "# 澜图智能渠道管理办法",
+            "chunk": 0,
+            "score": 21.03,
+            "snippet": "# 澜图智能渠道管理办法\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-03-05 09:00\n更新时间：2025-11-06 10:00\n版本号：v2.7\n文档类型：sales\n文档族：sales_channel\n生效日期：2025-11-06\n\n## 一、渠道分级\n\n渠道商分为金牌、银牌、认证三级。金牌渠道年度采购额不低于 3,000 万元，享受 82 折拿货价、优先技术支持与联合市场活动。\n\n## 二、准入与退出\n\n新渠道需具备 3 年以上自动化行业经验、专职技术团队不少于 5 人。连续 12 个月"
+          },
+          {
+            "doc_id": "lantu_legal_compliance_manual",
+            "title": "# 澜图智能合规管理手册",
+            "chunk": 0,
+            "score": 17.962,
+            "snippet": "# 澜图智能合规管理手册\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-02-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v3.1\n文档类型：legal\n文档族：compliance_manual\n生效日期：2025-06-01\n\n## 一、合规组织\n\n公司设合规委员会，主任由法务合规总监担任，成员包括财务、销售、采购、人力与信息技术负责人。\n\n## 二、重点领域\n\n反商业贿赂、出口管制、数据保护、反垄断、劳动用工与环境保护。各领域每年至少开展一次风险评估。\n\n## 三、培训与举"
+          },
+          {
+            "doc_id": "lantu_org_committees",
+            "title": "# 澜图智能跨部门委员会与运作机制",
+            "chunk": 0,
+            "score": 13.119,
+            "snippet": "# 澜图智能跨部门委员会与运作机制\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2024-05-06 09:00\n更新时间：2025-10-18 11:00\n版本号：v2.1\n文档类型：org\n文档族：committees\n生效日期：2025-10-18\n\n## 一、产品决策委员会\n\n主任由 CTO 担任，成员包括产品部、研发中心、销售中心、质量部负责人，负责产品立项、版本发布与退市决策，每月召开一次。\n\n## 二、质量安全委员会\n\n主任由 COO 担任，负责重大质量事故、召回与安全生产事项，实行 24 小时响"
+          },
+          {
+            "doc_id": "lantu_policy_entertainment",
+            "title": "# 澜图智能业务招待管理办法",
+            "chunk": 0,
+            "score": 12.331,
+            "snippet": "# 澜图智能业务招待管理办法\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-04-15 09:00\n更新时间：2025-05-06 16:00\n版本号：v2.3\n文档类型：policy\n文档族：business_entertainment\n生效日期：2025-05-06\n\n## 一、招待原则\n\n业务招待须与业务直接相关，坚持简朴、适度、透明原则，禁止铺张浪费与高档消费。\n\n## 二、标准\n\n人均招待标准不超过 600 元，酒水不超过 300 元/瓶；S 级客户重要接待可上浮 20%，须提前审批。\n\n## 三"
+          },
+          {
+            "doc_id": "lantu_legal_supplier_code",
+            "title": "# 澜图智能供应商行为准则",
+            "chunk": 0,
+            "score": 12.152,
+            "snippet": "# 澜图智能供应商行为准则\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-04-01 09:00\n更新时间：2025-05-01 09:00\n版本号：v2.0\n文档类型：legal\n文档族：supplier_code\n生效日期：2025-05-01\n\n## 一、劳工与人权\n\n供应商不得使用童工、强迫劳动，须保障结社自由与最低工资，工作时间符合当地法律。\n\n## 二、健康与安全\n\n供应商须提供安全的工作环境，配备必要的防护设施，定期开展安全培训与应急演练。\n\n## 三、环境要求\n\n供应商须遵守环保法规，优"
+          },
+          {
+            "doc_id": "lantu_policy_confidentiality",
+            "title": "# 澜图智能商业秘密与保密管理规范",
+            "chunk": 0,
+            "score": 12.125,
+            "snippet": "# 澜图智能商业秘密与保密管理规范\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-15 09:00\n更新时间：2025-03-28 11:00\n版本号：v3.1\n文档类型：policy\n文档族：confidentiality\n生效日期：2025-03-28\n\n## 一、保密范围\n\n技术秘密（源代码、算法、图纸、工艺参数）、经营秘密（客户名单、报价、成本、未披露财务数据）与人事秘密均属保密信息。\n\n## 二、保密义务\n\n员工在职期间及离职后 3 年内不得披露、使用或允许他人使用公司保密信息；竞业限制人"
+          },
+          {
+            "doc_id": "lantu_support_field_service",
+            "title": "# 澜图智能现场服务与安装调试规范",
+            "chunk": 0,
+            "score": 8.992,
+            "snippet": "# 澜图智能现场服务与安装调试规范\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-04-01 09:00\n更新时间：2025-05-30 10:00\n版本号：v3.0\n文档类型：support\n文档族：field_service\n生效日期：2025-05-30\n\n## 一、安装调试\n\n设备到货后 3 个工作日内完成开箱验收，7 个工作日内完成安装，14 个工作日内完成调试与试运行。\n\n## 二、现场管理\n\n服务工程师须佩戴工牌、遵守客户安全规定、每日提交服务日报；涉及动火、高处作业须办理许可。\n\n## 三"
+          },
+          {
+            "doc_id": "lantu_policy_data_classification",
+            "title": "# 澜图智能数据分级与分类管理规范",
+            "chunk": 0,
+            "score": 8.23,
+            "snippet": "# 澜图智能数据分级与分类管理规范\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-05-20 09:00\n更新时间：2025-09-10 14:00\n版本号：v2.5\n文档类型：policy\n文档族：data_classification\n生效日期：2025-09-10\n\n## 一、分级定义\n\n数据分为 L1 公开、L2 内部、L3 机密、L4 绝密四级。L1 可对外发布；L2 限公司内部；L3 限授权岗位；L4 限特定人员并加密存储。\n\n## 二、典型数据\n\nL1：宣传资料、公开财报；L2：一般制度、会"
+          },
+          {
+            "doc_id": "lantu_policy_infosec",
+            "title": "# 澜图智能信息安全管理制度",
+            "chunk": 0,
+            "score": 7.809,
+            "snippet": "# 澜图智能信息安全管理制度\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-04-01 09:00\n更新时间：2025-08-01 09:00\n版本号：v4.0\n文档类型：policy\n文档族：information_security\n生效日期：2025-08-01\n\n## 一、账号与密码\n\n员工账号一人一号，密码长度不少于 12 位，包含大小写字母、数字与符号，每 90 天更换一次；禁止共享账号。\n\n## 二、终端安全\n\n办公电脑须安装公司统一的终端防护软件，开启磁盘加密与屏保锁定；禁止安装未授权软件与"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_legal_anti_bribery",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_legal_anti_bribery",
+        "title": "# 澜图智能反商业贿赂管理规定",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 408,
+        "text": "# 澜图智能反商业贿赂管理规定\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-03-01 09:00\n更新时间：2025-01-15 10:00\n版本号：v2.4\n文档类型：legal\n文档族：anti_bribery\n生效日期：2025-01-15\n\n## 一、禁止行为\n\n禁止向客户、政府官员、供应商及其亲属提供现金、购物卡、有价证券、贵重礼品、旅游或娱乐安排。\n\n## 二、礼品与招待\n\n商务礼品单价不超过 200 元，须登记备案；业务招待人均不超过 600 元，禁止高消费娱乐。\n\n## 三、第三方管理\n\n代理商、渠道商与咨询顾问须签署廉洁协议，发现违规立即终止合作并追究连带责任。\n\n## 四、审批与记录\n\n礼品、招待与赞助须在 OA 审批并保留凭证；财务报销须核对审批记录，无记录不予报销。\n\n## 五、违规处理\n\n违反规定者解除劳动合同并追偿损失；涉嫌行贿的移交司法机关，同时追究管理责任。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_legal_anti_bribery"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.943,
+    "number_recall": 0.0
+  }
+}

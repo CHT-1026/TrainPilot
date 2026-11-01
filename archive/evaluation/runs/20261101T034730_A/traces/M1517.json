@@ -1,0 +1,142 @@
+{
+  "qid": "M1517",
+  "question": "用户：我们的服务工程师要考什么证？分几级？\n助手：分 L1 初级、L2 中级、L3 高级三级，对应常规维护、故障维修与整线调试。\n用户：那每一级分别要培训几天、考核怎么算？证书能管多久？现在有多少人拿了证？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>服务工程师 认证 L1 L2 L3 培训 考核</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 69,
+        "prompt_tokens": 413,
+        "total_tokens": 482,
+        "completion_tokens_details": {
+          "reasoning_tokens": 25
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.687
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>服务工程师 认证 L1 L2 L3 培训天数 考核标准 证书有效期</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 78,
+        "prompt_tokens": 494,
+        "total_tokens": 572,
+        "completion_tokens_details": {
+          "reasoning_tokens": 28
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 2.234
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>服务工程师 认证 L1 L2 L3 培训天数 考核 证书有效期</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 80,
+        "prompt_tokens": 581,
+        "total_tokens": 661,
+        "completion_tokens_details": {
+          "reasoning_tokens": 31
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 2.86
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>服务工程师 认证 L1 L2 L3 培训天数 考核标准 证书有效期 持证人数</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 64,
+        "prompt_tokens": 667,
+        "total_tokens": 731,
+        "completion_tokens_details": {
+          "reasoning_tokens": 9
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 1.672
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=args>{\"query\": \"服务工程师 认证 L1 L2 L3 培训天数 考核 证书有效期 持证人数\", \"top_k\": 10}</parameter><parameter=name>search</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 104,
+        "prompt_tokens": 759,
+        "total_tokens": 863,
+        "completion_tokens_details": {
+          "reasoning_tokens": 41
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 2.39
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>服务工程师 认证 L1 L2 L3 培训天数 考核标准 证书有效期 持证人数</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 118,
+        "prompt_tokens": 859,
+        "total_tokens": 977,
+        "completion_tokens_details": {
+          "reasoning_tokens": 63
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 4.563
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpora\",\"answer\":\"无法核实。多次检索均未成功返回语料库内容，无法确认以下四项信息：1) L1/L2/L3 每级的培训天数；2) 各级考核方式与合格标准（理论、实操、故障排查时长等）；3) 证书有效期（是否需要定期复审或继续教育）；4) 当前持证工程师人数（分级别统计）。建议：① 稍后重试检索，或提供认证管理办法、培训大纲、证书台账等相关文档；② 若已有内部文件，可直接摘录培训天数表、考核评分细则和证书有效期条款，以便核对并给出准确答案。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 185,
+        "prompt_tokens": 948,
+        "total_tokens": 1133,
+        "completion_tokens_details": {
+          "reasoning_tokens": 16
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 5.797
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpora",
+    "answer": "无法核实。多次检索均未成功返回语料库内容，无法确认以下四项信息：1) L1/L2/L3 每级的培训天数；2) 各级考核方式与合格标准（理论、实操、故障排查时长等）；3) 证书有效期（是否需要定期复审或继续教育）；4) 当前持证工程师人数（分级别统计）。建议：① 稍后重试检索，或提供认证管理办法、培训大纲、证书台账等相关文档；② 若已有内部文件，可直接摘录培训天数表、考核评分细则和证书有效期条款，以便核对并给出准确答案。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 5419,
+  "started_at": "2026-11-01T06:14:28",
+  "elapsed_seconds": 21.2,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.029,
+    "number_recall": 0.0
+  }
+}

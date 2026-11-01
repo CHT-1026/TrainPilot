@@ -1,0 +1,142 @@
+{
+  "qid": "M0218",
+  "question": "外面都叫“顾总”，他到底在公司是什么职位？手上的股份有多少？董事会是怎么搭的？",
+  "question_type": "人物关系推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>顾 董事长 总裁 职位</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list><parameter=keyword>公司章程</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 87,
+        "prompt_tokens": 366,
+        "total_tokens": 453,
+        "completion_tokens_details": {
+          "reasoning_tokens": 33
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.093
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>顾 持股比例 股东 董事</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 66,
+        "prompt_tokens": 457,
+        "total_tokens": 523,
+        "completion_tokens_details": {
+          "reasoning_tokens": 27
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.938
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>顾 持股 董事会</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 57,
+        "prompt_tokens": 533,
+        "total_tokens": 590,
+        "completion_tokens_details": {
+          "reasoning_tokens": 22
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.203
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>顾 持股比例 董事会成员</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 55,
+        "prompt_tokens": 605,
+        "total_tokens": 660,
+        "completion_tokens_details": {
+          "reasoning_tokens": 18
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 1.359
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>顾总 职位 股份 董事会</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 67,
+        "prompt_tokens": 679,
+        "total_tokens": 746,
+        "completion_tokens_details": {
+          "reasoning_tokens": 27
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 1.657
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>顾总 职位 股份 董事会</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 71,
+        "prompt_tokens": 756,
+        "total_tokens": 827,
+        "completion_tokens_details": {
+          "reasoning_tokens": 31
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.968
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"无法确认。资料库中检索不到关于\\\"顾总\\\"（姓顾的高管/股东）的职位、持股比例或董事会构成的任何记录。要回答此问题，需要补充：该顾总所在公司的全称（或统一社会信用代码），以及对应的公司章程、股东名册或最新年度报告/工商备案信息。若同一集团内有多位顾姓高管，还需说明具体是哪一位。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 125,
+        "prompt_tokens": 830,
+        "total_tokens": 955,
+        "completion_tokens_details": {
+          "reasoning_tokens": 15
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 4.422
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "无法确认。资料库中检索不到关于\"顾总\"（姓顾的高管/股东）的职位、持股比例或董事会构成的任何记录。要回答此问题，需要补充：该顾总所在公司的全称（或统一社会信用代码），以及对应的公司章程、股东名册或最新年度报告/工商备案信息。若同一集团内有多位顾姓高管，还需说明具体是哪一位。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4754,
+  "started_at": "2026-11-01T05:46:06",
+  "elapsed_seconds": 17.64,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

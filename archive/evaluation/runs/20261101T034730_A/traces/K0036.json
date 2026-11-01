@@ -1,0 +1,427 @@
+{
+  "qid": "K0036",
+  "question": "员工手册规定试用期 3-6 个月，新员工入职培训大纲规定新员工「在 30 天内完成从入职到独立工作的过渡」，闭卷考试 80 分合格、试用期结束进行转正答辩。招聘管理制度规定录用通知有效期 7 天。请串联这三份制度回答：一名 2026 年 3 月入职的新员工，从拿 offer 到完成转正的最短时间表大致是怎样的？",
+  "question_type": "时间与因果推断",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>试用期 3-6 个月 员工手册</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list><parameter=keyword>试用期</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 118,
+        "prompt_tokens": 451,
+        "total_tokens": 569,
+        "completion_tokens_details": {
+          "reasoning_tokens": 61
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.235
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"试用期 3-6 个月 员工手册 转正\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 545,
+        "total_tokens": 596,
+        "completion_tokens_details": {
+          "reasoning_tokens": 13
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 2.203
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_employee_handbook\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 61,
+        "prompt_tokens": 2921,
+        "total_tokens": 2982,
+        "completion_tokens_details": {
+          "reasoning_tokens": 29
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 3.734
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"录用通知 有效期 7 天 招聘管理制度\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 68,
+        "prompt_tokens": 3456,
+        "total_tokens": 3524,
+        "completion_tokens_details": {
+          "reasoning_tokens": 35
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2880
+        }
+      },
+      "seconds": 1.984
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_hr_recruitment\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 59,
+        "prompt_tokens": 5888,
+        "total_tokens": 5947,
+        "completion_tokens_details": {
+          "reasoning_tokens": 28
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3392
+        }
+      },
+      "seconds": 1.86
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_hr_new_hire_training\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 65,
+        "prompt_tokens": 6257,
+        "total_tokens": 6322,
+        "completion_tokens_details": {
+          "reasoning_tokens": 32
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.734
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"按三份制度串联，最短时间表如下（以 2026 年 3 月入职为例）：\\n\\n**T-7 天至 T-1 天（约 2 月底）**：发放录用通知，有效期 7 天。候选人须在这 7 天内答复并备齐入职材料（离职证明、学历证书、体检报告）；若走完招聘全流程后 offer 恰在 7 天有效期内被接受，最早可在第 7 天确认入职日期。\\n\\n**T=0（2026 年 3 月初，如 3 月 2 日）入职日**：当日签署劳动合同、保密协议与廉洁承诺书，试用期按最短 3 个月设定；同时配备导师（P5 及以上或任职满 2 年骨干），带教期 3 个月。\\n\\n**第 1-5 天**：集中培训——第1天公司介绍与企业文化，第2天制度与信息安全，第3天产品与业务，第4天质量意识与安全生产，第5天岗位实践与导师见面；培训结束进行闭卷考试，80 分合格（不合格需补考/延期，制度未规定补考次数，这是最短路径的关键前提）。\\n\\n**第 30 天前**：完成从入职到独立工作的过渡（培训目标口径），导师带教持续进行。\\n\\n**约第 90 天（2026 年 6 月 1-2 日）**：试用期满（最短 3 个月），进行转正答辩，由用人部门与 HR 共同评估，通过后转正。\\n\\n**汇总**：offer 到完成转正最短约 3 个月零 1 周（offer 有效期 7 天 + 试用期 3 个月），即约 97-100 天。例如 offer 于 2026-02-23 发出并被接受，2026-03-02 入职，最快 2026-06-01/02 前后完成转正答辩。\\n\\n注意：①培训大纲的 30 天是「独立工作过渡」目标而非转正节点，不缩短试用期；②试用期 3-6 个月的具体期限以劳动合同约定为准，手册只给出区间，最短 3 个月是取下限；③闭卷考试 80 分是合格线，挂科会推迟转正。\",\"citations\":[\"lantu_policy_employee_handbook\",\"lantu_hr_new_hire_training\",\"lantu_hr_recruitment\"],\"evidence\":[\"lantu_policy_employee_handbook#片段0:新员工入职当日签署劳动合同、保密协议与廉洁承诺书，试用期 3-6 个月。试用期内需完成入职培训与岗位考核，考核不合格者依法解除劳动合同。\",\"lantu_hr_new_hire_training#片段0:在 30 天内完成从入职到独立工作的过渡；第 1-5 天课程安排；导师带教期 3 个月；培训结束闭卷考试 80 分合格，试用期结束进行转正答辩。\",\"lantu_hr_recruitment#片段0:录用通知有效期 7 天；入职须提供离职证明、学历证书与体检报告；背景调查异常的可撤销录用。\"]}",
+      "usage": {
+        "completion_tokens": 1254,
+        "prompt_tokens": 6648,
+        "total_tokens": 7902,
+        "completion_tokens_details": {
+          "reasoning_tokens": 480
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 5824
+        }
+      },
+      "seconds": 29.391
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "试用期 3-6 个月 员工手册 转正",
+        "top_k": 10
+      },
+      "result_sha": "b1c83f9739fc53a88f4c16ce37271184b8597c20bbfe74172dfea96ef804a3e9",
+      "result_chars": 3843,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_employee_handbook",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "3c94459115986a3d130109fd8645b73f55181c83182d2e9d7603089256d3e432",
+      "result_chars": 768,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "录用通知 有效期 7 天 招聘管理制度",
+        "top_k": 10
+      },
+      "result_sha": "4889b6ebdb030bd7b2c625bdcf07c9f700087eaf80621d9304b4f2ccd2002e06",
+      "result_chars": 3892,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_recruitment",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "f7bd1b1e8e9a13590f5dc22f84f571b16280be1b9f77234b039a2072ce222185",
+      "result_chars": 531,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_new_hire_training",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "55494c018783fac8daf4eaaa2e7d9e5f8ee2a894c3b787d365b6d1855487444a",
+      "result_chars": 541,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "按三份制度串联，最短时间表如下（以 2026 年 3 月入职为例）：\n\n**T-7 天至 T-1 天（约 2 月底）**：发放录用通知，有效期 7 天。候选人须在这 7 天内答复并备齐入职材料（离职证明、学历证书、体检报告）；若走完招聘全流程后 offer 恰在 7 天有效期内被接受，最早可在第 7 天确认入职日期。\n\n**T=0（2026 年 3 月初，如 3 月 2 日）入职日**：当日签署劳动合同、保密协议与廉洁承诺书，试用期按最短 3 个月设定；同时配备导师（P5 及以上或任职满 2 年骨干），带教期 3 个月。\n\n**第 1-5 天**：集中培训——第1天公司介绍与企业文化，第2天制度与信息安全，第3天产品与业务，第4天质量意识与安全生产，第5天岗位实践与导师见面；培训结束进行闭卷考试，80 分合格（不合格需补考/延期，制度未规定补考次数，这是最短路径的关键前提）。\n\n**第 30 天前**：完成从入职到独立工作的过渡（培训目标口径），导师带教持续进行。\n\n**约第 90 天（2026 年 6 月 1-2 日）**：试用期满（最短 3 个月），进行转正答辩，由用人部门与 HR 共同评估，通过后转正。\n\n**汇总**：offer 到完成转正最短约 3 个月零 1 周（offer 有效期 7 天 + 试用期 3 个月），即约 97-100 天。例如 offer 于 2026-02-23 发出并被接受，2026-03-02 入职，最快 2026-06-01/02 前后完成转正答辩。\n\n注意：①培训大纲的 30 天是「独立工作过渡」目标而非转正节点，不缩短试用期；②试用期 3-6 个月的具体期限以劳动合同约定为准，手册只给出区间，最短 3 个月是取下限；③闭卷考试 80 分是合格线，挂科会推迟转正。",
+    "citations": [
+      "lantu_policy_employee_handbook",
+      "lantu_hr_new_hire_training",
+      "lantu_hr_recruitment"
+    ],
+    "evidence": [
+      "lantu_policy_employee_handbook#片段0:新员工入职当日签署劳动合同、保密协议与廉洁承诺书，试用期 3-6 个月。试用期内需完成入职培训与岗位考核，考核不合格者依法解除劳动合同。",
+      "lantu_hr_new_hire_training#片段0:在 30 天内完成从入职到独立工作的过渡；第 1-5 天课程安排；导师带教期 3 个月；培训结束闭卷考试 80 分合格，试用期结束进行转正答辩。",
+      "lantu_hr_recruitment#片段0:录用通知有效期 7 天；入职须提供离职证明、学历证书与体检报告；背景调查异常的可撤销录用。"
+    ]
+  },
+  "status": "answered",
+  "tokens": 27842,
+  "started_at": "2026-11-01T05:35:06",
+  "elapsed_seconds": 44.14,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "试用期 3-6 个月 员工手册 转正",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_policy_employee_handbook",
+            "title": "# 澜图智能员工手册",
+            "chunk": 0,
+            "score": 27.389,
+            "snippet": "# 澜图智能员工手册\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-07-01 09:00\n版本号：v6.0\n文档类型：policy\n文档族：employee_handbook\n生效日期：2025-07-01\n\n## 一、适用范围\n\n本手册适用于澜图智能装备股份有限公司及下属子公司全体正式员工、试用期员工与实习生。劳务派遣与外包人员参照执行。\n\n## 二、入职与试用\n\n新员工入职当日签署劳动合同、保密协议与廉洁承诺书，试用期 3-6 个月。试用期内需完成入职培"
+          },
+          {
+            "doc_id": "lantu_hr_new_hire_training",
+            "title": "澜图智能新员工入职培训大纲",
+            "chunk": 0,
+            "score": 16.89,
+            "snippet": "澜图智能新员工入职培训大纲\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-03-01 09:00\n更新时间：2025-08-01 10:00\n版本号：v2.3\n文档类型：hr\n文档族：new_hire_training\n生效日期：2025-08-01\n一、培训目标\n帮助新员工了解公司战略、文化、制度与岗位要求，在 30 天内完成从入职到独立工作的过渡。\n二、课程安排\n第 1 天：公司介绍与企业文化；第 2 天：制度与信息安全；第 3 天：产品与业务；第 4 天：质量意识与安全生产；第 5 天：岗位实践与导"
+          },
+          {
+            "doc_id": "lantu_hr_performance",
+            "title": "# 澜图智能绩效管理制度",
+            "chunk": 0,
+            "score": 13.296,
+            "snippet": "# 澜图智能绩效管理制度\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v3.4\n文档类型：hr\n文档族：performance\n生效日期：2025-06-01\n\n## 一、考核周期\n\n实行季度考核与年度考核，季度占 40%，年度占 60%。试用期员工参加转正考核。\n\n## 二、考核维度\n\n业绩目标 60%、价值观 20%、能力成长 20%。销售岗位业绩权重 70%。\n\n## 三、绩效分布\n\nS 级 10%、A 级 30%、B "
+          },
+          {
+            "doc_id": "lantu_hr_resignation",
+            "title": "# 澜图智能离职与交接管理办法",
+            "chunk": 0,
+            "score": 11.848,
+            "snippet": "# 澜图智能离职与交接管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-15 09:00\n更新时间：2025-05-20 09:00\n版本号：v2.4\n文档类型：hr\n文档族：resignation\n生效日期：2025-05-20\n\n## 一、离职申请\n\n正式员工提前 30 日、试用期员工提前 3 日提交书面离职申请；关键岗位须提前 60 日。\n\n## 二、离职面谈\n\nHR 在收到申请后 3 个工作日内安排面谈，了解离职原因并记录改进建议；核心人才可启动挽留。\n\n## 三、工作交接\n\n交接内"
+          },
+          {
+            "doc_id": "lantu_product_r_series",
+            "title": "# LT-R 系列六轴工业机器人产品手册",
+            "chunk": 0,
+            "score": 7.471,
+            "snippet": "# LT-R 系列六轴工业机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-01-15 09:00\n更新时间：2025-10-30 16:00\n版本号：v4.3\n文档类型：product\n文档族：product_r_series\n生效日期：2025-10-30\n\n## 一、产品定位\n\nLT-R 系列覆盖 6 kg 至 210 kg 负载，适用于搬运、焊接、装配、喷涂、打磨等工序，重复定位精度最高 ±0.02 mm，防护等级 IP54，可选 IP67。\n\n## 二、型号与参数\n\nLT-R6 负载 6"
+          },
+          {
+            "doc_id": "lantu_hr_social",
+            "title": "# 澜图智能社会招聘管理办法",
+            "chunk": 0,
+            "score": 7.193,
+            "snippet": "# 澜图智能社会招聘管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-02-01 09:00\n更新时间：2025-07-15 11:00\n版本号：v2.5\n文档类型：hr\n文档族：social_recruitment\n生效日期：2025-07-15\n\n## 一、适用岗位\n\n适用于经理级及以上、高级技术专家与紧缺岗位；年度社招计划 200 人。\n\n## 二、渠道管理\n\n使用猎头、招聘平台、内部推荐与行业社群。猎头费用为年薪的 20%-25%，保证期 90 天。\n\n## 三、内部推荐\n\n员工推荐成功入"
+          },
+          {
+            "doc_id": "lantu_support_spare_parts_price",
+            "title": "﻿适配机型,备件名称,单价（元）,发货时效,质保期",
+            "chunk": 0,
+            "score": 6.605,
+            "snippet": "﻿适配机型,备件名称,单价（元）,发货时效,质保期\nLT-R20,减速器 RV-40E,\"12,800\",48 小时,12 个月\nLT-R20,伺服驱动器 LT-D4,\"8,600\",48 小时,18 个月\nLT-R20,示教器 LT-Pad3,\"5,200\",48 小时,12 个月\nLT-R12,减速器 RV-20E,\"7,900\",48 小时,12 个月\nLT-R12,伺服电机 750W,\"3,600\",48 小时,18 个月\nLT-R6,谐波减速器 CSF-17,\"6,400\",72 小时,12 个月\nLT-"
+          },
+          {
+            "doc_id": "lantu_legal_compliance_manual",
+            "title": "# 澜图智能合规管理手册",
+            "chunk": 0,
+            "score": 6.209,
+            "snippet": "# 澜图智能合规管理手册\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-02-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v3.1\n文档类型：legal\n文档族：compliance_manual\n生效日期：2025-06-01\n\n## 一、合规组织\n\n公司设合规委员会，主任由法务合规总监担任，成员包括财务、销售、采购、人力与信息技术负责人。\n\n## 二、重点领域\n\n反商业贿赂、出口管制、数据保护、反垄断、劳动用工与环境保护。各领域每年至少开展一次风险评估。\n\n## 三、培训与举"
+          },
+          {
+            "doc_id": "lantu_product_r_series",
+            "title": "# LT-R 系列六轴工业机器人产品手册",
+            "chunk": 1,
+            "score": 5.702,
+            "snippet": "| 型号 | 负载 | 臂展 | 重复精度 | 本体重量 | 最大速度 |\n| --- | --- | --- | --- | --- | --- |\n| LT-R6 | 6 kg | 1,450 mm | ±0.02 mm | 165 kg | 3.2 m/s |\n| LT-R12 | 12 kg | 1,550 mm | ±0.03 mm | 210 kg | 3.0 m/s |\n| LT-R20 | 20 kg | 1,700 mm | ±0.03 mm | 285 kg | 2.8 m/s |\n| LT-R"
+          },
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 1,
+            "score": 5.612,
+            "snippet": "0 kg\t1.5 m/s\nLT-AMR-2000\t2,000 kg\t—\t±10 mm\t420 kg\t1.2 m/s\n[工作表] 交付与保修\n产品线\t标准交期\t保修期\t备件响应\nLT-R 系列\t6-8 周\t24 个月/6,000 小时\t48 小时\nLT-S 系列\t4 周\t24 个月/6,000 小时\t48 小时\nLT-AMR 系列\t8 周\t24 个月\t72 小时\nLT-V3D\t4 周\t12 个月\t72 小时"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_employee_handbook",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_employee_handbook",
+        "title": "# 澜图智能员工手册",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 587,
+        "text": "# 澜图智能员工手册\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-07-01 09:00\n版本号：v6.0\n文档类型：policy\n文档族：employee_handbook\n生效日期：2025-07-01\n\n## 一、适用范围\n\n本手册适用于澜图智能装备股份有限公司及下属子公司全体正式员工、试用期员工与实习生。劳务派遣与外包人员参照执行。\n\n## 二、入职与试用\n\n新员工入职当日签署劳动合同、保密协议与廉洁承诺书，试用期 3-6 个月。试用期内需完成入职培训与岗位考核，考核不合格者依法解除劳动合同。\n\n## 三、工作时间\n\n标准工时制为每周 40 小时，工作日 9:00-18:00，午休 12:00-13:00；实行弹性上班，最晚 10:00 到岗，对应顺延下班时间。\n\n## 四、假期\n\n员工享有法定节假日、年假、病假、事假、婚假、产假、陪产假、丧假与育儿假。年假按工龄 5/10/15 天，入职满一年起享受；每年另享 1 天健康关怀假。\n\n## 五、行为规范\n\n遵守商业道德，不得收受供应商或客户贵重礼品；不得泄露公司秘密；不得在工作场所饮酒、赌博或从事与工作无关的活动。\n\n## 六、离职\n\n员工提前 30 日书面提出离职（试用期提前 3 日），完成工作交接、资产归还与竞业限制确认后办理离职手续。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "录用通知 有效期 7 天 招聘管理制度",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_hr_recruitment",
+            "title": "# 澜图智能招聘管理制度",
+            "chunk": 0,
+            "score": 48.432,
+            "snippet": "# 澜图智能招聘管理制度\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-05 09:00\n更新时间：2025-06-10 10:00\n版本号：v3.1\n文档类型：hr\n文档族：recruitment\n生效日期：2025-06-10\n\n## 一、招聘原则\n\n坚持公开、公平、择优，优先内部推荐与内部转岗；关键岗位实行背景调查与多轮面试。\n\n## 二、招聘流程\n\n需求审批 → 简历筛选 → 专业面试 → 综合面试 → 薪酬沟通 → 背景调查 → 发放录用通知。研发岗位增加技术笔试与代码评审。\n\n## 三"
+          },
+          {
+            "doc_id": "lantu_hr_social",
+            "title": "# 澜图智能社会招聘管理办法",
+            "chunk": 0,
+            "score": 13.526,
+            "snippet": "# 澜图智能社会招聘管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-02-01 09:00\n更新时间：2025-07-15 11:00\n版本号：v2.5\n文档类型：hr\n文档族：social_recruitment\n生效日期：2025-07-15\n\n## 一、适用岗位\n\n适用于经理级及以上、高级技术专家与紧缺岗位；年度社招计划 200 人。\n\n## 二、渠道管理\n\n使用猎头、招聘平台、内部推荐与行业社群。猎头费用为年薪的 20%-25%，保证期 90 天。\n\n## 三、内部推荐\n\n员工推荐成功入"
+          },
+          {
+            "doc_id": "lantu_hr_performance",
+            "title": "# 澜图智能绩效管理制度",
+            "chunk": 0,
+            "score": 9.318,
+            "snippet": "# 澜图智能绩效管理制度\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v3.4\n文档类型：hr\n文档族：performance\n生效日期：2025-06-01\n\n## 一、考核周期\n\n实行季度考核与年度考核，季度占 40%，年度占 60%。试用期员工参加转正考核。\n\n## 二、考核维度\n\n业绩目标 60%、价值观 20%、能力成长 20%。销售岗位业绩权重 70%。\n\n## 三、绩效分布\n\nS 级 10%、A 级 30%、B "
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2025",
+            "title": "# 澜图智能采购管理制度（2025版）",
+            "chunk": 0,
+            "score": 9.227,
+            "snippet": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2024",
+            "title": "# 澜图智能采购管理制度（2024版）",
+            "chunk": 0,
+            "score": 9.217,
+            "snippet": "# 澜图智能采购管理制度（2024版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2024-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。\n\n## 二、付款账期\n\n标准供应商月结 60 天；预付款比例不超过 30%；质保金 5%-10%。\n\n## 三、供应商"
+          },
+          {
+            "doc_id": "lantu_policy_attendance_2025",
+            "title": "# 澜图智能考勤管理制度（2025版）",
+            "chunk": 0,
+            "score": 9.07,
+            "snippet": "# 澜图智能考勤管理制度（2025版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-12-20 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：attendance\n生效日期：2025-01-01\n\n## 一、打卡规则\n\n员工每日上下班各打卡一次，漏打卡须在 3 个工作日内提交补卡申请，每月补卡不超过 4 次。\n\n## 二、弹性工作\n\n上班弹性 60 分钟，9:00-10:00 到岗均视为正常；每月可申请远程办公 4 天，须提前 1 个工作日审"
+          },
+          {
+            "doc_id": "lantu_sales_quote",
+            "title": "# 澜图智能报价与合同评审流程",
+            "chunk": 0,
+            "score": 9.047,
+            "snippet": "# 澜图智能报价与合同评审流程\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-02-10 09:00\n更新时间：2025-08-08 14:00\n版本号：v2.5\n文档类型：sales\n文档族：sales_quote\n生效日期：2025-08-08\n\n## 一、报价流程\n\n销售工程师在 CRM 创建报价单，系统自动校验标准价；非标项目由售前技术出具配置清单，产品部确认成本，财务部复核税率与汇率。\n\n## 二、评审节点\n\n合同金额 1,000 万元以上须法务合规部与 CFO 联合评审；涉及非标开发须 CTO"
+          },
+          {
+            "doc_id": "lantu_policy_attendance_2024",
+            "title": "# 澜图智能考勤管理制度（2024版）",
+            "chunk": 0,
+            "score": 8.974,
+            "snippet": "# 澜图智能考勤管理制度（2024版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：attendance\n生效日期：2024-01-01\n\n## 一、打卡规则\n\n员工每日上下班各打卡一次，漏打卡须在 3 个工作日内提交补卡申请，每月补卡不超过 3 次。\n\n## 二、弹性工作\n\n上班弹性 30 分钟，9:00-9:30 到岗均视为正常；每月可申请远程办公 2 天，须提前 1 个工作日审批"
+          },
+          {
+            "doc_id": "lantu_strategy_safety",
+            "title": "# 澜图智能安全生产管理制度",
+            "chunk": 0,
+            "score": 8.927,
+            "snippet": "# 澜图智能安全生产管理制度\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2024-01-01 09:00\n更新时间：2025-05-01 09:00\n版本号：v3.5\n文档类型：strategy\n文档族：safety_production\n生效日期：2025-05-01\n\n## 一、安全责任\n\n实行总经理全面负责、分管领导直接负责、部门负责人具体负责的安全责任制，签订年度安全目标责任书。\n\n## 二、风险管控\n\n建立危险源清单，对机器人调试、电气作业、高处作业与危化品实施专项管控，每季度开展风险评估。\n\n## "
+          },
+          {
+            "doc_id": "lantu_policy_contract",
+            "title": "# 澜图智能合同管理制度",
+            "chunk": 0,
+            "score": 8.584,
+            "snippet": "# 澜图智能合同管理制度\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-02-01 09:00\n更新时间：2025-05-12 15:00\n版本号：v3.0\n文档类型：policy\n文档族：contract_management\n生效日期：2025-05-12\n\n## 一、合同分类\n\n合同分为销售合同、采购合同、服务合同、保密协议、租赁合同与劳动合同。销售与采购合同须使用公司标准模板，非标条款须法务审核。\n\n## 二、审批权限\n\n合同金额 1,000 万元以上须法务合规部与 CFO 联合审批；5,000 "
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_recruitment",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_hr_recruitment",
+        "title": "# 澜图智能招聘管理制度",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 366,
+        "text": "# 澜图智能招聘管理制度\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-05 09:00\n更新时间：2025-06-10 10:00\n版本号：v3.1\n文档类型：hr\n文档族：recruitment\n生效日期：2025-06-10\n\n## 一、招聘原则\n\n坚持公开、公平、择优，优先内部推荐与内部转岗；关键岗位实行背景调查与多轮面试。\n\n## 二、招聘流程\n\n需求审批 → 简历筛选 → 专业面试 → 综合面试 → 薪酬沟通 → 背景调查 → 发放录用通知。研发岗位增加技术笔试与代码评审。\n\n## 三、面试分工\n\nHR 负责价值观与稳定性评估，用人部门负责专业能力，交叉面试官由隔级主管担任。\n\n## 四、录用与入职\n\n录用通知有效期 7 天；入职须提供离职证明、学历证书与体检报告；背景调查异常的可撤销录用。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_new_hire_training",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_hr_new_hire_training",
+        "title": "澜图智能新员工入职培训大纲",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 379,
+        "text": "澜图智能新员工入职培训大纲\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-03-01 09:00\n更新时间：2025-08-01 10:00\n版本号：v2.3\n文档类型：hr\n文档族：new_hire_training\n生效日期：2025-08-01\n一、培训目标\n帮助新员工了解公司战略、文化、制度与岗位要求，在 30 天内完成从入职到独立工作的过渡。\n二、课程安排\n第 1 天：公司介绍与企业文化；第 2 天：制度与信息安全；第 3 天：产品与业务；第 4 天：质量意识与安全生产；第 5 天：岗位实践与导师见面。\n三、导师制\n每位新员工配备一名导师，导师须为 P5 及以上或任职满 2 年的骨干；导师津贴 500 元/月，带教期 3 个月。\n四、考核\n培训结束进行闭卷考试，80 分合格；试用期结束进行转正答辩，由用人部门与 HR 共同评估。",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_policy_employee_handbook",
+      "lantu_hr_new_hire_training",
+      "lantu_hr_recruitment"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.124,
+    "number_recall": 0.0
+  }
+}

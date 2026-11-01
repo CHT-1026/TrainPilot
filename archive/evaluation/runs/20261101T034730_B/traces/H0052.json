@@ -1,0 +1,520 @@
+{
+  "qid": "H0052",
+  "question": "客户服务白皮书的「海外 3 个服务点」与销售区域文档的「覆盖 32 个国家和地区」是什么关系？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"客户服务白皮书\"}}",
+      "usage": {
+        "prompt_tokens": 377,
+        "total_tokens": 538,
+        "completion_tokens": 161,
+        "completion_tokens_details": {
+          "reasoning_tokens": 142,
+          "text_tokens": 161
+        }
+      },
+      "seconds": 1.312
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"\"}}",
+      "usage": {
+        "prompt_tokens": 421,
+        "total_tokens": 715,
+        "completion_tokens": 294,
+        "completion_tokens_details": {
+          "reasoning_tokens": 277,
+          "text_tokens": 294
+        }
+      },
+      "seconds": 3.235
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"客户服务白皮书 销售区域\", \"top_k\":10}}",
+      "usage": {
+        "prompt_tokens": 1553,
+        "total_tokens": 1801,
+        "completion_tokens": 248,
+        "completion_tokens_details": {
+          "reasoning_tokens": 219,
+          "text_tokens": 248
+        }
+      },
+      "seconds": 2.437
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\": \"lantu_support_system\", \"offset\": 0, \"limit\": 4000}}",
+      "usage": {
+        "prompt_tokens": 3829,
+        "total_tokens": 4355,
+        "completion_tokens": 526,
+        "completion_tokens_details": {
+          "reasoning_tokens": 488,
+          "text_tokens": 526
+        }
+      },
+      "seconds": 4.953
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\": \"lantu_org_sales_regions\", \"offset\": 0, \"limit\": 4000}}",
+      "usage": {
+        "prompt_tokens": 4229,
+        "total_tokens": 4809,
+        "completion_tokens": 580,
+        "completion_tokens_details": {
+          "reasoning_tokens": 541,
+          "text_tokens": 580
+        }
+      },
+      "seconds": 5.688
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\": \"lantu_company_global\", \"offset\": 0, \"limit\": 4000}}",
+      "usage": {
+        "prompt_tokens": 4686,
+        "total_tokens": 5297,
+        "completion_tokens": 611,
+        "completion_tokens_details": {
+          "reasoning_tokens": 573,
+          "text_tokens": 611
+        }
+      },
+      "seconds": 5.156
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"这两者分别是公司的**海外市场覆盖范围**与**实体售后服务网络**的关系。\\n\\n1. **市场覆盖范围广**：《销售区域与渠道网络》文档指出，公司的销售业务已覆盖全球 **32 个国家和地区**。\\n2. **服务节点集中**：《客户服务体系白皮书》指出，公司在海外仅设立了 **3 个服务点**。\\n3. **具体分布**：根据《全球化布局与海外业务》文档，这 3 个服务点分别位于**越南、墨西哥和匈牙利**。\\n\\n**结论**：公司的销售版图（32国）远大于其实体服务网点规模（3个）。这表明公司采取了以少数关键节点辐射全球市场的策略，对于未设立服务点的国家，售后服务可能主要依赖远程支持或依托当地渠道商进行。\",\"citations\":[\"lantu_support_system\",\"lantu_org_sales_regions\",\"lantu_company_global\"],\"evidence\":[\"lantu_support_system#0\",\"lantu_org_sales_regions#0\",\"lantu_company_global#0\"]}",
+      "usage": {
+        "prompt_tokens": 5122,
+        "total_tokens": 7079,
+        "completion_tokens": 1957,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1726,
+          "text_tokens": 1957
+        }
+      },
+      "seconds": 17.266
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "客户服务白皮书"
+      },
+      "result_sha": "1290604daacc15212b4f59638c659261007a940d59ae4c9dd916d753b78e21de",
+      "result_chars": 12,
+      "hits": 0
+    },
+    {
+      "name": "list",
+      "args": {
+        "keyword": ""
+      },
+      "result_sha": "ee5960dfc8f223ba9ffafd250ac7a048c5a08afb9d85298c7a0ba99417e816f1",
+      "result_chars": 2735,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "客户服务白皮书 销售区域",
+        "top_k": 10
+      },
+      "result_sha": "07c6c97fbe323a54dfef4bdf21f73fe1f6f5cc585a5a3064b7c4e20097bd5276",
+      "result_chars": 3889,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_system",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "4317c7b8be8a198991cf48adba22892fbc229f886249ed0a00fb498efafad9a9",
+      "result_chars": 587,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_sales_regions",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "81b04e045366f95848ec9c820110d650ea992b08b6f99f29ec524902ae1bec71",
+      "result_chars": 644,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_company_global",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "4e7dbba96b0ada022cf07c32a155805a0d829358ecec75ec39782c76bacb1417",
+      "result_chars": 633,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "这两者分别是公司的**海外市场覆盖范围**与**实体售后服务网络**的关系。\n\n1. **市场覆盖范围广**：《销售区域与渠道网络》文档指出，公司的销售业务已覆盖全球 **32 个国家和地区**。\n2. **服务节点集中**：《客户服务体系白皮书》指出，公司在海外仅设立了 **3 个服务点**。\n3. **具体分布**：根据《全球化布局与海外业务》文档，这 3 个服务点分别位于**越南、墨西哥和匈牙利**。\n\n**结论**：公司的销售版图（32国）远大于其实体服务网点规模（3个）。这表明公司采取了以少数关键节点辐射全球市场的策略，对于未设立服务点的国家，售后服务可能主要依赖远程支持或依托当地渠道商进行。",
+    "citations": [
+      "lantu_support_system",
+      "lantu_org_sales_regions",
+      "lantu_company_global"
+    ],
+    "evidence": [
+      "lantu_support_system#0",
+      "lantu_org_sales_regions#0",
+      "lantu_company_global#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 24594,
+  "started_at": "2026-11-01T05:22:32",
+  "elapsed_seconds": 40.05,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "客户服务白皮书"
+      },
+      "result": {
+        "docs": []
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "list",
+      "args": {
+        "keyword": ""
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_company_brand",
+            "title": "# 澜图智能品牌视觉与传播规范"
+          },
+          {
+            "doc_id": "lantu_company_campus",
+            "title": "# 澜图智能制造基地与产能布局"
+          },
+          {
+            "doc_id": "lantu_company_global",
+            "title": "# 澜图智能全球化布局与海外业务"
+          },
+          {
+            "doc_id": "lantu_company_history",
+            "title": "# 澜图智能发展历程（2011—2025）"
+          },
+          {
+            "doc_id": "lantu_company_milestones_2025",
+            "title": "# 澜图智能 2025 年度大事记"
+          },
+          {
+            "doc_id": "lantu_company_mission",
+            "title": "# 澜图智能使命、愿景与价值观"
+          },
+          {
+            "doc_id": "lantu_company_profile",
+            "title": "澜图智能装备公司简介"
+          },
+          {
+            "doc_id": "lantu_investor_overview",
+            "title": "# 澜图智能投资者关系概览"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2024",
+            "title": "澜图智能 2024 年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2025",
+            "title": "澜图智能 2025 年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_budget_2026",
+            "title": "# 澜图智能 2026 年度经营预算"
+          },
+          {
+            "doc_id": "lantu_finance_cashflow",
+            "title": "# 澜图智能现金流与资金管理报告"
+          },
+          {
+            "doc_id": "lantu_finance_cost",
+            "title": "# 澜图智能成本管理与降本专项报告"
+          },
+          {
+            "doc_id": "lantu_finance_gross_margin",
+            "title": "# 澜图智能毛利率与成本结构分析"
+          },
+          {
+            "doc_id": "lantu_finance_h1_2025",
+            "title": "# 澜图智能 2025 年半年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_investor_qa",
+            "title": "# 澜图智能投资者常见问题答复"
+          },
+          {
+            "doc_id": "lantu_finance_monthly_2025",
+            "title": "[工作表] 文档信息"
+          },
+          {
+            "doc_id": "lantu_finance_q3_2025",
+            "title": "# 澜图智能 2025 年第三季度经营数据"
+          },
+          {
+            "doc_id": "lantu_finance_revenue_breakdown",
+            "title": "﻿维度,分类,收入（亿元）,占比,同比"
+          },
+          {
+            "doc_id": "lantu_hr_campus",
+            "title": "# 澜图智能 2026 届校园招聘方案"
+          },
+          {
+            "doc_id": "lantu_hr_compensation",
+            "title": "# 澜图智能薪酬与奖金管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_job_grades",
+            "title": "# 澜图智能职级体系与晋升规则"
+          },
+          {
+            "doc_id": "lantu_hr_manager_training",
+            "title": "澜图智能管理者领导力培训方案"
+          },
+          {
+            "doc_id": "lantu_hr_new_hire_training",
+            "title": "澜图智能新员工入职培训大纲"
+          },
+          {
+            "doc_id": "lantu_hr_performance",
+            "title": "# 澜图智能绩效管理制度"
+          },
+          {
+            "doc_id": "lantu_hr_recruitment",
+            "title": "# 澜图智能招聘管理制度"
+          },
+          {
+            "doc_id": "lantu_hr_resignation",
+            "title": "# 澜图智能离职与交接管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_social",
+            "title": "# 澜图智能社会招聘管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_training_system",
+            "title": "# 澜图智能培训体系与年度计划"
+          },
+          {
+            "doc_id": "lantu_legal_anti_bribery",
+            "title": "# 澜图智能反商业贿赂管理规定"
+          },
+          {
+            "doc_id": "lantu_legal_compliance_manual",
+            "title": "# 澜图智能合规管理手册"
+          },
+          {
+            "doc_id": "lantu_legal_data_compliance",
+            "title": "# 澜图智能数据合规与隐私保护规范"
+          },
+          {
+            "doc_id": "lantu_legal_export_control",
+            "title": "# 澜图智能出口管制与制裁合规指引"
+          },
+          {
+            "doc_id": "lantu_legal_nda_template",
+            "title": "澜图智能保密协议模板（NDA）"
+          },
+          {
+            "doc_id": "lantu_legal_purchase_contract_template",
+            "title": "澜图智能采购合同模板（2025版）"
+          },
+          {
+            "doc_id": "lantu_legal_sales_contract_template",
+            "title": "澜图智能设备销售合同模板（2025版）"
+          },
+          {
+            "doc_id": "lantu_legal_supplier_code",
+            "title": "# 澜图智能供应商行为准则"
+          },
+          {
+            "doc_id": "lantu_meeting_board",
+            "title": "# 2025 年第二次临时董事会决议"
+          },
+          {
+            "doc_id": "lantu_meeting_case_review",
+            "title": "# 恒芯动力电池项目复盘会纪要"
+          },
+          {
+            "doc_id": "lantu_meeting_ops_2025q3",
+            "title": "2025 年第三季度经营分析会纪要"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "客户服务白皮书 销售区域",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_support_system",
+            "title": "# 澜图智能客户服务体系白皮书",
+            "chunk": 0,
+            "score": 21.412,
+            "snippet": "# 澜图智能客户服务体系白皮书\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-03-01 09:00\n更新时间：2025-12-08 10:00\n版本号：v3.2\n文档类型：support\n文档族：service_system\n生效日期：2025-12-08\n\n## 一、服务网络\n\n公司在全国设有 68 个服务网点、12 个备件仓，覆盖 31 个省级行政区；海外设 3 个服务点。售后服务团队 412 人，认证工程师 286 人。\n\n## 二、服务内容\n\n提供安装调试、培训、预防性维护、故障维修、备件供应、"
+          },
+          {
+            "doc_id": "lantu_org_sales_regions",
+            "title": "# 澜图智能销售区域与渠道网络",
+            "chunk": 0,
+            "score": 13.903,
+            "snippet": "# 澜图智能销售区域与渠道网络\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-02-15 09:00\n更新时间：2025-12-05 15:00\n版本号：v3.1\n文档类型：org\n文档族：sales_regions\n生效日期：2025-12-05\n\n## 一、区域划分\n\n销售中心下设华东、华南、华北、西部、海外五个大区，覆盖 32 个国家和地区。华东大区总部苏州，华南大区总部东莞，华北大区总部北京，西部大区总部成都。\n\n## 二、团队规模\n\n销售团队 620 人，其中行业销售 280 人、渠道销售 16"
+          },
+          {
+            "doc_id": "lantu_product_r20_pro_whitepaper",
+            "title": "LT-R20 Pro 机器人技术白皮书",
+            "chunk": 0,
+            "score": 10.612,
+            "snippet": "LT-R20 Pro 机器人技术白皮书\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2025-11-20 09:00\n更新时间：2025-11-28 18:00\n版本号：v0.9\n文档类型：product\n文档族：product_r20_pro\n生效日期：2025-11-28\n一、研发背景\n面向锂电叠片、汽车装配等高频节拍场景，澜图智能研发新一代中型六轴机器人 LT-R20 Pro，计划\n2026 年第二季度量产。\n二、技术指标\n额定负载 22 kg，臂展 1,750 mm，重复定位精度 ±0.02 mm，本体重量"
+          },
+          {
+            "doc_id": "lantu_org_department_duties",
+            "title": "# 澜图智能一级部门职责与编制",
+            "chunk": 1,
+            "score": 7.874,
+            "snippet": "| 部门 | 负责人 | 编制（人） | 主要职责 |\n| --- | --- | --- | --- |\n| 研发中心 | 沈亦舟 | 1,286 | 本体/控制器/视觉/具身智能研发 |\n| 产品部 | 孟凡 | 96 | 产品规划与生命周期管理 |\n| 销售中心 | 罗嘉树 | 620 | 区域销售与渠道 |\n| 客户成功部 | 林可 | 86 | 重点客户经营 |\n| 供应链中心 | 韩立恒 | 210 | 采购、计划、物流 |\n| 制造中心 | 韩立恒 | 980 | 三大基地生产 |\n| 质量部 | 潘"
+          },
+          {
+            "doc_id": "lantu_org_department_duties",
+            "title": "# 澜图智能一级部门职责与编制",
+            "chunk": 0,
+            "score": 7.681,
+            "snippet": "# 澜图智能一级部门职责与编制\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-10 09:00\n更新时间：2025-09-30 16:00\n版本号：v3.2\n文档类型：org\n文档族：department_duties\n生效日期：2025-09-30\n\n## 一、研发中心\n\n负责机器人本体、控制器、伺服、视觉与具身智能技术研发，编制 1,286 人，下设 5 个研究所与 1 个测试中心。\n\n## 二、销售中心与客户成功部\n\n销售中心负责区域销售与渠道管理，编制 620 人；客户成功部负责重点客户经"
+          },
+          {
+            "doc_id": "lantu_org_reporting_lines",
+            "title": "# 澜图智能员工汇报关系与业务分工",
+            "chunk": 0,
+            "score": 7.282,
+            "snippet": "# 澜图智能员工汇报关系与业务分工\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-02-10 09:00\n更新时间：2025-09-01 10:00\n版本号：v1.2\n文档类型：org\n文档族：org_reporting_lines\n生效日期：2025-09-01\n\n## 一、研发体系汇报链\n\n顾承澜是沈亦舟的上级。沈亦舟是程知远的上级。程知远是周启航的上级。周启航是林晓的上级。林晓是赵一鸣的上级。\n\n沈亦舟担任 CTO，负责研发体系。程知远担任研发中心总经理，负责研发中心整体经营管理。周启航担任控制器"
+          },
+          {
+            "doc_id": "lantu_org_reporting_lines",
+            "title": "# 澜图智能员工汇报关系与业务分工",
+            "chunk": 1,
+            "score": 6.156,
+            "snippet": "周敏仪担任 CFO，负责财务与资本运作。陈依然担任人力资源副总裁，负责人力资源体系。蒋雯担任薪酬绩效经理，负责薪酬、绩效与员工关系。邵岚担任法务合规总监，负责法务、合规与知识产权。\n\n## 五、跨部门业务分工\n\n周启航同时担任新一代控制器 LT-C900 项目负责人，项目成员包括林晓与赵一鸣。唐婧负责销售中心，华东区域由许博管理，上海区域重点客户由陈璐维护。方磊负责制造中心，苏州工厂由郭涛管理。\n\n## 六、汇报关系使用说明\n\n本文件中的“上级”均指行政汇报关系中的直接上级；跨部门项目中的项目负责人关系不改变行政汇"
+          },
+          {
+            "doc_id": "lantu_org_chart_2025",
+            "title": "# 澜图智能组织架构（2025版）",
+            "chunk": 0,
+            "score": 5.417,
+            "snippet": "# 澜图智能组织架构（2025版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-03-20 09:00\n更新时间：2025-04-10 10:00\n版本号：v2.0\n文档类型：org\n文档族：org_chart\n生效日期：2025-04-01\n\n## 一、一级部门\n\n2025 年 4 月起公司设 12 个一级部门：研发中心、产品部、销售中心、客户成功部、供应链中心、制造中心、质量部、财务部、人力资源部、法务合规部、信息技术部、售后服务部。售后服务部由销售中心下属部门升级为一级部门。\n\n## 二、研发体"
+          },
+          {
+            "doc_id": "lantu_support_complaint",
+            "title": "# 澜图智能客户投诉处理管理办法",
+            "chunk": 0,
+            "score": 4.643,
+            "snippet": "# 澜图智能客户投诉处理管理办法\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-02-01 09:00\n更新时间：2025-09-01 09:00\n版本号：v2.8\n文档类型：support\n文档族：complaint_management\n生效日期：2025-09-01\n\n## 一、受理渠道\n\n客户可通过 400 热线、服务邮箱、客户门户或销售转达投诉，受理后 1 小时内录入系统。\n\n## 二、分级处理\n\n一般投诉 24 小时内响应、3 个工作日内闭环；重大投诉 2 小时内上报总经理并成立专项小组。\n\n"
+          },
+          {
+            "doc_id": "lantu_finance_gross_margin",
+            "title": "# 澜图智能毛利率与成本结构分析",
+            "chunk": 0,
+            "score": 4.335,
+            "snippet": "# 澜图智能毛利率与成本结构分析\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-11-15 09:00\n更新时间：2025-11-20 17:00\n版本号：v1.2\n文档类型：finance\n文档族：gross_margin_analysis\n生效日期：2025-11-20\n\n## 一、整体毛利率\n\n2025 年综合毛利率 31.6%，较 2024 年提升 1.2 个百分点。机器人本体毛利率 34.8%，智能产线 26.2%，软件与服务 52.4%。\n\n## 二、成本构成\n\n直接材料占营业成本 68.4%，"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_system",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_support_system",
+        "title": "# 澜图智能客户服务体系白皮书",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 419,
+        "text": "# 澜图智能客户服务体系白皮书\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-03-01 09:00\n更新时间：2025-12-08 10:00\n版本号：v3.2\n文档类型：support\n文档族：service_system\n生效日期：2025-12-08\n\n## 一、服务网络\n\n公司在全国设有 68 个服务网点、12 个备件仓，覆盖 31 个省级行政区；海外设 3 个服务点。售后服务团队 412 人，认证工程师 286 人。\n\n## 二、服务内容\n\n提供安装调试、培训、预防性维护、故障维修、备件供应、远程诊断与产线优化服务。\n\n## 三、服务渠道\n\n客户可通过 400-820-6688 热线、服务邮箱 service@lantu-robot.com 或客户门户报修，系统自动生成工单。\n\n## 四、服务指标\n\n2025 年服务满意度 96.8%，首次修复率 92.4%，备件满足率 96%，远程诊断解决率 85%。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_sales_regions",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_org_sales_regions",
+        "title": "# 澜图智能销售区域与渠道网络",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 473,
+        "text": "# 澜图智能销售区域与渠道网络\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-02-15 09:00\n更新时间：2025-12-05 15:00\n版本号：v3.1\n文档类型：org\n文档族：sales_regions\n生效日期：2025-12-05\n\n## 一、区域划分\n\n销售中心下设华东、华南、华北、西部、海外五个大区，覆盖 32 个国家和地区。华东大区总部苏州，华南大区总部东莞，华北大区总部北京，西部大区总部成都。\n\n## 二、团队规模\n\n销售团队 620 人，其中行业销售 280 人、渠道销售 160 人、售前技术支持 180 人。认证渠道商 186 家，核心渠道 32 家。\n\n## 三、区域业绩\n\n2025 年华东大区收入 18.42 亿元，华南大区 9.86 亿元，华北大区 6.12 亿元，西部大区 3.37 亿元，海外 4.86 亿元。华南大区年度完成率 108%，位列第一。\n\n## 四、渠道政策\n\n渠道商分为金牌、银牌、认证三级，金牌渠道享受 82 折拿货价与优先技术支持；渠道冲突由销售中心渠道管理组仲裁。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_company_global",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_company_global",
+        "title": "# 澜图智能全球化布局与海外业务",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 464,
+        "text": "# 澜图智能全球化布局与海外业务\n\n所属部门：国际业务部\n作者：罗嘉树\n创建时间：2024-06-01 10:00\n更新时间：2025-12-10 14:30\n版本号：v2.2\n文档类型：company\n文档族：global_presence\n生效日期：2025-12-10\n\n## 一、海外机构\n\n公司在德国斯图加特设立欧洲技术中心（2025 年 3 月开业），在越南胡志明市、墨西哥蒙特雷、匈牙利布达佩斯设有服务网点，海外员工 200 人。\n\n## 二、海外业绩\n\n2025 年海外营业收入 4.86 亿元，占总收入 11.4%，同比增长 31.2%；欧洲收入 3.20 亿元，东南亚收入 0.98 亿元，北美收入 0.68 亿元。\n\n## 三、重点市场\n\n欧洲聚焦汽车零部件与新能源，东南亚聚焦 3C 与家电，北美聚焦物流自动化。2025 年海外新签订单 6.1 亿元。\n\n## 四、合规要求\n\n出口业务须执行两用物项筛查，涉及加密、视觉算法等敏感技术的项目须经法务合规部审批；欧盟项目须满足 CE 与 GDPR 要求。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_support_system",
+      "lantu_org_sales_regions",
+      "lantu_company_global"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.077,
+    "number_recall": 0.0
+  }
+}

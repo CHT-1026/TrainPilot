@@ -1,0 +1,285 @@
+{
+  "qid": "M0313",
+  "question": "公司的标准工时怎么安排？年假怎么算？",
+  "question_type": "单文档多跳推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>标准工时 工作时间</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 354,
+        "total_tokens": 402,
+        "completion_tokens_details": {
+          "reasoning_tokens": 16
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 4.829
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search>{\"query\":\"标准工时 工作时间 考勤\",\"top_k\":10}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 47,
+        "prompt_tokens": 423,
+        "total_tokens": 470,
+        "completion_tokens_details": {
+          "reasoning_tokens": 15
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.156
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"标准工时 工作时间 考勤\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 55,
+        "prompt_tokens": 492,
+        "total_tokens": 547,
+        "completion_tokens_details": {
+          "reasoning_tokens": 24
+        },
+        "prompt_tokens_details": null
+      },
+      "seconds": 1.625
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_attendance_2025\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 74,
+        "prompt_tokens": 2929,
+        "total_tokens": 3003,
+        "completion_tokens_details": {
+          "reasoning_tokens": 38
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.172
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_employee_handbook\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 68,
+        "prompt_tokens": 3418,
+        "total_tokens": 3486,
+        "completion_tokens_details": {
+          "reasoning_tokens": 36
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2880
+        }
+      },
+      "seconds": 1.953
+    },
+    {
+      "round": 6,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"标准工时安排（依据《澜图智能员工手册》v6.0，2025-07-01 生效，并结合《考勤管理制度（2025版）》）：\\n1）每周标准工时 40 小时，工作日 9:00-18:00，午休 12:00-13:00；\\n2）弹性上班：最晚 10:00 到岗（9:00-10:00 到岗均视为正常），下班时间对应顺延；\\n3）每日上下班各打卡一次，漏打卡须 3 个工作日内补卡申请，每月不超过 4 次；\\n4）加班须提前在 OA 审批，工作日加班按 1.5 倍调休，休息日 2 倍、法定节假日 3 倍工资，未审批不计入加班；每月可申请远程办公 4 天（研发与售后岗位可放宽至 6 天），需提前 1 个工作日审批。\\n\\n年假计算：按工龄享受 5/10/15 天年假（对应不同工龄档次），入职满一年起享受；此外每年另享 1 天健康关怀假。年假、病假、事假、婚假、产假、陪产假、丧假、育儿假及法定节假日均在公司假期体系内。\\n\\n说明：2024 版考勤制度已于 2025-01-01 废止，以上以 2025 版为准；如需病假、事假等具体扣薪标准，请另行查询专项制度。\",\"citations\":[\"lantu_policy_employee_handbook\",\"lantu_policy_attendance_2025\"],\"evidence\":[\"lantu_policy_employee_handbook#片段0\",\"lantu_policy_attendance_2025#片段0\"]}",
+      "usage": {
+        "completion_tokens": 514,
+        "prompt_tokens": 3953,
+        "total_tokens": 4467,
+        "completion_tokens_details": {
+          "reasoning_tokens": 71
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3392
+        }
+      },
+      "seconds": 9.937
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "标准工时 工作时间 考勤",
+        "top_k": 10
+      },
+      "result_sha": "7a140e7c49d318bf01c76a09d98489d009d689d1690cfdea38531aa5b3ace3c9",
+      "result_chars": 3881,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_attendance_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "1a9fd49e2560d85af8f7c9ac1405856cb831922d7b2912e8ef6b99c43d630475",
+      "result_chars": 652,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_employee_handbook",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "3c94459115986a3d130109fd8645b73f55181c83182d2e9d7603089256d3e432",
+      "result_chars": 768,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "标准工时安排（依据《澜图智能员工手册》v6.0，2025-07-01 生效，并结合《考勤管理制度（2025版）》）：\n1）每周标准工时 40 小时，工作日 9:00-18:00，午休 12:00-13:00；\n2）弹性上班：最晚 10:00 到岗（9:00-10:00 到岗均视为正常），下班时间对应顺延；\n3）每日上下班各打卡一次，漏打卡须 3 个工作日内补卡申请，每月不超过 4 次；\n4）加班须提前在 OA 审批，工作日加班按 1.5 倍调休，休息日 2 倍、法定节假日 3 倍工资，未审批不计入加班；每月可申请远程办公 4 天（研发与售后岗位可放宽至 6 天），需提前 1 个工作日审批。\n\n年假计算：按工龄享受 5/10/15 天年假（对应不同工龄档次），入职满一年起享受；此外每年另享 1 天健康关怀假。年假、病假、事假、婚假、产假、陪产假、丧假、育儿假及法定节假日均在公司假期体系内。\n\n说明：2024 版考勤制度已于 2025-01-01 废止，以上以 2025 版为准；如需病假、事假等具体扣薪标准，请另行查询专项制度。",
+    "citations": [
+      "lantu_policy_employee_handbook",
+      "lantu_policy_attendance_2025"
+    ],
+    "evidence": [
+      "lantu_policy_employee_handbook#片段0",
+      "lantu_policy_attendance_2025#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 12375,
+  "started_at": "2026-11-01T05:53:59",
+  "elapsed_seconds": 21.67,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "标准工时 工作时间 考勤",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_policy_employee_handbook",
+            "title": "# 澜图智能员工手册",
+            "chunk": 0,
+            "score": 13.349,
+            "snippet": "# 澜图智能员工手册\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-07-01 09:00\n版本号：v6.0\n文档类型：policy\n文档族：employee_handbook\n生效日期：2025-07-01\n\n## 一、适用范围\n\n本手册适用于澜图智能装备股份有限公司及下属子公司全体正式员工、试用期员工与实习生。劳务派遣与外包人员参照执行。\n\n## 二、入职与试用\n\n新员工入职当日签署劳动合同、保密协议与廉洁承诺书，试用期 3-6 个月。试用期内需完成入职培"
+          },
+          {
+            "doc_id": "lantu_policy_attendance_2024",
+            "title": "# 澜图智能考勤管理制度（2024版）",
+            "chunk": 0,
+            "score": 8.195,
+            "snippet": "# 澜图智能考勤管理制度（2024版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：attendance\n生效日期：2024-01-01\n\n## 一、打卡规则\n\n员工每日上下班各打卡一次，漏打卡须在 3 个工作日内提交补卡申请，每月补卡不超过 3 次。\n\n## 二、弹性工作\n\n上班弹性 30 分钟，9:00-9:30 到岗均视为正常；每月可申请远程办公 2 天，须提前 1 个工作日审批"
+          },
+          {
+            "doc_id": "lantu_policy_attendance_2025",
+            "title": "# 澜图智能考勤管理制度（2025版）",
+            "chunk": 0,
+            "score": 7.873,
+            "snippet": "# 澜图智能考勤管理制度（2025版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-12-20 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：attendance\n生效日期：2025-01-01\n\n## 一、打卡规则\n\n员工每日上下班各打卡一次，漏打卡须在 3 个工作日内提交补卡申请，每月补卡不超过 4 次。\n\n## 二、弹性工作\n\n上班弹性 60 分钟，9:00-10:00 到岗均视为正常；每月可申请远程办公 4 天，须提前 1 个工作日审"
+          },
+          {
+            "doc_id": "lantu_finance_gross_margin",
+            "title": "# 澜图智能毛利率与成本结构分析",
+            "chunk": 0,
+            "score": 6.938,
+            "snippet": "# 澜图智能毛利率与成本结构分析\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-11-15 09:00\n更新时间：2025-11-20 17:00\n版本号：v1.2\n文档类型：finance\n文档族：gross_margin_analysis\n生效日期：2025-11-20\n\n## 一、整体毛利率\n\n2025 年综合毛利率 31.6%，较 2024 年提升 1.2 个百分点。机器人本体毛利率 34.8%，智能产线 26.2%，软件与服务 52.4%。\n\n## 二、成本构成\n\n直接材料占营业成本 68.4%，"
+          },
+          {
+            "doc_id": "lantu_finance_investor_qa",
+            "title": "# 澜图智能投资者常见问题答复",
+            "chunk": 0,
+            "score": 6.599,
+            "snippet": "# 澜图智能投资者常见问题答复\n\n所属部门：董事会办公室\n作者：周敏仪\n创建时间：2025-11-01 09:00\n更新时间：2025-12-30 16:00\n版本号：v2.0\n文档类型：finance\n文档族：investor_qa\n生效日期：2025-12-30\n\n## 一、增长来源\n\n2025 年增长主要来自动力电池与半导体行业，两项合计贡献收入增量的 61%；海外市场贡献 22%。\n\n## 二、毛利率趋势\n\n随着自研控制器与驱动器比例提升、标准工作站放量，预计 2026 年毛利率提升至 32.5% 左右。\n"
+          },
+          {
+            "doc_id": "lantu_legal_supplier_code",
+            "title": "# 澜图智能供应商行为准则",
+            "chunk": 0,
+            "score": 5.972,
+            "snippet": "# 澜图智能供应商行为准则\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-04-01 09:00\n更新时间：2025-05-01 09:00\n版本号：v2.0\n文档类型：legal\n文档族：supplier_code\n生效日期：2025-05-01\n\n## 一、劳工与人权\n\n供应商不得使用童工、强迫劳动，须保障结社自由与最低工资，工作时间符合当地法律。\n\n## 二、健康与安全\n\n供应商须提供安全的工作环境，配备必要的防护设施，定期开展安全培训与应急演练。\n\n## 三、环境要求\n\n供应商须遵守环保法规，优"
+          },
+          {
+            "doc_id": "lantu_product_welding",
+            "title": "# LT-Weld-2000 机器人焊接工作站方案",
+            "chunk": 0,
+            "score": 4.509,
+            "snippet": "# LT-Weld-2000 机器人焊接工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-04-10 09:00\n更新时间：2025-05-22 10:00\n版本号：v2.8\n文档类型：product\n文档族：solution_welding\n生效日期：2025-05-22\n\n## 一、方案组成\n\n以 LT-R50 机器人为核心，集成 2,000A 焊接电源、双轴变位机、焊缝激光跟踪与烟尘净化系统，形成标准焊接工作站。\n\n## 二、工艺指标\n\n焊接速度 1.8 m/min，焊缝跟踪精度 ±0.15 m"
+          },
+          {
+            "doc_id": "lantu_policy_travel_2024",
+            "title": "# 澜图智能差旅费用报销标准（2024版）",
+            "chunk": 0,
+            "score": 4.395,
+            "snippet": "# 澜图智能差旅费用报销标准（2024版）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-02-20 09:00\n更新时间：2024-03-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2024-03-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 450 元/晚，二线城市 350 元/晚，其他城市 300 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 100 元/天，按自然日计算；客户宴请须提"
+          },
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 1,
+            "score": 4.353,
+            "snippet": "0 kg\t1.5 m/s\nLT-AMR-2000\t2,000 kg\t—\t±10 mm\t420 kg\t1.2 m/s\n[工作表] 交付与保修\n产品线\t标准交期\t保修期\t备件响应\nLT-R 系列\t6-8 周\t24 个月/6,000 小时\t48 小时\nLT-S 系列\t4 周\t24 个月/6,000 小时\t48 小时\nLT-AMR 系列\t8 周\t24 个月\t72 小时\nLT-V3D\t4 周\t12 个月\t72 小时"
+          },
+          {
+            "doc_id": "lantu_policy_travel_2025",
+            "title": "# 澜图智能差旅费用报销标准（2025版）",
+            "chunk": 0,
+            "score": 4.316,
+            "snippet": "# 澜图智能差旅费用报销标准（2025版）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-12-15 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2025-01-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 550 元/晚，二线城市 420 元/晚，其他城市 350 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 120 元/天，按自然日计算；客户宴请须提"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_attendance_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_attendance_2025",
+        "title": "# 澜图智能考勤管理制度（2025版）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 468,
+        "text": "# 澜图智能考勤管理制度（2025版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-12-20 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：attendance\n生效日期：2025-01-01\n\n## 一、打卡规则\n\n员工每日上下班各打卡一次，漏打卡须在 3 个工作日内提交补卡申请，每月补卡不超过 4 次。\n\n## 二、弹性工作\n\n上班弹性 60 分钟，9:00-10:00 到岗均视为正常；每月可申请远程办公 4 天，须提前 1 个工作日审批，研发与售后岗位可放宽至 6 天。\n\n## 三、迟到早退\n\n迟到 60 分钟以内每次扣减绩效 0.5 分；超过 60 分钟按事假半天处理；月度累计迟到 5 次以上通报批评。\n\n## 四、加班与调休\n\n工作日加班按 1.5 倍调休，休息日 2 倍，法定节假日 3 倍工资。加班须提前在 OA 提交申请，未审批不计入加班。\n\n## 五、生效说明\n\n本制度自 2025 年 1 月 1 日起生效，2024 版同时废止。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_employee_handbook",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_employee_handbook",
+        "title": "# 澜图智能员工手册",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 587,
+        "text": "# 澜图智能员工手册\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-07-01 09:00\n版本号：v6.0\n文档类型：policy\n文档族：employee_handbook\n生效日期：2025-07-01\n\n## 一、适用范围\n\n本手册适用于澜图智能装备股份有限公司及下属子公司全体正式员工、试用期员工与实习生。劳务派遣与外包人员参照执行。\n\n## 二、入职与试用\n\n新员工入职当日签署劳动合同、保密协议与廉洁承诺书，试用期 3-6 个月。试用期内需完成入职培训与岗位考核，考核不合格者依法解除劳动合同。\n\n## 三、工作时间\n\n标准工时制为每周 40 小时，工作日 9:00-18:00，午休 12:00-13:00；实行弹性上班，最晚 10:00 到岗，对应顺延下班时间。\n\n## 四、假期\n\n员工享有法定节假日、年假、病假、事假、婚假、产假、陪产假、丧假与育儿假。年假按工龄 5/10/15 天，入职满一年起享受；每年另享 1 天健康关怀假。\n\n## 五、行为规范\n\n遵守商业道德，不得收受供应商或客户贵重礼品；不得泄露公司秘密；不得在工作场所饮酒、赌博或从事与工作无关的活动。\n\n## 六、离职\n\n员工提前 30 日书面提出离职（试用期提前 3 日），完成工作交接、资产归还与竞业限制确认后办理离职手续。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_policy_employee_handbook",
+      "lantu_policy_attendance_2025"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.636,
+    "number_recall": 0.0
+  }
+}

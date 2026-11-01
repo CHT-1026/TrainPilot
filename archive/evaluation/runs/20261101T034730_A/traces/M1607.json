@@ -1,0 +1,142 @@
+{
+  "qid": "M1607",
+  "question": "公司 2025 年的员工流失率是多少？",
+  "question_type": "条件判断与边界",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>员工流失率 2025</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 52,
+        "prompt_tokens": 356,
+        "total_tokens": 408,
+        "completion_tokens_details": {
+          "reasoning_tokens": 19
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.937
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search>{\"query\":\"员工流失率 2025\",\"top_k\":10}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 39,
+        "prompt_tokens": 426,
+        "total_tokens": 465,
+        "completion_tokens_details": {
+          "reasoning_tokens": 10
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.797
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search>{\"query\":\"员工流失率 2025\",\"top_k\":10}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 107,
+        "prompt_tokens": 492,
+        "total_tokens": 599,
+        "completion_tokens_details": {
+          "reasoning_tokens": 78
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 2.985
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>员工流失率 2025</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 60,
+        "prompt_tokens": 558,
+        "total_tokens": 618,
+        "completion_tokens_details": {
+          "reasoning_tokens": 27
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 2.328
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query:员工流失率 2025><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 628,
+        "total_tokens": 676,
+        "completion_tokens_details": {
+          "reasoning_tokens": 17
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 1.672
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search>{\"query\": \"员工流失率 2025\", \"top_k\": 10}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 41,
+        "prompt_tokens": 696,
+        "total_tokens": 737,
+        "completion_tokens_details": {
+          "reasoning_tokens": 9
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 1.64
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"无法给出答案：检索不到关于公司 2025 年员工流失率的资料，无法核实相关数据。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 60,
+        "prompt_tokens": 762,
+        "total_tokens": 822,
+        "completion_tokens_details": {
+          "reasoning_tokens": 12
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 2.141
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "无法给出答案：检索不到关于公司 2025 年员工流失率的资料，无法核实相关数据。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4325,
+  "started_at": "2026-11-01T06:19:15",
+  "elapsed_seconds": 14.5,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.009,
+    "number_recall": 0.25
+  }
+}

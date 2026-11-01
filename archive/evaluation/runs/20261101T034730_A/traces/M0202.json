@@ -1,0 +1,322 @@
+{
+  "qid": "M0202",
+  "question": "客户还在用着那台老 C600 控制器，我们现在推的那台比它强在哪？",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "我来帮您检索产品资料，先找 C600 相关文档。<tool_call><function=search><parameter=query>C600 控制器</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 81,
+        "prompt_tokens": 367,
+        "total_tokens": 448,
+        "completion_tokens_details": {
+          "reasoning_tokens": 31
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 4.516
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"C600 控制器\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 88,
+        "prompt_tokens": 454,
+        "total_tokens": 542,
+        "completion_tokens_details": {
+          "reasoning_tokens": 61
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.359
+    },
+    {
+      "round": 3,
+      "text": "找到了 LT-C800 产品说明和新旧架构文档，我读一下原文核对具体参数。<tool_call><function=read><parameter=args>{\"doc_id\": \"lantu_product_controller\", \"offset\": 0, \"limit\": 4000}</function></tool_call>",
+      "usage": {
+        "completion_tokens": 88,
+        "prompt_tokens": 2830,
+        "total_tokens": 2918,
+        "completion_tokens_details": {
+          "reasoning_tokens": 27
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 2.39
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_product_controller\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 95,
+        "prompt_tokens": 2928,
+        "total_tokens": 3023,
+        "completion_tokens_details": {
+          "reasoning_tokens": 65
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2816
+        }
+      },
+      "seconds": 3.079
+    },
+    {
+      "round": 5,
+      "text": "再读新旧架构文档核对与 C600 的对比口径。<tool_call><function=read><parameter=args>{\"doc_id\": \"lantu_tech_control_architecture_v2\", \"offset\": 0, \"limit\": 4000}</function></tool_call>",
+      "usage": {
+        "completion_tokens": 92,
+        "prompt_tokens": 3334,
+        "total_tokens": 3426,
+        "completion_tokens_details": {
+          "reasoning_tokens": 33
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2816
+        }
+      },
+      "seconds": 2.328
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_tech_control_architecture_v2\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 46,
+        "prompt_tokens": 3430,
+        "total_tokens": 3476,
+        "completion_tokens_details": {
+          "reasoning_tokens": 11
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3328
+        }
+      },
+      "seconds": 1.656
+    },
+    {
+      "round": 7,
+      "text": "再读现行 v3.3 架构文档补齐伺服与可靠性对比项。<tool_call><function=read><parameter=args>{\"doc_id\": \"lantu_tech_control_architecture\", \"offset\": 0, \"limit\": 4000}</function></tool_call>",
+      "usage": {
+        "completion_tokens": 97,
+        "prompt_tokens": 4073,
+        "total_tokens": 4170,
+        "completion_tokens_details": {
+          "reasoning_tokens": 39
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3392
+        }
+      },
+      "seconds": 2.391
+    },
+    {
+      "round": 8,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"您客户在用的 LT-C600 是我们上一代控制器（旧架构 v2.4，2024-05-10 生效），现在主推的是新一代 LT-C800（产品说明 v1.5，2025-10-10 生效），主要强在以下几方面：\\n\\n1）轴数与算力：C600 为单核 ARM Cortex-A9 + 4 轴运动控制卡、支持 4 轴联动；C800 升级为双核 ARM + FPGA，支持 8 轴联动。\\n2）实时性：插补周期由 1 ms 缩短到 0.5 ms；现场总线由 CANopen（周期 2 ms，单条总线最多 16 从站）升级为 EtherCAT，总线周期 1 ms。\\n3）伺服性能（整套控制系统 v3.3 口径）：伺服采样频率由 8 kHz 提升到 16 kHz，编码器由 17 位增量式升级为 23 位绝对值，速度环带宽由 600 Hz 提升到 1.2 kHz。\\n4）安全功能：C600 依赖外部安全继电器，无内置安全限速与碰撞检测；C800 符合 PL d 安全等级，内置安全限速、安全停止与区域监控，可选安全 PLC 模块。\\n5）软件生态：C600 为 Windows + RTX 上位机、仅 C# SDK，无 Python/C++ SDK 与 ROS2 驱动；C800 提供 LantuStudio 编程环境（梯形图、结构化文本、Python 脚本），开放 OPC UA、Modbus TCP 与 ROS2 接口。\\n6）I/O 集成：C800 内置 16 路数字输入、16 路数字输出与 4 路模拟输入。\\n\\n注意：C800 自身的 MTBF、工作温度、防护等级等可靠性指标在已检索到的资料中未列出，如客户关心这部分需要另查可靠性报告，暂不建议口头承诺。\",\"citations\":[\"lantu_product_controller\",\"lantu_tech_control_architecture\",\"lantu_tech_control_architecture_v2\"],\"evidence\":[\"lantu_product_controller#片段0\",\"lantu_tech_control_architecture#片段1\",\"lantu_tech_control_architecture_v2#片段0\"]}",
+      "usage": {
+        "completion_tokens": 642,
+        "prompt_tokens": 4165,
+        "total_tokens": 4807,
+        "completion_tokens_details": {
+          "reasoning_tokens": 68
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 4032
+        }
+      },
+      "seconds": 12.578
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "C600 控制器",
+        "top_k": 10
+      },
+      "result_sha": "317e198edea30858c1e96ea4f6796b9daf543ef871f11f8b8c4050392296b4a5",
+      "result_chars": 3880,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_controller",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "8cf0e3a3952faa7f099ae40a40a0492aceb901859eef99fcaa81959ff59d9c85",
+      "result_chars": 613,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_control_architecture_v2",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "581bc85faa5be9bad43b62183aef0806a93e437252c90ff8999b75e945a85df3",
+      "result_chars": 913,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "您客户在用的 LT-C600 是我们上一代控制器（旧架构 v2.4，2024-05-10 生效），现在主推的是新一代 LT-C800（产品说明 v1.5，2025-10-10 生效），主要强在以下几方面：\n\n1）轴数与算力：C600 为单核 ARM Cortex-A9 + 4 轴运动控制卡、支持 4 轴联动；C800 升级为双核 ARM + FPGA，支持 8 轴联动。\n2）实时性：插补周期由 1 ms 缩短到 0.5 ms；现场总线由 CANopen（周期 2 ms，单条总线最多 16 从站）升级为 EtherCAT，总线周期 1 ms。\n3）伺服性能（整套控制系统 v3.3 口径）：伺服采样频率由 8 kHz 提升到 16 kHz，编码器由 17 位增量式升级为 23 位绝对值，速度环带宽由 600 Hz 提升到 1.2 kHz。\n4）安全功能：C600 依赖外部安全继电器，无内置安全限速与碰撞检测；C800 符合 PL d 安全等级，内置安全限速、安全停止与区域监控，可选安全 PLC 模块。\n5）软件生态：C600 为 Windows + RTX 上位机、仅 C# SDK，无 Python/C++ SDK 与 ROS2 驱动；C800 提供 LantuStudio 编程环境（梯形图、结构化文本、Python 脚本），开放 OPC UA、Modbus TCP 与 ROS2 接口。\n6）I/O 集成：C800 内置 16 路数字输入、16 路数字输出与 4 路模拟输入。\n\n注意：C800 自身的 MTBF、工作温度、防护等级等可靠性指标在已检索到的资料中未列出，如客户关心这部分需要另查可靠性报告，暂不建议口头承诺。",
+    "citations": [
+      "lantu_product_controller",
+      "lantu_tech_control_architecture",
+      "lantu_tech_control_architecture_v2"
+    ],
+    "evidence": [
+      "lantu_product_controller#片段0",
+      "lantu_tech_control_architecture#片段1",
+      "lantu_tech_control_architecture_v2#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 22810,
+  "started_at": "2026-11-01T05:40:37",
+  "elapsed_seconds": 31.31,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "C600 控制器",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_product_controller",
+            "title": "# LT-C800 运动控制器产品说明",
+            "chunk": 0,
+            "score": 7.435,
+            "snippet": "# LT-C800 运动控制器产品说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2025-04-08 09:00\n更新时间：2025-10-10 10:00\n版本号：v1.5\n文档类型：product\n文档族：product_controller\n生效日期：2025-10-10\n\n## 一、产品定位\n\nLT-C800 是澜图智能自研的新一代八轴运动控制器，面向机器人、工作站与小型产线，替代上一代 LT-C600。\n\n## 二、性能指标\n\n支持 8 轴联动，EtherCAT 总线周期 1 ms，插补周期 0.5"
+          },
+          {
+            "doc_id": "lantu_tech_control_architecture",
+            "title": "# 澜图智能机器人控制系统架构",
+            "chunk": 1,
+            "score": 7.132,
+            "snippet": "与旧版 v2.4 相比，v3.3 的主要变化：现场总线由 CANopen 升级为 EtherCAT，总线周期由 2 ms 缩短到 1 ms；控制器由 LT-C600 单核 ARM + 4 轴运动控制卡升级为 LT-C800 双核 ARM + FPGA，联动轴数由 4 轴增加到 8 轴，插补周期由 1 ms 缩短到 0.5 ms；伺服采样频率由 8 kHz 提升到 16 kHz，编码器由 17 位增量式升级为 23 位绝对值，速度环带宽由 600 Hz 提升到 1.2 kHz；软件栈由 Windows + RTX 迁"
+          },
+          {
+            "doc_id": "lantu_tech_control_architecture_v2",
+            "title": "# 澜图智能机器人控制系统架构（旧版 v2.4）",
+            "chunk": 0,
+            "score": 6.446,
+            "snippet": "# 澜图智能机器人控制系统架构（旧版 v2.4）\n\n所属部门：研发中心\n作者：程知远\n创建时间：2023-08-01 09:00\n更新时间：2024-05-10 18:00\n版本号：v2.4\n文档类型：tech\n文档族：control_architecture\n生效日期：2024-05-10\n\n## 一、总体架构（旧版）\n\n旧版控制系统采用“工控机 + 运动控制卡”的两层结构：上位工控机负责任务调度与人机界面，下位运动控制卡负责插补与伺服闭环。现场总线采用 CANopen，总线周期 2 ms，单条总线最多连接 16"
+          },
+          {
+            "doc_id": "lantu_company_history",
+            "title": "# 澜图智能发展历程（2011—2025）",
+            "chunk": 0,
+            "score": 4.849,
+            "snippet": "# 澜图智能发展历程（2011—2025）\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2023-03-01 09:00\n更新时间：2026-01-05 14:00\n版本号：v4.0\n文档类型：company\n文档族：company_history\n生效日期：2026-01-05\n\n## 一、创业阶段（2011—2015）\n\n2011 年 6 月 18 日，公司在苏州工业园区成立，创始团队来自高校机器人实验室，首款产品为 LT-R6 六轴工业机器人，2012 年实现小批量交付 120 台。2014 年建成首条机"
+          },
+          {
+            "doc_id": "lantu_tech_control_architecture",
+            "title": "# 澜图智能机器人控制系统架构",
+            "chunk": 0,
+            "score": 3.655,
+            "snippet": "# 澜图智能机器人控制系统架构\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-06-01 09:00\n更新时间：2025-10-20 14:00\n版本号：v3.3\n文档类型：tech\n文档族：control_architecture\n生效日期：2025-10-20\n\n## 一、总体架构\n\n控制系统分为感知层、决策层、运动控制层与执行层，采用 EtherCAT 总线连接伺服与 I/O，总线周期 1 ms。\n\n## 二、控制器\n\nLT-C800 采用双核 ARM + FPGA 架构，支持 8 轴联动、0.5 "
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 0,
+            "score": 3.631,
+            "snippet": "# 澜图智能产品与解决方案总览\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-02-20 09:00\n更新时间：2025-12-22 10:00\n版本号：v6.0\n文档类型：product\n文档族：product_overview\n生效日期：2025-12-22\n\n## 一、产品矩阵\n\n公司产品覆盖六轴工业机器人、SCARA 机器人、自主移动机器人（AMR）、机器视觉、运动控制器、数字孪生平台与行业工作站，形成“本体+控制器+视觉+软件+工艺”的一体化方案。\n\n## 二、行业方案\n\n重点行业包括汽车及零部件、"
+          },
+          {
+            "doc_id": "lantu_product_vision",
+            "title": "# LT-V3D 工业视觉系统技术说明",
+            "chunk": 0,
+            "score": 3.28,
+            "snippet": "# LT-V3D 工业视觉系统技术说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-06-18 09:00\n更新时间：2025-07-15 14:00\n版本号：v2.6\n文档类型：product\n文档族：product_vision\n生效日期：2025-07-15\n\n## 一、系统组成\n\nLT-V3D 由结构光相机、视觉控制器与 LantuVision 软件组成，支持 3D 点云、2D 图像与深度学习缺陷检测。\n\n## 二、核心指标\n\n测量精度 0.05 mm，单帧点云 120 万点，帧率 30 fps"
+          },
+          {
+            "doc_id": "lantu_org_rd_system",
+            "title": "# 澜图智能研发体系与投入",
+            "chunk": 0,
+            "score": 3.083,
+            "snippet": "# 澜图智能研发体系与投入\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-02-01 09:00\n更新时间：2026-01-12 10:00\n版本号：v5.0\n文档类型：org\n文档族：rd_system\n生效日期：2026-01-12\n\n## 一、研发架构\n\n研发中心下设机器人本体研究所、控制器研究所、机器视觉研究所、工艺应用研究所、具身智能研究所，另设测试中心与可靠性实验室。\n\n## 二、人员结构\n\n研发人员 1,286 人，其中博士 48 人、硕士 612 人，35 岁以下占比 61%。2025 年"
+          },
+          {
+            "doc_id": "lantu_strategy_2025",
+            "title": "# 澜图智能 2025 年度经营计划",
+            "chunk": 0,
+            "score": 3.065,
+            "snippet": "# 澜图智能 2025 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-01-10 09:00\n更新时间：2025-02-10 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2025\n生效日期：2025-02-10\n\n## 一、年度目标\n\n2025 年营业收入目标 41.5 亿元，力争 42.63 亿元；新签订单目标 46 亿元；机器人出货目标 20,000 台。\n\n## 二、重点任务\n\n锂电与半导体行业突破；LT-C800 控制器量产；海外收入占"
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 1,
+            "score": 3.042,
+            "snippet": "| 产品线 | 代表型号 | 负载 | 典型行业 |\n| --- | --- | --- | --- |\n| 六轴机器人 | LT-R6/R12/R20/R50/R210 | 6-210 kg | 汽车、锂电、金属加工 |\n| SCARA | LT-S4/S10 | 4-10 kg | 3C、光伏、食品 |\n| 移动机器人 | LT-AMR-500/1000/2000 | 500-2,000 kg | 物流、半导体 |\n| 机器视觉 | LT-V3D | — | 装配、检测 |\n| 控制器 | LT-C800 | "
+          }
+        ]
+      },
+      "seconds": 0.016
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_controller",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_product_controller",
+        "title": "# LT-C800 运动控制器产品说明",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 437,
+        "text": "# LT-C800 运动控制器产品说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2025-04-08 09:00\n更新时间：2025-10-10 10:00\n版本号：v1.5\n文档类型：product\n文档族：product_controller\n生效日期：2025-10-10\n\n## 一、产品定位\n\nLT-C800 是澜图智能自研的新一代八轴运动控制器，面向机器人、工作站与小型产线，替代上一代 LT-C600。\n\n## 二、性能指标\n\n支持 8 轴联动，EtherCAT 总线周期 1 ms，插补周期 0.5 ms，内置 16 路数字输入、16 路数字输出与 4 路模拟输入。\n\n## 三、软件生态\n\n提供 LantuStudio 编程环境，支持梯形图、结构化文本与 Python 脚本；开放 OPC UA、Modbus TCP 与 ROS2 接口。\n\n## 四、安全功能\n\n符合 PL d 安全等级，支持安全限速、安全停止与区域监控，可选安全 PLC 模块。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_control_architecture_v2",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_tech_control_architecture_v2",
+        "title": "# 澜图智能机器人控制系统架构（旧版 v2.4）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 714,
+        "text": "# 澜图智能机器人控制系统架构（旧版 v2.4）\n\n所属部门：研发中心\n作者：程知远\n创建时间：2023-08-01 09:00\n更新时间：2024-05-10 18:00\n版本号：v2.4\n文档类型：tech\n文档族：control_architecture\n生效日期：2024-05-10\n\n## 一、总体架构（旧版）\n\n旧版控制系统采用“工控机 + 运动控制卡”的两层结构：上位工控机负责任务调度与人机界面，下位运动控制卡负责插补与伺服闭环。现场总线采用 CANopen，总线周期 2 ms，单条总线最多连接 16 个从站，未使用 EtherCAT。\n\n## 二、控制器（旧版）\n\n旧版主控为 LT-C600 工控机，搭载单核 ARM Cortex-A9 处理器，配置 4 轴运动控制卡，支持 4 轴联动，插补周期 1 ms。安全功能依赖外部安全继电器，未内置安全限速与碰撞检测。\n\n## 三、伺服与编码器（旧版）\n\n伺服驱动器采样频率 8 kHz，编码器为 17 位增量式，速度环带宽 600 Hz，支持基础振动抑制，不具备重力补偿。\n\n## 四、软件栈（旧版）\n\n上位机运行 Windows + RTX 实时扩展，运动规划采用梯形加减速与直线插补，提供 C# SDK，未提供 Python/C++ SDK 与 ROS2 驱动。\n\n## 五、可靠性（旧版）\n\n控制器 MTBF 30,000 小时，工作温度 0℃ 至 45℃，通过 EMC 3 级测试，防护等级 IP20。\n\n## 六、版本说明（旧版）\n\n本版本于 2024-05-10 生效，2025-10-20 被 v3.3 取代，仅用于历史版本对比与旧项目维护。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_product_controller",
+      "lantu_tech_control_architecture",
+      "lantu_tech_control_architecture_v2"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.454,
+    "number_recall": 0.0
+  }
+}

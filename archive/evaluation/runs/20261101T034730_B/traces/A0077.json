@@ -1,0 +1,133 @@
+{
+  "qid": "A0077",
+  "question": "按《一级部门职责与编制》的部门编制表，法务合规部的负责人是谁？该部门编制多少人？",
+  "question_type": "事实检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"一级部门职责与编制\"}}",
+      "usage": {
+        "prompt_tokens": 373,
+        "total_tokens": 538,
+        "completion_tokens": 165,
+        "completion_tokens_details": {
+          "reasoning_tokens": 143,
+          "text_tokens": 165
+        }
+      },
+      "seconds": 1.516
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_org_department_duties\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 447,
+        "total_tokens": 668,
+        "completion_tokens": 221,
+        "completion_tokens_details": {
+          "reasoning_tokens": 185,
+          "text_tokens": 221
+        }
+      },
+      "seconds": 2.312
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据《一级部门职责与编制》的部门编制表，法务合规部的负责人是邵岚，该部门编制为28人。\",\"citations\":[\"lantu_org_department_duties\"],\"evidence\":[\"lantu_org_department_duties#部门编制表\"]}",
+      "usage": {
+        "prompt_tokens": 1203,
+        "total_tokens": 1534,
+        "completion_tokens": 331,
+        "completion_tokens_details": {
+          "reasoning_tokens": 260,
+          "text_tokens": 331
+        }
+      },
+      "seconds": 2.641
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "一级部门职责与编制"
+      },
+      "result_sha": "1586e9b6a24cc907f0f723be3869bcfc01935b88b55c6619d2a00dcc34aa9107",
+      "result_chars": 81,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_department_duties",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "b03bf6434f8cf95cb324619ab2059c2ab15c56c1bfc0f84fa5df644197c8c99d",
+      "result_chars": 1136,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《一级部门职责与编制》的部门编制表，法务合规部的负责人是邵岚，该部门编制为28人。",
+    "citations": [
+      "lantu_org_department_duties"
+    ],
+    "evidence": [
+      "lantu_org_department_duties#部门编制表"
+    ]
+  },
+  "status": "answered",
+  "tokens": 2740,
+  "started_at": "2026-11-01T03:58:05",
+  "elapsed_seconds": 6.47,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "一级部门职责与编制"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_org_department_duties",
+            "title": "# 澜图智能一级部门职责与编制"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_department_duties",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_org_department_duties",
+        "title": "# 澜图智能一级部门职责与编制",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 940,
+        "text": "# 澜图智能一级部门职责与编制\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-10 09:00\n更新时间：2025-09-30 16:00\n版本号：v3.2\n文档类型：org\n文档族：department_duties\n生效日期：2025-09-30\n\n## 一、研发中心\n\n负责机器人本体、控制器、伺服、视觉与具身智能技术研发，编制 1,286 人，下设 5 个研究所与 1 个测试中心。\n\n## 二、销售中心与客户成功部\n\n销售中心负责区域销售与渠道管理，编制 620 人；客户成功部负责重点客户经营与续约，编制 86 人。\n\n## 三、供应链中心与制造中心\n\n供应链中心负责采购、计划与物流，编制 210 人；制造中心负责三大基地生产，编制 980 人。\n\n## 四、质量部与售后服务部\n\n质量部负责来料、过程与客户质量，编制 168 人；售后服务部负责安装、维保、备件与培训，编制 412 人。\n\n## 五、职能体系\n\n财务部 96 人、人力资源部 72 人、法务合规部 28 人、信息技术部 104 人、战略投资部 18 人、董事会办公室 6 人。\n\n## 部门编制表\n\n| 部门 | 负责人 | 编制（人） | 主要职责 |\n| --- | --- | --- | --- |\n| 研发中心 | 沈亦舟 | 1,286 | 本体/控制器/视觉/具身智能研发 |\n| 产品部 | 孟凡 | 96 | 产品规划与生命周期管理 |\n| 销售中心 | 罗嘉树 | 620 | 区域销售与渠道 |\n| 客户成功部 | 林可 | 86 | 重点客户经营 |\n| 供应链中心 | 韩立恒 | 210 | 采购、计划、物流 |\n| 制造中心 | 韩立恒 | 980 | 三大基地生产 |\n| 质量部 | 潘文博 | 168 | 全过程质量管理 |\n| 售后服务部 | 陆绍 | 412 | 安装、维保、备件、培训 |\n| 财务部 | 周敏仪 | 96 | 财务与资金 |\n| 人力资源部 | 陈依然 | 72 | 招聘、薪酬、培训 |\n| 法务合规部 | 邵岚 | 28 | 合同、合规、知识产权 |\n| 信息技术部 | 葛俊 | 104 | 数字化与信息安全 |\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_org_department_duties"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.429,
+    "number_recall": 0.0
+  }
+}

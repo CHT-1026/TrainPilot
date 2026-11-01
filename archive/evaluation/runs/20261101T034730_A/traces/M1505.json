@@ -1,0 +1,79 @@
+{
+  "qid": "M1505",
+  "question": "用户：客户要 20% 的折扣，走哪一级审批？毛利率底线是多少？\n助手：按现行（2025 年 1 月 1 日起生效）版本，15%-25%（含）由总经理审批，超过 25% 必须提交董事会审议；项目毛利率不得低于 28%，低于 28% 须由 CFO 出具专项意见。\n用户：我要 2024 年那套授权规则，20% 折扣当时谁批、底线是多少？",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>折扣审批 授权 20% 毛利率</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 57,
+        "prompt_tokens": 461,
+        "total_tokens": 518,
+        "completion_tokens_details": {
+          "reasoning_tokens": 29
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.391
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>2024 版 折扣审批权限 授权规则</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 526,
+        "total_tokens": 574,
+        "completion_tokens_details": {
+          "reasoning_tokens": 18
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.062
+    },
+    {
+      "round": 3,
+      "text": "{\"name\":\"search\",\"args\":{\"query\":\"2024 版折扣审批权限 授权规则 毛利率底线\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 593,
+        "total_tokens": 641,
+        "completion_tokens_details": {
+          "reasoning_tokens": 13
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 1.047
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "name": "search",
+    "args": {
+      "query": "2024 版折扣审批权限 授权规则 毛利率底线",
+      "top_k": 10
+    }
+  },
+  "status": "answered",
+  "tokens": 1733,
+  "started_at": "2026-11-01T06:12:01",
+  "elapsed_seconds": 3.5,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

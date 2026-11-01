@@ -1,0 +1,239 @@
+{
+  "qid": "M0307",
+  "question": "我们在苏州、东莞、成都三个基地分别做什么？年产能合计多少？2026 年扩产后呢？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>苏州 东莞 成都 基地 产品</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list><parameter=keyword>基地</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 96,
+        "prompt_tokens": 368,
+        "total_tokens": 464,
+        "completion_tokens_details": {
+          "reasoning_tokens": 44
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.375
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>苏州 东莞 成都 生产基地 年产能</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 457,
+        "total_tokens": 505,
+        "completion_tokens_details": {
+          "reasoning_tokens": 12
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.125
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"苏州 东莞 成都 生产基地 产品 年产能\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 56,
+        "prompt_tokens": 530,
+        "total_tokens": 586,
+        "completion_tokens_details": {
+          "reasoning_tokens": 23
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.453
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_company_campus\",\"offset\":0,\"limit\":6000}}",
+      "usage": {
+        "completion_tokens": 57,
+        "prompt_tokens": 3008,
+        "total_tokens": 3065,
+        "completion_tokens_details": {
+          "reasoning_tokens": 26
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 1.516
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"三大基地定位与产能如下：\\n1）苏州总部基地（苏州工业园区，占地120亩）：承担六轴机器人总装、控制器生产与研发测试，年产能 18,000 台；\\n2）东莞华南基地（松山湖，占地60亩）：聚焦 SCARA、AMR 与焊接工作站，年产能 8,000 台，2025 年产值 11.2 亿元；\\n3）成都西部基地（天府新区，占地40亩，2024年投产）：主要服务西部汽车与电子客户，年产能 4,000 台。\\n当前三大基地合计年产能 30,000 台。2026 年计划通过苏州二期扩产，将总产能提升至 36,000 台，预计资本开支 3.8 亿元。\",\"citations\":[\"lantu_company_campus\"],\"evidence\":[\"lantu_company_campus#片段0\"]}",
+      "usage": {
+        "completion_tokens": 324,
+        "prompt_tokens": 3503,
+        "total_tokens": 3827,
+        "completion_tokens_details": {
+          "reasoning_tokens": 87
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2944
+        }
+      },
+      "seconds": 6.719
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "苏州 东莞 成都 生产基地 产品 年产能",
+        "top_k": 10
+      },
+      "result_sha": "bd41d4cfcbe305a29d03ea28cb29f7c7b0955d75710b0f74fc81172bc0691003",
+      "result_chars": 3911,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_company_campus",
+        "offset": 0,
+        "limit": 6000
+      },
+      "result_sha": "98c29046b40579f8b6359716a900a929802213f54f0b22d112b480e3cb10737a",
+      "result_chars": 695,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "三大基地定位与产能如下：\n1）苏州总部基地（苏州工业园区，占地120亩）：承担六轴机器人总装、控制器生产与研发测试，年产能 18,000 台；\n2）东莞华南基地（松山湖，占地60亩）：聚焦 SCARA、AMR 与焊接工作站，年产能 8,000 台，2025 年产值 11.2 亿元；\n3）成都西部基地（天府新区，占地40亩，2024年投产）：主要服务西部汽车与电子客户，年产能 4,000 台。\n当前三大基地合计年产能 30,000 台。2026 年计划通过苏州二期扩产，将总产能提升至 36,000 台，预计资本开支 3.8 亿元。",
+    "citations": [
+      "lantu_company_campus"
+    ],
+    "evidence": [
+      "lantu_company_campus#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 8447,
+  "started_at": "2026-11-01T05:52:23",
+  "elapsed_seconds": 15.19,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "苏州 东莞 成都 生产基地 产品 年产能",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_company_campus",
+            "title": "# 澜图智能制造基地与产能布局",
+            "chunk": 0,
+            "score": 27.621,
+            "snippet": "# 澜图智能制造基地与产能布局\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2024-04-12 09:00\n更新时间：2025-11-20 15:00\n版本号：v3.0\n文档类型：company\n文档族：manufacturing_base\n生效日期：2025-11-20\n\n## 一、苏州总部基地\n\n位于苏州工业园区，占地 120 亩，建筑面积 9.6 万平方米，承担六轴机器人总装、控制器生产与研发测试，年产能 18,000 台。\n\n## 二、东莞华南基地\n\n位于东莞松山湖，占地 60 亩，聚焦 SCARA、A"
+          },
+          {
+            "doc_id": "lantu_company_history",
+            "title": "# 澜图智能发展历程（2011—2025）",
+            "chunk": 0,
+            "score": 18.881,
+            "snippet": "# 澜图智能发展历程（2011—2025）\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2023-03-01 09:00\n更新时间：2026-01-05 14:00\n版本号：v4.0\n文档类型：company\n文档族：company_history\n生效日期：2026-01-05\n\n## 一、创业阶段（2011—2015）\n\n2011 年 6 月 18 日，公司在苏州工业园区成立，创始团队来自高校机器人实验室，首款产品为 LT-R6 六轴工业机器人，2012 年实现小批量交付 120 台。2014 年建成首条机"
+          },
+          {
+            "doc_id": "lantu_org_headcount",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 12.956,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能员工分布统计（2025）\n所属部门\t人力资源部\n作者\t陈依然\n创建时间\t2025-12-31 18:00\n更新时间\t2026-01-09 09:30\n版本号\tv1.0\n文档类型\torg\n文档族\theadcount_2025\n生效日期\t2026-01-09\n[工作表] 基地分布\n基地\t员工数\t研发\t销售\t制造\t服务\t职能\n苏州总部\t2,450\t1,120\t310\t560\t250\t210\n东莞华南\t780\t86\t150\t300\t120\t124\n成都西部\t430\t80\t90\t"
+          },
+          {
+            "doc_id": "lantu_support_spare_inventory",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 12.582,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能备件库存分布（2025Q4）\n所属部门\t售后服务部\n作者\t陆绍\n创建时间\t2025-12-25 09:00\n更新时间\t2026-01-02 10:00\n版本号\tv1.0\n文档类型\tsupport\n文档族\tspare_inventory_2025q4\n生效日期\t2026-01-02\n[工作表] 备件仓库存\n仓库\t所在城市\t库存金额（万元）\tSKU 数\t周转天数\n苏州中心仓\t苏州\t6,200\t4,860\t92\n东莞仓\t东莞\t2,800\t2,240\t105\n成都仓\t成都\t1,"
+          },
+          {
+            "doc_id": "lantu_company_profile",
+            "title": "澜图智能装备公司简介",
+            "chunk": 0,
+            "score": 11.812,
+            "snippet": "澜图智能装备公司简介\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2023-03-01 09:00\n更新时间：2026-01-08 10:30\n版本号：v5.2\n文档类型：company\n文档族：company_profile\n生效日期：2026-01-08\n一、公司概况\n澜图智能装备股份有限公司成立于2011-06-18，总部位于江苏省苏州市工业园区星澜路88号，注册资本\n6.8 亿元，2023 年在上海证券交易所科创板上市（股票代码 688719）。公司专注工业机器人、智能产线\n与工业软件，为汽车、锂电、光伏"
+          },
+          {
+            "doc_id": "lantu_meeting_board",
+            "title": "# 2025 年第二次临时董事会决议",
+            "chunk": 0,
+            "score": 8.709,
+            "snippet": "# 2025 年第二次临时董事会决议\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-04-25 09:00\n更新时间：2025-04-25 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_board_2025\n生效日期：2025-04-25\n\n## 一、会议信息\n\n时间：2025 年 4 月 25 日；方式：现场加视频；应到董事 9 人，实到 9 人；列席：高管团队。\n\n## 二、审议事项\n\n审议通过《2024 年度利润分配方案》《2025 年度研发投入预算》《苏州二期"
+          },
+          {
+            "doc_id": "lantu_meeting_safety",
+            "title": "# 2025 年安全生产委员会会议纪要",
+            "chunk": 0,
+            "score": 8.496,
+            "snippet": "# 2025 年安全生产委员会会议纪要\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2025-06-12 09:00\n更新时间：2025-06-12 15:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_safety_2025\n生效日期：2025-06-12\n\n## 一、安全形势\n\n上半年未发生重伤及以上事故，轻伤 2 起，同比下降 50%；排查隐患 27 项，整改完成 25 项。\n\n## 二、重点风险\n\n机器人调试区域误入风险、锂电物料存储消防风险、高处作业风险；需完善安全围栏与联锁。"
+          },
+          {
+            "doc_id": "lantu_org_sales_regions",
+            "title": "# 澜图智能销售区域与渠道网络",
+            "chunk": 0,
+            "score": 7.816,
+            "snippet": "# 澜图智能销售区域与渠道网络\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-02-15 09:00\n更新时间：2025-12-05 15:00\n版本号：v3.1\n文档类型：org\n文档族：sales_regions\n生效日期：2025-12-05\n\n## 一、区域划分\n\n销售中心下设华东、华南、华北、西部、海外五个大区，覆盖 32 个国家和地区。华东大区总部苏州，华南大区总部东莞，华北大区总部北京，西部大区总部成都。\n\n## 二、团队规模\n\n销售团队 620 人，其中行业销售 280 人、渠道销售 16"
+          },
+          {
+            "doc_id": "lantu_meeting_ops_2025q3",
+            "title": "2025 年第三季度经营分析会纪要",
+            "chunk": 0,
+            "score": 7.682,
+            "snippet": "2025 年第三季度经营分析会纪要\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-10-10 09:00\n更新时间：2025-10-10 18:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_ops_2025q3\n生效日期：2025-10-10\n一、会议信息\n时间：2025 年 10 月 10 日 09:00-12:00；地点：苏州总部 3 楼会议室；主持：顾承澜；参会：沈亦舟、周敏仪、韩立恒、罗嘉树、陈依然、潘文博、邵岚。\n二、经营回顾\n第三季度营业收入 11.52 亿元，同"
+          },
+          {
+            "doc_id": "lantu_strategy_esg",
+            "title": "# 澜图智能 ESG 与可持续发展报告",
+            "chunk": 0,
+            "score": 7.303,
+            "snippet": "# 澜图智能 ESG 与可持续发展报告\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2025-04-22 09:00\n更新时间：2025-04-25 10:00\n版本号：v2.0\n文档类型：strategy\n文档族：esg_report\n生效日期：2025-04-25\n\n## 一、环境\n\n2025 年苏州基地光伏装机 6.2MW，绿电占比 28%；单位产值能耗下降 9.6%；危废合规处置率 100%。\n\n## 二、社会\n\n员工培训人均 32 小时；安全生产投入 1,200 万元；公益捐赠 380 万元，支持职业"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_company_campus",
+        "offset": 0,
+        "limit": 6000
+      },
+      "result": {
+        "doc_id": "lantu_company_campus",
+        "title": "# 澜图智能制造基地与产能布局",
+        "offset": 0,
+        "limit": 6000,
+        "total_chars": 523,
+        "text": "# 澜图智能制造基地与产能布局\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2024-04-12 09:00\n更新时间：2025-11-20 15:00\n版本号：v3.0\n文档类型：company\n文档族：manufacturing_base\n生效日期：2025-11-20\n\n## 一、苏州总部基地\n\n位于苏州工业园区，占地 120 亩，建筑面积 9.6 万平方米，承担六轴机器人总装、控制器生产与研发测试，年产能 18,000 台。\n\n## 二、东莞华南基地\n\n位于东莞松山湖，占地 60 亩，聚焦 SCARA、AMR 与焊接工作站，年产能 8,000 台，2025 年产值 11.2 亿元。\n\n## 三、成都西部基地\n\n位于成都天府新区，占地 40 亩，2024 年投产，主要服务西部汽车与电子客户，年产能 4,000 台。\n\n## 四、产能规划\n\n三大基地合计年产能 30,000 台。2026 年计划通过苏州二期扩产将总产能提升至 36,000 台，预计资本开支 3.8 亿元。\n\n## 五、供应链配套\n\n核心供应商 186 家，其中战略供应商 22 家；减速器实现双源供应，伺服驱动器自研比例 61%，关键物料安全库存 45 天。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.5,
+    "cited": [
+      "lantu_company_campus"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.693,
+    "number_recall": 0.889
+  }
+}

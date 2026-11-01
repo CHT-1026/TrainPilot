@@ -1,0 +1,79 @@
+{
+  "qid": "C0028",
+  "question": "AMR 手册写定位精度 ±10 mm，参数矩阵却给出 LT-AMR-500 重复精度 ±5 mm，两者是否矛盾？",
+  "question_type": "矛盾与例外识别",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>LT-AMR-500 定位精度 重复精度</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 84,
+        "prompt_tokens": 378,
+        "total_tokens": 462,
+        "completion_tokens_details": {
+          "reasoning_tokens": 44
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.359
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>AMR 定位精度 ±10mm 手册</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 53,
+        "prompt_tokens": 455,
+        "total_tokens": 508,
+        "completion_tokens_details": {
+          "reasoning_tokens": 15
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 6.563
+    },
+    {
+      "round": 3,
+      "text": "{\"name\":\"search\",\"args\":{\"query\":\"LT-AMR-500 定位精度 重复精度 参数矩阵\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 84,
+        "prompt_tokens": 530,
+        "total_tokens": 614,
+        "completion_tokens_details": {
+          "reasoning_tokens": 49
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 2.375
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "name": "search",
+    "args": {
+      "query": "LT-AMR-500 定位精度 重复精度 参数矩阵",
+      "top_k": 10
+    }
+  },
+  "status": "answered",
+  "tokens": 1584,
+  "started_at": "2026-11-01T04:12:18",
+  "elapsed_seconds": 11.3,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

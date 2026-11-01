@@ -1,0 +1,142 @@
+{
+  "qid": "I0014",
+  "question": "扩产后年化产能 36000 台与 2026 出货目标 26000 台相差多少？是否为产能短缺？考虑苏州二期预计第四季度投产，这个比值能否直接当作全年真实产能利用率？",
+  "question_type": "单文档多跳推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>扩产后年化产能 36000 台 2026 出货目标</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list><parameter=keyword>产能</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 136,
+        "prompt_tokens": 400,
+        "total_tokens": 536,
+        "completion_tokens_details": {
+          "reasoning_tokens": 73
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 4.015
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>扩产后年化产能 36000 台 出货目标</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 109,
+        "prompt_tokens": 500,
+        "total_tokens": 609,
+        "completion_tokens_details": {
+          "reasoning_tokens": 67
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 2.454
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>扩产后年化产能 36000 台 出货目标 26000 台</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 69,
+        "prompt_tokens": 579,
+        "total_tokens": 648,
+        "completion_tokens_details": {
+          "reasoning_tokens": 19
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 2.468
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>年化产能 36000 出货目标 26000 苏州二期 第四季度投产</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 73,
+        "prompt_tokens": 666,
+        "total_tokens": 739,
+        "completion_tokens_details": {
+          "reasoning_tokens": 21
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.625
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>扩产后年化产能 36000 台 2026 出货目标 苏州二期</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 72,
+        "prompt_tokens": 755,
+        "total_tokens": 827,
+        "completion_tokens_details": {
+          "reasoning_tokens": 21
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 2.078
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>扩产后年化产能 36000 台 2026 出货目标 苏州二期 第四季度投产</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 102,
+        "prompt_tokens": 843,
+        "total_tokens": 945,
+        "completion_tokens_details": {
+          "reasoning_tokens": 47
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 2.469
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"needs_clarification\",\"answer\":\"仅按题干数字计算：36000 − 26000 = 10000 台，即年化产能比出货目标高 10000 台，产能利用率约 72.2%（26000/36000），这并不构成'产能短缺'，反而是产能有富余；如果题干数字顺序相反（出货目标 36000、产能 26000），才是短缺 10000 台，请确认口径。关于第二问：即使数字方向如题干所述（产能 > 目标），该比值也不能直接当作全年真实产能利用率——若苏州二期在第四季度才投产，则全年有效产能应按各期投产时间加权（例如二期产能仅贡献一个季度），用年末'年化产能'作分母会系统性低估利用率；正确做法是用期间加权平均产能（如旧线全年 24000 台 + 新线季度性折算 3000 台 = 约 27000 台）作为分母，再结合爬坡节奏调整。由于多次检索未能在资料库中定位到'36000 台产能''26000 台出货目标''苏州二期四季度投产'的原始出处，上述数字与时间口径无法与原文核对，建议提供文档名称或关键字段以便精确取证。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 424,
+        "prompt_tokens": 932,
+        "total_tokens": 1356,
+        "completion_tokens_details": {
+          "reasoning_tokens": 81
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 832
+        }
+      },
+      "seconds": 10.563
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "needs_clarification",
+    "answer": "仅按题干数字计算：36000 − 26000 = 10000 台，即年化产能比出货目标高 10000 台，产能利用率约 72.2%（26000/36000），这并不构成'产能短缺'，反而是产能有富余；如果题干数字顺序相反（出货目标 36000、产能 26000），才是短缺 10000 台，请确认口径。关于第二问：即使数字方向如题干所述（产能 > 目标），该比值也不能直接当作全年真实产能利用率——若苏州二期在第四季度才投产，则全年有效产能应按各期投产时间加权（例如二期产能仅贡献一个季度），用年末'年化产能'作分母会系统性低估利用率；正确做法是用期间加权平均产能（如旧线全年 24000 台 + 新线季度性折算 3000 台 = 约 27000 台）作为分母，再结合爬坡节奏调整。由于多次检索未能在资料库中定位到'36000 台产能''26000 台出货目标''苏州二期四季度投产'的原始出处，上述数字与时间口径无法与原文核对，建议提供文档名称或关键字段以便精确取证。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 5660,
+  "started_at": "2026-11-01T05:16:15",
+  "elapsed_seconds": 25.67,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.218,
+    "number_recall": 1.0
+  }
+}

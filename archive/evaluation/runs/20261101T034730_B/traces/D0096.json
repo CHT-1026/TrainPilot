@@ -1,0 +1,199 @@
+{
+  "qid": "D0096",
+  "question": "什么情况下销售中心可以发起价格重审？",
+  "question_type": "条件判断与边界",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"价格重审\"}}",
+      "usage": {
+        "prompt_tokens": 359,
+        "total_tokens": 529,
+        "completion_tokens": 170,
+        "completion_tokens_details": {
+          "reasoning_tokens": 150,
+          "text_tokens": 170
+        }
+      },
+      "seconds": 2.172
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"价格\", \"top_k\":10}}",
+      "usage": {
+        "prompt_tokens": 404,
+        "total_tokens": 597,
+        "completion_tokens": 193,
+        "completion_tokens_details": {
+          "reasoning_tokens": 168,
+          "text_tokens": 193
+        }
+      },
+      "seconds": 2.375
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\": \"lantu_sales_quote\", \"offset\": 0, \"limit\": 4000}}",
+      "usage": {
+        "prompt_tokens": 1634,
+        "total_tokens": 1811,
+        "completion_tokens": 177,
+        "completion_tokens_details": {
+          "reasoning_tokens": 139,
+          "text_tokens": 177
+        }
+      },
+      "seconds": 1.985
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据《澜图智能报价与合同评审流程》，当**原材料价格波动超过 5%**时，销售中心可发起价格重审。\",\"citations\":[\"lantu_sales_quote\"],\"evidence\":[\"lantu_sales_quote#2\"]}",
+      "usage": {
+        "prompt_tokens": 2016,
+        "total_tokens": 2165,
+        "completion_tokens": 149,
+        "completion_tokens_details": {
+          "reasoning_tokens": 85,
+          "text_tokens": 149
+        }
+      },
+      "seconds": 1.64
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "价格重审"
+      },
+      "result_sha": "1290604daacc15212b4f59638c659261007a940d59ae4c9dd916d753b78e21de",
+      "result_chars": 12,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "价格",
+        "top_k": 10
+      },
+      "result_sha": "07c8f485685759991698c18e8ca5e2835e0795148bb8b3d1c472d144ab392d4d",
+      "result_chars": 1942,
+      "hits": 5
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_sales_quote",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "52fc4d74c342403575fd7324087c719f0b469ee7c9ca39cd052e2030f1960292",
+      "result_chars": 564,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《澜图智能报价与合同评审流程》，当**原材料价格波动超过 5%**时，销售中心可发起价格重审。",
+    "citations": [
+      "lantu_sales_quote"
+    ],
+    "evidence": [
+      "lantu_sales_quote#2"
+    ]
+  },
+  "status": "answered",
+  "tokens": 5102,
+  "started_at": "2026-11-01T04:42:30",
+  "elapsed_seconds": 8.17,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "价格重审"
+      },
+      "result": {
+        "docs": []
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "价格",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_sales_quote",
+            "title": "# 澜图智能报价与合同评审流程",
+            "chunk": 0,
+            "score": 4.427,
+            "snippet": "# 澜图智能报价与合同评审流程\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-02-10 09:00\n更新时间：2025-08-08 14:00\n版本号：v2.5\n文档类型：sales\n文档族：sales_quote\n生效日期：2025-08-08\n\n## 一、报价流程\n\n销售工程师在 CRM 创建报价单，系统自动校验标准价；非标项目由售前技术出具配置清单，产品部确认成本，财务部复核税率与汇率。\n\n## 二、评审节点\n\n合同金额 1,000 万元以上须法务合规部与 CFO 联合评审；涉及非标开发须 CTO"
+          },
+          {
+            "doc_id": "lantu_sales_policy",
+            "title": "# 澜图智能销售政策与客户分级管理办法",
+            "chunk": 0,
+            "score": 4.334,
+            "snippet": "# 澜图智能销售政策与客户分级管理办法\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-01-20 09:00\n更新时间：2025-09-25 15:00\n版本号：v3.4\n文档类型：sales\n文档族：sales_policy\n生效日期：2025-09-25\n\n## 一、客户分级\n\n客户分为 S、A、B、C 四级。S 级为年采购额 5,000 万元以上战略客户，由客户成功部直管；A 级 1,000-5,000 万元；B 级 300-1,000 万元；C 级 300 万元以下由渠道覆盖。\n\n## 二、价格体"
+          },
+          {
+            "doc_id": "lantu_finance_budget_2026",
+            "title": "# 澜图智能 2026 年度经营预算",
+            "chunk": 0,
+            "score": 3.613,
+            "snippet": "# 澜图智能 2026 年度经营预算\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-12-20 09:00\n更新时间：2026-01-15 17:00\n版本号：v1.0\n文档类型：finance\n文档族：budget_2026\n生效日期：2026-01-15\n\n## 一、预算目标\n\n2026 年营业收入目标 52 亿元，同比增长 22%；归母净利润目标 5.2 亿元；综合毛利率目标 32.5%。\n\n## 二、收入分解\n\n机器人本体 24.2 亿元，智能产线 18.4 亿元，软件与服务 6.4 亿元，备件及其"
+          },
+          {
+            "doc_id": "lantu_support_warranty",
+            "title": "# 澜图智能产品保修政策",
+            "chunk": 0,
+            "score": 3.491,
+            "snippet": "# 澜图智能产品保修政策\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-01-01 09:00\n更新时间：2025-04-01 09:00\n版本号：v3.0\n文档类型：support\n文档族：warranty_policy\n生效日期：2025-04-01\n\n## 一、保修期限\n\n机器人本体保修 24 个月或 6,000 小时，以先到者为准；控制器保修 18 个月；易损件保修 6 个月。\n\n## 二、保修范围\n\n因产品设计、制造或材料缺陷导致的故障免费维修或更换；软件提供 12 个月免费升级。\n\n## 三、"
+          },
+          {
+            "doc_id": "lantu_finance_h1_2025",
+            "title": "# 澜图智能 2025 年半年度报告摘要",
+            "chunk": 0,
+            "score": 3.409,
+            "snippet": "# 澜图智能 2025 年半年度报告摘要\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-08-25 09:00\n更新时间：2025-08-28 18:00\n版本号：v1.0\n文档类型：finance\n文档族：semiannual_2025\n生效日期：2025-08-28\n\n## 一、经营数据\n\n2025 年上半年营业收入 19.84 亿元，同比增长 21.3%；归母净利润 1.83 亿元，同比增长 24.6%；毛利率 31.2%。\n\n## 二、订单情况\n\n上半年新签订单 22.7 亿元，同比增长 18.5%"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_sales_quote",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_sales_quote",
+        "title": "# 澜图智能报价与合同评审流程",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 399,
+        "text": "# 澜图智能报价与合同评审流程\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-02-10 09:00\n更新时间：2025-08-08 14:00\n版本号：v2.5\n文档类型：sales\n文档族：sales_quote\n生效日期：2025-08-08\n\n## 一、报价流程\n\n销售工程师在 CRM 创建报价单，系统自动校验标准价；非标项目由售前技术出具配置清单，产品部确认成本，财务部复核税率与汇率。\n\n## 二、评审节点\n\n合同金额 1,000 万元以上须法务合规部与 CFO 联合评审；涉及非标开发须 CTO 签字；涉及海外交付须国际业务部确认合规与物流方案。\n\n## 三、报价有效期\n\n标准产品报价有效期 30 天，非标项目 60 天。原材料价格波动超过 5% 时，销售中心可发起价格重审。\n\n## 四、禁止承诺\n\n未经评审不得承诺交期、定制功能、终身免费服务或超出标准的质保条款。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_sales_quote"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.85,
+    "number_recall": 0.0
+  }
+}

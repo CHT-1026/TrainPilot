@@ -1,0 +1,239 @@
+{
+  "qid": "I0047",
+  "question": "数字化转型规划的三年总目标是什么？运营效率提升目标是多少？",
+  "question_type": "事实检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>数字化转型规划 三年目标 运营效率提升</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 58,
+        "prompt_tokens": 357,
+        "total_tokens": 415,
+        "completion_tokens_details": {
+          "reasoning_tokens": 22
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.265
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"数字化转型规划 三年总目标 运营效率提升\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 70,
+        "prompt_tokens": 430,
+        "total_tokens": 500,
+        "completion_tokens_details": {
+          "reasoning_tokens": 38
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.938
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=read><parameter=args>{\"doc_id\": \"lantu_strategy_digital_transformation\", \"offset\": 0, \"limit\": 4000}</function></tool_call>",
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 2813,
+        "total_tokens": 2861,
+        "completion_tokens_details": {
+          "reasoning_tokens": 8
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 1.797
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_strategy_digital_transformation\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 37,
+        "prompt_tokens": 2890,
+        "total_tokens": 2927,
+        "completion_tokens_details": {
+          "reasoning_tokens": 4
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2752
+        }
+      },
+      "seconds": 2.359
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据《澜图智能数字化转型规划》（v2.3，信息技术部葛俊，2025-10-10 生效）：三年总目标是实现研发、供应链、制造、销售与服务的全流程数字化；运营效率提升目标为 20%。配套重点工程包括 PLM、SRM、MES、CRM 与数据中台五大工程，核心系统云化率目标 80%，里程碑为 2025 年 PLM 与 CRM 上线、2026 年 MES 全面推广、2027 年实现智能决策。\",\"citations\":[\"lantu_strategy_digital_transformation\"],\"evidence\":[\"lantu_strategy_digital_transformation#片段0\"]}",
+      "usage": {
+        "completion_tokens": 189,
+        "prompt_tokens": 3262,
+        "total_tokens": 3451,
+        "completion_tokens_details": {
+          "reasoning_tokens": 19
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2880
+        }
+      },
+      "seconds": 3.828
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "数字化转型规划 三年总目标 运营效率提升",
+        "top_k": 10
+      },
+      "result_sha": "ee5ad037caed7ade814698da9379e8f266e09904d4db7ca96bd423b85ed07139",
+      "result_chars": 3898,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_strategy_digital_transformation",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "7fb8788515840ec6f7759672549ac4d57c5f8680c9a4370dedfff71336627f6f",
+      "result_chars": 550,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《澜图智能数字化转型规划》（v2.3，信息技术部葛俊，2025-10-10 生效）：三年总目标是实现研发、供应链、制造、销售与服务的全流程数字化；运营效率提升目标为 20%。配套重点工程包括 PLM、SRM、MES、CRM 与数据中台五大工程，核心系统云化率目标 80%，里程碑为 2025 年 PLM 与 CRM 上线、2026 年 MES 全面推广、2027 年实现智能决策。",
+    "citations": [
+      "lantu_strategy_digital_transformation"
+    ],
+    "evidence": [
+      "lantu_strategy_digital_transformation#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 10154,
+  "started_at": "2026-11-01T05:18:22",
+  "elapsed_seconds": 11.19,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "数字化转型规划 三年总目标 运营效率提升",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_strategy_digital_transformation",
+            "title": "# 澜图智能数字化转型规划",
+            "chunk": 0,
+            "score": 58.126,
+            "snippet": "# 澜图智能数字化转型规划\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-08-01 09:00\n更新时间：2025-10-10 14:00\n版本号：v2.3\n文档类型：strategy\n文档族：digital_transformation\n生效日期：2025-10-10\n\n## 一、转型目标\n\n三年内实现研发、供应链、制造、销售与服务的全流程数字化，运营效率提升 20%。\n\n## 二、重点工程\n\nPLM 研发协同、SRM 供应链协同、MES 制造执行、CRM 客户经营与数据中台五大工程。\n\n## 三、技"
+          },
+          {
+            "doc_id": "lantu_case_09_shunjie",
+            "title": "# 客户案例：顺捷供应链仓储拣选项目",
+            "chunk": 0,
+            "score": 11.174,
+            "snippet": "# 客户案例：顺捷供应链仓储拣选项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_shunjie\n生效日期：2024-12-20\n\n## 一、客户背景\n\n顺捷供应链位于广州，主营物流业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖1"
+          },
+          {
+            "doc_id": "lantu_org_department_duties",
+            "title": "# 澜图智能一级部门职责与编制",
+            "chunk": 1,
+            "score": 9.66,
+            "snippet": "| 部门 | 负责人 | 编制（人） | 主要职责 |\n| --- | --- | --- | --- |\n| 研发中心 | 沈亦舟 | 1,286 | 本体/控制器/视觉/具身智能研发 |\n| 产品部 | 孟凡 | 96 | 产品规划与生命周期管理 |\n| 销售中心 | 罗嘉树 | 620 | 区域销售与渠道 |\n| 客户成功部 | 林可 | 86 | 重点客户经营 |\n| 供应链中心 | 韩立恒 | 210 | 采购、计划、物流 |\n| 制造中心 | 韩立恒 | 980 | 三大基地生产 |\n| 质量部 | 潘"
+          },
+          {
+            "doc_id": "lantu_case_11_dingzhong",
+            "title": "# 客户案例：鼎重机械结构件焊接项目",
+            "chunk": 0,
+            "score": 8.374,
+            "snippet": "# 客户案例：鼎重机械结构件焊接项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_dingzhong\n生效日期：2024-12-20\n\n## 一、客户背景\n\n鼎重机械位于徐州，主营工程机械业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目"
+          },
+          {
+            "doc_id": "lantu_solution_semiconductor",
+            "title": "# 半导体晶圆搬运洁净解决方案",
+            "chunk": 0,
+            "score": 8.346,
+            "snippet": "# 半导体晶圆搬运洁净解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2025-02-14 09:00\n更新时间：2025-11-11 09:30\n版本号：v2.0\n文档类型：product\n文档族：solution_semiconductor\n生效日期：2025-11-11\n\n## 一、方案概述\n\n面向 8/12 英寸晶圆厂，提供晶圆盒搬运、机台上下料与跨区物流方案，采用 LT-AMR-500 洁净版与 LT-R12 洁净机器人。\n\n## 二、洁净指标\n\n洁净等级 Class 10，颗粒物控制 0.1 μm，"
+          },
+          {
+            "doc_id": "lantu_case_06_jingtuo",
+            "title": "# 客户案例：晶拓微电子晶圆搬运项目",
+            "chunk": 0,
+            "score": 8.315,
+            "snippet": "# 客户案例：晶拓微电子晶圆搬运项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_jingtuo\n生效日期：2025-12-20\n\n## 一、客户背景\n\n晶拓微电子位于无锡，主营半导体业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖"
+          },
+          {
+            "doc_id": "lantu_finance_investor_qa",
+            "title": "# 澜图智能投资者常见问题答复",
+            "chunk": 0,
+            "score": 8.027,
+            "snippet": "# 澜图智能投资者常见问题答复\n\n所属部门：董事会办公室\n作者：周敏仪\n创建时间：2025-11-01 09:00\n更新时间：2025-12-30 16:00\n版本号：v2.0\n文档类型：finance\n文档族：investor_qa\n生效日期：2025-12-30\n\n## 一、增长来源\n\n2025 年增长主要来自动力电池与半导体行业，两项合计贡献收入增量的 61%；海外市场贡献 22%。\n\n## 二、毛利率趋势\n\n随着自研控制器与驱动器比例提升、标准工作站放量，预计 2026 年毛利率提升至 32.5% 左右。\n"
+          },
+          {
+            "doc_id": "lantu_meeting_strategy",
+            "title": "# 2026 年战略研讨会纪要",
+            "chunk": 0,
+            "score": 7.703,
+            "snippet": "# 2026 年战略研讨会纪要\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-11-21 09:00\n更新时间：2025-11-22 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_strategy_2026\n生效日期：2025-11-22\n\n## 一、战略目标\n\n2026 年营业收入 52 亿元，2028 年 80 亿元；海外收入占比 2026 年提升至 17%，2028 年达到 25%。\n\n## 二、业务重点\n\n巩固锂电与汽车基本盘，突破半导体与具身智能；软件与服务收"
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 1,
+            "score": 5.896,
+            "snippet": "| 产品线 | 代表型号 | 负载 | 典型行业 |\n| --- | --- | --- | --- |\n| 六轴机器人 | LT-R6/R12/R20/R50/R210 | 6-210 kg | 汽车、锂电、金属加工 |\n| SCARA | LT-S4/S10 | 4-10 kg | 3C、光伏、食品 |\n| 移动机器人 | LT-AMR-500/1000/2000 | 500-2,000 kg | 物流、半导体 |\n| 机器视觉 | LT-V3D | — | 装配、检测 |\n| 控制器 | LT-C800 | "
+          },
+          {
+            "doc_id": "lantu_product_digital_twin",
+            "title": "# LantuTwin 数字孪生平台介绍",
+            "chunk": 0,
+            "score": 5.668,
+            "snippet": "# LantuTwin 数字孪生平台介绍\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-09-01 09:00\n更新时间：2025-06-30 16:00\n版本号：v3.0\n文档类型：product\n文档族：product_digital_twin\n生效日期：2025-06-30\n\n## 一、平台定位\n\nLantuTwin 3.0 是面向智能工厂规划、调试与运维的数字孪生平台，支持机器人、产线与物流系统的虚实同步。\n\n## 二、核心能力\n\n单项目支持 500 台设备接入，数据刷新延迟低于 80 ms，仿真"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_strategy_digital_transformation",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_strategy_digital_transformation",
+        "title": "# 澜图智能数字化转型规划",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 367,
+        "text": "# 澜图智能数字化转型规划\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-08-01 09:00\n更新时间：2025-10-10 14:00\n版本号：v2.3\n文档类型：strategy\n文档族：digital_transformation\n生效日期：2025-10-10\n\n## 一、转型目标\n\n三年内实现研发、供应链、制造、销售与服务的全流程数字化，运营效率提升 20%。\n\n## 二、重点工程\n\nPLM 研发协同、SRM 供应链协同、MES 制造执行、CRM 客户经营与数据中台五大工程。\n\n## 三、技术底座\n\n统一身份认证、主数据管理、低代码平台与数据湖仓；核心系统云化率 80%。\n\n## 四、里程碑\n\n2025 年完成 PLM 与 CRM 上线；2026 年完成 MES 全面推广；2027 年实现智能决策。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_strategy_digital_transformation"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.8,
+    "number_recall": 0.0
+  }
+}

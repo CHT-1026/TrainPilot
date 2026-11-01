@@ -1,0 +1,199 @@
+{
+  "qid": "M1508",
+  "question": "用户：2025 年第四季度营收多少？\n助手：2025 年第四季度营收 11.27 亿元，订单 12.81 亿元，出货 5,740 台。\n用户：第三季度呢？我要看第三季度的。",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"2025年第三季度 营收\"}}",
+      "usage": {
+        "prompt_tokens": 412,
+        "total_tokens": 589,
+        "completion_tokens": 177,
+        "completion_tokens_details": {
+          "reasoning_tokens": 152,
+          "text_tokens": 177
+        }
+      },
+      "seconds": 1.391
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_finance_q3_2025\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 2828,
+        "total_tokens": 3131,
+        "completion_tokens": 303,
+        "completion_tokens_details": {
+          "reasoning_tokens": 263,
+          "text_tokens": 303
+        }
+      },
+      "seconds": 2.547
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"2025 年第三季度营业收入为 11.52 亿元。\",\"citations\":[\"lantu_finance_q3_2025\"],\"evidence\":[\"lantu_finance_q3_2025#0\"]}",
+      "usage": {
+        "prompt_tokens": 3265,
+        "total_tokens": 3525,
+        "completion_tokens": 260,
+        "completion_tokens_details": {
+          "reasoning_tokens": 194,
+          "text_tokens": 260
+        }
+      },
+      "seconds": 2.093
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "2025年第三季度 营收"
+      },
+      "result_sha": "19154ce624179ca6e54339603dd299f5ae6c62a1bdcd7f861809e3c788cd8344",
+      "result_chars": 3901,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_finance_q3_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "4884164fe4c246fe4d2d152835fab1ffd50d5cc1dc4d9511359304722412e1db",
+      "result_chars": 599,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "2025 年第三季度营业收入为 11.52 亿元。",
+    "citations": [
+      "lantu_finance_q3_2025"
+    ],
+    "evidence": [
+      "lantu_finance_q3_2025#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 7245,
+  "started_at": "2026-11-01T06:50:55",
+  "elapsed_seconds": 6.03,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "2025年第三季度 营收"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_finance_monthly_2025",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 20.993,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能 2025 年月度经营数据\n所属部门\t财务部\n作者\t周敏仪\n创建时间\t2026-01-12 09:00\n更新时间\t2026-01-12 18:00\n版本号\tv1.0\n文档类型\tfinance\n文档族\tmonthly_operations_2025\n生效日期\t2026-01-12\n[工作表] 月度经营数据\n月份\t营收（亿元）\t订单（亿元）\t机器人出货（台）\n2025年1月\t2.86\t3.42\t1,380\n2025年2月\t2.61\t3.05\t1,260\n2025年3月\t3."
+          },
+          {
+            "doc_id": "lantu_finance_q3_2025",
+            "title": "# 澜图智能 2025 年第三季度经营数据",
+            "chunk": 0,
+            "score": 19.334,
+            "snippet": "# 澜图智能 2025 年第三季度经营数据\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-10-22 09:00\n更新时间：2025-10-26 18:00\n版本号：v1.0\n文档类型：finance\n文档族：quarterly_2025_q3\n生效日期：2025-10-26\n\n## 一、季度业绩\n\n2025 年第三季度营业收入 11.52 亿元，同比增长 17.8%；归母净利润 1.21 亿元，同比增长 22.1%；毛利率 31.4%。\n\n## 二、累计业绩\n\n前三季度累计营业收入 31.36 亿元，归母"
+          },
+          {
+            "doc_id": "lantu_meeting_quality",
+            "title": "2025 年第三季度质量专题会纪要",
+            "chunk": 0,
+            "score": 16.715,
+            "snippet": "2025 年第三季度质量专题会纪要\n所属部门：质量部\n作者：潘文博\n创建时间：2025-07-22 09:00\n更新时间：2025-07-22 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_quality_q3\n生效日期：2025-07-22\n一、质量数据\n上半年一次交检合格率 98.4%，客户投诉 1 起；第三季度首月投诉 1 起，为 LT-R12 线束磨损问题。\n二、问题分析\n线束磨损源于走线路径与防护套选型不当，涉及 2025 年 3 月生产的 120 台 LT-R12，已启"
+          },
+          {
+            "doc_id": "lantu_meeting_ops_2025q3",
+            "title": "2025 年第三季度经营分析会纪要",
+            "chunk": 0,
+            "score": 16.05,
+            "snippet": "2025 年第三季度经营分析会纪要\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-10-10 09:00\n更新时间：2025-10-10 18:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_ops_2025q3\n生效日期：2025-10-10\n一、会议信息\n时间：2025 年 10 月 10 日 09:00-12:00；地点：苏州总部 3 楼会议室；主持：顾承澜；参会：沈亦舟、周敏仪、韩立恒、罗嘉树、陈依然、潘文博、邵岚。\n二、经营回顾\n第三季度营业收入 11.52 亿元，同"
+          },
+          {
+            "doc_id": "lantu_meeting_board",
+            "title": "# 2025 年第二次临时董事会决议",
+            "chunk": 0,
+            "score": 7.231,
+            "snippet": "# 2025 年第二次临时董事会决议\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-04-25 09:00\n更新时间：2025-04-25 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_board_2025\n生效日期：2025-04-25\n\n## 一、会议信息\n\n时间：2025 年 4 月 25 日；方式：现场加视频；应到董事 9 人，实到 9 人；列席：高管团队。\n\n## 二、审议事项\n\n审议通过《2024 年度利润分配方案》《2025 年度研发投入预算》《苏州二期"
+          },
+          {
+            "doc_id": "lantu_meeting_sales",
+            "title": "2025 年华南大区销售复盘会纪要",
+            "chunk": 0,
+            "score": 6.321,
+            "snippet": "2025 年华南大区销售复盘会纪要\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2025-09-05 09:00\n更新时间：2025-09-05 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_sales_south\n生效日期：2025-09-05\n一、业绩完成\n华南大区前三季度收入 7.42 亿元，年度完成率 108%，位列五大区第一；新签订单 8.6 亿元。\n二、行业机会\n锂电客户扩产带来 3.2 亿元机会；3C 客户自动化改造预算增加；光伏客户资本开支放缓。\n三、渠道问题\n两家"
+          },
+          {
+            "doc_id": "lantu_finance_cost",
+            "title": "# 澜图智能成本管理与降本专项报告",
+            "chunk": 0,
+            "score": 5.635,
+            "snippet": "# 澜图智能成本管理与降本专项报告\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-09-05 09:00\n更新时间：2025-09-12 17:00\n版本号：v1.3\n文档类型：finance\n文档族：cost_management\n生效日期：2025-09-12\n\n## 一、降本目标\n\n2025 年降本目标 1.8 亿元，前三季度完成 1.48 亿元，完成率 82%。\n\n## 二、主要项目\n\n减速器国产替代降本 4,200 万元，伺服驱动器自研降本 3,800 万元，结构件轻量化降本 2,600 万元，物"
+          },
+          {
+            "doc_id": "lantu_company_milestones_2025",
+            "title": "# 澜图智能 2025 年度大事记",
+            "chunk": 0,
+            "score": 4.96,
+            "snippet": "# 澜图智能 2025 年度大事记\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-12-31 18:00\n更新时间：2026-01-06 09:00\n版本号：v1.0\n文档类型：company\n文档族：annual_milestones_2025\n生效日期：2026-01-06\n\n## 一、经营里程碑\n\n2025 年营业收入 42.63 亿元，同比增长 19.1%；新签订单 48.90 亿元；机器人出货 21,400 台；第 10 万台机器人于 9 月 12 日下线。\n\n## 二、组织里程碑\n\n3 月"
+          },
+          {
+            "doc_id": "lantu_product_r20_pro_whitepaper",
+            "title": "LT-R20 Pro 机器人技术白皮书",
+            "chunk": 0,
+            "score": 4.813,
+            "snippet": "LT-R20 Pro 机器人技术白皮书\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2025-11-20 09:00\n更新时间：2025-11-28 18:00\n版本号：v0.9\n文档类型：product\n文档族：product_r20_pro\n生效日期：2025-11-28\n一、研发背景\n面向锂电叠片、汽车装配等高频节拍场景，澜图智能研发新一代中型六轴机器人 LT-R20 Pro，计划\n2026 年第二季度量产。\n二、技术指标\n额定负载 22 kg，臂展 1,750 mm，重复定位精度 ±0.02 mm，本体重量"
+          },
+          {
+            "doc_id": "lantu_legal_nda_template",
+            "title": "澜图智能保密协议模板（NDA）",
+            "chunk": 0,
+            "score": 4.071,
+            "snippet": "澜图智能保密协议模板（NDA）\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-10 09:00\n更新时间：2025-02-01 09:00\n版本号：v3.0\n文档类型：legal\n文档族：nda_template\n生效日期：2025-02-01\n第一条 保密信息\n保密信息包括技术资料、图纸、源代码、算法、客户信息、报价、成本与未公开财务数据。\n第二条 保密义务\n接收方仅可为合作目的使用保密信息，不得披露给第三方；接触人员须签署个人保密承诺。\n第三条 保密期限\n本协议保密期限为签署之日起 3 年，商业秘"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_finance_q3_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_finance_q3_2025",
+        "title": "# 澜图智能 2025 年第三季度经营数据",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 424,
+        "text": "# 澜图智能 2025 年第三季度经营数据\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-10-22 09:00\n更新时间：2025-10-26 18:00\n版本号：v1.0\n文档类型：finance\n文档族：quarterly_2025_q3\n生效日期：2025-10-26\n\n## 一、季度业绩\n\n2025 年第三季度营业收入 11.52 亿元，同比增长 17.8%；归母净利润 1.21 亿元，同比增长 22.1%；毛利率 31.4%。\n\n## 二、累计业绩\n\n前三季度累计营业收入 31.36 亿元，归母净利润 3.04 亿元；新签订单 35.8 亿元。\n\n## 三、订单结构\n\n第三季度新签订单 13.6 亿元，其中锂电 36%、半导体 18%、汽车 16%、光伏 12%、其他 18%。\n\n## 四、经营重点\n\n半导体洁净搬运方案实现批量交付；海外收入单季 1.42 亿元，同比增长 35%；供应链降本完成年度目标的 82%。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.5,
+    "cited": [
+      "lantu_finance_q3_2025"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.091,
+    "number_recall": 0.5
+  }
+}

@@ -1,0 +1,554 @@
+{
+  "qid": "K0009",
+  "question": "质量部负责人潘文博签署了《2025 年第三季度质量专题会纪要》和《质量管理体系手册》，而 LT-R12 召回通知也由质量部署名（作者潘文博）。同一位负责人签署了「启动召回」和「年度质量目标」两份文件。请把召回事宜与质量手册中的年度目标对应起来，判断 2025 年是否达成召回相关目标。",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"2025 年第三季度质量专题会纪要 质量管理体系手册 LT-R12召回通知\"}}",
+      "usage": {
+        "prompt_tokens": 434,
+        "total_tokens": 619,
+        "completion_tokens": 185,
+        "completion_tokens_details": {
+          "reasoning_tokens": 148,
+          "text_tokens": 185
+        }
+      },
+      "seconds": 1.625
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_strategy_quality_system\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 2862,
+        "total_tokens": 3072,
+        "completion_tokens": 210,
+        "completion_tokens_details": {
+          "reasoning_tokens": 176,
+          "text_tokens": 210
+        }
+      },
+      "seconds": 2.156
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_meeting_quality\",\"offset\":400,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 3262,
+        "total_tokens": 4755,
+        "completion_tokens": 1493,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1457,
+          "text_tokens": 1493
+        }
+      },
+      "seconds": 13.953
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_meeting_quality\",\"offset\":0,\"limit\":2000}}",
+      "usage": {
+        "prompt_tokens": 3393,
+        "total_tokens": 6189,
+        "completion_tokens": 2796,
+        "completion_tokens_details": {
+          "reasoning_tokens": 2762,
+          "text_tokens": 2796
+        }
+      },
+      "seconds": 26.125
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"召回完成 召回总结 2025年质量年度报告\"}}",
+      "usage": {
+        "prompt_tokens": 3798,
+        "total_tokens": 4306,
+        "completion_tokens": 508,
+        "completion_tokens_details": {
+          "reasoning_tokens": 478,
+          "text_tokens": 508
+        }
+      },
+      "seconds": 4.516
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_strategy_quality_system\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 6222,
+        "total_tokens": 7168,
+        "completion_tokens": 946,
+        "completion_tokens_details": {
+          "reasoning_tokens": 912,
+          "text_tokens": 946
+        }
+      },
+      "seconds": 7.859
+    },
+    {
+      "round": 7,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_finance_annual_2025\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 6622,
+        "total_tokens": 7557,
+        "completion_tokens": 935,
+        "completion_tokens_details": {
+          "reasoning_tokens": 895,
+          "text_tokens": 935
+        }
+      },
+      "seconds": 8.547
+    },
+    {
+      "round": 8,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"2025 年质量目标 达成 总结\"}}",
+      "usage": {
+        "prompt_tokens": 7129,
+        "total_tokens": 7719,
+        "completion_tokens": 590,
+        "completion_tokens_details": {
+          "reasoning_tokens": 561,
+          "text_tokens": 590
+        }
+      },
+      "seconds": 5.5
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "2025 年第三季度质量专题会纪要 质量管理体系手册 LT-R12召回通知"
+      },
+      "result_sha": "5ed3291e5f5972de80c75759d8f111e6b7af0d50e9646138375822739a7816f6",
+      "result_chars": 3901,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_strategy_quality_system",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "da62bbc9af13b511ceb881a9e87be5c8cd0ec0a90b1044857217e380dbca5f71",
+      "result_chars": 603,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_meeting_quality",
+        "offset": 400,
+        "limit": 4000
+      },
+      "result_sha": "ad7ebb22fcdfee0edb5d88f15519c011ba3cef0ec267841e9338f82493d10594",
+      "result_chars": 167,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_meeting_quality",
+        "offset": 0,
+        "limit": 2000
+      },
+      "result_sha": "5379e5768e3fbafe4fc37354abe6aa2926c75193bd1f4c78d604e87870bf128a",
+      "result_chars": 583,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "召回完成 召回总结 2025年质量年度报告"
+      },
+      "result_sha": "ac51b32865bf2af6a994bb4ed0889a347d5779e613422966e0ee9639533ccab6",
+      "result_chars": 3880,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_strategy_quality_system",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "da62bbc9af13b511ceb881a9e87be5c8cd0ec0a90b1044857217e380dbca5f71",
+      "result_chars": 603,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_finance_annual_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "282bd0d8ed89a26ab10c250898474d1181ce35168532f488a172ca936399e712",
+      "result_chars": 693,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "2025 年质量目标 达成 总结"
+      },
+      "result_sha": "458c861ee4d1cbd0551df883e41c99a4b8706ff4e96ce3b44794b9172af2ccc3",
+      "result_chars": 3894,
+      "hits": 10
+    }
+  ],
+  "answer": null,
+  "status": "unfinished",
+  "tokens": 41385,
+  "started_at": "2026-11-01T02:30:38",
+  "elapsed_seconds": 70.28,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "2025 年第三季度质量专题会纪要 质量管理体系手册 LT-R12召回通知"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_meeting_quality",
+            "title": "2025 年第三季度质量专题会纪要",
+            "chunk": 0,
+            "score": 65.306,
+            "snippet": "2025 年第三季度质量专题会纪要\n所属部门：质量部\n作者：潘文博\n创建时间：2025-07-22 09:00\n更新时间：2025-07-22 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_quality_q3\n生效日期：2025-07-22\n一、质量数据\n上半年一次交检合格率 98.4%，客户投诉 1 起；第三季度首月投诉 1 起，为 LT-R12 线束磨损问题。\n二、问题分析\n线束磨损源于走线路径与防护套选型不当，涉及 2025 年 3 月生产的 120 台 LT-R12，已启"
+          },
+          {
+            "doc_id": "lantu_strategy_quality_system",
+            "title": "澜图智能质量管理体系手册",
+            "chunk": 0,
+            "score": 31.998,
+            "snippet": "澜图智能质量管理体系手册\n所属部门：质量部\n作者：潘文博\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v4.2\n文档类型：strategy\n文档族：quality_system\n生效日期：2025-06-01\n一、质量方针\n以客户为中心，以零缺陷为目标，持续改进，追求卓越。公司通过 ISO 9001、IATF 16949 与 ISO 13485\n认证。\n二、质量目标\n2025 年一次交检合格率不低于 98.5%，客户投诉不超过 6 起，MTBF 不低于 12,00"
+          },
+          {
+            "doc_id": "lantu_support_recall_2025",
+            "title": "# LT-R12 线束磨损召回通知",
+            "chunk": 0,
+            "score": 25.317,
+            "snippet": "# LT-R12 线束磨损召回通知\n\n所属部门：质量部\n作者：潘文博\n创建时间：2025-07-25 09:00\n更新时间：2025-07-28 10:00\n版本号：v1.0\n文档类型：support\n文档族：recall_lt_r12_2025\n生效日期：2025-07-28\n\n## 一、召回范围\n\n2025 年 3 月 1 日至 3 月 31 日生产的 LT-R12 机器人，共计 120 台，涉及客户 18 家。\n\n## 二、问题描述\n\n部分设备腕部线束与护套摩擦，长期运行可能导致绝缘磨损与报警，存在停机风险。"
+          },
+          {
+            "doc_id": "lantu_meeting_ops_2025q3",
+            "title": "2025 年第三季度经营分析会纪要",
+            "chunk": 0,
+            "score": 23.025,
+            "snippet": "2025 年第三季度经营分析会纪要\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-10-10 09:00\n更新时间：2025-10-10 18:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_ops_2025q3\n生效日期：2025-10-10\n一、会议信息\n时间：2025 年 10 月 10 日 09:00-12:00；地点：苏州总部 3 楼会议室；主持：顾承澜；参会：沈亦舟、周敏仪、韩立恒、罗嘉树、陈依然、潘文博、邵岚。\n二、经营回顾\n第三季度营业收入 11.52 亿元，同"
+          },
+          {
+            "doc_id": "lantu_meeting_supply_chain",
+            "title": "2025 年供应链韧性专题会纪要",
+            "chunk": 0,
+            "score": 21.593,
+            "snippet": "2025 年供应链韧性专题会纪要\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-10-16 09:00\n更新时间：2025-10-16 15:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_supply_chain\n生效日期：2025-10-16\n一、供应形势\n减速器交期由 8 周延长至 12 周，芯片交期 20 周；关键物料库存周转 92 天，高于目标 75 天。\n二、双源策略\n减速器已引入第二供应商，2026 年一季度实现 30% 替代；伺服驱动器自研比例提升至 61%。\n三"
+          },
+          {
+            "doc_id": "lantu_finance_q3_2025",
+            "title": "# 澜图智能 2025 年第三季度经营数据",
+            "chunk": 0,
+            "score": 19.334,
+            "snippet": "# 澜图智能 2025 年第三季度经营数据\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-10-22 09:00\n更新时间：2025-10-26 18:00\n版本号：v1.0\n文档类型：finance\n文档族：quarterly_2025_q3\n生效日期：2025-10-26\n\n## 一、季度业绩\n\n2025 年第三季度营业收入 11.52 亿元，同比增长 17.8%；归母净利润 1.21 亿元，同比增长 22.1%；毛利率 31.4%。\n\n## 二、累计业绩\n\n前三季度累计营业收入 31.36 亿元，归母"
+          },
+          {
+            "doc_id": "lantu_finance_monthly_2025",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 15.251,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能 2025 年月度经营数据\n所属部门\t财务部\n作者\t周敏仪\n创建时间\t2026-01-12 09:00\n更新时间\t2026-01-12 18:00\n版本号\tv1.0\n文档类型\tfinance\n文档族\tmonthly_operations_2025\n生效日期\t2026-01-12\n[工作表] 月度经营数据\n月份\t营收（亿元）\t订单（亿元）\t机器人出货（台）\n2025年1月\t2.86\t3.42\t1,380\n2025年2月\t2.61\t3.05\t1,260\n2025年3月\t3."
+          },
+          {
+            "doc_id": "lantu_meeting_sales",
+            "title": "2025 年华南大区销售复盘会纪要",
+            "chunk": 0,
+            "score": 14.075,
+            "snippet": "2025 年华南大区销售复盘会纪要\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2025-09-05 09:00\n更新时间：2025-09-05 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_sales_south\n生效日期：2025-09-05\n一、业绩完成\n华南大区前三季度收入 7.42 亿元，年度完成率 108%，位列五大区第一；新签订单 8.6 亿元。\n二、行业机会\n锂电客户扩产带来 3.2 亿元机会；3C 客户自动化改造预算增加；光伏客户资本开支放缓。\n三、渠道问题\n两家"
+          },
+          {
+            "doc_id": "lantu_meeting_product_review",
+            "title": "LT-R20 Pro 产品评审会纪要",
+            "chunk": 0,
+            "score": 12.809,
+            "snippet": "LT-R20 Pro 产品评审会纪要\n所属部门：产品部\n作者：孟凡\n创建时间：2025-08-18 09:00\n更新时间：2025-08-18 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_product_review\n生效日期：2025-08-18\n一、会议信息\n时间：2025 年 8 月 18 日；主持：沈亦舟；参会：产品部、研发中心、质量部、销售中心、售后服务部。\n二、评审结论\nLT-R20 Pro 通过概念与计划阶段评审，进入开发阶段。目标负载 22 kg、臂展 1,750"
+          },
+          {
+            "doc_id": "lantu_finance_cost",
+            "title": "# 澜图智能成本管理与降本专项报告",
+            "chunk": 0,
+            "score": 11.001,
+            "snippet": "# 澜图智能成本管理与降本专项报告\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-09-05 09:00\n更新时间：2025-09-12 17:00\n版本号：v1.3\n文档类型：finance\n文档族：cost_management\n生效日期：2025-09-12\n\n## 一、降本目标\n\n2025 年降本目标 1.8 亿元，前三季度完成 1.48 亿元，完成率 82%。\n\n## 二、主要项目\n\n减速器国产替代降本 4,200 万元，伺服驱动器自研降本 3,800 万元，结构件轻量化降本 2,600 万元，物"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_strategy_quality_system",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_strategy_quality_system",
+        "title": "澜图智能质量管理体系手册",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 434,
+        "text": "澜图智能质量管理体系手册\n所属部门：质量部\n作者：潘文博\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v4.2\n文档类型：strategy\n文档族：quality_system\n生效日期：2025-06-01\n一、质量方针\n以客户为中心，以零缺陷为目标，持续改进，追求卓越。公司通过 ISO 9001、IATF 16949 与 ISO 13485\n认证。\n二、质量目标\n2025 年一次交检合格率不低于 98.5%，客户投诉不超过 6 起，MTBF 不低于 12,000\n小时，质量成本率低于 3%。\n三、过程控制\n从来料到售后实施全过程质量控制，设置 IQC、IPQC、FQC、OQC 四道检验，关键工序实施 SPC。\n四、改进机制\n每月召开质量例会，重大问题启动 8D 与跨部门攻关；每年开展管理评审与内审。\n五、供应商质量\n供应商来料合格率目标 99%，年度审核覆盖率 100%，末位 5% 启动整改或淘汰。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_meeting_quality",
+        "offset": 400,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_meeting_quality",
+        "title": "2025 年第三季度质量专题会纪要",
+        "offset": 400,
+        "limit": 4000,
+        "total_chars": 420,
+        "text": "规范；售后服务部同步客户通知与现场更换。",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_meeting_quality",
+        "offset": 0,
+        "limit": 2000
+      },
+      "result": {
+        "doc_id": "lantu_meeting_quality",
+        "title": "2025 年第三季度质量专题会纪要",
+        "offset": 0,
+        "limit": 2000,
+        "total_chars": 420,
+        "text": "2025 年第三季度质量专题会纪要\n所属部门：质量部\n作者：潘文博\n创建时间：2025-07-22 09:00\n更新时间：2025-07-22 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_quality_q3\n生效日期：2025-07-22\n一、质量数据\n上半年一次交检合格率 98.4%，客户投诉 1 起；第三季度首月投诉 1 起，为 LT-R12 线束磨损问题。\n二、问题分析\n线束磨损源于走线路径与防护套选型不当，涉及 2025 年 3 月生产的 120 台 LT-R12，已启动召回整改。\n三、整改措施\n更换耐磨防护套，优化走线路径，增加 5,000 次弯折测试；库存与在制设备同步排查。\n四、目标\n全年一次交检合格率不低于 98.5%，客户投诉不超过 6 起，MTBF 不低于 12,000 小时。\n五、行动项\n质量部 8 月底完成召回；研发中心更新设计规范；售后服务部同步客户通知与现场更换。",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "召回完成 召回总结 2025年质量年度报告"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_support_recall_2025",
+            "title": "# LT-R12 线束磨损召回通知",
+            "chunk": 0,
+            "score": 21.619,
+            "snippet": "# LT-R12 线束磨损召回通知\n\n所属部门：质量部\n作者：潘文博\n创建时间：2025-07-25 09:00\n更新时间：2025-07-28 10:00\n版本号：v1.0\n文档类型：support\n文档族：recall_lt_r12_2025\n生效日期：2025-07-28\n\n## 一、召回范围\n\n2025 年 3 月 1 日至 3 月 31 日生产的 LT-R12 机器人，共计 120 台，涉及客户 18 家。\n\n## 二、问题描述\n\n部分设备腕部线束与护套摩擦，长期运行可能导致绝缘磨损与报警，存在停机风险。"
+          },
+          {
+            "doc_id": "lantu_meeting_quality",
+            "title": "2025 年第三季度质量专题会纪要",
+            "chunk": 0,
+            "score": 13.3,
+            "snippet": "2025 年第三季度质量专题会纪要\n所属部门：质量部\n作者：潘文博\n创建时间：2025-07-22 09:00\n更新时间：2025-07-22 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_quality_q3\n生效日期：2025-07-22\n一、质量数据\n上半年一次交检合格率 98.4%，客户投诉 1 起；第三季度首月投诉 1 起，为 LT-R12 线束磨损问题。\n二、问题分析\n线束磨损源于走线路径与防护套选型不当，涉及 2025 年 3 月生产的 120 台 LT-R12，已启"
+          },
+          {
+            "doc_id": "lantu_finance_h1_2025",
+            "title": "# 澜图智能 2025 年半年度报告摘要",
+            "chunk": 0,
+            "score": 11.744,
+            "snippet": "# 澜图智能 2025 年半年度报告摘要\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-08-25 09:00\n更新时间：2025-08-28 18:00\n版本号：v1.0\n文档类型：finance\n文档族：semiannual_2025\n生效日期：2025-08-28\n\n## 一、经营数据\n\n2025 年上半年营业收入 19.84 亿元，同比增长 21.3%；归母净利润 1.83 亿元，同比增长 24.6%；毛利率 31.2%。\n\n## 二、订单情况\n\n上半年新签订单 22.7 亿元，同比增长 18.5%"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2024",
+            "title": "澜图智能 2024 年度报告摘要",
+            "chunk": 0,
+            "score": 10.754,
+            "snippet": "澜图智能 2024 年度报告摘要\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-01-22 09:00\n更新时间：2025-01-30 18:00\n版本号：v1.0\n文档类型：finance\n文档族：annual_report_2024\n生效日期：2025-01-30\n一、经营概况\n2024 年公司实现营业收入 35.80 亿元，同比增长 16.8%；归母净利润 3.26 亿元，同比增长 14.2%。\n二、收入结构\n机器人本体收入 16.72 亿元（46.7%），智能产线收入 12.36 亿元（34.5%），"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2025",
+            "title": "澜图智能 2025 年度报告摘要",
+            "chunk": 0,
+            "score": 9.98,
+            "snippet": "澜图智能 2025 年度报告摘要\n所属部门：财务部\n作者：周敏仪\n创建时间：2026-01-20 09:00\n更新时间：2026-01-28 18:00\n版本号：v1.0\n文档类型：finance\n文档族：annual_report_2025\n生效日期：2026-01-28\n一、经营概况\n2025 年公司实现营业收入 42.63 亿元，同比增长 19.1%；归属于母公司股东的净利润 4.12\n亿元，同比增长 26.4%；基本每股收益 0.98 元。\n二、收入结构\n机器人本体收入 19.84 亿元（46.5%），智能"
+          },
+          {
+            "doc_id": "lantu_org_committees",
+            "title": "# 澜图智能跨部门委员会与运作机制",
+            "chunk": 0,
+            "score": 9.056,
+            "snippet": "# 澜图智能跨部门委员会与运作机制\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2024-05-06 09:00\n更新时间：2025-10-18 11:00\n版本号：v2.1\n文档类型：org\n文档族：committees\n生效日期：2025-10-18\n\n## 一、产品决策委员会\n\n主任由 CTO 担任，成员包括产品部、研发中心、销售中心、质量部负责人，负责产品立项、版本发布与退市决策，每月召开一次。\n\n## 二、质量安全委员会\n\n主任由 COO 担任，负责重大质量事故、召回与安全生产事项，实行 24 小时响"
+          },
+          {
+            "doc_id": "lantu_meeting_board",
+            "title": "# 2025 年第二次临时董事会决议",
+            "chunk": 0,
+            "score": 8.228,
+            "snippet": "# 2025 年第二次临时董事会决议\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-04-25 09:00\n更新时间：2025-04-25 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_board_2025\n生效日期：2025-04-25\n\n## 一、会议信息\n\n时间：2025 年 4 月 25 日；方式：现场加视频；应到董事 9 人，实到 9 人；列席：高管团队。\n\n## 二、审议事项\n\n审议通过《2024 年度利润分配方案》《2025 年度研发投入预算》《苏州二期"
+          },
+          {
+            "doc_id": "lantu_tech_vision",
+            "title": "# 澜图智能机器视觉算法平台说明",
+            "chunk": 0,
+            "score": 7.716,
+            "snippet": "# 澜图智能机器视觉算法平台说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-08-01 09:00\n更新时间：2025-11-05 15:00\n版本号：v3.1\n文档类型：tech\n文档族：vision_algorithm\n生效日期：2025-11-05\n\n## 一、算法能力\n\n覆盖 2D/3D 定位、缺陷检测、OCR、分割与无序抓取，支持小样本学习与在线增量训练。\n\n## 二、性能指标\n\n3D 测量精度 0.05 mm，缺陷检测召回率 99.2%，误检率 0.8%，单帧推理延迟 35 ms。\n\n##"
+          },
+          {
+            "doc_id": "lantu_finance_cost",
+            "title": "# 澜图智能成本管理与降本专项报告",
+            "chunk": 0,
+            "score": 7.282,
+            "snippet": "# 澜图智能成本管理与降本专项报告\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-09-05 09:00\n更新时间：2025-09-12 17:00\n版本号：v1.3\n文档类型：finance\n文档族：cost_management\n生效日期：2025-09-12\n\n## 一、降本目标\n\n2025 年降本目标 1.8 亿元，前三季度完成 1.48 亿元，完成率 82%。\n\n## 二、主要项目\n\n减速器国产替代降本 4,200 万元，伺服驱动器自研降本 3,800 万元，结构件轻量化降本 2,600 万元，物"
+          },
+          {
+            "doc_id": "lantu_company_milestones_2025",
+            "title": "# 澜图智能 2025 年度大事记",
+            "chunk": 0,
+            "score": 4.914,
+            "snippet": "# 澜图智能 2025 年度大事记\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-12-31 18:00\n更新时间：2026-01-06 09:00\n版本号：v1.0\n文档类型：company\n文档族：annual_milestones_2025\n生效日期：2026-01-06\n\n## 一、经营里程碑\n\n2025 年营业收入 42.63 亿元，同比增长 19.1%；新签订单 48.90 亿元；机器人出货 21,400 台；第 10 万台机器人于 9 月 12 日下线。\n\n## 二、组织里程碑\n\n3 月"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_strategy_quality_system",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_strategy_quality_system",
+        "title": "澜图智能质量管理体系手册",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 434,
+        "text": "澜图智能质量管理体系手册\n所属部门：质量部\n作者：潘文博\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v4.2\n文档类型：strategy\n文档族：quality_system\n生效日期：2025-06-01\n一、质量方针\n以客户为中心，以零缺陷为目标，持续改进，追求卓越。公司通过 ISO 9001、IATF 16949 与 ISO 13485\n认证。\n二、质量目标\n2025 年一次交检合格率不低于 98.5%，客户投诉不超过 6 起，MTBF 不低于 12,000\n小时，质量成本率低于 3%。\n三、过程控制\n从来料到售后实施全过程质量控制，设置 IQC、IPQC、FQC、OQC 四道检验，关键工序实施 SPC。\n四、改进机制\n每月召开质量例会，重大问题启动 8D 与跨部门攻关；每年开展管理评审与内审。\n五、供应商质量\n供应商来料合格率目标 99%，年度审核覆盖率 100%，末位 5% 启动整改或淘汰。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_finance_annual_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_finance_annual_2025",
+        "title": "澜图智能 2025 年度报告摘要",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 524,
+        "text": "澜图智能 2025 年度报告摘要\n所属部门：财务部\n作者：周敏仪\n创建时间：2026-01-20 09:00\n更新时间：2026-01-28 18:00\n版本号：v1.0\n文档类型：finance\n文档族：annual_report_2025\n生效日期：2026-01-28\n一、经营概况\n2025 年公司实现营业收入 42.63 亿元，同比增长 19.1%；归属于母公司股东的净利润 4.12\n亿元，同比增长 26.4%；基本每股收益 0.98 元。\n二、收入结构\n机器人本体收入 19.84 亿元（46.5%），智能产线收入 14.92 亿元（35.0%），工业软件与服务收入 5.21\n亿元（12.2%），备件及其他收入 2.66 亿元（6.3%）。\n三、盈利能力\n综合毛利率 31.6%，同比提升 1.2 个百分点；净利率 9.7%；期间费用率 20.1%，其中研发费用率 13.8%。\n四、现金流与资产\n经营活动现金流净额 5.34 亿元；资产负债率 38.6%；应收账款周转天数 86 天；存货周转天数 92 天。\n五、利润分配\n拟以总股本 4.2 亿股为基数，每 10 股派发现金红利 3.2 元（含税），合计派现 1.34 亿元。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "2025 年质量目标 达成 总结"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_strategy_quality_system",
+            "title": "澜图智能质量管理体系手册",
+            "chunk": 0,
+            "score": 10.54,
+            "snippet": "澜图智能质量管理体系手册\n所属部门：质量部\n作者：潘文博\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v4.2\n文档类型：strategy\n文档族：quality_system\n生效日期：2025-06-01\n一、质量方针\n以客户为中心，以零缺陷为目标，持续改进，追求卓越。公司通过 ISO 9001、IATF 16949 与 ISO 13485\n认证。\n二、质量目标\n2025 年一次交检合格率不低于 98.5%，客户投诉不超过 6 起，MTBF 不低于 12,00"
+          },
+          {
+            "doc_id": "lantu_finance_cost",
+            "title": "# 澜图智能成本管理与降本专项报告",
+            "chunk": 0,
+            "score": 5.433,
+            "snippet": "# 澜图智能成本管理与降本专项报告\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-09-05 09:00\n更新时间：2025-09-12 17:00\n版本号：v1.3\n文档类型：finance\n文档族：cost_management\n生效日期：2025-09-12\n\n## 一、降本目标\n\n2025 年降本目标 1.8 亿元，前三季度完成 1.48 亿元，完成率 82%。\n\n## 二、主要项目\n\n减速器国产替代降本 4,200 万元，伺服驱动器自研降本 3,800 万元，结构件轻量化降本 2,600 万元，物"
+          },
+          {
+            "doc_id": "lantu_meeting_product_review",
+            "title": "LT-R20 Pro 产品评审会纪要",
+            "chunk": 0,
+            "score": 4.728,
+            "snippet": "LT-R20 Pro 产品评审会纪要\n所属部门：产品部\n作者：孟凡\n创建时间：2025-08-18 09:00\n更新时间：2025-08-18 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_product_review\n生效日期：2025-08-18\n一、会议信息\n时间：2025 年 8 月 18 日；主持：沈亦舟；参会：产品部、研发中心、质量部、销售中心、售后服务部。\n二、评审结论\nLT-R20 Pro 通过概念与计划阶段评审，进入开发阶段。目标负载 22 kg、臂展 1,750"
+          },
+          {
+            "doc_id": "lantu_meeting_quality",
+            "title": "2025 年第三季度质量专题会纪要",
+            "chunk": 0,
+            "score": 4.596,
+            "snippet": "2025 年第三季度质量专题会纪要\n所属部门：质量部\n作者：潘文博\n创建时间：2025-07-22 09:00\n更新时间：2025-07-22 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_quality_q3\n生效日期：2025-07-22\n一、质量数据\n上半年一次交检合格率 98.4%，客户投诉 1 起；第三季度首月投诉 1 起，为 LT-R12 线束磨损问题。\n二、问题分析\n线束磨损源于走线路径与防护套选型不当，涉及 2025 年 3 月生产的 120 台 LT-R12，已启"
+          },
+          {
+            "doc_id": "lantu_strategy_2025",
+            "title": "# 澜图智能 2025 年度经营计划",
+            "chunk": 0,
+            "score": 3.898,
+            "snippet": "# 澜图智能 2025 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-01-10 09:00\n更新时间：2025-02-10 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2025\n生效日期：2025-02-10\n\n## 一、年度目标\n\n2025 年营业收入目标 41.5 亿元，力争 42.63 亿元；新签订单目标 46 亿元；机器人出货目标 20,000 台。\n\n## 二、重点任务\n\n锂电与半导体行业突破；LT-C800 控制器量产；海外收入占"
+          },
+          {
+            "doc_id": "lantu_finance_budget_2026",
+            "title": "# 澜图智能 2026 年度经营预算",
+            "chunk": 0,
+            "score": 3.807,
+            "snippet": "# 澜图智能 2026 年度经营预算\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-12-20 09:00\n更新时间：2026-01-15 17:00\n版本号：v1.0\n文档类型：finance\n文档族：budget_2026\n生效日期：2026-01-15\n\n## 一、预算目标\n\n2026 年营业收入目标 52 亿元，同比增长 22%；归母净利润目标 5.2 亿元；综合毛利率目标 32.5%。\n\n## 二、收入分解\n\n机器人本体 24.2 亿元，智能产线 18.4 亿元，软件与服务 6.4 亿元，备件及其"
+          },
+          {
+            "doc_id": "lantu_hr_new_hire_training",
+            "title": "澜图智能新员工入职培训大纲",
+            "chunk": 0,
+            "score": 3.618,
+            "snippet": "澜图智能新员工入职培训大纲\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-03-01 09:00\n更新时间：2025-08-01 10:00\n版本号：v2.3\n文档类型：hr\n文档族：new_hire_training\n生效日期：2025-08-01\n一、培训目标\n帮助新员工了解公司战略、文化、制度与岗位要求，在 30 天内完成从入职到独立工作的过渡。\n二、课程安排\n第 1 天：公司介绍与企业文化；第 2 天：制度与信息安全；第 3 天：产品与业务；第 4 天：质量意识与安全生产；第 5 天：岗位实践与导"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2025",
+            "title": "# 澜图智能采购管理制度（2025版）",
+            "chunk": 0,
+            "score": 3.603,
+            "snippet": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付"
+          },
+          {
+            "doc_id": "lantu_strategy_esg",
+            "title": "# 澜图智能 ESG 与可持续发展报告",
+            "chunk": 0,
+            "score": 2.572,
+            "snippet": "# 澜图智能 ESG 与可持续发展报告\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2025-04-22 09:00\n更新时间：2025-04-25 10:00\n版本号：v2.0\n文档类型：strategy\n文档族：esg_report\n生效日期：2025-04-25\n\n## 一、环境\n\n2025 年苏州基地光伏装机 6.2MW，绿电占比 28%；单位产值能耗下降 9.6%；危废合规处置率 100%。\n\n## 二、社会\n\n员工培训人均 32 小时；安全生产投入 1,200 万元；公益捐赠 380 万元，支持职业"
+          },
+          {
+            "doc_id": "lantu_strategy_digital_transformation",
+            "title": "# 澜图智能数字化转型规划",
+            "chunk": 0,
+            "score": 2.534,
+            "snippet": "# 澜图智能数字化转型规划\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-08-01 09:00\n更新时间：2025-10-10 14:00\n版本号：v2.3\n文档类型：strategy\n文档族：digital_transformation\n生效日期：2025-10-10\n\n## 一、转型目标\n\n三年内实现研发、供应链、制造、销售与服务的全流程数字化，运营效率提升 20%。\n\n## 二、重点工程\n\nPLM 研发协同、SRM 供应链协同、MES 制造执行、CRM 客户经营与数据中台五大工程。\n\n## 三、技"
+          }
+        ]
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

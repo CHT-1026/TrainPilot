@@ -1,0 +1,223 @@
+{
+  "qid": "I0036",
+  "question": "公司如何安排投资者沟通？接待机构调研需要提前多久预约？对未公开信息的态度是什么？",
+  "question_type": "事实检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>投资者沟通 接待机构调研 预约</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list><parameter=keyword>调研</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 85,
+        "prompt_tokens": 363,
+        "total_tokens": 448,
+        "completion_tokens_details": {
+          "reasoning_tokens": 33
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.938
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"接待机构调研 预约 提前\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 41,
+        "prompt_tokens": 452,
+        "total_tokens": 493,
+        "completion_tokens_details": {
+          "reasoning_tokens": 12
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 12.328
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_investor_overview\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 60,
+        "prompt_tokens": 2944,
+        "total_tokens": 3004,
+        "completion_tokens_details": {
+          "reasoning_tokens": 27
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.891
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"公司投资者关系工作由董事会办公室负责，安排如下：(1) 每季度召开业绩说明会；(2) 接待机构调研需提前 3 个工作日预约；(3) 对未公开信息严格保密，不接受选择性披露。\",\"citations\":[\"lantu_investor_overview\"],\"evidence\":[\"lantu_investor_overview#片段4\"]}",
+      "usage": {
+        "completion_tokens": 97,
+        "prompt_tokens": 3400,
+        "total_tokens": 3497,
+        "completion_tokens_details": {
+          "reasoning_tokens": 3
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2880
+        }
+      },
+      "seconds": 3.093
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "接待机构调研 预约 提前",
+        "top_k": 10
+      },
+      "result_sha": "c0582a24e61e25057bbb0ebbff7e931a6271909d43d229bb5e710ec523f4538c",
+      "result_chars": 3931,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_investor_overview",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "3a2b7a4e969f9bacd55061747b1caef56ab16a1deef9b11bfe182cbd8f6fc964",
+      "result_chars": 620,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "公司投资者关系工作由董事会办公室负责，安排如下：(1) 每季度召开业绩说明会；(2) 接待机构调研需提前 3 个工作日预约；(3) 对未公开信息严格保密，不接受选择性披露。",
+    "citations": [
+      "lantu_investor_overview"
+    ],
+    "evidence": [
+      "lantu_investor_overview#片段4"
+    ]
+  },
+  "status": "answered",
+  "tokens": 7442,
+  "started_at": "2026-11-01T02:41:35",
+  "elapsed_seconds": 19.25,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "接待机构调研 预约 提前",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_investor_overview",
+            "title": "# 澜图智能投资者关系概览",
+            "chunk": 0,
+            "score": 27.633,
+            "snippet": "# 澜图智能投资者关系概览\n\n所属部门：董事会办公室\n作者：周敏仪\n创建时间：2024-03-20 09:00\n更新时间：2026-01-10 17:00\n版本号：v4.1\n文档类型：company\n文档族：investor_overview\n生效日期：2026-01-10\n\n## 一、基本信息\n\n公司股票代码 688719，总股本 4.2 亿股，2025 年末总市值约 168 亿元。2025 年度拟每 10 股派发现金红利 3.2 元（含税）。\n\n## 二、经营数据\n\n2025 年营业收入 42.63 亿元，归母"
+          },
+          {
+            "doc_id": "lantu_policy_vehicle",
+            "title": "# 澜图智能公务用车管理办法",
+            "chunk": 0,
+            "score": 6.149,
+            "snippet": "# 澜图智能公务用车管理办法\n\n所属部门：行政部\n作者：陈依然\n创建时间：2024-03-01 09:00\n更新时间：2025-04-02 09:00\n版本号：v2.4\n文档类型：policy\n文档族：vehicle_management\n生效日期：2025-04-02\n\n## 一、用车范围\n\n公务用车用于客户接待、机场接送、跨园区办公与紧急事务；上下班通勤原则上不使用公务车。\n\n## 二、申请流程\n\n用车须提前 1 个工作日在 OA 申请，注明事由、路线、人数与时间；临时用车须部门负责人电话批准后补单。\n\n## "
+          },
+          {
+            "doc_id": "lantu_policy_entertainment",
+            "title": "# 澜图智能业务招待管理办法",
+            "chunk": 0,
+            "score": 6.058,
+            "snippet": "# 澜图智能业务招待管理办法\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-04-15 09:00\n更新时间：2025-05-06 16:00\n版本号：v2.3\n文档类型：policy\n文档族：business_entertainment\n生效日期：2025-05-06\n\n## 一、招待原则\n\n业务招待须与业务直接相关，坚持简朴、适度、透明原则，禁止铺张浪费与高档消费。\n\n## 二、标准\n\n人均招待标准不超过 600 元，酒水不超过 300 元/瓶；S 级客户重要接待可上浮 20%，须提前审批。\n\n## 三"
+          },
+          {
+            "doc_id": "lantu_support_recall_2025",
+            "title": "# LT-R12 线束磨损召回通知",
+            "chunk": 0,
+            "score": 4.094,
+            "snippet": "# LT-R12 线束磨损召回通知\n\n所属部门：质量部\n作者：潘文博\n创建时间：2025-07-25 09:00\n更新时间：2025-07-28 10:00\n版本号：v1.0\n文档类型：support\n文档族：recall_lt_r12_2025\n生效日期：2025-07-28\n\n## 一、召回范围\n\n2025 年 3 月 1 日至 3 月 31 日生产的 LT-R12 机器人，共计 120 台，涉及客户 18 家。\n\n## 二、问题描述\n\n部分设备腕部线束与护套摩擦，长期运行可能导致绝缘磨损与报警，存在停机风险。"
+          },
+          {
+            "doc_id": "lantu_hr_resignation",
+            "title": "# 澜图智能离职与交接管理办法",
+            "chunk": 0,
+            "score": 3.646,
+            "snippet": "# 澜图智能离职与交接管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-15 09:00\n更新时间：2025-05-20 09:00\n版本号：v2.4\n文档类型：hr\n文档族：resignation\n生效日期：2025-05-20\n\n## 一、离职申请\n\n正式员工提前 30 日、试用期员工提前 3 日提交书面离职申请；关键岗位须提前 60 日。\n\n## 二、离职面谈\n\nHR 在收到申请后 3 个工作日内安排面谈，了解离职原因并记录改进建议；核心人才可启动挽留。\n\n## 三、工作交接\n\n交接内"
+          },
+          {
+            "doc_id": "lantu_policy_travel_2024",
+            "title": "# 澜图智能差旅费用报销标准（2024版）",
+            "chunk": 0,
+            "score": 3.42,
+            "snippet": "# 澜图智能差旅费用报销标准（2024版）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-02-20 09:00\n更新时间：2024-03-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2024-03-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 450 元/晚，二线城市 350 元/晚，其他城市 300 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 100 元/天，按自然日计算；客户宴请须提"
+          },
+          {
+            "doc_id": "lantu_org_headcount",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 3.397,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能员工分布统计（2025）\n所属部门\t人力资源部\n作者\t陈依然\n创建时间\t2025-12-31 18:00\n更新时间\t2026-01-09 09:30\n版本号\tv1.0\n文档类型\torg\n文档族\theadcount_2025\n生效日期\t2026-01-09\n[工作表] 基地分布\n基地\t员工数\t研发\t销售\t制造\t服务\t职能\n苏州总部\t2,450\t1,120\t310\t560\t250\t210\n东莞华南\t780\t86\t150\t300\t120\t124\n成都西部\t430\t80\t90\t"
+          },
+          {
+            "doc_id": "lantu_meeting_case_review",
+            "title": "# 恒芯动力电池项目复盘会纪要",
+            "chunk": 0,
+            "score": 3.379,
+            "snippet": "# 恒芯动力电池项目复盘会纪要\n\n所属部门：客户成功部\n作者：林可\n创建时间：2025-03-18 09:00\n更新时间：2025-03-18 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_case_hengxin\n生效日期：2025-03-18\n\n## 一、项目结果\n\n恒芯动力电池 12 条叠片线完成验收，部署 186 台 LT-R20 与 24 台 AMR-1000，合同金额 2.16 亿元。\n\n## 二、成功经验\n\n虚拟调试提前发现 37 处干涉，现场调试周期缩短 12 天；"
+          },
+          {
+            "doc_id": "lantu_policy_travel_2025",
+            "title": "# 澜图智能差旅费用报销标准（2025版）",
+            "chunk": 0,
+            "score": 3.344,
+            "snippet": "# 澜图智能差旅费用报销标准（2025版）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-12-15 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2025-01-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 550 元/晚，二线城市 420 元/晚，其他城市 350 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 120 元/天，按自然日计算；客户宴请须提"
+          },
+          {
+            "doc_id": "lantu_policy_attendance_2024",
+            "title": "# 澜图智能考勤管理制度（2024版）",
+            "chunk": 0,
+            "score": 3.339,
+            "snippet": "# 澜图智能考勤管理制度（2024版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：attendance\n生效日期：2024-01-01\n\n## 一、打卡规则\n\n员工每日上下班各打卡一次，漏打卡须在 3 个工作日内提交补卡申请，每月补卡不超过 3 次。\n\n## 二、弹性工作\n\n上班弹性 30 分钟，9:00-9:30 到岗均视为正常；每月可申请远程办公 2 天，须提前 1 个工作日审批"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_investor_overview",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_investor_overview",
+        "title": "# 澜图智能投资者关系概览",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 451,
+        "text": "# 澜图智能投资者关系概览\n\n所属部门：董事会办公室\n作者：周敏仪\n创建时间：2024-03-20 09:00\n更新时间：2026-01-10 17:00\n版本号：v4.1\n文档类型：company\n文档族：investor_overview\n生效日期：2026-01-10\n\n## 一、基本信息\n\n公司股票代码 688719，总股本 4.2 亿股，2025 年末总市值约 168 亿元。2025 年度拟每 10 股派发现金红利 3.2 元（含税）。\n\n## 二、经营数据\n\n2025 年营业收入 42.63 亿元，归母净利润 4.12 亿元，毛利率 31.6%，经营活动现金流净额 5.34 亿元。\n\n## 三、研发投入\n\n2025 年研发投入 5.87 亿元，占营业收入 13.8%；研发人员 1,286 人；新增授权专利 216 件，累计有效专利 1,286 件。\n\n## 四、投资者沟通\n\n公司每季度召开业绩说明会，接待机构调研需提前 3 个工作日预约；未公开信息严格保密，不接受选择性披露。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_investor_overview"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.81,
+    "number_recall": 0.0
+  }
+}

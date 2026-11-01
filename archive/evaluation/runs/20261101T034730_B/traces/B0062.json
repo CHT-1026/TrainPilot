@@ -1,0 +1,441 @@
+{
+  "qid": "B0062",
+  "question": "2025 年培训人次的四类占比分别是多少？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call>\n<function>list</function><parameter>keyword:培训</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 363,
+        "total_tokens": 471,
+        "completion_tokens": 108,
+        "completion_tokens_details": {
+          "reasoning_tokens": 78,
+          "text_tokens": 108
+        }
+      },
+      "seconds": 1.407
+    },
+    {
+      "round": 2,
+      "text": "<tool_call>\n<function>read</function><parameter=doc_id>lantu_hr_training_system</parameter><parameter=offset>0</parameter><parameter=limit>4000</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 518,
+        "total_tokens": 726,
+        "completion_tokens": 208,
+        "completion_tokens_details": {
+          "reasoning_tokens": 154,
+          "text_tokens": 208
+        }
+      },
+      "seconds": 2.093
+    },
+    {
+      "round": 3,
+      "text": "<tool_call>\n<function>search</function><parameter=query>2025 年培训人次 四类占比</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 611,
+        "total_tokens": 1140,
+        "completion_tokens": 529,
+        "completion_tokens_details": {
+          "reasoning_tokens": 490,
+          "text_tokens": 529
+        }
+      },
+      "seconds": 4.844
+    },
+    {
+      "round": 4,
+      "text": "<tool_call>\n<function>search</function><parameter=query>2025 培训</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 675,
+        "total_tokens": 983,
+        "completion_tokens": 308,
+        "completion_tokens_details": {
+          "reasoning_tokens": 274,
+          "text_tokens": 308
+        }
+      },
+      "seconds": 3.141
+    },
+    {
+      "round": 5,
+      "text": "<tool_call>\n<function>search</function><parameter=query>培训体系</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 734,
+        "total_tokens": 976,
+        "completion_tokens": 242,
+        "completion_tokens_details": {
+          "reasoning_tokens": 212,
+          "text_tokens": 242
+        }
+      },
+      "seconds": 2.687
+    },
+    {
+      "round": 6,
+      "text": "<tool_call>\n<function>list</function><parameter=keyword></parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 789,
+        "total_tokens": 1201,
+        "completion_tokens": 412,
+        "completion_tokens_details": {
+          "reasoning_tokens": 384,
+          "text_tokens": 412
+        }
+      },
+      "seconds": 4.156
+    },
+    {
+      "round": 7,
+      "text": "<tool_call>\n<function>read</function><parameter=doc_id>lantu_hr_training_system</parameter><parameter=offset>0</parameter><parameter=limit>4000</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 1932,
+        "total_tokens": 2334,
+        "completion_tokens": 402,
+        "completion_tokens_details": {
+          "reasoning_tokens": 348,
+          "text_tokens": 402
+        }
+      },
+      "seconds": 3.829
+    },
+    {
+      "round": 8,
+      "text": "<tool_call>\n<function>search</function><parameter=query>培训人次</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 2025,
+        "total_tokens": 2772,
+        "completion_tokens": 747,
+        "completion_tokens_details": {
+          "reasoning_tokens": 717,
+          "text_tokens": 747
+        }
+      },
+      "seconds": 6.906
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "培训"
+      },
+      "result_sha": "82b5f367b7f74d6040a72a197ffa99f6425947f468e662a43da899402a1a0164",
+      "result_chars": 297,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {},
+      "result_sha": "0891001a5cc7c8764ea4230b012c537a0dd1ca2a8bf2ce0a1414a84875e8690b",
+      "result_chars": 51,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result_sha": "5fc2d84c83980bdfdb622431503d60a4e21a961fe19252f171944fa6956f91c7",
+      "result_chars": 12,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result_sha": "5fc2d84c83980bdfdb622431503d60a4e21a961fe19252f171944fa6956f91c7",
+      "result_chars": 12,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result_sha": "5fc2d84c83980bdfdb622431503d60a4e21a961fe19252f171944fa6956f91c7",
+      "result_chars": 12,
+      "hits": 0
+    },
+    {
+      "name": "list",
+      "args": {},
+      "result_sha": "ee5960dfc8f223ba9ffafd250ac7a048c5a08afb9d85298c7a0ba99417e816f1",
+      "result_chars": 2735,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {},
+      "result_sha": "0891001a5cc7c8764ea4230b012c537a0dd1ca2a8bf2ce0a1414a84875e8690b",
+      "result_chars": 51,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result_sha": "5fc2d84c83980bdfdb622431503d60a4e21a961fe19252f171944fa6956f91c7",
+      "result_chars": 12,
+      "hits": 0
+    }
+  ],
+  "answer": null,
+  "status": "unfinished",
+  "tokens": 10603,
+  "started_at": "2026-11-01T04:10:36",
+  "elapsed_seconds": 29.06,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "培训"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_hr_manager_training",
+            "title": "澜图智能管理者领导力培训方案"
+          },
+          {
+            "doc_id": "lantu_hr_new_hire_training",
+            "title": "澜图智能新员工入职培训大纲"
+          },
+          {
+            "doc_id": "lantu_hr_training_system",
+            "title": "# 澜图智能培训体系与年度计划"
+          },
+          {
+            "doc_id": "lantu_support_training_certification",
+            "title": "# 澜图智能服务工程师培训与认证体系"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {},
+      "result": {
+        "error": "未知 doc_id，请使用 list 或 search 返回的 doc_id"
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result": {
+        "hits": []
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result": {
+        "hits": []
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result": {
+        "hits": []
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "list",
+      "args": {},
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_company_brand",
+            "title": "# 澜图智能品牌视觉与传播规范"
+          },
+          {
+            "doc_id": "lantu_company_campus",
+            "title": "# 澜图智能制造基地与产能布局"
+          },
+          {
+            "doc_id": "lantu_company_global",
+            "title": "# 澜图智能全球化布局与海外业务"
+          },
+          {
+            "doc_id": "lantu_company_history",
+            "title": "# 澜图智能发展历程（2011—2025）"
+          },
+          {
+            "doc_id": "lantu_company_milestones_2025",
+            "title": "# 澜图智能 2025 年度大事记"
+          },
+          {
+            "doc_id": "lantu_company_mission",
+            "title": "# 澜图智能使命、愿景与价值观"
+          },
+          {
+            "doc_id": "lantu_company_profile",
+            "title": "澜图智能装备公司简介"
+          },
+          {
+            "doc_id": "lantu_investor_overview",
+            "title": "# 澜图智能投资者关系概览"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2024",
+            "title": "澜图智能 2024 年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2025",
+            "title": "澜图智能 2025 年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_budget_2026",
+            "title": "# 澜图智能 2026 年度经营预算"
+          },
+          {
+            "doc_id": "lantu_finance_cashflow",
+            "title": "# 澜图智能现金流与资金管理报告"
+          },
+          {
+            "doc_id": "lantu_finance_cost",
+            "title": "# 澜图智能成本管理与降本专项报告"
+          },
+          {
+            "doc_id": "lantu_finance_gross_margin",
+            "title": "# 澜图智能毛利率与成本结构分析"
+          },
+          {
+            "doc_id": "lantu_finance_h1_2025",
+            "title": "# 澜图智能 2025 年半年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_investor_qa",
+            "title": "# 澜图智能投资者常见问题答复"
+          },
+          {
+            "doc_id": "lantu_finance_monthly_2025",
+            "title": "[工作表] 文档信息"
+          },
+          {
+            "doc_id": "lantu_finance_q3_2025",
+            "title": "# 澜图智能 2025 年第三季度经营数据"
+          },
+          {
+            "doc_id": "lantu_finance_revenue_breakdown",
+            "title": "﻿维度,分类,收入（亿元）,占比,同比"
+          },
+          {
+            "doc_id": "lantu_hr_campus",
+            "title": "# 澜图智能 2026 届校园招聘方案"
+          },
+          {
+            "doc_id": "lantu_hr_compensation",
+            "title": "# 澜图智能薪酬与奖金管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_job_grades",
+            "title": "# 澜图智能职级体系与晋升规则"
+          },
+          {
+            "doc_id": "lantu_hr_manager_training",
+            "title": "澜图智能管理者领导力培训方案"
+          },
+          {
+            "doc_id": "lantu_hr_new_hire_training",
+            "title": "澜图智能新员工入职培训大纲"
+          },
+          {
+            "doc_id": "lantu_hr_performance",
+            "title": "# 澜图智能绩效管理制度"
+          },
+          {
+            "doc_id": "lantu_hr_recruitment",
+            "title": "# 澜图智能招聘管理制度"
+          },
+          {
+            "doc_id": "lantu_hr_resignation",
+            "title": "# 澜图智能离职与交接管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_social",
+            "title": "# 澜图智能社会招聘管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_training_system",
+            "title": "# 澜图智能培训体系与年度计划"
+          },
+          {
+            "doc_id": "lantu_legal_anti_bribery",
+            "title": "# 澜图智能反商业贿赂管理规定"
+          },
+          {
+            "doc_id": "lantu_legal_compliance_manual",
+            "title": "# 澜图智能合规管理手册"
+          },
+          {
+            "doc_id": "lantu_legal_data_compliance",
+            "title": "# 澜图智能数据合规与隐私保护规范"
+          },
+          {
+            "doc_id": "lantu_legal_export_control",
+            "title": "# 澜图智能出口管制与制裁合规指引"
+          },
+          {
+            "doc_id": "lantu_legal_nda_template",
+            "title": "澜图智能保密协议模板（NDA）"
+          },
+          {
+            "doc_id": "lantu_legal_purchase_contract_template",
+            "title": "澜图智能采购合同模板（2025版）"
+          },
+          {
+            "doc_id": "lantu_legal_sales_contract_template",
+            "title": "澜图智能设备销售合同模板（2025版）"
+          },
+          {
+            "doc_id": "lantu_legal_supplier_code",
+            "title": "# 澜图智能供应商行为准则"
+          },
+          {
+            "doc_id": "lantu_meeting_board",
+            "title": "# 2025 年第二次临时董事会决议"
+          },
+          {
+            "doc_id": "lantu_meeting_case_review",
+            "title": "# 恒芯动力电池项目复盘会纪要"
+          },
+          {
+            "doc_id": "lantu_meeting_ops_2025q3",
+            "title": "2025 年第三季度经营分析会纪要"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {},
+      "result": {
+        "error": "未知 doc_id，请使用 list 或 search 返回的 doc_id"
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result": {
+        "hits": []
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

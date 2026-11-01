@@ -1,0 +1,288 @@
+{
+  "qid": "A0035",
+  "question": "唐婧的直接下属有哪些？许博是否在其中？",
+  "question_type": "人物关系推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>唐婧 直属 下级</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 62,
+        "prompt_tokens": 355,
+        "total_tokens": 417,
+        "completion_tokens_details": {
+          "reasoning_tokens": 30
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.063
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>唐婧</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 35,
+        "prompt_tokens": 424,
+        "total_tokens": 459,
+        "completion_tokens_details": {
+          "reasoning_tokens": 8
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.328
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>唐婧</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 32,
+        "prompt_tokens": 488,
+        "total_tokens": 520,
+        "completion_tokens_details": {
+          "reasoning_tokens": 5
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 1.219
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>唐婧</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 34,
+        "prompt_tokens": 552,
+        "total_tokens": 586,
+        "completion_tokens_details": {
+          "reasoning_tokens": 7
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 5.531
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>唐婧</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 49,
+        "prompt_tokens": 616,
+        "total_tokens": 665,
+        "completion_tokens_details": {
+          "reasoning_tokens": 22
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.391
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"唐婧 属下 团队成员\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 60,
+        "prompt_tokens": 680,
+        "total_tokens": 740,
+        "completion_tokens_details": {
+          "reasoning_tokens": 31
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 4.296
+    },
+    {
+      "round": 7,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_org_reporting_lines\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 53,
+        "prompt_tokens": 3057,
+        "total_tokens": 3110,
+        "completion_tokens_details": {
+          "reasoning_tokens": 22
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 4.61
+    },
+    {
+      "round": 8,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据《澜图智能员工汇报关系与业务分工》（v1.2，生效日期 2025-09-01）中销售与客户成功汇报链的记载，唐婧担任销售中心总经理，其直接下属为许博（华东大区经理）；许博的直接下属为陈璐（上海客户经理）。因此，许博确实在唐婧的直接下属之列。需要说明的是，该文件明确“上级”指行政汇报关系中的直接上级，且不能跳级推断；若公司存在该文件未收录的其他销售中心人员，可能还有其他直接下属，但本资料范围内仅列出许博一人。\",\"citations\":[\"lantu_org_reporting_lines\"],\"evidence\":[\"lantu_org_reporting_lines#片段1\",\"lantu_org_reporting_lines#片段0\"]}",
+      "usage": {
+        "completion_tokens": 241,
+        "prompt_tokens": 3838,
+        "total_tokens": 4079,
+        "completion_tokens_details": {
+          "reasoning_tokens": 55
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3008
+        }
+      },
+      "seconds": 8.219
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "唐婧 属下 团队成员",
+        "top_k": 10
+      },
+      "result_sha": "1b8f58dad43a861e9b910087428719532c8bb3e53d6577ade574f4fa36c85296",
+      "result_chars": 3875,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_reporting_lines",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "945ab253a903017ab88c6d4ebc67cacc27152fd521624427b1fa28a1d107be50",
+      "result_chars": 1155,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《澜图智能员工汇报关系与业务分工》（v1.2，生效日期 2025-09-01）中销售与客户成功汇报链的记载，唐婧担任销售中心总经理，其直接下属为许博（华东大区经理）；许博的直接下属为陈璐（上海客户经理）。因此，许博确实在唐婧的直接下属之列。需要说明的是，该文件明确“上级”指行政汇报关系中的直接上级，且不能跳级推断；若公司存在该文件未收录的其他销售中心人员，可能还有其他直接下属，但本资料范围内仅列出许博一人。",
+    "citations": [
+      "lantu_org_reporting_lines"
+    ],
+    "evidence": [
+      "lantu_org_reporting_lines#片段1",
+      "lantu_org_reporting_lines#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 10576,
+  "started_at": "2026-11-01T03:35:11",
+  "elapsed_seconds": 29.66,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "唐婧 属下 团队成员",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_org_reporting_lines",
+            "title": "# 澜图智能员工汇报关系与业务分工",
+            "chunk": 1,
+            "score": 7.605,
+            "snippet": "周敏仪担任 CFO，负责财务与资本运作。陈依然担任人力资源副总裁，负责人力资源体系。蒋雯担任薪酬绩效经理，负责薪酬、绩效与员工关系。邵岚担任法务合规总监，负责法务、合规与知识产权。\n\n## 五、跨部门业务分工\n\n周启航同时担任新一代控制器 LT-C900 项目负责人，项目成员包括林晓与赵一鸣。唐婧负责销售中心，华东区域由许博管理，上海区域重点客户由陈璐维护。方磊负责制造中心，苏州工厂由郭涛管理。\n\n## 六、汇报关系使用说明\n\n本文件中的“上级”均指行政汇报关系中的直接上级；跨部门项目中的项目负责人关系不改变行政汇"
+          },
+          {
+            "doc_id": "lantu_org_reporting_lines",
+            "title": "# 澜图智能员工汇报关系与业务分工",
+            "chunk": 0,
+            "score": 5.154,
+            "snippet": "# 澜图智能员工汇报关系与业务分工\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-02-10 09:00\n更新时间：2025-09-01 10:00\n版本号：v1.2\n文档类型：org\n文档族：org_reporting_lines\n生效日期：2025-09-01\n\n## 一、研发体系汇报链\n\n顾承澜是沈亦舟的上级。沈亦舟是程知远的上级。程知远是周启航的上级。周启航是林晓的上级。林晓是赵一鸣的上级。\n\n沈亦舟担任 CTO，负责研发体系。程知远担任研发中心总经理，负责研发中心整体经营管理。周启航担任控制器"
+          },
+          {
+            "doc_id": "lantu_legal_compliance_manual",
+            "title": "# 澜图智能合规管理手册",
+            "chunk": 0,
+            "score": 3.784,
+            "snippet": "# 澜图智能合规管理手册\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-02-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v3.1\n文档类型：legal\n文档族：compliance_manual\n生效日期：2025-06-01\n\n## 一、合规组织\n\n公司设合规委员会，主任由法务合规总监担任，成员包括财务、销售、采购、人力与信息技术负责人。\n\n## 二、重点领域\n\n反商业贿赂、出口管制、数据保护、反垄断、劳动用工与环境保护。各领域每年至少开展一次风险评估。\n\n## 三、培训与举"
+          },
+          {
+            "doc_id": "lantu_org_committees",
+            "title": "# 澜图智能跨部门委员会与运作机制",
+            "chunk": 0,
+            "score": 3.672,
+            "snippet": "# 澜图智能跨部门委员会与运作机制\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2024-05-06 09:00\n更新时间：2025-10-18 11:00\n版本号：v2.1\n文档类型：org\n文档族：committees\n生效日期：2025-10-18\n\n## 一、产品决策委员会\n\n主任由 CTO 担任，成员包括产品部、研发中心、销售中心、质量部负责人，负责产品立项、版本发布与退市决策，每月召开一次。\n\n## 二、质量安全委员会\n\n主任由 COO 担任，负责重大质量事故、召回与安全生产事项，实行 24 小时响"
+          },
+          {
+            "doc_id": "lantu_tech_rd_process",
+            "title": "# 澜图智能 IPD 研发流程说明",
+            "chunk": 0,
+            "score": 2.796,
+            "snippet": "# 澜图智能 IPD 研发流程说明\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-03-01 09:00\n更新时间：2025-05-15 10:00\n版本号：v3.0\n文档类型：tech\n文档族：ipd_process\n生效日期：2025-05-15\n\n## 一、流程框架\n\n执行 IPD 集成产品开发流程，分为概念、计划、开发、验证、发布、生命周期管理六个阶段。\n\n## 二、决策评审\n\n每个阶段设置决策评审点（DCP），由产品决策委员会评审市场、技术、成本与风险，未通过不得进入下一阶段。\n\n## 三、跨部"
+          },
+          {
+            "doc_id": "lantu_org_sales_regions",
+            "title": "# 澜图智能销售区域与渠道网络",
+            "chunk": 0,
+            "score": 2.63,
+            "snippet": "# 澜图智能销售区域与渠道网络\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-02-15 09:00\n更新时间：2025-12-05 15:00\n版本号：v3.1\n文档类型：org\n文档族：sales_regions\n生效日期：2025-12-05\n\n## 一、区域划分\n\n销售中心下设华东、华南、华北、西部、海外五个大区，覆盖 32 个国家和地区。华东大区总部苏州，华南大区总部东莞，华北大区总部北京，西部大区总部成都。\n\n## 二、团队规模\n\n销售团队 620 人，其中行业销售 280 人、渠道销售 16"
+          },
+          {
+            "doc_id": "lantu_hr_manager_training",
+            "title": "澜图智能管理者领导力培训方案",
+            "chunk": 0,
+            "score": 2.108,
+            "snippet": "澜图智能管理者领导力培训方案\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-05-01 09:00\n更新时间：2025-09-01 10:00\n版本号：v2.0\n文档类型：hr\n文档族：manager_training\n生效日期：2025-09-01\n一、培养对象\n新任经理、部门总监与高潜后备，每期 30 人，全年 3 期。\n二、课程模块\n战略解码、团队管理、绩效辅导、跨部门协作、财务思维与变革管理，共 6 个模块 12 天。\n三、行动学习\n每位学员围绕真实业务问题组建立项，结业时汇报成果；优秀项目可获得"
+          },
+          {
+            "doc_id": "lantu_support_system",
+            "title": "# 澜图智能客户服务体系白皮书",
+            "chunk": 0,
+            "score": 2.054,
+            "snippet": "# 澜图智能客户服务体系白皮书\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-03-01 09:00\n更新时间：2025-12-08 10:00\n版本号：v3.2\n文档类型：support\n文档族：service_system\n生效日期：2025-12-08\n\n## 一、服务网络\n\n公司在全国设有 68 个服务网点、12 个备件仓，覆盖 31 个省级行政区；海外设 3 个服务点。售后服务团队 412 人，认证工程师 286 人。\n\n## 二、服务内容\n\n提供安装调试、培训、预防性维护、故障维修、备件供应、"
+          },
+          {
+            "doc_id": "lantu_meeting_board",
+            "title": "# 2025 年第二次临时董事会决议",
+            "chunk": 0,
+            "score": 2.026,
+            "snippet": "# 2025 年第二次临时董事会决议\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-04-25 09:00\n更新时间：2025-04-25 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_board_2025\n生效日期：2025-04-25\n\n## 一、会议信息\n\n时间：2025 年 4 月 25 日；方式：现场加视频；应到董事 9 人，实到 9 人；列席：高管团队。\n\n## 二、审议事项\n\n审议通过《2024 年度利润分配方案》《2025 年度研发投入预算》《苏州二期"
+          },
+          {
+            "doc_id": "lantu_meeting_strategy",
+            "title": "# 2026 年战略研讨会纪要",
+            "chunk": 0,
+            "score": 1.976,
+            "snippet": "# 2026 年战略研讨会纪要\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-11-21 09:00\n更新时间：2025-11-22 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_strategy_2026\n生效日期：2025-11-22\n\n## 一、战略目标\n\n2026 年营业收入 52 亿元，2028 年 80 亿元；海外收入占比 2026 年提升至 17%，2028 年达到 25%。\n\n## 二、业务重点\n\n巩固锂电与汽车基本盘，突破半导体与具身智能；软件与服务收"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_reporting_lines",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_org_reporting_lines",
+        "title": "# 澜图智能员工汇报关系与业务分工",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 964,
+        "text": "# 澜图智能员工汇报关系与业务分工\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-02-10 09:00\n更新时间：2025-09-01 10:00\n版本号：v1.2\n文档类型：org\n文档族：org_reporting_lines\n生效日期：2025-09-01\n\n## 一、研发体系汇报链\n\n顾承澜是沈亦舟的上级。沈亦舟是程知远的上级。程知远是周启航的上级。周启航是林晓的上级。林晓是赵一鸣的上级。\n\n沈亦舟担任 CTO，负责研发体系。程知远担任研发中心总经理，负责研发中心整体经营管理。周启航担任控制器研究所所长，负责控制器产品与技术路线。林晓担任伺服算法组组长，负责伺服控制算法与标定。赵一鸣是伺服控制工程师，负责伺服环参数整定与现场调试。\n\n## 二、销售与客户成功汇报链\n\n顾承澜是罗嘉树的上级。罗嘉树是唐婧的上级。唐婧是许博的上级。许博是陈璐的上级。\n\n罗嘉树担任销售副总裁，分管销售中心、客户成功部与售后服务部。唐婧担任销售中心总经理，负责销售中心整体业务。许博担任华东大区经理，负责华东区域客户与渠道。陈璐担任上海客户经理，负责上海区域重点客户。\n\n## 三、供应链与制造汇报链\n\n顾承澜是韩立恒的上级。韩立恒是方磊的上级。方磊是郭涛的上级。\n\n韩立恒担任 COO，负责供应链与制造。方磊担任制造中心总经理，负责制造中心生产运营。郭涛担任苏州工厂厂长，负责苏州工厂的生产、质量与交付。\n\n## 四、职能体系汇报链\n\n顾承澜是周敏仪的上级。顾承澜是陈依然的上级。顾承澜是邵岚的上级。陈依然是蒋雯的上级。\n\n周敏仪担任 CFO，负责财务与资本运作。陈依然担任人力资源副总裁，负责人力资源体系。蒋雯担任薪酬绩效经理，负责薪酬、绩效与员工关系。邵岚担任法务合规总监，负责法务、合规与知识产权。\n\n## 五、跨部门业务分工\n\n周启航同时担任新一代控制器 LT-C900 项目负责人，项目成员包括林晓与赵一鸣。唐婧负责销售中心，华东区域由许博管理，上海区域重点客户由陈璐维护。方磊负责制造中心，苏州工厂由郭涛管理。\n\n## 六、汇报关系使用说明\n\n本文件中的“上级”均指行政汇报关系中的直接上级；跨部门项目中的项目负责人关系不改变行政汇报关系。需要判断两人关系时，应沿着直接上级链逐级向上查找，不能跳级推断。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_org_reporting_lines"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.2,
+    "number_recall": 0.0
+  }
+}

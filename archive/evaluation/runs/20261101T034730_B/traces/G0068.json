@@ -1,0 +1,569 @@
+{
+  "qid": "G0068",
+  "question": "技术路线图的 2025 年目标与 2025 年度大事记的产品里程碑是否一一对应？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call>\n<function>list</function><parameter>query:技术路线图</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 377,
+        "total_tokens": 537,
+        "completion_tokens": 160,
+        "completion_tokens_details": {
+          "reasoning_tokens": 129,
+          "text_tokens": 160
+        }
+      },
+      "seconds": 1.453
+    },
+    {
+      "round": 2,
+      "text": "<tool_call>\n<function>search</function><parameter=query:技术路线图</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 1523,
+        "total_tokens": 1814,
+        "completion_tokens": 291,
+        "completion_tokens_details": {
+          "reasoning_tokens": 261,
+          "text_tokens": 291
+        }
+      },
+      "seconds": 2.375
+    },
+    {
+      "round": 3,
+      "text": "<tool_call>\n<function>search</function><parameter=query:技术路线</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 1578,
+        "total_tokens": 1762,
+        "completion_tokens": 184,
+        "completion_tokens_details": {
+          "reasoning_tokens": 154,
+          "text_tokens": 184
+        }
+      },
+      "seconds": 1.75
+    },
+    {
+      "round": 4,
+      "text": "<tool_call>\n<function>read</function><parameter=doc_id>lantu_company_milestones_2025</parameter><parameter=offset>0</parameter><parameter=limit>4000</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 1633,
+        "total_tokens": 2098,
+        "completion_tokens": 465,
+        "completion_tokens_details": {
+          "reasoning_tokens": 405,
+          "text_tokens": 465
+        }
+      },
+      "seconds": 4.515
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"2025 年度大事记\",\"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 1732,
+        "total_tokens": 3082,
+        "completion_tokens": 1350,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1320,
+          "text_tokens": 1350
+        }
+      },
+      "seconds": 12.344
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_company_milestones_2025\",\"offset\":4000,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 2929,
+        "total_tokens": 3333,
+        "completion_tokens": 404,
+        "completion_tokens_details": {
+          "reasoning_tokens": 361,
+          "text_tokens": 404
+        }
+      },
+      "seconds": 3.485
+    },
+    {
+      "round": 7,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"技术路线\"}}",
+      "usage": {
+        "prompt_tokens": 3064,
+        "total_tokens": 3410,
+        "completion_tokens": 346,
+        "completion_tokens_details": {
+          "reasoning_tokens": 327,
+          "text_tokens": 346
+        }
+      },
+      "seconds": 3.218
+    },
+    {
+      "round": 8,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_tech_roadmap\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 5358,
+        "total_tokens": 6263,
+        "completion_tokens": 905,
+        "completion_tokens_details": {
+          "reasoning_tokens": 869,
+          "text_tokens": 905
+        }
+      },
+      "seconds": 8.078
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "query": "技术路线图"
+      },
+      "result_sha": "ee5960dfc8f223ba9ffafd250ac7a048c5a08afb9d85298c7a0ba99417e816f1",
+      "result_chars": 2735,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result_sha": "5fc2d84c83980bdfdb622431503d60a4e21a961fe19252f171944fa6956f91c7",
+      "result_chars": 12,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result_sha": "5fc2d84c83980bdfdb622431503d60a4e21a961fe19252f171944fa6956f91c7",
+      "result_chars": 12,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {},
+      "result_sha": "0891001a5cc7c8764ea4230b012c537a0dd1ca2a8bf2ce0a1414a84875e8690b",
+      "result_chars": 51,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "2025 年度大事记",
+        "top_k": 5
+      },
+      "result_sha": "31d34a09255fcb8261a653631979510f89e5747f9bfe9e7dd1670f10d008166e",
+      "result_chars": 1939,
+      "hits": 5
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_company_milestones_2025",
+        "offset": 4000,
+        "limit": 4000
+      },
+      "result_sha": "0fd1b23692e377e3e135e93d8beeeedd69d075ea7d33319da1b4eb39513a94f3",
+      "result_chars": 156,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "技术路线"
+      },
+      "result_sha": "4851a8e879253faadb6ebf92f62804915a3ee97c26a5132f30044553f9e455bc",
+      "result_chars": 3903,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_roadmap",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "a37fd0c602f01ec9535b2cd58d7a5e3f2c252a8c46fd8dc28b0ca8cb726ae52e",
+      "result_chars": 590,
+      "hits": 0
+    }
+  ],
+  "answer": null,
+  "status": "unfinished",
+  "tokens": 22299,
+  "started_at": "2026-11-01T05:11:24",
+  "elapsed_seconds": 37.22,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "query": "技术路线图"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_company_brand",
+            "title": "# 澜图智能品牌视觉与传播规范"
+          },
+          {
+            "doc_id": "lantu_company_campus",
+            "title": "# 澜图智能制造基地与产能布局"
+          },
+          {
+            "doc_id": "lantu_company_global",
+            "title": "# 澜图智能全球化布局与海外业务"
+          },
+          {
+            "doc_id": "lantu_company_history",
+            "title": "# 澜图智能发展历程（2011—2025）"
+          },
+          {
+            "doc_id": "lantu_company_milestones_2025",
+            "title": "# 澜图智能 2025 年度大事记"
+          },
+          {
+            "doc_id": "lantu_company_mission",
+            "title": "# 澜图智能使命、愿景与价值观"
+          },
+          {
+            "doc_id": "lantu_company_profile",
+            "title": "澜图智能装备公司简介"
+          },
+          {
+            "doc_id": "lantu_investor_overview",
+            "title": "# 澜图智能投资者关系概览"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2024",
+            "title": "澜图智能 2024 年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2025",
+            "title": "澜图智能 2025 年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_budget_2026",
+            "title": "# 澜图智能 2026 年度经营预算"
+          },
+          {
+            "doc_id": "lantu_finance_cashflow",
+            "title": "# 澜图智能现金流与资金管理报告"
+          },
+          {
+            "doc_id": "lantu_finance_cost",
+            "title": "# 澜图智能成本管理与降本专项报告"
+          },
+          {
+            "doc_id": "lantu_finance_gross_margin",
+            "title": "# 澜图智能毛利率与成本结构分析"
+          },
+          {
+            "doc_id": "lantu_finance_h1_2025",
+            "title": "# 澜图智能 2025 年半年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_investor_qa",
+            "title": "# 澜图智能投资者常见问题答复"
+          },
+          {
+            "doc_id": "lantu_finance_monthly_2025",
+            "title": "[工作表] 文档信息"
+          },
+          {
+            "doc_id": "lantu_finance_q3_2025",
+            "title": "# 澜图智能 2025 年第三季度经营数据"
+          },
+          {
+            "doc_id": "lantu_finance_revenue_breakdown",
+            "title": "﻿维度,分类,收入（亿元）,占比,同比"
+          },
+          {
+            "doc_id": "lantu_hr_campus",
+            "title": "# 澜图智能 2026 届校园招聘方案"
+          },
+          {
+            "doc_id": "lantu_hr_compensation",
+            "title": "# 澜图智能薪酬与奖金管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_job_grades",
+            "title": "# 澜图智能职级体系与晋升规则"
+          },
+          {
+            "doc_id": "lantu_hr_manager_training",
+            "title": "澜图智能管理者领导力培训方案"
+          },
+          {
+            "doc_id": "lantu_hr_new_hire_training",
+            "title": "澜图智能新员工入职培训大纲"
+          },
+          {
+            "doc_id": "lantu_hr_performance",
+            "title": "# 澜图智能绩效管理制度"
+          },
+          {
+            "doc_id": "lantu_hr_recruitment",
+            "title": "# 澜图智能招聘管理制度"
+          },
+          {
+            "doc_id": "lantu_hr_resignation",
+            "title": "# 澜图智能离职与交接管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_social",
+            "title": "# 澜图智能社会招聘管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_training_system",
+            "title": "# 澜图智能培训体系与年度计划"
+          },
+          {
+            "doc_id": "lantu_legal_anti_bribery",
+            "title": "# 澜图智能反商业贿赂管理规定"
+          },
+          {
+            "doc_id": "lantu_legal_compliance_manual",
+            "title": "# 澜图智能合规管理手册"
+          },
+          {
+            "doc_id": "lantu_legal_data_compliance",
+            "title": "# 澜图智能数据合规与隐私保护规范"
+          },
+          {
+            "doc_id": "lantu_legal_export_control",
+            "title": "# 澜图智能出口管制与制裁合规指引"
+          },
+          {
+            "doc_id": "lantu_legal_nda_template",
+            "title": "澜图智能保密协议模板（NDA）"
+          },
+          {
+            "doc_id": "lantu_legal_purchase_contract_template",
+            "title": "澜图智能采购合同模板（2025版）"
+          },
+          {
+            "doc_id": "lantu_legal_sales_contract_template",
+            "title": "澜图智能设备销售合同模板（2025版）"
+          },
+          {
+            "doc_id": "lantu_legal_supplier_code",
+            "title": "# 澜图智能供应商行为准则"
+          },
+          {
+            "doc_id": "lantu_meeting_board",
+            "title": "# 2025 年第二次临时董事会决议"
+          },
+          {
+            "doc_id": "lantu_meeting_case_review",
+            "title": "# 恒芯动力电池项目复盘会纪要"
+          },
+          {
+            "doc_id": "lantu_meeting_ops_2025q3",
+            "title": "2025 年第三季度经营分析会纪要"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result": {
+        "hits": []
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result": {
+        "hits": []
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {},
+      "result": {
+        "error": "未知 doc_id，请使用 list 或 search 返回的 doc_id"
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "2025 年度大事记",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_company_milestones_2025",
+            "title": "# 澜图智能 2025 年度大事记",
+            "chunk": 0,
+            "score": 18.824,
+            "snippet": "# 澜图智能 2025 年度大事记\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-12-31 18:00\n更新时间：2026-01-06 09:00\n版本号：v1.0\n文档类型：company\n文档族：annual_milestones_2025\n生效日期：2026-01-06\n\n## 一、经营里程碑\n\n2025 年营业收入 42.63 亿元，同比增长 19.1%；新签订单 48.90 亿元；机器人出货 21,400 台；第 10 万台机器人于 9 月 12 日下线。\n\n## 二、组织里程碑\n\n3 月"
+          },
+          {
+            "doc_id": "lantu_org_committees",
+            "title": "# 澜图智能跨部门委员会与运作机制",
+            "chunk": 0,
+            "score": 3.643,
+            "snippet": "# 澜图智能跨部门委员会与运作机制\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2024-05-06 09:00\n更新时间：2025-10-18 11:00\n版本号：v2.1\n文档类型：org\n文档族：committees\n生效日期：2025-10-18\n\n## 一、产品决策委员会\n\n主任由 CTO 担任，成员包括产品部、研发中心、销售中心、质量部负责人，负责产品立项、版本发布与退市决策，每月召开一次。\n\n## 二、质量安全委员会\n\n主任由 COO 担任，负责重大质量事故、召回与安全生产事项，实行 24 小时响"
+          },
+          {
+            "doc_id": "lantu_org_board",
+            "title": "# 澜图智能董事会与治理结构",
+            "chunk": 0,
+            "score": 3.509,
+            "snippet": "# 澜图智能董事会与治理结构\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2023-09-01 09:00\n更新时间：2025-06-20 14:00\n版本号：v3.0\n文档类型：org\n文档族：board_structure\n生效日期：2025-06-20\n\n## 一、董事会构成\n\n董事会由 9 名董事组成，其中独立董事 3 名，职工董事 1 名。董事长顾承澜，副董事长由机构股东提名。\n\n## 二、专门委员会\n\n董事会下设战略委员会、审计委员会、薪酬与考核委员会、提名委员会。审计委员会主任由独立董事担任，负"
+          },
+          {
+            "doc_id": "lantu_policy_infosec",
+            "title": "# 澜图智能信息安全管理制度",
+            "chunk": 0,
+            "score": 3.362,
+            "snippet": "# 澜图智能信息安全管理制度\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-04-01 09:00\n更新时间：2025-08-01 09:00\n版本号：v4.0\n文档类型：policy\n文档族：information_security\n生效日期：2025-08-01\n\n## 一、账号与密码\n\n员工账号一人一号，密码长度不少于 12 位，包含大小写字母、数字与符号，每 90 天更换一次；禁止共享账号。\n\n## 二、终端安全\n\n办公电脑须安装公司统一的终端防护软件，开启磁盘加密与屏保锁定；禁止安装未授权软件与"
+          },
+          {
+            "doc_id": "lantu_strategy_2025",
+            "title": "# 澜图智能 2025 年度经营计划",
+            "chunk": 0,
+            "score": 2.469,
+            "snippet": "# 澜图智能 2025 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-01-10 09:00\n更新时间：2025-02-10 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2025\n生效日期：2025-02-10\n\n## 一、年度目标\n\n2025 年营业收入目标 41.5 亿元，力争 42.63 亿元；新签订单目标 46 亿元；机器人出货目标 20,000 台。\n\n## 二、重点任务\n\n锂电与半导体行业突破；LT-C800 控制器量产；海外收入占"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_company_milestones_2025",
+        "offset": 4000,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_company_milestones_2025",
+        "title": "# 澜图智能 2025 年度大事记",
+        "offset": 4000,
+        "limit": 4000,
+        "total_chars": 551,
+        "text": "",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "技术路线"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_tech_roadmap",
+            "title": "# 澜图智能技术路线图（2025—2028）",
+            "chunk": 0,
+            "score": 12.792,
+            "snippet": "# 澜图智能技术路线图（2025—2028）\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-11-01 09:00\n更新时间：2025-12-05 16:00\n版本号：v2.2\n文档类型：tech\n文档族：tech_roadmap\n生效日期：2025-12-05\n\n## 一、总体路线\n\n以“本体+控制+视觉+软件”为基础，向具身智能与柔性制造演进，2026 年完成 LT-R20 Pro 与具身智能平台 1.0。\n\n## 二、2025 年\n\nLT-C800 控制器量产、LantuTwin 3.0 发布、LT"
+          },
+          {
+            "doc_id": "lantu_policy_confidentiality",
+            "title": "# 澜图智能商业秘密与保密管理规范",
+            "chunk": 0,
+            "score": 8.632,
+            "snippet": "# 澜图智能商业秘密与保密管理规范\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-15 09:00\n更新时间：2025-03-28 11:00\n版本号：v3.1\n文档类型：policy\n文档族：confidentiality\n生效日期：2025-03-28\n\n## 一、保密范围\n\n技术秘密（源代码、算法、图纸、工艺参数）、经营秘密（客户名单、报价、成本、未披露财务数据）与人事秘密均属保密信息。\n\n## 二、保密义务\n\n员工在职期间及离职后 3 年内不得披露、使用或允许他人使用公司保密信息；竞业限制人"
+          },
+          {
+            "doc_id": "lantu_org_reporting_lines",
+            "title": "# 澜图智能员工汇报关系与业务分工",
+            "chunk": 0,
+            "score": 5.798,
+            "snippet": "# 澜图智能员工汇报关系与业务分工\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-02-10 09:00\n更新时间：2025-09-01 10:00\n版本号：v1.2\n文档类型：org\n文档族：org_reporting_lines\n生效日期：2025-09-01\n\n## 一、研发体系汇报链\n\n顾承澜是沈亦舟的上级。沈亦舟是程知远的上级。程知远是周启航的上级。周启航是林晓的上级。林晓是赵一鸣的上级。\n\n沈亦舟担任 CTO，负责研发体系。程知远担任研发中心总经理，负责研发中心整体经营管理。周启航担任控制器"
+          },
+          {
+            "doc_id": "lantu_meeting_strategy",
+            "title": "# 2026 年战略研讨会纪要",
+            "chunk": 0,
+            "score": 3.306,
+            "snippet": "# 2026 年战略研讨会纪要\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-11-21 09:00\n更新时间：2025-11-22 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_strategy_2026\n生效日期：2025-11-22\n\n## 一、战略目标\n\n2026 年营业收入 52 亿元，2028 年 80 亿元；海外收入占比 2026 年提升至 17%，2028 年达到 25%。\n\n## 二、业务重点\n\n巩固锂电与汽车基本盘，突破半导体与具身智能；软件与服务收"
+          },
+          {
+            "doc_id": "lantu_policy_vehicle",
+            "title": "# 澜图智能公务用车管理办法",
+            "chunk": 0,
+            "score": 3.299,
+            "snippet": "# 澜图智能公务用车管理办法\n\n所属部门：行政部\n作者：陈依然\n创建时间：2024-03-01 09:00\n更新时间：2025-04-02 09:00\n版本号：v2.4\n文档类型：policy\n文档族：vehicle_management\n生效日期：2025-04-02\n\n## 一、用车范围\n\n公务用车用于客户接待、机场接送、跨园区办公与紧急事务；上下班通勤原则上不使用公务车。\n\n## 二、申请流程\n\n用车须提前 1 个工作日在 OA 申请，注明事由、路线、人数与时间；临时用车须部门负责人电话批准后补单。\n\n## "
+          },
+          {
+            "doc_id": "lantu_product_r20_pro_whitepaper",
+            "title": "LT-R20 Pro 机器人技术白皮书",
+            "chunk": 0,
+            "score": 2.17,
+            "snippet": "LT-R20 Pro 机器人技术白皮书\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2025-11-20 09:00\n更新时间：2025-11-28 18:00\n版本号：v0.9\n文档类型：product\n文档族：product_r20_pro\n生效日期：2025-11-28\n一、研发背景\n面向锂电叠片、汽车装配等高频节拍场景，澜图智能研发新一代中型六轴机器人 LT-R20 Pro，计划\n2026 年第二季度量产。\n二、技术指标\n额定负载 22 kg，臂展 1,750 mm，重复定位精度 ±0.02 mm，本体重量"
+          },
+          {
+            "doc_id": "lantu_strategy_digital_transformation",
+            "title": "# 澜图智能数字化转型规划",
+            "chunk": 0,
+            "score": 2.108,
+            "snippet": "# 澜图智能数字化转型规划\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-08-01 09:00\n更新时间：2025-10-10 14:00\n版本号：v2.3\n文档类型：strategy\n文档族：digital_transformation\n生效日期：2025-10-10\n\n## 一、转型目标\n\n三年内实现研发、供应链、制造、销售与服务的全流程数字化，运营效率提升 20%。\n\n## 二、重点工程\n\nPLM 研发协同、SRM 供应链协同、MES 制造执行、CRM 客户经营与数据中台五大工程。\n\n## 三、技"
+          },
+          {
+            "doc_id": "lantu_tech_servo",
+            "title": "# 澜图智能伺服驱动与关节模组技术说明",
+            "chunk": 0,
+            "score": 2.105,
+            "snippet": "# 澜图智能伺服驱动与关节模组技术说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-07-01 09:00\n更新时间：2025-08-25 10:00\n版本号：v2.6\n文档类型：tech\n文档族：servo_drive\n生效日期：2025-08-25\n\n## 一、产品范围\n\n自研 400W-7.5kW 伺服驱动器与关节模组，覆盖 LT-R 与 LT-S 全系列，自研比例 61%。\n\n## 二、关键指标\n\n电流环带宽 2.5 kHz，速度环 1.2 kHz，位置精度 23 位，过载能力 300% 持续 "
+          },
+          {
+            "doc_id": "lantu_hr_social",
+            "title": "# 澜图智能社会招聘管理办法",
+            "chunk": 0,
+            "score": 2.08,
+            "snippet": "# 澜图智能社会招聘管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-02-01 09:00\n更新时间：2025-07-15 11:00\n版本号：v2.5\n文档类型：hr\n文档族：social_recruitment\n生效日期：2025-07-15\n\n## 一、适用岗位\n\n适用于经理级及以上、高级技术专家与紧缺岗位；年度社招计划 200 人。\n\n## 二、渠道管理\n\n使用猎头、招聘平台、内部推荐与行业社群。猎头费用为年薪的 20%-25%，保证期 90 天。\n\n## 三、内部推荐\n\n员工推荐成功入"
+          },
+          {
+            "doc_id": "lantu_product_vision",
+            "title": "# LT-V3D 工业视觉系统技术说明",
+            "chunk": 0,
+            "score": 2.033,
+            "snippet": "# LT-V3D 工业视觉系统技术说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-06-18 09:00\n更新时间：2025-07-15 14:00\n版本号：v2.6\n文档类型：product\n文档族：product_vision\n生效日期：2025-07-15\n\n## 一、系统组成\n\nLT-V3D 由结构光相机、视觉控制器与 LantuVision 软件组成，支持 3D 点云、2D 图像与深度学习缺陷检测。\n\n## 二、核心指标\n\n测量精度 0.05 mm，单帧点云 120 万点，帧率 30 fps"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_roadmap",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_tech_roadmap",
+        "title": "# 澜图智能技术路线图（2025—2028）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 417,
+        "text": "# 澜图智能技术路线图（2025—2028）\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-11-01 09:00\n更新时间：2025-12-05 16:00\n版本号：v2.2\n文档类型：tech\n文档族：tech_roadmap\n生效日期：2025-12-05\n\n## 一、总体路线\n\n以“本体+控制+视觉+软件”为基础，向具身智能与柔性制造演进，2026 年完成 LT-R20 Pro 与具身智能平台 1.0。\n\n## 二、2025 年\n\nLT-C800 控制器量产、LantuTwin 3.0 发布、LT-R20 Pro 完成样机、具身智能操作模型实验室验证。\n\n## 三、2026 年\n\nLT-R20 Pro 量产、力控精度提升至 ±0.5 N、视觉-语言-动作模型在 3 个场景试点。\n\n## 四、2027—2028 年\n\n推出人形/轮式具身智能平台，实现多机协同与自主任务规划，软件订阅收入占比提升至 20%。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

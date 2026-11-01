@@ -1,0 +1,243 @@
+{
+  "qid": "E0034",
+  "question": "单笔 300 万元的采购按 2025 版采购管理制度应采用哪种采购方式？",
+  "question_type": "条件判断与边界",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"采购管理制度\"}}",
+      "usage": {
+        "prompt_tokens": 372,
+        "total_tokens": 554,
+        "completion_tokens": 182,
+        "completion_tokens_details": {
+          "reasoning_tokens": 163,
+          "text_tokens": 182
+        }
+      },
+      "seconds": 1.672
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"300万元 采购方式\",\"top_k\":10}}",
+      "usage": {
+        "prompt_tokens": 482,
+        "total_tokens": 731,
+        "completion_tokens": 249,
+        "completion_tokens_details": {
+          "reasoning_tokens": 219,
+          "text_tokens": 249
+        }
+      },
+      "seconds": 1.953
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_purchase_2025\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 2813,
+        "total_tokens": 3287,
+        "completion_tokens": 474,
+        "completion_tokens_details": {
+          "reasoning_tokens": 436,
+          "text_tokens": 474
+        }
+      },
+      "seconds": 3.578
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据《澜图智能采购管理制度（2025版）》的规定，单笔 300 万元的采购属于 100-500 万元区间，应采用**三家比价**的采购方式。\",\"citations\":[\"lantu_policy_purchase_2025\"],\"evidence\":[\"lantu_policy_purchase_2025#0\"]}",
+      "usage": {
+        "prompt_tokens": 3260,
+        "total_tokens": 3799,
+        "completion_tokens": 539,
+        "completion_tokens_details": {
+          "reasoning_tokens": 448,
+          "text_tokens": 539
+        }
+      },
+      "seconds": 4.579
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "采购管理制度"
+      },
+      "result_sha": "2f2c36f87e532ad6a5964c618b5b4e133d9052d6ee656e0916feed030e91affc",
+      "result_chars": 158,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "300万元 采购方式",
+        "top_k": 10
+      },
+      "result_sha": "d47dd8f86445167c6408ca3868439f3a057683cb697e71ee774949613d36c0dd",
+      "result_chars": 3869,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_purchase_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "a43282daf04801f0f16f7d64d197206dfa10185ee100b1a3054935cc73749d1f",
+      "result_chars": 635,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《澜图智能采购管理制度（2025版）》的规定，单笔 300 万元的采购属于 100-500 万元区间，应采用**三家比价**的采购方式。",
+    "citations": [
+      "lantu_policy_purchase_2025"
+    ],
+    "evidence": [
+      "lantu_policy_purchase_2025#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 8371,
+  "started_at": "2026-11-01T04:46:45",
+  "elapsed_seconds": 11.78,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "采购管理制度"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_policy_purchase_2024",
+            "title": "# 澜图智能采购管理制度（2024版）"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2025",
+            "title": "# 澜图智能采购管理制度（2025版）"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "300万元 采购方式",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_sales_policy",
+            "title": "# 澜图智能销售政策与客户分级管理办法",
+            "chunk": 0,
+            "score": 9.309,
+            "snippet": "# 澜图智能销售政策与客户分级管理办法\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-01-20 09:00\n更新时间：2025-09-25 15:00\n版本号：v3.4\n文档类型：sales\n文档族：sales_policy\n生效日期：2025-09-25\n\n## 一、客户分级\n\n客户分为 S、A、B、C 四级。S 级为年采购额 5,000 万元以上战略客户，由客户成功部直管；A 级 1,000-5,000 万元；B 级 300-1,000 万元；C 级 300 万元以下由渠道覆盖。\n\n## 二、价格体"
+          },
+          {
+            "doc_id": "lantu_legal_purchase_contract_template",
+            "title": "澜图智能采购合同模板（2025版）",
+            "chunk": 0,
+            "score": 7.483,
+            "snippet": "澜图智能采购合同模板（2025版）\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-10 09:00\n更新时间：2025-03-01 09:00\n版本号：v3.2\n文档类型：legal\n文档族：purchase_contract_template\n生效日期：2025-03-01\n第一条 采购标的\n甲方向乙方采购原材料/零部件，品名、规格、数量、单价以采购订单为准。\n第二条 付款方式\n标准账期为月结 90 天，战略供应商可约定 120 天；预付款不超过 20%；质保金 5%-10%。\n第三条 质量要求\n乙"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2025",
+            "title": "# 澜图智能采购管理制度（2025版）",
+            "chunk": 0,
+            "score": 6.864,
+            "snippet": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2024",
+            "title": "# 澜图智能采购管理制度（2024版）",
+            "chunk": 0,
+            "score": 6.834,
+            "snippet": "# 澜图智能采购管理制度（2024版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2024-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。\n\n## 二、付款账期\n\n标准供应商月结 60 天；预付款比例不超过 30%；质保金 5%-10%。\n\n## 三、供应商"
+          },
+          {
+            "doc_id": "lantu_sales_customer_list",
+            "title": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态",
+            "chunk": 0,
+            "score": 5.645,
+            "snippet": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态\n恒芯动力电池,动力电池,常州,电芯叠片与物流,\"21,600\",2025,已验收\n澜岳汽车零部件,汽车零部件,上海,白车身焊装,\"14,800\",2024,已验收\n曜阳光能,光伏,合肥,电池片串焊,\"9,800\",2025,已验收\n星禾电子,3C 电子,昆山,精密组装,\"12,500\",2024,已验收\n海翎家电,家电,顺德,喷涂与打磨,\"6,300\",2025,已验收\n晶拓微电子,半导体,无锡,晶圆搬运,\"7,400\",2025,已验收\n麦丰食品,食品,漯河"
+          },
+          {
+            "doc_id": "lantu_policy_contract",
+            "title": "# 澜图智能合同管理制度",
+            "chunk": 0,
+            "score": 5.369,
+            "snippet": "# 澜图智能合同管理制度\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-02-01 09:00\n更新时间：2025-05-12 15:00\n版本号：v3.0\n文档类型：policy\n文档族：contract_management\n生效日期：2025-05-12\n\n## 一、合同分类\n\n合同分为销售合同、采购合同、服务合同、保密协议、租赁合同与劳动合同。销售与采购合同须使用公司标准模板，非标条款须法务审核。\n\n## 二、审批权限\n\n合同金额 1,000 万元以上须法务合规部与 CFO 联合审批；5,000 "
+          },
+          {
+            "doc_id": "lantu_company_profile",
+            "title": "澜图智能装备公司简介",
+            "chunk": 1,
+            "score": 4.384,
+            "snippet": "入 13.8%。\n五、质量与认证\n公司通过 ISO 9001、ISO 14001、ISO 45001、IATF 16949 与 ISO 27001 认证，产品符合 CE、UL 与 GB\n标准。2025 年客户投诉 3 起，一次交检合格率 98.6%。\n六、联系方式\n总部地址：江苏省苏州市工业园区星澜路88号；总机：0512-6688-2100；官网：www.lantu-robot.com；\n投资者关系邮箱：ir@lantu-robot.com。"
+          },
+          {
+            "doc_id": "lantu_sales_channel",
+            "title": "# 澜图智能渠道管理办法",
+            "chunk": 0,
+            "score": 4.108,
+            "snippet": "# 澜图智能渠道管理办法\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-03-05 09:00\n更新时间：2025-11-06 10:00\n版本号：v2.7\n文档类型：sales\n文档族：sales_channel\n生效日期：2025-11-06\n\n## 一、渠道分级\n\n渠道商分为金牌、银牌、认证三级。金牌渠道年度采购额不低于 3,000 万元，享受 82 折拿货价、优先技术支持与联合市场活动。\n\n## 二、准入与退出\n\n新渠道需具备 3 年以上自动化行业经验、专职技术团队不少于 5 人。连续 12 个月"
+          },
+          {
+            "doc_id": "lantu_policy_data_classification",
+            "title": "# 澜图智能数据分级与分类管理规范",
+            "chunk": 0,
+            "score": 4.099,
+            "snippet": "# 澜图智能数据分级与分类管理规范\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-05-20 09:00\n更新时间：2025-09-10 14:00\n版本号：v2.5\n文档类型：policy\n文档族：data_classification\n生效日期：2025-09-10\n\n## 一、分级定义\n\n数据分为 L1 公开、L2 内部、L3 机密、L4 绝密四级。L1 可对外发布；L2 限公司内部；L3 限授权岗位；L4 限特定人员并加密存储。\n\n## 二、典型数据\n\nL1：宣传资料、公开财报；L2：一般制度、会"
+          },
+          {
+            "doc_id": "lantu_case_05_hailing",
+            "title": "# 客户案例：海翎家电喷涂与打磨项目",
+            "chunk": 0,
+            "score": 3.933,
+            "snippet": "# 客户案例：海翎家电喷涂与打磨项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_hailing\n生效日期：2025-12-20\n\n## 一、客户背景\n\n海翎家电位于顺德，主营家电业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖4 "
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_purchase_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_purchase_2025",
+        "title": "# 澜图智能采购管理制度（2025版）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 453,
+        "text": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付款比例不超过 20%；质保金 5%-10%。\n\n## 三、供应商准入\n\n供应商须通过资质审查、现场审核与小批量试用，签署质量协议、廉洁协议与数据安全协议。\n\n## 四、库存与交付\n\n关键物料安全库存 45 天，通用物料 30 天；供应商交付准时率目标 96%，年度考核末位 5% 启动整改。\n\n## 五、生效说明\n\n本制度自 2025 年 1 月 1 日起生效，2024 版同时废止。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_policy_purchase_2025"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.55,
+    "number_recall": 0.0
+  }
+}

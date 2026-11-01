@@ -1,0 +1,142 @@
+{
+  "qid": "G0029",
+  "question": "LT-Edge 在产线中承担哪三项职责？有什么断网场景下的能力？",
+  "question_type": "事实检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>LT-Edge 职责</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=search><parameter=query>LT-Edge 断网 离线</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 91,
+        "prompt_tokens": 361,
+        "total_tokens": 452,
+        "completion_tokens_details": {
+          "reasoning_tokens": 26
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 12.812
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>LT-Edge 边缘网关 职责</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 72,
+        "prompt_tokens": 463,
+        "total_tokens": 535,
+        "completion_tokens_details": {
+          "reasoning_tokens": 35
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.11
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>LT-Edge 边缘 职责 断网</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 537,
+        "total_tokens": 585,
+        "completion_tokens_details": {
+          "reasoning_tokens": 10
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.453
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>LT-Edge</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 612,
+        "total_tokens": 662,
+        "completion_tokens_details": {
+          "reasoning_tokens": 22
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 1.734
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>LT-Edge 产线 职责 断网</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 69,
+        "prompt_tokens": 677,
+        "total_tokens": 746,
+        "completion_tokens_details": {
+          "reasoning_tokens": 31
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 2.672
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>LT-Edge 边缘计算 职责</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 103,
+        "prompt_tokens": 752,
+        "total_tokens": 855,
+        "completion_tokens_details": {
+          "reasoning_tokens": 67
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 3.5
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"无法作答：本次会话中所有对资料库的检索调用均未成功执行，未能获取任何关于 LT-Edge 的文档内容，因此无法确认其在产线中承担的三项职责，也无法确认其断网场景下的能力。如需回答，请重新发起检索以获取 LT-Edge 相关的产品说明或架构文档。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 127,
+        "prompt_tokens": 822,
+        "total_tokens": 949,
+        "completion_tokens_details": {
+          "reasoning_tokens": 30
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 4.078
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "无法作答：本次会话中所有对资料库的检索调用均未成功执行，未能获取任何关于 LT-Edge 的文档内容，因此无法确认其在产线中承担的三项职责，也无法确认其断网场景下的能力。如需回答，请重新发起检索以获取 LT-Edge 相关的产品说明或架构文档。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4784,
+  "started_at": "2026-11-01T05:03:57",
+  "elapsed_seconds": 29.36,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.108,
+    "number_recall": 0.0
+  }
+}

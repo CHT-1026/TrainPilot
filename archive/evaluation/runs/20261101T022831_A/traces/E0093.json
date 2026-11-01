@@ -1,0 +1,223 @@
+{
+  "qid": "E0093",
+  "question": "公务用车的使用范围是什么？能否用公务车上下班通勤？",
+  "question_type": "条件判断与边界",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>公务用车 使用范围</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 66,
+        "prompt_tokens": 358,
+        "total_tokens": 424,
+        "completion_tokens_details": {
+          "reasoning_tokens": 37
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 6.141
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"公务用车 使用范围 通勤\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 35,
+        "prompt_tokens": 424,
+        "total_tokens": 459,
+        "completion_tokens_details": {
+          "reasoning_tokens": 8
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.187
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_vehicle\",\"offset\":0,\"limit\":3000}}",
+      "usage": {
+        "completion_tokens": 62,
+        "prompt_tokens": 2799,
+        "total_tokens": 2861,
+        "completion_tokens_details": {
+          "reasoning_tokens": 32
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 9.031
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据《澜图智能公务用车管理办法》（v2.4，2025-04-02 生效）：\\n\\n【用车范围】公务用车用于以下四类场景：\\n1. 客户接待\\n2. 机场接送\\n3. 跨园区办公\\n4. 紧急事务\\n\\n【能否用于上下班通勤】不可以。规定明确：「上下班通勤原则上不使用公务车」。\\n\\n【用车流程提示】如确需用车，须提前 1 个工作日在 OA 系统提交申请，注明事由、路线、人数与时间；临时用车须先经部门负责人电话批准，事后补单。费用按市内 1.8 元/公里计费，长途须比较高铁与自驾成本，过路费与停车费凭票报销。\\n\\n【其他禁止事项】严禁酒后驾驶、公车私用与私自转借；违章罚款由驾驶人自行承担。\",\"citations\":[\"lantu_policy_vehicle\"],\"evidence\":[\"lantu_policy_vehicle#片段0\"]}",
+      "usage": {
+        "completion_tokens": 252,
+        "prompt_tokens": 3171,
+        "total_tokens": 3423,
+        "completion_tokens_details": {
+          "reasoning_tokens": 8
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2752
+        }
+      },
+      "seconds": 5.938
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "公务用车 使用范围 通勤",
+        "top_k": 10
+      },
+      "result_sha": "770aa7d1b8b2845081394acd7f689b841eca2b71e761bba27e40006f6ed47c8d",
+      "result_chars": 3892,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_vehicle",
+        "offset": 0,
+        "limit": 3000
+      },
+      "result_sha": "6b1a45d446402e7e2cc187dbc873877f967b4058f85d7598714c270cf74623d0",
+      "result_chars": 541,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《澜图智能公务用车管理办法》（v2.4，2025-04-02 生效）：\n\n【用车范围】公务用车用于以下四类场景：\n1. 客户接待\n2. 机场接送\n3. 跨园区办公\n4. 紧急事务\n\n【能否用于上下班通勤】不可以。规定明确：「上下班通勤原则上不使用公务车」。\n\n【用车流程提示】如确需用车，须提前 1 个工作日在 OA 系统提交申请，注明事由、路线、人数与时间；临时用车须先经部门负责人电话批准，事后补单。费用按市内 1.8 元/公里计费，长途须比较高铁与自驾成本，过路费与停车费凭票报销。\n\n【其他禁止事项】严禁酒后驾驶、公车私用与私自转借；违章罚款由驾驶人自行承担。",
+    "citations": [
+      "lantu_policy_vehicle"
+    ],
+    "evidence": [
+      "lantu_policy_vehicle#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 7167,
+  "started_at": "2026-11-01T02:39:01",
+  "elapsed_seconds": 23.3,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "公务用车 使用范围 通勤",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_policy_vehicle",
+            "title": "# 澜图智能公务用车管理办法",
+            "chunk": 0,
+            "score": 33.353,
+            "snippet": "# 澜图智能公务用车管理办法\n\n所属部门：行政部\n作者：陈依然\n创建时间：2024-03-01 09:00\n更新时间：2025-04-02 09:00\n版本号：v2.4\n文档类型：policy\n文档族：vehicle_management\n生效日期：2025-04-02\n\n## 一、用车范围\n\n公务用车用于客户接待、机场接送、跨园区办公与紧急事务；上下班通勤原则上不使用公务车。\n\n## 二、申请流程\n\n用车须提前 1 个工作日在 OA 申请，注明事由、路线、人数与时间；临时用车须部门负责人电话批准后补单。\n\n## "
+          },
+          {
+            "doc_id": "lantu_support_warranty",
+            "title": "# 澜图智能产品保修政策",
+            "chunk": 0,
+            "score": 6.301,
+            "snippet": "# 澜图智能产品保修政策\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-01-01 09:00\n更新时间：2025-04-01 09:00\n版本号：v3.0\n文档类型：support\n文档族：warranty_policy\n生效日期：2025-04-01\n\n## 一、保修期限\n\n机器人本体保修 24 个月或 6,000 小时，以先到者为准；控制器保修 18 个月；易损件保修 6 个月。\n\n## 二、保修范围\n\n因产品设计、制造或材料缺陷导致的故障免费维修或更换；软件提供 12 个月免费升级。\n\n## 三、"
+          },
+          {
+            "doc_id": "lantu_legal_export_control",
+            "title": "# 澜图智能出口管制与制裁合规指引",
+            "chunk": 0,
+            "score": 6.22,
+            "snippet": "# 澜图智能出口管制与制裁合规指引\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-06-01 09:00\n更新时间：2025-08-01 09:00\n版本号：v2.2\n文档类型：legal\n文档族：export_control\n生效日期：2025-08-01\n\n## 一、适用范围\n\n适用于所有跨境销售、技术许可、境外投资与人员出境技术服务，覆盖中国、欧盟、美国出口管制要求。\n\n## 二、筛查要求\n\n交易前须对客户、最终用户与最终用途进行筛查，核对制裁名单与两用物项清单；涉及加密、视觉算法与高精度伺服的项目"
+          },
+          {
+            "doc_id": "lantu_policy_employee_handbook",
+            "title": "# 澜图智能员工手册",
+            "chunk": 0,
+            "score": 5.57,
+            "snippet": "# 澜图智能员工手册\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-07-01 09:00\n版本号：v6.0\n文档类型：policy\n文档族：employee_handbook\n生效日期：2025-07-01\n\n## 一、适用范围\n\n本手册适用于澜图智能装备股份有限公司及下属子公司全体正式员工、试用期员工与实习生。劳务派遣与外包人员参照执行。\n\n## 二、入职与试用\n\n新员工入职当日签署劳动合同、保密协议与廉洁承诺书，试用期 3-6 个月。试用期内需完成入职培"
+          },
+          {
+            "doc_id": "lantu_policy_confidentiality",
+            "title": "# 澜图智能商业秘密与保密管理规范",
+            "chunk": 0,
+            "score": 5.431,
+            "snippet": "# 澜图智能商业秘密与保密管理规范\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-15 09:00\n更新时间：2025-03-28 11:00\n版本号：v3.1\n文档类型：policy\n文档族：confidentiality\n生效日期：2025-03-28\n\n## 一、保密范围\n\n技术秘密（源代码、算法、图纸、工艺参数）、经营秘密（客户名单、报价、成本、未披露财务数据）与人事秘密均属保密信息。\n\n## 二、保密义务\n\n员工在职期间及离职后 3 年内不得披露、使用或允许他人使用公司保密信息；竞业限制人"
+          },
+          {
+            "doc_id": "lantu_policy_reimbursement",
+            "title": "# 澜图智能费用报销管理办法",
+            "chunk": 0,
+            "score": 4.571,
+            "snippet": "# 澜图智能费用报销管理办法\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-03-10 09:00\n更新时间：2025-06-18 10:00\n版本号：v3.2\n文档类型：policy\n文档族：reimbursement\n生效日期：2025-06-18\n\n## 一、报销范围\n\n差旅费、业务招待费、办公费、培训费、通讯费、车辆使用费及经批准的其他费用。个人消费、罚款与无票据支出不予报销。\n\n## 二、报销时限\n\n费用发生后 30 个自然日内提交报销，跨年度费用须在次年 1 月 15 日前完成，逾期需财务总监审"
+          },
+          {
+            "doc_id": "lantu_legal_supplier_code",
+            "title": "# 澜图智能供应商行为准则",
+            "chunk": 0,
+            "score": 3.029,
+            "snippet": "# 澜图智能供应商行为准则\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-04-01 09:00\n更新时间：2025-05-01 09:00\n版本号：v2.0\n文档类型：legal\n文档族：supplier_code\n生效日期：2025-05-01\n\n## 一、劳工与人权\n\n供应商不得使用童工、强迫劳动，须保障结社自由与最低工资，工作时间符合当地法律。\n\n## 二、健康与安全\n\n供应商须提供安全的工作环境，配备必要的防护设施，定期开展安全培训与应急演练。\n\n## 三、环境要求\n\n供应商须遵守环保法规，优"
+          },
+          {
+            "doc_id": "lantu_tech_servo",
+            "title": "# 澜图智能伺服驱动与关节模组技术说明",
+            "chunk": 0,
+            "score": 2.997,
+            "snippet": "# 澜图智能伺服驱动与关节模组技术说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-07-01 09:00\n更新时间：2025-08-25 10:00\n版本号：v2.6\n文档类型：tech\n文档族：servo_drive\n生效日期：2025-08-25\n\n## 一、产品范围\n\n自研 400W-7.5kW 伺服驱动器与关节模组，覆盖 LT-R 与 LT-S 全系列，自研比例 61%。\n\n## 二、关键指标\n\n电流环带宽 2.5 kHz，速度环 1.2 kHz，位置精度 23 位，过载能力 300% 持续 "
+          },
+          {
+            "doc_id": "lantu_company_brand",
+            "title": "# 澜图智能品牌视觉与传播规范",
+            "chunk": 0,
+            "score": 2.984,
+            "snippet": "# 澜图智能品牌视觉与传播规范\n\n所属部门：市场部\n作者：苏婉清\n创建时间：2024-02-01 09:30\n更新时间：2025-08-15 11:00\n版本号：v2.3\n文档类型：company\n文档族：brand_manual\n生效日期：2025-08-15\n\n## 一、品牌定位\n\n澜图智能（LANTU）定位为“可信赖的智能制造伙伴”，核心传播主张为“稳、准、快”。品牌不得使用“全球第一”“绝对领先”等绝对化表述。\n\n## 二、视觉规范\n\n主色为澜图蓝（PANTONE 2728C，HEX #1F4FA8），辅助"
+          },
+          {
+            "doc_id": "lantu_support_recall_2025",
+            "title": "# LT-R12 线束磨损召回通知",
+            "chunk": 0,
+            "score": 2.748,
+            "snippet": "# LT-R12 线束磨损召回通知\n\n所属部门：质量部\n作者：潘文博\n创建时间：2025-07-25 09:00\n更新时间：2025-07-28 10:00\n版本号：v1.0\n文档类型：support\n文档族：recall_lt_r12_2025\n生效日期：2025-07-28\n\n## 一、召回范围\n\n2025 年 3 月 1 日至 3 月 31 日生产的 LT-R12 机器人，共计 120 台，涉及客户 18 家。\n\n## 二、问题描述\n\n部分设备腕部线束与护套摩擦，长期运行可能导致绝缘磨损与报警，存在停机风险。"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_vehicle",
+        "offset": 0,
+        "limit": 3000
+      },
+      "result": {
+        "doc_id": "lantu_policy_vehicle",
+        "title": "# 澜图智能公务用车管理办法",
+        "offset": 0,
+        "limit": 3000,
+        "total_chars": 374,
+        "text": "# 澜图智能公务用车管理办法\n\n所属部门：行政部\n作者：陈依然\n创建时间：2024-03-01 09:00\n更新时间：2025-04-02 09:00\n版本号：v2.4\n文档类型：policy\n文档族：vehicle_management\n生效日期：2025-04-02\n\n## 一、用车范围\n\n公务用车用于客户接待、机场接送、跨园区办公与紧急事务；上下班通勤原则上不使用公务车。\n\n## 二、申请流程\n\n用车须提前 1 个工作日在 OA 申请，注明事由、路线、人数与时间；临时用车须部门负责人电话批准后补单。\n\n## 三、费用标准\n\n市内用车按里程计费，1.8 元/公里；长途用车须比较高铁与自驾成本；过路费与停车费凭票报销。\n\n## 四、驾驶与安全\n\n驾驶人须持有效驾照并签署安全承诺；严禁酒后驾驶、公车私用与私自转借；违章罚款由驾驶人承担。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_policy_vehicle"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.543,
+    "number_recall": 0.0
+  }
+}

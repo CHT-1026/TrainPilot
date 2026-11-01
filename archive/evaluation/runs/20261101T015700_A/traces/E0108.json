@@ -1,0 +1,242 @@
+{
+  "qid": "E0108",
+  "question": "差旅标准三版中，2025 年 1 月版既废止了 2024 版，又被 2025 年 7 月修订版废止。若员工在 2025 年 3 月出差，应适用哪一版标准？",
+  "question_type": "时间与因果推断",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=list><parameter=keyword>差旅</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 34,
+        "prompt_tokens": 386,
+        "total_tokens": 420,
+        "completion_tokens_details": {
+          "reasoning_tokens": 15
+        },
+        "prompt_tokens_details": null
+      },
+      "seconds": 1.312
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"list\",\"keyword\":\"差旅\"}",
+      "usage": {
+        "completion_tokens": 29,
+        "prompt_tokens": 442,
+        "total_tokens": 471,
+        "completion_tokens_details": {
+          "reasoning_tokens": 15
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.688
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=read><parameter=doc_id>lantu_policy_travel_2025</parameter><parameter=offset>0</parameter><parameter=limit>4000</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 95,
+        "prompt_tokens": 588,
+        "total_tokens": 683,
+        "completion_tokens_details": {
+          "reasoning_tokens": 49
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 4.547
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_travel_2025\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 59,
+        "prompt_tokens": 671,
+        "total_tokens": 730,
+        "completion_tokens_details": {
+          "reasoning_tokens": 24
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 3.031
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=read><parameter=args>{\"doc_id\":\"lantu_policy_travel_2025h2\",\"offset\":0,\"limit\":4000}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 82,
+        "prompt_tokens": 1108,
+        "total_tokens": 1190,
+        "completion_tokens_details": {
+          "reasoning_tokens": 41
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 2.563
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_travel_2025h2\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 53,
+        "prompt_tokens": 1186,
+        "total_tokens": 1239,
+        "completion_tokens_details": {
+          "reasoning_tokens": 16
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 1088
+        }
+      },
+      "seconds": 2.047
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"应适用 2025 年 1 月版（v2.0，澜图智能差旅费用报销标准（2025版））。原因：该版本生效日期为 2025-01-01，适用于 2025 年 1 月 1 日至 2025 年 6 月 30 日期间的出差；2024 版已于 2025-01-01 被其废止；而 2025 年 7 月修订版（v3.0）自 2025-07-01 起才生效并废止 1 月版，对 3 月的出差无追溯力。适用标准为：一线城市住宿 550 元/晚、二线 420 元/晚、其他城市 350 元/晚；餐饮补贴 120 元/天；市内交通与通讯补贴合计 100 元/天；高铁二等座/飞机经济舱（总监及以上可乘高铁一等座），出差须提前 2 个工作日申请。\",\"citations\":[\"lantu_policy_travel_2025\",\"lantu_policy_travel_2025h2\"],\"evidence\":[\"lantu_policy_travel_2025#元/晚。超标部分由个人承担。\",\"lantu_policy_travel_2025#五、生效说明\",\"lantu_policy_travel_2025h2#五、生效说明\"]}",
+      "usage": {
+        "completion_tokens": 432,
+        "prompt_tokens": 1644,
+        "total_tokens": 2076,
+        "completion_tokens_details": {
+          "reasoning_tokens": 76
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 1152
+        }
+      },
+      "seconds": 10.859
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "差旅"
+      },
+      "result_sha": "f6bd4e78035d1f78b6af6f4de6206b6b43fb4933accc232d1fd34fe741731b5a",
+      "result_chars": 238,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_travel_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "e29663c4188024bf9d693e3f523d6c8cafadfd85843c0a0ed12ab858fb15459d",
+      "result_chars": 605,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_travel_2025h2",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "cd892ed8038ab44deaedda8457a73e71e1401350b20b3259ba550d0bbcdbd0f9",
+      "result_chars": 631,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "应适用 2025 年 1 月版（v2.0，澜图智能差旅费用报销标准（2025版））。原因：该版本生效日期为 2025-01-01，适用于 2025 年 1 月 1 日至 2025 年 6 月 30 日期间的出差；2024 版已于 2025-01-01 被其废止；而 2025 年 7 月修订版（v3.0）自 2025-07-01 起才生效并废止 1 月版，对 3 月的出差无追溯力。适用标准为：一线城市住宿 550 元/晚、二线 420 元/晚、其他城市 350 元/晚；餐饮补贴 120 元/天；市内交通与通讯补贴合计 100 元/天；高铁二等座/飞机经济舱（总监及以上可乘高铁一等座），出差须提前 2 个工作日申请。",
+    "citations": [
+      "lantu_policy_travel_2025",
+      "lantu_policy_travel_2025h2"
+    ],
+    "evidence": [
+      "lantu_policy_travel_2025#元/晚。超标部分由个人承担。",
+      "lantu_policy_travel_2025#五、生效说明",
+      "lantu_policy_travel_2025h2#五、生效说明"
+    ]
+  },
+  "status": "answered",
+  "tokens": 6809,
+  "started_at": "2026-11-01T02:00:01",
+  "elapsed_seconds": 26.06,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "差旅"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_policy_travel_2024",
+            "title": "# 澜图智能差旅费用报销标准（2024版）"
+          },
+          {
+            "doc_id": "lantu_policy_travel_2025",
+            "title": "# 澜图智能差旅费用报销标准（2025版）"
+          },
+          {
+            "doc_id": "lantu_policy_travel_2025h2",
+            "title": "# 澜图智能差旅费用报销标准（2025年7月修订）"
+          }
+        ]
+      },
+      "seconds": 0.015
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_travel_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_travel_2025",
+        "title": "# 澜图智能差旅费用报销标准（2025版）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 423,
+        "text": "# 澜图智能差旅费用报销标准（2025版）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-12-15 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2025-01-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 550 元/晚，二线城市 420 元/晚，其他城市 350 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 120 元/天，按自然日计算；客户宴请须提前申请，不得重复领取补贴。\n\n## 三、出差补贴\n\n市内交通与通讯补贴合计 100 元/天，凭票据实报销，无票按标准发放。\n\n## 四、交通标准\n\n高铁二等座、飞机经济舱；总监及以上可乘坐高铁一等座。出差须提前 2 个工作日申请。\n\n## 五、生效说明\n\n本版本自 2025 年 1 月 1 日起生效，2024 版同时废止。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_travel_2025h2",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_travel_2025h2",
+        "title": "# 澜图智能差旅费用报销标准（2025年7月修订）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 443,
+        "text": "# 澜图智能差旅费用报销标准（2025年7月修订）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-06-10 09:00\n更新时间：2025-07-01 09:00\n版本号：v3.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2025-07-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 600 元/晚，二线城市 450 元/晚，其他城市 380 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 150 元/天，按自然日计算；客户宴请须提前申请，不得重复领取补贴。\n\n## 三、出差补贴\n\n市内交通与通讯补贴合计 120 元/天，凭票据实报销，无票按标准发放。\n\n## 四、交通标准\n\n高铁二等座、飞机经济舱；总监及以上可乘坐高铁一等座。出差须提前 3 个工作日申请，并同步提交行程与预算。\n\n## 五、生效说明\n\n本版本自 2025 年 7 月 1 日起生效，2025 年 1 月版同时废止。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_policy_travel_2025",
+      "lantu_policy_travel_2025h2"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.512,
+    "number_recall": 1.0
+  }
+}

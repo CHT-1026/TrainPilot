@@ -1,0 +1,197 @@
+{
+  "qid": "F0085",
+  "question": "2026 年预算的机器人出货 26,000 台相对 2025 年实际出货 21,400 台增长多少？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>2026 预算 机器人 出货 26,000</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 91,
+        "prompt_tokens": 385,
+        "total_tokens": 476,
+        "completion_tokens_details": {
+          "reasoning_tokens": 46
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.297
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>机器人 出货量 2026 预算 2025 实际</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 85,
+        "prompt_tokens": 467,
+        "total_tokens": 552,
+        "completion_tokens_details": {
+          "reasoning_tokens": 39
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.25
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"机器人 出货量 2026 预算 2025 实际\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 72,
+        "prompt_tokens": 550,
+        "total_tokens": 622,
+        "completion_tokens_details": {
+          "reasoning_tokens": 31
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 6.063
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"2026 年预算机器人出货 26,000 台相对 2025 年实际出货 21,400 台，绝对增加 4,600 台，同比增长约 21.5%（26,000 ÷ 21,400 − 1 ≈ 21.50%）。\",\"citations\":[\"lantu_strategy_2026\",\"lantu_company_milestones_2025\"],\"evidence\":[\"lantu_strategy_2026#片段0：2026 年……机器人出货 26,000 台（年度目标）\",\"lantu_company_milestones_2025#片段0：2025 年……机器人出货 21,400 台（实际）\"]}",
+      "usage": {
+        "completion_tokens": 284,
+        "prompt_tokens": 3087,
+        "total_tokens": 3371,
+        "completion_tokens_details": {
+          "reasoning_tokens": 82
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 5.953
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "机器人 出货量 2026 预算 2025 实际",
+        "top_k": 10
+      },
+      "result_sha": "3f955434507e33588870f33894b1aa98c470d90b9b04c97971784650c5f95ad1",
+      "result_chars": 3895,
+      "hits": 10
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "2026 年预算机器人出货 26,000 台相对 2025 年实际出货 21,400 台，绝对增加 4,600 台，同比增长约 21.5%（26,000 ÷ 21,400 − 1 ≈ 21.50%）。",
+    "citations": [
+      "lantu_strategy_2026",
+      "lantu_company_milestones_2025"
+    ],
+    "evidence": [
+      "lantu_strategy_2026#片段0：2026 年……机器人出货 26,000 台（年度目标）",
+      "lantu_company_milestones_2025#片段0：2025 年……机器人出货 21,400 台（实际）"
+    ]
+  },
+  "status": "answered",
+  "tokens": 5021,
+  "started_at": "2026-11-01T04:59:56",
+  "elapsed_seconds": 16.58,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "机器人 出货量 2026 预算 2025 实际",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_finance_budget_2026",
+            "title": "# 澜图智能 2026 年度经营预算",
+            "chunk": 0,
+            "score": 15.042,
+            "snippet": "# 澜图智能 2026 年度经营预算\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-12-20 09:00\n更新时间：2026-01-15 17:00\n版本号：v1.0\n文档类型：finance\n文档族：budget_2026\n生效日期：2026-01-15\n\n## 一、预算目标\n\n2026 年营业收入目标 52 亿元，同比增长 22%；归母净利润目标 5.2 亿元；综合毛利率目标 32.5%。\n\n## 二、收入分解\n\n机器人本体 24.2 亿元，智能产线 18.4 亿元，软件与服务 6.4 亿元，备件及其"
+          },
+          {
+            "doc_id": "lantu_finance_monthly_2025",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 9.476,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能 2025 年月度经营数据\n所属部门\t财务部\n作者\t周敏仪\n创建时间\t2026-01-12 09:00\n更新时间\t2026-01-12 18:00\n版本号\tv1.0\n文档类型\tfinance\n文档族\tmonthly_operations_2025\n生效日期\t2026-01-12\n[工作表] 月度经营数据\n月份\t营收（亿元）\t订单（亿元）\t机器人出货（台）\n2025年1月\t2.86\t3.42\t1,380\n2025年2月\t2.61\t3.05\t1,260\n2025年3月\t3."
+          },
+          {
+            "doc_id": "lantu_strategy_2026",
+            "title": "# 澜图智能 2026 年度经营计划",
+            "chunk": 0,
+            "score": 8.648,
+            "snippet": "# 澜图智能 2026 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-12-15 09:00\n更新时间：2026-01-12 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2026\n生效日期：2026-01-12\n\n## 一、年度目标\n\n2026 年营业收入 52 亿元，归母净利润 5.2 亿元，新签订单 58 亿元，机器人出货 26,000 台。\n\n## 二、业务策略\n\n锂电保持领先，半导体翻倍增长，海外收入 7.2 亿元；软件与服务收入占比提"
+          },
+          {
+            "doc_id": "lantu_company_milestones_2025",
+            "title": "# 澜图智能 2025 年度大事记",
+            "chunk": 0,
+            "score": 8.403,
+            "snippet": "# 澜图智能 2025 年度大事记\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-12-31 18:00\n更新时间：2026-01-06 09:00\n版本号：v1.0\n文档类型：company\n文档族：annual_milestones_2025\n生效日期：2026-01-06\n\n## 一、经营里程碑\n\n2025 年营业收入 42.63 亿元，同比增长 19.1%；新签订单 48.90 亿元；机器人出货 21,400 台；第 10 万台机器人于 9 月 12 日下线。\n\n## 二、组织里程碑\n\n3 月"
+          },
+          {
+            "doc_id": "lantu_company_profile",
+            "title": "澜图智能装备公司简介",
+            "chunk": 0,
+            "score": 7.24,
+            "snippet": "澜图智能装备公司简介\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2023-03-01 09:00\n更新时间：2026-01-08 10:30\n版本号：v5.2\n文档类型：company\n文档族：company_profile\n生效日期：2026-01-08\n一、公司概况\n澜图智能装备股份有限公司成立于2011-06-18，总部位于江苏省苏州市工业园区星澜路88号，注册资本\n6.8 亿元，2023 年在上海证券交易所科创板上市（股票代码 688719）。公司专注工业机器人、智能产线\n与工业软件，为汽车、锂电、光伏"
+          },
+          {
+            "doc_id": "lantu_hr_campus",
+            "title": "# 澜图智能 2026 届校园招聘方案",
+            "chunk": 0,
+            "score": 5.844,
+            "snippet": "# 澜图智能 2026 届校园招聘方案\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-08-15 09:00\n更新时间：2025-09-20 15:00\n版本号：v1.0\n文档类型：hr\n文档族：campus_recruitment_2026\n生效日期：2025-09-20\n\n## 一、招聘计划\n\n2026 届校招计划 120 人，其中研发 78 人、产品 12 人、销售 18 人、职能 12 人；重点院校 18 所。\n\n## 二、岗位方向\n\n机器人算法、运动控制、机器视觉、嵌入式软件、机械结构、售前技"
+          },
+          {
+            "doc_id": "lantu_strategy_2025",
+            "title": "# 澜图智能 2025 年度经营计划",
+            "chunk": 0,
+            "score": 5.689,
+            "snippet": "# 澜图智能 2025 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-01-10 09:00\n更新时间：2025-02-10 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2025\n生效日期：2025-02-10\n\n## 一、年度目标\n\n2025 年营业收入目标 41.5 亿元，力争 42.63 亿元；新签订单目标 46 亿元；机器人出货目标 20,000 台。\n\n## 二、重点任务\n\n锂电与半导体行业突破；LT-C800 控制器量产；海外收入占"
+          },
+          {
+            "doc_id": "lantu_company_history",
+            "title": "# 澜图智能发展历程（2011—2025）",
+            "chunk": 0,
+            "score": 5.623,
+            "snippet": "# 澜图智能发展历程（2011—2025）\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2023-03-01 09:00\n更新时间：2026-01-05 14:00\n版本号：v4.0\n文档类型：company\n文档族：company_history\n生效日期：2026-01-05\n\n## 一、创业阶段（2011—2015）\n\n2011 年 6 月 18 日，公司在苏州工业园区成立，创始团队来自高校机器人实验室，首款产品为 LT-R6 六轴工业机器人，2012 年实现小批量交付 120 台。2014 年建成首条机"
+          },
+          {
+            "doc_id": "lantu_meeting_sales",
+            "title": "2025 年华南大区销售复盘会纪要",
+            "chunk": 0,
+            "score": 5.365,
+            "snippet": "2025 年华南大区销售复盘会纪要\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2025-09-05 09:00\n更新时间：2025-09-05 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_sales_south\n生效日期：2025-09-05\n一、业绩完成\n华南大区前三季度收入 7.42 亿元，年度完成率 108%，位列五大区第一；新签订单 8.6 亿元。\n二、行业机会\n锂电客户扩产带来 3.2 亿元机会；3C 客户自动化改造预算增加；光伏客户资本开支放缓。\n三、渠道问题\n两家"
+          },
+          {
+            "doc_id": "lantu_product_r20_pro_whitepaper",
+            "title": "LT-R20 Pro 机器人技术白皮书",
+            "chunk": 0,
+            "score": 5.363,
+            "snippet": "LT-R20 Pro 机器人技术白皮书\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2025-11-20 09:00\n更新时间：2025-11-28 18:00\n版本号：v0.9\n文档类型：product\n文档族：product_r20_pro\n生效日期：2025-11-28\n一、研发背景\n面向锂电叠片、汽车装配等高频节拍场景，澜图智能研发新一代中型六轴机器人 LT-R20 Pro，计划\n2026 年第二季度量产。\n二、技术指标\n额定负载 22 kg，臂展 1,750 mm，重复定位精度 ±0.02 mm，本体重量"
+          }
+        ]
+      },
+      "seconds": 0.015
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.5,
+    "cited": [
+      "lantu_strategy_2026",
+      "lantu_company_milestones_2025"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.295,
+    "number_recall": 1.0
+  }
+}

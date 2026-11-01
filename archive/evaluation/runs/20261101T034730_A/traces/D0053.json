@@ -1,0 +1,142 @@
+{
+  "qid": "D0053",
+  "question": "鼎重机械项目配置了哪些机器人设备？整线合同金额是多少？",
+  "question_type": "事实检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>鼎重机械</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 36,
+        "prompt_tokens": 358,
+        "total_tokens": 394,
+        "completion_tokens_details": {
+          "reasoning_tokens": 8
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.422
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search>{\"query\": \"鼎重机械 机器人 配置\",\"top_k\": 10}</function></tool_call>",
+      "usage": {
+        "completion_tokens": 91,
+        "prompt_tokens": 423,
+        "total_tokens": 514,
+        "completion_tokens_details": {
+          "reasoning_tokens": 62
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.797
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>鼎重机械 机器人设备 整线合同</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 44,
+        "prompt_tokens": 489,
+        "total_tokens": 533,
+        "completion_tokens_details": {
+          "reasoning_tokens": 9
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.593
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>鼎重机械</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 53,
+        "prompt_tokens": 561,
+        "total_tokens": 614,
+        "completion_tokens_details": {
+          "reasoning_tokens": 25
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 2.61
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>鼎重机械 机器人 整线合同金额</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 61,
+        "prompt_tokens": 626,
+        "total_tokens": 687,
+        "completion_tokens_details": {
+          "reasoning_tokens": 26
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 2.375
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search>{\"query\": \"鼎重机械 机器人 整线合同金额\", \"top_k\": 10}</function></tool_call>",
+      "usage": {
+        "completion_tokens": 39,
+        "prompt_tokens": 698,
+        "total_tokens": 737,
+        "completion_tokens_details": {
+          "reasoning_tokens": 7
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 1.562
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"在当前资料库中检索不到关于'鼎重机械'项目的任何文档，因此无法确认其配置的机器人设备清单及整线合同金额。可能原因：该项目资料未纳入本资料库，或项目名称在库内以其他名称（如客户简称、项目代号）记录。建议提供更准确的项目/客户名称关键词，或确认相关合同、方案文档是否已上传至资料库后再行检索。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 138,
+        "prompt_tokens": 764,
+        "total_tokens": 902,
+        "completion_tokens_details": {
+          "reasoning_tokens": 25
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 4.125
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "在当前资料库中检索不到关于'鼎重机械'项目的任何文档，因此无法确认其配置的机器人设备清单及整线合同金额。可能原因：该项目资料未纳入本资料库，或项目名称在库内以其他名称（如客户简称、项目代号）记录。建议提供更准确的项目/客户名称关键词，或确认相关合同、方案文档是否已上传至资料库后再行检索。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4381,
+  "started_at": "2026-11-01T04:32:45",
+  "elapsed_seconds": 17.48,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.082,
+    "number_recall": 0.0
+  }
+}

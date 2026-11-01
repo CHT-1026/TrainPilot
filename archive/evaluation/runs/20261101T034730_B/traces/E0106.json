@@ -1,0 +1,420 @@
+{
+  "qid": "E0106",
+  "question": "采购管理制度 2025 版要求供应商签署数据安全协议，这与保密规范中的数据保护义务如何衔接？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"采购管理制度 2025\"}}",
+      "usage": {
+        "prompt_tokens": 373,
+        "total_tokens": 539,
+        "completion_tokens": 166,
+        "completion_tokens_details": {
+          "reasoning_tokens": 142,
+          "text_tokens": 166
+        }
+      },
+      "seconds": 1.829
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"采购管理制度\"}}",
+      "usage": {
+        "prompt_tokens": 422,
+        "total_tokens": 565,
+        "completion_tokens": 143,
+        "completion_tokens_details": {
+          "reasoning_tokens": 124,
+          "text_tokens": 143
+        }
+      },
+      "seconds": 1.656
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_purchase_2025\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 532,
+        "total_tokens": 740,
+        "completion_tokens": 208,
+        "completion_tokens_details": {
+          "reasoning_tokens": 170,
+          "text_tokens": 208
+        }
+      },
+      "seconds": 1.609
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"保密\"}}",
+      "usage": {
+        "prompt_tokens": 979,
+        "total_tokens": 1378,
+        "completion_tokens": 399,
+        "completion_tokens_details": {
+          "reasoning_tokens": 381,
+          "text_tokens": 399
+        }
+      },
+      "seconds": 3.75
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_confidentiality\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 1074,
+        "total_tokens": 1333,
+        "completion_tokens": 259,
+        "completion_tokens_details": {
+          "reasoning_tokens": 224,
+          "text_tokens": 259
+        }
+      },
+      "seconds": 2.25
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_legal_nda_template\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 1470,
+        "total_tokens": 2089,
+        "completion_tokens": 619,
+        "completion_tokens_details": {
+          "reasoning_tokens": 584,
+          "text_tokens": 619
+        }
+      },
+      "seconds": 5.063
+    },
+    {
+      "round": 7,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"数据安全\"}}",
+      "usage": {
+        "prompt_tokens": 1822,
+        "total_tokens": 2744,
+        "completion_tokens": 922,
+        "completion_tokens_details": {
+          "reasoning_tokens": 904,
+          "text_tokens": 922
+        }
+      },
+      "seconds": 8.656
+    },
+    {
+      "round": 8,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_legal_data_compliance\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 4091,
+        "total_tokens": 4840,
+        "completion_tokens": 749,
+        "completion_tokens_details": {
+          "reasoning_tokens": 714,
+          "text_tokens": 749
+        }
+      },
+      "seconds": 6.953
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "采购管理制度 2025"
+      },
+      "result_sha": "1290604daacc15212b4f59638c659261007a940d59ae4c9dd916d753b78e21de",
+      "result_chars": 12,
+      "hits": 0
+    },
+    {
+      "name": "list",
+      "args": {
+        "keyword": "采购管理制度"
+      },
+      "result_sha": "2f2c36f87e532ad6a5964c618b5b4e133d9052d6ee656e0916feed030e91affc",
+      "result_chars": 158,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_purchase_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "a43282daf04801f0f16f7d64d197206dfa10185ee100b1a3054935cc73749d1f",
+      "result_chars": 635,
+      "hits": 0
+    },
+    {
+      "name": "list",
+      "args": {
+        "keyword": "保密"
+      },
+      "result_sha": "125162793f68a17b426b13ec62d18d36f247c7340b300a7760ce6fe5335edcaa",
+      "result_chars": 152,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_confidentiality",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "f69172ab39d3cf80bfb0aa2815d2f78c01451507f35450870f8cdeb58785e57d",
+      "result_chars": 616,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_legal_nda_template",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "06dcd36b43ef1c4072b0bddcb43f808cfae26a1992d718b0f3a9c346ed1648a2",
+      "result_chars": 535,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "数据安全"
+      },
+      "result_sha": "4ab854f3142f057cb0a3f499417793da1c9de3b6155beef1b9ecafccf82180ce",
+      "result_chars": 3908,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_legal_data_compliance",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "2539aa032c29385878495b009652d9241530d5efc3d82d84cee2cfbc3cd71554",
+      "result_chars": 609,
+      "hits": 0
+    }
+  ],
+  "answer": null,
+  "status": "unfinished",
+  "tokens": 14228,
+  "started_at": "2026-11-01T04:53:42",
+  "elapsed_seconds": 31.77,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "采购管理制度 2025"
+      },
+      "result": {
+        "docs": []
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "list",
+      "args": {
+        "keyword": "采购管理制度"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_policy_purchase_2024",
+            "title": "# 澜图智能采购管理制度（2024版）"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2025",
+            "title": "# 澜图智能采购管理制度（2025版）"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_purchase_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_purchase_2025",
+        "title": "# 澜图智能采购管理制度（2025版）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 453,
+        "text": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付款比例不超过 20%；质保金 5%-10%。\n\n## 三、供应商准入\n\n供应商须通过资质审查、现场审核与小批量试用，签署质量协议、廉洁协议与数据安全协议。\n\n## 四、库存与交付\n\n关键物料安全库存 45 天，通用物料 30 天；供应商交付准时率目标 96%，年度考核末位 5% 启动整改。\n\n## 五、生效说明\n\n本制度自 2025 年 1 月 1 日起生效，2024 版同时废止。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "list",
+      "args": {
+        "keyword": "保密"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_legal_nda_template",
+            "title": "澜图智能保密协议模板（NDA）"
+          },
+          {
+            "doc_id": "lantu_policy_confidentiality",
+            "title": "# 澜图智能商业秘密与保密管理规范"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_confidentiality",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_confidentiality",
+        "title": "# 澜图智能商业秘密与保密管理规范",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 434,
+        "text": "# 澜图智能商业秘密与保密管理规范\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-15 09:00\n更新时间：2025-03-28 11:00\n版本号：v3.1\n文档类型：policy\n文档族：confidentiality\n生效日期：2025-03-28\n\n## 一、保密范围\n\n技术秘密（源代码、算法、图纸、工艺参数）、经营秘密（客户名单、报价、成本、未披露财务数据）与人事秘密均属保密信息。\n\n## 二、保密义务\n\n员工在职期间及离职后 3 年内不得披露、使用或允许他人使用公司保密信息；竞业限制人员按协议执行。\n\n## 三、涉密载体\n\n涉密文件须标注密级，存放于带锁文件柜或加密系统；复印、拍照与外发须审批并登记。\n\n## 四、对外交流\n\n技术交流、展会与论文发表须经法务合规部与研发中心审核，禁止披露未公开的技术路线与参数。\n\n## 五、违约处理\n\n违反保密义务的，公司有权解除劳动合同、要求赔偿损失并追究法律责任；涉嫌犯罪的移交司法机关。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_legal_nda_template",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_legal_nda_template",
+        "title": "澜图智能保密协议模板（NDA）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 371,
+        "text": "澜图智能保密协议模板（NDA）\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-10 09:00\n更新时间：2025-02-01 09:00\n版本号：v3.0\n文档类型：legal\n文档族：nda_template\n生效日期：2025-02-01\n第一条 保密信息\n保密信息包括技术资料、图纸、源代码、算法、客户信息、报价、成本与未公开财务数据。\n第二条 保密义务\n接收方仅可为合作目的使用保密信息，不得披露给第三方；接触人员须签署个人保密承诺。\n第三条 保密期限\n本协议保密期限为签署之日起 3 年，商业秘密不受期限限制。\n第四条 违约责任\n违反保密义务的，赔偿对方全部损失，并支付合同金额 20% 的违约金；涉嫌犯罪的追究刑事责任。\n第五条 返还与销毁\n合作终止后 30 日内，接收方须返还或销毁全部保密信息，并出具书面确认。",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "数据安全"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_legal_data_compliance",
+            "title": "# 澜图智能数据合规与隐私保护规范",
+            "chunk": 0,
+            "score": 8.692,
+            "snippet": "# 澜图智能数据合规与隐私保护规范\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-07-01 09:00\n更新时间：2025-09-01 09:00\n版本号：v2.6\n文档类型：legal\n文档族：data_compliance\n生效日期：2025-09-01\n\n## 一、适用法律\n\n遵守《个人信息保护法》《数据安全法》《网络安全法》及欧盟 GDPR，处理个人信息须遵循最小必要与告知同意原则。\n\n## 二、数据出境\n\n向境外提供个人信息或重要数据须开展安全评估或签订标准合同，涉及研发数据的须经信息安全委员"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2025",
+            "title": "# 澜图智能采购管理制度（2025版）",
+            "chunk": 0,
+            "score": 7.355,
+            "snippet": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付"
+          },
+          {
+            "doc_id": "lantu_policy_infosec",
+            "title": "# 澜图智能信息安全管理制度",
+            "chunk": 0,
+            "score": 4.573,
+            "snippet": "# 澜图智能信息安全管理制度\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-04-01 09:00\n更新时间：2025-08-01 09:00\n版本号：v4.0\n文档类型：policy\n文档族：information_security\n生效日期：2025-08-01\n\n## 一、账号与密码\n\n员工账号一人一号，密码长度不少于 12 位，包含大小写字母、数字与符号，每 90 天更换一次；禁止共享账号。\n\n## 二、终端安全\n\n办公电脑须安装公司统一的终端防护软件，开启磁盘加密与屏保锁定；禁止安装未授权软件与"
+          },
+          {
+            "doc_id": "lantu_tech_security",
+            "title": "# 澜图智能产品网络安全设计规范",
+            "chunk": 0,
+            "score": 4.389,
+            "snippet": "# 澜图智能产品网络安全设计规范\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-11-01 09:00\n更新时间：2025-10-01 09:00\n版本号：v2.5\n文档类型：tech\n文档族：product_security\n生效日期：2025-10-01\n\n## 一、安全设计原则\n\n遵循最小权限、默认拒绝、纵深防御与安全默认配置原则，产品通过等保三级与 IEC 62443 评估。\n\n## 二、身份与访问\n\n支持多因素认证、RBAC 权限模型与操作审计；默认密码首次登录强制修改，会话超时 30 分钟。\n"
+          },
+          {
+            "doc_id": "lantu_org_committees",
+            "title": "# 澜图智能跨部门委员会与运作机制",
+            "chunk": 0,
+            "score": 4.257,
+            "snippet": "# 澜图智能跨部门委员会与运作机制\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2024-05-06 09:00\n更新时间：2025-10-18 11:00\n版本号：v2.1\n文档类型：org\n文档族：committees\n生效日期：2025-10-18\n\n## 一、产品决策委员会\n\n主任由 CTO 担任，成员包括产品部、研发中心、销售中心、质量部负责人，负责产品立项、版本发布与退市决策，每月召开一次。\n\n## 二、质量安全委员会\n\n主任由 COO 担任，负责重大质量事故、召回与安全生产事项，实行 24 小时响"
+          },
+          {
+            "doc_id": "lantu_tech_cloud_platform",
+            "title": "# 澜图智能云平台架构设计",
+            "chunk": 0,
+            "score": 3.943,
+            "snippet": "# 澜图智能云平台架构设计\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-09-01 09:00\n更新时间：2025-09-18 16:00\n版本号：v3.0\n文档类型：tech\n文档族：cloud_platform\n生效日期：2025-09-18\n\n## 一、总体架构\n\n云平台采用微服务架构，基于 Kubernetes 部署，分为设备接入、数据服务、应用服务与开放 API 四层。\n\n## 二、接入能力\n\n单集群支持 5,000 台设备接入，MQTT 消息吞吐 20 万条/秒，设备离线缓存 7 天。\n\n#"
+          },
+          {
+            "doc_id": "lantu_policy_data_classification",
+            "title": "# 澜图智能数据分级与分类管理规范",
+            "chunk": 0,
+            "score": 3.805,
+            "snippet": "# 澜图智能数据分级与分类管理规范\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-05-20 09:00\n更新时间：2025-09-10 14:00\n版本号：v2.5\n文档类型：policy\n文档族：data_classification\n生效日期：2025-09-10\n\n## 一、分级定义\n\n数据分为 L1 公开、L2 内部、L3 机密、L4 绝密四级。L1 可对外发布；L2 限公司内部；L3 限授权岗位；L4 限特定人员并加密存储。\n\n## 二、典型数据\n\nL1：宣传资料、公开财报；L2：一般制度、会"
+          },
+          {
+            "doc_id": "lantu_tech_edge",
+            "title": "# 澜图智能边缘计算产品 LT-Edge 说明",
+            "chunk": 0,
+            "score": 3.568,
+            "snippet": "# 澜图智能边缘计算产品 LT-Edge 说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2025-01-10 09:00\n更新时间：2025-06-12 11:00\n版本号：v1.3\n文档类型：tech\n文档族：edge_computing\n生效日期：2025-06-12\n\n## 一、产品定位\n\nLT-Edge 是面向产线的边缘计算单元，承载视觉推理、数据采集与协议转换，支持断网续传。\n\n## 二、硬件规格\n\n8 核 ARM 处理器，32 TOPS NPU，16 GB 内存，256 GB 存储，支持 4 路千"
+          },
+          {
+            "doc_id": "lantu_support_remote_diagnostics",
+            "title": "# 澜图智能远程诊断服务说明",
+            "chunk": 0,
+            "score": 3.5,
+            "snippet": "# 澜图智能远程诊断服务说明\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-05-01 09:00\n更新时间：2025-07-18 15:00\n版本号：v2.6\n文档类型：support\n文档族：remote_diagnostics\n生效日期：2025-07-18\n\n## 一、服务能力\n\n远程诊断中心 7×24 小时值守，通过安全网关接入客户设备，实时读取报警、日志与运行数据。\n\n## 二、解决率\n\n2025 年远程诊断解决率 85%，平均故障定位时间 18 分钟，减少现场出勤 2,100 次。\n\n## "
+          },
+          {
+            "doc_id": "lantu_meeting_safety",
+            "title": "# 2025 年安全生产委员会会议纪要",
+            "chunk": 0,
+            "score": 2.768,
+            "snippet": "# 2025 年安全生产委员会会议纪要\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2025-06-12 09:00\n更新时间：2025-06-12 15:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_safety_2025\n生效日期：2025-06-12\n\n## 一、安全形势\n\n上半年未发生重伤及以上事故，轻伤 2 起，同比下降 50%；排查隐患 27 项，整改完成 25 项。\n\n## 二、重点风险\n\n机器人调试区域误入风险、锂电物料存储消防风险、高处作业风险；需完善安全围栏与联锁。"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_legal_data_compliance",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_legal_data_compliance",
+        "title": "# 澜图智能数据合规与隐私保护规范",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 428,
+        "text": "# 澜图智能数据合规与隐私保护规范\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-07-01 09:00\n更新时间：2025-09-01 09:00\n版本号：v2.6\n文档类型：legal\n文档族：data_compliance\n生效日期：2025-09-01\n\n## 一、适用法律\n\n遵守《个人信息保护法》《数据安全法》《网络安全法》及欧盟 GDPR，处理个人信息须遵循最小必要与告知同意原则。\n\n## 二、数据出境\n\n向境外提供个人信息或重要数据须开展安全评估或签订标准合同，涉及研发数据的须经信息安全委员会审批。\n\n## 三、客户数据\n\n为客户部署的系统采集的生产数据归客户所有，澜图智能仅可在授权范围内用于运维，不得用于训练或对外提供。\n\n## 四、个人权利\n\n员工与客户可查询、更正、删除其个人信息；请求由法务合规部在 15 个工作日内处理。\n\n## 五、事件通知\n\n发生数据泄露的，应在 24 小时内上报监管机构，并通知受影响个人。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

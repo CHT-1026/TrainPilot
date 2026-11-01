@@ -1,0 +1,322 @@
+{
+  "qid": "B0068",
+  "question": "公司层面的培训体系与各专项培训方案（管理者领导力培训、新员工入职培训、服务工程师认证）是什么对应关系？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>培训体系 专项培训方案</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 68,
+        "prompt_tokens": 371,
+        "total_tokens": 439,
+        "completion_tokens_details": {
+          "reasoning_tokens": 37
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.016
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"公司培训体系 管理者领导力培训 新员工入职培训 服务工程师认证\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 69,
+        "prompt_tokens": 439,
+        "total_tokens": 508,
+        "completion_tokens_details": {
+          "reasoning_tokens": 30
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.594
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_hr_training_system\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 79,
+        "prompt_tokens": 2812,
+        "total_tokens": 2891,
+        "completion_tokens_details": {
+          "reasoning_tokens": 48
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 1.937
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_hr_manager_training\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 76,
+        "prompt_tokens": 3198,
+        "total_tokens": 3274,
+        "completion_tokens_details": {
+          "reasoning_tokens": 45
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2752
+        }
+      },
+      "seconds": 2.594
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_support_training_certification\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 121,
+        "prompt_tokens": 3542,
+        "total_tokens": 3663,
+        "completion_tokens_details": {
+          "reasoning_tokens": 89
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3136
+        }
+      },
+      "seconds": 4.141
+    },
+    {
+      "round": 6,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"二者是“总体框架—专项落地”的关系：公司层面的《培训体系与年度计划》（人力资源部，v3.6，2025-12-01生效）是顶层设计，将培训统一划分为新员工培训、专业培训、管理培训与领导力培训四大类，覆盖全员全周期，并统一规定年度计划（2025年12,000人次、人均32小时及各类占比：专业55%/管理20%/新员工15%/合规安全10%）、讲师体系（内部认证讲师86人、外部机构12家）与效果评估（柯氏四级评估、满意度目标90%以上）。三个专项方案则是这一体系在不同对象和业务条线上的细化实施：①《管理者领导力培训方案》（v2.0，2025-09-01生效）对应体系中的“管理培训与领导力培训”类，面向新任经理、总监及高潜后备，全年3期、每期30人，含6模块12天课程与行动学习，结业颁发“澜图管理者”认证作为晋升参考；②《新员工入职培训大纲》（v2.3，2025-08-01生效）对应“新员工培训”类，目标是帮助新员工30天内完成从入职到独立工作的过渡，含5天集中课程与岗位导师制；③《服务工程师培训与认证体系》（售后服务部，v2.4，2025-08-08生效）对应“专业培训”类在售后服务条线的专业化落地，设L1/L2/L3三级认证（培训5/10/15天），采用理论40%+实操50%+客户评价10%的考核，证书3年有效需复训，截至2025年底认证工程师286人（含L3高级42人）。简言之，公司培训体系规定“培训什么类型、投入多少资源、如何评估”，专项方案规定“具体培训谁、教什么、如何考核认证”，专项方案在对象、课程、考核上与体系四大类一一对应并落实体系的年度指标。\",\"citations\":[\"lantu_hr_training_system\",\"lantu_hr_manager_training\",\"lantu_hr_new_hire_training\",\"lantu_support_training_certification\"],\"evidence\":[\"lantu_hr_training_system#片段0\",\"lantu_hr_manager_training#片段0\",\"lantu_hr_new_hire_training#片段0\",\"lantu_support_training_certification#片段0\"]}",
+      "usage": {
+        "completion_tokens": 653,
+        "prompt_tokens": 3947,
+        "total_tokens": 4600,
+        "completion_tokens_details": {
+          "reasoning_tokens": 84
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3520
+        }
+      },
+      "seconds": 13.968
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "公司培训体系 管理者领导力培训 新员工入职培训 服务工程师认证",
+        "top_k": 10
+      },
+      "result_sha": "385e18e9a5f4397522b430520f4532dca20f6d5c76ef88a1dd64f282f6dba6d5",
+      "result_chars": 3907,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_training_system",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "afc0508b4683bf77241881717bc92dea0541d3094b2819dfe97e08c78c60633e",
+      "result_chars": 540,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_manager_training",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "0c8fdf53510c2000bf5c878498c5a1a6d422a51591fcbf28c0adf35d5a9d21a6",
+      "result_chars": 483,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_training_certification",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "7875ed849d30ac2dd4045921cf7119a42d7341dbe49d3597cb8bb1ff8db12f6a",
+      "result_chars": 578,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "二者是“总体框架—专项落地”的关系：公司层面的《培训体系与年度计划》（人力资源部，v3.6，2025-12-01生效）是顶层设计，将培训统一划分为新员工培训、专业培训、管理培训与领导力培训四大类，覆盖全员全周期，并统一规定年度计划（2025年12,000人次、人均32小时及各类占比：专业55%/管理20%/新员工15%/合规安全10%）、讲师体系（内部认证讲师86人、外部机构12家）与效果评估（柯氏四级评估、满意度目标90%以上）。三个专项方案则是这一体系在不同对象和业务条线上的细化实施：①《管理者领导力培训方案》（v2.0，2025-09-01生效）对应体系中的“管理培训与领导力培训”类，面向新任经理、总监及高潜后备，全年3期、每期30人，含6模块12天课程与行动学习，结业颁发“澜图管理者”认证作为晋升参考；②《新员工入职培训大纲》（v2.3，2025-08-01生效）对应“新员工培训”类，目标是帮助新员工30天内完成从入职到独立工作的过渡，含5天集中课程与岗位导师制；③《服务工程师培训与认证体系》（售后服务部，v2.4，2025-08-08生效）对应“专业培训”类在售后服务条线的专业化落地，设L1/L2/L3三级认证（培训5/10/15天），采用理论40%+实操50%+客户评价10%的考核，证书3年有效需复训，截至2025年底认证工程师286人（含L3高级42人）。简言之，公司培训体系规定“培训什么类型、投入多少资源、如何评估”，专项方案规定“具体培训谁、教什么、如何考核认证”，专项方案在对象、课程、考核上与体系四大类一一对应并落实体系的年度指标。",
+    "citations": [
+      "lantu_hr_training_system",
+      "lantu_hr_manager_training",
+      "lantu_hr_new_hire_training",
+      "lantu_support_training_certification"
+    ],
+    "evidence": [
+      "lantu_hr_training_system#片段0",
+      "lantu_hr_manager_training#片段0",
+      "lantu_hr_new_hire_training#片段0",
+      "lantu_support_training_certification#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 15375,
+  "started_at": "2026-11-01T04:07:33",
+  "elapsed_seconds": 27.25,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "公司培训体系 管理者领导力培训 新员工入职培训 服务工程师认证",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_hr_training_system",
+            "title": "# 澜图智能培训体系与年度计划",
+            "chunk": 0,
+            "score": 49.032,
+            "snippet": "# 澜图智能培训体系与年度计划\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-02-01 09:00\n更新时间：2025-12-01 10:00\n版本号：v3.6\n文档类型：hr\n文档族：training_system\n生效日期：2025-12-01\n\n## 一、培训体系\n\n分为新员工培训、专业培训、管理培训与领导力培训四大类，覆盖全员全周期。\n\n## 二、年度计划\n\n2025 年计划培训 12,000 人次，人均 32 小时；专业培训占比 55%，管理培训 20%，新员工 15%，合规安全 10%。\n"
+          },
+          {
+            "doc_id": "lantu_hr_manager_training",
+            "title": "澜图智能管理者领导力培训方案",
+            "chunk": 0,
+            "score": 45.738,
+            "snippet": "澜图智能管理者领导力培训方案\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-05-01 09:00\n更新时间：2025-09-01 10:00\n版本号：v2.0\n文档类型：hr\n文档族：manager_training\n生效日期：2025-09-01\n一、培养对象\n新任经理、部门总监与高潜后备，每期 30 人，全年 3 期。\n二、课程模块\n战略解码、团队管理、绩效辅导、跨部门协作、财务思维与变革管理，共 6 个模块 12 天。\n三、行动学习\n每位学员围绕真实业务问题组建立项，结业时汇报成果；优秀项目可获得"
+          },
+          {
+            "doc_id": "lantu_hr_new_hire_training",
+            "title": "澜图智能新员工入职培训大纲",
+            "chunk": 0,
+            "score": 39.074,
+            "snippet": "澜图智能新员工入职培训大纲\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-03-01 09:00\n更新时间：2025-08-01 10:00\n版本号：v2.3\n文档类型：hr\n文档族：new_hire_training\n生效日期：2025-08-01\n一、培训目标\n帮助新员工了解公司战略、文化、制度与岗位要求，在 30 天内完成从入职到独立工作的过渡。\n二、课程安排\n第 1 天：公司介绍与企业文化；第 2 天：制度与信息安全；第 3 天：产品与业务；第 4 天：质量意识与安全生产；第 5 天：岗位实践与导"
+          },
+          {
+            "doc_id": "lantu_support_training_certification",
+            "title": "# 澜图智能服务工程师培训与认证体系",
+            "chunk": 0,
+            "score": 35.695,
+            "snippet": "# 澜图智能服务工程师培训与认证体系\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-06-01 09:00\n更新时间：2025-08-08 10:00\n版本号：v2.4\n文档类型：support\n文档族：service_certification\n生效日期：2025-08-08\n\n## 一、认证等级\n\n服务工程师分为 L1 初级、L2 中级、L3 高级三级，分别对应常规维护、故障维修与整线调试。\n\n## 二、培训内容\n\nL1：安全、保养、备件更换（5 天）；L2：电气与控制系统维修（10 天）；L3：整线"
+          },
+          {
+            "doc_id": "lantu_policy_employee_handbook",
+            "title": "# 澜图智能员工手册",
+            "chunk": 0,
+            "score": 25.639,
+            "snippet": "# 澜图智能员工手册\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-07-01 09:00\n版本号：v6.0\n文档类型：policy\n文档族：employee_handbook\n生效日期：2025-07-01\n\n## 一、适用范围\n\n本手册适用于澜图智能装备股份有限公司及下属子公司全体正式员工、试用期员工与实习生。劳务派遣与外包人员参照执行。\n\n## 二、入职与试用\n\n新员工入职当日签署劳动合同、保密协议与廉洁承诺书，试用期 3-6 个月。试用期内需完成入职培"
+          },
+          {
+            "doc_id": "lantu_support_system",
+            "title": "# 澜图智能客户服务体系白皮书",
+            "chunk": 0,
+            "score": 21.586,
+            "snippet": "# 澜图智能客户服务体系白皮书\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-03-01 09:00\n更新时间：2025-12-08 10:00\n版本号：v3.2\n文档类型：support\n文档族：service_system\n生效日期：2025-12-08\n\n## 一、服务网络\n\n公司在全国设有 68 个服务网点、12 个备件仓，覆盖 31 个省级行政区；海外设 3 个服务点。售后服务团队 412 人，认证工程师 286 人。\n\n## 二、服务内容\n\n提供安装调试、培训、预防性维护、故障维修、备件供应、"
+          },
+          {
+            "doc_id": "lantu_strategy_safety",
+            "title": "# 澜图智能安全生产管理制度",
+            "chunk": 0,
+            "score": 17.667,
+            "snippet": "# 澜图智能安全生产管理制度\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2024-01-01 09:00\n更新时间：2025-05-01 09:00\n版本号：v3.5\n文档类型：strategy\n文档族：safety_production\n生效日期：2025-05-01\n\n## 一、安全责任\n\n实行总经理全面负责、分管领导直接负责、部门负责人具体负责的安全责任制，签订年度安全目标责任书。\n\n## 二、风险管控\n\n建立危险源清单，对机器人调试、电气作业、高处作业与危化品实施专项管控，每季度开展风险评估。\n\n## "
+          },
+          {
+            "doc_id": "lantu_support_field_service",
+            "title": "# 澜图智能现场服务与安装调试规范",
+            "chunk": 0,
+            "score": 14.486,
+            "snippet": "# 澜图智能现场服务与安装调试规范\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-04-01 09:00\n更新时间：2025-05-30 10:00\n版本号：v3.0\n文档类型：support\n文档族：field_service\n生效日期：2025-05-30\n\n## 一、安装调试\n\n设备到货后 3 个工作日内完成开箱验收，7 个工作日内完成安装，14 个工作日内完成调试与试运行。\n\n## 二、现场管理\n\n服务工程师须佩戴工牌、遵守客户安全规定、每日提交服务日报；涉及动火、高处作业须办理许可。\n\n## 三"
+          },
+          {
+            "doc_id": "lantu_legal_compliance_manual",
+            "title": "# 澜图智能合规管理手册",
+            "chunk": 0,
+            "score": 14.357,
+            "snippet": "# 澜图智能合规管理手册\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-02-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v3.1\n文档类型：legal\n文档族：compliance_manual\n生效日期：2025-06-01\n\n## 一、合规组织\n\n公司设合规委员会，主任由法务合规总监担任，成员包括财务、销售、采购、人力与信息技术负责人。\n\n## 二、重点领域\n\n反商业贿赂、出口管制、数据保护、反垄断、劳动用工与环境保护。各领域每年至少开展一次风险评估。\n\n## 三、培训与举"
+          },
+          {
+            "doc_id": "lantu_org_department_duties",
+            "title": "# 澜图智能一级部门职责与编制",
+            "chunk": 1,
+            "score": 12.66,
+            "snippet": "| 部门 | 负责人 | 编制（人） | 主要职责 |\n| --- | --- | --- | --- |\n| 研发中心 | 沈亦舟 | 1,286 | 本体/控制器/视觉/具身智能研发 |\n| 产品部 | 孟凡 | 96 | 产品规划与生命周期管理 |\n| 销售中心 | 罗嘉树 | 620 | 区域销售与渠道 |\n| 客户成功部 | 林可 | 86 | 重点客户经营 |\n| 供应链中心 | 韩立恒 | 210 | 采购、计划、物流 |\n| 制造中心 | 韩立恒 | 980 | 三大基地生产 |\n| 质量部 | 潘"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_training_system",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_hr_training_system",
+        "title": "# 澜图智能培训体系与年度计划",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 368,
+        "text": "# 澜图智能培训体系与年度计划\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-02-01 09:00\n更新时间：2025-12-01 10:00\n版本号：v3.6\n文档类型：hr\n文档族：training_system\n生效日期：2025-12-01\n\n## 一、培训体系\n\n分为新员工培训、专业培训、管理培训与领导力培训四大类，覆盖全员全周期。\n\n## 二、年度计划\n\n2025 年计划培训 12,000 人次，人均 32 小时；专业培训占比 55%，管理培训 20%，新员工 15%，合规安全 10%。\n\n## 三、讲师体系\n\n内部认证讲师 86 人，外部合作机构 12 家；讲师课酬 500-2,000 元/课时。\n\n## 四、效果评估\n\n采用柯氏四级评估，重点跟踪行为改变与业务结果；培训满意度目标 90% 以上。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_manager_training",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_hr_manager_training",
+        "title": "澜图智能管理者领导力培训方案",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 321,
+        "text": "澜图智能管理者领导力培训方案\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-05-01 09:00\n更新时间：2025-09-01 10:00\n版本号：v2.0\n文档类型：hr\n文档族：manager_training\n生效日期：2025-09-01\n一、培养对象\n新任经理、部门总监与高潜后备，每期 30 人，全年 3 期。\n二、课程模块\n战略解码、团队管理、绩效辅导、跨部门协作、财务思维与变革管理，共 6 个模块 12 天。\n三、行动学习\n每位学员围绕真实业务问题组建立项，结业时汇报成果；优秀项目可获得 20 万元资源支持。\n四、评估与认证\n结业需通过案例答辩与 360 度评估，合格者颁发“澜图管理者”认证，作为晋升参考。",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_training_certification",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_support_training_certification",
+        "title": "# 澜图智能服务工程师培训与认证体系",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 391,
+        "text": "# 澜图智能服务工程师培训与认证体系\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-06-01 09:00\n更新时间：2025-08-08 10:00\n版本号：v2.4\n文档类型：support\n文档族：service_certification\n生效日期：2025-08-08\n\n## 一、认证等级\n\n服务工程师分为 L1 初级、L2 中级、L3 高级三级，分别对应常规维护、故障维修与整线调试。\n\n## 二、培训内容\n\nL1：安全、保养、备件更换（5 天）；L2：电气与控制系统维修（10 天）；L3：整线调试与工艺优化（15 天）。\n\n## 三、考核方式\n\n理论考试 40%、实操考核 50%、客户评价 10%，80 分合格；证书有效期 3 年，到期需复训。\n\n## 四、认证人数\n\n截至 2025 年底，认证工程师 286 人，其中 L3 高级工程师 42 人。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_hr_training_system",
+      "lantu_hr_manager_training",
+      "lantu_hr_new_hire_training",
+      "lantu_support_training_certification"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.394,
+    "number_recall": 0.0
+  }
+}

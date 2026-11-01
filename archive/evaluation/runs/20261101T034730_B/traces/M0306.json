@@ -1,0 +1,123 @@
+{
+  "qid": "M0306",
+  "question": "我们 20 公斤负载的六轴机器人，臂展和最大速度是多少？",
+  "question_type": "事实检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"20公斤 六轴机器人\",\"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 368,
+        "total_tokens": 544,
+        "completion_tokens": 176,
+        "completion_tokens_details": {
+          "reasoning_tokens": 147,
+          "text_tokens": 176
+        }
+      },
+      "seconds": 1.672
+    },
+    {
+      "round": 2,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"20公斤负载的六轴机器人型号为LT-R20，其臂展为1,700 mm，最大速度为2.8 m/s。\",\"citations\":[\"lantu_product_r_series\"],\"evidence\":[\"lantu_product_r_series#1\"]}",
+      "usage": {
+        "prompt_tokens": 1508,
+        "total_tokens": 1976,
+        "completion_tokens": 468,
+        "completion_tokens_details": {
+          "reasoning_tokens": 397,
+          "text_tokens": 468
+        }
+      },
+      "seconds": 3.688
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "20公斤 六轴机器人",
+        "top_k": 5
+      },
+      "result_sha": "bd91f935f8322b44cb1b363d99366acfbd59062b7b03f79f3af458091576bfed",
+      "result_chars": 1930,
+      "hits": 5
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "20公斤负载的六轴机器人型号为LT-R20，其臂展为1,700 mm，最大速度为2.8 m/s。",
+    "citations": [
+      "lantu_product_r_series"
+    ],
+    "evidence": [
+      "lantu_product_r_series#1"
+    ]
+  },
+  "status": "answered",
+  "tokens": 2520,
+  "started_at": "2026-11-01T06:26:34",
+  "elapsed_seconds": 5.38,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "20公斤 六轴机器人",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 1,
+            "score": 9.424,
+            "snippet": "| 产品线 | 代表型号 | 负载 | 典型行业 |\n| --- | --- | --- | --- |\n| 六轴机器人 | LT-R6/R12/R20/R50/R210 | 6-210 kg | 汽车、锂电、金属加工 |\n| SCARA | LT-S4/S10 | 4-10 kg | 3C、光伏、食品 |\n| 移动机器人 | LT-AMR-500/1000/2000 | 500-2,000 kg | 物流、半导体 |\n| 机器视觉 | LT-V3D | — | 装配、检测 |\n| 控制器 | LT-C800 | "
+          },
+          {
+            "doc_id": "lantu_product_r20_pro_whitepaper",
+            "title": "LT-R20 Pro 机器人技术白皮书",
+            "chunk": 0,
+            "score": 8.365,
+            "snippet": "LT-R20 Pro 机器人技术白皮书\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2025-11-20 09:00\n更新时间：2025-11-28 18:00\n版本号：v0.9\n文档类型：product\n文档族：product_r20_pro\n生效日期：2025-11-28\n一、研发背景\n面向锂电叠片、汽车装配等高频节拍场景，澜图智能研发新一代中型六轴机器人 LT-R20 Pro，计划\n2026 年第二季度量产。\n二、技术指标\n额定负载 22 kg，臂展 1,750 mm，重复定位精度 ±0.02 mm，本体重量"
+          },
+          {
+            "doc_id": "lantu_company_campus",
+            "title": "# 澜图智能制造基地与产能布局",
+            "chunk": 0,
+            "score": 7.834,
+            "snippet": "# 澜图智能制造基地与产能布局\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2024-04-12 09:00\n更新时间：2025-11-20 15:00\n版本号：v3.0\n文档类型：company\n文档族：manufacturing_base\n生效日期：2025-11-20\n\n## 一、苏州总部基地\n\n位于苏州工业园区，占地 120 亩，建筑面积 9.6 万平方米，承担六轴机器人总装、控制器生产与研发测试，年产能 18,000 台。\n\n## 二、东莞华南基地\n\n位于东莞松山湖，占地 60 亩，聚焦 SCARA、A"
+          },
+          {
+            "doc_id": "lantu_case_04_xinghe",
+            "title": "# 客户案例：星禾电子精密组装项目",
+            "chunk": 0,
+            "score": 6.869,
+            "snippet": "# 客户案例：星禾电子精密组装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_xinghe\n生效日期：2024-12-20\n\n## 一、客户背景\n\n星禾电子位于昆山，主营3C 电子业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖8"
+          },
+          {
+            "doc_id": "lantu_product_r_series",
+            "title": "# LT-R 系列六轴工业机器人产品手册",
+            "chunk": 1,
+            "score": 6.842,
+            "snippet": "| 型号 | 负载 | 臂展 | 重复精度 | 本体重量 | 最大速度 |\n| --- | --- | --- | --- | --- | --- |\n| LT-R6 | 6 kg | 1,450 mm | ±0.02 mm | 165 kg | 3.2 m/s |\n| LT-R12 | 12 kg | 1,550 mm | ±0.03 mm | 210 kg | 3.0 m/s |\n| LT-R20 | 20 kg | 1,700 mm | ±0.03 mm | 285 kg | 2.8 m/s |\n| LT-R"
+          }
+        ]
+      },
+      "seconds": 0.015
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_product_r_series"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.184,
+    "number_recall": 1.0
+  }
+}

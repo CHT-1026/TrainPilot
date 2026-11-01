@@ -1,0 +1,389 @@
+{
+  "qid": "B0094",
+  "question": "涉密 P7 员工签署 24 个月竞业限制。假定离职前 12 个月实际工资合计为 65–90 万元，按文档平均月工资的 30% 估算月补偿及总额。仅知道职级带宽够不够确定实付金额？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"竞业限制 P7 补偿 30% 平均工资\"}}",
+      "usage": {
+        "prompt_tokens": 414,
+        "total_tokens": 666,
+        "completion_tokens": 252,
+        "completion_tokens_details": {
+          "reasoning_tokens": 222,
+          "text_tokens": 252
+        }
+      },
+      "seconds": 2.516
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_confidentiality\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 2692,
+        "total_tokens": 3150,
+        "completion_tokens": 458,
+        "completion_tokens_details": {
+          "reasoning_tokens": 423,
+          "text_tokens": 458
+        }
+      },
+      "seconds": 4.156
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_hr_compensation\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 3088,
+        "total_tokens": 3690,
+        "completion_tokens": 602,
+        "completion_tokens_details": {
+          "reasoning_tokens": 568,
+          "text_tokens": 602
+        }
+      },
+      "seconds": 5.719
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"竞业限制 补偿 协议 金额\"}}",
+      "usage": {
+        "prompt_tokens": 3464,
+        "total_tokens": 4607,
+        "completion_tokens": 1143,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1117,
+          "text_tokens": 1143
+        }
+      },
+      "seconds": 11.484
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_hr_resignation\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 5734,
+        "total_tokens": 5885,
+        "completion_tokens": 151,
+        "completion_tokens_details": {
+          "reasoning_tokens": 116,
+          "text_tokens": 151
+        }
+      },
+      "seconds": 1.719
+    },
+    {
+      "round": 6,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据《澜图智能离职与交接管理办法》规定，涉密岗位竞业限制期限最长为 2 年，补偿标准为离职前 12 个月平均工资的 30%。\\n\\n1. **月补偿估算**：\\n   - 离职前 12 个月平均工资范围：65 万元 ÷ 12 ≈ 5.42 万元 至 90 万元 ÷ 12 = 7.5 万元。\\n   - 月补偿金额（平均工资 × 30%）：**1.625 万元 至 2.25 万元**。\\n\\n2. **总额估算**：\\n   - 总额（月补偿 × 24 个月）：**39 万元 至 54 万元**。\\n\\n3. **仅知道职级带宽是否足够确定实付金额**：\\n   **不够**。制度明确规定补偿基数为“离职前 12 个月平均工资”，该数值需依据员工个人的实际薪资流水（含基本工资、绩效、奖金等）核算，而非参照职级带宽。职级带宽仅提供薪资区间的宏观参考，无法直接换算出个人的确切平均工资，因此不足以确定最终的实付补偿金额。\",\"citations\":[\"lantu_hr_resignation\"],\"evidence\":[\"lantu_hr_resignation#0\"]}",
+      "usage": {
+        "prompt_tokens": 6130,
+        "total_tokens": 9052,
+        "completion_tokens": 2922,
+        "completion_tokens_details": {
+          "reasoning_tokens": 2615,
+          "text_tokens": 2922
+        }
+      },
+      "seconds": 22.172
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "竞业限制 P7 补偿 30% 平均工资"
+      },
+      "result_sha": "a932583383ca5a2e8895e53d714bffc3c2706fed3bb23bf532b2f27428a34ecd",
+      "result_chars": 3926,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_confidentiality",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "f69172ab39d3cf80bfb0aa2815d2f78c01451507f35450870f8cdeb58785e57d",
+      "result_chars": 616,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_compensation",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "80636806aa8fcc2d075a7ce0027ff8acb45eff1f9ea2bcdc4b17c791e2763584",
+      "result_chars": 531,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "竞业限制 补偿 协议 金额"
+      },
+      "result_sha": "f82face681b1cb64cffb53f7284070944e992cf018db3734075d4073a41069b8",
+      "result_chars": 3930,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_resignation",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "4148ef2032528367589f86e07f111b5d0a5ea9432d5e0fd469f6b4fe315dbdc8",
+      "result_chars": 588,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《澜图智能离职与交接管理办法》规定，涉密岗位竞业限制期限最长为 2 年，补偿标准为离职前 12 个月平均工资的 30%。\n\n1. **月补偿估算**：\n   - 离职前 12 个月平均工资范围：65 万元 ÷ 12 ≈ 5.42 万元 至 90 万元 ÷ 12 = 7.5 万元。\n   - 月补偿金额（平均工资 × 30%）：**1.625 万元 至 2.25 万元**。\n\n2. **总额估算**：\n   - 总额（月补偿 × 24 个月）：**39 万元 至 54 万元**。\n\n3. **仅知道职级带宽是否足够确定实付金额**：\n   **不够**。制度明确规定补偿基数为“离职前 12 个月平均工资”，该数值需依据员工个人的实际薪资流水（含基本工资、绩效、奖金等）核算，而非参照职级带宽。职级带宽仅提供薪资区间的宏观参考，无法直接换算出个人的确切平均工资，因此不足以确定最终的实付补偿金额。",
+    "citations": [
+      "lantu_hr_resignation"
+    ],
+    "evidence": [
+      "lantu_hr_resignation#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 27050,
+  "started_at": "2026-11-01T04:12:46",
+  "elapsed_seconds": 47.77,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "竞业限制 P7 补偿 30% 平均工资"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_hr_resignation",
+            "title": "# 澜图智能离职与交接管理办法",
+            "chunk": 0,
+            "score": 30.264,
+            "snippet": "# 澜图智能离职与交接管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-15 09:00\n更新时间：2025-05-20 09:00\n版本号：v2.4\n文档类型：hr\n文档族：resignation\n生效日期：2025-05-20\n\n## 一、离职申请\n\n正式员工提前 30 日、试用期员工提前 3 日提交书面离职申请；关键岗位须提前 60 日。\n\n## 二、离职面谈\n\nHR 在收到申请后 3 个工作日内安排面谈，了解离职原因并记录改进建议；核心人才可启动挽留。\n\n## 三、工作交接\n\n交接内"
+          },
+          {
+            "doc_id": "lantu_policy_confidentiality",
+            "title": "# 澜图智能商业秘密与保密管理规范",
+            "chunk": 0,
+            "score": 9.911,
+            "snippet": "# 澜图智能商业秘密与保密管理规范\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-15 09:00\n更新时间：2025-03-28 11:00\n版本号：v3.1\n文档类型：policy\n文档族：confidentiality\n生效日期：2025-03-28\n\n## 一、保密范围\n\n技术秘密（源代码、算法、图纸、工艺参数）、经营秘密（客户名单、报价、成本、未披露财务数据）与人事秘密均属保密信息。\n\n## 二、保密义务\n\n员工在职期间及离职后 3 年内不得披露、使用或允许他人使用公司保密信息；竞业限制人"
+          },
+          {
+            "doc_id": "lantu_policy_employee_handbook",
+            "title": "# 澜图智能员工手册",
+            "chunk": 0,
+            "score": 8.799,
+            "snippet": "# 澜图智能员工手册\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-07-01 09:00\n版本号：v6.0\n文档类型：policy\n文档族：employee_handbook\n生效日期：2025-07-01\n\n## 一、适用范围\n\n本手册适用于澜图智能装备股份有限公司及下属子公司全体正式员工、试用期员工与实习生。劳务派遣与外包人员参照执行。\n\n## 二、入职与试用\n\n新员工入职当日签署劳动合同、保密协议与廉洁承诺书，试用期 3-6 个月。试用期内需完成入职培"
+          },
+          {
+            "doc_id": "lantu_hr_job_grades",
+            "title": "# 澜图智能职级体系与晋升规则",
+            "chunk": 0,
+            "score": 6.577,
+            "snippet": "# 澜图智能职级体系与晋升规则\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-03-01 09:00\n更新时间：2025-03-01 09:00\n版本号：v3.0\n文档类型：hr\n文档族：job_grades\n生效日期：2025-03-01\n\n## 一、职级序列\n\n设管理序列（M1-M5）、专业序列（P1-P7）与技能序列（T1-T5）。研发、产品、销售、职能分别对应不同通道。\n\n## 二、晋升条件\n\n晋升需满足当前职级任职满 2 年、连续两次绩效 A 及以上、通过晋升评审；破格晋升须总经理审批。\n\n#"
+          },
+          {
+            "doc_id": "lantu_legal_supplier_code",
+            "title": "# 澜图智能供应商行为准则",
+            "chunk": 0,
+            "score": 6.405,
+            "snippet": "# 澜图智能供应商行为准则\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-04-01 09:00\n更新时间：2025-05-01 09:00\n版本号：v2.0\n文档类型：legal\n文档族：supplier_code\n生效日期：2025-05-01\n\n## 一、劳工与人权\n\n供应商不得使用童工、强迫劳动，须保障结社自由与最低工资，工作时间符合当地法律。\n\n## 二、健康与安全\n\n供应商须提供安全的工作环境，配备必要的防护设施，定期开展安全培训与应急演练。\n\n## 三、环境要求\n\n供应商须遵守环保法规，优"
+          },
+          {
+            "doc_id": "lantu_hr_compensation",
+            "title": "# 澜图智能薪酬与奖金管理办法",
+            "chunk": 0,
+            "score": 4.772,
+            "snippet": "# 澜图智能薪酬与奖金管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-01-01 09:00\n版本号：v3.2\n文档类型：hr\n文档族：compensation\n生效日期：2025-01-01\n\n## 一、薪酬结构\n\n年度薪酬 = 12 个月基本工资 + 1 个月年终双薪 + 绩效奖金（0-6 个月）+ 专项奖励。\n\n## 二、调薪机制\n\n每年 4 月调薪，依据市场分位、绩效与职级；调薪预算为工资总额的 5%-8%。\n\n## 三、绩效奖金\n\n与公司、部"
+          },
+          {
+            "doc_id": "lantu_support_remote_diagnostics",
+            "title": "# 澜图智能远程诊断服务说明",
+            "chunk": 0,
+            "score": 3.965,
+            "snippet": "# 澜图智能远程诊断服务说明\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-05-01 09:00\n更新时间：2025-07-18 15:00\n版本号：v2.6\n文档类型：support\n文档族：remote_diagnostics\n生效日期：2025-07-18\n\n## 一、服务能力\n\n远程诊断中心 7×24 小时值守，通过安全网关接入客户设备，实时读取报警、日志与运行数据。\n\n## 二、解决率\n\n2025 年远程诊断解决率 85%，平均故障定位时间 18 分钟，减少现场出勤 2,100 次。\n\n## "
+          },
+          {
+            "doc_id": "lantu_tech_control_architecture",
+            "title": "# 澜图智能机器人控制系统架构",
+            "chunk": 0,
+            "score": 3.734,
+            "snippet": "# 澜图智能机器人控制系统架构\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-06-01 09:00\n更新时间：2025-10-20 14:00\n版本号：v3.3\n文档类型：tech\n文档族：control_architecture\n生效日期：2025-10-20\n\n## 一、总体架构\n\n控制系统分为感知层、决策层、运动控制层与执行层，采用 EtherCAT 总线连接伺服与 I/O，总线周期 1 ms。\n\n## 二、控制器\n\nLT-C800 采用双核 ARM + FPGA 架构，支持 8 轴联动、0.5 "
+          },
+          {
+            "doc_id": "lantu_policy_attendance_2024",
+            "title": "# 澜图智能考勤管理制度（2024版）",
+            "chunk": 0,
+            "score": 3.382,
+            "snippet": "# 澜图智能考勤管理制度（2024版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：attendance\n生效日期：2024-01-01\n\n## 一、打卡规则\n\n员工每日上下班各打卡一次，漏打卡须在 3 个工作日内提交补卡申请，每月补卡不超过 3 次。\n\n## 二、弹性工作\n\n上班弹性 30 分钟，9:00-9:30 到岗均视为正常；每月可申请远程办公 2 天，须提前 1 个工作日审批"
+          },
+          {
+            "doc_id": "lantu_product_r_series",
+            "title": "# LT-R 系列六轴工业机器人产品手册",
+            "chunk": 0,
+            "score": 3.379,
+            "snippet": "# LT-R 系列六轴工业机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-01-15 09:00\n更新时间：2025-10-30 16:00\n版本号：v4.3\n文档类型：product\n文档族：product_r_series\n生效日期：2025-10-30\n\n## 一、产品定位\n\nLT-R 系列覆盖 6 kg 至 210 kg 负载，适用于搬运、焊接、装配、喷涂、打磨等工序，重复定位精度最高 ±0.02 mm，防护等级 IP54，可选 IP67。\n\n## 二、型号与参数\n\nLT-R6 负载 6"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_confidentiality",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_confidentiality",
+        "title": "# 澜图智能商业秘密与保密管理规范",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 434,
+        "text": "# 澜图智能商业秘密与保密管理规范\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-15 09:00\n更新时间：2025-03-28 11:00\n版本号：v3.1\n文档类型：policy\n文档族：confidentiality\n生效日期：2025-03-28\n\n## 一、保密范围\n\n技术秘密（源代码、算法、图纸、工艺参数）、经营秘密（客户名单、报价、成本、未披露财务数据）与人事秘密均属保密信息。\n\n## 二、保密义务\n\n员工在职期间及离职后 3 年内不得披露、使用或允许他人使用公司保密信息；竞业限制人员按协议执行。\n\n## 三、涉密载体\n\n涉密文件须标注密级，存放于带锁文件柜或加密系统；复印、拍照与外发须审批并登记。\n\n## 四、对外交流\n\n技术交流、展会与论文发表须经法务合规部与研发中心审核，禁止披露未公开的技术路线与参数。\n\n## 五、违约处理\n\n违反保密义务的，公司有权解除劳动合同、要求赔偿损失并追究法律责任；涉嫌犯罪的移交司法机关。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_compensation",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_hr_compensation",
+        "title": "# 澜图智能薪酬与奖金管理办法",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 362,
+        "text": "# 澜图智能薪酬与奖金管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-01-01 09:00\n版本号：v3.2\n文档类型：hr\n文档族：compensation\n生效日期：2025-01-01\n\n## 一、薪酬结构\n\n年度薪酬 = 12 个月基本工资 + 1 个月年终双薪 + 绩效奖金（0-6 个月）+ 专项奖励。\n\n## 二、调薪机制\n\n每年 4 月调薪，依据市场分位、绩效与职级；调薪预算为工资总额的 5%-8%。\n\n## 三、绩效奖金\n\n与公司、部门、个人绩效挂钩，S 级系数 1.5，A 级 1.2，B 级 1.0，C 级 0.5，D 级无奖金。\n\n## 四、专项奖励\n\n设置项目交付奖、专利奖、质量奖与销售冠军奖；单个项目奖励不超过 50 万元。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "竞业限制 补偿 协议 金额"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_hr_resignation",
+            "title": "# 澜图智能离职与交接管理办法",
+            "chunk": 0,
+            "score": 17.262,
+            "snippet": "# 澜图智能离职与交接管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-15 09:00\n更新时间：2025-05-20 09:00\n版本号：v2.4\n文档类型：hr\n文档族：resignation\n生效日期：2025-05-20\n\n## 一、离职申请\n\n正式员工提前 30 日、试用期员工提前 3 日提交书面离职申请；关键岗位须提前 60 日。\n\n## 二、离职面谈\n\nHR 在收到申请后 3 个工作日内安排面谈，了解离职原因并记录改进建议；核心人才可启动挽留。\n\n## 三、工作交接\n\n交接内"
+          },
+          {
+            "doc_id": "lantu_policy_confidentiality",
+            "title": "# 澜图智能商业秘密与保密管理规范",
+            "chunk": 0,
+            "score": 11.866,
+            "snippet": "# 澜图智能商业秘密与保密管理规范\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-15 09:00\n更新时间：2025-03-28 11:00\n版本号：v3.1\n文档类型：policy\n文档族：confidentiality\n生效日期：2025-03-28\n\n## 一、保密范围\n\n技术秘密（源代码、算法、图纸、工艺参数）、经营秘密（客户名单、报价、成本、未披露财务数据）与人事秘密均属保密信息。\n\n## 二、保密义务\n\n员工在职期间及离职后 3 年内不得披露、使用或允许他人使用公司保密信息；竞业限制人"
+          },
+          {
+            "doc_id": "lantu_policy_employee_handbook",
+            "title": "# 澜图智能员工手册",
+            "chunk": 0,
+            "score": 10.535,
+            "snippet": "# 澜图智能员工手册\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-07-01 09:00\n版本号：v6.0\n文档类型：policy\n文档族：employee_handbook\n生效日期：2025-07-01\n\n## 一、适用范围\n\n本手册适用于澜图智能装备股份有限公司及下属子公司全体正式员工、试用期员工与实习生。劳务派遣与外包人员参照执行。\n\n## 二、入职与试用\n\n新员工入职当日签署劳动合同、保密协议与廉洁承诺书，试用期 3-6 个月。试用期内需完成入职培"
+          },
+          {
+            "doc_id": "lantu_legal_nda_template",
+            "title": "澜图智能保密协议模板（NDA）",
+            "chunk": 0,
+            "score": 8.477,
+            "snippet": "澜图智能保密协议模板（NDA）\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-10 09:00\n更新时间：2025-02-01 09:00\n版本号：v3.0\n文档类型：legal\n文档族：nda_template\n生效日期：2025-02-01\n第一条 保密信息\n保密信息包括技术资料、图纸、源代码、算法、客户信息、报价、成本与未公开财务数据。\n第二条 保密义务\n接收方仅可为合作目的使用保密信息，不得披露给第三方；接触人员须签署个人保密承诺。\n第三条 保密期限\n本协议保密期限为签署之日起 3 年，商业秘"
+          },
+          {
+            "doc_id": "lantu_legal_supplier_code",
+            "title": "# 澜图智能供应商行为准则",
+            "chunk": 0,
+            "score": 5.272,
+            "snippet": "# 澜图智能供应商行为准则\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-04-01 09:00\n更新时间：2025-05-01 09:00\n版本号：v2.0\n文档类型：legal\n文档族：supplier_code\n生效日期：2025-05-01\n\n## 一、劳工与人权\n\n供应商不得使用童工、强迫劳动，须保障结社自由与最低工资，工作时间符合当地法律。\n\n## 二、健康与安全\n\n供应商须提供安全的工作环境，配备必要的防护设施，定期开展安全培训与应急演练。\n\n## 三、环境要求\n\n供应商须遵守环保法规，优"
+          },
+          {
+            "doc_id": "lantu_tech_control_architecture",
+            "title": "# 澜图智能机器人控制系统架构",
+            "chunk": 0,
+            "score": 3.734,
+            "snippet": "# 澜图智能机器人控制系统架构\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-06-01 09:00\n更新时间：2025-10-20 14:00\n版本号：v3.3\n文档类型：tech\n文档族：control_architecture\n生效日期：2025-10-20\n\n## 一、总体架构\n\n控制系统分为感知层、决策层、运动控制层与执行层，采用 EtherCAT 总线连接伺服与 I/O，总线周期 1 ms。\n\n## 二、控制器\n\nLT-C800 采用双核 ARM + FPGA 架构，支持 8 轴联动、0.5 "
+          },
+          {
+            "doc_id": "lantu_policy_contract",
+            "title": "# 澜图智能合同管理制度",
+            "chunk": 0,
+            "score": 3.726,
+            "snippet": "# 澜图智能合同管理制度\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-02-01 09:00\n更新时间：2025-05-12 15:00\n版本号：v3.0\n文档类型：policy\n文档族：contract_management\n生效日期：2025-05-12\n\n## 一、合同分类\n\n合同分为销售合同、采购合同、服务合同、保密协议、租赁合同与劳动合同。销售与采购合同须使用公司标准模板，非标条款须法务审核。\n\n## 二、审批权限\n\n合同金额 1,000 万元以上须法务合规部与 CFO 联合审批；5,000 "
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2025",
+            "title": "# 澜图智能采购管理制度（2025版）",
+            "chunk": 0,
+            "score": 3.314,
+            "snippet": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付"
+          },
+          {
+            "doc_id": "lantu_tech_control_architecture_v2",
+            "title": "# 澜图智能机器人控制系统架构（旧版 v2.4）",
+            "chunk": 0,
+            "score": 3.189,
+            "snippet": "# 澜图智能机器人控制系统架构（旧版 v2.4）\n\n所属部门：研发中心\n作者：程知远\n创建时间：2023-08-01 09:00\n更新时间：2024-05-10 18:00\n版本号：v2.4\n文档类型：tech\n文档族：control_architecture\n生效日期：2024-05-10\n\n## 一、总体架构（旧版）\n\n旧版控制系统采用“工控机 + 运动控制卡”的两层结构：上位工控机负责任务调度与人机界面，下位运动控制卡负责插补与伺服闭环。现场总线采用 CANopen，总线周期 2 ms，单条总线最多连接 16"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2024",
+            "title": "# 澜图智能采购管理制度（2024版）",
+            "chunk": 0,
+            "score": 3.055,
+            "snippet": "# 澜图智能采购管理制度（2024版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2024-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。\n\n## 二、付款账期\n\n标准供应商月结 60 天；预付款比例不超过 30%；质保金 5%-10%。\n\n## 三、供应商"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_resignation",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_hr_resignation",
+        "title": "# 澜图智能离职与交接管理办法",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 416,
+        "text": "# 澜图智能离职与交接管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-15 09:00\n更新时间：2025-05-20 09:00\n版本号：v2.4\n文档类型：hr\n文档族：resignation\n生效日期：2025-05-20\n\n## 一、离职申请\n\n正式员工提前 30 日、试用期员工提前 3 日提交书面离职申请；关键岗位须提前 60 日。\n\n## 二、离职面谈\n\nHR 在收到申请后 3 个工作日内安排面谈，了解离职原因并记录改进建议；核心人才可启动挽留。\n\n## 三、工作交接\n\n交接内容包括项目进度、文档、客户关系、账号权限与资产；交接完成由直属主管与部门负责人签字。\n\n## 四、竞业与保密\n\n涉密岗位签署竞业限制协议，期限最长 2 年，补偿标准为离职前 12 个月平均工资的 30%。\n\n## 五、离职结算\n\n离职当日结清工资，30 日内完成社保与公积金转移；未完成交接的暂缓出具离职证明。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.5,
+    "cited": [
+      "lantu_hr_resignation"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.109,
+    "number_recall": 0.0
+  }
+}

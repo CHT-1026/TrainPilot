@@ -1,0 +1,142 @@
+{
+  "qid": "M1402",
+  "question": "公司有多少研发人员？又是多少件有效专利？这两个数字一样吗？",
+  "question_type": "矛盾与例外识别",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>研发人员 人数</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list><parameter=keyword>专利</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 64,
+        "prompt_tokens": 358,
+        "total_tokens": 422,
+        "completion_tokens_details": {
+          "reasoning_tokens": 19
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.875
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search>{\"query\":\"研发人员 人数\",\"top_k\":10}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 40,
+        "prompt_tokens": 440,
+        "total_tokens": 480,
+        "completion_tokens_details": {
+          "reasoning_tokens": 15
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.953
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>研发人员 人数</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 36,
+        "prompt_tokens": 502,
+        "total_tokens": 538,
+        "completion_tokens_details": {
+          "reasoning_tokens": 7
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 1.172
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>研发人员 人数</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 568,
+        "total_tokens": 619,
+        "completion_tokens_details": {
+          "reasoning_tokens": 22
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.562
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>研发人员 人数 专利</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 42,
+        "prompt_tokens": 634,
+        "total_tokens": 676,
+        "completion_tokens_details": {
+          "reasoning_tokens": 11
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.594
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>研发人员 人数 有效专利</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 39,
+        "prompt_tokens": 702,
+        "total_tokens": 741,
+        "completion_tokens_details": {
+          "reasoning_tokens": 7
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 1.531
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"很抱歉，检索工具多次调用均未返回有效结果，我未能获取到关于公司研发人员数量和有效专利数量的任何资料。因此无法回答这两个数字，也无法比较它们是否相同。建议您重新发起提问或确认相关数据所在文档。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 104,
+        "prompt_tokens": 768,
+        "total_tokens": 872,
+        "completion_tokens_details": {
+          "reasoning_tokens": 27
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 3.547
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "很抱歉，检索工具多次调用均未返回有效结果，我未能获取到关于公司研发人员数量和有效专利数量的任何资料。因此无法回答这两个数字，也无法比较它们是否相同。建议您重新发起提问或确认相关数据所在文档。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4348,
+  "started_at": "2026-11-01T06:04:36",
+  "elapsed_seconds": 15.23,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.013,
+    "number_recall": 0.0
+  }
+}

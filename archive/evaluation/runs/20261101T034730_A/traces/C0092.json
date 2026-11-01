@@ -1,0 +1,384 @@
+{
+  "qid": "C0092",
+  "question": "光伏方案、光伏标杆案例与总览行业清单三者如何对应？光伏在总览中被归入哪条产品线的典型行业？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>光伏方案 标杆案例 行业清单</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 92,
+        "prompt_tokens": 374,
+        "total_tokens": 466,
+        "completion_tokens_details": {
+          "reasoning_tokens": 57
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 5.391
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>光伏方案 标杆案例 行业清单</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 77,
+        "prompt_tokens": 446,
+        "total_tokens": 523,
+        "completion_tokens_details": {
+          "reasoning_tokens": 42
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.828
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"光伏 方案 标杆案例 行业清单 产品线\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 54,
+        "prompt_tokens": 518,
+        "total_tokens": 572,
+        "completion_tokens_details": {
+          "reasoning_tokens": 20
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.938
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"光伏 标杆案例\",\"top_k\":8}}",
+      "usage": {
+        "completion_tokens": 75,
+        "prompt_tokens": 2928,
+        "total_tokens": 3003,
+        "completion_tokens_details": {
+          "reasoning_tokens": 51
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 2.281
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_product_overview\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 78,
+        "prompt_tokens": 4908,
+        "total_tokens": 4986,
+        "completion_tokens_details": {
+          "reasoning_tokens": 47
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2880
+        }
+      },
+      "seconds": 2.906
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_case_03_yaoyang\",\"offset\":0,\"limit\":3000}}",
+      "usage": {
+        "completion_tokens": 147,
+        "prompt_tokens": 5537,
+        "total_tokens": 5684,
+        "completion_tokens_details": {
+          "reasoning_tokens": 111
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 4864
+        }
+      },
+      "seconds": 5.516
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"三者的对应关系是：①光伏方案即《光伏电池片串焊整线解决方案》（doc: lantu_solution_photovoltaic，面向 TOPCon/HJT 电池片串焊的整线方案，核心设备为 LT-S10 SCARA 与 LT-V3D 视觉）；②对应的标杆案例是《曜阳光能电池片串焊项目》（doc: lantu_case_03_yaoyang，合肥光伏客户，16 条串焊线、220 台 LT-S10 SCARA + LT-C800 控制器 + LT-V3D 视觉，整线合同 9,800 万元，串焊良率 99.6%），该案例正是上述光伏方案的落地实践；③在《澜图智能产品与解决方案总览》（doc: lantu_product_overview）中，光伏被列入重点行业清单（汽车及零部件、动力电池、光伏、3C 电子、半导体等）。在总览的产品线-典型行业表中，光伏被归入 SCARA 机器人产品线（代表型号 LT-S4/S10，负载 4-10 kg）的典型行业，与 3C、食品并列——这与光伏串焊方案及曜阳光能案例使用 LT-S10 SCARA 是一致的。\",\"citations\":[\"lantu_solution_photovoltaic\",\"lantu_case_03_yaoyang\",\"lantu_product_overview\"],\"evidence\":[\"lantu_product_overview#片段1\",\"lantu_case_03_yaoyang#片段0\",\"lantu_solution_photovoltaic#片段0\"]}",
+      "usage": {
+        "completion_tokens": 482,
+        "prompt_tokens": 6102,
+        "total_tokens": 6584,
+        "completion_tokens_details": {
+          "reasoning_tokens": 113
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 5504
+        }
+      },
+      "seconds": 10.797
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "光伏 方案 标杆案例 行业清单 产品线",
+        "top_k": 10
+      },
+      "result_sha": "a644ecad2498d3add752b00a163d6d833843cde5ee8ef6087d45f4559735278c",
+      "result_chars": 3892,
+      "hits": 10
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "光伏 标杆案例",
+        "top_k": 8
+      },
+      "result_sha": "24b3002f21d8a02037d7fe9e5ec6e5770d763a8422cbc8741c85202a67793424",
+      "result_chars": 3117,
+      "hits": 8
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_overview",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "d7d8f6c4043c4e52922e6d0356cbd030aaed8b53b034333b0b96af5c08508c10",
+      "result_chars": 973,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_case_03_yaoyang",
+        "offset": 0,
+        "limit": 3000
+      },
+      "result_sha": "42f1fe2a162719f36e168cbf08e1ff79293c39edd5561fb04c2aa00bf64fef7b",
+      "result_chars": 802,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "三者的对应关系是：①光伏方案即《光伏电池片串焊整线解决方案》（doc: lantu_solution_photovoltaic，面向 TOPCon/HJT 电池片串焊的整线方案，核心设备为 LT-S10 SCARA 与 LT-V3D 视觉）；②对应的标杆案例是《曜阳光能电池片串焊项目》（doc: lantu_case_03_yaoyang，合肥光伏客户，16 条串焊线、220 台 LT-S10 SCARA + LT-C800 控制器 + LT-V3D 视觉，整线合同 9,800 万元，串焊良率 99.6%），该案例正是上述光伏方案的落地实践；③在《澜图智能产品与解决方案总览》（doc: lantu_product_overview）中，光伏被列入重点行业清单（汽车及零部件、动力电池、光伏、3C 电子、半导体等）。在总览的产品线-典型行业表中，光伏被归入 SCARA 机器人产品线（代表型号 LT-S4/S10，负载 4-10 kg）的典型行业，与 3C、食品并列——这与光伏串焊方案及曜阳光能案例使用 LT-S10 SCARA 是一致的。",
+    "citations": [
+      "lantu_solution_photovoltaic",
+      "lantu_case_03_yaoyang",
+      "lantu_product_overview"
+    ],
+    "evidence": [
+      "lantu_product_overview#片段1",
+      "lantu_case_03_yaoyang#片段0",
+      "lantu_solution_photovoltaic#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 21818,
+  "started_at": "2026-11-01T04:18:37",
+  "elapsed_seconds": 30.66,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "光伏 方案 标杆案例 行业清单 产品线",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_solution_photovoltaic",
+            "title": "# 光伏电池片串焊整线解决方案",
+            "chunk": 0,
+            "score": 17.832,
+            "snippet": "# 光伏电池片串焊整线解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-09-20 09:00\n更新时间：2025-10-16 14:00\n版本号：v3.1\n文档类型：product\n文档族：solution_photovoltaic\n生效日期：2025-10-16\n\n## 一、方案概述\n\n面向 TOPCon/HJT 电池片串焊，提供上料、串焊、EL 检测与下料整线方案，核心设备为 LT-S10 SCARA 与 LT-V3D 视觉。\n\n## 二、产线指标\n\n串焊速度 4,200 片/小时，良率 99.6"
+          },
+          {
+            "doc_id": "lantu_finance_revenue_breakdown",
+            "title": "﻿维度,分类,收入（亿元）,占比,同比",
+            "chunk": 0,
+            "score": 15.7,
+            "snippet": "﻿维度,分类,收入（亿元）,占比,同比\n产品线,机器人本体,19.84,46.5%,+18.2%\n产品线,智能产线,14.92,35.0%,+21.6%\n产品线,工业软件与服务,5.21,12.2%,+26.8%\n产品线,备件及其他,2.66,6.3%,+9.4%\n行业,动力电池,13.64,32.0%,+24.1%\n行业,汽车及零部件,10.23,24.0%,+11.5%\n行业,半导体,5.12,12.0%,+38.6%\n行业,光伏,4.26,10.0%,+6.2%\n行业,3C 电子,3.41,8.0%,+14."
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 1,
+            "score": 14.239,
+            "snippet": "| 产品线 | 代表型号 | 负载 | 典型行业 |\n| --- | --- | --- | --- |\n| 六轴机器人 | LT-R6/R12/R20/R50/R210 | 6-210 kg | 汽车、锂电、金属加工 |\n| SCARA | LT-S4/S10 | 4-10 kg | 3C、光伏、食品 |\n| 移动机器人 | LT-AMR-500/1000/2000 | 500-2,000 kg | 物流、半导体 |\n| 机器视觉 | LT-V3D | — | 装配、检测 |\n| 控制器 | LT-C800 | "
+          },
+          {
+            "doc_id": "lantu_solution_semiconductor",
+            "title": "# 半导体晶圆搬运洁净解决方案",
+            "chunk": 0,
+            "score": 14.017,
+            "snippet": "# 半导体晶圆搬运洁净解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2025-02-14 09:00\n更新时间：2025-11-11 09:30\n版本号：v2.0\n文档类型：product\n文档族：solution_semiconductor\n生效日期：2025-11-11\n\n## 一、方案概述\n\n面向 8/12 英寸晶圆厂，提供晶圆盒搬运、机台上下料与跨区物流方案，采用 LT-AMR-500 洁净版与 LT-R12 洁净机器人。\n\n## 二、洁净指标\n\n洁净等级 Class 10，颗粒物控制 0.1 μm，"
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 0,
+            "score": 13.669,
+            "snippet": "# 澜图智能产品与解决方案总览\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-02-20 09:00\n更新时间：2025-12-22 10:00\n版本号：v6.0\n文档类型：product\n文档族：product_overview\n生效日期：2025-12-22\n\n## 一、产品矩阵\n\n公司产品覆盖六轴工业机器人、SCARA 机器人、自主移动机器人（AMR）、机器视觉、运动控制器、数字孪生平台与行业工作站，形成“本体+控制器+视觉+软件+工艺”的一体化方案。\n\n## 二、行业方案\n\n重点行业包括汽车及零部件、"
+          },
+          {
+            "doc_id": "lantu_solution_lithium",
+            "title": "# 动力电池叠片与物流整体解决方案",
+            "chunk": 0,
+            "score": 13.603,
+            "snippet": "# 动力电池叠片与物流整体解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-10-12 09:00\n更新时间：2025-12-01 10:00\n版本号：v3.6\n文档类型：product\n文档族：solution_lithium\n生效日期：2025-12-01\n\n## 一、方案概述\n\n面向动力电池电芯段，提供叠片、焊接、检测与物料配送一体化方案，核心设备包括 LT-R20 机器人、LT-AMR-1000 与 LT-V3D 视觉。\n\n## 二、产线配置\n\n单条叠片线配置 15-16 台 LT-R20、2 "
+          },
+          {
+            "doc_id": "lantu_product_assembly",
+            "title": "# LT-Assembly 柔性装配工作站方案",
+            "chunk": 0,
+            "score": 6.653,
+            "snippet": "# LT-Assembly 柔性装配工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-07-15 09:00\n更新时间：2025-09-05 11:00\n版本号：v2.5\n文档类型：product\n文档族：solution_assembly\n生效日期：2025-09-05\n\n## 一、方案组成\n\n由 LT-R12/LT-R20 机器人、力控末端、LT-V3D 视觉与快换工装组成，支持多品种混线装配。\n\n## 二、工艺指标\n\n装配节拍 3.2 秒/件，力控精度 ±2 N，视觉定位精度 ±0.05 mm，"
+          },
+          {
+            "doc_id": "lantu_case_03_yaoyang",
+            "title": "# 客户案例：曜阳光能电池片串焊项目",
+            "chunk": 0,
+            "score": 6.139,
+            "snippet": "# 客户案例：曜阳光能电池片串焊项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_yaoyang\n生效日期：2025-12-20\n\n## 一、客户背景\n\n曜阳光能位于合肥，主营光伏业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖16"
+          },
+          {
+            "doc_id": "lantu_product_painting",
+            "title": "# LT-Paint 机器人喷涂工作站方案",
+            "chunk": 0,
+            "score": 6.017,
+            "snippet": "# LT-Paint 机器人喷涂工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-08-01 09:00\n更新时间：2025-04-18 15:00\n版本号：v2.2\n文档类型：product\n文档族：solution_painting\n生效日期：2025-04-18\n\n## 一、方案组成\n\n以 LT-R20 防爆机器人为核心，集成旋杯喷枪、供漆系统、防爆控制柜与 VOC 处理装置。\n\n## 二、工艺指标\n\n换色时间 6 分钟，涂料利用率提升 23%，膜厚均匀性 ±5 μm，VOC 排放下降 19%。"
+          },
+          {
+            "doc_id": "lantu_sales_quote",
+            "title": "# 澜图智能报价与合同评审流程",
+            "chunk": 0,
+            "score": 5.954,
+            "snippet": "# 澜图智能报价与合同评审流程\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-02-10 09:00\n更新时间：2025-08-08 14:00\n版本号：v2.5\n文档类型：sales\n文档族：sales_quote\n生效日期：2025-08-08\n\n## 一、报价流程\n\n销售工程师在 CRM 创建报价单，系统自动校验标准价；非标项目由售前技术出具配置清单，产品部确认成本，财务部复核税率与汇率。\n\n## 二、评审节点\n\n合同金额 1,000 万元以上须法务合规部与 CFO 联合评审；涉及非标开发须 CTO"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "光伏 标杆案例",
+        "top_k": 8
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_solution_photovoltaic",
+            "title": "# 光伏电池片串焊整线解决方案",
+            "chunk": 0,
+            "score": 13.939,
+            "snippet": "# 光伏电池片串焊整线解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-09-20 09:00\n更新时间：2025-10-16 14:00\n版本号：v3.1\n文档类型：product\n文档族：solution_photovoltaic\n生效日期：2025-10-16\n\n## 一、方案概述\n\n面向 TOPCon/HJT 电池片串焊，提供上料、串焊、EL 检测与下料整线方案，核心设备为 LT-S10 SCARA 与 LT-V3D 视觉。\n\n## 二、产线指标\n\n串焊速度 4,200 片/小时，良率 99.6"
+          },
+          {
+            "doc_id": "lantu_solution_semiconductor",
+            "title": "# 半导体晶圆搬运洁净解决方案",
+            "chunk": 0,
+            "score": 10.167,
+            "snippet": "# 半导体晶圆搬运洁净解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2025-02-14 09:00\n更新时间：2025-11-11 09:30\n版本号：v2.0\n文档类型：product\n文档族：solution_semiconductor\n生效日期：2025-11-11\n\n## 一、方案概述\n\n面向 8/12 英寸晶圆厂，提供晶圆盒搬运、机台上下料与跨区物流方案，采用 LT-AMR-500 洁净版与 LT-R12 洁净机器人。\n\n## 二、洁净指标\n\n洁净等级 Class 10，颗粒物控制 0.1 μm，"
+          },
+          {
+            "doc_id": "lantu_solution_lithium",
+            "title": "# 动力电池叠片与物流整体解决方案",
+            "chunk": 0,
+            "score": 9.83,
+            "snippet": "# 动力电池叠片与物流整体解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-10-12 09:00\n更新时间：2025-12-01 10:00\n版本号：v3.6\n文档类型：product\n文档族：solution_lithium\n生效日期：2025-12-01\n\n## 一、方案概述\n\n面向动力电池电芯段，提供叠片、焊接、检测与物料配送一体化方案，核心设备包括 LT-R20 机器人、LT-AMR-1000 与 LT-V3D 视觉。\n\n## 二、产线配置\n\n单条叠片线配置 15-16 台 LT-R20、2 "
+          },
+          {
+            "doc_id": "lantu_case_03_yaoyang",
+            "title": "# 客户案例：曜阳光能电池片串焊项目",
+            "chunk": 0,
+            "score": 4.393,
+            "snippet": "# 客户案例：曜阳光能电池片串焊项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_yaoyang\n生效日期：2025-12-20\n\n## 一、客户背景\n\n曜阳光能位于合肥，主营光伏业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖16"
+          },
+          {
+            "doc_id": "lantu_finance_revenue_breakdown",
+            "title": "﻿维度,分类,收入（亿元）,占比,同比",
+            "chunk": 0,
+            "score": 3.251,
+            "snippet": "﻿维度,分类,收入（亿元）,占比,同比\n产品线,机器人本体,19.84,46.5%,+18.2%\n产品线,智能产线,14.92,35.0%,+21.6%\n产品线,工业软件与服务,5.21,12.2%,+26.8%\n产品线,备件及其他,2.66,6.3%,+9.4%\n行业,动力电池,13.64,32.0%,+24.1%\n行业,汽车及零部件,10.23,24.0%,+11.5%\n行业,半导体,5.12,12.0%,+38.6%\n行业,光伏,4.26,10.0%,+6.2%\n行业,3C 电子,3.41,8.0%,+14."
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 1,
+            "score": 3.219,
+            "snippet": "| 产品线 | 代表型号 | 负载 | 典型行业 |\n| --- | --- | --- | --- |\n| 六轴机器人 | LT-R6/R12/R20/R50/R210 | 6-210 kg | 汽车、锂电、金属加工 |\n| SCARA | LT-S4/S10 | 4-10 kg | 3C、光伏、食品 |\n| 移动机器人 | LT-AMR-500/1000/2000 | 500-2,000 kg | 物流、半导体 |\n| 机器视觉 | LT-V3D | — | 装配、检测 |\n| 控制器 | LT-C800 | "
+          },
+          {
+            "doc_id": "lantu_strategy_esg",
+            "title": "# 澜图智能 ESG 与可持续发展报告",
+            "chunk": 0,
+            "score": 2.724,
+            "snippet": "# 澜图智能 ESG 与可持续发展报告\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2025-04-22 09:00\n更新时间：2025-04-25 10:00\n版本号：v2.0\n文档类型：strategy\n文档族：esg_report\n生效日期：2025-04-25\n\n## 一、环境\n\n2025 年苏州基地光伏装机 6.2MW，绿电占比 28%；单位产值能耗下降 9.6%；危废合规处置率 100%。\n\n## 二、社会\n\n员工培训人均 32 小时；安全生产投入 1,200 万元；公益捐赠 380 万元，支持职业"
+          },
+          {
+            "doc_id": "lantu_support_case_hengxin",
+            "title": "# 恒芯动力电池 48 小时复产服务案例",
+            "chunk": 0,
+            "score": 2.684,
+            "snippet": "# 恒芯动力电池 48 小时复产服务案例\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2025-04-10 09:00\n更新时间：2025-04-12 18:00\n版本号：v1.0\n文档类型：support\n文档族：service_case_hengxin\n生效日期：2025-04-12\n\n## 一、事件经过\n\n2025 年 4 月 8 日凌晨，恒芯动力电池 3 号叠片线报伺服过载停机，影响两条线体。客户通过 400 热线报修。\n\n## 二、响应过程\n\n远程诊断中心 12 分钟内定位为驱动器散热风扇故障，指导客户"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_overview",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_product_overview",
+        "title": "# 澜图智能产品与解决方案总览",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 792,
+        "text": "# 澜图智能产品与解决方案总览\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-02-20 09:00\n更新时间：2025-12-22 10:00\n版本号：v6.0\n文档类型：product\n文档族：product_overview\n生效日期：2025-12-22\n\n## 一、产品矩阵\n\n公司产品覆盖六轴工业机器人、SCARA 机器人、自主移动机器人（AMR）、机器视觉、运动控制器、数字孪生平台与行业工作站，形成“本体+控制器+视觉+软件+工艺”的一体化方案。\n\n## 二、行业方案\n\n重点行业包括汽车及零部件、动力电池、光伏、3C 电子、半导体、家电、食品、医药、物流、金属加工与工程机械。\n\n## 三、交付模式\n\n提供标准产品、工作站、整线交付三种模式。整线项目由客户成功部牵头，研发、制造、质量与售后组成联合项目组。\n\n## 四、开放生态\n\n控制器支持 EtherCAT、Profinet、Modbus TCP 与 OPC UA；提供 Python/C++ SDK 与 ROS2 驱动，兼容主流 PLC 与 MES。\n\n## 产品线概览\n\n| 产品线 | 代表型号 | 负载 | 典型行业 |\n| --- | --- | --- | --- |\n| 六轴机器人 | LT-R6/R12/R20/R50/R210 | 6-210 kg | 汽车、锂电、金属加工 |\n| SCARA | LT-S4/S10 | 4-10 kg | 3C、光伏、食品 |\n| 移动机器人 | LT-AMR-500/1000/2000 | 500-2,000 kg | 物流、半导体 |\n| 机器视觉 | LT-V3D | — | 装配、检测 |\n| 控制器 | LT-C800 | 8 轴 | 全线产品 |\n| 数字孪生 | LantuTwin 3.0 | 500 台设备 | 整厂规划 |\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_case_03_yaoyang",
+        "offset": 0,
+        "limit": 3000
+      },
+      "result": {
+        "doc_id": "lantu_case_03_yaoyang",
+        "title": "# 客户案例：曜阳光能电池片串焊项目",
+        "offset": 0,
+        "limit": 3000,
+        "total_chars": 622,
+        "text": "# 客户案例：曜阳光能电池片串焊项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_yaoyang\n生效日期：2025-12-20\n\n## 一、客户背景\n\n曜阳光能位于合肥，主营光伏业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖16 条串焊线，要求 6 个月内完成交付。\n\n## 三、方案配置\n\n澜图智能提供 220 台 LT-S10 SCARA 机器人，配套 LT-C800 控制器、LT-V3D 视觉与 LantuTwin 数字孪生仿真，整线合同金额 9,800 万元。\n\n## 四、实施过程\n\n项目由客户成功部牵头，联合研发、制造、质量与售后服务部组成 26 人项目组。完成现场勘测、虚拟调试、设备安装与 72 小时连续试运行，实际交付周期 5 个月。\n\n## 五、成效数据\n\n串焊良率 99.6%，组件产能由 4.2GW 提升至 6.5GW，单线人力减少 36 人。项目通过客户验收，并获得客户年度优秀供应商提名。\n\n## 六、客户评价\n\n曜阳光能工艺部经理 叶青表示：“澜图团队响应及时，方案在节拍与稳定性上达到预期，后续产线扩产将继续合作。”\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_solution_photovoltaic",
+      "lantu_case_03_yaoyang",
+      "lantu_product_overview"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.126,
+    "number_recall": 0.0
+  }
+}

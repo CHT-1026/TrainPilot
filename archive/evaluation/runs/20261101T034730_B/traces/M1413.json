@@ -1,0 +1,198 @@
+{
+  "qid": "M1413",
+  "question": "资料里“96%”也出现好几次，分别指什么？",
+  "question_type": "矛盾与例外识别",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"96%\",\"top_k\":10}}",
+      "usage": {
+        "prompt_tokens": 364,
+        "total_tokens": 539,
+        "completion_tokens": 175,
+        "completion_tokens_details": {
+          "reasoning_tokens": 149,
+          "text_tokens": 175
+        }
+      },
+      "seconds": 1.719
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_support_system\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 1123,
+        "total_tokens": 1478,
+        "completion_tokens": 355,
+        "completion_tokens_details": {
+          "reasoning_tokens": 322,
+          "text_tokens": 355
+        }
+      },
+      "seconds": 2.796
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_support_sla_2025\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 1518,
+        "total_tokens": 2970,
+        "completion_tokens": 1452,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1413,
+          "text_tokens": 1452
+        }
+      },
+      "seconds": 12.532
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"资料中出现的“96%”均指**备件满足率**。具体依据如下：\\n1. 《澜图智能客户服务体系白皮书》中规定“备件满足率 96%”。\\n2. 《澜图智能服务等级协议（SLA 2025版）》中规定“备件满足率不低于 96%”。\\n\\n（注：资料中还出现了“96.8%”，那是“2025年服务满意度”，并非“96%”。）\",\"citations\":[\"lantu_support_system\",\"lantu_support_sla_2025\"],\"evidence\":[\"lantu_support_system#0\",\"lantu_support_sla_2025#0\"]}",
+      "usage": {
+        "prompt_tokens": 1957,
+        "total_tokens": 2986,
+        "completion_tokens": 1029,
+        "completion_tokens_details": {
+          "reasoning_tokens": 862,
+          "text_tokens": 1029
+        }
+      },
+      "seconds": 7.687
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "96%",
+        "top_k": 10
+      },
+      "result_sha": "545cdd4ad17856b71ee13ff7a114a516db62f6c23ba40f2ee620fff80d883cb5",
+      "result_chars": 1181,
+      "hits": 3
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_system",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "4317c7b8be8a198991cf48adba22892fbc229f886249ed0a00fb498efafad9a9",
+      "result_chars": 587,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_sla_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "af8cbc14afa842ef7c71e0de95dfc2ee6c39002e37a09d1c893850c37a03f553",
+      "result_chars": 608,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "资料中出现的“96%”均指**备件满足率**。具体依据如下：\n1. 《澜图智能客户服务体系白皮书》中规定“备件满足率 96%”。\n2. 《澜图智能服务等级协议（SLA 2025版）》中规定“备件满足率不低于 96%”。\n\n（注：资料中还出现了“96.8%”，那是“2025年服务满意度”，并非“96%”。）",
+    "citations": [
+      "lantu_support_system",
+      "lantu_support_sla_2025"
+    ],
+    "evidence": [
+      "lantu_support_system#0",
+      "lantu_support_sla_2025#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 7973,
+  "started_at": "2026-11-01T06:46:59",
+  "elapsed_seconds": 24.73,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "96%",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_support_system",
+            "title": "# 澜图智能客户服务体系白皮书",
+            "chunk": 0,
+            "score": 3.91,
+            "snippet": "# 澜图智能客户服务体系白皮书\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-03-01 09:00\n更新时间：2025-12-08 10:00\n版本号：v3.2\n文档类型：support\n文档族：service_system\n生效日期：2025-12-08\n\n## 一、服务网络\n\n公司在全国设有 68 个服务网点、12 个备件仓，覆盖 31 个省级行政区；海外设 3 个服务点。售后服务团队 412 人，认证工程师 286 人。\n\n## 二、服务内容\n\n提供安装调试、培训、预防性维护、故障维修、备件供应、"
+          },
+          {
+            "doc_id": "lantu_support_sla_2025",
+            "title": "# 澜图智能服务等级协议（SLA 2025版）",
+            "chunk": 0,
+            "score": 3.741,
+            "snippet": "# 澜图智能服务等级协议（SLA 2025版）\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2025-03-10 09:00\n更新时间：2025-04-01 09:00\n版本号：v3.0\n文档类型：support\n文档族：service_sla\n生效日期：2025-04-01\n\n## 一、故障分级\n\nP1 为产线停机或安全风险；P2 为单机停机但产线可降级运行；P3 为一般故障或咨询。\n\n## 二、响应时效\n\nP1：30 分钟内响应、12 小时内到场；P2：4 小时内响应、48 小时内到场；P3：12 小时内响应"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2025",
+            "title": "# 澜图智能采购管理制度（2025版）",
+            "chunk": 0,
+            "score": 3.706,
+            "snippet": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_system",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_support_system",
+        "title": "# 澜图智能客户服务体系白皮书",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 419,
+        "text": "# 澜图智能客户服务体系白皮书\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-03-01 09:00\n更新时间：2025-12-08 10:00\n版本号：v3.2\n文档类型：support\n文档族：service_system\n生效日期：2025-12-08\n\n## 一、服务网络\n\n公司在全国设有 68 个服务网点、12 个备件仓，覆盖 31 个省级行政区；海外设 3 个服务点。售后服务团队 412 人，认证工程师 286 人。\n\n## 二、服务内容\n\n提供安装调试、培训、预防性维护、故障维修、备件供应、远程诊断与产线优化服务。\n\n## 三、服务渠道\n\n客户可通过 400-820-6688 热线、服务邮箱 service@lantu-robot.com 或客户门户报修，系统自动生成工单。\n\n## 四、服务指标\n\n2025 年服务满意度 96.8%，首次修复率 92.4%，备件满足率 96%，远程诊断解决率 85%。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_sla_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_support_sla_2025",
+        "title": "# 澜图智能服务等级协议（SLA 2025版）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 426,
+        "text": "# 澜图智能服务等级协议（SLA 2025版）\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2025-03-10 09:00\n更新时间：2025-04-01 09:00\n版本号：v3.0\n文档类型：support\n文档族：service_sla\n生效日期：2025-04-01\n\n## 一、故障分级\n\nP1 为产线停机或安全风险；P2 为单机停机但产线可降级运行；P3 为一般故障或咨询。\n\n## 二、响应时效\n\nP1：30 分钟内响应、12 小时内到场；P2：4 小时内响应、48 小时内到场；P3：12 小时内响应、3 个工作日内处理。\n\n## 三、备件服务\n\n常用备件 48 小时内发货，紧急备件 24 小时内发货；备件满足率不低于 96%。\n\n## 四、服务考核\n\n每月统计响应及时率、首次修复率与客户满意度，未达标的服务商扣减服务费并限期整改。\n\n## 五、生效说明\n\n本版本自 2025 年 4 月 1 日起生效，2024 版同时废止。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.5,
+    "cited": [
+      "lantu_support_system",
+      "lantu_support_sla_2025"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.11,
+    "number_recall": 0.5
+  }
+}

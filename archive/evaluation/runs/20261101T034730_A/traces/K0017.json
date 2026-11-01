@@ -1,0 +1,142 @@
+{
+  "qid": "K0017",
+  "question": "某项目220台SCARA、16条串焊线，标准循环0.38秒。假定每循环独立产出一片、所有机器人完全并行且无停顿，理论总片数/小时是多少？若另假定每条整线4200片/小时，16线是多少？为什么缺少这些假设时不能由动作数推出实际产出？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>SCARA 机器人 串焊线 产能 片/小时</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 73,
+        "prompt_tokens": 426,
+        "total_tokens": 499,
+        "completion_tokens_details": {
+          "reasoning_tokens": 34
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.906
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=TOOL>{\"name\": \"search\", \"args\": {\"query\": \"SCARA 机器人 串焊机 0.38秒 循环 产能\", \"top_k\": 10}}</function></tool_call>",
+      "usage": {
+        "completion_tokens": 189,
+        "prompt_tokens": 502,
+        "total_tokens": 691,
+        "completion_tokens_details": {
+          "reasoning_tokens": 137
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 4.75
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>SCARA 机器人 串焊线 0.38秒 循环 产能 片每小时</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 64,
+        "prompt_tokens": 591,
+        "total_tokens": 655,
+        "completion_tokens_details": {
+          "reasoning_tokens": 16
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 1.969
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>SCARA 机器人 串焊线 产能 片每小时</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 67,
+        "prompt_tokens": 676,
+        "total_tokens": 743,
+        "completion_tokens_details": {
+          "reasoning_tokens": 28
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 2.313
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>SCARA 机器人 串焊线 产能 片/小时 循环时间</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 69,
+        "prompt_tokens": 752,
+        "total_tokens": 821,
+        "completion_tokens_details": {
+          "reasoning_tokens": 26
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 2.156
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>SCARA 机器人 串焊线 产能 片每小时</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 102,
+        "prompt_tokens": 832,
+        "total_tokens": 934,
+        "completion_tokens_details": {
+          "reasoning_tokens": 63
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 4.797
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"纯理论计算：(1) 假设每个SCARA每0.38秒独立产出一片、220台完全并行无停顿，则每台每小时产出 = 3600 ÷ 0.38 ≈ 9473.7 片，220台合计 ≈ 9473.7 × 220 ≈ 2,084,211 片/小时（约208万片/小时）。(2) 若另按每条整线4200片/小时、16条线并行，则 4200 × 16 = 67,200 片/小时。注意：(1)与(2)是两套互不相同的假定口径，相差约31倍，因为单机0.38秒节拍只反映机器人动作时间，而4200片/小时·线隐含了整线（串焊、排版、传输、叠焊、缓存等）的综合节拍（约0.857秒/片）与线内串联约束。缺少假设时不能由动作数推出实际产出，原因包括：①动作节拍≠产线节拍——机器人动作只是整线工艺链中的一个环节，实际产出由瓶颈工位决定；②并行度与稼动率未知——设备台数不等于同时在产出，需考虑停机、故障率、OEE/稼动系数；③工艺与物料约束——串焊线存在排版、层压、汇流带焊接、EL检测、缓存上下料等串行工序及在制品缓冲；④良率、换型/换料、人工干预、启停与节拍损失未计入；⑤多机共享工位或物流可能造成相互等待（非完全并行）。因此没有'每循环独立产出一片''完全并行无停顿''各环节节拍与瓶颈''良率与稼动率'等假设，仅凭动作数或设备台数无法推出实际产量。以上数字为按题目给定假定的算术推导，未能在本资料库中检索到对应项目数据予以核对。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 674,
+        "prompt_tokens": 905,
+        "total_tokens": 1579,
+        "completion_tokens_details": {
+          "reasoning_tokens": 168
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 19.828
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "answerable",
+    "answer": "纯理论计算：(1) 假设每个SCARA每0.38秒独立产出一片、220台完全并行无停顿，则每台每小时产出 = 3600 ÷ 0.38 ≈ 9473.7 片，220台合计 ≈ 9473.7 × 220 ≈ 2,084,211 片/小时（约208万片/小时）。(2) 若另按每条整线4200片/小时、16条线并行，则 4200 × 16 = 67,200 片/小时。注意：(1)与(2)是两套互不相同的假定口径，相差约31倍，因为单机0.38秒节拍只反映机器人动作时间，而4200片/小时·线隐含了整线（串焊、排版、传输、叠焊、缓存等）的综合节拍（约0.857秒/片）与线内串联约束。缺少假设时不能由动作数推出实际产出，原因包括：①动作节拍≠产线节拍——机器人动作只是整线工艺链中的一个环节，实际产出由瓶颈工位决定；②并行度与稼动率未知——设备台数不等于同时在产出，需考虑停机、故障率、OEE/稼动系数；③工艺与物料约束——串焊线存在排版、层压、汇流带焊接、EL检测、缓存上下料等串行工序及在制品缓冲；④良率、换型/换料、人工干预、启停与节拍损失未计入；⑤多机共享工位或物流可能造成相互等待（非完全并行）。因此没有'每循环独立产出一片''完全并行无停顿''各环节节拍与瓶颈''良率与稼动率'等假设，仅凭动作数或设备台数无法推出实际产量。以上数字为按题目给定假定的算术推导，未能在本资料库中检索到对应项目数据予以核对。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 5922,
+  "started_at": "2026-11-01T05:27:12",
+  "elapsed_seconds": 37.72,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.142,
+    "number_recall": 0.75
+  }
+}

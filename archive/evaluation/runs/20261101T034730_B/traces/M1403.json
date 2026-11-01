@@ -1,0 +1,191 @@
+{
+  "qid": "M1403",
+  "question": "差旅费用报销标准改过好几版。餐饮补贴、出差补贴（市内交通与通讯）和出差申请提前期，现行口径分别是多少？跟 2024 版比有什么变化？",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"差旅\"}}",
+      "usage": {
+        "prompt_tokens": 392,
+        "total_tokens": 544,
+        "completion_tokens": 152,
+        "completion_tokens_details": {
+          "reasoning_tokens": 134,
+          "text_tokens": 152
+        }
+      },
+      "seconds": 1.469
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_travel_2025h2\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 545,
+        "total_tokens": 858,
+        "completion_tokens": 313,
+        "completion_tokens_details": {
+          "reasoning_tokens": 273,
+          "text_tokens": 313
+        }
+      },
+      "seconds": 2.515
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_travel_2024\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 1004,
+        "total_tokens": 1222,
+        "completion_tokens": 218,
+        "completion_tokens_details": {
+          "reasoning_tokens": 180,
+          "text_tokens": 218
+        }
+      },
+      "seconds": 1.907
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据现行有效的《澜图智能差旅费用报销标准（2025年7月修订）》，相关标准及与2024版的对比如下：\\n\\n1. **餐饮补贴**：\\n   - 现行标准：150元/天。\\n   - 2024版标准：100元/天。\\n   - 变化：上调了50元/天。\\n\\n2. **出差补贴（市内交通与通讯）**：\\n   - 现行标准：合计120元/天（凭票据实报销，无票按标准发放）。\\n   - 2024版标准：合计80元/天（凭票据实报销，无票按标准发放）。\\n   - 变化：上调了40元/天。\\n\\n3. **出差申请提前期**：\\n   - 现行标准：须提前3个工作日申请。\\n   - 2024版标准：须提前2个工作日申请。\\n   - 变化：增加了1个工作日的提前量。\", \"citations\": [\"lantu_policy_travel_2025h2\", \"lantu_policy_travel_2024\"], \"evidence\": [\"lantu_policy_travel_2025h2#二、餐饮补贴\", \"lantu_policy_travel_2025h2#三、出差补贴\", \"lantu_policy_travel_2025h2#四、交通标准\", \"lantu_policy_travel_2024#二、餐饮补贴\", \"lantu_policy_travel_2024#三、出差补贴\", \"lantu_policy_travel_2024#四、交通标准\"]}",
+      "usage": {
+        "prompt_tokens": 1401,
+        "total_tokens": 2293,
+        "completion_tokens": 892,
+        "completion_tokens_details": {
+          "reasoning_tokens": 510,
+          "text_tokens": 892
+        }
+      },
+      "seconds": 5.64
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "差旅"
+      },
+      "result_sha": "f6bd4e78035d1f78b6af6f4de6206b6b43fb4933accc232d1fd34fe741731b5a",
+      "result_chars": 238,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_travel_2025h2",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "cd892ed8038ab44deaedda8457a73e71e1401350b20b3259ba550d0bbcdbd0f9",
+      "result_chars": 631,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_travel_2024",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "9111b8079fc93fdfeab5d671a2ab9c3188bcd3260d9a047e7a4de45027e6cf50",
+      "result_chars": 553,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据现行有效的《澜图智能差旅费用报销标准（2025年7月修订）》，相关标准及与2024版的对比如下：\n\n1. **餐饮补贴**：\n   - 现行标准：150元/天。\n   - 2024版标准：100元/天。\n   - 变化：上调了50元/天。\n\n2. **出差补贴（市内交通与通讯）**：\n   - 现行标准：合计120元/天（凭票据实报销，无票按标准发放）。\n   - 2024版标准：合计80元/天（凭票据实报销，无票按标准发放）。\n   - 变化：上调了40元/天。\n\n3. **出差申请提前期**：\n   - 现行标准：须提前3个工作日申请。\n   - 2024版标准：须提前2个工作日申请。\n   - 变化：增加了1个工作日的提前量。",
+    "citations": [
+      "lantu_policy_travel_2025h2",
+      "lantu_policy_travel_2024"
+    ],
+    "evidence": [
+      "lantu_policy_travel_2025h2#二、餐饮补贴",
+      "lantu_policy_travel_2025h2#三、出差补贴",
+      "lantu_policy_travel_2025h2#四、交通标准",
+      "lantu_policy_travel_2024#二、餐饮补贴",
+      "lantu_policy_travel_2024#三、出差补贴",
+      "lantu_policy_travel_2024#四、交通标准"
+    ]
+  },
+  "status": "answered",
+  "tokens": 4917,
+  "started_at": "2026-11-01T06:42:48",
+  "elapsed_seconds": 11.53,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "差旅"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_policy_travel_2024",
+            "title": "# 澜图智能差旅费用报销标准（2024版）"
+          },
+          {
+            "doc_id": "lantu_policy_travel_2025",
+            "title": "# 澜图智能差旅费用报销标准（2025版）"
+          },
+          {
+            "doc_id": "lantu_policy_travel_2025h2",
+            "title": "# 澜图智能差旅费用报销标准（2025年7月修订）"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_travel_2025h2",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_travel_2025h2",
+        "title": "# 澜图智能差旅费用报销标准（2025年7月修订）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 443,
+        "text": "# 澜图智能差旅费用报销标准（2025年7月修订）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-06-10 09:00\n更新时间：2025-07-01 09:00\n版本号：v3.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2025-07-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 600 元/晚，二线城市 450 元/晚，其他城市 380 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 150 元/天，按自然日计算；客户宴请须提前申请，不得重复领取补贴。\n\n## 三、出差补贴\n\n市内交通与通讯补贴合计 120 元/天，凭票据实报销，无票按标准发放。\n\n## 四、交通标准\n\n高铁二等座、飞机经济舱；总监及以上可乘坐高铁一等座。出差须提前 3 个工作日申请，并同步提交行程与预算。\n\n## 五、生效说明\n\n本版本自 2025 年 7 月 1 日起生效，2025 年 1 月版同时废止。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_travel_2024",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_travel_2024",
+        "title": "# 澜图智能差旅费用报销标准（2024版）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 375,
+        "text": "# 澜图智能差旅费用报销标准（2024版）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-02-20 09:00\n更新时间：2024-03-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2024-03-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 450 元/晚，二线城市 350 元/晚，其他城市 300 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 100 元/天，按自然日计算；客户宴请须提前申请，不得重复领取补贴。\n\n## 三、出差补贴\n\n市内交通与通讯补贴合计 80 元/天，凭票据实报销，无票按标准发放。\n\n## 四、交通标准\n\n高铁二等座、飞机经济舱；总监及以上可乘坐高铁一等座。出差须提前 2 个工作日申请。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.667,
+    "cited": [
+      "lantu_policy_travel_2025h2",
+      "lantu_policy_travel_2024"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.218,
+    "number_recall": 1.0
+  }
+}

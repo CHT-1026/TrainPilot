@@ -1,0 +1,166 @@
+{
+  "qid": "M1517",
+  "question": "用户：我们的服务工程师要考什么证？分几级？\n助手：分 L1 初级、L2 中级、L3 高级三级，对应常规维护、故障维修与整线调试。\n用户：那每一级分别要培训几天、考核怎么算？证书能管多久？现在有多少人拿了证？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"服务工程师 培训 考核 证书 等级\",\"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 419,
+        "total_tokens": 536,
+        "completion_tokens": 117,
+        "completion_tokens_details": {
+          "reasoning_tokens": 85,
+          "text_tokens": 117
+        }
+      },
+      "seconds": 1.187
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_support_training_certification\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 1618,
+        "total_tokens": 1834,
+        "completion_tokens": 216,
+        "completion_tokens_details": {
+          "reasoning_tokens": 181,
+          "text_tokens": 216
+        }
+      },
+      "seconds": 2.203
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"服务工程师分为三级，培训天数分别为：L1初级5天、L2中级10天、L3高级15天。\\n\\n考核方式为：理论考试占40%、实操考核占50%、客户评价占10%，总分80分合格。\\n\\n证书有效期为3年，到期需复训。\\n\\n截至2025年底，共有286名认证工程师（其中L3高级工程师42人）拿到了证书。\",\"citations\":[\"lantu_support_training_certification\"],\"evidence\":[\"lantu_support_training_certification#chunk 0\"]}",
+      "usage": {
+        "prompt_tokens": 2012,
+        "total_tokens": 2464,
+        "completion_tokens": 452,
+        "completion_tokens_details": {
+          "reasoning_tokens": 311,
+          "text_tokens": 452
+        }
+      },
+      "seconds": 3.86
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "服务工程师 培训 考核 证书 等级",
+        "top_k": 5
+      },
+      "result_sha": "2bd0abfb9331dfd14b551e5b6f0e27ee8f712de43389ddeb4fdfe6c2393171a0",
+      "result_chars": 1970,
+      "hits": 5
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_training_certification",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "7875ed849d30ac2dd4045921cf7119a42d7341dbe49d3597cb8bb1ff8db12f6a",
+      "result_chars": 578,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "服务工程师分为三级，培训天数分别为：L1初级5天、L2中级10天、L3高级15天。\n\n考核方式为：理论考试占40%、实操考核占50%、客户评价占10%，总分80分合格。\n\n证书有效期为3年，到期需复训。\n\n截至2025年底，共有286名认证工程师（其中L3高级工程师42人）拿到了证书。",
+    "citations": [
+      "lantu_support_training_certification"
+    ],
+    "evidence": [
+      "lantu_support_training_certification#chunk 0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 4834,
+  "started_at": "2026-11-01T06:53:04",
+  "elapsed_seconds": 7.25,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "服务工程师 培训 考核 证书 等级",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_support_training_certification",
+            "title": "# 澜图智能服务工程师培训与认证体系",
+            "chunk": 0,
+            "score": 32.481,
+            "snippet": "# 澜图智能服务工程师培训与认证体系\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-06-01 09:00\n更新时间：2025-08-08 10:00\n版本号：v2.4\n文档类型：support\n文档族：service_certification\n生效日期：2025-08-08\n\n## 一、认证等级\n\n服务工程师分为 L1 初级、L2 中级、L3 高级三级，分别对应常规维护、故障维修与整线调试。\n\n## 二、培训内容\n\nL1：安全、保养、备件更换（5 天）；L2：电气与控制系统维修（10 天）；L3：整线"
+          },
+          {
+            "doc_id": "lantu_support_field_service",
+            "title": "# 澜图智能现场服务与安装调试规范",
+            "chunk": 0,
+            "score": 11.49,
+            "snippet": "# 澜图智能现场服务与安装调试规范\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-04-01 09:00\n更新时间：2025-05-30 10:00\n版本号：v3.0\n文档类型：support\n文档族：field_service\n生效日期：2025-05-30\n\n## 一、安装调试\n\n设备到货后 3 个工作日内完成开箱验收，7 个工作日内完成安装，14 个工作日内完成调试与试运行。\n\n## 二、现场管理\n\n服务工程师须佩戴工牌、遵守客户安全规定、每日提交服务日报；涉及动火、高处作业须办理许可。\n\n## 三"
+          },
+          {
+            "doc_id": "lantu_support_system",
+            "title": "# 澜图智能客户服务体系白皮书",
+            "chunk": 0,
+            "score": 9.857,
+            "snippet": "# 澜图智能客户服务体系白皮书\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-03-01 09:00\n更新时间：2025-12-08 10:00\n版本号：v3.2\n文档类型：support\n文档族：service_system\n生效日期：2025-12-08\n\n## 一、服务网络\n\n公司在全国设有 68 个服务网点、12 个备件仓，覆盖 31 个省级行政区；海外设 3 个服务点。售后服务团队 412 人，认证工程师 286 人。\n\n## 二、服务内容\n\n提供安装调试、培训、预防性维护、故障维修、备件供应、"
+          },
+          {
+            "doc_id": "lantu_org_executives",
+            "title": "# 澜图智能高级管理人员名单",
+            "chunk": 0,
+            "score": 9.843,
+            "snippet": "# 澜图智能高级管理人员名单\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2024-03-01 09:00\n更新时间：2025-11-28 17:00\n版本号：v4.0\n文档类型：org\n文档族：executives\n生效日期：2025-11-28\n\n## 一、核心管理层\n\n顾承澜，董事长兼总经理，1968 年生，教授级高级工程师，持股 18.6%；沈亦舟，CTO，负责研发体系；周敏仪，CFO，负责财务与资本运作；韩立恒，COO，负责供应链与制造。\n\n## 二、业务分管\n\n罗嘉树，销售副总裁，分管销售中心、客"
+          },
+          {
+            "doc_id": "lantu_support_sla_2024",
+            "title": "# 澜图智能服务等级协议（SLA 2024版）",
+            "chunk": 0,
+            "score": 8.378,
+            "snippet": "# 澜图智能服务等级协议（SLA 2024版）\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v2.0\n文档类型：support\n文档族：service_sla\n生效日期：2024-01-01\n\n## 一、故障分级\n\nP1 为产线停机或安全风险；P2 为单机停机但产线可降级运行；P3 为一般故障或咨询。\n\n## 二、响应时效\n\nP1：2 小时内响应、24 小时内到场；P2：8 小时内响应、72 小时内到场；P3：24 小时内响应、"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_training_certification",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_support_training_certification",
+        "title": "# 澜图智能服务工程师培训与认证体系",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 391,
+        "text": "# 澜图智能服务工程师培训与认证体系\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-06-01 09:00\n更新时间：2025-08-08 10:00\n版本号：v2.4\n文档类型：support\n文档族：service_certification\n生效日期：2025-08-08\n\n## 一、认证等级\n\n服务工程师分为 L1 初级、L2 中级、L3 高级三级，分别对应常规维护、故障维修与整线调试。\n\n## 二、培训内容\n\nL1：安全、保养、备件更换（5 天）；L2：电气与控制系统维修（10 天）；L3：整线调试与工艺优化（15 天）。\n\n## 三、考核方式\n\n理论考试 40%、实操考核 50%、客户评价 10%，80 分合格；证书有效期 3 年，到期需复训。\n\n## 四、认证人数\n\n截至 2025 年底，认证工程师 286 人，其中 L3 高级工程师 42 人。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.5,
+    "cited": [
+      "lantu_support_training_certification"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.262,
+    "number_recall": 1.0
+  }
+}

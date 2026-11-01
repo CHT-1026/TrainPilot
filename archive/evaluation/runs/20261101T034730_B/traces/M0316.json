@@ -1,0 +1,167 @@
+{
+  "qid": "M0316",
+  "question": "我们往外出口产品时，哪些情况需要额外审批？要许可证的项目得提前多久申请？",
+  "question_type": "单文档多跳推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"出口 审批 许可证 提前申请\", \"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 369,
+        "total_tokens": 522,
+        "completion_tokens": 153,
+        "completion_tokens_details": {
+          "reasoning_tokens": 122,
+          "text_tokens": 153
+        }
+      },
+      "seconds": 1.656
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_legal_export_control\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 1627,
+        "total_tokens": 1913,
+        "completion_tokens": 286,
+        "completion_tokens_details": {
+          "reasoning_tokens": 252,
+          "text_tokens": 286
+        }
+      },
+      "seconds": 3.047
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据《澜图智能出口管制与制裁合规指引》：\\n1. **需要额外审批的情况**：涉及**加密、视觉算法与高精度伺服**的项目须进行专项审批。\\n2. **提前申请时间**：需许可证的项目须**提前 60 日**申请。\",\"citations\":[\"lantu_legal_export_control\"],\"evidence\":[\"lantu_legal_export_control#2\",\"lantu_legal_export_control#3\"]}",
+      "usage": {
+        "prompt_tokens": 2025,
+        "total_tokens": 2499,
+        "completion_tokens": 474,
+        "completion_tokens_details": {
+          "reasoning_tokens": 367,
+          "text_tokens": 474
+        }
+      },
+      "seconds": 3.718
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "出口 审批 许可证 提前申请",
+        "top_k": 5
+      },
+      "result_sha": "715296948c95414f4f93b8d18d3b60a1691a2e462b2cb3253c21e3b95ed168ed",
+      "result_chars": 1988,
+      "hits": 5
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_legal_export_control",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "8dee742fb209c43280e46bdd2734395f959f0035d71ea42458184a30683cb7fd",
+      "result_chars": 621,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《澜图智能出口管制与制裁合规指引》：\n1. **需要额外审批的情况**：涉及**加密、视觉算法与高精度伺服**的项目须进行专项审批。\n2. **提前申请时间**：需许可证的项目须**提前 60 日**申请。",
+    "citations": [
+      "lantu_legal_export_control"
+    ],
+    "evidence": [
+      "lantu_legal_export_control#2",
+      "lantu_legal_export_control#3"
+    ]
+  },
+  "status": "answered",
+  "tokens": 4934,
+  "started_at": "2026-11-01T06:28:18",
+  "elapsed_seconds": 8.44,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "出口 审批 许可证 提前申请",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_legal_export_control",
+            "title": "# 澜图智能出口管制与制裁合规指引",
+            "chunk": 0,
+            "score": 24.621,
+            "snippet": "# 澜图智能出口管制与制裁合规指引\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-06-01 09:00\n更新时间：2025-08-01 09:00\n版本号：v2.2\n文档类型：legal\n文档族：export_control\n生效日期：2025-08-01\n\n## 一、适用范围\n\n适用于所有跨境销售、技术许可、境外投资与人员出境技术服务，覆盖中国、欧盟、美国出口管制要求。\n\n## 二、筛查要求\n\n交易前须对客户、最终用户与最终用途进行筛查，核对制裁名单与两用物项清单；涉及加密、视觉算法与高精度伺服的项目"
+          },
+          {
+            "doc_id": "lantu_policy_travel_2024",
+            "title": "# 澜图智能差旅费用报销标准（2024版）",
+            "chunk": 0,
+            "score": 10.54,
+            "snippet": "# 澜图智能差旅费用报销标准（2024版）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-02-20 09:00\n更新时间：2024-03-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2024-03-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 450 元/晚，二线城市 350 元/晚，其他城市 300 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 100 元/天，按自然日计算；客户宴请须提"
+          },
+          {
+            "doc_id": "lantu_policy_travel_2025",
+            "title": "# 澜图智能差旅费用报销标准（2025版）",
+            "chunk": 0,
+            "score": 10.262,
+            "snippet": "# 澜图智能差旅费用报销标准（2025版）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-12-15 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2025-01-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 550 元/晚，二线城市 420 元/晚，其他城市 350 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 120 元/天，按自然日计算；客户宴请须提"
+          },
+          {
+            "doc_id": "lantu_policy_travel_2025h2",
+            "title": "# 澜图智能差旅费用报销标准（2025年7月修订）",
+            "chunk": 0,
+            "score": 9.998,
+            "snippet": "# 澜图智能差旅费用报销标准（2025年7月修订）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-06-10 09:00\n更新时间：2025-07-01 09:00\n版本号：v3.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2025-07-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 600 元/晚，二线城市 450 元/晚，其他城市 380 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 150 元/天，按自然日计算；客户"
+          },
+          {
+            "doc_id": "lantu_policy_attendance_2025",
+            "title": "# 澜图智能考勤管理制度（2025版）",
+            "chunk": 0,
+            "score": 9.116,
+            "snippet": "# 澜图智能考勤管理制度（2025版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-12-20 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：attendance\n生效日期：2025-01-01\n\n## 一、打卡规则\n\n员工每日上下班各打卡一次，漏打卡须在 3 个工作日内提交补卡申请，每月补卡不超过 4 次。\n\n## 二、弹性工作\n\n上班弹性 60 分钟，9:00-10:00 到岗均视为正常；每月可申请远程办公 4 天，须提前 1 个工作日审"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_legal_export_control",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_legal_export_control",
+        "title": "# 澜图智能出口管制与制裁合规指引",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 441,
+        "text": "# 澜图智能出口管制与制裁合规指引\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-06-01 09:00\n更新时间：2025-08-01 09:00\n版本号：v2.2\n文档类型：legal\n文档族：export_control\n生效日期：2025-08-01\n\n## 一、适用范围\n\n适用于所有跨境销售、技术许可、境外投资与人员出境技术服务，覆盖中国、欧盟、美国出口管制要求。\n\n## 二、筛查要求\n\n交易前须对客户、最终用户与最终用途进行筛查，核对制裁名单与两用物项清单；涉及加密、视觉算法与高精度伺服的项目须专项审批。\n\n## 三、分类与许可\n\n产品按 ECCN/出口管制编码分类，需许可证的项目须提前 60 日申请；禁止向受制裁国家或军事最终用户出口。\n\n## 四、记录保存\n\n出口相关合同、许可证、筛查记录与物流单据保存不少于 10 年，随时接受审计。\n\n## 五、违规处理\n\n未经审批的出口行为立即停止，报告合规委员会；责任人给予处分，涉嫌违法的移交司法机关。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_legal_export_control"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.192,
+    "number_recall": 0.0
+  }
+}

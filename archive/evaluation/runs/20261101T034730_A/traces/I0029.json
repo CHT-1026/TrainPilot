@@ -1,0 +1,290 @@
+{
+  "qid": "I0029",
+  "question": "2025 年度大事记记录的安全培训人次与安全生产委员会会议纪要中的安排存在什么差异？",
+  "question_type": "矛盾与例外识别",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>2025年度大事记 安全培训 人次</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 62,
+        "prompt_tokens": 367,
+        "total_tokens": 429,
+        "completion_tokens_details": {
+          "reasoning_tokens": 33
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.703
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search>{\"query\":\"2025年度大事记 安全培训 人次\",\"top_k\":10}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 63,
+        "prompt_tokens": 433,
+        "total_tokens": 496,
+        "completion_tokens_details": {
+          "reasoning_tokens": 29
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.922
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"2025年度大事记 安全培训 人次\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 44,
+        "prompt_tokens": 504,
+        "total_tokens": 548,
+        "completion_tokens_details": {
+          "reasoning_tokens": 11
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.469
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_company_milestones_2025\",\"offset\":0,\"limit\":6000}}",
+      "usage": {
+        "completion_tokens": 61,
+        "prompt_tokens": 2901,
+        "total_tokens": 2962,
+        "completion_tokens_details": {
+          "reasoning_tokens": 24
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 2.109
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_meeting_safety\",\"offset\":0,\"limit\":6000}}",
+      "usage": {
+        "completion_tokens": 57,
+        "prompt_tokens": 3437,
+        "total_tokens": 3494,
+        "completion_tokens_details": {
+          "reasoning_tokens": 25
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2880
+        }
+      },
+      "seconds": 3.61
+    },
+    {
+      "round": 6,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"存在计划与实际的差异：安全生产委员会会议纪要（2025年6月）的行动项安排由人力资源部组织 **4,000 人次**安全培训，而 2025 年度大事记记录的全年安全培训实际为 **4,120 人次**，实际较安排多 120 人次（超出约 3%）。此外，会议纪要为年中（6月12日）制定的计划口径，大事记为年末（12月31日创建、2026年1月6日生效）的全年实际口径，两者可比但时点不同；会议纪要中的其他安排（如安全投入 1,200 万元、7 月消防演练）在大事记中未直接对应记录，仅 ESG 报告提到安全生产投入 1,200 万元一致。\",\"citations\":[\"lantu_company_milestones_2025\",\"lantu_meeting_safety\",\"lantu_strategy_esg\"],\"evidence\":[\"lantu_company_milestones_2025#片段0\",\"lantu_meeting_safety#片段0\",\"lantu_strategy_esg#片段0\"]}",
+      "usage": {
+        "completion_tokens": 381,
+        "prompt_tokens": 3836,
+        "total_tokens": 4217,
+        "completion_tokens_details": {
+          "reasoning_tokens": 107
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3392
+        }
+      },
+      "seconds": 8.359
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "2025年度大事记 安全培训 人次",
+        "top_k": 10
+      },
+      "result_sha": "88109ce790ad563d721b946d51438a142cf4be422a12e1eb5f132de4464ac428",
+      "result_chars": 3903,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_company_milestones_2025",
+        "offset": 0,
+        "limit": 6000
+      },
+      "result_sha": "b4c8bf5ec1ebd75b0798923d351803433ad6ff25032db081d7a63691801de30f",
+      "result_chars": 734,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_meeting_safety",
+        "offset": 0,
+        "limit": 6000
+      },
+      "result_sha": "1f79f959c7b429bcba5982ec186dc82076e2d10606ce9d364e45ee249400c26e",
+      "result_chars": 560,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "存在计划与实际的差异：安全生产委员会会议纪要（2025年6月）的行动项安排由人力资源部组织 **4,000 人次**安全培训，而 2025 年度大事记记录的全年安全培训实际为 **4,120 人次**，实际较安排多 120 人次（超出约 3%）。此外，会议纪要为年中（6月12日）制定的计划口径，大事记为年末（12月31日创建、2026年1月6日生效）的全年实际口径，两者可比但时点不同；会议纪要中的其他安排（如安全投入 1,200 万元、7 月消防演练）在大事记中未直接对应记录，仅 ESG 报告提到安全生产投入 1,200 万元一致。",
+    "citations": [
+      "lantu_company_milestones_2025",
+      "lantu_meeting_safety",
+      "lantu_strategy_esg"
+    ],
+    "evidence": [
+      "lantu_company_milestones_2025#片段0",
+      "lantu_meeting_safety#片段0",
+      "lantu_strategy_esg#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 12146,
+  "started_at": "2026-11-01T05:17:17",
+  "elapsed_seconds": 21.17,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "2025年度大事记 安全培训 人次",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_company_milestones_2025",
+            "title": "# 澜图智能 2025 年度大事记",
+            "chunk": 0,
+            "score": 29.376,
+            "snippet": "# 澜图智能 2025 年度大事记\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-12-31 18:00\n更新时间：2026-01-06 09:00\n版本号：v1.0\n文档类型：company\n文档族：annual_milestones_2025\n生效日期：2026-01-06\n\n## 一、经营里程碑\n\n2025 年营业收入 42.63 亿元，同比增长 19.1%；新签订单 48.90 亿元；机器人出货 21,400 台；第 10 万台机器人于 9 月 12 日下线。\n\n## 二、组织里程碑\n\n3 月"
+          },
+          {
+            "doc_id": "lantu_meeting_safety",
+            "title": "# 2025 年安全生产委员会会议纪要",
+            "chunk": 0,
+            "score": 13.822,
+            "snippet": "# 2025 年安全生产委员会会议纪要\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2025-06-12 09:00\n更新时间：2025-06-12 15:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_safety_2025\n生效日期：2025-06-12\n\n## 一、安全形势\n\n上半年未发生重伤及以上事故，轻伤 2 起，同比下降 50%；排查隐患 27 项，整改完成 25 项。\n\n## 二、重点风险\n\n机器人调试区域误入风险、锂电物料存储消防风险、高处作业风险；需完善安全围栏与联锁。"
+          },
+          {
+            "doc_id": "lantu_hr_training_system",
+            "title": "# 澜图智能培训体系与年度计划",
+            "chunk": 0,
+            "score": 12.371,
+            "snippet": "# 澜图智能培训体系与年度计划\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-02-01 09:00\n更新时间：2025-12-01 10:00\n版本号：v3.6\n文档类型：hr\n文档族：training_system\n生效日期：2025-12-01\n\n## 一、培训体系\n\n分为新员工培训、专业培训、管理培训与领导力培训四大类，覆盖全员全周期。\n\n## 二、年度计划\n\n2025 年计划培训 12,000 人次，人均 32 小时；专业培训占比 55%，管理培训 20%，新员工 15%，合规安全 10%。\n"
+          },
+          {
+            "doc_id": "lantu_legal_supplier_code",
+            "title": "# 澜图智能供应商行为准则",
+            "chunk": 0,
+            "score": 8.221,
+            "snippet": "# 澜图智能供应商行为准则\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-04-01 09:00\n更新时间：2025-05-01 09:00\n版本号：v2.0\n文档类型：legal\n文档族：supplier_code\n生效日期：2025-05-01\n\n## 一、劳工与人权\n\n供应商不得使用童工、强迫劳动，须保障结社自由与最低工资，工作时间符合当地法律。\n\n## 二、健康与安全\n\n供应商须提供安全的工作环境，配备必要的防护设施，定期开展安全培训与应急演练。\n\n## 三、环境要求\n\n供应商须遵守环保法规，优"
+          },
+          {
+            "doc_id": "lantu_strategy_safety",
+            "title": "# 澜图智能安全生产管理制度",
+            "chunk": 0,
+            "score": 6.467,
+            "snippet": "# 澜图智能安全生产管理制度\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2024-01-01 09:00\n更新时间：2025-05-01 09:00\n版本号：v3.5\n文档类型：strategy\n文档族：safety_production\n生效日期：2025-05-01\n\n## 一、安全责任\n\n实行总经理全面负责、分管领导直接负责、部门负责人具体负责的安全责任制，签订年度安全目标责任书。\n\n## 二、风险管控\n\n建立危险源清单，对机器人调试、电气作业、高处作业与危化品实施专项管控，每季度开展风险评估。\n\n## "
+          },
+          {
+            "doc_id": "lantu_org_committees",
+            "title": "# 澜图智能跨部门委员会与运作机制",
+            "chunk": 0,
+            "score": 6.058,
+            "snippet": "# 澜图智能跨部门委员会与运作机制\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2024-05-06 09:00\n更新时间：2025-10-18 11:00\n版本号：v2.1\n文档类型：org\n文档族：committees\n生效日期：2025-10-18\n\n## 一、产品决策委员会\n\n主任由 CTO 担任，成员包括产品部、研发中心、销售中心、质量部负责人，负责产品立项、版本发布与退市决策，每月召开一次。\n\n## 二、质量安全委员会\n\n主任由 COO 担任，负责重大质量事故、召回与安全生产事项，实行 24 小时响"
+          },
+          {
+            "doc_id": "lantu_hr_new_hire_training",
+            "title": "澜图智能新员工入职培训大纲",
+            "chunk": 0,
+            "score": 5.928,
+            "snippet": "澜图智能新员工入职培训大纲\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-03-01 09:00\n更新时间：2025-08-01 10:00\n版本号：v2.3\n文档类型：hr\n文档族：new_hire_training\n生效日期：2025-08-01\n一、培训目标\n帮助新员工了解公司战略、文化、制度与岗位要求，在 30 天内完成从入职到独立工作的过渡。\n二、课程安排\n第 1 天：公司介绍与企业文化；第 2 天：制度与信息安全；第 3 天：产品与业务；第 4 天：质量意识与安全生产；第 5 天：岗位实践与导"
+          },
+          {
+            "doc_id": "lantu_policy_infosec",
+            "title": "# 澜图智能信息安全管理制度",
+            "chunk": 0,
+            "score": 5.916,
+            "snippet": "# 澜图智能信息安全管理制度\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-04-01 09:00\n更新时间：2025-08-01 09:00\n版本号：v4.0\n文档类型：policy\n文档族：information_security\n生效日期：2025-08-01\n\n## 一、账号与密码\n\n员工账号一人一号，密码长度不少于 12 位，包含大小写字母、数字与符号，每 90 天更换一次；禁止共享账号。\n\n## 二、终端安全\n\n办公电脑须安装公司统一的终端防护软件，开启磁盘加密与屏保锁定；禁止安装未授权软件与"
+          },
+          {
+            "doc_id": "lantu_support_training_certification",
+            "title": "# 澜图智能服务工程师培训与认证体系",
+            "chunk": 0,
+            "score": 5.372,
+            "snippet": "# 澜图智能服务工程师培训与认证体系\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-06-01 09:00\n更新时间：2025-08-08 10:00\n版本号：v2.4\n文档类型：support\n文档族：service_certification\n生效日期：2025-08-08\n\n## 一、认证等级\n\n服务工程师分为 L1 初级、L2 中级、L3 高级三级，分别对应常规维护、故障维修与整线调试。\n\n## 二、培训内容\n\nL1：安全、保养、备件更换（5 天）；L2：电气与控制系统维修（10 天）；L3：整线"
+          },
+          {
+            "doc_id": "lantu_strategy_esg",
+            "title": "# 澜图智能 ESG 与可持续发展报告",
+            "chunk": 0,
+            "score": 5.088,
+            "snippet": "# 澜图智能 ESG 与可持续发展报告\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2025-04-22 09:00\n更新时间：2025-04-25 10:00\n版本号：v2.0\n文档类型：strategy\n文档族：esg_report\n生效日期：2025-04-25\n\n## 一、环境\n\n2025 年苏州基地光伏装机 6.2MW，绿电占比 28%；单位产值能耗下降 9.6%；危废合规处置率 100%。\n\n## 二、社会\n\n员工培训人均 32 小时；安全生产投入 1,200 万元；公益捐赠 380 万元，支持职业"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_company_milestones_2025",
+        "offset": 0,
+        "limit": 6000
+      },
+      "result": {
+        "doc_id": "lantu_company_milestones_2025",
+        "title": "# 澜图智能 2025 年度大事记",
+        "offset": 0,
+        "limit": 6000,
+        "total_chars": 551,
+        "text": "# 澜图智能 2025 年度大事记\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-12-31 18:00\n更新时间：2026-01-06 09:00\n版本号：v1.0\n文档类型：company\n文档族：annual_milestones_2025\n生效日期：2026-01-06\n\n## 一、经营里程碑\n\n2025 年营业收入 42.63 亿元，同比增长 19.1%；新签订单 48.90 亿元；机器人出货 21,400 台；第 10 万台机器人于 9 月 12 日下线。\n\n## 二、组织里程碑\n\n3 月德国欧洲技术中心在斯图加特开业；5 月具身智能研究所成立，研发中心下属研究所增至 5 个；7 月售后服务部升级为一级部门。\n\n## 三、产品里程碑\n\n4 月发布 LT-C800 控制器；6 月发布 LantuTwin 3.0 数字孪生平台；11 月 LT-R20 Pro 完成样机验证，计划 2026 年第二季度量产。\n\n## 四、质量与合规\n\n全年客户投诉 3 起，同比下降 62%；通过 ISO 27001 复审；完成欧盟 CE 与北美 UL 认证换版。\n\n## 五、社会责任\n\n苏州基地光伏装机 6.2MW，绿电占比 28%；全年安全培训 4,120 人次，未发生重伤事故。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_meeting_safety",
+        "offset": 0,
+        "limit": 6000
+      },
+      "result": {
+        "doc_id": "lantu_meeting_safety",
+        "title": "# 2025 年安全生产委员会会议纪要",
+        "offset": 0,
+        "limit": 6000,
+        "total_chars": 388,
+        "text": "# 2025 年安全生产委员会会议纪要\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2025-06-12 09:00\n更新时间：2025-06-12 15:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_safety_2025\n生效日期：2025-06-12\n\n## 一、安全形势\n\n上半年未发生重伤及以上事故，轻伤 2 起，同比下降 50%；排查隐患 27 项，整改完成 25 项。\n\n## 二、重点风险\n\n机器人调试区域误入风险、锂电物料存储消防风险、高处作业风险；需完善安全围栏与联锁。\n\n## 三、投入计划\n\n2025 年安全投入 1,200 万元，用于安全光栅、消防设施与培训；苏州基地 7 月完成消防演练。\n\n## 四、行动项\n\n制造中心 7 月底前完成隐患闭环；人力资源部组织 4,000 人次安全培训；各基地每月开展一次安全检查。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_company_milestones_2025",
+      "lantu_meeting_safety",
+      "lantu_strategy_esg"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.106,
+    "number_recall": 1.0
+  }
+}

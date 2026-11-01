@@ -1,0 +1,169 @@
+{
+  "qid": "C0090",
+  "question": "光伏方案标称串焊良率 99.6% 与曜阳光能案例实测串焊良率 99.6% 是否一致？案例中 220 台 LT-S10 折算到 16 条线是多少台/条？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"曜阳光能 串焊良率\", \"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 410,
+        "total_tokens": 603,
+        "completion_tokens": 193,
+        "completion_tokens_details": {
+          "reasoning_tokens": 162,
+          "text_tokens": 193
+        }
+      },
+      "seconds": 1.625
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_case_03_yaoyang\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 1628,
+        "total_tokens": 1920,
+        "completion_tokens": 292,
+        "completion_tokens_details": {
+          "reasoning_tokens": 253,
+          "text_tokens": 292
+        }
+      },
+      "seconds": 2.687
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"光伏方案标称串焊良率与曜阳光能案例实测串焊良率一致，均为 99.6%。案例中 220 台 LT-S10 折算到 16 条线，平均每条线为 13.75 台。\",\"citations\":[\"lantu_solution_photovoltaic\",\"lantu_case_03_yaoyang\"],\"evidence\":[\"lantu_solution_photovoltaic#0\",\"lantu_case_03_yaoyang#0\"]}",
+      "usage": {
+        "prompt_tokens": 2179,
+        "total_tokens": 3209,
+        "completion_tokens": 1030,
+        "completion_tokens_details": {
+          "reasoning_tokens": 903,
+          "text_tokens": 1030
+        }
+      },
+      "seconds": 7.656
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "曜阳光能 串焊良率",
+        "top_k": 5
+      },
+      "result_sha": "b1bf6a1d68ada8cec669f7ad697358639fca0cb3dfa928b97eecadbafc924040",
+      "result_chars": 1975,
+      "hits": 5
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_case_03_yaoyang",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "198131f4f517093e27b87ff287685cd02761b4a8030acb9609322ebde2694c30",
+      "result_chars": 802,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "光伏方案标称串焊良率与曜阳光能案例实测串焊良率一致，均为 99.6%。案例中 220 台 LT-S10 折算到 16 条线，平均每条线为 13.75 台。",
+    "citations": [
+      "lantu_solution_photovoltaic",
+      "lantu_case_03_yaoyang"
+    ],
+    "evidence": [
+      "lantu_solution_photovoltaic#0",
+      "lantu_case_03_yaoyang#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 5732,
+  "started_at": "2026-11-01T02:42:23",
+  "elapsed_seconds": 11.97,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "曜阳光能 串焊良率",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_case_03_yaoyang",
+            "title": "# 客户案例：曜阳光能电池片串焊项目",
+            "chunk": 0,
+            "score": 28.62,
+            "snippet": "# 客户案例：曜阳光能电池片串焊项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_yaoyang\n生效日期：2025-12-20\n\n## 一、客户背景\n\n曜阳光能位于合肥，主营光伏业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖16"
+          },
+          {
+            "doc_id": "lantu_solution_photovoltaic",
+            "title": "# 光伏电池片串焊整线解决方案",
+            "chunk": 0,
+            "score": 26.631,
+            "snippet": "# 光伏电池片串焊整线解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-09-20 09:00\n更新时间：2025-10-16 14:00\n版本号：v3.1\n文档类型：product\n文档族：solution_photovoltaic\n生效日期：2025-10-16\n\n## 一、方案概述\n\n面向 TOPCon/HJT 电池片串焊，提供上料、串焊、EL 检测与下料整线方案，核心设备为 LT-S10 SCARA 与 LT-V3D 视觉。\n\n## 二、产线指标\n\n串焊速度 4,200 片/小时，良率 99.6"
+          },
+          {
+            "doc_id": "lantu_sales_customer_list",
+            "title": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态",
+            "chunk": 0,
+            "score": 15.11,
+            "snippet": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态\n恒芯动力电池,动力电池,常州,电芯叠片与物流,\"21,600\",2025,已验收\n澜岳汽车零部件,汽车零部件,上海,白车身焊装,\"14,800\",2024,已验收\n曜阳光能,光伏,合肥,电池片串焊,\"9,800\",2025,已验收\n星禾电子,3C 电子,昆山,精密组装,\"12,500\",2024,已验收\n海翎家电,家电,顺德,喷涂与打磨,\"6,300\",2025,已验收\n晶拓微电子,半导体,无锡,晶圆搬运,\"7,400\",2025,已验收\n麦丰食品,食品,漯河"
+          },
+          {
+            "doc_id": "lantu_product_s_series",
+            "title": "# LT-S 系列 SCARA 机器人产品说明",
+            "chunk": 0,
+            "score": 3.697,
+            "snippet": "# LT-S 系列 SCARA 机器人产品说明\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-03-01 09:00\n更新时间：2025-09-12 11:00\n版本号：v3.2\n文档类型：product\n文档族：product_s_series\n生效日期：2025-09-12\n\n## 一、产品定位\n\nLT-S 系列 SCARA 机器人面向 3C 组装、光伏串焊、食品包装等高速取放场景，标准循环时间 0.38 秒。\n\n## 二、型号参数\n\nLT-S4 负载 4 kg、臂展 600 mm、重复精度 ±0.02 "
+          },
+          {
+            "doc_id": "lantu_solution_lithium",
+            "title": "# 动力电池叠片与物流整体解决方案",
+            "chunk": 0,
+            "score": 3.157,
+            "snippet": "# 动力电池叠片与物流整体解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-10-12 09:00\n更新时间：2025-12-01 10:00\n版本号：v3.6\n文档类型：product\n文档族：solution_lithium\n生效日期：2025-12-01\n\n## 一、方案概述\n\n面向动力电池电芯段，提供叠片、焊接、检测与物料配送一体化方案，核心设备包括 LT-R20 机器人、LT-AMR-1000 与 LT-V3D 视觉。\n\n## 二、产线配置\n\n单条叠片线配置 15-16 台 LT-R20、2 "
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_case_03_yaoyang",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_case_03_yaoyang",
+        "title": "# 客户案例：曜阳光能电池片串焊项目",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 622,
+        "text": "# 客户案例：曜阳光能电池片串焊项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_yaoyang\n生效日期：2025-12-20\n\n## 一、客户背景\n\n曜阳光能位于合肥，主营光伏业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖16 条串焊线，要求 6 个月内完成交付。\n\n## 三、方案配置\n\n澜图智能提供 220 台 LT-S10 SCARA 机器人，配套 LT-C800 控制器、LT-V3D 视觉与 LantuTwin 数字孪生仿真，整线合同金额 9,800 万元。\n\n## 四、实施过程\n\n项目由客户成功部牵头，联合研发、制造、质量与售后服务部组成 26 人项目组。完成现场勘测、虚拟调试、设备安装与 72 小时连续试运行，实际交付周期 5 个月。\n\n## 五、成效数据\n\n串焊良率 99.6%，组件产能由 4.2GW 提升至 6.5GW，单线人力减少 36 人。项目通过客户验收，并获得客户年度优秀供应商提名。\n\n## 六、客户评价\n\n曜阳光能工艺部经理 叶青表示：“澜图团队响应及时，方案在节拍与稳定性上达到预期，后续产线扩产将继续合作。”\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_solution_photovoltaic",
+      "lantu_case_03_yaoyang"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.053,
+    "number_recall": 0.0
+  }
+}

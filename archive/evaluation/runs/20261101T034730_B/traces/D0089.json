@@ -1,0 +1,166 @@
+{
+  "qid": "D0089",
+  "question": "年采购额 4,000 万元的客户能否使用战略价？",
+  "question_type": "条件判断与边界",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"战略价 采购额\", \"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 366,
+        "total_tokens": 536,
+        "completion_tokens": 170,
+        "completion_tokens_details": {
+          "reasoning_tokens": 142,
+          "text_tokens": 170
+        }
+      },
+      "seconds": 1.812
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_sales_policy\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 1589,
+        "total_tokens": 1924,
+        "completion_tokens": 335,
+        "completion_tokens_details": {
+          "reasoning_tokens": 302,
+          "text_tokens": 335
+        }
+      },
+      "seconds": 3.11
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"不能。根据《澜图智能销售政策与客户分级管理办法》，年采购额 4,000 万元的客户属于 A 级客户（1,000-5,000 万元），而战略价仅限 S 级客户（年采购额 5,000 万元以上）使用。\",\"citations\":[\"lantu_sales_policy\"],\"evidence\":[\"lantu_sales_policy#0\"]}",
+      "usage": {
+        "prompt_tokens": 2036,
+        "total_tokens": 2467,
+        "completion_tokens": 431,
+        "completion_tokens_details": {
+          "reasoning_tokens": 329,
+          "text_tokens": 431
+        }
+      },
+      "seconds": 3.203
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "战略价 采购额",
+        "top_k": 5
+      },
+      "result_sha": "79b8a28db437c4e36f6fdba914d98dab7c9f9dc75706cf6297e7b0504013e98f",
+      "result_chars": 1967,
+      "hits": 5
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_sales_policy",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "fbf025b76cd00162d0782210aa57f2f7c8b48adc93e7a90ef3a1a773271bf9ee",
+      "result_chars": 633,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "不能。根据《澜图智能销售政策与客户分级管理办法》，年采购额 4,000 万元的客户属于 A 级客户（1,000-5,000 万元），而战略价仅限 S 级客户（年采购额 5,000 万元以上）使用。",
+    "citations": [
+      "lantu_sales_policy"
+    ],
+    "evidence": [
+      "lantu_sales_policy#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 4927,
+  "started_at": "2026-11-01T04:42:12",
+  "elapsed_seconds": 8.12,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "战略价 采购额",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_sales_policy",
+            "title": "# 澜图智能销售政策与客户分级管理办法",
+            "chunk": 0,
+            "score": 14.393,
+            "snippet": "# 澜图智能销售政策与客户分级管理办法\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-01-20 09:00\n更新时间：2025-09-25 15:00\n版本号：v3.4\n文档类型：sales\n文档族：sales_policy\n生效日期：2025-09-25\n\n## 一、客户分级\n\n客户分为 S、A、B、C 四级。S 级为年采购额 5,000 万元以上战略客户，由客户成功部直管；A 级 1,000-5,000 万元；B 级 300-1,000 万元；C 级 300 万元以下由渠道覆盖。\n\n## 二、价格体"
+          },
+          {
+            "doc_id": "lantu_sales_discount_2024",
+            "title": "# 澜图智能销售折扣审批权限（2024版）",
+            "chunk": 0,
+            "score": 6.737,
+            "snippet": "# 澜图智能销售折扣审批权限（2024版）\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-01-25 09:00\n更新时间：2024-02-01 10:00\n版本号：v1.0\n文档类型：sales\n文档族：sales_discount\n生效日期：2024-01-01\n\n## 一、折扣区间\n\n标准价折扣 10% 以内（含）由销售经理审批；10%-20%（含）由销售副总裁审批；超过 20% 由总经理审批。\n\n## 二、申请材料\n\n折扣申请须说明客户级别、竞争态势、项目毛利与战略价值，并附成本测算表。\n\n## "
+          },
+          {
+            "doc_id": "lantu_sales_channel",
+            "title": "# 澜图智能渠道管理办法",
+            "chunk": 0,
+            "score": 6.385,
+            "snippet": "# 澜图智能渠道管理办法\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-03-05 09:00\n更新时间：2025-11-06 10:00\n版本号：v2.7\n文档类型：sales\n文档族：sales_channel\n生效日期：2025-11-06\n\n## 一、渠道分级\n\n渠道商分为金牌、银牌、认证三级。金牌渠道年度采购额不低于 3,000 万元，享受 82 折拿货价、优先技术支持与联合市场活动。\n\n## 二、准入与退出\n\n新渠道需具备 3 年以上自动化行业经验、专职技术团队不少于 5 人。连续 12 个月"
+          },
+          {
+            "doc_id": "lantu_legal_purchase_contract_template",
+            "title": "澜图智能采购合同模板（2025版）",
+            "chunk": 0,
+            "score": 6.114,
+            "snippet": "澜图智能采购合同模板（2025版）\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-10 09:00\n更新时间：2025-03-01 09:00\n版本号：v3.2\n文档类型：legal\n文档族：purchase_contract_template\n生效日期：2025-03-01\n第一条 采购标的\n甲方向乙方采购原材料/零部件，品名、规格、数量、单价以采购订单为准。\n第二条 付款方式\n标准账期为月结 90 天，战略供应商可约定 120 天；预付款不超过 20%；质保金 5%-10%。\n第三条 质量要求\n乙"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2025",
+            "title": "# 澜图智能采购管理制度（2025版）",
+            "chunk": 0,
+            "score": 5.994,
+            "snippet": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_sales_policy",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_sales_policy",
+        "title": "# 澜图智能销售政策与客户分级管理办法",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 463,
+        "text": "# 澜图智能销售政策与客户分级管理办法\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-01-20 09:00\n更新时间：2025-09-25 15:00\n版本号：v3.4\n文档类型：sales\n文档族：sales_policy\n生效日期：2025-09-25\n\n## 一、客户分级\n\n客户分为 S、A、B、C 四级。S 级为年采购额 5,000 万元以上战略客户，由客户成功部直管；A 级 1,000-5,000 万元；B 级 300-1,000 万元；C 级 300 万元以下由渠道覆盖。\n\n## 二、价格体系\n\n执行标准价、项目价与战略价三档。标准价按产品价格表执行；项目价需走折扣审批；战略价仅限 S 级客户，须经总经理批准。\n\n## 三、回款要求\n\n标准合同预付款不低于 30%，发货前累计收款不低于 60%，验收后 30 日内支付至 95%，质保金 5% 于质保期满支付。\n\n## 四、客户拜访\n\nS 级客户每月至少 1 次高层拜访，A 级每季度 1 次；拜访记录须在 CRM 中登记，作为销售考核依据。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_sales_policy"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.159,
+    "number_recall": 1.0
+  }
+}

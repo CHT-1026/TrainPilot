@@ -1,0 +1,209 @@
+{
+  "qid": "A0002",
+  "question": "程知远的直接上级是谁？该上级在公司担任什么职务？",
+  "question_type": "人物关系推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>程知远</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 46,
+        "prompt_tokens": 358,
+        "total_tokens": 404,
+        "completion_tokens_details": {
+          "reasoning_tokens": 18
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.203
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\": \"search\", \"args\": {\"query\": \"程知远\", \"top_k\": 10}}",
+      "usage": {
+        "completion_tokens": 41,
+        "prompt_tokens": 423,
+        "total_tokens": 464,
+        "completion_tokens_details": {
+          "reasoning_tokens": 12
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.922
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\": \"read\", \"args\": {\"doc_id\": \"lantu_org_reporting_lines\", \"offset\": 0, \"limit\": 2500}}",
+      "usage": {
+        "completion_tokens": 73,
+        "prompt_tokens": 2359,
+        "total_tokens": 2432,
+        "completion_tokens_details": {
+          "reasoning_tokens": 34
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 2.391
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\": \"answerable\", \"answer\": \"程知远的直接上级是沈亦舟；沈亦舟在澜图智能担任 CTO（首席技术官），负责研发体系。（依据汇报链：顾承澜→沈亦舟→程知远→周启航→林晓→赵一鸣）\", \"citations\": [\"lantu_org_reporting_lines\"], \"evidence\": [\"lantu_org_reporting_lines#片段0\"]}",
+      "usage": {
+        "completion_tokens": 146,
+        "prompt_tokens": 3148,
+        "total_tokens": 3294,
+        "completion_tokens_details": {
+          "reasoning_tokens": 48
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2304
+        }
+      },
+      "seconds": 6.0
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "程知远",
+        "top_k": 10
+      },
+      "result_sha": "d22ee74b30ef1b92303cab2d06e1cae8663bb524596ad479c6d3ced78e77c587",
+      "result_chars": 3132,
+      "hits": 8
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_reporting_lines",
+        "offset": 0,
+        "limit": 2500
+      },
+      "result_sha": "36598fcd8a121c3294f9eb912f321857b76ec269d35a34613a198884b589d1f8",
+      "result_chars": 1155,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "程知远的直接上级是沈亦舟；沈亦舟在澜图智能担任 CTO（首席技术官），负责研发体系。（依据汇报链：顾承澜→沈亦舟→程知远→周启航→林晓→赵一鸣）",
+    "citations": [
+      "lantu_org_reporting_lines"
+    ],
+    "evidence": [
+      "lantu_org_reporting_lines#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 6594,
+  "started_at": "2026-11-01T03:32:52",
+  "elapsed_seconds": 12.53,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "程知远",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_org_reporting_lines",
+            "title": "# 澜图智能员工汇报关系与业务分工",
+            "chunk": 0,
+            "score": 7.202,
+            "snippet": "# 澜图智能员工汇报关系与业务分工\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-02-10 09:00\n更新时间：2025-09-01 10:00\n版本号：v1.2\n文档类型：org\n文档族：org_reporting_lines\n生效日期：2025-09-01\n\n## 一、研发体系汇报链\n\n顾承澜是沈亦舟的上级。沈亦舟是程知远的上级。程知远是周启航的上级。周启航是林晓的上级。林晓是赵一鸣的上级。\n\n沈亦舟担任 CTO，负责研发体系。程知远担任研发中心总经理，负责研发中心整体经营管理。周启航担任控制器"
+          },
+          {
+            "doc_id": "lantu_tech_edge",
+            "title": "# 澜图智能边缘计算产品 LT-Edge 说明",
+            "chunk": 0,
+            "score": 6.252,
+            "snippet": "# 澜图智能边缘计算产品 LT-Edge 说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2025-01-10 09:00\n更新时间：2025-06-12 11:00\n版本号：v1.3\n文档类型：tech\n文档族：edge_computing\n生效日期：2025-06-12\n\n## 一、产品定位\n\nLT-Edge 是面向产线的边缘计算单元，承载视觉推理、数据采集与协议转换，支持断网续传。\n\n## 二、硬件规格\n\n8 核 ARM 处理器，32 TOPS NPU，16 GB 内存，256 GB 存储，支持 4 路千"
+          },
+          {
+            "doc_id": "lantu_tech_servo",
+            "title": "# 澜图智能伺服驱动与关节模组技术说明",
+            "chunk": 0,
+            "score": 6.239,
+            "snippet": "# 澜图智能伺服驱动与关节模组技术说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-07-01 09:00\n更新时间：2025-08-25 10:00\n版本号：v2.6\n文档类型：tech\n文档族：servo_drive\n生效日期：2025-08-25\n\n## 一、产品范围\n\n自研 400W-7.5kW 伺服驱动器与关节模组，覆盖 LT-R 与 LT-S 全系列，自研比例 61%。\n\n## 二、关键指标\n\n电流环带宽 2.5 kHz，速度环 1.2 kHz，位置精度 23 位，过载能力 300% 持续 "
+          },
+          {
+            "doc_id": "lantu_tech_vision",
+            "title": "# 澜图智能机器视觉算法平台说明",
+            "chunk": 0,
+            "score": 6.113,
+            "snippet": "# 澜图智能机器视觉算法平台说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-08-01 09:00\n更新时间：2025-11-05 15:00\n版本号：v3.1\n文档类型：tech\n文档族：vision_algorithm\n生效日期：2025-11-05\n\n## 一、算法能力\n\n覆盖 2D/3D 定位、缺陷检测、OCR、分割与无序抓取，支持小样本学习与在线增量训练。\n\n## 二、性能指标\n\n3D 测量精度 0.05 mm，缺陷检测召回率 99.2%，误检率 0.8%，单帧推理延迟 35 ms。\n\n##"
+          },
+          {
+            "doc_id": "lantu_product_controller",
+            "title": "# LT-C800 运动控制器产品说明",
+            "chunk": 0,
+            "score": 6.016,
+            "snippet": "# LT-C800 运动控制器产品说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2025-04-08 09:00\n更新时间：2025-10-10 10:00\n版本号：v1.5\n文档类型：product\n文档族：product_controller\n生效日期：2025-10-10\n\n## 一、产品定位\n\nLT-C800 是澜图智能自研的新一代八轴运动控制器，面向机器人、工作站与小型产线，替代上一代 LT-C600。\n\n## 二、性能指标\n\n支持 8 轴联动，EtherCAT 总线周期 1 ms，插补周期 0.5"
+          },
+          {
+            "doc_id": "lantu_product_vision",
+            "title": "# LT-V3D 工业视觉系统技术说明",
+            "chunk": 0,
+            "score": 5.922,
+            "snippet": "# LT-V3D 工业视觉系统技术说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-06-18 09:00\n更新时间：2025-07-15 14:00\n版本号：v2.6\n文档类型：product\n文档族：product_vision\n生效日期：2025-07-15\n\n## 一、系统组成\n\nLT-V3D 由结构光相机、视觉控制器与 LantuVision 软件组成，支持 3D 点云、2D 图像与深度学习缺陷检测。\n\n## 二、核心指标\n\n测量精度 0.05 mm，单帧点云 120 万点，帧率 30 fps"
+          },
+          {
+            "doc_id": "lantu_tech_control_architecture",
+            "title": "# 澜图智能机器人控制系统架构",
+            "chunk": 0,
+            "score": 5.689,
+            "snippet": "# 澜图智能机器人控制系统架构\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-06-01 09:00\n更新时间：2025-10-20 14:00\n版本号：v3.3\n文档类型：tech\n文档族：control_architecture\n生效日期：2025-10-20\n\n## 一、总体架构\n\n控制系统分为感知层、决策层、运动控制层与执行层，采用 EtherCAT 总线连接伺服与 I/O，总线周期 1 ms。\n\n## 二、控制器\n\nLT-C800 采用双核 ARM + FPGA 架构，支持 8 轴联动、0.5 "
+          },
+          {
+            "doc_id": "lantu_tech_control_architecture_v2",
+            "title": "# 澜图智能机器人控制系统架构（旧版 v2.4）",
+            "chunk": 0,
+            "score": 4.858,
+            "snippet": "# 澜图智能机器人控制系统架构（旧版 v2.4）\n\n所属部门：研发中心\n作者：程知远\n创建时间：2023-08-01 09:00\n更新时间：2024-05-10 18:00\n版本号：v2.4\n文档类型：tech\n文档族：control_architecture\n生效日期：2024-05-10\n\n## 一、总体架构（旧版）\n\n旧版控制系统采用“工控机 + 运动控制卡”的两层结构：上位工控机负责任务调度与人机界面，下位运动控制卡负责插补与伺服闭环。现场总线采用 CANopen，总线周期 2 ms，单条总线最多连接 16"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_reporting_lines",
+        "offset": 0,
+        "limit": 2500
+      },
+      "result": {
+        "doc_id": "lantu_org_reporting_lines",
+        "title": "# 澜图智能员工汇报关系与业务分工",
+        "offset": 0,
+        "limit": 2500,
+        "total_chars": 964,
+        "text": "# 澜图智能员工汇报关系与业务分工\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-02-10 09:00\n更新时间：2025-09-01 10:00\n版本号：v1.2\n文档类型：org\n文档族：org_reporting_lines\n生效日期：2025-09-01\n\n## 一、研发体系汇报链\n\n顾承澜是沈亦舟的上级。沈亦舟是程知远的上级。程知远是周启航的上级。周启航是林晓的上级。林晓是赵一鸣的上级。\n\n沈亦舟担任 CTO，负责研发体系。程知远担任研发中心总经理，负责研发中心整体经营管理。周启航担任控制器研究所所长，负责控制器产品与技术路线。林晓担任伺服算法组组长，负责伺服控制算法与标定。赵一鸣是伺服控制工程师，负责伺服环参数整定与现场调试。\n\n## 二、销售与客户成功汇报链\n\n顾承澜是罗嘉树的上级。罗嘉树是唐婧的上级。唐婧是许博的上级。许博是陈璐的上级。\n\n罗嘉树担任销售副总裁，分管销售中心、客户成功部与售后服务部。唐婧担任销售中心总经理，负责销售中心整体业务。许博担任华东大区经理，负责华东区域客户与渠道。陈璐担任上海客户经理，负责上海区域重点客户。\n\n## 三、供应链与制造汇报链\n\n顾承澜是韩立恒的上级。韩立恒是方磊的上级。方磊是郭涛的上级。\n\n韩立恒担任 COO，负责供应链与制造。方磊担任制造中心总经理，负责制造中心生产运营。郭涛担任苏州工厂厂长，负责苏州工厂的生产、质量与交付。\n\n## 四、职能体系汇报链\n\n顾承澜是周敏仪的上级。顾承澜是陈依然的上级。顾承澜是邵岚的上级。陈依然是蒋雯的上级。\n\n周敏仪担任 CFO，负责财务与资本运作。陈依然担任人力资源副总裁，负责人力资源体系。蒋雯担任薪酬绩效经理，负责薪酬、绩效与员工关系。邵岚担任法务合规总监，负责法务、合规与知识产权。\n\n## 五、跨部门业务分工\n\n周启航同时担任新一代控制器 LT-C900 项目负责人，项目成员包括林晓与赵一鸣。唐婧负责销售中心，华东区域由许博管理，上海区域重点客户由陈璐维护。方磊负责制造中心，苏州工厂由郭涛管理。\n\n## 六、汇报关系使用说明\n\n本文件中的“上级”均指行政汇报关系中的直接上级；跨部门项目中的项目负责人关系不改变行政汇报关系。需要判断两人关系时，应沿着直接上级链逐级向上查找，不能跳级推断。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 0.5,
+    "cited": [
+      "lantu_org_reporting_lines"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.632,
+    "number_recall": 0.0
+  }
+}

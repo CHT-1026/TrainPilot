@@ -1,0 +1,142 @@
+{
+  "qid": "M1418",
+  "question": "客户合同要盖章：走哪些流程？印章归谁保管？盖完之后还要做什么、存多久？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>合同 用印 流程 审批</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 92,
+        "prompt_tokens": 366,
+        "total_tokens": 458,
+        "completion_tokens_details": {
+          "reasoning_tokens": 57
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 4.375
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search>{\"query\": \"合同盖章 用印流程 审批\", \"top_k\": 10}</parameter></tool_call>",
+      "usage": {
+        "completion_tokens": 75,
+        "prompt_tokens": 438,
+        "total_tokens": 513,
+        "completion_tokens_details": {
+          "reasoning_tokens": 43
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.953
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>合同 用印 印章 管理</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 44,
+        "prompt_tokens": 507,
+        "total_tokens": 551,
+        "completion_tokens_details": {
+          "reasoning_tokens": 8
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.5
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>合同 用印 印章 管理 流程</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 54,
+        "prompt_tokens": 580,
+        "total_tokens": 634,
+        "completion_tokens_details": {
+          "reasoning_tokens": 15
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.61
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>合同用印流程 印章保管 归档</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 54,
+        "prompt_tokens": 656,
+        "total_tokens": 710,
+        "completion_tokens_details": {
+          "reasoning_tokens": 18
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 2.922
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>合同用印流程 印章保管 归档期限</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 101,
+        "prompt_tokens": 729,
+        "total_tokens": 830,
+        "completion_tokens_details": {
+          "reasoning_tokens": 64
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 2.843
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"未能检索到关于客户合同盖章流程、印章保管责任人、盖章后续事项及保管期限的资料。已尝试以「合同用印流程」「印章管理」「归档期限」等多组关键词检索，均未返回可用文档片段，因此无法依据现有资料给出结论。建议补充提供公司《印章管理制度》《合同管理规定》或用印申请单模板等文件后重新查询；如问题涉及具体公司内部规定，请澄清适用的制度文件名称。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 159,
+        "prompt_tokens": 800,
+        "total_tokens": 959,
+        "completion_tokens_details": {
+          "reasoning_tokens": 36
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 4.328
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "未能检索到关于客户合同盖章流程、印章保管责任人、盖章后续事项及保管期限的资料。已尝试以「合同用印流程」「印章管理」「归档期限」等多组关键词检索，均未返回可用文档片段，因此无法依据现有资料给出结论。建议补充提供公司《印章管理制度》《合同管理规定》或用印申请单模板等文件后重新查询；如问题涉及具体公司内部规定，请澄清适用的制度文件名称。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4655,
+  "started_at": "2026-11-01T06:10:29",
+  "elapsed_seconds": 19.53,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.028,
+    "number_recall": 0.0
+  }
+}

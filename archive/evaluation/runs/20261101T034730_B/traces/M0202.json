@@ -1,0 +1,126 @@
+{
+  "qid": "M0202",
+  "question": "客户还在用着那台老 C600 控制器，我们现在推的那台比它强在哪？",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"C600 控制器\", \"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 372,
+        "total_tokens": 563,
+        "completion_tokens": 191,
+        "completion_tokens_details": {
+          "reasoning_tokens": 162,
+          "text_tokens": 191
+        }
+      },
+      "seconds": 2.204
+    },
+    {
+      "round": 2,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"我们目前主推的新款控制器是 **LT-C800**，相比客户正在使用的老款 **LT-C600**，它在以下几个核心方面实现了显著升级：\\n\\n1. **控制能力更强（轴数翻倍）**：\\n   - LT-C600 仅支持 **4 轴**联动。\\n   - LT-C800 升级为 **8 轴**联动，能驱动更复杂的机器人或工作站。\\n\\n2. **响应速度与实时性更高**：\\n   - **总线周期**：由 CANopen 总线的 2 ms 缩短至 EtherCAT 总线的 **1 ms**。\\n   - **插补周期**：由 1 ms 缩短至 **0.5 ms**，运动轨迹更平滑精准。\\n\\n3. **硬件架构全面升级**：\\n   - LT-C600 采用“单核 ARM + 4 轴运动控制卡”结构。\\n   - LT-C800 升级为 **双核 ARM + FPGA** 架构，算力更强，实时性更好。\\n\\n4. **伺服控制精度与带宽提升**：\\n   - **伺服采样频率**：由 8 kHz 提升至 **16 kHz**。\\n   - **速度环带宽**：由 600 Hz 提升至 **1.2 kHz**，动态响应更快。\\n   - **编码器精度**：由 17 位增量式升级为 **23 位绝对值**，定位更准且断电不丢失位置。\\n\\n总结来说，LT-C800 在轴数、通信速度、计算架构和控制精度上都是对 LT-C600 的全面代际超越。\",\"citations\":[\"lantu_product_controller\",\"lantu_tech_control_architecture\"],\"evidence\":[\"lantu_product_controller#0\",\"lantu_tech_control_architecture#1\"]}",
+      "usage": {
+        "prompt_tokens": 1535,
+        "total_tokens": 3181,
+        "completion_tokens": 1646,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1228,
+          "text_tokens": 1646
+        }
+      },
+      "seconds": 9.156
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "C600 控制器",
+        "top_k": 5
+      },
+      "result_sha": "60c11049a1182e4f13a8d20a961d4d90479d284c40ba7cc46d517899ce57d90d",
+      "result_chars": 1965,
+      "hits": 5
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "我们目前主推的新款控制器是 **LT-C800**，相比客户正在使用的老款 **LT-C600**，它在以下几个核心方面实现了显著升级：\n\n1. **控制能力更强（轴数翻倍）**：\n   - LT-C600 仅支持 **4 轴**联动。\n   - LT-C800 升级为 **8 轴**联动，能驱动更复杂的机器人或工作站。\n\n2. **响应速度与实时性更高**：\n   - **总线周期**：由 CANopen 总线的 2 ms 缩短至 EtherCAT 总线的 **1 ms**。\n   - **插补周期**：由 1 ms 缩短至 **0.5 ms**，运动轨迹更平滑精准。\n\n3. **硬件架构全面升级**：\n   - LT-C600 采用“单核 ARM + 4 轴运动控制卡”结构。\n   - LT-C800 升级为 **双核 ARM + FPGA** 架构，算力更强，实时性更好。\n\n4. **伺服控制精度与带宽提升**：\n   - **伺服采样频率**：由 8 kHz 提升至 **16 kHz**。\n   - **速度环带宽**：由 600 Hz 提升至 **1.2 kHz**，动态响应更快。\n   - **编码器精度**：由 17 位增量式升级为 **23 位绝对值**，定位更准且断电不丢失位置。\n\n总结来说，LT-C800 在轴数、通信速度、计算架构和控制精度上都是对 LT-C600 的全面代际超越。",
+    "citations": [
+      "lantu_product_controller",
+      "lantu_tech_control_architecture"
+    ],
+    "evidence": [
+      "lantu_product_controller#0",
+      "lantu_tech_control_architecture#1"
+    ]
+  },
+  "status": "answered",
+  "tokens": 3744,
+  "started_at": "2026-11-01T06:07:18",
+  "elapsed_seconds": 11.36,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "C600 控制器",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_product_controller",
+            "title": "# LT-C800 运动控制器产品说明",
+            "chunk": 0,
+            "score": 7.435,
+            "snippet": "# LT-C800 运动控制器产品说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2025-04-08 09:00\n更新时间：2025-10-10 10:00\n版本号：v1.5\n文档类型：product\n文档族：product_controller\n生效日期：2025-10-10\n\n## 一、产品定位\n\nLT-C800 是澜图智能自研的新一代八轴运动控制器，面向机器人、工作站与小型产线，替代上一代 LT-C600。\n\n## 二、性能指标\n\n支持 8 轴联动，EtherCAT 总线周期 1 ms，插补周期 0.5"
+          },
+          {
+            "doc_id": "lantu_tech_control_architecture",
+            "title": "# 澜图智能机器人控制系统架构",
+            "chunk": 1,
+            "score": 7.132,
+            "snippet": "与旧版 v2.4 相比，v3.3 的主要变化：现场总线由 CANopen 升级为 EtherCAT，总线周期由 2 ms 缩短到 1 ms；控制器由 LT-C600 单核 ARM + 4 轴运动控制卡升级为 LT-C800 双核 ARM + FPGA，联动轴数由 4 轴增加到 8 轴，插补周期由 1 ms 缩短到 0.5 ms；伺服采样频率由 8 kHz 提升到 16 kHz，编码器由 17 位增量式升级为 23 位绝对值，速度环带宽由 600 Hz 提升到 1.2 kHz；软件栈由 Windows + RTX 迁"
+          },
+          {
+            "doc_id": "lantu_tech_control_architecture_v2",
+            "title": "# 澜图智能机器人控制系统架构（旧版 v2.4）",
+            "chunk": 0,
+            "score": 6.446,
+            "snippet": "# 澜图智能机器人控制系统架构（旧版 v2.4）\n\n所属部门：研发中心\n作者：程知远\n创建时间：2023-08-01 09:00\n更新时间：2024-05-10 18:00\n版本号：v2.4\n文档类型：tech\n文档族：control_architecture\n生效日期：2024-05-10\n\n## 一、总体架构（旧版）\n\n旧版控制系统采用“工控机 + 运动控制卡”的两层结构：上位工控机负责任务调度与人机界面，下位运动控制卡负责插补与伺服闭环。现场总线采用 CANopen，总线周期 2 ms，单条总线最多连接 16"
+          },
+          {
+            "doc_id": "lantu_company_history",
+            "title": "# 澜图智能发展历程（2011—2025）",
+            "chunk": 0,
+            "score": 4.849,
+            "snippet": "# 澜图智能发展历程（2011—2025）\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2023-03-01 09:00\n更新时间：2026-01-05 14:00\n版本号：v4.0\n文档类型：company\n文档族：company_history\n生效日期：2026-01-05\n\n## 一、创业阶段（2011—2015）\n\n2011 年 6 月 18 日，公司在苏州工业园区成立，创始团队来自高校机器人实验室，首款产品为 LT-R6 六轴工业机器人，2012 年实现小批量交付 120 台。2014 年建成首条机"
+          },
+          {
+            "doc_id": "lantu_tech_control_architecture",
+            "title": "# 澜图智能机器人控制系统架构",
+            "chunk": 0,
+            "score": 3.655,
+            "snippet": "# 澜图智能机器人控制系统架构\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-06-01 09:00\n更新时间：2025-10-20 14:00\n版本号：v3.3\n文档类型：tech\n文档族：control_architecture\n生效日期：2025-10-20\n\n## 一、总体架构\n\n控制系统分为感知层、决策层、运动控制层与执行层，采用 EtherCAT 总线连接伺服与 I/O，总线周期 1 ms。\n\n## 二、控制器\n\nLT-C800 采用双核 ARM + FPGA 架构，支持 8 轴联动、0.5 "
+          }
+        ]
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.667,
+    "cited": [
+      "lantu_product_controller",
+      "lantu_tech_control_architecture"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.233,
+    "number_recall": 0.0
+  }
+}

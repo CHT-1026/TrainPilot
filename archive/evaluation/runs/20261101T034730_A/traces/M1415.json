@@ -1,0 +1,142 @@
+{
+  "qid": "M1415",
+  "question": "客户案例里“26 人项目组”“5 个月交付周期”这些数字，是恒芯那个项目的专属数据，还是所有案例都这么写？恒芯和曜阳各自用了什么配置、多少钱、成效是什么？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>恒芯 客户案例 项目组 交付周期</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 98,
+        "prompt_tokens": 393,
+        "total_tokens": 491,
+        "completion_tokens_details": {
+          "reasoning_tokens": 61
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.656
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>恒芯 客户案例 项目组 交付周期</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 53,
+        "prompt_tokens": 467,
+        "total_tokens": 520,
+        "completion_tokens_details": {
+          "reasoning_tokens": 16
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.75
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>恒芯 客户案例 26人项目组 5个月交付</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 541,
+        "total_tokens": 591,
+        "completion_tokens_details": {
+          "reasoning_tokens": 9
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.531
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>恒芯 客户案例 26人项目组 5个月交付</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 619,
+        "total_tokens": 667,
+        "completion_tokens_details": {
+          "reasoning_tokens": 7
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 1.422
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>恒芯 客户案例 26人项目组 5个月交付</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 49,
+        "prompt_tokens": 697,
+        "total_tokens": 746,
+        "completion_tokens_details": {
+          "reasoning_tokens": 8
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 3.172
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>恒芯 客户案例 26人项目组 5个月交付</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 49,
+        "prompt_tokens": 775,
+        "total_tokens": 824,
+        "completion_tokens_details": {
+          "reasoning_tokens": 8
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 2.578
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_carus\",\"answer\":\"检索未能成功执行，我没有取到任何关于“恒芯”“曜阳”客户案例的原文资料，因此无法判断“26人项目组”“5个月交付周期”是恒芯项目专属数据还是通用模板写法，也无法提供两个案例各自的配置、报价与成效数据。建议重新提问或允许我再次检索“恒芯/曜阳 客户案例”相关文档以核实口径。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 178,
+        "prompt_tokens": 850,
+        "total_tokens": 1028,
+        "completion_tokens_details": {
+          "reasoning_tokens": 66
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 768
+        }
+      },
+      "seconds": 4.719
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_carus",
+    "answer": "检索未能成功执行，我没有取到任何关于“恒芯”“曜阳”客户案例的原文资料，因此无法判断“26人项目组”“5个月交付周期”是恒芯项目专属数据还是通用模板写法，也无法提供两个案例各自的配置、报价与成效数据。建议重新提问或允许我再次检索“恒芯/曜阳 客户案例”相关文档以核实口径。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4867,
+  "started_at": "2026-11-01T06:09:20",
+  "elapsed_seconds": 17.83,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.016,
+    "number_recall": 0.0
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "run_id": "20261101T002706_A",
+  "models": "A",
+  "cases": [
+    "K0048"
+  ],
+  "case_sha256": "0aa153d82fc1afef35a306b430c5d6e9adef2cfb28316b429ac7e7cf4d35fc92",
+  "seed": 20261101,
+  "budgets": {
+    "rounds": 8,
+    "tool_calls": 12,
+    "top_k": 10,
+    "answer_tokens": 8192,
+    "case_seconds": 600,
+    "tool_seconds": 30
+  },
+  "workspace": "C:\\Users\\34157\\Desktop\\vllmproject\\澜图智能企业智能体平台\\research\\retrieval_evaluation_20261101\\workspace",
+  "started_at": "2026-11-01T00:27:06"
+}

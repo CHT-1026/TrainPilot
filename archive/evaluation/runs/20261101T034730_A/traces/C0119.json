@@ -1,0 +1,95 @@
+{
+  "qid": "C0119",
+  "question": "参数矩阵交付与保修表中，哪条产品线的标准交期最长？哪条最短？哪条产品线的保修期没有标注运行小时数？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>参数矩阵 交付 保修</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 57,
+        "prompt_tokens": 377,
+        "total_tokens": 434,
+        "completion_tokens_details": {
+          "reasoning_tokens": 26
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.328
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>参数矩阵 交付 保修 交期</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 42,
+        "prompt_tokens": 445,
+        "total_tokens": 487,
+        "completion_tokens_details": {
+          "reasoning_tokens": 8
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.375
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>参数矩阵 交付 保修 交期</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 54,
+        "prompt_tokens": 516,
+        "total_tokens": 570,
+        "completion_tokens_details": {
+          "reasoning_tokens": 20
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.563
+    },
+    {
+      "round": 4,
+      "text": "{\"name\":\"search\",\"args\":{\"query\":\"参数矩阵 交付 保修 交期\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 47,
+        "prompt_tokens": 587,
+        "total_tokens": 634,
+        "completion_tokens_details": {
+          "reasoning_tokens": 20
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 1.875
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "name": "search",
+    "args": {
+      "query": "参数矩阵 交付 保修 交期",
+      "top_k": 10
+    }
+  },
+  "status": "answered",
+  "tokens": 2125,
+  "started_at": "2026-11-01T04:21:47",
+  "elapsed_seconds": 7.14,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

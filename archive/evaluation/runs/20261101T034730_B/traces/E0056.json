@@ -1,0 +1,44 @@
+{
+  "qid": "E0056",
+  "question": "试用期的长度与试用期的考核要求是什么？",
+  "question_type": "事实检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "{\n  \"tool\": \"list\",\n  \"args\": {\n    \"keyword\": \"试用期\"\n  }\n}",
+      "usage": {
+        "prompt_tokens": 359,
+        "total_tokens": 458,
+        "completion_tokens": 99,
+        "completion_tokens_details": {
+          "reasoning_tokens": 66,
+          "text_tokens": 99
+        }
+      },
+      "seconds": 1.437
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "tool": "list",
+    "args": {
+      "keyword": "试用期"
+    }
+  },
+  "status": "answered",
+  "tokens": 458,
+  "started_at": "2026-11-01T04:48:54",
+  "elapsed_seconds": 1.44,
+  "tool_calls_detail": [],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

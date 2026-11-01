@@ -1,0 +1,62 @@
+{
+  "qid": "F0016",
+  "question": "按《2025 年收入构成明细》标注，2025 年「工业软件与服务」的收入、收入占比与同比增速分别是多少？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>2025 年收入构成明细 工业软件与服务</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list><parameter=keyword>收入构成</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 79,
+        "prompt_tokens": 379,
+        "total_tokens": 458,
+        "completion_tokens_details": {
+          "reasoning_tokens": 22
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.844
+    },
+    {
+      "round": 2,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"我无法访问或检索《2025 年收入构成明细》这份资料——本次会话中没有任何可用的检索工具（search/read/list），因此无法取得「工业软件与服务」2025 年的收入金额、收入占比与同比增速的原始标注。请提供该文档的相关页面/表格内容，或在具备资料检索功能的环境中重新提问，我再据原文口径为您核算。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 214,
+        "prompt_tokens": 473,
+        "total_tokens": 687,
+        "completion_tokens_details": {
+          "reasoning_tokens": 102
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 9.937
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "我无法访问或检索《2025 年收入构成明细》这份资料——本次会话中没有任何可用的检索工具（search/read/list），因此无法取得「工业软件与服务」2025 年的收入金额、收入占比与同比增速的原始标注。请提供该文档的相关页面/表格内容，或在具备资料检索功能的环境中重新提问，我再据原文口径为您核算。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 1145,
+  "started_at": "2026-11-01T02:32:41",
+  "elapsed_seconds": 12.78,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.207,
+    "number_recall": 1.0
+  }
+}

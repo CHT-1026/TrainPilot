@@ -1,0 +1,95 @@
+{
+  "qid": "M1525",
+  "question": "用户：2025 年海外新签订单是多少？\n助手：2025 年海外新签订单 6.1 亿元；同期海外营业收入 4.86 亿元，占总收入 11.4%，同比增长 31.2%。\n用户：我想看海外收入按地区怎么分的？欧洲、东南亚、北美各多少？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>海外收入 分地区 欧洲 东南亚 北美</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 54,
+        "prompt_tokens": 422,
+        "total_tokens": 476,
+        "completion_tokens_details": {
+          "reasoning_tokens": 16
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.141
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search>{\"query\":\"海外收入 分地区 欧洲 东南亚 北美\",\"top_k\":10}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 166,
+        "prompt_tokens": 497,
+        "total_tokens": 663,
+        "completion_tokens_details": {
+          "reasoning_tokens": 132
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.812
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>海外收入 分地区 欧洲 东南亚 北美</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 56,
+        "prompt_tokens": 568,
+        "total_tokens": 624,
+        "completion_tokens_details": {
+          "reasoning_tokens": 18
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.641
+    },
+    {
+      "round": 4,
+      "text": "{\"name\":\"search\",\"args\":{\"query\":\"海外收入 分地区 欧洲 东南亚 北美\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 56,
+        "prompt_tokens": 643,
+        "total_tokens": 699,
+        "completion_tokens_details": {
+          "reasoning_tokens": 25
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 1.859
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "name": "search",
+    "args": {
+      "query": "海外收入 分地区 欧洲 东南亚 北美",
+      "top_k": 10
+    }
+  },
+  "status": "answered",
+  "tokens": 2462,
+  "started_at": "2026-11-01T06:17:13",
+  "elapsed_seconds": 9.45,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

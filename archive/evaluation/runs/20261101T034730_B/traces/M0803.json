@@ -1,0 +1,399 @@
+{
+  "qid": "M0803",
+  "question": "2025 年下半年几个专题会上定下来的动作，哪些在 2025 年内就能收口，哪些明确排到了下一年？分别由谁负责、截止到什么时候？",
+  "question_type": "时间与因果推断",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"2025年下半年 专题会 动作 收口\", \"top_k\":10}}",
+      "usage": {
+        "prompt_tokens": 390,
+        "total_tokens": 591,
+        "completion_tokens": 201,
+        "completion_tokens_details": {
+          "reasoning_tokens": 164,
+          "text_tokens": 201
+        }
+      },
+      "seconds": 1.625
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_meeting_quality\", \"offset\":0, \"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 2830,
+        "total_tokens": 3230,
+        "completion_tokens": 400,
+        "completion_tokens_details": {
+          "reasoning_tokens": 364,
+          "text_tokens": 400
+        }
+      },
+      "seconds": 3.11
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_meeting_supply_chain\", \"offset\":0, \"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 3237,
+        "total_tokens": 3708,
+        "completion_tokens": 471,
+        "completion_tokens_details": {
+          "reasoning_tokens": 434,
+          "text_tokens": 471
+        }
+      },
+      "seconds": 4.078
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"2025年下半年 专题会 纪要\", \"top_k\":10}}",
+      "usage": {
+        "prompt_tokens": 3609,
+        "total_tokens": 4385,
+        "completion_tokens": 776,
+        "completion_tokens_details": {
+          "reasoning_tokens": 742,
+          "text_tokens": 776
+        }
+      },
+      "seconds": 6.969
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_meeting_strategy\", \"offset\":0, \"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 6003,
+        "total_tokens": 8066,
+        "completion_tokens": 2063,
+        "completion_tokens_details": {
+          "reasoning_tokens": 2027,
+          "text_tokens": 2063
+        }
+      },
+      "seconds": 17.187
+    },
+    {
+      "round": 6,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据 2025 年下半年召开的专题会及战略研讨会纪要，相关动作安排如下：\\n\\n一、2025 年内收口的动作\\n1. LT-R12 线束磨损召回整改\\n   - 负责部门：质量部\\n   - 截止时间：2025 年 8 月底\\n   - 来源：2025 年第三季度质量专题会\\n2. 2026 年经营计划分解\\n   - 负责部门：战略投资部\\n   - 截止时间：2025 年 12 月底\\n   - 来源：2026 年战略研讨会（2025年11月召开）\\n\\n二、明确排到下一年的动作\\n1. 减速器双源替代\\n   - 负责部门：供应链中心\\n   - 截止时间：2026 年一季度（实现 30% 替代）\\n   - 来源：2025 年供应链韧性专题会\\n\\n三、其他已部署但未明确具体截止时间的动作\\n- 研发中心：更新设计规范（质量专题会）。\\n- 售后服务部：同步客户通知与现场更换（质量专题会）。\\n- 供应链中心：伺服驱动器自研比例提升至 61%、安全库存提升至 45 天、东莞基地增设线边仓、与 5 家战略供应商签订年度框架协议、建立替代清单及每月跟踪交付准时率（供应链韧性专题会）。\\n- 各事业部：提交三年路线图（战略研讨会）。\",\"citations\":[\"lantu_meeting_quality\",\"lantu_meeting_supply_chain\",\"lantu_meeting_strategy\"],\"evidence\":[\"lantu_meeting_quality#0\",\"lantu_meeting_supply_chain#0\",\"lantu_meeting_strategy#0\"]}",
+      "usage": {
+        "prompt_tokens": 6426,
+        "total_tokens": 16751,
+        "completion_tokens": 10325,
+        "completion_tokens_details": {
+          "reasoning_tokens": 9921,
+          "text_tokens": 10325
+        }
+      },
+      "seconds": 71.547
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "2025年下半年 专题会 动作 收口",
+        "top_k": 10
+      },
+      "result_sha": "04e821ff464d0849caa90c8b2a99a88ed2bdaa3c589c23f384d725f01230f71b",
+      "result_chars": 3893,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_meeting_quality",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "fd41f90d57257c55ba7883e06bcab3d1f3613b169c9cd97b8dde66f5672f6ffc",
+      "result_chars": 583,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_meeting_supply_chain",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "0afe9391b96186085f020f47ebbd197d93e86bd331c9b0ca25293fe50a6c8d5a",
+      "result_chars": 528,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "2025年下半年 专题会 纪要",
+        "top_k": 10
+      },
+      "result_sha": "0a0768ca54cd5b7f668d5873cdf83be9e85ae0ddddcceb7c92b1b2d9892afbe5",
+      "result_chars": 3871,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_meeting_strategy",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "314fca0e845dc505c3b0cbbf65305239f1ceb63517ba07d345a70650e885381d",
+      "result_chars": 609,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据 2025 年下半年召开的专题会及战略研讨会纪要，相关动作安排如下：\n\n一、2025 年内收口的动作\n1. LT-R12 线束磨损召回整改\n   - 负责部门：质量部\n   - 截止时间：2025 年 8 月底\n   - 来源：2025 年第三季度质量专题会\n2. 2026 年经营计划分解\n   - 负责部门：战略投资部\n   - 截止时间：2025 年 12 月底\n   - 来源：2026 年战略研讨会（2025年11月召开）\n\n二、明确排到下一年的动作\n1. 减速器双源替代\n   - 负责部门：供应链中心\n   - 截止时间：2026 年一季度（实现 30% 替代）\n   - 来源：2025 年供应链韧性专题会\n\n三、其他已部署但未明确具体截止时间的动作\n- 研发中心：更新设计规范（质量专题会）。\n- 售后服务部：同步客户通知与现场更换（质量专题会）。\n- 供应链中心：伺服驱动器自研比例提升至 61%、安全库存提升至 45 天、东莞基地增设线边仓、与 5 家战略供应商签订年度框架协议、建立替代清单及每月跟踪交付准时率（供应链韧性专题会）。\n- 各事业部：提交三年路线图（战略研讨会）。",
+    "citations": [
+      "lantu_meeting_quality",
+      "lantu_meeting_supply_chain",
+      "lantu_meeting_strategy"
+    ],
+    "evidence": [
+      "lantu_meeting_quality#0",
+      "lantu_meeting_supply_chain#0",
+      "lantu_meeting_strategy#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 36731,
+  "started_at": "2026-11-01T06:30:12",
+  "elapsed_seconds": 104.52,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "2025年下半年 专题会 动作 收口",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_meeting_quality",
+            "title": "2025 年第三季度质量专题会纪要",
+            "chunk": 0,
+            "score": 15.108,
+            "snippet": "2025 年第三季度质量专题会纪要\n所属部门：质量部\n作者：潘文博\n创建时间：2025-07-22 09:00\n更新时间：2025-07-22 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_quality_q3\n生效日期：2025-07-22\n一、质量数据\n上半年一次交检合格率 98.4%，客户投诉 1 起；第三季度首月投诉 1 起，为 LT-R12 线束磨损问题。\n二、问题分析\n线束磨损源于走线路径与防护套选型不当，涉及 2025 年 3 月生产的 120 台 LT-R12，已启"
+          },
+          {
+            "doc_id": "lantu_meeting_supply_chain",
+            "title": "2025 年供应链韧性专题会纪要",
+            "chunk": 0,
+            "score": 11.803,
+            "snippet": "2025 年供应链韧性专题会纪要\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-10-16 09:00\n更新时间：2025-10-16 15:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_supply_chain\n生效日期：2025-10-16\n一、供应形势\n减速器交期由 8 周延长至 12 周，芯片交期 20 周；关键物料库存周转 92 天，高于目标 75 天。\n二、双源策略\n减速器已引入第二供应商，2026 年一季度实现 30% 替代；伺服驱动器自研比例提升至 61%。\n三"
+          },
+          {
+            "doc_id": "lantu_finance_h1_2025",
+            "title": "# 澜图智能 2025 年半年度报告摘要",
+            "chunk": 0,
+            "score": 6.709,
+            "snippet": "# 澜图智能 2025 年半年度报告摘要\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-08-25 09:00\n更新时间：2025-08-28 18:00\n版本号：v1.0\n文档类型：finance\n文档族：semiannual_2025\n生效日期：2025-08-28\n\n## 一、经营数据\n\n2025 年上半年营业收入 19.84 亿元，同比增长 21.3%；归母净利润 1.83 亿元，同比增长 24.6%；毛利率 31.2%。\n\n## 二、订单情况\n\n上半年新签订单 22.7 亿元，同比增长 18.5%"
+          },
+          {
+            "doc_id": "lantu_strategy_esg",
+            "title": "# 澜图智能 ESG 与可持续发展报告",
+            "chunk": 0,
+            "score": 4.796,
+            "snippet": "# 澜图智能 ESG 与可持续发展报告\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2025-04-22 09:00\n更新时间：2025-04-25 10:00\n版本号：v2.0\n文档类型：strategy\n文档族：esg_report\n生效日期：2025-04-25\n\n## 一、环境\n\n2025 年苏州基地光伏装机 6.2MW，绿电占比 28%；单位产值能耗下降 9.6%；危废合规处置率 100%。\n\n## 二、社会\n\n员工培训人均 32 小时；安全生产投入 1,200 万元；公益捐赠 380 万元，支持职业"
+          },
+          {
+            "doc_id": "lantu_tech_roadmap",
+            "title": "# 澜图智能技术路线图（2025—2028）",
+            "chunk": 0,
+            "score": 4.659,
+            "snippet": "# 澜图智能技术路线图（2025—2028）\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-11-01 09:00\n更新时间：2025-12-05 16:00\n版本号：v2.2\n文档类型：tech\n文档族：tech_roadmap\n生效日期：2025-12-05\n\n## 一、总体路线\n\n以“本体+控制+视觉+软件”为基础，向具身智能与柔性制造演进，2026 年完成 LT-R20 Pro 与具身智能平台 1.0。\n\n## 二、2025 年\n\nLT-C800 控制器量产、LantuTwin 3.0 发布、LT"
+          },
+          {
+            "doc_id": "lantu_meeting_rd",
+            "title": "# 2025 年 5 月研发例会纪要",
+            "chunk": 0,
+            "score": 4.632,
+            "snippet": "# 2025 年 5 月研发例会纪要\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2025-05-09 09:00\n更新时间：2025-05-09 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_rd_2025\n生效日期：2025-05-09\n\n## 一、项目进展\n\nLT-C800 控制器完成小批量验证；LantuTwin 3.0 进入客户试点；具身智能操作模型完成抓取数据集 12 万条。\n\n## 二、组织调整\n\n具身智能研究所正式成立，编制 48 人，重点研究视觉-语言-动作模型"
+          },
+          {
+            "doc_id": "lantu_finance_cashflow",
+            "title": "# 澜图智能现金流与资金管理报告",
+            "chunk": 0,
+            "score": 4.519,
+            "snippet": "# 澜图智能现金流与资金管理报告\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-12-10 09:00\n更新时间：2025-12-15 17:00\n版本号：v1.1\n文档类型：finance\n文档族：cashflow_2025\n生效日期：2025-12-15\n\n## 一、现金流概况\n\n2025 年经营活动现金流净额 5.34 亿元，投资活动现金流净额 -3.86 亿元，筹资活动现金流净额 -0.92 亿元。\n\n## 二、回款管理\n\n应收账款余额 10.24 亿元，周转天数 86 天；逾期账款占比 4.2%，"
+          },
+          {
+            "doc_id": "lantu_meeting_safety",
+            "title": "# 2025 年安全生产委员会会议纪要",
+            "chunk": 0,
+            "score": 4.147,
+            "snippet": "# 2025 年安全生产委员会会议纪要\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2025-06-12 09:00\n更新时间：2025-06-12 15:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_safety_2025\n生效日期：2025-06-12\n\n## 一、安全形势\n\n上半年未发生重伤及以上事故，轻伤 2 起，同比下降 50%；排查隐患 27 项，整改完成 25 项。\n\n## 二、重点风险\n\n机器人调试区域误入风险、锂电物料存储消防风险、高处作业风险；需完善安全围栏与联锁。"
+          },
+          {
+            "doc_id": "lantu_finance_monthly_2025",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 0.331,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能 2025 年月度经营数据\n所属部门\t财务部\n作者\t周敏仪\n创建时间\t2026-01-12 09:00\n更新时间\t2026-01-12 18:00\n版本号\tv1.0\n文档类型\tfinance\n文档族\tmonthly_operations_2025\n生效日期\t2026-01-12\n[工作表] 月度经营数据\n月份\t营收（亿元）\t订单（亿元）\t机器人出货（台）\n2025年1月\t2.86\t3.42\t1,380\n2025年2月\t2.61\t3.05\t1,260\n2025年3月\t3."
+          },
+          {
+            "doc_id": "lantu_meeting_board",
+            "title": "# 2025 年第二次临时董事会决议",
+            "chunk": 0,
+            "score": 0.304,
+            "snippet": "# 2025 年第二次临时董事会决议\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-04-25 09:00\n更新时间：2025-04-25 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_board_2025\n生效日期：2025-04-25\n\n## 一、会议信息\n\n时间：2025 年 4 月 25 日；方式：现场加视频；应到董事 9 人，实到 9 人；列席：高管团队。\n\n## 二、审议事项\n\n审议通过《2024 年度利润分配方案》《2025 年度研发投入预算》《苏州二期"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_meeting_quality",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_meeting_quality",
+        "title": "2025 年第三季度质量专题会纪要",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 420,
+        "text": "2025 年第三季度质量专题会纪要\n所属部门：质量部\n作者：潘文博\n创建时间：2025-07-22 09:00\n更新时间：2025-07-22 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_quality_q3\n生效日期：2025-07-22\n一、质量数据\n上半年一次交检合格率 98.4%，客户投诉 1 起；第三季度首月投诉 1 起，为 LT-R12 线束磨损问题。\n二、问题分析\n线束磨损源于走线路径与防护套选型不当，涉及 2025 年 3 月生产的 120 台 LT-R12，已启动召回整改。\n三、整改措施\n更换耐磨防护套，优化走线路径，增加 5,000 次弯折测试；库存与在制设备同步排查。\n四、目标\n全年一次交检合格率不低于 98.5%，客户投诉不超过 6 起，MTBF 不低于 12,000 小时。\n五、行动项\n质量部 8 月底完成召回；研发中心更新设计规范；售后服务部同步客户通知与现场更换。",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_meeting_supply_chain",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_meeting_supply_chain",
+        "title": "2025 年供应链韧性专题会纪要",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 363,
+        "text": "2025 年供应链韧性专题会纪要\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-10-16 09:00\n更新时间：2025-10-16 15:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_supply_chain\n生效日期：2025-10-16\n一、供应形势\n减速器交期由 8 周延长至 12 周，芯片交期 20 周；关键物料库存周转 92 天，高于目标 75 天。\n二、双源策略\n减速器已引入第二供应商，2026 年一季度实现 30% 替代；伺服驱动器自研比例提升至 61%。\n三、库存与物流\n安全库存由 30 天提升至 45 天；东莞基地增设线边仓，华南客户交付周期缩短 2 天。\n四、决议\n与 5 家战略供应商签订年度框架协议；对单一来源物料建立替代清单；每月跟踪供应商交付准时率。",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "2025年下半年 专题会 纪要",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_meeting_quality",
+            "title": "2025 年第三季度质量专题会纪要",
+            "chunk": 0,
+            "score": 18.701,
+            "snippet": "2025 年第三季度质量专题会纪要\n所属部门：质量部\n作者：潘文博\n创建时间：2025-07-22 09:00\n更新时间：2025-07-22 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_quality_q3\n生效日期：2025-07-22\n一、质量数据\n上半年一次交检合格率 98.4%，客户投诉 1 起；第三季度首月投诉 1 起，为 LT-R12 线束磨损问题。\n二、问题分析\n线束磨损源于走线路径与防护套选型不当，涉及 2025 年 3 月生产的 120 台 LT-R12，已启"
+          },
+          {
+            "doc_id": "lantu_meeting_supply_chain",
+            "title": "2025 年供应链韧性专题会纪要",
+            "chunk": 0,
+            "score": 15.525,
+            "snippet": "2025 年供应链韧性专题会纪要\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-10-16 09:00\n更新时间：2025-10-16 15:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_supply_chain\n生效日期：2025-10-16\n一、供应形势\n减速器交期由 8 周延长至 12 周，芯片交期 20 周；关键物料库存周转 92 天，高于目标 75 天。\n二、双源策略\n减速器已引入第二供应商，2026 年一季度实现 30% 替代；伺服驱动器自研比例提升至 61%。\n三"
+          },
+          {
+            "doc_id": "lantu_meeting_safety",
+            "title": "# 2025 年安全生产委员会会议纪要",
+            "chunk": 0,
+            "score": 7.84,
+            "snippet": "# 2025 年安全生产委员会会议纪要\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2025-06-12 09:00\n更新时间：2025-06-12 15:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_safety_2025\n生效日期：2025-06-12\n\n## 一、安全形势\n\n上半年未发生重伤及以上事故，轻伤 2 起，同比下降 50%；排查隐患 27 项，整改完成 25 项。\n\n## 二、重点风险\n\n机器人调试区域误入风险、锂电物料存储消防风险、高处作业风险；需完善安全围栏与联锁。"
+          },
+          {
+            "doc_id": "lantu_finance_h1_2025",
+            "title": "# 澜图智能 2025 年半年度报告摘要",
+            "chunk": 0,
+            "score": 6.709,
+            "snippet": "# 澜图智能 2025 年半年度报告摘要\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-08-25 09:00\n更新时间：2025-08-28 18:00\n版本号：v1.0\n文档类型：finance\n文档族：semiannual_2025\n生效日期：2025-08-28\n\n## 一、经营数据\n\n2025 年上半年营业收入 19.84 亿元，同比增长 21.3%；归母净利润 1.83 亿元，同比增长 24.6%；毛利率 31.2%。\n\n## 二、订单情况\n\n上半年新签订单 22.7 亿元，同比增长 18.5%"
+          },
+          {
+            "doc_id": "lantu_strategy_esg",
+            "title": "# 澜图智能 ESG 与可持续发展报告",
+            "chunk": 0,
+            "score": 4.796,
+            "snippet": "# 澜图智能 ESG 与可持续发展报告\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2025-04-22 09:00\n更新时间：2025-04-25 10:00\n版本号：v2.0\n文档类型：strategy\n文档族：esg_report\n生效日期：2025-04-25\n\n## 一、环境\n\n2025 年苏州基地光伏装机 6.2MW，绿电占比 28%；单位产值能耗下降 9.6%；危废合规处置率 100%。\n\n## 二、社会\n\n员工培训人均 32 小时；安全生产投入 1,200 万元；公益捐赠 380 万元，支持职业"
+          },
+          {
+            "doc_id": "lantu_finance_cashflow",
+            "title": "# 澜图智能现金流与资金管理报告",
+            "chunk": 0,
+            "score": 4.519,
+            "snippet": "# 澜图智能现金流与资金管理报告\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-12-10 09:00\n更新时间：2025-12-15 17:00\n版本号：v1.1\n文档类型：finance\n文档族：cashflow_2025\n生效日期：2025-12-15\n\n## 一、现金流概况\n\n2025 年经营活动现金流净额 5.34 亿元，投资活动现金流净额 -3.86 亿元，筹资活动现金流净额 -0.92 亿元。\n\n## 二、回款管理\n\n应收账款余额 10.24 亿元，周转天数 86 天；逾期账款占比 4.2%，"
+          },
+          {
+            "doc_id": "lantu_meeting_rd",
+            "title": "# 2025 年 5 月研发例会纪要",
+            "chunk": 0,
+            "score": 4.069,
+            "snippet": "# 2025 年 5 月研发例会纪要\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2025-05-09 09:00\n更新时间：2025-05-09 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_rd_2025\n生效日期：2025-05-09\n\n## 一、项目进展\n\nLT-C800 控制器完成小批量验证；LantuTwin 3.0 进入客户试点；具身智能操作模型完成抓取数据集 12 万条。\n\n## 二、组织调整\n\n具身智能研究所正式成立，编制 48 人，重点研究视觉-语言-动作模型"
+          },
+          {
+            "doc_id": "lantu_meeting_sales",
+            "title": "2025 年华南大区销售复盘会纪要",
+            "chunk": 0,
+            "score": 4.017,
+            "snippet": "2025 年华南大区销售复盘会纪要\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2025-09-05 09:00\n更新时间：2025-09-05 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_sales_south\n生效日期：2025-09-05\n一、业绩完成\n华南大区前三季度收入 7.42 亿元，年度完成率 108%，位列五大区第一；新签订单 8.6 亿元。\n二、行业机会\n锂电客户扩产带来 3.2 亿元机会；3C 客户自动化改造预算增加；光伏客户资本开支放缓。\n三、渠道问题\n两家"
+          },
+          {
+            "doc_id": "lantu_meeting_case_review",
+            "title": "# 恒芯动力电池项目复盘会纪要",
+            "chunk": 0,
+            "score": 3.996,
+            "snippet": "# 恒芯动力电池项目复盘会纪要\n\n所属部门：客户成功部\n作者：林可\n创建时间：2025-03-18 09:00\n更新时间：2025-03-18 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_case_hengxin\n生效日期：2025-03-18\n\n## 一、项目结果\n\n恒芯动力电池 12 条叠片线完成验收，部署 186 台 LT-R20 与 24 台 AMR-1000，合同金额 2.16 亿元。\n\n## 二、成功经验\n\n虚拟调试提前发现 37 处干涉，现场调试周期缩短 12 天；"
+          },
+          {
+            "doc_id": "lantu_meeting_strategy",
+            "title": "# 2026 年战略研讨会纪要",
+            "chunk": 0,
+            "score": 3.889,
+            "snippet": "# 2026 年战略研讨会纪要\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-11-21 09:00\n更新时间：2025-11-22 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_strategy_2026\n生效日期：2025-11-22\n\n## 一、战略目标\n\n2026 年营业收入 52 亿元，2028 年 80 亿元；海外收入占比 2026 年提升至 17%，2028 年达到 25%。\n\n## 二、业务重点\n\n巩固锂电与汽车基本盘，突破半导体与具身智能；软件与服务收"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_meeting_strategy",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_meeting_strategy",
+        "title": "# 2026 年战略研讨会纪要",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 435,
+        "text": "# 2026 年战略研讨会纪要\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-11-21 09:00\n更新时间：2025-11-22 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_strategy_2026\n生效日期：2025-11-22\n\n## 一、战略目标\n\n2026 年营业收入 52 亿元，2028 年 80 亿元；海外收入占比 2026 年提升至 17%，2028 年达到 25%。\n\n## 二、业务重点\n\n巩固锂电与汽车基本盘，突破半导体与具身智能；软件与服务收入占比 2026 年提升至 15%。\n\n## 三、能力建设\n\n建设具身智能平台、全球服务网络与行业解决方案团队；研发投入保持 13%-14%。\n\n## 四、风险与取舍\n\n不盲目进入低毛利整线集成；控制海外项目政治与合规风险；对并购机会保持谨慎。\n\n## 五、行动项\n\n战略投资部 12 月底前完成 2026 年经营计划分解；各事业部提交三年路线图。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.5,
+    "cited": [
+      "lantu_meeting_quality",
+      "lantu_meeting_supply_chain",
+      "lantu_meeting_strategy"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.151,
+    "number_recall": 1.0
+  }
+}

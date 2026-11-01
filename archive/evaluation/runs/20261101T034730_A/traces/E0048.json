@@ -1,0 +1,271 @@
+{
+  "qid": "E0048",
+  "question": "比较 SLA 2025 的 P1 响应要求与远程诊断的通知/升级机制。内部通知服务经理能否直接等同于履行客户响应和到场承诺？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>SLA 2025 P1 响应时间 到场</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=search><parameter=query>远程诊断 通知 升级 机制</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 108,
+        "prompt_tokens": 381,
+        "total_tokens": 489,
+        "completion_tokens_details": {
+          "reasoning_tokens": 35
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 4.063
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"SLA 2025 P1 响应时间 到场 承诺\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 147,
+        "prompt_tokens": 491,
+        "total_tokens": 638,
+        "completion_tokens_details": {
+          "reasoning_tokens": 108
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 6.922
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_support_sla_2025\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 59,
+        "prompt_tokens": 2948,
+        "total_tokens": 3007,
+        "completion_tokens_details": {
+          "reasoning_tokens": 23
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.437
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_support_remote_diagnostics\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 74,
+        "prompt_tokens": 3417,
+        "total_tokens": 3491,
+        "completion_tokens_details": {
+          "reasoning_tokens": 42
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2944
+        }
+      },
+      "seconds": 3.141
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"两者是不同层面的要求，不能等同。① SLA 2025 版（v3.0，2025-04-01 生效）规定 P1（产线停机或安全风险）须『30 分钟内响应、12 小时内到场』，这是对客户的合同承诺，包含客户侧响应与现场到场两项义务。② 远程诊断服务说明（v2.6）的升级机制为『远程无法解决的故障自动升级为现场工单，P1 故障 30 分钟内通知服务经理』，这是一项内部流程动作（通知服务经理+自动转现场工单）。因此，内部通知服务经理只是启动升级流程的内部节点：即使 30 分钟内完成内部通知，也不自动构成对客户的『响应』（需有对客户的可记录回复/确认），更不满足 12 小时『到场』承诺——到场义务须由自动升级的现场工单及实际上门来履行。此外远程诊断本身（解决率 85%）也不能免除现场服务义务，SLA 考核（响应及时率、首次修复率、客户满意度）以对客户的实际结果统计。\",\"citations\":[\"lantu_support_sla_2025\",\"lantu_support_remote_diagnostics\"],\"evidence\":[\"lantu_support_sla_2025#片段0\",\"lantu_support_remote_diagnostics#片段0\"]}",
+      "usage": {
+        "completion_tokens": 471,
+        "prompt_tokens": 3787,
+        "total_tokens": 4258,
+        "completion_tokens_details": {
+          "reasoning_tokens": 144
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3392
+        }
+      },
+      "seconds": 10.937
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "SLA 2025 P1 响应时间 到场 承诺",
+        "top_k": 10
+      },
+      "result_sha": "dbc149bb63900611f5de1110527575cadcdbd11613f962442ff2583c103b4c8d",
+      "result_chars": 3907,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_sla_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "af8cbc14afa842ef7c71e0de95dfc2ee6c39002e37a09d1c893850c37a03f553",
+      "result_chars": 608,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_remote_diagnostics",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "e374e2dc5af4df00b9d487ee5699f3c964c5121e6f1be9370eadc2653d4fab6b",
+      "result_chars": 537,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "两者是不同层面的要求，不能等同。① SLA 2025 版（v3.0，2025-04-01 生效）规定 P1（产线停机或安全风险）须『30 分钟内响应、12 小时内到场』，这是对客户的合同承诺，包含客户侧响应与现场到场两项义务。② 远程诊断服务说明（v2.6）的升级机制为『远程无法解决的故障自动升级为现场工单，P1 故障 30 分钟内通知服务经理』，这是一项内部流程动作（通知服务经理+自动转现场工单）。因此，内部通知服务经理只是启动升级流程的内部节点：即使 30 分钟内完成内部通知，也不自动构成对客户的『响应』（需有对客户的可记录回复/确认），更不满足 12 小时『到场』承诺——到场义务须由自动升级的现场工单及实际上门来履行。此外远程诊断本身（解决率 85%）也不能免除现场服务义务，SLA 考核（响应及时率、首次修复率、客户满意度）以对客户的实际结果统计。",
+    "citations": [
+      "lantu_support_sla_2025",
+      "lantu_support_remote_diagnostics"
+    ],
+    "evidence": [
+      "lantu_support_sla_2025#片段0",
+      "lantu_support_remote_diagnostics#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 11883,
+  "started_at": "2026-11-01T04:44:59",
+  "elapsed_seconds": 26.5,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "SLA 2025 P1 响应时间 到场 承诺",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_support_sla_2024",
+            "title": "# 澜图智能服务等级协议（SLA 2024版）",
+            "chunk": 0,
+            "score": 23.409,
+            "snippet": "# 澜图智能服务等级协议（SLA 2024版）\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v2.0\n文档类型：support\n文档族：service_sla\n生效日期：2024-01-01\n\n## 一、故障分级\n\nP1 为产线停机或安全风险；P2 为单机停机但产线可降级运行；P3 为一般故障或咨询。\n\n## 二、响应时效\n\nP1：2 小时内响应、24 小时内到场；P2：8 小时内响应、72 小时内到场；P3：24 小时内响应、"
+          },
+          {
+            "doc_id": "lantu_support_sla_2025",
+            "title": "# 澜图智能服务等级协议（SLA 2025版）",
+            "chunk": 0,
+            "score": 22.91,
+            "snippet": "# 澜图智能服务等级协议（SLA 2025版）\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2025-03-10 09:00\n更新时间：2025-04-01 09:00\n版本号：v3.0\n文档类型：support\n文档族：service_sla\n生效日期：2025-04-01\n\n## 一、故障分级\n\nP1 为产线停机或安全风险；P2 为单机停机但产线可降级运行；P3 为一般故障或咨询。\n\n## 二、响应时效\n\nP1：30 分钟内响应、12 小时内到场；P2：4 小时内响应、48 小时内到场；P3：12 小时内响应"
+          },
+          {
+            "doc_id": "lantu_support_case_hengxin",
+            "title": "# 恒芯动力电池 48 小时复产服务案例",
+            "chunk": 0,
+            "score": 6.391,
+            "snippet": "# 恒芯动力电池 48 小时复产服务案例\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2025-04-10 09:00\n更新时间：2025-04-12 18:00\n版本号：v1.0\n文档类型：support\n文档族：service_case_hengxin\n生效日期：2025-04-12\n\n## 一、事件经过\n\n2025 年 4 月 8 日凌晨，恒芯动力电池 3 号叠片线报伺服过载停机，影响两条线体。客户通过 400 热线报修。\n\n## 二、响应过程\n\n远程诊断中心 12 分钟内定位为驱动器散热风扇故障，指导客户"
+          },
+          {
+            "doc_id": "lantu_solution_semiconductor",
+            "title": "# 半导体晶圆搬运洁净解决方案",
+            "chunk": 0,
+            "score": 6.358,
+            "snippet": "# 半导体晶圆搬运洁净解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2025-02-14 09:00\n更新时间：2025-11-11 09:30\n版本号：v2.0\n文档类型：product\n文档族：solution_semiconductor\n生效日期：2025-11-11\n\n## 一、方案概述\n\n面向 8/12 英寸晶圆厂，提供晶圆盒搬运、机台上下料与跨区物流方案，采用 LT-AMR-500 洁净版与 LT-R12 洁净机器人。\n\n## 二、洁净指标\n\n洁净等级 Class 10，颗粒物控制 0.1 μm，"
+          },
+          {
+            "doc_id": "lantu_sales_quote",
+            "title": "# 澜图智能报价与合同评审流程",
+            "chunk": 0,
+            "score": 5.028,
+            "snippet": "# 澜图智能报价与合同评审流程\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-02-10 09:00\n更新时间：2025-08-08 14:00\n版本号：v2.5\n文档类型：sales\n文档族：sales_quote\n生效日期：2025-08-08\n\n## 一、报价流程\n\n销售工程师在 CRM 创建报价单，系统自动校验标准价；非标项目由售前技术出具配置清单，产品部确认成本，财务部复核税率与汇率。\n\n## 二、评审节点\n\n合同金额 1,000 万元以上须法务合规部与 CFO 联合评审；涉及非标开发须 CTO"
+          },
+          {
+            "doc_id": "lantu_support_remote_diagnostics",
+            "title": "# 澜图智能远程诊断服务说明",
+            "chunk": 0,
+            "score": 4.092,
+            "snippet": "# 澜图智能远程诊断服务说明\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-05-01 09:00\n更新时间：2025-07-18 15:00\n版本号：v2.6\n文档类型：support\n文档族：remote_diagnostics\n生效日期：2025-07-18\n\n## 一、服务能力\n\n远程诊断中心 7×24 小时值守，通过安全网关接入客户设备，实时读取报警、日志与运行数据。\n\n## 二、解决率\n\n2025 年远程诊断解决率 85%，平均故障定位时间 18 分钟，减少现场出勤 2,100 次。\n\n## "
+          },
+          {
+            "doc_id": "lantu_hr_job_grades",
+            "title": "# 澜图智能职级体系与晋升规则",
+            "chunk": 0,
+            "score": 4.062,
+            "snippet": "# 澜图智能职级体系与晋升规则\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-03-01 09:00\n更新时间：2025-03-01 09:00\n版本号：v3.0\n文档类型：hr\n文档族：job_grades\n生效日期：2025-03-01\n\n## 一、职级序列\n\n设管理序列（M1-M5）、专业序列（P1-P7）与技能序列（T1-T5）。研发、产品、销售、职能分别对应不同通道。\n\n## 二、晋升条件\n\n晋升需满足当前职级任职满 2 年、连续两次绩效 A 及以上、通过晋升评审；破格晋升须总经理审批。\n\n#"
+          },
+          {
+            "doc_id": "lantu_policy_vehicle",
+            "title": "# 澜图智能公务用车管理办法",
+            "chunk": 0,
+            "score": 3.854,
+            "snippet": "# 澜图智能公务用车管理办法\n\n所属部门：行政部\n作者：陈依然\n创建时间：2024-03-01 09:00\n更新时间：2025-04-02 09:00\n版本号：v2.4\n文档类型：policy\n文档族：vehicle_management\n生效日期：2025-04-02\n\n## 一、用车范围\n\n公务用车用于客户接待、机场接送、跨园区办公与紧急事务；上下班通勤原则上不使用公务车。\n\n## 二、申请流程\n\n用车须提前 1 个工作日在 OA 申请，注明事由、路线、人数与时间；临时用车须部门负责人电话批准后补单。\n\n## "
+          },
+          {
+            "doc_id": "lantu_legal_nda_template",
+            "title": "澜图智能保密协议模板（NDA）",
+            "chunk": 0,
+            "score": 3.742,
+            "snippet": "澜图智能保密协议模板（NDA）\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-10 09:00\n更新时间：2025-02-01 09:00\n版本号：v3.0\n文档类型：legal\n文档族：nda_template\n生效日期：2025-02-01\n第一条 保密信息\n保密信息包括技术资料、图纸、源代码、算法、客户信息、报价、成本与未公开财务数据。\n第二条 保密义务\n接收方仅可为合作目的使用保密信息，不得披露给第三方；接触人员须签署个人保密承诺。\n第三条 保密期限\n本协议保密期限为签署之日起 3 年，商业秘"
+          },
+          {
+            "doc_id": "lantu_policy_employee_handbook",
+            "title": "# 澜图智能员工手册",
+            "chunk": 0,
+            "score": 3.17,
+            "snippet": "# 澜图智能员工手册\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-07-01 09:00\n版本号：v6.0\n文档类型：policy\n文档族：employee_handbook\n生效日期：2025-07-01\n\n## 一、适用范围\n\n本手册适用于澜图智能装备股份有限公司及下属子公司全体正式员工、试用期员工与实习生。劳务派遣与外包人员参照执行。\n\n## 二、入职与试用\n\n新员工入职当日签署劳动合同、保密协议与廉洁承诺书，试用期 3-6 个月。试用期内需完成入职培"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_sla_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_support_sla_2025",
+        "title": "# 澜图智能服务等级协议（SLA 2025版）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 426,
+        "text": "# 澜图智能服务等级协议（SLA 2025版）\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2025-03-10 09:00\n更新时间：2025-04-01 09:00\n版本号：v3.0\n文档类型：support\n文档族：service_sla\n生效日期：2025-04-01\n\n## 一、故障分级\n\nP1 为产线停机或安全风险；P2 为单机停机但产线可降级运行；P3 为一般故障或咨询。\n\n## 二、响应时效\n\nP1：30 分钟内响应、12 小时内到场；P2：4 小时内响应、48 小时内到场；P3：12 小时内响应、3 个工作日内处理。\n\n## 三、备件服务\n\n常用备件 48 小时内发货，紧急备件 24 小时内发货；备件满足率不低于 96%。\n\n## 四、服务考核\n\n每月统计响应及时率、首次修复率与客户满意度，未达标的服务商扣减服务费并限期整改。\n\n## 五、生效说明\n\n本版本自 2025 年 4 月 1 日起生效，2024 版同时废止。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_remote_diagnostics",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_support_remote_diagnostics",
+        "title": "# 澜图智能远程诊断服务说明",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 358,
+        "text": "# 澜图智能远程诊断服务说明\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-05-01 09:00\n更新时间：2025-07-18 15:00\n版本号：v2.6\n文档类型：support\n文档族：remote_diagnostics\n生效日期：2025-07-18\n\n## 一、服务能力\n\n远程诊断中心 7×24 小时值守，通过安全网关接入客户设备，实时读取报警、日志与运行数据。\n\n## 二、解决率\n\n2025 年远程诊断解决率 85%，平均故障定位时间 18 分钟，减少现场出勤 2,100 次。\n\n## 三、安全要求\n\n远程接入须客户授权并开启审计，传输采用 TLS 加密，运维人员操作全程录屏。\n\n## 四、升级机制\n\n远程无法解决的故障自动升级为现场工单，P1 故障 30 分钟内通知服务经理。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_support_sla_2025",
+      "lantu_support_remote_diagnostics"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.345,
+    "number_recall": 1.0
+  }
+}

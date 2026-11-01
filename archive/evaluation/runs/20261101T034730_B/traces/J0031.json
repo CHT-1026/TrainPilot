@@ -1,0 +1,291 @@
+{
+  "qid": "J0031",
+  "question": "战略研讨会的软件与服务收入占比 15%、研发投入 13%-14% 两项要求，与 2026 年经营计划和预算是否吻合？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"战略研讨会 软件与服务收入占比 研发投入\"}}",
+      "usage": {
+        "prompt_tokens": 387,
+        "total_tokens": 646,
+        "completion_tokens": 259,
+        "completion_tokens_details": {
+          "reasoning_tokens": 233,
+          "text_tokens": 259
+        }
+      },
+      "seconds": 2.391
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_meeting_strategy\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 2861,
+        "total_tokens": 3347,
+        "completion_tokens": 486,
+        "completion_tokens_details": {
+          "reasoning_tokens": 452,
+          "text_tokens": 486
+        }
+      },
+      "seconds": 3.625
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_strategy_2026\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 3282,
+        "total_tokens": 3677,
+        "completion_tokens": 395,
+        "completion_tokens_details": {
+          "reasoning_tokens": 358,
+          "text_tokens": 395
+        }
+      },
+      "seconds": 3.094
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_finance_budget_2026\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 3713,
+        "total_tokens": 4176,
+        "completion_tokens": 463,
+        "completion_tokens_details": {
+          "reasoning_tokens": 424,
+          "text_tokens": 463
+        }
+      },
+      "seconds": 3.203
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"研发投入吻合，但软件与服务收入占比不吻合。\\n\\n1. **研发投入**：吻合。战略研讨会要求研发投入保持在 13%-14%，2026 年经营计划设定研发投入为 7.2 亿元，经营预算确认为 7.2 亿元，占总收入（52 亿元）的 13.8%，符合 13%-14% 的要求。\\n\\n2. **软件与服务收入占比**：不吻合。战略研讨会与 2026 年经营计划均提出将软件与服务收入占比提升至 15%，但 2026 年经营预算中该板块收入为 6.4 亿元，仅占总收入（52 亿元）的约 12.3%，未达到 15% 的目标。\",\"citations\":[\"lantu_meeting_strategy\",\"lantu_strategy_2026\",\"lantu_finance_budget_2026\"],\"evidence\":[\"lantu_meeting_strategy#0\",\"lantu_strategy_2026#0\",\"lantu_finance_budget_2026#0\"]}",
+      "usage": {
+        "prompt_tokens": 4135,
+        "total_tokens": 8343,
+        "completion_tokens": 4208,
+        "completion_tokens_details": {
+          "reasoning_tokens": 3955,
+          "text_tokens": 4208
+        }
+      },
+      "seconds": 29.641
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "战略研讨会 软件与服务收入占比 研发投入"
+      },
+      "result_sha": "bd5978df33e550de2d76095c028270b9ea31d2960eb2e5754ac53f066fdbdaac",
+      "result_chars": 3886,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_meeting_strategy",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "314fca0e845dc505c3b0cbbf65305239f1ceb63517ba07d345a70650e885381d",
+      "result_chars": 609,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_strategy_2026",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "a37ee6af097ea9b158edc058edb9c57ff8b2fa1eec25779779e0d17028b91771",
+      "result_chars": 604,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_finance_budget_2026",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "1eef222c55599a6813dc352160c852d2baee0c26e411d05e714a1c2e25a5fd99",
+      "result_chars": 578,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "研发投入吻合，但软件与服务收入占比不吻合。\n\n1. **研发投入**：吻合。战略研讨会要求研发投入保持在 13%-14%，2026 年经营计划设定研发投入为 7.2 亿元，经营预算确认为 7.2 亿元，占总收入（52 亿元）的 13.8%，符合 13%-14% 的要求。\n\n2. **软件与服务收入占比**：不吻合。战略研讨会与 2026 年经营计划均提出将软件与服务收入占比提升至 15%，但 2026 年经营预算中该板块收入为 6.4 亿元，仅占总收入（52 亿元）的约 12.3%，未达到 15% 的目标。",
+    "citations": [
+      "lantu_meeting_strategy",
+      "lantu_strategy_2026",
+      "lantu_finance_budget_2026"
+    ],
+    "evidence": [
+      "lantu_meeting_strategy#0",
+      "lantu_strategy_2026#0",
+      "lantu_finance_budget_2026#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 20189,
+  "started_at": "2026-11-01T05:36:00",
+  "elapsed_seconds": 41.95,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "战略研讨会 软件与服务收入占比 研发投入"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_meeting_strategy",
+            "title": "# 2026 年战略研讨会纪要",
+            "chunk": 0,
+            "score": 50.657,
+            "snippet": "# 2026 年战略研讨会纪要\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-11-21 09:00\n更新时间：2025-11-22 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_strategy_2026\n生效日期：2025-11-22\n\n## 一、战略目标\n\n2026 年营业收入 52 亿元，2028 年 80 亿元；海外收入占比 2026 年提升至 17%，2028 年达到 25%。\n\n## 二、业务重点\n\n巩固锂电与汽车基本盘，突破半导体与具身智能；软件与服务收"
+          },
+          {
+            "doc_id": "lantu_strategy_2026",
+            "title": "# 澜图智能 2026 年度经营计划",
+            "chunk": 0,
+            "score": 30.063,
+            "snippet": "# 澜图智能 2026 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-12-15 09:00\n更新时间：2026-01-12 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2026\n生效日期：2026-01-12\n\n## 一、年度目标\n\n2026 年营业收入 52 亿元，归母净利润 5.2 亿元，新签订单 58 亿元，机器人出货 26,000 台。\n\n## 二、业务策略\n\n锂电保持领先，半导体翻倍增长，海外收入 7.2 亿元；软件与服务收入占比提"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2024",
+            "title": "澜图智能 2024 年度报告摘要",
+            "chunk": 0,
+            "score": 22.695,
+            "snippet": "澜图智能 2024 年度报告摘要\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-01-22 09:00\n更新时间：2025-01-30 18:00\n版本号：v1.0\n文档类型：finance\n文档族：annual_report_2024\n生效日期：2025-01-30\n一、经营概况\n2024 年公司实现营业收入 35.80 亿元，同比增长 16.8%；归母净利润 3.26 亿元，同比增长 14.2%。\n二、收入结构\n机器人本体收入 16.72 亿元（46.7%），智能产线收入 12.36 亿元（34.5%），"
+          },
+          {
+            "doc_id": "lantu_finance_budget_2026",
+            "title": "# 澜图智能 2026 年度经营预算",
+            "chunk": 0,
+            "score": 18.727,
+            "snippet": "# 澜图智能 2026 年度经营预算\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-12-20 09:00\n更新时间：2026-01-15 17:00\n版本号：v1.0\n文档类型：finance\n文档族：budget_2026\n生效日期：2026-01-15\n\n## 一、预算目标\n\n2026 年营业收入目标 52 亿元，同比增长 22%；归母净利润目标 5.2 亿元；综合毛利率目标 32.5%。\n\n## 二、收入分解\n\n机器人本体 24.2 亿元，智能产线 18.4 亿元，软件与服务 6.4 亿元，备件及其"
+          },
+          {
+            "doc_id": "lantu_finance_revenue_breakdown",
+            "title": "﻿维度,分类,收入（亿元）,占比,同比",
+            "chunk": 0,
+            "score": 17.665,
+            "snippet": "﻿维度,分类,收入（亿元）,占比,同比\n产品线,机器人本体,19.84,46.5%,+18.2%\n产品线,智能产线,14.92,35.0%,+21.6%\n产品线,工业软件与服务,5.21,12.2%,+26.8%\n产品线,备件及其他,2.66,6.3%,+9.4%\n行业,动力电池,13.64,32.0%,+24.1%\n行业,汽车及零部件,10.23,24.0%,+11.5%\n行业,半导体,5.12,12.0%,+38.6%\n行业,光伏,4.26,10.0%,+6.2%\n行业,3C 电子,3.41,8.0%,+14."
+          },
+          {
+            "doc_id": "lantu_finance_annual_2025",
+            "title": "澜图智能 2025 年度报告摘要",
+            "chunk": 0,
+            "score": 15.759,
+            "snippet": "澜图智能 2025 年度报告摘要\n所属部门：财务部\n作者：周敏仪\n创建时间：2026-01-20 09:00\n更新时间：2026-01-28 18:00\n版本号：v1.0\n文档类型：finance\n文档族：annual_report_2025\n生效日期：2026-01-28\n一、经营概况\n2025 年公司实现营业收入 42.63 亿元，同比增长 19.1%；归属于母公司股东的净利润 4.12\n亿元，同比增长 26.4%；基本每股收益 0.98 元。\n二、收入结构\n机器人本体收入 19.84 亿元（46.5%），智能"
+          },
+          {
+            "doc_id": "lantu_org_executives",
+            "title": "# 澜图智能高级管理人员名单",
+            "chunk": 0,
+            "score": 14.619,
+            "snippet": "# 澜图智能高级管理人员名单\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2024-03-01 09:00\n更新时间：2025-11-28 17:00\n版本号：v4.0\n文档类型：org\n文档族：executives\n生效日期：2025-11-28\n\n## 一、核心管理层\n\n顾承澜，董事长兼总经理，1968 年生，教授级高级工程师，持股 18.6%；沈亦舟，CTO，负责研发体系；周敏仪，CFO，负责财务与资本运作；韩立恒，COO，负责供应链与制造。\n\n## 二、业务分管\n\n罗嘉树，销售副总裁，分管销售中心、客"
+          },
+          {
+            "doc_id": "lantu_org_rd_system",
+            "title": "# 澜图智能研发体系与投入",
+            "chunk": 0,
+            "score": 13.457,
+            "snippet": "# 澜图智能研发体系与投入\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-02-01 09:00\n更新时间：2026-01-12 10:00\n版本号：v5.0\n文档类型：org\n文档族：rd_system\n生效日期：2026-01-12\n\n## 一、研发架构\n\n研发中心下设机器人本体研究所、控制器研究所、机器视觉研究所、工艺应用研究所、具身智能研究所，另设测试中心与可靠性实验室。\n\n## 二、人员结构\n\n研发人员 1,286 人，其中博士 48 人、硕士 612 人，35 岁以下占比 61%。2025 年"
+          },
+          {
+            "doc_id": "lantu_finance_h1_2025",
+            "title": "# 澜图智能 2025 年半年度报告摘要",
+            "chunk": 0,
+            "score": 12.559,
+            "snippet": "# 澜图智能 2025 年半年度报告摘要\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-08-25 09:00\n更新时间：2025-08-28 18:00\n版本号：v1.0\n文档类型：finance\n文档族：semiannual_2025\n生效日期：2025-08-28\n\n## 一、经营数据\n\n2025 年上半年营业收入 19.84 亿元，同比增长 21.3%；归母净利润 1.83 亿元，同比增长 24.6%；毛利率 31.2%。\n\n## 二、订单情况\n\n上半年新签订单 22.7 亿元，同比增长 18.5%"
+          },
+          {
+            "doc_id": "lantu_strategy_2025",
+            "title": "# 澜图智能 2025 年度经营计划",
+            "chunk": 0,
+            "score": 11.491,
+            "snippet": "# 澜图智能 2025 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-01-10 09:00\n更新时间：2025-02-10 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2025\n生效日期：2025-02-10\n\n## 一、年度目标\n\n2025 年营业收入目标 41.5 亿元，力争 42.63 亿元；新签订单目标 46 亿元；机器人出货目标 20,000 台。\n\n## 二、重点任务\n\n锂电与半导体行业突破；LT-C800 控制器量产；海外收入占"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_meeting_strategy",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_meeting_strategy",
+        "title": "# 2026 年战略研讨会纪要",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 435,
+        "text": "# 2026 年战略研讨会纪要\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-11-21 09:00\n更新时间：2025-11-22 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_strategy_2026\n生效日期：2025-11-22\n\n## 一、战略目标\n\n2026 年营业收入 52 亿元，2028 年 80 亿元；海外收入占比 2026 年提升至 17%，2028 年达到 25%。\n\n## 二、业务重点\n\n巩固锂电与汽车基本盘，突破半导体与具身智能；软件与服务收入占比 2026 年提升至 15%。\n\n## 三、能力建设\n\n建设具身智能平台、全球服务网络与行业解决方案团队；研发投入保持 13%-14%。\n\n## 四、风险与取舍\n\n不盲目进入低毛利整线集成；控制海外项目政治与合规风险；对并购机会保持谨慎。\n\n## 五、行动项\n\n战略投资部 12 月底前完成 2026 年经营计划分解；各事业部提交三年路线图。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_strategy_2026",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_strategy_2026",
+        "title": "# 澜图智能 2026 年度经营计划",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 430,
+        "text": "# 澜图智能 2026 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-12-15 09:00\n更新时间：2026-01-12 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2026\n生效日期：2026-01-12\n\n## 一、年度目标\n\n2026 年营业收入 52 亿元，归母净利润 5.2 亿元，新签订单 58 亿元，机器人出货 26,000 台。\n\n## 二、业务策略\n\n锂电保持领先，半导体翻倍增长，海外收入 7.2 亿元；软件与服务收入占比提升至 15%。\n\n## 三、产品策略\n\nLT-R20 Pro 二季度量产；LantuTwin 3.5 发布；具身智能平台在 3 个场景试点。\n\n## 四、组织策略\n\n增设半导体事业部；海外服务网点增至 6 个；研发人员扩充至 1,450 人。\n\n## 五、资源需求\n\n资本开支 3.8 亿元，研发投入 7.2 亿元，新增编制 420 人。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_finance_budget_2026",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_finance_budget_2026",
+        "title": "# 澜图智能 2026 年度经营预算",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 402,
+        "text": "# 澜图智能 2026 年度经营预算\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-12-20 09:00\n更新时间：2026-01-15 17:00\n版本号：v1.0\n文档类型：finance\n文档族：budget_2026\n生效日期：2026-01-15\n\n## 一、预算目标\n\n2026 年营业收入目标 52 亿元，同比增长 22%；归母净利润目标 5.2 亿元；综合毛利率目标 32.5%。\n\n## 二、收入分解\n\n机器人本体 24.2 亿元，智能产线 18.4 亿元，软件与服务 6.4 亿元，备件及其他 3.0 亿元。\n\n## 三、费用预算\n\n研发投入 7.2 亿元（占收入 13.8%），销售费用 4.6 亿元，管理费用 2.4 亿元，资本开支 3.8 亿元。\n\n## 四、关键假设\n\n机器人出货 26,000 台；海外收入 7.2 亿元；原材料价格持平；汇率波动控制在 ±3%。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_meeting_strategy",
+      "lantu_strategy_2026",
+      "lantu_finance_budget_2026"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.047,
+    "number_recall": 0.0
+  }
+}

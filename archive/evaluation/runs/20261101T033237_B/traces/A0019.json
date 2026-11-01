@@ -1,0 +1,102 @@
+{
+  "qid": "A0019",
+  "question": "林晓的上级的上级是谁？请给出完整汇报路径。",
+  "question_type": "人物关系推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"林晓\",\"top_k\":10}}",
+      "usage": {
+        "prompt_tokens": 362,
+        "total_tokens": 463,
+        "completion_tokens": 101,
+        "completion_tokens_details": {
+          "reasoning_tokens": 76,
+          "text_tokens": 101
+        }
+      },
+      "seconds": 1.344
+    },
+    {
+      "round": 2,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"林晓的上级的上级是**程知远**。\\n\\n完整的向上汇报路径如下：\\n1. **林晓** 的上级是 **周启航**；\\n2. **周启航** 的上级是 **程知远**；\\n3. **程知远** 的上级是 **沈亦舟**；\\n4. **沈亦舟** 的上级是 **顾承澜**。\",\"citations\":[\"lantu_org_reporting_lines\"],\"evidence\":[\"lantu_org_reporting_lines#0\"]}",
+      "usage": {
+        "prompt_tokens": 842,
+        "total_tokens": 1632,
+        "completion_tokens": 790,
+        "completion_tokens_details": {
+          "reasoning_tokens": 662,
+          "text_tokens": 790
+        }
+      },
+      "seconds": 6.156
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "林晓",
+        "top_k": 10
+      },
+      "result_sha": "d2b8cacf16246754b759779bd53ad267f7bb18646e08749a8e2b753419532e84",
+      "result_chars": 781,
+      "hits": 2
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "林晓的上级的上级是**程知远**。\n\n完整的向上汇报路径如下：\n1. **林晓** 的上级是 **周启航**；\n2. **周启航** 的上级是 **程知远**；\n3. **程知远** 的上级是 **沈亦舟**；\n4. **沈亦舟** 的上级是 **顾承澜**。",
+    "citations": [
+      "lantu_org_reporting_lines"
+    ],
+    "evidence": [
+      "lantu_org_reporting_lines#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 2095,
+  "started_at": "2026-11-01T03:38:20",
+  "elapsed_seconds": 7.5,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "林晓",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_org_reporting_lines",
+            "title": "# 澜图智能员工汇报关系与业务分工",
+            "chunk": 0,
+            "score": 5.154,
+            "snippet": "# 澜图智能员工汇报关系与业务分工\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-02-10 09:00\n更新时间：2025-09-01 10:00\n版本号：v1.2\n文档类型：org\n文档族：org_reporting_lines\n生效日期：2025-09-01\n\n## 一、研发体系汇报链\n\n顾承澜是沈亦舟的上级。沈亦舟是程知远的上级。程知远是周启航的上级。周启航是林晓的上级。林晓是赵一鸣的上级。\n\n沈亦舟担任 CTO，负责研发体系。程知远担任研发中心总经理，负责研发中心整体经营管理。周启航担任控制器"
+          },
+          {
+            "doc_id": "lantu_org_reporting_lines",
+            "title": "# 澜图智能员工汇报关系与业务分工",
+            "chunk": 1,
+            "score": 3.967,
+            "snippet": "周敏仪担任 CFO，负责财务与资本运作。陈依然担任人力资源副总裁，负责人力资源体系。蒋雯担任薪酬绩效经理，负责薪酬、绩效与员工关系。邵岚担任法务合规总监，负责法务、合规与知识产权。\n\n## 五、跨部门业务分工\n\n周启航同时担任新一代控制器 LT-C900 项目负责人，项目成员包括林晓与赵一鸣。唐婧负责销售中心，华东区域由许博管理，上海区域重点客户由陈璐维护。方磊负责制造中心，苏州工厂由郭涛管理。\n\n## 六、汇报关系使用说明\n\n本文件中的“上级”均指行政汇报关系中的直接上级；跨部门项目中的项目负责人关系不改变行政汇"
+          }
+        ]
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_org_reporting_lines"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.269,
+    "number_recall": 0.0
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "qid": "M0802",
+  "question": "公司第 10 万台机器人是哪一天下线的？光看发展历程能不能拿到具体日期？这一年里公司还完成了哪些里程碑？",
+  "question_type": "时间与因果推断",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>第10万台机器人 下线</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 81,
+        "prompt_tokens": 373,
+        "total_tokens": 454,
+        "completion_tokens_details": {
+          "reasoning_tokens": 49
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.281
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>第10万台机器人 下线 里程碑</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 40,
+        "prompt_tokens": 442,
+        "total_tokens": 482,
+        "completion_tokens_details": {
+          "reasoning_tokens": 6
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.484
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>第10万台机器人下线 发展历程</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 63,
+        "prompt_tokens": 513,
+        "total_tokens": 576,
+        "completion_tokens_details": {
+          "reasoning_tokens": 28
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 1.829
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search>{\"query\": \"第10万台机器人下线 发展历程\", \"top_k\": 10}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 100,
+        "prompt_tokens": 585,
+        "total_tokens": 685,
+        "completion_tokens_details": {
+          "reasoning_tokens": 66
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.109
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>第10万台机器人下线</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 276,
+        "prompt_tokens": 656,
+        "total_tokens": 932,
+        "completion_tokens_details": {
+          "reasoning_tokens": 244
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 8.609
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>第10万台机器人下线</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 37,
+        "prompt_tokens": 725,
+        "total_tokens": 762,
+        "completion_tokens_details": {
+          "reasoning_tokens": 5
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 2.922
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"无法作答：本次会话中检索工具始终未能成功返回任何文档，我未能读取到关于'公司第10万台机器人下线日期'及'该年度其他里程碑'的任何企业资料。根据规则，我不能凭记忆或推测回答。若能提供发展历程原文、公司年报或里程碑清单等相关文档，或重新发起检索，我可以进一步核实具体日期（发展历程条目若只写到年份/季度，则可能确实拿不到具体日期，需以原文为准）并汇总该年度里程碑。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 149,
+        "prompt_tokens": 791,
+        "total_tokens": 940,
+        "completion_tokens_details": {
+          "reasoning_tokens": 15
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 4.516
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "无法作答：本次会话中检索工具始终未能成功返回任何文档，我未能读取到关于'公司第10万台机器人下线日期'及'该年度其他里程碑'的任何企业资料。根据规则，我不能凭记忆或推测回答。若能提供发展历程原文、公司年报或里程碑清单等相关文档，或重新发起检索，我可以进一步核实具体日期（发展历程条目若只写到年份/季度，则可能确实拿不到具体日期，需以原文为准）并汇总该年度里程碑。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4831,
+  "started_at": "2026-11-01T05:57:27",
+  "elapsed_seconds": 24.75,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.032,
+    "number_recall": 0.0
+  }
+}

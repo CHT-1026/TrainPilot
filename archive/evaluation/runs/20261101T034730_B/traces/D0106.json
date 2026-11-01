@@ -1,0 +1,183 @@
+{
+  "qid": "D0106",
+  "question": "销售折扣审批权限从 2024 版到 2025 版，三个审批层级的折扣上限分别变化了多少？",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"销售折扣\"}}",
+      "usage": {
+        "prompt_tokens": 380,
+        "total_tokens": 499,
+        "completion_tokens": 119,
+        "completion_tokens_details": {
+          "reasoning_tokens": 100,
+          "text_tokens": 119
+        }
+      },
+      "seconds": 1.219
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_sales_discount_2024\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 494,
+        "total_tokens": 630,
+        "completion_tokens": 136,
+        "completion_tokens_details": {
+          "reasoning_tokens": 98,
+          "text_tokens": 136
+        }
+      },
+      "seconds": 1.156
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_sales_discount_2025\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 833,
+        "total_tokens": 1057,
+        "completion_tokens": 224,
+        "completion_tokens_details": {
+          "reasoning_tokens": 186,
+          "text_tokens": 224
+        }
+      },
+      "seconds": 1.828
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"销售折扣审批权限的三个层级（销售经理、销售副总裁、总经理）的折扣上限变化如下：\\n\\n1. **销售经理**：审批上限从 10% 降至 8%。\\n2. **销售副总裁**：审批上限从 20% 降至 15%。\\n3. **总经理**：2024 版无明确上限（规定超过 20% 均由其审批），2025 版设定上限为 25%（超过 25% 须提交董事会审议）。\",\"citations\":[\"lantu_sales_discount_2024\",\"lantu_sales_discount_2025\"],\"evidence\":[\"lantu_sales_discount_2024#一、折扣区间\",\"lantu_sales_discount_2025#一、折扣区间\"]}",
+      "usage": {
+        "prompt_tokens": 1232,
+        "total_tokens": 6239,
+        "completion_tokens": 5007,
+        "completion_tokens_details": {
+          "reasoning_tokens": 4818,
+          "text_tokens": 5007
+        }
+      },
+      "seconds": 39.735
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "销售折扣"
+      },
+      "result_sha": "804328065fc535865102f9cded40ed2bdc463255fa92f737659df05270d0f7d8",
+      "result_chars": 160,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_sales_discount_2024",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "1483555ea3a39c92e18cb37d32ed84fef6c230dcd5bd8a6bdd786e06715530e6",
+      "result_chars": 476,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_sales_discount_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "1dbf5c25d0ded3cfb5ad79d23123ed29184296ffd2c6b7e969d1808f44423561",
+      "result_chars": 556,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "销售折扣审批权限的三个层级（销售经理、销售副总裁、总经理）的折扣上限变化如下：\n\n1. **销售经理**：审批上限从 10% 降至 8%。\n2. **销售副总裁**：审批上限从 20% 降至 15%。\n3. **总经理**：2024 版无明确上限（规定超过 20% 均由其审批），2025 版设定上限为 25%（超过 25% 须提交董事会审议）。",
+    "citations": [
+      "lantu_sales_discount_2024",
+      "lantu_sales_discount_2025"
+    ],
+    "evidence": [
+      "lantu_sales_discount_2024#一、折扣区间",
+      "lantu_sales_discount_2025#一、折扣区间"
+    ]
+  },
+  "status": "answered",
+  "tokens": 8425,
+  "started_at": "2026-11-01T04:42:48",
+  "elapsed_seconds": 43.94,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "销售折扣"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_sales_discount_2024",
+            "title": "# 澜图智能销售折扣审批权限（2024版）"
+          },
+          {
+            "doc_id": "lantu_sales_discount_2025",
+            "title": "# 澜图智能销售折扣审批权限（2025版）"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_sales_discount_2024",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_sales_discount_2024",
+        "title": "# 澜图智能销售折扣审批权限（2024版）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 301,
+        "text": "# 澜图智能销售折扣审批权限（2024版）\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-01-25 09:00\n更新时间：2024-02-01 10:00\n版本号：v1.0\n文档类型：sales\n文档族：sales_discount\n生效日期：2024-01-01\n\n## 一、折扣区间\n\n标准价折扣 10% 以内（含）由销售经理审批；10%-20%（含）由销售副总裁审批；超过 20% 由总经理审批。\n\n## 二、申请材料\n\n折扣申请须说明客户级别、竞争态势、项目毛利与战略价值，并附成本测算表。\n\n## 三、底线要求\n\n任何折扣不得使项目毛利率低于 25%；低于底线须提交董事会审议。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_sales_discount_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_sales_discount_2025",
+        "title": "# 澜图智能销售折扣审批权限（2025版）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 377,
+        "text": "# 澜图智能销售折扣审批权限（2025版）\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-12-18 09:00\n更新时间：2025-01-01 10:00\n版本号：v2.0\n文档类型：sales\n文档族：sales_discount\n生效日期：2025-01-01\n\n## 一、折扣区间\n\n标准价折扣 8% 以内（含）由销售经理审批；8%-15%（含）由销售副总裁审批；15%-25%（含）由总经理审批；超过 25% 必须提交董事会审议。\n\n## 二、申请材料\n\n折扣申请须附客户分级、竞品报价、项目毛利测算与回款计划；S 级客户可额外申请战略支持。\n\n## 三、底线要求\n\n项目毛利率不得低于 28%；低于 28% 须由 CFO 出具专项意见。\n\n## 四、生效说明\n\n本版本自 2025 年 1 月 1 日起生效，2024 版同时废止。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_sales_discount_2024",
+      "lantu_sales_discount_2025"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.117,
+    "number_recall": 1.0
+  }
+}

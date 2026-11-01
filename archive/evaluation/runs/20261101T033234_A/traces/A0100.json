@@ -1,0 +1,142 @@
+{
+  "qid": "A0100",
+  "question": "售后服务部有多少人？占员工总数的比例是多少？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>售后服务部 人员编制 人数</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 59,
+        "prompt_tokens": 353,
+        "total_tokens": 412,
+        "completion_tokens_details": {
+          "reasoning_tokens": 27
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.204
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=TOOL></function></tool_call>",
+      "usage": {
+        "completion_tokens": 28,
+        "prompt_tokens": 422,
+        "total_tokens": 450,
+        "completion_tokens_details": {
+          "reasoning_tokens": 16
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.062
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>售后服务部 人员编制 人数</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 41,
+        "prompt_tokens": 471,
+        "total_tokens": 512,
+        "completion_tokens_details": {
+          "reasoning_tokens": 9
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.313
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=TOOL></function></tool_call>",
+      "usage": {
+        "completion_tokens": 37,
+        "prompt_tokens": 540,
+        "total_tokens": 577,
+        "completion_tokens_details": {
+          "reasoning_tokens": 25
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.625
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=TOOL></function></tool_call>",
+      "usage": {
+        "completion_tokens": 41,
+        "prompt_tokens": 589,
+        "total_tokens": 630,
+        "completion_tokens_details": {
+          "reasoning_tokens": 29
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 1.5
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>售后服务部 人数 员工总数</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 52,
+        "prompt_tokens": 638,
+        "total_tokens": 690,
+        "completion_tokens_details": {
+          "reasoning_tokens": 18
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 1.75
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"未能检索到关于售后服务部人数及占员工总数比例的资料，无法给出准确数字。建议提供公司组织架构文件、人员编制表或年度人力报告等来源后再行查询。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 86,
+        "prompt_tokens": 706,
+        "total_tokens": 792,
+        "completion_tokens_details": {
+          "reasoning_tokens": 24
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 2.687
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "未能检索到关于售后服务部人数及占员工总数比例的资料，无法给出准确数字。建议提供公司组织架构文件、人员编制表或年度人力报告等来源后再行查询。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4063,
+  "started_at": "2026-11-01T03:40:57",
+  "elapsed_seconds": 12.14,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.235,
+    "number_recall": 0.0
+  }
+}

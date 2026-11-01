@@ -1,0 +1,438 @@
+{
+  "qid": "D0071",
+  "question": "12 个客户案例的客户评价人职务有多少种不同类型？",
+  "question_type": "清单枚举",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call>\n<function>list</function><parameter>query:客户案例</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 363,
+        "total_tokens": 477,
+        "completion_tokens": 114,
+        "completion_tokens_details": {
+          "reasoning_tokens": 83,
+          "text_tokens": 114
+        }
+      },
+      "seconds": 1.125
+    },
+    {
+      "round": 2,
+      "text": "<tool_call>\n<function>search</function><parameter=query:客户案例</parameter>\n<parameter=top_k:10</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 1509,
+        "total_tokens": 1748,
+        "completion_tokens": 239,
+        "completion_tokens_details": {
+          "reasoning_tokens": 198,
+          "text_tokens": 239
+        }
+      },
+      "seconds": 2.11
+    },
+    {
+      "round": 3,
+      "text": "<tool_call>\n<function>search</function><parameter=query:案例</parameter>\n<parameter=top_k:10</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 1575,
+        "total_tokens": 1794,
+        "completion_tokens": 219,
+        "completion_tokens_details": {
+          "reasoning_tokens": 179,
+          "text_tokens": 219
+        }
+      },
+      "seconds": 2.187
+    },
+    {
+      "round": 4,
+      "text": "<tool_call>\n<function>search</function><parameter=query:客户</parameter>\n<parameter=top_k:10</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 1640,
+        "total_tokens": 1878,
+        "completion_tokens": 238,
+        "completion_tokens_details": {
+          "reasoning_tokens": 198,
+          "text_tokens": 238
+        }
+      },
+      "seconds": 2.157
+    },
+    {
+      "round": 5,
+      "text": "<tool_call>\n<function>search</function><parameter=query:评价</parameter>\n<parameter=top_k:10</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 1705,
+        "total_tokens": 1974,
+        "completion_tokens": 269,
+        "completion_tokens_details": {
+          "reasoning_tokens": 229,
+          "text_tokens": 269
+        }
+      },
+      "seconds": 3.078
+    },
+    {
+      "round": 6,
+      "text": "<tool_call>\n<function>read</function><parameter=doc_id>lantu_company_profile</parameter><parameter=offset>0</parameter><parameter=limit>4000</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 1770,
+        "total_tokens": 2085,
+        "completion_tokens": 315,
+        "completion_tokens_details": {
+          "reasoning_tokens": 262,
+          "text_tokens": 315
+        }
+      },
+      "seconds": 3.25
+    },
+    {
+      "round": 7,
+      "text": "<tool_call>\n<function>read</function><parameter=args>{\"doc_id\": \"lantu_company_profile\", \"limit\": 4000, \"offset\": 0}</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 1862,
+        "total_tokens": 2097,
+        "completion_tokens": 235,
+        "completion_tokens_details": {
+          "reasoning_tokens": 183,
+          "text_tokens": 235
+        }
+      },
+      "seconds": 2.453
+    },
+    {
+      "round": 8,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_finance_annual_2024\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 1952,
+        "total_tokens": 3265,
+        "completion_tokens": 1313,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1273,
+          "text_tokens": 1313
+        }
+      },
+      "seconds": 10.953
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "query": "客户案例"
+      },
+      "result_sha": "ee5960dfc8f223ba9ffafd250ac7a048c5a08afb9d85298c7a0ba99417e816f1",
+      "result_chars": 2735,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result_sha": "5fc2d84c83980bdfdb622431503d60a4e21a961fe19252f171944fa6956f91c7",
+      "result_chars": 12,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result_sha": "5fc2d84c83980bdfdb622431503d60a4e21a961fe19252f171944fa6956f91c7",
+      "result_chars": 12,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result_sha": "5fc2d84c83980bdfdb622431503d60a4e21a961fe19252f171944fa6956f91c7",
+      "result_chars": 12,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result_sha": "5fc2d84c83980bdfdb622431503d60a4e21a961fe19252f171944fa6956f91c7",
+      "result_chars": 12,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {},
+      "result_sha": "0891001a5cc7c8764ea4230b012c537a0dd1ca2a8bf2ce0a1414a84875e8690b",
+      "result_chars": 51,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {},
+      "result_sha": "0891001a5cc7c8764ea4230b012c537a0dd1ca2a8bf2ce0a1414a84875e8690b",
+      "result_chars": 51,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_finance_annual_2024",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "a2d1805c72aa9a06e9c7fa01f49fe9a6d7b543343eb6736e1d0b87fa367abce1",
+      "result_chars": 579,
+      "hits": 0
+    }
+  ],
+  "answer": null,
+  "status": "unfinished",
+  "tokens": 15318,
+  "started_at": "2026-11-01T04:39:56",
+  "elapsed_seconds": 27.31,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "query": "客户案例"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_company_brand",
+            "title": "# 澜图智能品牌视觉与传播规范"
+          },
+          {
+            "doc_id": "lantu_company_campus",
+            "title": "# 澜图智能制造基地与产能布局"
+          },
+          {
+            "doc_id": "lantu_company_global",
+            "title": "# 澜图智能全球化布局与海外业务"
+          },
+          {
+            "doc_id": "lantu_company_history",
+            "title": "# 澜图智能发展历程（2011—2025）"
+          },
+          {
+            "doc_id": "lantu_company_milestones_2025",
+            "title": "# 澜图智能 2025 年度大事记"
+          },
+          {
+            "doc_id": "lantu_company_mission",
+            "title": "# 澜图智能使命、愿景与价值观"
+          },
+          {
+            "doc_id": "lantu_company_profile",
+            "title": "澜图智能装备公司简介"
+          },
+          {
+            "doc_id": "lantu_investor_overview",
+            "title": "# 澜图智能投资者关系概览"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2024",
+            "title": "澜图智能 2024 年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2025",
+            "title": "澜图智能 2025 年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_budget_2026",
+            "title": "# 澜图智能 2026 年度经营预算"
+          },
+          {
+            "doc_id": "lantu_finance_cashflow",
+            "title": "# 澜图智能现金流与资金管理报告"
+          },
+          {
+            "doc_id": "lantu_finance_cost",
+            "title": "# 澜图智能成本管理与降本专项报告"
+          },
+          {
+            "doc_id": "lantu_finance_gross_margin",
+            "title": "# 澜图智能毛利率与成本结构分析"
+          },
+          {
+            "doc_id": "lantu_finance_h1_2025",
+            "title": "# 澜图智能 2025 年半年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_investor_qa",
+            "title": "# 澜图智能投资者常见问题答复"
+          },
+          {
+            "doc_id": "lantu_finance_monthly_2025",
+            "title": "[工作表] 文档信息"
+          },
+          {
+            "doc_id": "lantu_finance_q3_2025",
+            "title": "# 澜图智能 2025 年第三季度经营数据"
+          },
+          {
+            "doc_id": "lantu_finance_revenue_breakdown",
+            "title": "﻿维度,分类,收入（亿元）,占比,同比"
+          },
+          {
+            "doc_id": "lantu_hr_campus",
+            "title": "# 澜图智能 2026 届校园招聘方案"
+          },
+          {
+            "doc_id": "lantu_hr_compensation",
+            "title": "# 澜图智能薪酬与奖金管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_job_grades",
+            "title": "# 澜图智能职级体系与晋升规则"
+          },
+          {
+            "doc_id": "lantu_hr_manager_training",
+            "title": "澜图智能管理者领导力培训方案"
+          },
+          {
+            "doc_id": "lantu_hr_new_hire_training",
+            "title": "澜图智能新员工入职培训大纲"
+          },
+          {
+            "doc_id": "lantu_hr_performance",
+            "title": "# 澜图智能绩效管理制度"
+          },
+          {
+            "doc_id": "lantu_hr_recruitment",
+            "title": "# 澜图智能招聘管理制度"
+          },
+          {
+            "doc_id": "lantu_hr_resignation",
+            "title": "# 澜图智能离职与交接管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_social",
+            "title": "# 澜图智能社会招聘管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_training_system",
+            "title": "# 澜图智能培训体系与年度计划"
+          },
+          {
+            "doc_id": "lantu_legal_anti_bribery",
+            "title": "# 澜图智能反商业贿赂管理规定"
+          },
+          {
+            "doc_id": "lantu_legal_compliance_manual",
+            "title": "# 澜图智能合规管理手册"
+          },
+          {
+            "doc_id": "lantu_legal_data_compliance",
+            "title": "# 澜图智能数据合规与隐私保护规范"
+          },
+          {
+            "doc_id": "lantu_legal_export_control",
+            "title": "# 澜图智能出口管制与制裁合规指引"
+          },
+          {
+            "doc_id": "lantu_legal_nda_template",
+            "title": "澜图智能保密协议模板（NDA）"
+          },
+          {
+            "doc_id": "lantu_legal_purchase_contract_template",
+            "title": "澜图智能采购合同模板（2025版）"
+          },
+          {
+            "doc_id": "lantu_legal_sales_contract_template",
+            "title": "澜图智能设备销售合同模板（2025版）"
+          },
+          {
+            "doc_id": "lantu_legal_supplier_code",
+            "title": "# 澜图智能供应商行为准则"
+          },
+          {
+            "doc_id": "lantu_meeting_board",
+            "title": "# 2025 年第二次临时董事会决议"
+          },
+          {
+            "doc_id": "lantu_meeting_case_review",
+            "title": "# 恒芯动力电池项目复盘会纪要"
+          },
+          {
+            "doc_id": "lantu_meeting_ops_2025q3",
+            "title": "2025 年第三季度经营分析会纪要"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result": {
+        "hits": []
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result": {
+        "hits": []
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result": {
+        "hits": []
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result": {
+        "hits": []
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {},
+      "result": {
+        "error": "未知 doc_id，请使用 list 或 search 返回的 doc_id"
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {},
+      "result": {
+        "error": "未知 doc_id，请使用 list 或 search 返回的 doc_id"
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_finance_annual_2024",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_finance_annual_2024",
+        "title": "澜图智能 2024 年度报告摘要",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 413,
+        "text": "澜图智能 2024 年度报告摘要\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-01-22 09:00\n更新时间：2025-01-30 18:00\n版本号：v1.0\n文档类型：finance\n文档族：annual_report_2024\n生效日期：2025-01-30\n一、经营概况\n2024 年公司实现营业收入 35.80 亿元，同比增长 16.8%；归母净利润 3.26 亿元，同比增长 14.2%。\n二、收入结构\n机器人本体收入 16.72 亿元（46.7%），智能产线收入 12.36 亿元（34.5%），工业软件与服务收入 4.36\n亿元（12.2%），备件及其他收入 2.36 亿元（6.6%）。\n三、盈利能力\n综合毛利率 30.4%；净利率 9.1%；研发投入 4.62 亿元，占营业收入 12.9%。\n四、现金流\n经营活动现金流净额 4.28 亿元；资产负债率 41.2%；应收账款周转天数 94 天。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

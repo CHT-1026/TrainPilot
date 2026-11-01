@@ -1,0 +1,264 @@
+{
+  "qid": "M1311",
+  "question": "2026 年公司要新增多少人、研发人员要扩到多少？校招和社招分别计划招多少人，校招里研发占多少？新人入职后的培训怎么安排？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>2026 年 招聘 计划 新增 人数</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 89,
+        "prompt_tokens": 386,
+        "total_tokens": 475,
+        "completion_tokens_details": {
+          "reasoning_tokens": 47
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.031
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>2026 年 招聘计划 校招 社招 人数</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 61,
+        "prompt_tokens": 465,
+        "total_tokens": 526,
+        "completion_tokens_details": {
+          "reasoning_tokens": 17
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.187
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>2026年 招聘计划 校招 社招 人数 研发人员</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 97,
+        "prompt_tokens": 546,
+        "total_tokens": 643,
+        "completion_tokens_details": {
+          "reasoning_tokens": 49
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.797
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>2026年 招聘计划 校招 社招 人数 研发人员</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 67,
+        "prompt_tokens": 631,
+        "total_tokens": 698,
+        "completion_tokens_details": {
+          "reasoning_tokens": 19
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 1.469
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>2026年 招聘计划 校招 社招 人数 研发人员</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 81,
+        "prompt_tokens": 716,
+        "total_tokens": 797,
+        "completion_tokens_details": {
+          "reasoning_tokens": 33
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 1.344
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"2026年 招聘计划 校招 社招 人数 研发人员\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 54,
+        "prompt_tokens": 801,
+        "total_tokens": 855,
+        "completion_tokens_details": {
+          "reasoning_tokens": 11
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 1.328
+    },
+    {
+      "round": 7,
+      "text": "<tool_call><function=read><parameter=doc_id>lantu_strategy_2026</parameter><parameter=offset>0</parameter><parameter=limit>4000</parameter></function></tool_call><tool_call><function=search><parameter=query>新人 入职 培训 安排 试用期 导师</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 125,
+        "prompt_tokens": 3283,
+        "total_tokens": 3408,
+        "completion_tokens_details": {
+          "reasoning_tokens": 39
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 768
+        }
+      },
+      "seconds": 2.187
+    },
+    {
+      "round": 8,
+      "text": "ANSWER {\"status\":\"needs_clarification\",\"answer\":\"可确认的部分：①校招——《澜图智能2026届校园招聘方案》（v1.0，2025-09-20生效）明确2026届校招计划120人，其中研发78人、产品12人、销售18人、职能12人，重点院校18所；研发在校招中占比78/120=65%。②社招——《澜图智能社会招聘管理办法》（v2.5，2025-07-15生效）载明年社招计划200人（适用于经理级及以上、高级技术专家与紧缺岗位），但该口径未明确标注为2026年度，需确认是否即2026年计划。③研发人员现状——《澜图智能研发体系与投入》（v5.0，2026-01-12生效）载明研发人员现有1,286人（博士48人、硕士612人，35岁以下占61%）。证据不足的部分：a) 2026年公司整体“新增人数”总量目标未在已检索资料中直接给出（若按校招120+社招200粗略相加为320人，但两份文件口径与年度未必一致，不能直接相加作为官方数字）；b) 2026年研发人员扩编后的目标总数未检索到；c) 新人入职后的培训安排（如培训周期、课程、导师制、试用期考核）在已检索片段中未出现，需补充检索《培训管理制度》类文档。建议澄清：是否需要以2026年度经营计划/编制预算中的口径为准，以及社招200人是否适用于2026年。\",\"citations\":[\"lantu_hr_campus\",\"lantu_hr_social\",\"lantu_org_rd_system\"],\"evidence\":[\"lantu_hr_campus#片段0\",\"lantu_hr_social#片段0\",\"lantu_org_rd_system#片段0\"]}",
+      "usage": {
+        "completion_tokens": 663,
+        "prompt_tokens": 3403,
+        "total_tokens": 4066,
+        "completion_tokens_details": {
+          "reasoning_tokens": 195
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3264
+        }
+      },
+      "seconds": 8.125
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "2026年 招聘计划 校招 社招 人数 研发人员",
+        "top_k": 10
+      },
+      "result_sha": "79f99292325b67a0a343e2c5e90848c56dde362959da53de5c94939c5258af73",
+      "result_chars": 3864,
+      "hits": 10
+    }
+  ],
+  "answer": {
+    "status": "needs_clarification",
+    "answer": "可确认的部分：①校招——《澜图智能2026届校园招聘方案》（v1.0，2025-09-20生效）明确2026届校招计划120人，其中研发78人、产品12人、销售18人、职能12人，重点院校18所；研发在校招中占比78/120=65%。②社招——《澜图智能社会招聘管理办法》（v2.5，2025-07-15生效）载明年社招计划200人（适用于经理级及以上、高级技术专家与紧缺岗位），但该口径未明确标注为2026年度，需确认是否即2026年计划。③研发人员现状——《澜图智能研发体系与投入》（v5.0，2026-01-12生效）载明研发人员现有1,286人（博士48人、硕士612人，35岁以下占61%）。证据不足的部分：a) 2026年公司整体“新增人数”总量目标未在已检索资料中直接给出（若按校招120+社招200粗略相加为320人，但两份文件口径与年度未必一致，不能直接相加作为官方数字）；b) 2026年研发人员扩编后的目标总数未检索到；c) 新人入职后的培训安排（如培训周期、课程、导师制、试用期考核）在已检索片段中未出现，需补充检索《培训管理制度》类文档。建议澄清：是否需要以2026年度经营计划/编制预算中的口径为准，以及社招200人是否适用于2026年。",
+    "citations": [
+      "lantu_hr_campus",
+      "lantu_hr_social",
+      "lantu_org_rd_system"
+    ],
+    "evidence": [
+      "lantu_hr_campus#片段0",
+      "lantu_hr_social#片段0",
+      "lantu_org_rd_system#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 11468,
+  "started_at": "2026-11-01T06:03:46",
+  "elapsed_seconds": 19.48,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "2026年 招聘计划 校招 社招 人数 研发人员",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_hr_campus",
+            "title": "# 澜图智能 2026 届校园招聘方案",
+            "chunk": 0,
+            "score": 23.106,
+            "snippet": "# 澜图智能 2026 届校园招聘方案\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-08-15 09:00\n更新时间：2025-09-20 15:00\n版本号：v1.0\n文档类型：hr\n文档族：campus_recruitment_2026\n生效日期：2025-09-20\n\n## 一、招聘计划\n\n2026 届校招计划 120 人，其中研发 78 人、产品 12 人、销售 18 人、职能 12 人；重点院校 18 所。\n\n## 二、岗位方向\n\n机器人算法、运动控制、机器视觉、嵌入式软件、机械结构、售前技"
+          },
+          {
+            "doc_id": "lantu_strategy_2026",
+            "title": "# 澜图智能 2026 年度经营计划",
+            "chunk": 0,
+            "score": 13.045,
+            "snippet": "# 澜图智能 2026 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-12-15 09:00\n更新时间：2026-01-12 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2026\n生效日期：2026-01-12\n\n## 一、年度目标\n\n2026 年营业收入 52 亿元，归母净利润 5.2 亿元，新签订单 58 亿元，机器人出货 26,000 台。\n\n## 二、业务策略\n\n锂电保持领先，半导体翻倍增长，海外收入 7.2 亿元；软件与服务收入占比提"
+          },
+          {
+            "doc_id": "lantu_hr_social",
+            "title": "# 澜图智能社会招聘管理办法",
+            "chunk": 0,
+            "score": 12.673,
+            "snippet": "# 澜图智能社会招聘管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-02-01 09:00\n更新时间：2025-07-15 11:00\n版本号：v2.5\n文档类型：hr\n文档族：social_recruitment\n生效日期：2025-07-15\n\n## 一、适用岗位\n\n适用于经理级及以上、高级技术专家与紧缺岗位；年度社招计划 200 人。\n\n## 二、渠道管理\n\n使用猎头、招聘平台、内部推荐与行业社群。猎头费用为年薪的 20%-25%，保证期 90 天。\n\n## 三、内部推荐\n\n员工推荐成功入"
+          },
+          {
+            "doc_id": "lantu_org_rd_system",
+            "title": "# 澜图智能研发体系与投入",
+            "chunk": 0,
+            "score": 11.98,
+            "snippet": "# 澜图智能研发体系与投入\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-02-01 09:00\n更新时间：2026-01-12 10:00\n版本号：v5.0\n文档类型：org\n文档族：rd_system\n生效日期：2026-01-12\n\n## 一、研发架构\n\n研发中心下设机器人本体研究所、控制器研究所、机器视觉研究所、工艺应用研究所、具身智能研究所，另设测试中心与可靠性实验室。\n\n## 二、人员结构\n\n研发人员 1,286 人，其中博士 48 人、硕士 612 人，35 岁以下占比 61%。2025 年"
+          },
+          {
+            "doc_id": "lantu_investor_overview",
+            "title": "# 澜图智能投资者关系概览",
+            "chunk": 0,
+            "score": 9.539,
+            "snippet": "# 澜图智能投资者关系概览\n\n所属部门：董事会办公室\n作者：周敏仪\n创建时间：2024-03-20 09:00\n更新时间：2026-01-10 17:00\n版本号：v4.1\n文档类型：company\n文档族：investor_overview\n生效日期：2026-01-10\n\n## 一、基本信息\n\n公司股票代码 688719，总股本 4.2 亿股，2025 年末总市值约 168 亿元。2025 年度拟每 10 股派发现金红利 3.2 元（含税）。\n\n## 二、经营数据\n\n2025 年营业收入 42.63 亿元，归母"
+          },
+          {
+            "doc_id": "lantu_org_headcount",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 8.052,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能员工分布统计（2025）\n所属部门\t人力资源部\n作者\t陈依然\n创建时间\t2025-12-31 18:00\n更新时间\t2026-01-09 09:30\n版本号\tv1.0\n文档类型\torg\n文档族\theadcount_2025\n生效日期\t2026-01-09\n[工作表] 基地分布\n基地\t员工数\t研发\t销售\t制造\t服务\t职能\n苏州总部\t2,450\t1,120\t310\t560\t250\t210\n东莞华南\t780\t86\t150\t300\t120\t124\n成都西部\t430\t80\t90\t"
+          },
+          {
+            "doc_id": "lantu_org_chart_2024",
+            "title": "# 澜图智能组织架构（2024版）",
+            "chunk": 0,
+            "score": 7.628,
+            "snippet": "# 澜图智能组织架构（2024版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-05 09:00\n更新时间：2024-01-15 10:00\n版本号：v1.0\n文档类型：org\n文档族：org_chart\n生效日期：2024-01-01\n\n## 一、一级部门\n\n2024 年公司设 11 个一级部门：研发中心、产品部、销售中心、供应链中心、制造中心、质量部、财务部、人力资源部、法务合规部、信息技术部、战略投资部。售后服务部隶属销售中心。\n\n## 二、研发体系\n\n研发中心下设 4 个研究所：机器人本"
+          },
+          {
+            "doc_id": "lantu_company_profile",
+            "title": "澜图智能装备公司简介",
+            "chunk": 0,
+            "score": 7.562,
+            "snippet": "澜图智能装备公司简介\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2023-03-01 09:00\n更新时间：2026-01-08 10:30\n版本号：v5.2\n文档类型：company\n文档族：company_profile\n生效日期：2026-01-08\n一、公司概况\n澜图智能装备股份有限公司成立于2011-06-18，总部位于江苏省苏州市工业园区星澜路88号，注册资本\n6.8 亿元，2023 年在上海证券交易所科创板上市（股票代码 688719）。公司专注工业机器人、智能产线\n与工业软件，为汽车、锂电、光伏"
+          },
+          {
+            "doc_id": "lantu_org_department_duties",
+            "title": "# 澜图智能一级部门职责与编制",
+            "chunk": 1,
+            "score": 7.515,
+            "snippet": "| 部门 | 负责人 | 编制（人） | 主要职责 |\n| --- | --- | --- | --- |\n| 研发中心 | 沈亦舟 | 1,286 | 本体/控制器/视觉/具身智能研发 |\n| 产品部 | 孟凡 | 96 | 产品规划与生命周期管理 |\n| 销售中心 | 罗嘉树 | 620 | 区域销售与渠道 |\n| 客户成功部 | 林可 | 86 | 重点客户经营 |\n| 供应链中心 | 韩立恒 | 210 | 采购、计划、物流 |\n| 制造中心 | 韩立恒 | 980 | 三大基地生产 |\n| 质量部 | 潘"
+          },
+          {
+            "doc_id": "lantu_hr_recruitment",
+            "title": "# 澜图智能招聘管理制度",
+            "chunk": 0,
+            "score": 6.932,
+            "snippet": "# 澜图智能招聘管理制度\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-05 09:00\n更新时间：2025-06-10 10:00\n版本号：v3.1\n文档类型：hr\n文档族：recruitment\n生效日期：2025-06-10\n\n## 一、招聘原则\n\n坚持公开、公平、择优，优先内部推荐与内部转岗；关键岗位实行背景调查与多轮面试。\n\n## 二、招聘流程\n\n需求审批 → 简历筛选 → 专业面试 → 综合面试 → 薪酬沟通 → 背景调查 → 发放录用通知。研发岗位增加技术笔试与代码评审。\n\n## 三"
+          }
+        ]
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.286,
+    "cited": [
+      "lantu_hr_campus",
+      "lantu_hr_social",
+      "lantu_org_rd_system"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.178,
+    "number_recall": 0.5
+  }
+}

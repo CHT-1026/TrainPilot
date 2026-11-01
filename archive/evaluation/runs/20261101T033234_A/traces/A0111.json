@@ -1,0 +1,142 @@
+{
+  "qid": "A0111",
+  "question": "IPD 研发流程说明与研发体系文档都提到六阶段流程，两处表述是否一致？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>IPD 研发流程 六阶段</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list><parameter=keyword>IPD</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 75,
+        "prompt_tokens": 366,
+        "total_tokens": 441,
+        "completion_tokens_details": {
+          "reasoning_tokens": 23
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 6.063
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search>{\"query\":\"IPD 研发流程 六阶段\",\"top_k\":10}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 44,
+        "prompt_tokens": 455,
+        "total_tokens": 499,
+        "completion_tokens_details": {
+          "reasoning_tokens": 13
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.39
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>IPD 研发流程 六阶段</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 41,
+        "prompt_tokens": 523,
+        "total_tokens": 564,
+        "completion_tokens_details": {
+          "reasoning_tokens": 6
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.328
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=list><parameter=keyword>IPD</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 47,
+        "prompt_tokens": 595,
+        "total_tokens": 642,
+        "completion_tokens_details": {
+          "reasoning_tokens": 28
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 2.282
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=list><parameter=keyword>IPD</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 31,
+        "prompt_tokens": 651,
+        "total_tokens": 682,
+        "completion_tokens_details": {
+          "reasoning_tokens": 12
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 1.156
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>IPD 研发流程说明 六阶段</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 707,
+        "total_tokens": 757,
+        "completion_tokens_details": {
+          "reasoning_tokens": 14
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 2.078
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"无法核实。多次尝试检索“IPD 研发流程说明”与“研发体系文档”两份资料均未获得有效返回，未能读取到任何一份文档中关于六阶段流程的原文表述，因此无法判断两处表述是否一致。建议提供两份文档的准确标题或关键词（如具体阶段名称、文档编号），以便重新检索比对。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 123,
+        "prompt_tokens": 777,
+        "total_tokens": 900,
+        "completion_tokens_details": {
+          "reasoning_tokens": 20
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 8.547
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "无法核实。多次尝试检索“IPD 研发流程说明”与“研发体系文档”两份资料均未获得有效返回，未能读取到任何一份文档中关于六阶段流程的原文表述，因此无法判断两处表述是否一致。建议提供两份文档的准确标题或关键词（如具体阶段名称、文档编号），以便重新检索比对。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4485,
+  "started_at": "2026-11-01T03:42:13",
+  "elapsed_seconds": 23.84,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.083,
+    "number_recall": 0.0
+  }
+}

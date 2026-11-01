@@ -1,0 +1,25 @@
+{
+  "qid": "L0501",
+  "question": "别名表：研发中心=研发部，其他名称不同。档案名称依次研发中心、销售部、研发部、财务部、财务部。输出去重数量count（以别名归一后统计）。\n只输出一个JSON对象，不使用代码块或额外解释。键名、数据类型和排列规则按题目；小数四舍五入到两位，整数可保持整数。未知值用null，不得猜测。",
+  "question_type": "entity_deduplication",
+  "rounds": [],
+  "tool_calls": [],
+  "answer": null,
+  "status": "api_error",
+  "tokens": 0,
+  "started_at": "2026-11-01T02:56:24",
+  "error": "TimeoutError: timed out",
+  "elapsed_seconds": 300.0,
+  "tool_calls_detail": [],
+  "model_label": "D",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": true,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

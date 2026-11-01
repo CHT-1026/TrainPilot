@@ -1,0 +1,246 @@
+{
+  "qid": "M1301",
+  "question": "客户要备 LT-R20 和 LT-AMR-1000 的常用备件，这两个型号各自最贵的备件是哪个、多少钱、多久发货、质保多久？按产品参数矩阵，这两个机型的负载、标准交期和保修期是多少，跟保修政策对得上吗？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"LT-R20 LT-AMR-1000 备件 价格 交期 保修\"}}",
+      "usage": {
+        "prompt_tokens": 412,
+        "total_tokens": 723,
+        "completion_tokens": 311,
+        "completion_tokens_details": {
+          "reasoning_tokens": 273,
+          "text_tokens": 311
+        }
+      },
+      "seconds": 2.375
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_support_spare_parts_price\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 2746,
+        "total_tokens": 3424,
+        "completion_tokens": 678,
+        "completion_tokens_details": {
+          "reasoning_tokens": 642,
+          "text_tokens": 678
+        }
+      },
+      "seconds": 4.735
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_product_matrix\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 3182,
+        "total_tokens": 3901,
+        "completion_tokens": 719,
+        "completion_tokens_details": {
+          "reasoning_tokens": 686,
+          "text_tokens": 719
+        }
+      },
+      "seconds": 5.015
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据资料，两个机型的常用备件及参数详情如下：\\n\\n**1. LT-R20 机器人**\\n*   **最贵备件**：减速器 RV-40E，单价 **12,800 元**。\\n*   **发货时效**：**48 小时**。\\n*   **备件质保**：**12 个月**。\\n*   **负载**：**20 kg**。\\n*   **标准交期**：**6-8 周**。\\n*   **整机保修**：**24 个月或 6,000 小时**（以先到者为准）。\\n\\n**2. LT-AMR-1000 移动机器人**\\n*   **最贵备件**：激光雷达 LT-LS20，单价 **9,600 元**。\\n*   **发货时效**：**72 小时**。\\n*   **备件质保**：**18 个月**。\\n*   **负载**：**1,000 kg**。\\n*   **标准交期**：**8 周**。\\n*   **整机保修**：**24 个月**。\\n\\n**3. 保修政策核对**\\n*   产品参数矩阵中显示的 LT-R 系列（24 个月/6,000 小时）和 LT-AMR 系列（24 个月）保修期，与《澜图智能产品保修政策》中规定的“机器人本体保修 24 个月或 6,000 小时”口径**一致**，对得上。\",\"citations\":[\"lantu_support_spare_parts_price\",\"lantu_product_matrix\"],\"evidence\":[\"lantu_support_spare_parts_price#0\",\"lantu_product_matrix#0\",\"lantu_product_matrix#1\"]}",
+      "usage": {
+        "prompt_tokens": 3878,
+        "total_tokens": 6737,
+        "completion_tokens": 2859,
+        "completion_tokens_details": {
+          "reasoning_tokens": 2451,
+          "text_tokens": 2859
+        }
+      },
+      "seconds": 20.422
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "LT-R20 LT-AMR-1000 备件 价格 交期 保修"
+      },
+      "result_sha": "8ce80bc3eaa84936f2bfef643fd006f17a511900557ade704103e20826d89ca1",
+      "result_chars": 3861,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_spare_parts_price",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "ea77bd9086c1636fc0caceb2af506c6760461277d6847acbf6412e549658caa9",
+      "result_chars": 603,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_matrix",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "9ef54f2e3328ad0c2f054aff92072f15d60d9e9281ab5d02010e7472646b0167",
+      "result_chars": 1029,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据资料，两个机型的常用备件及参数详情如下：\n\n**1. LT-R20 机器人**\n*   **最贵备件**：减速器 RV-40E，单价 **12,800 元**。\n*   **发货时效**：**48 小时**。\n*   **备件质保**：**12 个月**。\n*   **负载**：**20 kg**。\n*   **标准交期**：**6-8 周**。\n*   **整机保修**：**24 个月或 6,000 小时**（以先到者为准）。\n\n**2. LT-AMR-1000 移动机器人**\n*   **最贵备件**：激光雷达 LT-LS20，单价 **9,600 元**。\n*   **发货时效**：**72 小时**。\n*   **备件质保**：**18 个月**。\n*   **负载**：**1,000 kg**。\n*   **标准交期**：**8 周**。\n*   **整机保修**：**24 个月**。\n\n**3. 保修政策核对**\n*   产品参数矩阵中显示的 LT-R 系列（24 个月/6,000 小时）和 LT-AMR 系列（24 个月）保修期，与《澜图智能产品保修政策》中规定的“机器人本体保修 24 个月或 6,000 小时”口径**一致**，对得上。",
+    "citations": [
+      "lantu_support_spare_parts_price",
+      "lantu_product_matrix"
+    ],
+    "evidence": [
+      "lantu_support_spare_parts_price#0",
+      "lantu_product_matrix#0",
+      "lantu_product_matrix#1"
+    ]
+  },
+  "status": "answered",
+  "tokens": 14785,
+  "started_at": "2026-11-01T06:31:56",
+  "elapsed_seconds": 32.55,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "LT-R20 LT-AMR-1000 备件 价格 交期 保修"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 21.967,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能产品参数矩阵（2025）\n所属部门\t产品部\n作者\t孟凡\n创建时间\t2025-01-20 09:00\n更新时间\t2025-12-15 18:00\n版本号\tv2.0\n文档类型\tproduct\n文档族\tproduct_matrix\n生效日期\t2025-12-15\n[工作表] 六轴与SCARA\n型号\t负载\t臂展\t重复精度\t本体重量\t最大速度\nLT-R6\t6 kg\t1,450 mm\t±0.02 mm\t165 kg\t3.2 m/s\nLT-R12\t12 kg\t1,550 mm\t±0."
+          },
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 1,
+            "score": 20.733,
+            "snippet": "0 kg\t1.5 m/s\nLT-AMR-2000\t2,000 kg\t—\t±10 mm\t420 kg\t1.2 m/s\n[工作表] 交付与保修\n产品线\t标准交期\t保修期\t备件响应\nLT-R 系列\t6-8 周\t24 个月/6,000 小时\t48 小时\nLT-S 系列\t4 周\t24 个月/6,000 小时\t48 小时\nLT-AMR 系列\t8 周\t24 个月\t72 小时\nLT-V3D\t4 周\t12 个月\t72 小时"
+          },
+          {
+            "doc_id": "lantu_support_spare_parts_price",
+            "title": "﻿适配机型,备件名称,单价（元）,发货时效,质保期",
+            "chunk": 0,
+            "score": 18.866,
+            "snippet": "﻿适配机型,备件名称,单价（元）,发货时效,质保期\nLT-R20,减速器 RV-40E,\"12,800\",48 小时,12 个月\nLT-R20,伺服驱动器 LT-D4,\"8,600\",48 小时,18 个月\nLT-R20,示教器 LT-Pad3,\"5,200\",48 小时,12 个月\nLT-R12,减速器 RV-20E,\"7,900\",48 小时,12 个月\nLT-R12,伺服电机 750W,\"3,600\",48 小时,18 个月\nLT-R6,谐波减速器 CSF-17,\"6,400\",72 小时,12 个月\nLT-"
+          },
+          {
+            "doc_id": "lantu_solution_lithium",
+            "title": "# 动力电池叠片与物流整体解决方案",
+            "chunk": 0,
+            "score": 14.939,
+            "snippet": "# 动力电池叠片与物流整体解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-10-12 09:00\n更新时间：2025-12-01 10:00\n版本号：v3.6\n文档类型：product\n文档族：solution_lithium\n生效日期：2025-12-01\n\n## 一、方案概述\n\n面向动力电池电芯段，提供叠片、焊接、检测与物料配送一体化方案，核心设备包括 LT-R20 机器人、LT-AMR-1000 与 LT-V3D 视觉。\n\n## 二、产线配置\n\n单条叠片线配置 15-16 台 LT-R20、2 "
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 1,
+            "score": 13.7,
+            "snippet": "| 产品线 | 代表型号 | 负载 | 典型行业 |\n| --- | --- | --- | --- |\n| 六轴机器人 | LT-R6/R12/R20/R50/R210 | 6-210 kg | 汽车、锂电、金属加工 |\n| SCARA | LT-S4/S10 | 4-10 kg | 3C、光伏、食品 |\n| 移动机器人 | LT-AMR-500/1000/2000 | 500-2,000 kg | 物流、半导体 |\n| 机器视觉 | LT-V3D | — | 装配、检测 |\n| 控制器 | LT-C800 | "
+          },
+          {
+            "doc_id": "lantu_product_s_series",
+            "title": "# LT-S 系列 SCARA 机器人产品说明",
+            "chunk": 0,
+            "score": 13.06,
+            "snippet": "# LT-S 系列 SCARA 机器人产品说明\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-03-01 09:00\n更新时间：2025-09-12 11:00\n版本号：v3.2\n文档类型：product\n文档族：product_s_series\n生效日期：2025-09-12\n\n## 一、产品定位\n\nLT-S 系列 SCARA 机器人面向 3C 组装、光伏串焊、食品包装等高速取放场景，标准循环时间 0.38 秒。\n\n## 二、型号参数\n\nLT-S4 负载 4 kg、臂展 600 mm、重复精度 ±0.02 "
+          },
+          {
+            "doc_id": "lantu_meeting_case_review",
+            "title": "# 恒芯动力电池项目复盘会纪要",
+            "chunk": 0,
+            "score": 12.102,
+            "snippet": "# 恒芯动力电池项目复盘会纪要\n\n所属部门：客户成功部\n作者：林可\n创建时间：2025-03-18 09:00\n更新时间：2025-03-18 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_case_hengxin\n生效日期：2025-03-18\n\n## 一、项目结果\n\n恒芯动力电池 12 条叠片线完成验收，部署 186 台 LT-R20 与 24 台 AMR-1000，合同金额 2.16 亿元。\n\n## 二、成功经验\n\n虚拟调试提前发现 37 处干涉，现场调试周期缩短 12 天；"
+          },
+          {
+            "doc_id": "lantu_product_amr",
+            "title": "# LT-AMR 自主移动机器人产品手册",
+            "chunk": 0,
+            "score": 11.064,
+            "snippet": "# LT-AMR 自主移动机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-05-10 09:00\n更新时间：2025-08-20 15:00\n版本号：v3.4\n文档类型：product\n文档族：product_amr\n生效日期：2025-08-20\n\n## 一、产品系列\n\nLT-AMR-500 负载 500 kg、速度 1.8 m/s、续航 8 小时；LT-AMR-1000 负载 1,000 kg、速度 1.5 m/s、续航 8 小时；LT-AMR-2000 负载 2,000 kg、速度 1.2"
+          },
+          {
+            "doc_id": "lantu_support_warranty",
+            "title": "# 澜图智能产品保修政策",
+            "chunk": 0,
+            "score": 10.324,
+            "snippet": "# 澜图智能产品保修政策\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-01-01 09:00\n更新时间：2025-04-01 09:00\n版本号：v3.0\n文档类型：support\n文档族：warranty_policy\n生效日期：2025-04-01\n\n## 一、保修期限\n\n机器人本体保修 24 个月或 6,000 小时，以先到者为准；控制器保修 18 个月；易损件保修 6 个月。\n\n## 二、保修范围\n\n因产品设计、制造或材料缺陷导致的故障免费维修或更换；软件提供 12 个月免费升级。\n\n## 三、"
+          },
+          {
+            "doc_id": "lantu_case_01_hengxin",
+            "title": "# 客户案例：恒芯动力电池电芯叠片与物流项目",
+            "chunk": 0,
+            "score": 9.055,
+            "snippet": "# 客户案例：恒芯动力电池电芯叠片与物流项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_hengxin\n生效日期：2025-12-20\n\n## 一、客户背景\n\n恒芯动力电池位于常州，主营动力电池业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_spare_parts_price",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_support_spare_parts_price",
+        "title": "﻿适配机型,备件名称,单价（元）,发货时效,质保期",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 411,
+        "text": "﻿适配机型,备件名称,单价（元）,发货时效,质保期\nLT-R20,减速器 RV-40E,\"12,800\",48 小时,12 个月\nLT-R20,伺服驱动器 LT-D4,\"8,600\",48 小时,18 个月\nLT-R20,示教器 LT-Pad3,\"5,200\",48 小时,12 个月\nLT-R12,减速器 RV-20E,\"7,900\",48 小时,12 个月\nLT-R12,伺服电机 750W,\"3,600\",48 小时,18 个月\nLT-R6,谐波减速器 CSF-17,\"6,400\",72 小时,12 个月\nLT-S10,同步带组件,320,24 小时,6 个月\nLT-AMR-1000,锂电池组 48V/40Ah,\"4,800\",72 小时,12 个月\nLT-AMR-1000,激光雷达 LT-LS20,\"9,600\",72 小时,18 个月\nLT-V3D,工业相机模组,\"11,500\",72 小时,12 个月\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_matrix",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_product_matrix",
+        "title": "[工作表] 文档信息",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 784,
+        "text": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能产品参数矩阵（2025）\n所属部门\t产品部\n作者\t孟凡\n创建时间\t2025-01-20 09:00\n更新时间\t2025-12-15 18:00\n版本号\tv2.0\n文档类型\tproduct\n文档族\tproduct_matrix\n生效日期\t2025-12-15\n[工作表] 六轴与SCARA\n型号\t负载\t臂展\t重复精度\t本体重量\t最大速度\nLT-R6\t6 kg\t1,450 mm\t±0.02 mm\t165 kg\t3.2 m/s\nLT-R12\t12 kg\t1,550 mm\t±0.03 mm\t210 kg\t3.0 m/s\nLT-R20\t20 kg\t1,700 mm\t±0.03 mm\t285 kg\t2.8 m/s\nLT-R50\t50 kg\t2,100 mm\t±0.05 mm\t540 kg\t2.2 m/s\nLT-R210\t210 kg\t2,650 mm\t±0.08 mm\t1,180 kg\t1.8 m/s\nLT-S4\t4 kg\t600 mm\t±0.02 mm\t38 kg\t4.5 m/s\nLT-S10\t10 kg\t800 mm\t±0.02 mm\t52 kg\t4.0 m/s\nLT-AMR-500\t500 kg\t—\t±5 mm\t160 kg\t1.8 m/s\nLT-AMR-1000\t1,000 kg\t—\t±10 mm\t280 kg\t1.5 m/s\nLT-AMR-2000\t2,000 kg\t—\t±10 mm\t420 kg\t1.2 m/s\n[工作表] 交付与保修\n产品线\t标准交期\t保修期\t备件响应\nLT-R 系列\t6-8 周\t24 个月/6,000 小时\t48 小时\nLT-S 系列\t4 周\t24 个月/6,000 小时\t48 小时\nLT-AMR 系列\t8 周\t24 个月\t72 小时\nLT-V3D\t4 周\t12 个月\t72 小时",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.667,
+    "cited": [
+      "lantu_support_spare_parts_price",
+      "lantu_product_matrix"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.202,
+    "number_recall": 0.5
+  }
+}

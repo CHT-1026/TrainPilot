@@ -1,0 +1,172 @@
+{
+  "qid": "F0005",
+  "question": "经营活动现金流净额两年相比增加了多少亿元？增速快于还是慢于营业收入增速？",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"经营活动现金流净额 营业收入\", \"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 367,
+        "total_tokens": 526,
+        "completion_tokens": 159,
+        "completion_tokens_details": {
+          "reasoning_tokens": 131,
+          "text_tokens": 159
+        }
+      },
+      "seconds": 1.812
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_finance_annual_2024\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 1615,
+        "total_tokens": 2130,
+        "completion_tokens": 515,
+        "completion_tokens_details": {
+          "reasoning_tokens": 475,
+          "text_tokens": 515
+        }
+      },
+      "seconds": 3.485
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"经营活动现金流净额两年相比增加了1.06亿元（从2024年的4.28亿元增加到2025年的5.34亿元）。其增速约为24.77%，快于营业收入增速（19.1%）。\",\"citations\":[\"lantu_finance_annual_2024\",\"lantu_finance_cashflow\",\"lantu_finance_annual_2025\"],\"evidence\":[\"lantu_finance_annual_2024#0\",\"lantu_finance_cashflow#0\",\"lantu_finance_annual_2025#0\"]}",
+      "usage": {
+        "prompt_tokens": 2041,
+        "total_tokens": 3732,
+        "completion_tokens": 1691,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1546,
+          "text_tokens": 1691
+        }
+      },
+      "seconds": 10.484
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "经营活动现金流净额 营业收入",
+        "top_k": 5
+      },
+      "result_sha": "0293258608b94078ec9aea72bf22bdd0a782782d6888457d6682b9e541fc68ac",
+      "result_chars": 1948,
+      "hits": 5
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_finance_annual_2024",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "a2d1805c72aa9a06e9c7fa01f49fe9a6d7b543343eb6736e1d0b87fa367abce1",
+      "result_chars": 579,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "经营活动现金流净额两年相比增加了1.06亿元（从2024年的4.28亿元增加到2025年的5.34亿元）。其增速约为24.77%，快于营业收入增速（19.1%）。",
+    "citations": [
+      "lantu_finance_annual_2024",
+      "lantu_finance_cashflow",
+      "lantu_finance_annual_2025"
+    ],
+    "evidence": [
+      "lantu_finance_annual_2024#0",
+      "lantu_finance_cashflow#0",
+      "lantu_finance_annual_2025#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 6388,
+  "started_at": "2026-11-01T04:54:42",
+  "elapsed_seconds": 15.78,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "经营活动现金流净额 营业收入",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_finance_cashflow",
+            "title": "# 澜图智能现金流与资金管理报告",
+            "chunk": 0,
+            "score": 39.915,
+            "snippet": "# 澜图智能现金流与资金管理报告\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-12-10 09:00\n更新时间：2025-12-15 17:00\n版本号：v1.1\n文档类型：finance\n文档族：cashflow_2025\n生效日期：2025-12-15\n\n## 一、现金流概况\n\n2025 年经营活动现金流净额 5.34 亿元，投资活动现金流净额 -3.86 亿元，筹资活动现金流净额 -0.92 亿元。\n\n## 二、回款管理\n\n应收账款余额 10.24 亿元，周转天数 86 天；逾期账款占比 4.2%，"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2024",
+            "title": "澜图智能 2024 年度报告摘要",
+            "chunk": 0,
+            "score": 39.411,
+            "snippet": "澜图智能 2024 年度报告摘要\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-01-22 09:00\n更新时间：2025-01-30 18:00\n版本号：v1.0\n文档类型：finance\n文档族：annual_report_2024\n生效日期：2025-01-30\n一、经营概况\n2024 年公司实现营业收入 35.80 亿元，同比增长 16.8%；归母净利润 3.26 亿元，同比增长 14.2%。\n二、收入结构\n机器人本体收入 16.72 亿元（46.7%），智能产线收入 12.36 亿元（34.5%），"
+          },
+          {
+            "doc_id": "lantu_investor_overview",
+            "title": "# 澜图智能投资者关系概览",
+            "chunk": 0,
+            "score": 35.491,
+            "snippet": "# 澜图智能投资者关系概览\n\n所属部门：董事会办公室\n作者：周敏仪\n创建时间：2024-03-20 09:00\n更新时间：2026-01-10 17:00\n版本号：v4.1\n文档类型：company\n文档族：investor_overview\n生效日期：2026-01-10\n\n## 一、基本信息\n\n公司股票代码 688719，总股本 4.2 亿股，2025 年末总市值约 168 亿元。2025 年度拟每 10 股派发现金红利 3.2 元（含税）。\n\n## 二、经营数据\n\n2025 年营业收入 42.63 亿元，归母"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2025",
+            "title": "澜图智能 2025 年度报告摘要",
+            "chunk": 0,
+            "score": 35.026,
+            "snippet": "澜图智能 2025 年度报告摘要\n所属部门：财务部\n作者：周敏仪\n创建时间：2026-01-20 09:00\n更新时间：2026-01-28 18:00\n版本号：v1.0\n文档类型：finance\n文档族：annual_report_2025\n生效日期：2026-01-28\n一、经营概况\n2025 年公司实现营业收入 42.63 亿元，同比增长 19.1%；归属于母公司股东的净利润 4.12\n亿元，同比增长 26.4%；基本每股收益 0.98 元。\n二、收入结构\n机器人本体收入 19.84 亿元（46.5%），智能"
+          },
+          {
+            "doc_id": "lantu_finance_q3_2025",
+            "title": "# 澜图智能 2025 年第三季度经营数据",
+            "chunk": 0,
+            "score": 11.91,
+            "snippet": "# 澜图智能 2025 年第三季度经营数据\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-10-22 09:00\n更新时间：2025-10-26 18:00\n版本号：v1.0\n文档类型：finance\n文档族：quarterly_2025_q3\n生效日期：2025-10-26\n\n## 一、季度业绩\n\n2025 年第三季度营业收入 11.52 亿元，同比增长 17.8%；归母净利润 1.21 亿元，同比增长 22.1%；毛利率 31.4%。\n\n## 二、累计业绩\n\n前三季度累计营业收入 31.36 亿元，归母"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_finance_annual_2024",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_finance_annual_2024",
+        "title": "澜图智能 2024 年度报告摘要",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 413,
+        "text": "澜图智能 2024 年度报告摘要\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-01-22 09:00\n更新时间：2025-01-30 18:00\n版本号：v1.0\n文档类型：finance\n文档族：annual_report_2024\n生效日期：2025-01-30\n一、经营概况\n2024 年公司实现营业收入 35.80 亿元，同比增长 16.8%；归母净利润 3.26 亿元，同比增长 14.2%。\n二、收入结构\n机器人本体收入 16.72 亿元（46.7%），智能产线收入 12.36 亿元（34.5%），工业软件与服务收入 4.36\n亿元（12.2%），备件及其他收入 2.36 亿元（6.6%）。\n三、盈利能力\n综合毛利率 30.4%；净利率 9.1%；研发投入 4.62 亿元，占营业收入 12.9%。\n四、现金流\n经营活动现金流净额 4.28 亿元；资产负债率 41.2%；应收账款周转天数 94 天。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_finance_annual_2024",
+      "lantu_finance_cashflow",
+      "lantu_finance_annual_2025"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.5,
+    "number_recall": 1.0
+  }
+}

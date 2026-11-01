@@ -1,0 +1,145 @@
+{
+  "qid": "B0043",
+  "question": "公司每年在什么时候调薪？调薪要依据什么？",
+  "question_type": "时间与因果推断",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"调薪\", \"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 362,
+        "total_tokens": 462,
+        "completion_tokens": 100,
+        "completion_tokens_details": {
+          "reasoning_tokens": 75,
+          "text_tokens": 100
+        }
+      },
+      "seconds": 1.359
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_hr_compensation\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 871,
+        "total_tokens": 1122,
+        "completion_tokens": 251,
+        "completion_tokens_details": {
+          "reasoning_tokens": 217,
+          "text_tokens": 251
+        }
+      },
+      "seconds": 2.547
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据公司《薪酬与奖金管理办法》，公司每年在4月进行调薪。调薪的依据主要包括市场分位、个人绩效以及职级情况。\",\"citations\":[\"lantu_hr_compensation\"],\"evidence\":[\"lantu_hr_compensation#0\"]}",
+      "usage": {
+        "prompt_tokens": 1247,
+        "total_tokens": 1460,
+        "completion_tokens": 213,
+        "completion_tokens_details": {
+          "reasoning_tokens": 146,
+          "text_tokens": 213
+        }
+      },
+      "seconds": 2.187
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "调薪",
+        "top_k": 5
+      },
+      "result_sha": "bf370204f971fb83f702670f8023f647334fb7ee75582a25046d3d600c6eafb6",
+      "result_chars": 784,
+      "hits": 2
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_compensation",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "80636806aa8fcc2d075a7ce0027ff8acb45eff1f9ea2bcdc4b17c791e2763584",
+      "result_chars": 531,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据公司《薪酬与奖金管理办法》，公司每年在4月进行调薪。调薪的依据主要包括市场分位、个人绩效以及职级情况。",
+    "citations": [
+      "lantu_hr_compensation"
+    ],
+    "evidence": [
+      "lantu_hr_compensation#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 3044,
+  "started_at": "2026-11-01T04:09:59",
+  "elapsed_seconds": 6.09,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "调薪",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_hr_compensation",
+            "title": "# 澜图智能薪酬与奖金管理办法",
+            "chunk": 0,
+            "score": 6.671,
+            "snippet": "# 澜图智能薪酬与奖金管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-01-01 09:00\n版本号：v3.2\n文档类型：hr\n文档族：compensation\n生效日期：2025-01-01\n\n## 一、薪酬结构\n\n年度薪酬 = 12 个月基本工资 + 1 个月年终双薪 + 绩效奖金（0-6 个月）+ 专项奖励。\n\n## 二、调薪机制\n\n每年 4 月调薪，依据市场分位、绩效与职级；调薪预算为工资总额的 5%-8%。\n\n## 三、绩效奖金\n\n与公司、部"
+          },
+          {
+            "doc_id": "lantu_hr_performance",
+            "title": "# 澜图智能绩效管理制度",
+            "chunk": 0,
+            "score": 4.438,
+            "snippet": "# 澜图智能绩效管理制度\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v3.4\n文档类型：hr\n文档族：performance\n生效日期：2025-06-01\n\n## 一、考核周期\n\n实行季度考核与年度考核，季度占 40%，年度占 60%。试用期员工参加转正考核。\n\n## 二、考核维度\n\n业绩目标 60%、价值观 20%、能力成长 20%。销售岗位业绩权重 70%。\n\n## 三、绩效分布\n\nS 级 10%、A 级 30%、B "
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_compensation",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_hr_compensation",
+        "title": "# 澜图智能薪酬与奖金管理办法",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 362,
+        "text": "# 澜图智能薪酬与奖金管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-01-01 09:00\n版本号：v3.2\n文档类型：hr\n文档族：compensation\n生效日期：2025-01-01\n\n## 一、薪酬结构\n\n年度薪酬 = 12 个月基本工资 + 1 个月年终双薪 + 绩效奖金（0-6 个月）+ 专项奖励。\n\n## 二、调薪机制\n\n每年 4 月调薪，依据市场分位、绩效与职级；调薪预算为工资总额的 5%-8%。\n\n## 三、绩效奖金\n\n与公司、部门、个人绩效挂钩，S 级系数 1.5，A 级 1.2，B 级 1.0，C 级 0.5，D 级无奖金。\n\n## 四、专项奖励\n\n设置项目交付奖、专利奖、质量奖与销售冠军奖；单个项目奖励不超过 50 万元。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_hr_compensation"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.067,
+    "number_recall": 0.0
+  }
+}

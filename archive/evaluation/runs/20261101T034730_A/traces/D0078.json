@@ -1,0 +1,373 @@
+{
+  "qid": "D0078",
+  "question": "客户清单 CSV 的年份字段与客户案例中启动自动化改造的年份是否一致？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=list><parameter=keyword>客户</parameter></function></tool_call><tool_call><function=search><parameter=query>客户清单 CSV 年份</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 90,
+        "prompt_tokens": 362,
+        "total_tokens": 452,
+        "completion_tokens_details": {
+          "reasoning_tokens": 43
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.328
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"客户\"}}",
+      "usage": {
+        "completion_tokens": 83,
+        "prompt_tokens": 446,
+        "total_tokens": 529,
+        "completion_tokens_details": {
+          "reasoning_tokens": 68
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.687
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_sales_customer_list\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 67,
+        "prompt_tokens": 994,
+        "total_tokens": 1061,
+        "completion_tokens_details": {
+          "reasoning_tokens": 36
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.656
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"客户启动自动化改造项目的年份\",\"top_k\":12}}",
+      "usage": {
+        "completion_tokens": 204,
+        "prompt_tokens": 1468,
+        "total_tokens": 1672,
+        "completion_tokens_details": {
+          "reasoning_tokens": 177
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 6.766
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"一致。客户清单 CSV（lantu_sales_customer_list）中 12 家客户的“年份”字段与各自客户案例中“启动自动化改造”的年份逐一比对，全部相同：恒芯动力电池 2025、澜岳汽车零部件 2024、曜阳光能 2025、星禾电子 2024、海翎家电 2025、晶拓微电子 2025、麦丰食品 2024、康泽制药 2025、顺捷供应链 2024、恒锐精密 2023、鼎重机械 2024、昇达电梯 2025。未发现不一致的记录。\",\"citations\":[\"lantu_sales_customer_list\",\"lantu_case_01_hengxin\",\"lantu_case_02_lanyue\",\"lantu_case_03_yaoyang\",\"lantu_case_04_xinghe\",\"lantu_case_05_hailing\",\"lantu_case_06_jingtuo\",\"lantu_case_07_maifeng\",\"lantu_case_08_kangze\",\"lantu_case_09_shunjie\",\"lantu_case_10_hengrui\",\"lantu_case_11_dingzhong\",\"lantu_case_12_shengda\"],\"evidence\":[\"lantu_sales_customer_list#片段0\",\"lantu_case_01_hengxin#片段0\",\"lantu_case_02_lanyue#片段0\",\"lantu_case_03_yaoyang#片段0\",\"lantu_case_04_xinghe#片段0\",\"lantu_case_05_hailing#片段0\",\"lantu_case_06_jingtuo#片段0\",\"lantu_case_07_maifeng#片段0\",\"lantu_case_08_kangze#片段0\",\"lantu_case_09_shunjie#片段0\",\"lantu_case_10_hengrui#片段0\",\"lantu_case_11_dingzhong#片段0\",\"lantu_case_12_shengda#片段0\"]}",
+      "usage": {
+        "completion_tokens": 716,
+        "prompt_tokens": 4355,
+        "total_tokens": 5071,
+        "completion_tokens_details": {
+          "reasoning_tokens": 242
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 1408
+        }
+      },
+      "seconds": 12.984
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "客户"
+      },
+      "result_sha": "f574dac6f00c0bdb6c2c648a2081fa64b6b0e4fabe98e1aa3619a495dd449eb0",
+      "result_chars": 1107,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_sales_customer_list",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "2d56320f48edb23b6e8d9519055b2d5b8ea746f5a1e35e729eefeae65e5a3aad",
+      "result_chars": 652,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "客户启动自动化改造项目的年份",
+        "top_k": 12
+      },
+      "result_sha": "6013b41566142aa035509acfc984606393f3956e46a3ba2c6a52ae27359bdee4",
+      "result_chars": 4678,
+      "hits": 12
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "一致。客户清单 CSV（lantu_sales_customer_list）中 12 家客户的“年份”字段与各自客户案例中“启动自动化改造”的年份逐一比对，全部相同：恒芯动力电池 2025、澜岳汽车零部件 2024、曜阳光能 2025、星禾电子 2024、海翎家电 2025、晶拓微电子 2025、麦丰食品 2024、康泽制药 2025、顺捷供应链 2024、恒锐精密 2023、鼎重机械 2024、昇达电梯 2025。未发现不一致的记录。",
+    "citations": [
+      "lantu_sales_customer_list",
+      "lantu_case_01_hengxin",
+      "lantu_case_02_lanyue",
+      "lantu_case_03_yaoyang",
+      "lantu_case_04_xinghe",
+      "lantu_case_05_hailing",
+      "lantu_case_06_jingtuo",
+      "lantu_case_07_maifeng",
+      "lantu_case_08_kangze",
+      "lantu_case_09_shunjie",
+      "lantu_case_10_hengrui",
+      "lantu_case_11_dingzhong",
+      "lantu_case_12_shengda"
+    ],
+    "evidence": [
+      "lantu_sales_customer_list#片段0",
+      "lantu_case_01_hengxin#片段0",
+      "lantu_case_02_lanyue#片段0",
+      "lantu_case_03_yaoyang#片段0",
+      "lantu_case_04_xinghe#片段0",
+      "lantu_case_05_hailing#片段0",
+      "lantu_case_06_jingtuo#片段0",
+      "lantu_case_07_maifeng#片段0",
+      "lantu_case_08_kangze#片段0",
+      "lantu_case_09_shunjie#片段0",
+      "lantu_case_10_hengrui#片段0",
+      "lantu_case_11_dingzhong#片段0",
+      "lantu_case_12_shengda#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 8785,
+  "started_at": "2026-11-01T04:34:47",
+  "elapsed_seconds": 27.42,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "客户"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_case_01_hengxin",
+            "title": "# 客户案例：恒芯动力电池电芯叠片与物流项目"
+          },
+          {
+            "doc_id": "lantu_case_02_lanyue",
+            "title": "# 客户案例：澜岳汽车零部件白车身焊装项目"
+          },
+          {
+            "doc_id": "lantu_case_03_yaoyang",
+            "title": "# 客户案例：曜阳光能电池片串焊项目"
+          },
+          {
+            "doc_id": "lantu_case_04_xinghe",
+            "title": "# 客户案例：星禾电子精密组装项目"
+          },
+          {
+            "doc_id": "lantu_case_05_hailing",
+            "title": "# 客户案例：海翎家电喷涂与打磨项目"
+          },
+          {
+            "doc_id": "lantu_case_06_jingtuo",
+            "title": "# 客户案例：晶拓微电子晶圆搬运项目"
+          },
+          {
+            "doc_id": "lantu_case_07_maifeng",
+            "title": "# 客户案例：麦丰食品后端包装项目"
+          },
+          {
+            "doc_id": "lantu_case_08_kangze",
+            "title": "# 客户案例：康泽制药无菌灌装项目"
+          },
+          {
+            "doc_id": "lantu_case_09_shunjie",
+            "title": "# 客户案例：顺捷供应链仓储拣选项目"
+          },
+          {
+            "doc_id": "lantu_case_10_hengrui",
+            "title": "# 客户案例：恒锐精密机床上下料项目"
+          },
+          {
+            "doc_id": "lantu_case_11_dingzhong",
+            "title": "# 客户案例：鼎重机械结构件焊接项目"
+          },
+          {
+            "doc_id": "lantu_case_12_shengda",
+            "title": "# 客户案例：昇达电梯门板装配项目"
+          },
+          {
+            "doc_id": "lantu_sales_customer_list",
+            "title": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态"
+          },
+          {
+            "doc_id": "lantu_sales_policy",
+            "title": "# 澜图智能销售政策与客户分级管理办法"
+          },
+          {
+            "doc_id": "lantu_support_complaint",
+            "title": "# 澜图智能客户投诉处理管理办法"
+          },
+          {
+            "doc_id": "lantu_support_system",
+            "title": "# 澜图智能客户服务体系白皮书"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_sales_customer_list",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_sales_customer_list",
+        "title": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 456,
+        "text": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态\n恒芯动力电池,动力电池,常州,电芯叠片与物流,\"21,600\",2025,已验收\n澜岳汽车零部件,汽车零部件,上海,白车身焊装,\"14,800\",2024,已验收\n曜阳光能,光伏,合肥,电池片串焊,\"9,800\",2025,已验收\n星禾电子,3C 电子,昆山,精密组装,\"12,500\",2024,已验收\n海翎家电,家电,顺德,喷涂与打磨,\"6,300\",2025,已验收\n晶拓微电子,半导体,无锡,晶圆搬运,\"7,400\",2025,已验收\n麦丰食品,食品,漯河,后端包装,\"3,900\",2024,已验收\n康泽制药,医药,苏州,无菌灌装,\"5,100\",2025,已验收\n顺捷供应链,物流,广州,仓储拣选,\"8,600\",2024,已验收\n恒锐精密,金属加工,宁波,机床上下料,\"4,200\",2023,已验收\n鼎重机械,工程机械,徐州,结构件焊接,\"11,200\",2024,已验收\n昇达电梯,电梯,湖州,门板装配,\"5,800\",2025,已验收\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "客户启动自动化改造项目的年份",
+        "top_k": 12
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_case_04_xinghe",
+            "title": "# 客户案例：星禾电子精密组装项目",
+            "chunk": 0,
+            "score": 16.231,
+            "snippet": "# 客户案例：星禾电子精密组装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_xinghe\n生效日期：2024-12-20\n\n## 一、客户背景\n\n星禾电子位于昆山，主营3C 电子业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖8"
+          },
+          {
+            "doc_id": "lantu_case_07_maifeng",
+            "title": "# 客户案例：麦丰食品后端包装项目",
+            "chunk": 0,
+            "score": 14.679,
+            "snippet": "# 客户案例：麦丰食品后端包装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_maifeng\n生效日期：2024-12-20\n\n## 一、客户背景\n\n麦丰食品位于漯河，主营食品业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖6 条"
+          },
+          {
+            "doc_id": "lantu_case_03_yaoyang",
+            "title": "# 客户案例：曜阳光能电池片串焊项目",
+            "chunk": 0,
+            "score": 14.624,
+            "snippet": "# 客户案例：曜阳光能电池片串焊项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_yaoyang\n生效日期：2025-12-20\n\n## 一、客户背景\n\n曜阳光能位于合肥，主营光伏业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖16"
+          },
+          {
+            "doc_id": "lantu_case_12_shengda",
+            "title": "# 客户案例：昇达电梯门板装配项目",
+            "chunk": 0,
+            "score": 14.588,
+            "snippet": "# 客户案例：昇达电梯门板装配项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_shengda\n生效日期：2025-12-20\n\n## 一、客户背景\n\n昇达电梯位于湖州，主营电梯业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖3 条"
+          },
+          {
+            "doc_id": "lantu_case_10_hengrui",
+            "title": "# 客户案例：恒锐精密机床上下料项目",
+            "chunk": 0,
+            "score": 14.57,
+            "snippet": "# 客户案例：恒锐精密机床上下料项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2023-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_hengrui\n生效日期：2023-12-20\n\n## 一、客户背景\n\n恒锐精密位于宁波，主营金属加工业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2023 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖"
+          },
+          {
+            "doc_id": "lantu_case_08_kangze",
+            "title": "# 客户案例：康泽制药无菌灌装项目",
+            "chunk": 0,
+            "score": 14.57,
+            "snippet": "# 客户案例：康泽制药无菌灌装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_kangze\n生效日期：2025-12-20\n\n## 一、客户背景\n\n康泽制药位于苏州，主营医药业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖3 条无"
+          },
+          {
+            "doc_id": "lantu_case_05_hailing",
+            "title": "# 客户案例：海翎家电喷涂与打磨项目",
+            "chunk": 0,
+            "score": 14.552,
+            "snippet": "# 客户案例：海翎家电喷涂与打磨项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_hailing\n生效日期：2025-12-20\n\n## 一、客户背景\n\n海翎家电位于顺德，主营家电业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖4 "
+          },
+          {
+            "doc_id": "lantu_case_11_dingzhong",
+            "title": "# 客户案例：鼎重机械结构件焊接项目",
+            "chunk": 0,
+            "score": 14.534,
+            "snippet": "# 客户案例：鼎重机械结构件焊接项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_dingzhong\n生效日期：2024-12-20\n\n## 一、客户背景\n\n鼎重机械位于徐州，主营工程机械业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目"
+          },
+          {
+            "doc_id": "lantu_case_09_shunjie",
+            "title": "# 客户案例：顺捷供应链仓储拣选项目",
+            "chunk": 0,
+            "score": 14.516,
+            "snippet": "# 客户案例：顺捷供应链仓储拣选项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_shunjie\n生效日期：2024-12-20\n\n## 一、客户背景\n\n顺捷供应链位于广州，主营物流业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖1"
+          },
+          {
+            "doc_id": "lantu_case_06_jingtuo",
+            "title": "# 客户案例：晶拓微电子晶圆搬运项目",
+            "chunk": 0,
+            "score": 14.445,
+            "snippet": "# 客户案例：晶拓微电子晶圆搬运项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_jingtuo\n生效日期：2025-12-20\n\n## 一、客户背景\n\n晶拓微电子位于无锡，主营半导体业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖"
+          },
+          {
+            "doc_id": "lantu_case_01_hengxin",
+            "title": "# 客户案例：恒芯动力电池电芯叠片与物流项目",
+            "chunk": 0,
+            "score": 14.288,
+            "snippet": "# 客户案例：恒芯动力电池电芯叠片与物流项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_hengxin\n生效日期：2025-12-20\n\n## 一、客户背景\n\n恒芯动力电池位于常州，主营动力电池业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追"
+          },
+          {
+            "doc_id": "lantu_case_02_lanyue",
+            "title": "# 客户案例：澜岳汽车零部件白车身焊装项目",
+            "chunk": 0,
+            "score": 14.152,
+            "snippet": "# 客户案例：澜岳汽车零部件白车身焊装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_lanyue\n生效日期：2024-12-20\n\n## 一、客户背景\n\n澜岳汽车零部件位于上海，主营汽车零部件业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追"
+          }
+        ]
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_sales_customer_list",
+      "lantu_case_01_hengxin",
+      "lantu_case_02_lanyue",
+      "lantu_case_03_yaoyang",
+      "lantu_case_04_xinghe",
+      "lantu_case_05_hailing",
+      "lantu_case_06_jingtuo",
+      "lantu_case_07_maifeng",
+      "lantu_case_08_kangze",
+      "lantu_case_09_shunjie",
+      "lantu_case_10_hengrui",
+      "lantu_case_11_dingzhong",
+      "lantu_case_12_shengda"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.083,
+    "number_recall": 1.0
+  }
+}

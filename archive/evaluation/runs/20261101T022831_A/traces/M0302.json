@@ -1,0 +1,142 @@
+{
+  "qid": "M0302",
+  "question": "客户产线整机停机这种最紧急的情况，我们对外承诺多久响应、多久工程师能到现场？",
+  "question_type": "事实检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>产线整机停机 响应时间 工程师到场 承诺</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 77,
+        "prompt_tokens": 366,
+        "total_tokens": 443,
+        "completion_tokens_details": {
+          "reasoning_tokens": 34
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.344
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>产线停机 紧急故障 响应 现场到达 服务承诺</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 61,
+        "prompt_tokens": 446,
+        "total_tokens": 507,
+        "completion_tokens_details": {
+          "reasoning_tokens": 16
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.156
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>停机 响应 现场 服务等级</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 54,
+        "prompt_tokens": 528,
+        "total_tokens": 582,
+        "completion_tokens_details": {
+          "reasoning_tokens": 17
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 2.609
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=args>{\"query\": \"停机 响应 现场 服务等级\", \"top_k\": 10}</parameter><parameter=name>search</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 82,
+        "prompt_tokens": 602,
+        "total_tokens": 684,
+        "completion_tokens_details": {
+          "reasoning_tokens": 36
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 3.485
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>停机 响应 现场 服务等级</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 69,
+        "prompt_tokens": 685,
+        "total_tokens": 754,
+        "completion_tokens_details": {
+          "reasoning_tokens": 32
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 2.844
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=list><parameter=keyword>服务</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 25,
+        "prompt_tokens": 759,
+        "total_tokens": 784,
+        "completion_tokens_details": {
+          "reasoning_tokens": 7
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 1.109
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"抱歉，本次检索过程中工具调用未能成功返回数据，无法在资料库中找到关于“产线整机停机”紧急情况下的对外响应时限（如首次响应时间）和工程师到场时限（如到达现场时间）的明确承诺条款。为避免凭空猜测误导对外承诺口径，建议重新发起检索或提供相关服务协议/SOP文档编号，以便核实具体时间承诺（例如响应小时数、到场小时数、是否分区域或分客户等级等）。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 145,
+        "prompt_tokens": 811,
+        "total_tokens": 956,
+        "completion_tokens_details": {
+          "reasoning_tokens": 20
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 6.437
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "抱歉，本次检索过程中工具调用未能成功返回数据，无法在资料库中找到关于“产线整机停机”紧急情况下的对外响应时限（如首次响应时间）和工程师到场时限（如到达现场时间）的明确承诺条款。为避免凭空猜测误导对外承诺口径，建议重新发起检索或提供相关服务协议/SOP文档编号，以便核实具体时间承诺（例如响应小时数、到场小时数、是否分区域或分客户等级等）。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4710,
+  "started_at": "2026-11-01T02:35:30",
+  "elapsed_seconds": 21.0,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

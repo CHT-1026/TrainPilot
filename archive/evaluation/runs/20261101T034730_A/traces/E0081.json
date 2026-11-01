@@ -1,0 +1,274 @@
+{
+  "qid": "E0081",
+  "question": "涉密文件在存放、复制与外发方面有哪些要求？",
+  "question_type": "条件判断与边界",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>涉密文件 存放 要求</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=search><parameter=query>涉密载体 复制 外发 保密管理</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 102,
+        "prompt_tokens": 356,
+        "total_tokens": 458,
+        "completion_tokens_details": {
+          "reasoning_tokens": 32
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.484
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"涉密文件 存放 复制 外发 要求\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 463,
+        "total_tokens": 513,
+        "completion_tokens_details": {
+          "reasoning_tokens": 14
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.5
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_confidentiality\",\"offset\":0,\"limit\":6000}}",
+      "usage": {
+        "completion_tokens": 39,
+        "prompt_tokens": 2827,
+        "total_tokens": 2866,
+        "completion_tokens_details": {
+          "reasoning_tokens": 7
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.422
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_data_classification\",\"offset\":0,\"limit\":6000}}",
+      "usage": {
+        "completion_tokens": 55,
+        "prompt_tokens": 3242,
+        "total_tokens": 3297,
+        "completion_tokens_details": {
+          "reasoning_tokens": 24
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2816
+        }
+      },
+      "seconds": 3.25
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据《澜图智能商业秘密与保密管理规范》（v3.1，2025-03-28 生效）第三条“涉密载体”，要求为：①存放：涉密文件须标注密级，并存放于带锁文件柜或加密系统中；②复制：复印、拍照等复制行为须经审批并登记；③外发：外发同样须经审批并登记。此外，对外交流（技术交流、展会、论文发表）须经法务合规部与研发中心审核，禁止披露未公开的技术路线与参数。另据《澜图智能数据分级与分类管理规范》（v2.5，2025-09-10 生效），L3（机密，如客户合同、报价、产品图纸）与 L4（绝密，如核心技术源代码、并购方案、未披露财报）数据须存储于公司加密服务器、使用加密通道传输，禁止存储于个人设备，确需离线须申请加密笔记本；L3 访问须部门负责人审批，L4 须分管高管与信息安全委员会双审批；销毁须多次覆写或物理销毁并保留记录。\",\"citations\":[\"lantu_policy_confidentiality\",\"lantu_policy_data_classification\"],\"evidence\":[\"lantu_policy_confidentiality#片段2\",\"lantu_policy_data_classification#片段0\",\"lantu_policy_data_classification#片段2\",\"lantu_policy_data_classification#片段3\",\"lantu_policy_data_classification#片段4\"]}",
+      "usage": {
+        "completion_tokens": 377,
+        "prompt_tokens": 3704,
+        "total_tokens": 4081,
+        "completion_tokens_details": {
+          "reasoning_tokens": 45
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3200
+        }
+      },
+      "seconds": 7.297
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "涉密文件 存放 复制 外发 要求",
+        "top_k": 10
+      },
+      "result_sha": "e4b3f53ce88f0be055babff271dad42201681f9dc030c098f89b81e3faecc8fe",
+      "result_chars": 3895,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_confidentiality",
+        "offset": 0,
+        "limit": 6000
+      },
+      "result_sha": "32d2621524243d3b6a59bb16c316e08970123f3a81b7a5a2528a6e13bdf84730",
+      "result_chars": 616,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_data_classification",
+        "offset": 0,
+        "limit": 6000
+      },
+      "result_sha": "364a4d25e2018357d0e38c9ef2b34c2073588f988eedf0b83b4e68f1d6ceec61",
+      "result_chars": 684,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《澜图智能商业秘密与保密管理规范》（v3.1，2025-03-28 生效）第三条“涉密载体”，要求为：①存放：涉密文件须标注密级，并存放于带锁文件柜或加密系统中；②复制：复印、拍照等复制行为须经审批并登记；③外发：外发同样须经审批并登记。此外，对外交流（技术交流、展会、论文发表）须经法务合规部与研发中心审核，禁止披露未公开的技术路线与参数。另据《澜图智能数据分级与分类管理规范》（v2.5，2025-09-10 生效），L3（机密，如客户合同、报价、产品图纸）与 L4（绝密，如核心技术源代码、并购方案、未披露财报）数据须存储于公司加密服务器、使用加密通道传输，禁止存储于个人设备，确需离线须申请加密笔记本；L3 访问须部门负责人审批，L4 须分管高管与信息安全委员会双审批；销毁须多次覆写或物理销毁并保留记录。",
+    "citations": [
+      "lantu_policy_confidentiality",
+      "lantu_policy_data_classification"
+    ],
+    "evidence": [
+      "lantu_policy_confidentiality#片段2",
+      "lantu_policy_data_classification#片段0",
+      "lantu_policy_data_classification#片段2",
+      "lantu_policy_data_classification#片段3",
+      "lantu_policy_data_classification#片段4"
+    ]
+  },
+  "status": "answered",
+  "tokens": 11215,
+  "started_at": "2026-11-01T04:50:07",
+  "elapsed_seconds": 16.95,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "涉密文件 存放 复制 外发 要求",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_policy_confidentiality",
+            "title": "# 澜图智能商业秘密与保密管理规范",
+            "chunk": 0,
+            "score": 23.24,
+            "snippet": "# 澜图智能商业秘密与保密管理规范\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-15 09:00\n更新时间：2025-03-28 11:00\n版本号：v3.1\n文档类型：policy\n文档族：confidentiality\n生效日期：2025-03-28\n\n## 一、保密范围\n\n技术秘密（源代码、算法、图纸、工艺参数）、经营秘密（客户名单、报价、成本、未披露财务数据）与人事秘密均属保密信息。\n\n## 二、保密义务\n\n员工在职期间及离职后 3 年内不得披露、使用或允许他人使用公司保密信息；竞业限制人"
+          },
+          {
+            "doc_id": "lantu_policy_seal",
+            "title": "# 澜图智能印章管理办法",
+            "chunk": 0,
+            "score": 5.809,
+            "snippet": "# 澜图智能印章管理办法\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-02-10 09:00\n更新时间：2025-02-14 10:00\n版本号：v2.2\n文档类型：policy\n文档族：seal_management\n生效日期：2025-02-14\n\n## 一、印章种类\n\n公司印章包括公章、合同专用章、财务专用章、法人章与部门章。公章由董事会办公室保管，合同章由法务合规部保管，财务章由财务部保管。\n\n## 二、用印流程\n\n用印须在 OA 提交申请，说明用途、文件名称与份数，附审批完成的合同或文件；单份"
+          },
+          {
+            "doc_id": "lantu_policy_infosec",
+            "title": "# 澜图智能信息安全管理制度",
+            "chunk": 0,
+            "score": 4.467,
+            "snippet": "# 澜图智能信息安全管理制度\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-04-01 09:00\n更新时间：2025-08-01 09:00\n版本号：v4.0\n文档类型：policy\n文档族：information_security\n生效日期：2025-08-01\n\n## 一、账号与密码\n\n员工账号一人一号，密码长度不少于 12 位，包含大小写字母、数字与符号，每 90 天更换一次；禁止共享账号。\n\n## 二、终端安全\n\n办公电脑须安装公司统一的终端防护软件，开启磁盘加密与屏保锁定；禁止安装未授权软件与"
+          },
+          {
+            "doc_id": "lantu_hr_resignation",
+            "title": "# 澜图智能离职与交接管理办法",
+            "chunk": 0,
+            "score": 3.889,
+            "snippet": "# 澜图智能离职与交接管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-15 09:00\n更新时间：2025-05-20 09:00\n版本号：v2.4\n文档类型：hr\n文档族：resignation\n生效日期：2025-05-20\n\n## 一、离职申请\n\n正式员工提前 30 日、试用期员工提前 3 日提交书面离职申请；关键岗位须提前 60 日。\n\n## 二、离职面谈\n\nHR 在收到申请后 3 个工作日内安排面谈，了解离职原因并记录改进建议；核心人才可启动挽留。\n\n## 三、工作交接\n\n交接内"
+          },
+          {
+            "doc_id": "lantu_org_reporting_lines",
+            "title": "# 澜图智能员工汇报关系与业务分工",
+            "chunk": 1,
+            "score": 3.638,
+            "snippet": "周敏仪担任 CFO，负责财务与资本运作。陈依然担任人力资源副总裁，负责人力资源体系。蒋雯担任薪酬绩效经理，负责薪酬、绩效与员工关系。邵岚担任法务合规总监，负责法务、合规与知识产权。\n\n## 五、跨部门业务分工\n\n周启航同时担任新一代控制器 LT-C900 项目负责人，项目成员包括林晓与赵一鸣。唐婧负责销售中心，华东区域由许博管理，上海区域重点客户由陈璐维护。方磊负责制造中心，苏州工厂由郭涛管理。\n\n## 六、汇报关系使用说明\n\n本文件中的“上级”均指行政汇报关系中的直接上级；跨部门项目中的项目负责人关系不改变行政汇"
+          },
+          {
+            "doc_id": "lantu_company_brand",
+            "title": "# 澜图智能品牌视觉与传播规范",
+            "chunk": 0,
+            "score": 3.326,
+            "snippet": "# 澜图智能品牌视觉与传播规范\n\n所属部门：市场部\n作者：苏婉清\n创建时间：2024-02-01 09:30\n更新时间：2025-08-15 11:00\n版本号：v2.3\n文档类型：company\n文档族：brand_manual\n生效日期：2025-08-15\n\n## 一、品牌定位\n\n澜图智能（LANTU）定位为“可信赖的智能制造伙伴”，核心传播主张为“稳、准、快”。品牌不得使用“全球第一”“绝对领先”等绝对化表述。\n\n## 二、视觉规范\n\n主色为澜图蓝（PANTONE 2728C，HEX #1F4FA8），辅助"
+          },
+          {
+            "doc_id": "lantu_policy_data_classification",
+            "title": "# 澜图智能数据分级与分类管理规范",
+            "chunk": 0,
+            "score": 3.114,
+            "snippet": "# 澜图智能数据分级与分类管理规范\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-05-20 09:00\n更新时间：2025-09-10 14:00\n版本号：v2.5\n文档类型：policy\n文档族：data_classification\n生效日期：2025-09-10\n\n## 一、分级定义\n\n数据分为 L1 公开、L2 内部、L3 机密、L4 绝密四级。L1 可对外发布；L2 限公司内部；L3 限授权岗位；L4 限特定人员并加密存储。\n\n## 二、典型数据\n\nL1：宣传资料、公开财报；L2：一般制度、会"
+          },
+          {
+            "doc_id": "lantu_product_painting",
+            "title": "# LT-Paint 机器人喷涂工作站方案",
+            "chunk": 0,
+            "score": 2.255,
+            "snippet": "# LT-Paint 机器人喷涂工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-08-01 09:00\n更新时间：2025-04-18 15:00\n版本号：v2.2\n文档类型：product\n文档族：solution_painting\n生效日期：2025-04-18\n\n## 一、方案组成\n\n以 LT-R20 防爆机器人为核心，集成旋杯喷枪、供漆系统、防爆控制柜与 VOC 处理装置。\n\n## 二、工艺指标\n\n换色时间 6 分钟，涂料利用率提升 23%，膜厚均匀性 ±5 μm，VOC 排放下降 19%。"
+          },
+          {
+            "doc_id": "lantu_case_08_kangze",
+            "title": "# 客户案例：康泽制药无菌灌装项目",
+            "chunk": 0,
+            "score": 2.187,
+            "snippet": "# 客户案例：康泽制药无菌灌装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_kangze\n生效日期：2025-12-20\n\n## 一、客户背景\n\n康泽制药位于苏州，主营医药业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖3 条无"
+          },
+          {
+            "doc_id": "lantu_legal_purchase_contract_template",
+            "title": "澜图智能采购合同模板（2025版）",
+            "chunk": 0,
+            "score": 2.102,
+            "snippet": "澜图智能采购合同模板（2025版）\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-10 09:00\n更新时间：2025-03-01 09:00\n版本号：v3.2\n文档类型：legal\n文档族：purchase_contract_template\n生效日期：2025-03-01\n第一条 采购标的\n甲方向乙方采购原材料/零部件，品名、规格、数量、单价以采购订单为准。\n第二条 付款方式\n标准账期为月结 90 天，战略供应商可约定 120 天；预付款不超过 20%；质保金 5%-10%。\n第三条 质量要求\n乙"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_confidentiality",
+        "offset": 0,
+        "limit": 6000
+      },
+      "result": {
+        "doc_id": "lantu_policy_confidentiality",
+        "title": "# 澜图智能商业秘密与保密管理规范",
+        "offset": 0,
+        "limit": 6000,
+        "total_chars": 434,
+        "text": "# 澜图智能商业秘密与保密管理规范\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-15 09:00\n更新时间：2025-03-28 11:00\n版本号：v3.1\n文档类型：policy\n文档族：confidentiality\n生效日期：2025-03-28\n\n## 一、保密范围\n\n技术秘密（源代码、算法、图纸、工艺参数）、经营秘密（客户名单、报价、成本、未披露财务数据）与人事秘密均属保密信息。\n\n## 二、保密义务\n\n员工在职期间及离职后 3 年内不得披露、使用或允许他人使用公司保密信息；竞业限制人员按协议执行。\n\n## 三、涉密载体\n\n涉密文件须标注密级，存放于带锁文件柜或加密系统；复印、拍照与外发须审批并登记。\n\n## 四、对外交流\n\n技术交流、展会与论文发表须经法务合规部与研发中心审核，禁止披露未公开的技术路线与参数。\n\n## 五、违约处理\n\n违反保密义务的，公司有权解除劳动合同、要求赔偿损失并追究法律责任；涉嫌犯罪的移交司法机关。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_data_classification",
+        "offset": 0,
+        "limit": 6000
+      },
+      "result": {
+        "doc_id": "lantu_policy_data_classification",
+        "title": "# 澜图智能数据分级与分类管理规范",
+        "offset": 0,
+        "limit": 6000,
+        "total_chars": 498,
+        "text": "# 澜图智能数据分级与分类管理规范\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-05-20 09:00\n更新时间：2025-09-10 14:00\n版本号：v2.5\n文档类型：policy\n文档族：data_classification\n生效日期：2025-09-10\n\n## 一、分级定义\n\n数据分为 L1 公开、L2 内部、L3 机密、L4 绝密四级。L1 可对外发布；L2 限公司内部；L3 限授权岗位；L4 限特定人员并加密存储。\n\n## 二、典型数据\n\nL1：宣传资料、公开财报；L2：一般制度、会议纪要；L3：客户合同、报价、产品图纸；L4：核心技术源代码、并购方案、未披露财报。\n\n## 三、访问控制\n\n按最小权限原则授权，L3 数据访问须部门负责人审批，L4 数据须分管高管与信息安全委员会双审批，权限每季度复核。\n\n## 四、存储与传输\n\nL3/L4 数据须存储于公司加密服务器，传输使用加密通道；禁止存储于个人设备，确需离线的须申请加密笔记本。\n\n## 五、销毁\n\n数据销毁须采用多次覆写或物理销毁，保留销毁记录；离职人员账号在离职当日禁用，30 日内清理权限。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_policy_confidentiality",
+      "lantu_policy_data_classification"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.594,
+    "number_recall": 0.0
+  }
+}

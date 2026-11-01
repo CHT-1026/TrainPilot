@@ -1,0 +1,159 @@
+{
+  "qid": "E0029",
+  "question": "采购月结账期从 2024 版到 2025 版延长了多少天？战略供应商又是多少天？",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"采购月结账期 2024 2025\"}}",
+      "usage": {
+        "prompt_tokens": 380,
+        "total_tokens": 522,
+        "completion_tokens": 142,
+        "completion_tokens_details": {
+          "reasoning_tokens": 111,
+          "text_tokens": 142
+        }
+      },
+      "seconds": 1.407
+    },
+    {
+      "round": 2,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"采购月结账期从2024版的60天延长至2025版的90天，共延长了30天。在2025版制度中，战略供应商的账期可延长至120天。\",\"citations\":[\"lantu_policy_purchase_2024\",\"lantu_policy_purchase_2025\"],\"evidence\":[\"lantu_policy_purchase_2024#0\",\"lantu_policy_purchase_2025#0\"]}",
+      "usage": {
+        "prompt_tokens": 2717,
+        "total_tokens": 3355,
+        "completion_tokens": 638,
+        "completion_tokens_details": {
+          "reasoning_tokens": 519,
+          "text_tokens": 638
+        }
+      },
+      "seconds": 5.078
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "采购月结账期 2024 2025"
+      },
+      "result_sha": "80ae56da4000ba328ec7964a8cc3b4c472fc1a1a4e8f3f76692e42a786035ca8",
+      "result_chars": 3902,
+      "hits": 10
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "采购月结账期从2024版的60天延长至2025版的90天，共延长了30天。在2025版制度中，战略供应商的账期可延长至120天。",
+    "citations": [
+      "lantu_policy_purchase_2024",
+      "lantu_policy_purchase_2025"
+    ],
+    "evidence": [
+      "lantu_policy_purchase_2024#0",
+      "lantu_policy_purchase_2025#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 3877,
+  "started_at": "2026-11-01T04:46:39",
+  "elapsed_seconds": 6.49,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "采购月结账期 2024 2025"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_policy_purchase_2024",
+            "title": "# 澜图智能采购管理制度（2024版）",
+            "chunk": 0,
+            "score": 12.73,
+            "snippet": "# 澜图智能采购管理制度（2024版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2024-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。\n\n## 二、付款账期\n\n标准供应商月结 60 天；预付款比例不超过 30%；质保金 5%-10%。\n\n## 三、供应商"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2025",
+            "title": "# 澜图智能采购管理制度（2025版）",
+            "chunk": 0,
+            "score": 12.38,
+            "snippet": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付"
+          },
+          {
+            "doc_id": "lantu_legal_purchase_contract_template",
+            "title": "澜图智能采购合同模板（2025版）",
+            "chunk": 0,
+            "score": 12.195,
+            "snippet": "澜图智能采购合同模板（2025版）\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-10 09:00\n更新时间：2025-03-01 09:00\n版本号：v3.2\n文档类型：legal\n文档族：purchase_contract_template\n生效日期：2025-03-01\n第一条 采购标的\n甲方向乙方采购原材料/零部件，品名、规格、数量、单价以采购订单为准。\n第二条 付款方式\n标准账期为月结 90 天，战略供应商可约定 120 天；预付款不超过 20%；质保金 5%-10%。\n第三条 质量要求\n乙"
+          },
+          {
+            "doc_id": "lantu_policy_contract",
+            "title": "# 澜图智能合同管理制度",
+            "chunk": 0,
+            "score": 3.706,
+            "snippet": "# 澜图智能合同管理制度\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-02-01 09:00\n更新时间：2025-05-12 15:00\n版本号：v3.0\n文档类型：policy\n文档族：contract_management\n生效日期：2025-05-12\n\n## 一、合同分类\n\n合同分为销售合同、采购合同、服务合同、保密协议、租赁合同与劳动合同。销售与采购合同须使用公司标准模板，非标条款须法务审核。\n\n## 二、审批权限\n\n合同金额 1,000 万元以上须法务合规部与 CFO 联合审批；5,000 "
+          },
+          {
+            "doc_id": "lantu_tech_rd_process",
+            "title": "# 澜图智能 IPD 研发流程说明",
+            "chunk": 0,
+            "score": 3.243,
+            "snippet": "# 澜图智能 IPD 研发流程说明\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-03-01 09:00\n更新时间：2025-05-15 10:00\n版本号：v3.0\n文档类型：tech\n文档族：ipd_process\n生效日期：2025-05-15\n\n## 一、流程框架\n\n执行 IPD 集成产品开发流程，分为概念、计划、开发、验证、发布、生命周期管理六个阶段。\n\n## 二、决策评审\n\n每个阶段设置决策评审点（DCP），由产品决策委员会评审市场、技术、成本与风险，未通过不得进入下一阶段。\n\n## 三、跨部"
+          },
+          {
+            "doc_id": "lantu_finance_gross_margin",
+            "title": "# 澜图智能毛利率与成本结构分析",
+            "chunk": 0,
+            "score": 3.219,
+            "snippet": "# 澜图智能毛利率与成本结构分析\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-11-15 09:00\n更新时间：2025-11-20 17:00\n版本号：v1.2\n文档类型：finance\n文档族：gross_margin_analysis\n生效日期：2025-11-20\n\n## 一、整体毛利率\n\n2025 年综合毛利率 31.6%，较 2024 年提升 1.2 个百分点。机器人本体毛利率 34.8%，智能产线 26.2%，软件与服务 52.4%。\n\n## 二、成本构成\n\n直接材料占营业成本 68.4%，"
+          },
+          {
+            "doc_id": "lantu_legal_compliance_manual",
+            "title": "# 澜图智能合规管理手册",
+            "chunk": 0,
+            "score": 3.117,
+            "snippet": "# 澜图智能合规管理手册\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-02-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v3.1\n文档类型：legal\n文档族：compliance_manual\n生效日期：2025-06-01\n\n## 一、合规组织\n\n公司设合规委员会，主任由法务合规总监担任，成员包括财务、销售、采购、人力与信息技术负责人。\n\n## 二、重点领域\n\n反商业贿赂、出口管制、数据保护、反垄断、劳动用工与环境保护。各领域每年至少开展一次风险评估。\n\n## 三、培训与举"
+          },
+          {
+            "doc_id": "lantu_sales_channel",
+            "title": "# 澜图智能渠道管理办法",
+            "chunk": 0,
+            "score": 3.01,
+            "snippet": "# 澜图智能渠道管理办法\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-03-05 09:00\n更新时间：2025-11-06 10:00\n版本号：v2.7\n文档类型：sales\n文档族：sales_channel\n生效日期：2025-11-06\n\n## 一、渠道分级\n\n渠道商分为金牌、银牌、认证三级。金牌渠道年度采购额不低于 3,000 万元，享受 82 折拿货价、优先技术支持与联合市场活动。\n\n## 二、准入与退出\n\n新渠道需具备 3 年以上自动化行业经验、专职技术团队不少于 5 人。连续 12 个月"
+          },
+          {
+            "doc_id": "lantu_meeting_rd",
+            "title": "# 2025 年 5 月研发例会纪要",
+            "chunk": 0,
+            "score": 2.911,
+            "snippet": "# 2025 年 5 月研发例会纪要\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2025-05-09 09:00\n更新时间：2025-05-09 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_rd_2025\n生效日期：2025-05-09\n\n## 一、项目进展\n\nLT-C800 控制器完成小批量验证；LantuTwin 3.0 进入客户试点；具身智能操作模型完成抓取数据集 12 万条。\n\n## 二、组织调整\n\n具身智能研究所正式成立，编制 48 人，重点研究视觉-语言-动作模型"
+          },
+          {
+            "doc_id": "lantu_sales_policy",
+            "title": "# 澜图智能销售政策与客户分级管理办法",
+            "chunk": 0,
+            "score": 2.911,
+            "snippet": "# 澜图智能销售政策与客户分级管理办法\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-01-20 09:00\n更新时间：2025-09-25 15:00\n版本号：v3.4\n文档类型：sales\n文档族：sales_policy\n生效日期：2025-09-25\n\n## 一、客户分级\n\n客户分为 S、A、B、C 四级。S 级为年采购额 5,000 万元以上战略客户，由客户成功部直管；A 级 1,000-5,000 万元；B 级 300-1,000 万元；C 级 300 万元以下由渠道覆盖。\n\n## 二、价格体"
+          }
+        ]
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_policy_purchase_2024",
+      "lantu_policy_purchase_2025"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.296,
+    "number_recall": 1.0
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "qid": "E0036",
+  "question": "2025 版采购管理制度何时生效？2024 版是否同时废止？",
+  "question_type": "时间与因果推断",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"采购管理制度\"}}",
+      "usage": {
+        "prompt_tokens": 370,
+        "total_tokens": 560,
+        "completion_tokens": 190,
+        "completion_tokens_details": {
+          "reasoning_tokens": 171,
+          "text_tokens": 190
+        }
+      },
+      "seconds": 1.906
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_purchase_2025\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 480,
+        "total_tokens": 719,
+        "completion_tokens": 239,
+        "completion_tokens_details": {
+          "reasoning_tokens": 201,
+          "text_tokens": 239
+        }
+      },
+      "seconds": 2.531
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"2025版采购管理制度 生效 废止\",\"top_k\":1}}",
+      "usage": {
+        "prompt_tokens": 927,
+        "total_tokens": 1965,
+        "completion_tokens": 1038,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1005,
+          "text_tokens": 1038
+        }
+      },
+      "seconds": 11.203
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"2025 版采购管理制度自 2025 年 1 月 1 日起生效，且 2024 版同时废止。\",\"citations\":[\"lantu_policy_purchase_2025\"],\"evidence\":[\"lantu_policy_purchase_2025#0\"]}",
+      "usage": {
+        "prompt_tokens": 1224,
+        "total_tokens": 1474,
+        "completion_tokens": 250,
+        "completion_tokens_details": {
+          "reasoning_tokens": 169,
+          "text_tokens": 250
+        }
+      },
+      "seconds": 2.016
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "采购管理制度"
+      },
+      "result_sha": "2f2c36f87e532ad6a5964c618b5b4e133d9052d6ee656e0916feed030e91affc",
+      "result_chars": 158,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_purchase_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "a43282daf04801f0f16f7d64d197206dfa10185ee100b1a3054935cc73749d1f",
+      "result_chars": 635,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "2025版采购管理制度 生效 废止",
+        "top_k": 1
+      },
+      "result_sha": "f6c7ca52684440187845eb2dd5146df6bf4caae65dc31780116cf90095248f7f",
+      "result_chars": 405,
+      "hits": 1
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "2025 版采购管理制度自 2025 年 1 月 1 日起生效，且 2024 版同时废止。",
+    "citations": [
+      "lantu_policy_purchase_2025"
+    ],
+    "evidence": [
+      "lantu_policy_purchase_2025#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 4718,
+  "started_at": "2026-11-01T04:46:57",
+  "elapsed_seconds": 17.66,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "采购管理制度"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_policy_purchase_2024",
+            "title": "# 澜图智能采购管理制度（2024版）"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2025",
+            "title": "# 澜图智能采购管理制度（2025版）"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_purchase_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_purchase_2025",
+        "title": "# 澜图智能采购管理制度（2025版）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 453,
+        "text": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付款比例不超过 20%；质保金 5%-10%。\n\n## 三、供应商准入\n\n供应商须通过资质审查、现场审核与小批量试用，签署质量协议、廉洁协议与数据安全协议。\n\n## 四、库存与交付\n\n关键物料安全库存 45 天，通用物料 30 天；供应商交付准时率目标 96%，年度考核末位 5% 启动整改。\n\n## 五、生效说明\n\n本制度自 2025 年 1 月 1 日起生效，2024 版同时废止。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "2025版采购管理制度 生效 废止",
+        "top_k": 1
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_policy_purchase_2025",
+            "title": "# 澜图智能采购管理制度（2025版）",
+            "chunk": 0,
+            "score": 22.281,
+            "snippet": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付"
+          }
+        ]
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_policy_purchase_2025"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.87,
+    "number_recall": 1.0
+  }
+}

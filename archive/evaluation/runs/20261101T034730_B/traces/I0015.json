@@ -1,0 +1,379 @@
+{
+  "qid": "I0015",
+  "question": "公司的海外机构分布在哪些城市？分别是哪一年成立或开业的？海外员工有多少人？",
+  "question_type": "事实检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"海外机构 海外员工 成立\", \"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 368,
+        "total_tokens": 604,
+        "completion_tokens": 236,
+        "completion_tokens_details": {
+          "reasoning_tokens": 206,
+          "text_tokens": 236
+        }
+      },
+      "seconds": 2.328
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_company_global\", \"offset\": 4000, \"limit\": 4000}}",
+      "usage": {
+        "prompt_tokens": 1636,
+        "total_tokens": 2321,
+        "completion_tokens": 685,
+        "completion_tokens_details": {
+          "reasoning_tokens": 645,
+          "text_tokens": 685
+        }
+      },
+      "seconds": 5.906
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"胡志明市 蒙特雷 布达佩斯 成立\", \"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 1757,
+        "total_tokens": 2290,
+        "completion_tokens": 533,
+        "completion_tokens_details": {
+          "reasoning_tokens": 497,
+          "text_tokens": 533
+        }
+      },
+      "seconds": 5.469
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"胡志明市 蒙特雷 布达佩斯 成立\", \"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 2976,
+        "total_tokens": 3463,
+        "completion_tokens": 487,
+        "completion_tokens_details": {
+          "reasoning_tokens": 451,
+          "text_tokens": 487
+        }
+      },
+      "seconds": 4.578
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"胡志明市 蒙特雷 布达佩斯 成立\", \"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 4195,
+        "total_tokens": 4791,
+        "completion_tokens": 596,
+        "completion_tokens_details": {
+          "reasoning_tokens": 560,
+          "text_tokens": 596
+        }
+      },
+      "seconds": 5.36
+    },
+    {
+      "round": 6,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据《澜图智能全球化布局与海外业务》文档，公司海外机构分布在德国斯图加特、越南胡志明市、墨西哥蒙特雷和匈牙利布达佩斯。其中，德国斯图加特欧洲技术中心于2025年3月开业；越南胡志明市、墨西哥蒙特雷和匈牙利布达佩斯的服务网点成立年份资料未提及。海外员工共有200人。\",\"citations\":[\"lantu_company_global\"],\"evidence\":[\"lantu_company_global#0\"]}",
+      "usage": {
+        "prompt_tokens": 5414,
+        "total_tokens": 9789,
+        "completion_tokens": 4375,
+        "completion_tokens_details": {
+          "reasoning_tokens": 4254,
+          "text_tokens": 4375
+        }
+      },
+      "seconds": 35.796
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "海外机构 海外员工 成立",
+        "top_k": 5
+      },
+      "result_sha": "755a3ccb54070b25d9ca6ac52d53e062511888b5ed1699a17499ad607f71c420",
+      "result_chars": 1961,
+      "hits": 5
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_company_global",
+        "offset": 4000,
+        "limit": 4000
+      },
+      "result_sha": "dc2751e887fa6aa7cf6039604d3ca5f4ee89dbba66a1dd1e23a729773e70fae3",
+      "result_chars": 146,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "胡志明市 蒙特雷 布达佩斯 成立",
+        "top_k": 5
+      },
+      "result_sha": "92d9f01285cabcf1fcfbca53b4e3120523dde899b7f33e8265010cf2d5500942",
+      "result_chars": 1941,
+      "hits": 5
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "胡志明市 蒙特雷 布达佩斯 成立",
+        "top_k": 5
+      },
+      "result_sha": "92d9f01285cabcf1fcfbca53b4e3120523dde899b7f33e8265010cf2d5500942",
+      "result_chars": 1941,
+      "hits": 5
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "胡志明市 蒙特雷 布达佩斯 成立",
+        "top_k": 5
+      },
+      "result_sha": "92d9f01285cabcf1fcfbca53b4e3120523dde899b7f33e8265010cf2d5500942",
+      "result_chars": 1941,
+      "hits": 5
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《澜图智能全球化布局与海外业务》文档，公司海外机构分布在德国斯图加特、越南胡志明市、墨西哥蒙特雷和匈牙利布达佩斯。其中，德国斯图加特欧洲技术中心于2025年3月开业；越南胡志明市、墨西哥蒙特雷和匈牙利布达佩斯的服务网点成立年份资料未提及。海外员工共有200人。",
+    "citations": [
+      "lantu_company_global"
+    ],
+    "evidence": [
+      "lantu_company_global#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 23258,
+  "started_at": "2026-11-01T05:25:35",
+  "elapsed_seconds": 59.44,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "海外机构 海外员工 成立",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_company_global",
+            "title": "# 澜图智能全球化布局与海外业务",
+            "chunk": 0,
+            "score": 21.01,
+            "snippet": "# 澜图智能全球化布局与海外业务\n\n所属部门：国际业务部\n作者：罗嘉树\n创建时间：2024-06-01 10:00\n更新时间：2025-12-10 14:30\n版本号：v2.2\n文档类型：company\n文档族：global_presence\n生效日期：2025-12-10\n\n## 一、海外机构\n\n公司在德国斯图加特设立欧洲技术中心（2025 年 3 月开业），在越南胡志明市、墨西哥蒙特雷、匈牙利布达佩斯设有服务网点，海外员工 200 人。\n\n## 二、海外业绩\n\n2025 年海外营业收入 4.86 亿元，占总收入"
+          },
+          {
+            "doc_id": "lantu_org_headcount",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 15.85,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能员工分布统计（2025）\n所属部门\t人力资源部\n作者\t陈依然\n创建时间\t2025-12-31 18:00\n更新时间\t2026-01-09 09:30\n版本号\tv1.0\n文档类型\torg\n文档族\theadcount_2025\n生效日期\t2026-01-09\n[工作表] 基地分布\n基地\t员工数\t研发\t销售\t制造\t服务\t职能\n苏州总部\t2,450\t1,120\t310\t560\t250\t210\n东莞华南\t780\t86\t150\t300\t120\t124\n成都西部\t430\t80\t90\t"
+          },
+          {
+            "doc_id": "lantu_meeting_ops_2025q3",
+            "title": "2025 年第三季度经营分析会纪要",
+            "chunk": 0,
+            "score": 8.103,
+            "snippet": "2025 年第三季度经营分析会纪要\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-10-10 09:00\n更新时间：2025-10-10 18:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_ops_2025q3\n生效日期：2025-10-10\n一、会议信息\n时间：2025 年 10 月 10 日 09:00-12:00；地点：苏州总部 3 楼会议室；主持：顾承澜；参会：沈亦舟、周敏仪、韩立恒、罗嘉树、陈依然、潘文博、邵岚。\n二、经营回顾\n第三季度营业收入 11.52 亿元，同"
+          },
+          {
+            "doc_id": "lantu_strategy_2025",
+            "title": "# 澜图智能 2025 年度经营计划",
+            "chunk": 0,
+            "score": 7.756,
+            "snippet": "# 澜图智能 2025 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-01-10 09:00\n更新时间：2025-02-10 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2025\n生效日期：2025-02-10\n\n## 一、年度目标\n\n2025 年营业收入目标 41.5 亿元，力争 42.63 亿元；新签订单目标 46 亿元；机器人出货目标 20,000 台。\n\n## 二、重点任务\n\n锂电与半导体行业突破；LT-C800 控制器量产；海外收入占"
+          },
+          {
+            "doc_id": "lantu_company_history",
+            "title": "# 澜图智能发展历程（2011—2025）",
+            "chunk": 0,
+            "score": 7.082,
+            "snippet": "# 澜图智能发展历程（2011—2025）\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2023-03-01 09:00\n更新时间：2026-01-05 14:00\n版本号：v4.0\n文档类型：company\n文档族：company_history\n生效日期：2026-01-05\n\n## 一、创业阶段（2011—2015）\n\n2011 年 6 月 18 日，公司在苏州工业园区成立，创始团队来自高校机器人实验室，首款产品为 LT-R6 六轴工业机器人，2012 年实现小批量交付 120 台。2014 年建成首条机"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_company_global",
+        "offset": 4000,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_company_global",
+        "title": "# 澜图智能全球化布局与海外业务",
+        "offset": 4000,
+        "limit": 4000,
+        "total_chars": 464,
+        "text": "",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "胡志明市 蒙特雷 布达佩斯 成立",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_company_global",
+            "title": "# 澜图智能全球化布局与海外业务",
+            "chunk": 0,
+            "score": 35.15,
+            "snippet": "# 澜图智能全球化布局与海外业务\n\n所属部门：国际业务部\n作者：罗嘉树\n创建时间：2024-06-01 10:00\n更新时间：2025-12-10 14:30\n版本号：v2.2\n文档类型：company\n文档族：global_presence\n生效日期：2025-12-10\n\n## 一、海外机构\n\n公司在德国斯图加特设立欧洲技术中心（2025 年 3 月开业），在越南胡志明市、墨西哥蒙特雷、匈牙利布达佩斯设有服务网点，海外员工 200 人。\n\n## 二、海外业绩\n\n2025 年海外营业收入 4.86 亿元，占总收入"
+          },
+          {
+            "doc_id": "lantu_company_history",
+            "title": "# 澜图智能发展历程（2011—2025）",
+            "chunk": 0,
+            "score": 3.441,
+            "snippet": "# 澜图智能发展历程（2011—2025）\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2023-03-01 09:00\n更新时间：2026-01-05 14:00\n版本号：v4.0\n文档类型：company\n文档族：company_history\n生效日期：2026-01-05\n\n## 一、创业阶段（2011—2015）\n\n2011 年 6 月 18 日，公司在苏州工业园区成立，创始团队来自高校机器人实验室，首款产品为 LT-R6 六轴工业机器人，2012 年实现小批量交付 120 台。2014 年建成首条机"
+          },
+          {
+            "doc_id": "lantu_strategy_2025",
+            "title": "# 澜图智能 2025 年度经营计划",
+            "chunk": 0,
+            "score": 3.063,
+            "snippet": "# 澜图智能 2025 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-01-10 09:00\n更新时间：2025-02-10 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2025\n生效日期：2025-02-10\n\n## 一、年度目标\n\n2025 年营业收入目标 41.5 亿元，力争 42.63 亿元；新签订单目标 46 亿元；机器人出货目标 20,000 台。\n\n## 二、重点任务\n\n锂电与半导体行业突破；LT-C800 控制器量产；海外收入占"
+          },
+          {
+            "doc_id": "lantu_meeting_rd",
+            "title": "# 2025 年 5 月研发例会纪要",
+            "chunk": 0,
+            "score": 3.032,
+            "snippet": "# 2025 年 5 月研发例会纪要\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2025-05-09 09:00\n更新时间：2025-05-09 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_rd_2025\n生效日期：2025-05-09\n\n## 一、项目进展\n\nLT-C800 控制器完成小批量验证；LantuTwin 3.0 进入客户试点；具身智能操作模型完成抓取数据集 12 万条。\n\n## 二、组织调整\n\n具身智能研究所正式成立，编制 48 人，重点研究视觉-语言-动作模型"
+          },
+          {
+            "doc_id": "lantu_support_complaint",
+            "title": "# 澜图智能客户投诉处理管理办法",
+            "chunk": 0,
+            "score": 2.996,
+            "snippet": "# 澜图智能客户投诉处理管理办法\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-02-01 09:00\n更新时间：2025-09-01 09:00\n版本号：v2.8\n文档类型：support\n文档族：complaint_management\n生效日期：2025-09-01\n\n## 一、受理渠道\n\n客户可通过 400 热线、服务邮箱、客户门户或销售转达投诉，受理后 1 小时内录入系统。\n\n## 二、分级处理\n\n一般投诉 24 小时内响应、3 个工作日内闭环；重大投诉 2 小时内上报总经理并成立专项小组。\n\n"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "胡志明市 蒙特雷 布达佩斯 成立",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_company_global",
+            "title": "# 澜图智能全球化布局与海外业务",
+            "chunk": 0,
+            "score": 35.15,
+            "snippet": "# 澜图智能全球化布局与海外业务\n\n所属部门：国际业务部\n作者：罗嘉树\n创建时间：2024-06-01 10:00\n更新时间：2025-12-10 14:30\n版本号：v2.2\n文档类型：company\n文档族：global_presence\n生效日期：2025-12-10\n\n## 一、海外机构\n\n公司在德国斯图加特设立欧洲技术中心（2025 年 3 月开业），在越南胡志明市、墨西哥蒙特雷、匈牙利布达佩斯设有服务网点，海外员工 200 人。\n\n## 二、海外业绩\n\n2025 年海外营业收入 4.86 亿元，占总收入"
+          },
+          {
+            "doc_id": "lantu_company_history",
+            "title": "# 澜图智能发展历程（2011—2025）",
+            "chunk": 0,
+            "score": 3.441,
+            "snippet": "# 澜图智能发展历程（2011—2025）\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2023-03-01 09:00\n更新时间：2026-01-05 14:00\n版本号：v4.0\n文档类型：company\n文档族：company_history\n生效日期：2026-01-05\n\n## 一、创业阶段（2011—2015）\n\n2011 年 6 月 18 日，公司在苏州工业园区成立，创始团队来自高校机器人实验室，首款产品为 LT-R6 六轴工业机器人，2012 年实现小批量交付 120 台。2014 年建成首条机"
+          },
+          {
+            "doc_id": "lantu_strategy_2025",
+            "title": "# 澜图智能 2025 年度经营计划",
+            "chunk": 0,
+            "score": 3.063,
+            "snippet": "# 澜图智能 2025 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-01-10 09:00\n更新时间：2025-02-10 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2025\n生效日期：2025-02-10\n\n## 一、年度目标\n\n2025 年营业收入目标 41.5 亿元，力争 42.63 亿元；新签订单目标 46 亿元；机器人出货目标 20,000 台。\n\n## 二、重点任务\n\n锂电与半导体行业突破；LT-C800 控制器量产；海外收入占"
+          },
+          {
+            "doc_id": "lantu_meeting_rd",
+            "title": "# 2025 年 5 月研发例会纪要",
+            "chunk": 0,
+            "score": 3.032,
+            "snippet": "# 2025 年 5 月研发例会纪要\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2025-05-09 09:00\n更新时间：2025-05-09 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_rd_2025\n生效日期：2025-05-09\n\n## 一、项目进展\n\nLT-C800 控制器完成小批量验证；LantuTwin 3.0 进入客户试点；具身智能操作模型完成抓取数据集 12 万条。\n\n## 二、组织调整\n\n具身智能研究所正式成立，编制 48 人，重点研究视觉-语言-动作模型"
+          },
+          {
+            "doc_id": "lantu_support_complaint",
+            "title": "# 澜图智能客户投诉处理管理办法",
+            "chunk": 0,
+            "score": 2.996,
+            "snippet": "# 澜图智能客户投诉处理管理办法\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-02-01 09:00\n更新时间：2025-09-01 09:00\n版本号：v2.8\n文档类型：support\n文档族：complaint_management\n生效日期：2025-09-01\n\n## 一、受理渠道\n\n客户可通过 400 热线、服务邮箱、客户门户或销售转达投诉，受理后 1 小时内录入系统。\n\n## 二、分级处理\n\n一般投诉 24 小时内响应、3 个工作日内闭环；重大投诉 2 小时内上报总经理并成立专项小组。\n\n"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "胡志明市 蒙特雷 布达佩斯 成立",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_company_global",
+            "title": "# 澜图智能全球化布局与海外业务",
+            "chunk": 0,
+            "score": 35.15,
+            "snippet": "# 澜图智能全球化布局与海外业务\n\n所属部门：国际业务部\n作者：罗嘉树\n创建时间：2024-06-01 10:00\n更新时间：2025-12-10 14:30\n版本号：v2.2\n文档类型：company\n文档族：global_presence\n生效日期：2025-12-10\n\n## 一、海外机构\n\n公司在德国斯图加特设立欧洲技术中心（2025 年 3 月开业），在越南胡志明市、墨西哥蒙特雷、匈牙利布达佩斯设有服务网点，海外员工 200 人。\n\n## 二、海外业绩\n\n2025 年海外营业收入 4.86 亿元，占总收入"
+          },
+          {
+            "doc_id": "lantu_company_history",
+            "title": "# 澜图智能发展历程（2011—2025）",
+            "chunk": 0,
+            "score": 3.441,
+            "snippet": "# 澜图智能发展历程（2011—2025）\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2023-03-01 09:00\n更新时间：2026-01-05 14:00\n版本号：v4.0\n文档类型：company\n文档族：company_history\n生效日期：2026-01-05\n\n## 一、创业阶段（2011—2015）\n\n2011 年 6 月 18 日，公司在苏州工业园区成立，创始团队来自高校机器人实验室，首款产品为 LT-R6 六轴工业机器人，2012 年实现小批量交付 120 台。2014 年建成首条机"
+          },
+          {
+            "doc_id": "lantu_strategy_2025",
+            "title": "# 澜图智能 2025 年度经营计划",
+            "chunk": 0,
+            "score": 3.063,
+            "snippet": "# 澜图智能 2025 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-01-10 09:00\n更新时间：2025-02-10 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2025\n生效日期：2025-02-10\n\n## 一、年度目标\n\n2025 年营业收入目标 41.5 亿元，力争 42.63 亿元；新签订单目标 46 亿元；机器人出货目标 20,000 台。\n\n## 二、重点任务\n\n锂电与半导体行业突破；LT-C800 控制器量产；海外收入占"
+          },
+          {
+            "doc_id": "lantu_meeting_rd",
+            "title": "# 2025 年 5 月研发例会纪要",
+            "chunk": 0,
+            "score": 3.032,
+            "snippet": "# 2025 年 5 月研发例会纪要\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2025-05-09 09:00\n更新时间：2025-05-09 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_rd_2025\n生效日期：2025-05-09\n\n## 一、项目进展\n\nLT-C800 控制器完成小批量验证；LantuTwin 3.0 进入客户试点；具身智能操作模型完成抓取数据集 12 万条。\n\n## 二、组织调整\n\n具身智能研究所正式成立，编制 48 人，重点研究视觉-语言-动作模型"
+          },
+          {
+            "doc_id": "lantu_support_complaint",
+            "title": "# 澜图智能客户投诉处理管理办法",
+            "chunk": 0,
+            "score": 2.996,
+            "snippet": "# 澜图智能客户投诉处理管理办法\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-02-01 09:00\n更新时间：2025-09-01 09:00\n版本号：v2.8\n文档类型：support\n文档族：complaint_management\n生效日期：2025-09-01\n\n## 一、受理渠道\n\n客户可通过 400 热线、服务邮箱、客户门户或销售转达投诉，受理后 1 小时内录入系统。\n\n## 二、分级处理\n\n一般投诉 24 小时内响应、3 个工作日内闭环；重大投诉 2 小时内上报总经理并成立专项小组。\n\n"
+          }
+        ]
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_company_global"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.432,
+    "number_recall": 1.0
+  }
+}

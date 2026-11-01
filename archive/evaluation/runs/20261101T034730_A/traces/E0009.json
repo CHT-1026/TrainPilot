@@ -1,0 +1,158 @@
+{
+  "qid": "E0009",
+  "question": "三版差旅标准对「住宿超标部分由谁承担」的规定是否一致？",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=list><parameter=keyword>差旅</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 67,
+        "prompt_tokens": 360,
+        "total_tokens": 427,
+        "completion_tokens_details": {
+          "reasoning_tokens": 48
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 10.781
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>差旅 住宿标准 超标</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 416,
+        "total_tokens": 464,
+        "completion_tokens_details": {
+          "reasoning_tokens": 14
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.063
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"差旅 住宿 超标 自理\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 53,
+        "prompt_tokens": 487,
+        "total_tokens": 540,
+        "completion_tokens_details": {
+          "reasoning_tokens": 23
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.844
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"一致。三版差旅标准（2024版 v1.0、2025版 v2.0、2025年7月修订 v3.0）在「一、住宿标准」中均明确规定「超标部分由个人承担」，关于超标住宿费承担主体的规定完全一致，未发生变化；三版的差异仅在于住宿限额和餐饮补贴金额本身（如一线城市标准由450元/晚提高至550元/晚，再提高至600元/晚）。\",\"citations\":[\"lantu_policy_travel_2024\",\"lantu_policy_travel_2025\",\"lantu_policy_travel_2025h2\"],\"evidence\":[\"lantu_policy_travel_2024#片段0\",\"lantu_policy_travel_2025#片段0\",\"lantu_policy_travel_2025h2#片段0\"]}",
+      "usage": {
+        "completion_tokens": 235,
+        "prompt_tokens": 1547,
+        "total_tokens": 1782,
+        "completion_tokens_details": {
+          "reasoning_tokens": 28
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 5.672
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "差旅 住宿 超标 自理",
+        "top_k": 10
+      },
+      "result_sha": "b83725d7ec8315bdf87c92f94baaede35a1b14937e8e23c6cfee6b0d66e30cc5",
+      "result_chars": 1588,
+      "hits": 4
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "一致。三版差旅标准（2024版 v1.0、2025版 v2.0、2025年7月修订 v3.0）在「一、住宿标准」中均明确规定「超标部分由个人承担」，关于超标住宿费承担主体的规定完全一致，未发生变化；三版的差异仅在于住宿限额和餐饮补贴金额本身（如一线城市标准由450元/晚提高至550元/晚，再提高至600元/晚）。",
+    "citations": [
+      "lantu_policy_travel_2024",
+      "lantu_policy_travel_2025",
+      "lantu_policy_travel_2025h2"
+    ],
+    "evidence": [
+      "lantu_policy_travel_2024#片段0",
+      "lantu_policy_travel_2025#片段0",
+      "lantu_policy_travel_2025h2#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 3213,
+  "started_at": "2026-11-01T04:38:36",
+  "elapsed_seconds": 20.36,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "差旅 住宿 超标 自理",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_policy_travel_2024",
+            "title": "# 澜图智能差旅费用报销标准（2024版）",
+            "chunk": 0,
+            "score": 14.357,
+            "snippet": "# 澜图智能差旅费用报销标准（2024版）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-02-20 09:00\n更新时间：2024-03-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2024-03-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 450 元/晚，二线城市 350 元/晚，其他城市 300 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 100 元/天，按自然日计算；客户宴请须提"
+          },
+          {
+            "doc_id": "lantu_policy_travel_2025",
+            "title": "# 澜图智能差旅费用报销标准（2025版）",
+            "chunk": 0,
+            "score": 13.993,
+            "snippet": "# 澜图智能差旅费用报销标准（2025版）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-12-15 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2025-01-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 550 元/晚，二线城市 420 元/晚，其他城市 350 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 120 元/天，按自然日计算；客户宴请须提"
+          },
+          {
+            "doc_id": "lantu_policy_travel_2025h2",
+            "title": "# 澜图智能差旅费用报销标准（2025年7月修订）",
+            "chunk": 0,
+            "score": 13.648,
+            "snippet": "# 澜图智能差旅费用报销标准（2025年7月修订）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-06-10 09:00\n更新时间：2025-07-01 09:00\n版本号：v3.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2025-07-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 600 元/晚，二线城市 450 元/晚，其他城市 380 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 150 元/天，按自然日计算；客户"
+          },
+          {
+            "doc_id": "lantu_policy_reimbursement",
+            "title": "# 澜图智能费用报销管理办法",
+            "chunk": 0,
+            "score": 3.2,
+            "snippet": "# 澜图智能费用报销管理办法\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-03-10 09:00\n更新时间：2025-06-18 10:00\n版本号：v3.2\n文档类型：policy\n文档族：reimbursement\n生效日期：2025-06-18\n\n## 一、报销范围\n\n差旅费、业务招待费、办公费、培训费、通讯费、车辆使用费及经批准的其他费用。个人消费、罚款与无票据支出不予报销。\n\n## 二、报销时限\n\n费用发生后 30 个自然日内提交报销，跨年度费用须在次年 1 月 15 日前完成，逾期需财务总监审"
+          }
+        ]
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_policy_travel_2024",
+      "lantu_policy_travel_2025",
+      "lantu_policy_travel_2025h2"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.412,
+    "number_recall": 0.0
+  }
+}

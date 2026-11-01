@@ -1,0 +1,142 @@
+{
+  "qid": "M0315",
+  "question": "我们怎么审供应商？查出问题后多久要整改？",
+  "question_type": "事实检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>供应商 审核 评审 流程</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=search><parameter=query>整改 期限 纠正措施 验证</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 88,
+        "prompt_tokens": 355,
+        "total_tokens": 443,
+        "completion_tokens_details": {
+          "reasoning_tokens": 20
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.562
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>供应商审核 流程 方法</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 39,
+        "prompt_tokens": 460,
+        "total_tokens": 499,
+        "completion_tokens_details": {
+          "reasoning_tokens": 8
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.188
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>供应商审核 流程 方法</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 46,
+        "prompt_tokens": 528,
+        "total_tokens": 574,
+        "completion_tokens_details": {
+          "reasoning_tokens": 15
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.64
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=TOOL>{\"name\": \"search\", \"args\": {\"query\": \"供应商审核 流程 方法\", \"top_k\": 10}}</function></tool_call>",
+      "usage": {
+        "completion_tokens": 60,
+        "prompt_tokens": 596,
+        "total_tokens": 656,
+        "completion_tokens_details": {
+          "reasoning_tokens": 21
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 5.032
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>供应商 审核 流程</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 39,
+        "prompt_tokens": 672,
+        "total_tokens": 711,
+        "completion_tokens_details": {
+          "reasoning_tokens": 7
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 1.5
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>供应商 审核 整改</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 45,
+        "prompt_tokens": 741,
+        "total_tokens": 786,
+        "completion_tokens_details": {
+          "reasoning_tokens": 13
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 2.453
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corp us\",\"answer\":\"很抱歉，我尝试检索'供应商审核流程'和'整改期限/纠正措施'相关资料，但未能成功获取到文档内容，因此无法基于企业资料给出准确回答。一般企业实践中，供应商审核通常包括：准入评审（资质、体系认证如ISO 9001/IATF 16949、样品与小批量试用）、现场审核（质量体系、过程能力、产能、追溯性）、绩效评价（质量、交付、价格、服务）以及年度复审或按风险分级的定期审核。查出问题后的整改时限常见做法是：一般问题7-15个工作日、严重问题3-5个工作日提交整改计划并通常在30天内完成整改闭环，具体时限取决于企业自身的供应商管理制度和问题严重等级。以上仅为一般性参考，不构成贵司制度依据；建议核实贵司《供应商管理制度》《来料质量管理程序》等文件中的具体规定。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 238,
+        "prompt_tokens": 807,
+        "total_tokens": 1045,
+        "completion_tokens_details": {
+          "reasoning_tokens": 15
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 6.515
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corp us",
+    "answer": "很抱歉，我尝试检索'供应商审核流程'和'整改期限/纠正措施'相关资料，但未能成功获取到文档内容，因此无法基于企业资料给出准确回答。一般企业实践中，供应商审核通常包括：准入评审（资质、体系认证如ISO 9001/IATF 16949、样品与小批量试用）、现场审核（质量体系、过程能力、产能、追溯性）、绩效评价（质量、交付、价格、服务）以及年度复审或按风险分级的定期审核。查出问题后的整改时限常见做法是：一般问题7-15个工作日、严重问题3-5个工作日提交整改计划并通常在30天内完成整改闭环，具体时限取决于企业自身的供应商管理制度和问题严重等级。以上仅为一般性参考，不构成贵司制度依据；建议核实贵司《供应商管理制度》《来料质量管理程序》等文件中的具体规定。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4714,
+  "started_at": "2026-11-01T05:54:44",
+  "elapsed_seconds": 20.89,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.027,
+    "number_recall": 0.0
+  }
+}

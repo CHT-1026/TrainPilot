@@ -1,0 +1,142 @@
+{
+  "qid": "D0071",
+  "question": "12 个客户案例的客户评价人职务有多少种不同类型？",
+  "question_type": "清单枚举",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=list><parameter=keyword>客户案例</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 32,
+        "prompt_tokens": 357,
+        "total_tokens": 389,
+        "completion_tokens_details": {
+          "reasoning_tokens": 13
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.703
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=list><parameter=keyword>案例</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 27,
+        "prompt_tokens": 413,
+        "total_tokens": 440,
+        "completion_tokens_details": {
+          "reasoning_tokens": 9
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 0.969
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>客户案例 客户评价 职务</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 40,
+        "prompt_tokens": 468,
+        "total_tokens": 508,
+        "completion_tokens_details": {
+          "reasoning_tokens": 5
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 1.828
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>客户案例 客户评价 职务</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 58,
+        "prompt_tokens": 540,
+        "total_tokens": 598,
+        "completion_tokens_details": {
+          "reasoning_tokens": 23
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.953
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>客户案例 客户评价 职务</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 612,
+        "total_tokens": 660,
+        "completion_tokens_details": {
+          "reasoning_tokens": 13
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 1.719
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>客户案例 客户评价 职务</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 67,
+        "prompt_tokens": 684,
+        "total_tokens": 751,
+        "completion_tokens_details": {
+          "reasoning_tokens": 32
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 2.188
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"检索未能成功返回资料，无法获取12个客户案例的客户评价人职务信息，因此无法统计职务类型数量。如需回答，请提供包含客户案例（含客户评价人姓名/职务）的文档，或允许重新检索。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 99,
+        "prompt_tokens": 753,
+        "total_tokens": 852,
+        "completion_tokens_details": {
+          "reasoning_tokens": 25
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 2.375
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "检索未能成功返回资料，无法获取12个客户案例的客户评价人职务信息，因此无法统计职务类型数量。如需回答，请提供包含客户案例（含客户评价人姓名/职务）的文档，或允许重新检索。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4198,
+  "started_at": "2026-11-01T04:34:13",
+  "elapsed_seconds": 12.74,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.028,
+    "number_recall": 0.0
+  }
+}

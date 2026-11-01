@@ -1,0 +1,140 @@
+{
+  "qid": "H0089",
+  "question": "供应商行为准则对健康安全与环境分别提出了什么要求？",
+  "question_type": "事实检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>供应商行为准则 健康 安全 环境</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 355,
+        "total_tokens": 406,
+        "completion_tokens_details": {
+          "reasoning_tokens": 12
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.547
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search>{\"query\": \"供应商行为准则 健康安全 环境要求\", \"top_k\": 10}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 45,
+        "prompt_tokens": 431,
+        "total_tokens": 476,
+        "completion_tokens_details": {
+          "reasoning_tokens": 8
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.656
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search>{\"query\": \"供应商行为准则 健康安全 环境\", \"top_k\": 10}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 79,
+        "prompt_tokens": 505,
+        "total_tokens": 584,
+        "completion_tokens_details": {
+          "reasoning_tokens": 43
+        },
+        "prompt_tokens_details": null
+      },
+      "seconds": 3.422
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>供应商行为准则 健康安全 环境要求</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 74,
+        "prompt_tokens": 578,
+        "total_tokens": 652,
+        "completion_tokens_details": {
+          "reasoning_tokens": 36
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 2.688
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>供应商行为准则 健康安全 环境</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 44,
+        "prompt_tokens": 653,
+        "total_tokens": 697,
+        "completion_tokens_details": {
+          "reasoning_tokens": 7
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.937
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>供应商行为准则 健康 安全 环境</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 61,
+        "prompt_tokens": 727,
+        "total_tokens": 788,
+        "completion_tokens_details": {
+          "reasoning_tokens": 22
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 2.031
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"由于工具调用格式问题，多次检索尝试均未能成功执行，未能获取任何关于《供应商行为准则》中健康、安全与环境要求的原文资料。为避免臆测，无法作答。建议重新发起提问或确认文档库中是否存在该准则文件后再次检索。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 105,
+        "prompt_tokens": 800,
+        "total_tokens": 905,
+        "completion_tokens_details": {
+          "reasoning_tokens": 22
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 4.485
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "由于工具调用格式问题，多次检索尝试均未能成功执行，未能获取任何关于《供应商行为准则》中健康、安全与环境要求的原文资料。为避免臆测，无法作答。建议重新发起提问或确认文档库中是否存在该准则文件后再次检索。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4508,
+  "started_at": "2026-11-01T02:34:36",
+  "elapsed_seconds": 20.77,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

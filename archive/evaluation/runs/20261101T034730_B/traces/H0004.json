@@ -1,0 +1,183 @@
+{
+  "qid": "H0004",
+  "question": "SLA 2025 版中 P3 故障的响应与处理时限各是多少？相比 2024 版变化了多少？",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"SLA\"}}",
+      "usage": {
+        "prompt_tokens": 382,
+        "total_tokens": 623,
+        "completion_tokens": 241,
+        "completion_tokens_details": {
+          "reasoning_tokens": 222,
+          "text_tokens": 241
+        }
+      },
+      "seconds": 2.125
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_support_sla_2025\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 502,
+        "total_tokens": 705,
+        "completion_tokens": 203,
+        "completion_tokens_details": {
+          "reasoning_tokens": 164,
+          "text_tokens": 203
+        }
+      },
+      "seconds": 1.625
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_support_sla_2024\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 941,
+        "total_tokens": 1085,
+        "completion_tokens": 144,
+        "completion_tokens_details": {
+          "reasoning_tokens": 105,
+          "text_tokens": 144
+        }
+      },
+      "seconds": 1.39
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"在SLA 2025版中，P3故障（一般故障或咨询）的响应时限为**12小时内**，处理时限为**3个工作日内**。相比2024版，响应时间由24小时缩短至12小时，处理时限由5个工作日缩短至3个工作日。\",\"citations\":[\"lantu_support_sla_2025\", \"lantu_support_sla_2024\"], \"evidence\":[\"lantu_support_sla_2025#二、响应时效\", \"lantu_support_sla_2024#二、响应时效\"]}",
+      "usage": {
+        "prompt_tokens": 1335,
+        "total_tokens": 1821,
+        "completion_tokens": 486,
+        "completion_tokens_details": {
+          "reasoning_tokens": 341,
+          "text_tokens": 486
+        }
+      },
+      "seconds": 3.766
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "SLA"
+      },
+      "result_sha": "e1d26cbef0840af191451d2a47dd15d37a00eda750aa68962b789578b46dadbc",
+      "result_chars": 158,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_sla_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "af8cbc14afa842ef7c71e0de95dfc2ee6c39002e37a09d1c893850c37a03f553",
+      "result_chars": 608,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_sla_2024",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "9f4c2c9d260d7b154ea4d04e3ee5784f3ae9648c00971463f1c02316cab72a80",
+      "result_chars": 545,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "在SLA 2025版中，P3故障（一般故障或咨询）的响应时限为**12小时内**，处理时限为**3个工作日内**。相比2024版，响应时间由24小时缩短至12小时，处理时限由5个工作日缩短至3个工作日。",
+    "citations": [
+      "lantu_support_sla_2025",
+      "lantu_support_sla_2024"
+    ],
+    "evidence": [
+      "lantu_support_sla_2025#二、响应时效",
+      "lantu_support_sla_2024#二、响应时效"
+    ]
+  },
+  "status": "answered",
+  "tokens": 4234,
+  "started_at": "2026-11-01T05:15:57",
+  "elapsed_seconds": 8.91,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "SLA"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_support_sla_2024",
+            "title": "# 澜图智能服务等级协议（SLA 2024版）"
+          },
+          {
+            "doc_id": "lantu_support_sla_2025",
+            "title": "# 澜图智能服务等级协议（SLA 2025版）"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_sla_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_support_sla_2025",
+        "title": "# 澜图智能服务等级协议（SLA 2025版）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 426,
+        "text": "# 澜图智能服务等级协议（SLA 2025版）\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2025-03-10 09:00\n更新时间：2025-04-01 09:00\n版本号：v3.0\n文档类型：support\n文档族：service_sla\n生效日期：2025-04-01\n\n## 一、故障分级\n\nP1 为产线停机或安全风险；P2 为单机停机但产线可降级运行；P3 为一般故障或咨询。\n\n## 二、响应时效\n\nP1：30 分钟内响应、12 小时内到场；P2：4 小时内响应、48 小时内到场；P3：12 小时内响应、3 个工作日内处理。\n\n## 三、备件服务\n\n常用备件 48 小时内发货，紧急备件 24 小时内发货；备件满足率不低于 96%。\n\n## 四、服务考核\n\n每月统计响应及时率、首次修复率与客户满意度，未达标的服务商扣减服务费并限期整改。\n\n## 五、生效说明\n\n本版本自 2025 年 4 月 1 日起生效，2024 版同时废止。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_sla_2024",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_support_sla_2024",
+        "title": "# 澜图智能服务等级协议（SLA 2024版）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 367,
+        "text": "# 澜图智能服务等级协议（SLA 2024版）\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v2.0\n文档类型：support\n文档族：service_sla\n生效日期：2024-01-01\n\n## 一、故障分级\n\nP1 为产线停机或安全风险；P2 为单机停机但产线可降级运行；P3 为一般故障或咨询。\n\n## 二、响应时效\n\nP1：2 小时内响应、24 小时内到场；P2：8 小时内响应、72 小时内到场；P3：24 小时内响应、5 个工作日内处理。\n\n## 三、备件服务\n\n常用备件 72 小时内发货，紧急备件 48 小时内发货；备件满足率不低于 90%。\n\n## 四、服务考核\n\n每月统计响应及时率与首次修复率，未达标的服务商扣减服务费。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_support_sla_2025",
+      "lantu_support_sla_2024"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.228,
+    "number_recall": 1.0
+  }
+}

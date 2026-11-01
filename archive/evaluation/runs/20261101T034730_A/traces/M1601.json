@@ -1,0 +1,313 @@
+{
+  "qid": "M1601",
+  "question": "2026 年 5 月的实际营收是多少？月度经营数据能查得到吗？",
+  "question_type": "条件判断与边界",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>2026年5月 营收 月度经营数据</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 78,
+        "prompt_tokens": 365,
+        "total_tokens": 443,
+        "completion_tokens_details": {
+          "reasoning_tokens": 46
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.531
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>2026年5月 营收 月度经营数据</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 44,
+        "prompt_tokens": 434,
+        "total_tokens": 478,
+        "completion_tokens_details": {
+          "reasoning_tokens": 12
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.109
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>2026年5月 营收 月度经营数据</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 46,
+        "prompt_tokens": 503,
+        "total_tokens": 549,
+        "completion_tokens_details": {
+          "reasoning_tokens": 14
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 1.0
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"2026年5月 营收 月度经营数据\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 53,
+        "prompt_tokens": 572,
+        "total_tokens": 625,
+        "completion_tokens_details": {
+          "reasoning_tokens": 17
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.203
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"2026\"}}",
+      "usage": {
+        "completion_tokens": 75,
+        "prompt_tokens": 3155,
+        "total_tokens": 3230,
+        "completion_tokens_details": {
+          "reasoning_tokens": 57
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 1.547
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_finance_monthly_2025\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 99,
+        "prompt_tokens": 3329,
+        "total_tokens": 3428,
+        "completion_tokens_details": {
+          "reasoning_tokens": 62
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3136
+        }
+      },
+      "seconds": 1.469
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"语料中没有 2026 年 5 月的实际营收数据。月度经营数据可查，但仅有《澜图智能 2025 年月度经营数据》（lantu_finance_monthly_2025，v1.0，更新于 2026-01-12），覆盖 2025 年 1—12 月（如 2025 年 5 月营收 3.55 亿元、订单 4.02 亿元、出货 1,790 台），不含 2026 年任何月份。2026 年相关文档只有年度预算（lantu_finance_budget_2026，全年营收目标 52 亿元）、年度经营计划（lantu_strategy_2026）和战略研讨会纪要，均为目标/预算口径而非实际数。语料中所有文档更新时间均在 2026 年 5 月之前，因此无法给出 2026 年 5 月实际营收。\",\"citations\":[\"lantu_finance_monthly_2025\",\"lantu_finance_budget_2026\",\"lantu_strategy_2026\"],\"evidence\":[\"lantu_finance_monthly_2025#0\",\"lantu_finance_budget_2026#0\",\"lantu_strategy_2026#0\"]}",
+      "usage": {
+        "completion_tokens": 360,
+        "prompt_tokens": 4023,
+        "total_tokens": 4383,
+        "completion_tokens_details": {
+          "reasoning_tokens": 27
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3264
+        }
+      },
+      "seconds": 4.453
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "2026年5月 营收 月度经营数据",
+        "top_k": 10
+      },
+      "result_sha": "3e8d0a5cf8f8e8cd0e1efa891bbb694d373b56a0b6f01d5ae83775d96a118e96",
+      "result_chars": 3901,
+      "hits": 10
+    },
+    {
+      "name": "list",
+      "args": {
+        "keyword": "2026"
+      },
+      "result_sha": "e909dc69303eb0463052583c8fd2cb7bc3b99f357c33e72217889595b6f69174",
+      "result_chars": 277,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_finance_monthly_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "3146fc9952e94aa8f0b97c4efb35848dd4fb54efaedb72422bf5b33a99f2d28b",
+      "result_chars": 874,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "语料中没有 2026 年 5 月的实际营收数据。月度经营数据可查，但仅有《澜图智能 2025 年月度经营数据》（lantu_finance_monthly_2025，v1.0，更新于 2026-01-12），覆盖 2025 年 1—12 月（如 2025 年 5 月营收 3.55 亿元、订单 4.02 亿元、出货 1,790 台），不含 2026 年任何月份。2026 年相关文档只有年度预算（lantu_finance_budget_2026，全年营收目标 52 亿元）、年度经营计划（lantu_strategy_2026）和战略研讨会纪要，均为目标/预算口径而非实际数。语料中所有文档更新时间均在 2026 年 5 月之前，因此无法给出 2026 年 5 月实际营收。",
+    "citations": [
+      "lantu_finance_monthly_2025",
+      "lantu_finance_budget_2026",
+      "lantu_strategy_2026"
+    ],
+    "evidence": [
+      "lantu_finance_monthly_2025#0",
+      "lantu_finance_budget_2026#0",
+      "lantu_strategy_2026#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 13136,
+  "started_at": "2026-11-01T06:17:22",
+  "elapsed_seconds": 12.31,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "2026年5月 营收 月度经营数据",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_finance_monthly_2025",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 29.258,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能 2025 年月度经营数据\n所属部门\t财务部\n作者\t周敏仪\n创建时间\t2026-01-12 09:00\n更新时间\t2026-01-12 18:00\n版本号\tv1.0\n文档类型\tfinance\n文档族\tmonthly_operations_2025\n生效日期\t2026-01-12\n[工作表] 月度经营数据\n月份\t营收（亿元）\t订单（亿元）\t机器人出货（台）\n2025年1月\t2.86\t3.42\t1,380\n2025年2月\t2.61\t3.05\t1,260\n2025年3月\t3."
+          },
+          {
+            "doc_id": "lantu_finance_q3_2025",
+            "title": "# 澜图智能 2025 年第三季度经营数据",
+            "chunk": 0,
+            "score": 14.062,
+            "snippet": "# 澜图智能 2025 年第三季度经营数据\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-10-22 09:00\n更新时间：2025-10-26 18:00\n版本号：v1.0\n文档类型：finance\n文档族：quarterly_2025_q3\n生效日期：2025-10-26\n\n## 一、季度业绩\n\n2025 年第三季度营业收入 11.52 亿元，同比增长 17.8%；归母净利润 1.21 亿元，同比增长 22.1%；毛利率 31.4%。\n\n## 二、累计业绩\n\n前三季度累计营业收入 31.36 亿元，归母"
+          },
+          {
+            "doc_id": "lantu_finance_budget_2026",
+            "title": "# 澜图智能 2026 年度经营预算",
+            "chunk": 0,
+            "score": 10.432,
+            "snippet": "# 澜图智能 2026 年度经营预算\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-12-20 09:00\n更新时间：2026-01-15 17:00\n版本号：v1.0\n文档类型：finance\n文档族：budget_2026\n生效日期：2026-01-15\n\n## 一、预算目标\n\n2026 年营业收入目标 52 亿元，同比增长 22%；归母净利润目标 5.2 亿元；综合毛利率目标 32.5%。\n\n## 二、收入分解\n\n机器人本体 24.2 亿元，智能产线 18.4 亿元，软件与服务 6.4 亿元，备件及其"
+          },
+          {
+            "doc_id": "lantu_strategy_2026",
+            "title": "# 澜图智能 2026 年度经营计划",
+            "chunk": 0,
+            "score": 10.23,
+            "snippet": "# 澜图智能 2026 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-12-15 09:00\n更新时间：2026-01-12 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2026\n生效日期：2026-01-12\n\n## 一、年度目标\n\n2026 年营业收入 52 亿元，归母净利润 5.2 亿元，新签订单 58 亿元，机器人出货 26,000 台。\n\n## 二、业务策略\n\n锂电保持领先，半导体翻倍增长，海外收入 7.2 亿元；软件与服务收入占比提"
+          },
+          {
+            "doc_id": "lantu_investor_overview",
+            "title": "# 澜图智能投资者关系概览",
+            "chunk": 0,
+            "score": 9.753,
+            "snippet": "# 澜图智能投资者关系概览\n\n所属部门：董事会办公室\n作者：周敏仪\n创建时间：2024-03-20 09:00\n更新时间：2026-01-10 17:00\n版本号：v4.1\n文档类型：company\n文档族：investor_overview\n生效日期：2026-01-10\n\n## 一、基本信息\n\n公司股票代码 688719，总股本 4.2 亿股，2025 年末总市值约 168 亿元。2025 年度拟每 10 股派发现金红利 3.2 元（含税）。\n\n## 二、经营数据\n\n2025 年营业收入 42.63 亿元，归母"
+          },
+          {
+            "doc_id": "lantu_strategy_2025",
+            "title": "# 澜图智能 2025 年度经营计划",
+            "chunk": 0,
+            "score": 7.134,
+            "snippet": "# 澜图智能 2025 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-01-10 09:00\n更新时间：2025-02-10 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2025\n生效日期：2025-02-10\n\n## 一、年度目标\n\n2025 年营业收入目标 41.5 亿元，力争 42.63 亿元；新签订单目标 46 亿元；机器人出货目标 20,000 台。\n\n## 二、重点任务\n\n锂电与半导体行业突破；LT-C800 控制器量产；海外收入占"
+          },
+          {
+            "doc_id": "lantu_finance_h1_2025",
+            "title": "# 澜图智能 2025 年半年度报告摘要",
+            "chunk": 0,
+            "score": 6.714,
+            "snippet": "# 澜图智能 2025 年半年度报告摘要\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-08-25 09:00\n更新时间：2025-08-28 18:00\n版本号：v1.0\n文档类型：finance\n文档族：semiannual_2025\n生效日期：2025-08-28\n\n## 一、经营数据\n\n2025 年上半年营业收入 19.84 亿元，同比增长 21.3%；归母净利润 1.83 亿元，同比增长 24.6%；毛利率 31.2%。\n\n## 二、订单情况\n\n上半年新签订单 22.7 亿元，同比增长 18.5%"
+          },
+          {
+            "doc_id": "lantu_meeting_ops_2025q3",
+            "title": "2025 年第三季度经营分析会纪要",
+            "chunk": 0,
+            "score": 6.667,
+            "snippet": "2025 年第三季度经营分析会纪要\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-10-10 09:00\n更新时间：2025-10-10 18:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_ops_2025q3\n生效日期：2025-10-10\n一、会议信息\n时间：2025 年 10 月 10 日 09:00-12:00；地点：苏州总部 3 楼会议室；主持：顾承澜；参会：沈亦舟、周敏仪、韩立恒、罗嘉树、陈依然、潘文博、邵岚。\n二、经营回顾\n第三季度营业收入 11.52 亿元，同"
+          },
+          {
+            "doc_id": "lantu_company_history",
+            "title": "# 澜图智能发展历程（2011—2025）",
+            "chunk": 0,
+            "score": 6.462,
+            "snippet": "# 澜图智能发展历程（2011—2025）\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2023-03-01 09:00\n更新时间：2026-01-05 14:00\n版本号：v4.0\n文档类型：company\n文档族：company_history\n生效日期：2026-01-05\n\n## 一、创业阶段（2011—2015）\n\n2011 年 6 月 18 日，公司在苏州工业园区成立，创始团队来自高校机器人实验室，首款产品为 LT-R6 六轴工业机器人，2012 年实现小批量交付 120 台。2014 年建成首条机"
+          },
+          {
+            "doc_id": "lantu_company_brand",
+            "title": "# 澜图智能品牌视觉与传播规范",
+            "chunk": 0,
+            "score": 6.172,
+            "snippet": "# 澜图智能品牌视觉与传播规范\n\n所属部门：市场部\n作者：苏婉清\n创建时间：2024-02-01 09:30\n更新时间：2025-08-15 11:00\n版本号：v2.3\n文档类型：company\n文档族：brand_manual\n生效日期：2025-08-15\n\n## 一、品牌定位\n\n澜图智能（LANTU）定位为“可信赖的智能制造伙伴”，核心传播主张为“稳、准、快”。品牌不得使用“全球第一”“绝对领先”等绝对化表述。\n\n## 二、视觉规范\n\n主色为澜图蓝（PANTONE 2728C，HEX #1F4FA8），辅助"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "list",
+      "args": {
+        "keyword": "2026"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_finance_budget_2026",
+            "title": "# 澜图智能 2026 年度经营预算"
+          },
+          {
+            "doc_id": "lantu_hr_campus",
+            "title": "# 澜图智能 2026 届校园招聘方案"
+          },
+          {
+            "doc_id": "lantu_meeting_strategy",
+            "title": "# 2026 年战略研讨会纪要"
+          },
+          {
+            "doc_id": "lantu_strategy_2026",
+            "title": "# 澜图智能 2026 年度经营计划"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_finance_monthly_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_finance_monthly_2025",
+        "title": "[工作表] 文档信息",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 637,
+        "text": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能 2025 年月度经营数据\n所属部门\t财务部\n作者\t周敏仪\n创建时间\t2026-01-12 09:00\n更新时间\t2026-01-12 18:00\n版本号\tv1.0\n文档类型\tfinance\n文档族\tmonthly_operations_2025\n生效日期\t2026-01-12\n[工作表] 月度经营数据\n月份\t营收（亿元）\t订单（亿元）\t机器人出货（台）\n2025年1月\t2.86\t3.42\t1,380\n2025年2月\t2.61\t3.05\t1,260\n2025年3月\t3.42\t3.88\t1,720\n2025年4月\t3.31\t3.76\t1,660\n2025年5月\t3.55\t4.02\t1,790\n2025年6月\t4.09\t4.36\t2,050\n2025年7月\t3.62\t3.94\t1,820\n2025年8月\t3.71\t4.11\t1,870\n2025年9月\t4.19\t4.55\t2,110\n2025年10月\t4.05\t4.38\t2,040\n2025年11月\t4.32\t4.69\t2,180\n2025年12月\t4.90\t4.76\t2,520\n[工作表] 季度汇总\n季度\t营收（亿元）\t订单（亿元）\t出货（台）\n2025年第一季度\t8.89\t10.35\t4,360\n2025年第二季度\t10.95\t12.14\t5,500\n2025年第三季度\t11.52\t13.60\t5,800\n2025年第四季度\t11.27\t12.81\t5,740",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.75,
+    "cited": [
+      "lantu_finance_monthly_2025",
+      "lantu_finance_budget_2026",
+      "lantu_strategy_2026"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.116,
+    "number_recall": 0.5
+  }
+}

@@ -1,0 +1,332 @@
+{
+  "qid": "G0007",
+  "question": "v3.3 相对 v2.4 在安全功能上有何变化？",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>v3.3 v2.4 安全功能 版本变化</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list><parameter=keyword>版本</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 90,
+        "prompt_tokens": 360,
+        "total_tokens": 450,
+        "completion_tokens_details": {
+          "reasoning_tokens": 34
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.812
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search>{\"query\":\"v3.3 v2.4 安全功能 版本对比\", \"top_k\":10}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 60,
+        "prompt_tokens": 453,
+        "total_tokens": 513,
+        "completion_tokens_details": {
+          "reasoning_tokens": 22
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.313
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\": \"search\", \"args\": {\"query\": \"LongLLMLingua sparse attention 设计动机 原理\", \"top_k\": 8}}",
+      "usage": {
+        "completion_tokens": 64,
+        "prompt_tokens": 528,
+        "total_tokens": 592,
+        "completion_tokens_details": {
+          "reasoning_tokens": 25
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.406
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\": \"read\", \"args\": {\"doc_id\": \"lantu_tech_security\", \"offset\": 0, \"limit\": 4000}}",
+      "usage": {
+        "completion_tokens": 86,
+        "prompt_tokens": 2452,
+        "total_tokens": 2538,
+        "completion_tokens_details": {
+          "reasoning_tokens": 47
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 2.625
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\": \"search\", \"args\": {\"query\": \"LLMLingua 压缩 长上下文 注意力\", \"top_k\": 5}}",
+      "usage": {
+        "completion_tokens": 105,
+        "prompt_tokens": 2837,
+        "total_tokens": 2942,
+        "completion_tokens_details": {
+          "reasoning_tokens": 65
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2432
+        }
+      },
+      "seconds": 2.984
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\": \"list\", \"args\": {\"keyword\": \"security\"}}",
+      "usage": {
+        "completion_tokens": 244,
+        "prompt_tokens": 4096,
+        "total_tokens": 4340,
+        "completion_tokens_details": {
+          "reasoning_tokens": 225
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2816
+        }
+      },
+      "seconds": 8.11
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\": \"not_in_corpus\", \"answer\": \"检索不到相关内容。当前资料库为澜图智能（机器人/AMR 制造）的企业文档，其中与“安全功能”相关的唯一文档是《澜图智能产品网络安全设计规范》（doc_id: lantu_tech_security），当前版本为 v2.5（生效日期 2025-10-01），文档中并不包含 v2.4 或 v3.3 的版本记录，也无版本变更说明；库中也不存在与 LongLLMLingua、LLM 上下文压缩或注意力机制相关的技术文档。因此无法回答“v3.3 相对 v2.4 在安全功能上有何变化”。若您指的是某款具体产品/软件（如某控制器固件、云平台或某 LLM 框架）的版本，请提供产品名称或文档名称以便进一步检索。\", \"citations\": [], \"evidence\": []}",
+      "usage": {
+        "completion_tokens": 261,
+        "prompt_tokens": 4168,
+        "total_tokens": 4429,
+        "completion_tokens_details": {
+          "reasoning_tokens": 51
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 4032
+        }
+      },
+      "seconds": 8.078
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "LongLLMLingua sparse attention 设计动机 原理",
+        "top_k": 8
+      },
+      "result_sha": "1be7cbdd6c4bca259be0eeaf420d5356007e1b99e5fab2b75bcd802a9945a941",
+      "result_chars": 3081,
+      "hits": 8
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_security",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "d6427637a811f481d6182a76655cfd5142cfbbb78262bb26578834503c0f0fdb",
+      "result_chars": 543,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "LLMLingua 压缩 长上下文 注意力",
+        "top_k": 5
+      },
+      "result_sha": "ea336108b3fbea541e80b630a5ea6aa625df7e2df4d0ad831673ae897650e226",
+      "result_chars": 1973,
+      "hits": 5
+    },
+    {
+      "name": "list",
+      "args": {
+        "keyword": "security"
+      },
+      "result_sha": "6481aeade1081788e8af57a9f8479489729a4fcdf7f9d1788ec525fa76838a64",
+      "result_chars": 74,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "检索不到相关内容。当前资料库为澜图智能（机器人/AMR 制造）的企业文档，其中与“安全功能”相关的唯一文档是《澜图智能产品网络安全设计规范》（doc_id: lantu_tech_security），当前版本为 v2.5（生效日期 2025-10-01），文档中并不包含 v2.4 或 v3.3 的版本记录，也无版本变更说明；库中也不存在与 LongLLMLingua、LLM 上下文压缩或注意力机制相关的技术文档。因此无法回答“v3.3 相对 v2.4 在安全功能上有何变化”。若您指的是某款具体产品/软件（如某控制器固件、云平台或某 LLM 框架）的版本，请提供产品名称或文档名称以便进一步检索。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 15804,
+  "started_at": "2026-11-01T02:37:56",
+  "elapsed_seconds": 30.33,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "LongLLMLingua sparse attention 设计动机 原理",
+        "top_k": 8
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_product_amr",
+            "title": "# LT-AMR 自主移动机器人产品手册",
+            "chunk": 0,
+            "score": 4.333,
+            "snippet": "# LT-AMR 自主移动机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-05-10 09:00\n更新时间：2025-08-20 15:00\n版本号：v3.4\n文档类型：product\n文档族：product_amr\n生效日期：2025-08-20\n\n## 一、产品系列\n\nLT-AMR-500 负载 500 kg、速度 1.8 m/s、续航 8 小时；LT-AMR-1000 负载 1,000 kg、速度 1.5 m/s、续航 8 小时；LT-AMR-2000 负载 2,000 kg、速度 1.2"
+          },
+          {
+            "doc_id": "lantu_tech_security",
+            "title": "# 澜图智能产品网络安全设计规范",
+            "chunk": 0,
+            "score": 4.218,
+            "snippet": "# 澜图智能产品网络安全设计规范\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-11-01 09:00\n更新时间：2025-10-01 09:00\n版本号：v2.5\n文档类型：tech\n文档族：product_security\n生效日期：2025-10-01\n\n## 一、安全设计原则\n\n遵循最小权限、默认拒绝、纵深防御与安全默认配置原则，产品通过等保三级与 IEC 62443 评估。\n\n## 二、身份与访问\n\n支持多因素认证、RBAC 权限模型与操作审计；默认密码首次登录强制修改，会话超时 30 分钟。\n"
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 1,
+            "score": 4.078,
+            "snippet": "| 产品线 | 代表型号 | 负载 | 典型行业 |\n| --- | --- | --- | --- |\n| 六轴机器人 | LT-R6/R12/R20/R50/R210 | 6-210 kg | 汽车、锂电、金属加工 |\n| SCARA | LT-S4/S10 | 4-10 kg | 3C、光伏、食品 |\n| 移动机器人 | LT-AMR-500/1000/2000 | 500-2,000 kg | 物流、半导体 |\n| 机器视觉 | LT-V3D | — | 装配、检测 |\n| 控制器 | LT-C800 | "
+          },
+          {
+            "doc_id": "lantu_tech_cloud_platform",
+            "title": "# 澜图智能云平台架构设计",
+            "chunk": 0,
+            "score": 3.834,
+            "snippet": "# 澜图智能云平台架构设计\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-09-01 09:00\n更新时间：2025-09-18 16:00\n版本号：v3.0\n文档类型：tech\n文档族：cloud_platform\n生效日期：2025-09-18\n\n## 一、总体架构\n\n云平台采用微服务架构，基于 Kubernetes 部署，分为设备接入、数据服务、应用服务与开放 API 四层。\n\n## 二、接入能力\n\n单集群支持 5,000 台设备接入，MQTT 消息吞吐 20 万条/秒，设备离线缓存 7 天。\n\n#"
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 0,
+            "score": 3.09,
+            "snippet": "# 澜图智能产品与解决方案总览\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-02-20 09:00\n更新时间：2025-12-22 10:00\n版本号：v6.0\n文档类型：product\n文档族：product_overview\n生效日期：2025-12-22\n\n## 一、产品矩阵\n\n公司产品覆盖六轴工业机器人、SCARA 机器人、自主移动机器人（AMR）、机器视觉、运动控制器、数字孪生平台与行业工作站，形成“本体+控制器+视觉+软件+工艺”的一体化方案。\n\n## 二、行业方案\n\n重点行业包括汽车及零部件、"
+          },
+          {
+            "doc_id": "lantu_support_warranty",
+            "title": "# 澜图智能产品保修政策",
+            "chunk": 0,
+            "score": 2.801,
+            "snippet": "# 澜图智能产品保修政策\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-01-01 09:00\n更新时间：2025-04-01 09:00\n版本号：v3.0\n文档类型：support\n文档族：warranty_policy\n生效日期：2025-04-01\n\n## 一、保修期限\n\n机器人本体保修 24 个月或 6,000 小时，以先到者为准；控制器保修 18 个月；易损件保修 6 个月。\n\n## 二、保修范围\n\n因产品设计、制造或材料缺陷导致的故障免费维修或更换；软件提供 12 个月免费升级。\n\n## 三、"
+          },
+          {
+            "doc_id": "lantu_tech_patents",
+            "title": "# 澜图智能知识产权与专利布局",
+            "chunk": 0,
+            "score": 2.79,
+            "snippet": "# 澜图智能知识产权与专利布局\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-04-26 09:00\n更新时间：2025-12-18 15:00\n版本号：v2.8\n文档类型：tech\n文档族：patent_portfolio\n生效日期：2025-12-18\n\n## 一、专利总量\n\n累计有效专利 1,286 件，其中发明专利 412 件、实用新型 726 件、外观设计 148 件；软件著作权 168 项。\n\n## 二、重点布局\n\n运动控制、伺服驱动、机器视觉、力控与具身智能五大方向；PCT 国际专利申请 3"
+          },
+          {
+            "doc_id": "lantu_tech_rd_process",
+            "title": "# 澜图智能 IPD 研发流程说明",
+            "chunk": 0,
+            "score": 2.779,
+            "snippet": "# 澜图智能 IPD 研发流程说明\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-03-01 09:00\n更新时间：2025-05-15 10:00\n版本号：v3.0\n文档类型：tech\n文档族：ipd_process\n生效日期：2025-05-15\n\n## 一、流程框架\n\n执行 IPD 集成产品开发流程，分为概念、计划、开发、验证、发布、生命周期管理六个阶段。\n\n## 二、决策评审\n\n每个阶段设置决策评审点（DCP），由产品决策委员会评审市场、技术、成本与风险，未通过不得进入下一阶段。\n\n## 三、跨部"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_security",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_tech_security",
+        "title": "# 澜图智能产品网络安全设计规范",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 375,
+        "text": "# 澜图智能产品网络安全设计规范\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-11-01 09:00\n更新时间：2025-10-01 09:00\n版本号：v2.5\n文档类型：tech\n文档族：product_security\n生效日期：2025-10-01\n\n## 一、安全设计原则\n\n遵循最小权限、默认拒绝、纵深防御与安全默认配置原则，产品通过等保三级与 IEC 62443 评估。\n\n## 二、身份与访问\n\n支持多因素认证、RBAC 权限模型与操作审计；默认密码首次登录强制修改，会话超时 30 分钟。\n\n## 三、通信与数据\n\n设备与云平台采用 TLS 1.3 加密，固件签名校验，敏感数据 AES-256 加密存储。\n\n## 四、漏洞管理\n\n建立漏洞响应流程，高危漏洞 7 天内修复，中危 30 天内修复；每年开展两次渗透测试。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "LLMLingua 压缩 长上下文 注意力",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_case_10_hengrui",
+            "title": "# 客户案例：恒锐精密机床上下料项目",
+            "chunk": 0,
+            "score": 3.687,
+            "snippet": "# 客户案例：恒锐精密机床上下料项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2023-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_hengrui\n生效日期：2023-12-20\n\n## 一、客户背景\n\n恒锐精密位于宁波，主营金属加工业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2023 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖"
+          },
+          {
+            "doc_id": "lantu_solution_semiconductor",
+            "title": "# 半导体晶圆搬运洁净解决方案",
+            "chunk": 0,
+            "score": 3.339,
+            "snippet": "# 半导体晶圆搬运洁净解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2025-02-14 09:00\n更新时间：2025-11-11 09:30\n版本号：v2.0\n文档类型：product\n文档族：solution_semiconductor\n生效日期：2025-11-11\n\n## 一、方案概述\n\n面向 8/12 英寸晶圆厂，提供晶圆盒搬运、机台上下料与跨区物流方案，采用 LT-AMR-500 洁净版与 LT-R12 洁净机器人。\n\n## 二、洁净指标\n\n洁净等级 Class 10，颗粒物控制 0.1 μm，"
+          },
+          {
+            "doc_id": "lantu_policy_attendance_2024",
+            "title": "# 澜图智能考勤管理制度（2024版）",
+            "chunk": 0,
+            "score": 3.21,
+            "snippet": "# 澜图智能考勤管理制度（2024版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：attendance\n生效日期：2024-01-01\n\n## 一、打卡规则\n\n员工每日上下班各打卡一次，漏打卡须在 3 个工作日内提交补卡申请，每月补卡不超过 3 次。\n\n## 二、弹性工作\n\n上班弹性 30 分钟，9:00-9:30 到岗均视为正常；每月可申请远程办公 2 天，须提前 1 个工作日审批"
+          },
+          {
+            "doc_id": "lantu_sales_customer_list",
+            "title": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态",
+            "chunk": 0,
+            "score": 3.204,
+            "snippet": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态\n恒芯动力电池,动力电池,常州,电芯叠片与物流,\"21,600\",2025,已验收\n澜岳汽车零部件,汽车零部件,上海,白车身焊装,\"14,800\",2024,已验收\n曜阳光能,光伏,合肥,电池片串焊,\"9,800\",2025,已验收\n星禾电子,3C 电子,昆山,精密组装,\"12,500\",2024,已验收\n海翎家电,家电,顺德,喷涂与打磨,\"6,300\",2025,已验收\n晶拓微电子,半导体,无锡,晶圆搬运,\"7,400\",2025,已验收\n麦丰食品,食品,漯河"
+          },
+          {
+            "doc_id": "lantu_policy_vehicle",
+            "title": "# 澜图智能公务用车管理办法",
+            "chunk": 0,
+            "score": 3.131,
+            "snippet": "# 澜图智能公务用车管理办法\n\n所属部门：行政部\n作者：陈依然\n创建时间：2024-03-01 09:00\n更新时间：2025-04-02 09:00\n版本号：v2.4\n文档类型：policy\n文档族：vehicle_management\n生效日期：2025-04-02\n\n## 一、用车范围\n\n公务用车用于客户接待、机场接送、跨园区办公与紧急事务；上下班通勤原则上不使用公务车。\n\n## 二、申请流程\n\n用车须提前 1 个工作日在 OA 申请，注明事由、路线、人数与时间；临时用车须部门负责人电话批准后补单。\n\n## "
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "list",
+      "args": {
+        "keyword": "security"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_tech_security",
+            "title": "# 澜图智能产品网络安全设计规范"
+          }
+        ]
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.029,
+    "number_recall": 0.0
+  }
+}

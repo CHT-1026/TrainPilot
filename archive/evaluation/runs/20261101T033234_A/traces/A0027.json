@@ -1,0 +1,142 @@
+{
+  "qid": "A0027",
+  "question": "仅据员工汇报关系文档，能否确定邵岚的上级的上级？请给出已知直接边及证据缺口。",
+  "question_type": "人物关系推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>邵岚 汇报关系 上级</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 53,
+        "prompt_tokens": 368,
+        "total_tokens": 421,
+        "completion_tokens_details": {
+          "reasoning_tokens": 19
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.797
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>邵岚 汇报关系 上级</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 58,
+        "prompt_tokens": 439,
+        "total_tokens": 497,
+        "completion_tokens_details": {
+          "reasoning_tokens": 24
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.75
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=args>{\"query\": \"邵岚 汇报关系 上级\", \"top_k\": 10}</parameter><parameter=name>search</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 67,
+        "prompt_tokens": 510,
+        "total_tokens": 577,
+        "completion_tokens_details": {
+          "reasoning_tokens": 24
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.234
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>邵岚 汇报关系 上级</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 39,
+        "prompt_tokens": 590,
+        "total_tokens": 629,
+        "completion_tokens_details": {
+          "reasoning_tokens": 5
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 28.125
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>邵岚 汇报关系 上级</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 41,
+        "prompt_tokens": 661,
+        "total_tokens": 702,
+        "completion_tokens_details": {
+          "reasoning_tokens": 7
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 2.141
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>邵岚 汇报关系 上级</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 44,
+        "prompt_tokens": 732,
+        "total_tokens": 776,
+        "completion_tokens_details": {
+          "reasoning_tokens": 10
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 1.547
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_claims\",\"answer\":\"无法确定。在本次会话中未能成功检索到'员工汇报关系'相关文档，因此既无法确认邵岚的直接上级是谁，也无法确认其上级的上级。已知直接边：无（未获得任何取证）。证据缺口：1）缺少邵岚→其直接上级的汇报边；2）缺少该直接上级→更高一级上级的汇报边；3）缺少文档中对'汇报关系'字段口径的定义（实线/虚线、是否含矩阵汇报）。如需回答，请提供员工汇报关系文档或允许重新检索。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 175,
+        "prompt_tokens": 800,
+        "total_tokens": 975,
+        "completion_tokens_details": {
+          "reasoning_tokens": 32
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 6.078
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_claims",
+    "answer": "无法确定。在本次会话中未能成功检索到'员工汇报关系'相关文档，因此既无法确认邵岚的直接上级是谁，也无法确认其上级的上级。已知直接边：无（未获得任何取证）。证据缺口：1）缺少邵岚→其直接上级的汇报边；2）缺少该直接上级→更高一级上级的汇报边；3）缺少文档中对'汇报关系'字段口径的定义（实线/虚线、是否含矩阵汇报）。如需回答，请提供员工汇报关系文档或允许重新检索。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4577,
+  "started_at": "2026-11-01T03:34:15",
+  "elapsed_seconds": 46.67,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.154,
+    "number_recall": 0.0
+  }
+}

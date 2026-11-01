@@ -1,0 +1,78 @@
+{
+  "qid": "B0093",
+  "question": "一名正式员工从提交离职申请到社保公积金转移完成，各环节的时限是如何规定的？",
+  "question_type": "时间与因果推断",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=list><parameter=keyword>离职</parameter></function></tool_call><tool_call><function=search><parameter=query>离职申请 审批 时限 流程</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 79,
+        "prompt_tokens": 362,
+        "total_tokens": 441,
+        "completion_tokens_details": {
+          "reasoning_tokens": 28
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.422
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>离职 时限 社保 公积金 转移</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 81,
+        "prompt_tokens": 450,
+        "total_tokens": 531,
+        "completion_tokens_details": {
+          "reasoning_tokens": 42
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.453
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"根据现有资料，无法给出正式员工从提交离职申请到社保公积金转移完成各环节的时限规定。检索到的《员工离职管理制度（范本）》仅涉及离职手续、交接、工资结算、经济补偿及争议解决等内容，未包含社保和公积金转移的具体办理时限；《员工离职申请表模板》仅规定了入职日期、合同期限、离职日期、工作交接等基本信息栏，未规定离职申请提交至转移完成各环节的时间要求。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 135,
+        "prompt_tokens": 526,
+        "total_tokens": 661,
+        "completion_tokens_details": {
+          "reasoning_tokens": 12
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 5.109
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "根据现有资料，无法给出正式员工从提交离职申请到社保公积金转移完成各环节的时限规定。检索到的《员工离职管理制度（范本）》仅涉及离职手续、交接、工资结算、经济补偿及争议解决等内容，未包含社保和公积金转移的具体办理时限；《员工离职申请表模板》仅规定了入职日期、合同期限、离职日期、工作交接等基本信息栏，未规定离职申请提交至转移完成各环节的时间要求。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 1633,
+  "started_at": "2026-11-01T04:08:54",
+  "elapsed_seconds": 10.98,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.027,
+    "number_recall": 0.0
+  }
+}

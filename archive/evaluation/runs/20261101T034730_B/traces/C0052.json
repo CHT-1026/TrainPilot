@@ -1,0 +1,474 @@
+{
+  "qid": "C0052",
+  "question": "数字孪生的仿真精度 99.5%、视觉识别准确率 99.8%、光伏串焊良率 99.6%、焊接焊点合格率 99.7%，这些 99.x% 指标之间可以互相比较吗？",
+  "question_type": "矛盾与例外识别",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"数字孪生 仿真精度 视觉识别 光伏串焊\", \"top_k\":10}}",
+      "usage": {
+        "prompt_tokens": 408,
+        "total_tokens": 1065,
+        "completion_tokens": 657,
+        "completion_tokens_details": {
+          "reasoning_tokens": 619,
+          "text_tokens": 657
+        }
+      },
+      "seconds": 7.844
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_product_digital_twin\", \"offset\":0, \"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 2722,
+        "total_tokens": 3511,
+        "completion_tokens": 789,
+        "completion_tokens_details": {
+          "reasoning_tokens": 751,
+          "text_tokens": 789
+        }
+      },
+      "seconds": 6.734
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_solution_photovoltaic\", \"offset\":0, \"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 3130,
+        "total_tokens": 3469,
+        "completion_tokens": 339,
+        "completion_tokens_details": {
+          "reasoning_tokens": 301,
+          "text_tokens": 339
+        }
+      },
+      "seconds": 3.063
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"视觉识别准确率 99.8%\", \"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 3561,
+        "total_tokens": 3996,
+        "completion_tokens": 435,
+        "completion_tokens_details": {
+          "reasoning_tokens": 404,
+          "text_tokens": 435
+        }
+      },
+      "seconds": 4.187
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"99.8% 99.7%\", \"top_k\":10}}",
+      "usage": {
+        "prompt_tokens": 4745,
+        "total_tokens": 5354,
+        "completion_tokens": 609,
+        "completion_tokens_details": {
+          "reasoning_tokens": 575,
+          "text_tokens": 609
+        }
+      },
+      "seconds": 6.234
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_product_vision\", \"offset\":0, \"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 5707,
+        "total_tokens": 6240,
+        "completion_tokens": 533,
+        "completion_tokens_details": {
+          "reasoning_tokens": 497,
+          "text_tokens": 533
+        }
+      },
+      "seconds": 5.391
+    },
+    {
+      "round": 7,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_product_welding\", \"offset\":0, \"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 6098,
+        "total_tokens": 6965,
+        "completion_tokens": 867,
+        "completion_tokens_details": {
+          "reasoning_tokens": 830,
+          "text_tokens": 867
+        }
+      },
+      "seconds": 7.766
+    },
+    {
+      "round": 8,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"这四项指标**不可以**直接互相比较。根据企业资料，它们分别属于不同产品线和技术维度的独立指标，定义和统计口径完全不同：\\n\\n1.  **数字孪生仿真精度 99.5%**：出自《LantuTwin 数字孪生平台介绍》，衡量的是虚拟仿真模型与物理实体行为的一致性，属于**软件仿真能力**。\\n2.  **视觉识别准确率 99.8%**：出自《LT-V3D 工业视觉系统技术说明》，衡量的是 AI 算法对图像中目标或缺陷分类的正确概率，属于**视觉感知算法**。\\n3.  **光伏串焊良率 99.6%**：出自《光伏电池片串焊整线解决方案》，衡量的是整条生产线合格产品的产出比例，属于**特定工艺的整体产出质量**。\\n4.  **焊接焊点合格率 99.7%**：出自《LT-Weld-2000 机器人焊接工作站方案》，衡量的是单个焊接工序的合格情况，属于**具体制造工序的质量**。\\n\\n简而言之，前两项是技术与算法层面的“能力值”，后两项是生产制造层面的“结果值”，彼此之间没有直接的对比关系。\",\"citations\":[\"lantu_product_digital_twin\",\"lantu_product_vision\",\"lantu_solution_photovoltaic\",\"lantu_product_welding\"],\"evidence\":[\"lantu_product_digital_twin#0\",\"lantu_product_vision#0\",\"lantu_solution_photovoltaic#0\",\"lantu_product_welding#0\"]}",
+      "usage": {
+        "prompt_tokens": 6509,
+        "total_tokens": 7915,
+        "completion_tokens": 1406,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1058,
+          "text_tokens": 1406
+        }
+      },
+      "seconds": 12.937
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "数字孪生 仿真精度 视觉识别 光伏串焊",
+        "top_k": 10
+      },
+      "result_sha": "066343fde57be026ceb108bc4584e84ff080fd3851cb0c36754f69342bc470d5",
+      "result_chars": 3889,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_digital_twin",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "f782850027392ad8403562cdf5505d94ed1aab5c5dd19d879f8e55be44d8397c",
+      "result_chars": 611,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_solution_photovoltaic",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "8772706ec6205e5148400f958ae3ae80d7202cb29424ef92fba54822f824848c",
+      "result_chars": 597,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "视觉识别准确率 99.8%",
+        "top_k": 5
+      },
+      "result_sha": "4bbcdd0177616bd16c40fe0fffa444f2b26d4dba5d081f4a52dfb4a37b0db4f8",
+      "result_chars": 1980,
+      "hits": 5
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "99.8% 99.7%",
+        "top_k": 10
+      },
+      "result_sha": "cdaf3ca75eaca21ed0badfa3b2cd848fcda862b40de11bac8e7fd4eea6da6132",
+      "result_chars": 1577,
+      "hits": 4
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_vision",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "0e7f943fb829f2ca9e8b7788d195ac313fa7c5ee1703c2bc2a83470804b33fef",
+      "result_chars": 587,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_welding",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "231f7b0ae3dd9a93c64be63f6b6eec14cf3814e958d95c5cdffb7ea65e450af6",
+      "result_chars": 592,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "这四项指标**不可以**直接互相比较。根据企业资料，它们分别属于不同产品线和技术维度的独立指标，定义和统计口径完全不同：\n\n1.  **数字孪生仿真精度 99.5%**：出自《LantuTwin 数字孪生平台介绍》，衡量的是虚拟仿真模型与物理实体行为的一致性，属于**软件仿真能力**。\n2.  **视觉识别准确率 99.8%**：出自《LT-V3D 工业视觉系统技术说明》，衡量的是 AI 算法对图像中目标或缺陷分类的正确概率，属于**视觉感知算法**。\n3.  **光伏串焊良率 99.6%**：出自《光伏电池片串焊整线解决方案》，衡量的是整条生产线合格产品的产出比例，属于**特定工艺的整体产出质量**。\n4.  **焊接焊点合格率 99.7%**：出自《LT-Weld-2000 机器人焊接工作站方案》，衡量的是单个焊接工序的合格情况，属于**具体制造工序的质量**。\n\n简而言之，前两项是技术与算法层面的“能力值”，后两项是生产制造层面的“结果值”，彼此之间没有直接的对比关系。",
+    "citations": [
+      "lantu_product_digital_twin",
+      "lantu_product_vision",
+      "lantu_solution_photovoltaic",
+      "lantu_product_welding"
+    ],
+    "evidence": [
+      "lantu_product_digital_twin#0",
+      "lantu_product_vision#0",
+      "lantu_solution_photovoltaic#0",
+      "lantu_product_welding#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 38515,
+  "started_at": "2026-11-01T04:18:21",
+  "elapsed_seconds": 54.16,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "数字孪生 仿真精度 视觉识别 光伏串焊",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_product_s_series",
+            "title": "# LT-S 系列 SCARA 机器人产品说明",
+            "chunk": 0,
+            "score": 19.771,
+            "snippet": "# LT-S 系列 SCARA 机器人产品说明\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-03-01 09:00\n更新时间：2025-09-12 11:00\n版本号：v3.2\n文档类型：product\n文档族：product_s_series\n生效日期：2025-09-12\n\n## 一、产品定位\n\nLT-S 系列 SCARA 机器人面向 3C 组装、光伏串焊、食品包装等高速取放场景，标准循环时间 0.38 秒。\n\n## 二、型号参数\n\nLT-S4 负载 4 kg、臂展 600 mm、重复精度 ±0.02 "
+          },
+          {
+            "doc_id": "lantu_product_digital_twin",
+            "title": "# LantuTwin 数字孪生平台介绍",
+            "chunk": 0,
+            "score": 19.631,
+            "snippet": "# LantuTwin 数字孪生平台介绍\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-09-01 09:00\n更新时间：2025-06-30 16:00\n版本号：v3.0\n文档类型：product\n文档族：product_digital_twin\n生效日期：2025-06-30\n\n## 一、平台定位\n\nLantuTwin 3.0 是面向智能工厂规划、调试与运维的数字孪生平台，支持机器人、产线与物流系统的虚实同步。\n\n## 二、核心能力\n\n单项目支持 500 台设备接入，数据刷新延迟低于 80 ms，仿真"
+          },
+          {
+            "doc_id": "lantu_solution_photovoltaic",
+            "title": "# 光伏电池片串焊整线解决方案",
+            "chunk": 0,
+            "score": 15.49,
+            "snippet": "# 光伏电池片串焊整线解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-09-20 09:00\n更新时间：2025-10-16 14:00\n版本号：v3.1\n文档类型：product\n文档族：solution_photovoltaic\n生效日期：2025-10-16\n\n## 一、方案概述\n\n面向 TOPCon/HJT 电池片串焊，提供上料、串焊、EL 检测与下料整线方案，核心设备为 LT-S10 SCARA 与 LT-V3D 视觉。\n\n## 二、产线指标\n\n串焊速度 4,200 片/小时，良率 99.6"
+          },
+          {
+            "doc_id": "lantu_case_03_yaoyang",
+            "title": "# 客户案例：曜阳光能电池片串焊项目",
+            "chunk": 0,
+            "score": 15.201,
+            "snippet": "# 客户案例：曜阳光能电池片串焊项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_yaoyang\n生效日期：2025-12-20\n\n## 一、客户背景\n\n曜阳光能位于合肥，主营光伏业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖16"
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 1,
+            "score": 12.783,
+            "snippet": "| 产品线 | 代表型号 | 负载 | 典型行业 |\n| --- | --- | --- | --- |\n| 六轴机器人 | LT-R6/R12/R20/R50/R210 | 6-210 kg | 汽车、锂电、金属加工 |\n| SCARA | LT-S4/S10 | 4-10 kg | 3C、光伏、食品 |\n| 移动机器人 | LT-AMR-500/1000/2000 | 500-2,000 kg | 物流、半导体 |\n| 机器视觉 | LT-V3D | — | 装配、检测 |\n| 控制器 | LT-C800 | "
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 0,
+            "score": 10.174,
+            "snippet": "# 澜图智能产品与解决方案总览\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-02-20 09:00\n更新时间：2025-12-22 10:00\n版本号：v6.0\n文档类型：product\n文档族：product_overview\n生效日期：2025-12-22\n\n## 一、产品矩阵\n\n公司产品覆盖六轴工业机器人、SCARA 机器人、自主移动机器人（AMR）、机器视觉、运动控制器、数字孪生平台与行业工作站，形成“本体+控制器+视觉+软件+工艺”的一体化方案。\n\n## 二、行业方案\n\n重点行业包括汽车及零部件、"
+          },
+          {
+            "doc_id": "lantu_company_milestones_2025",
+            "title": "# 澜图智能 2025 年度大事记",
+            "chunk": 0,
+            "score": 8.047,
+            "snippet": "# 澜图智能 2025 年度大事记\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-12-31 18:00\n更新时间：2026-01-06 09:00\n版本号：v1.0\n文档类型：company\n文档族：annual_milestones_2025\n生效日期：2026-01-06\n\n## 一、经营里程碑\n\n2025 年营业收入 42.63 亿元，同比增长 19.1%；新签订单 48.90 亿元；机器人出货 21,400 台；第 10 万台机器人于 9 月 12 日下线。\n\n## 二、组织里程碑\n\n3 月"
+          },
+          {
+            "doc_id": "lantu_product_vision",
+            "title": "# LT-V3D 工业视觉系统技术说明",
+            "chunk": 0,
+            "score": 7.922,
+            "snippet": "# LT-V3D 工业视觉系统技术说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-06-18 09:00\n更新时间：2025-07-15 14:00\n版本号：v2.6\n文档类型：product\n文档族：product_vision\n生效日期：2025-07-15\n\n## 一、系统组成\n\nLT-V3D 由结构光相机、视觉控制器与 LantuVision 软件组成，支持 3D 点云、2D 图像与深度学习缺陷检测。\n\n## 二、核心指标\n\n测量精度 0.05 mm，单帧点云 120 万点，帧率 30 fps"
+          },
+          {
+            "doc_id": "lantu_company_profile",
+            "title": "澜图智能装备公司简介",
+            "chunk": 0,
+            "score": 7.868,
+            "snippet": "澜图智能装备公司简介\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2023-03-01 09:00\n更新时间：2026-01-08 10:30\n版本号：v5.2\n文档类型：company\n文档族：company_profile\n生效日期：2026-01-08\n一、公司概况\n澜图智能装备股份有限公司成立于2011-06-18，总部位于江苏省苏州市工业园区星澜路88号，注册资本\n6.8 亿元，2023 年在上海证券交易所科创板上市（股票代码 688719）。公司专注工业机器人、智能产线\n与工业软件，为汽车、锂电、光伏"
+          },
+          {
+            "doc_id": "lantu_case_07_maifeng",
+            "title": "# 客户案例：麦丰食品后端包装项目",
+            "chunk": 0,
+            "score": 7.867,
+            "snippet": "# 客户案例：麦丰食品后端包装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_maifeng\n生效日期：2024-12-20\n\n## 一、客户背景\n\n麦丰食品位于漯河，主营食品业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖6 条"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_digital_twin",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_product_digital_twin",
+        "title": "# LantuTwin 数字孪生平台介绍",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 432,
+        "text": "# LantuTwin 数字孪生平台介绍\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-09-01 09:00\n更新时间：2025-06-30 16:00\n版本号：v3.0\n文档类型：product\n文档族：product_digital_twin\n生效日期：2025-06-30\n\n## 一、平台定位\n\nLantuTwin 3.0 是面向智能工厂规划、调试与运维的数字孪生平台，支持机器人、产线与物流系统的虚实同步。\n\n## 二、核心能力\n\n单项目支持 500 台设备接入，数据刷新延迟低于 80 ms，仿真精度 99.5%，支持 3D 可视化、碰撞检测与节拍仿真。\n\n## 三、部署方式\n\n支持私有化与云端部署，提供 Kubernetes 编排方案，单集群可支撑 5,000 台设备；与 MES、WMS、ERP 通过标准接口集成。\n\n## 四、客户价值\n\n某汽车零部件客户通过虚拟调试将现场调试周期由 21 天缩短至 9 天，停线风险下降 46%。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_solution_photovoltaic",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_solution_photovoltaic",
+        "title": "# 光伏电池片串焊整线解决方案",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 422,
+        "text": "# 光伏电池片串焊整线解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-09-20 09:00\n更新时间：2025-10-16 14:00\n版本号：v3.1\n文档类型：product\n文档族：solution_photovoltaic\n生效日期：2025-10-16\n\n## 一、方案概述\n\n面向 TOPCon/HJT 电池片串焊，提供上料、串焊、EL 检测与下料整线方案，核心设备为 LT-S10 SCARA 与 LT-V3D 视觉。\n\n## 二、产线指标\n\n串焊速度 4,200 片/小时，良率 99.6%，碎片率 0.15%，兼容 182/210 尺寸硅片。\n\n## 三、智能检测\n\nEL 检测可识别隐裂、断栅与虚焊等 9 类缺陷，误判率低于 0.5%，检测数据接入 MES。\n\n## 四、标杆案例\n\n曜阳光能 16 条串焊线采用 220 台 LT-S10，组件产能由 4.2GW 提升至 6.5GW，串焊良率 99.6%。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "视觉识别准确率 99.8%",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_product_vision",
+            "title": "# LT-V3D 工业视觉系统技术说明",
+            "chunk": 0,
+            "score": 24.268,
+            "snippet": "# LT-V3D 工业视觉系统技术说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-06-18 09:00\n更新时间：2025-07-15 14:00\n版本号：v2.6\n文档类型：product\n文档族：product_vision\n生效日期：2025-07-15\n\n## 一、系统组成\n\nLT-V3D 由结构光相机、视觉控制器与 LantuVision 软件组成，支持 3D 点云、2D 图像与深度学习缺陷检测。\n\n## 二、核心指标\n\n测量精度 0.05 mm，单帧点云 120 万点，帧率 30 fps"
+          },
+          {
+            "doc_id": "lantu_product_s_series",
+            "title": "# LT-S 系列 SCARA 机器人产品说明",
+            "chunk": 0,
+            "score": 9.886,
+            "snippet": "# LT-S 系列 SCARA 机器人产品说明\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-03-01 09:00\n更新时间：2025-09-12 11:00\n版本号：v3.2\n文档类型：product\n文档族：product_s_series\n生效日期：2025-09-12\n\n## 一、产品定位\n\nLT-S 系列 SCARA 机器人面向 3C 组装、光伏串焊、食品包装等高速取放场景，标准循环时间 0.38 秒。\n\n## 二、型号参数\n\nLT-S4 负载 4 kg、臂展 600 mm、重复精度 ±0.02 "
+          },
+          {
+            "doc_id": "lantu_solution_photovoltaic",
+            "title": "# 光伏电池片串焊整线解决方案",
+            "chunk": 0,
+            "score": 5.228,
+            "snippet": "# 光伏电池片串焊整线解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-09-20 09:00\n更新时间：2025-10-16 14:00\n版本号：v3.1\n文档类型：product\n文档族：solution_photovoltaic\n生效日期：2025-10-16\n\n## 一、方案概述\n\n面向 TOPCon/HJT 电池片串焊，提供上料、串焊、EL 检测与下料整线方案，核心设备为 LT-S10 SCARA 与 LT-V3D 视觉。\n\n## 二、产线指标\n\n串焊速度 4,200 片/小时，良率 99.6"
+          },
+          {
+            "doc_id": "lantu_strategy_supply_chain_resilience",
+            "title": "# 澜图智能供应链韧性建设方案",
+            "chunk": 0,
+            "score": 5.022,
+            "snippet": "# 澜图智能供应链韧性建设方案\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-02-01 09:00\n更新时间：2025-09-30 16:00\n版本号：v1.5\n文档类型：strategy\n文档族：supply_chain_resilience\n生效日期：2025-09-30\n\n## 一、风险识别\n\n关键物料包括减速器、伺服电机、芯片与视觉相机，其中芯片与减速器存在单一来源风险。\n\n## 二、双源与备库\n\n减速器 2026 年实现 30% 第二来源；关键芯片备库 6 个月；通用物料安全库存 30 天。"
+          },
+          {
+            "doc_id": "lantu_product_assembly",
+            "title": "# LT-Assembly 柔性装配工作站方案",
+            "chunk": 0,
+            "score": 2.163,
+            "snippet": "# LT-Assembly 柔性装配工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-07-15 09:00\n更新时间：2025-09-05 11:00\n版本号：v2.5\n文档类型：product\n文档族：solution_assembly\n生效日期：2025-09-05\n\n## 一、方案组成\n\n由 LT-R12/LT-R20 机器人、力控末端、LT-V3D 视觉与快换工装组成，支持多品种混线装配。\n\n## 二、工艺指标\n\n装配节拍 3.2 秒/件，力控精度 ±2 N，视觉定位精度 ±0.05 mm，"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "99.8% 99.7%",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_product_welding",
+            "title": "# LT-Weld-2000 机器人焊接工作站方案",
+            "chunk": 0,
+            "score": 4.332,
+            "snippet": "# LT-Weld-2000 机器人焊接工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-04-10 09:00\n更新时间：2025-05-22 10:00\n版本号：v2.8\n文档类型：product\n文档族：solution_welding\n生效日期：2025-05-22\n\n## 一、方案组成\n\n以 LT-R50 机器人为核心，集成 2,000A 焊接电源、双轴变位机、焊缝激光跟踪与烟尘净化系统，形成标准焊接工作站。\n\n## 二、工艺指标\n\n焊接速度 1.8 m/min，焊缝跟踪精度 ±0.15 m"
+          },
+          {
+            "doc_id": "lantu_product_s_series",
+            "title": "# LT-S 系列 SCARA 机器人产品说明",
+            "chunk": 0,
+            "score": 4.323,
+            "snippet": "# LT-S 系列 SCARA 机器人产品说明\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-03-01 09:00\n更新时间：2025-09-12 11:00\n版本号：v3.2\n文档类型：product\n文档族：product_s_series\n生效日期：2025-09-12\n\n## 一、产品定位\n\nLT-S 系列 SCARA 机器人面向 3C 组装、光伏串焊、食品包装等高速取放场景，标准循环时间 0.38 秒。\n\n## 二、型号参数\n\nLT-S4 负载 4 kg、臂展 600 mm、重复精度 ±0.02 "
+          },
+          {
+            "doc_id": "lantu_product_vision",
+            "title": "# LT-V3D 工业视觉系统技术说明",
+            "chunk": 0,
+            "score": 4.238,
+            "snippet": "# LT-V3D 工业视觉系统技术说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-06-18 09:00\n更新时间：2025-07-15 14:00\n版本号：v2.6\n文档类型：product\n文档族：product_vision\n生效日期：2025-07-15\n\n## 一、系统组成\n\nLT-V3D 由结构光相机、视觉控制器与 LantuVision 软件组成，支持 3D 点云、2D 图像与深度学习缺陷检测。\n\n## 二、核心指标\n\n测量精度 0.05 mm，单帧点云 120 万点，帧率 30 fps"
+          },
+          {
+            "doc_id": "lantu_case_02_lanyue",
+            "title": "# 客户案例：澜岳汽车零部件白车身焊装项目",
+            "chunk": 0,
+            "score": 3.186,
+            "snippet": "# 客户案例：澜岳汽车零部件白车身焊装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_lanyue\n生效日期：2024-12-20\n\n## 一、客户背景\n\n澜岳汽车零部件位于上海，主营汽车零部件业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_vision",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_product_vision",
+        "title": "# LT-V3D 工业视觉系统技术说明",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 415,
+        "text": "# LT-V3D 工业视觉系统技术说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-06-18 09:00\n更新时间：2025-07-15 14:00\n版本号：v2.6\n文档类型：product\n文档族：product_vision\n生效日期：2025-07-15\n\n## 一、系统组成\n\nLT-V3D 由结构光相机、视觉控制器与 LantuVision 软件组成，支持 3D 点云、2D 图像与深度学习缺陷检测。\n\n## 二、核心指标\n\n测量精度 0.05 mm，单帧点云 120 万点，帧率 30 fps，识别准确率 99.8%，支持 12 种典型缺陷分类。\n\n## 三、软件能力\n\n提供可视化标定、手眼标定、模板匹配与缺陷标注工具，支持模型 OTA 更新，单台控制器可接入 8 路相机。\n\n## 四、应用场景\n\n广泛应用于装配定位、焊缝跟踪、表面缺陷检测与无序抓取，兼容 LT-R 与 LT-S 全系列机器人。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_welding",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_product_welding",
+        "title": "# LT-Weld-2000 机器人焊接工作站方案",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 413,
+        "text": "# LT-Weld-2000 机器人焊接工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-04-10 09:00\n更新时间：2025-05-22 10:00\n版本号：v2.8\n文档类型：product\n文档族：solution_welding\n生效日期：2025-05-22\n\n## 一、方案组成\n\n以 LT-R50 机器人为核心，集成 2,000A 焊接电源、双轴变位机、焊缝激光跟踪与烟尘净化系统，形成标准焊接工作站。\n\n## 二、工艺指标\n\n焊接速度 1.8 m/min，焊缝跟踪精度 ±0.15 mm，焊点合格率 99.7%，支持 MIG/MAG、TIG 与激光焊。\n\n## 三、交付周期\n\n标准站 8 周交付，整线 16-20 周；提供焊接工艺包与参数库，覆盖碳钢、不锈钢与铝合金。\n\n## 四、安全与合规\n\n配置安全光栅、双回路急停与弧光防护，符合 GB 15578 与 ISO 10218 要求。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_product_digital_twin",
+      "lantu_product_vision",
+      "lantu_solution_photovoltaic",
+      "lantu_product_welding"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.222,
+    "number_recall": 0.0
+  }
+}

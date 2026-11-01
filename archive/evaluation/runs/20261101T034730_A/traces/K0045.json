@@ -1,0 +1,363 @@
+{
+  "qid": "K0045",
+  "question": "供应商行为准则（供应链中心韩立恒署名）要求战略供应商每年接受一次现场审核、不符合项 90 天内整改；质量管理体系手册（质量部潘文博署名）要求供应商来料合格率目标 99%、年度审核覆盖率 100%、末位 5% 整改或淘汰；采购管理制度（供应链中心韩立恒署名）规定供应商须通过资质审查、现场审核与小批量试用，签署质量协议、廉洁协议与数据安全协议。请梳理公司对供应商的完整管理链条。",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=list><parameter=keyword>供应商</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 42,
+        "prompt_tokens": 464,
+        "total_tokens": 506,
+        "completion_tokens_details": {
+          "reasoning_tokens": 24
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.25
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"供应商\"}}",
+      "usage": {
+        "completion_tokens": 46,
+        "prompt_tokens": 519,
+        "total_tokens": 565,
+        "completion_tokens_details": {
+          "reasoning_tokens": 31
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.828
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"质量管理体系手册 供应商审核覆盖率\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 106,
+        "prompt_tokens": 586,
+        "total_tokens": 692,
+        "completion_tokens_details": {
+          "reasoning_tokens": 79
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 3.438
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_legal_supplier_code\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 83,
+        "prompt_tokens": 3020,
+        "total_tokens": 3103,
+        "completion_tokens_details": {
+          "reasoning_tokens": 52
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 2.672
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_strategy_quality_system\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 111,
+        "prompt_tokens": 3403,
+        "total_tokens": 3514,
+        "completion_tokens_details": {
+          "reasoning_tokens": 80
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3008
+        }
+      },
+      "seconds": 2.984
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_purchase_2025\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 87,
+        "prompt_tokens": 3818,
+        "total_tokens": 3905,
+        "completion_tokens_details": {
+          "reasoning_tokens": 52
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3392
+        }
+      },
+      "seconds": 2.422
+    },
+    {
+      "round": 7,
+      "text": "{\"status\":\"answerable\",\"answer\":\"公司对供应商的完整管理链条可按管理时序梳理为五个环节，形成\\\"准入—日常管理—监督审核—考核整改—退出\\\"的闭环：\\n\\n一、准入阶段（依据《采购管理制度（2025版）》v2.0，供应链中心韩立恒，2025-01-01生效）\\n1. 资质审查：核验供应商基本资质；\\n2. 现场审核：实地审核生产与管理能力；\\n3. 小批量试用：验证实际供货质量；\\n4. 协议签署：须同时签署质量协议、廉洁协议与数据安全协议，三项齐备方可纳入合格供应商。\\n\\n二、日常质量与交付管理（依据《质量管理体系手册》v4.2，质量部潘文博，2025-06-01生效；及《采购管理制度（2025版）》）\\n1. 来料检验：从来料到售后实施全过程质量控制，设置IQC、IPQC、FQC、OQC四道检验，来料环节由IQC把关；\\n2. 质量目标：供应商来料合格率目标99%；\\n3. 交付目标：供应商交付准时率目标96%；\\n4. 付款约束：标准供应商月结90天，战略供应商可延长至120天，预付款比例不超过20%，质保金5%-10%，以经济手段约束供应商履约。\\n\\n三、监督审核（依据《供应商行为准则》v2.0，供应链中心韩立恒，2025-05-01生效；及《质量管理体系手册》）\\n1. 覆盖要求：年度审核覆盖率100%，实现全量供应商年度受审；\\n2. 现场审核：每年对战略供应商开展一次现场审核；\\n3. 行为合规：涵盖劳工与人权（禁用童工、强迫劳动）、健康与安全、环境要求（遵守环保法规、鼓励ISO 14001认证）、商业道德（禁止贿赂、腐败、欺诈与利益冲突，须签署廉洁协议并配合审计）。\\n\\n四、考核与整改\\n1. 质量维度：年度审核覆盖率100%，末位5%启动整改或淘汰（质量管理体系手册）；\\n2. 交付维度：年度考核末位5%启动整改（采购管理制度2025版）；\\n3. 整改时限：不符合项须在90天内完成整改（行为准则）。\\n\\n五、退出机制\\n1. 绩效退出：末位5%启动整改或淘汰（质量管理体系手册、采购管理制度）；\\n2. 合规退出：严重违规直接终止合作（行为准则）。\\n\\n整体来看，三份文件分工明确又相互衔接：采购管理制度管\\\"入口与商务约束\\\"，行为准则管\\\"过程合规与现场监督\\\"，质量管理体系手册管\\\"质量绩效目标与考核淘汰\\\"，共同构成供应商全生命周期管理闭环。\",\"citations\":[\"lantu_policy_purchase_2025\",\"lantu_strategy_quality_system\",\"lantu_legal_supplier_code\"],\"evidence\":[\"lantu_policy_purchase_2025#三、供应商准入\",\"lantu_policy_purchase_2025#二、付款账期\",\"lantu_policy_purchase_2025#四、库存与交付\",\"lantu_strategy_quality_system#五、供应商质量\",\"lantu_strategy_quality_system#三、过程控制\",\"lantu_legal_supplier_code#五、监督与整改\",\"lantu_legal_supplier_code#四、商业道德\"]}",
+      "usage": {
+        "completion_tokens": 1897,
+        "prompt_tokens": 4282,
+        "total_tokens": 6179,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1084
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3776
+        }
+      },
+      "seconds": 34.812
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "供应商"
+      },
+      "result_sha": "3ce56d86d82a6bef1e6aa3eb612cf27d0f0b98e5ae9d685c5f7ab29ab0ccfc45",
+      "result_chars": 77,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "质量管理体系手册 供应商审核覆盖率",
+        "top_k": 10
+      },
+      "result_sha": "926d582e4c5e04eccc8007e62b6aee8f7745fd974ea49d63f49c83f611ddbdc1",
+      "result_chars": 3890,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_legal_supplier_code",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "fee223a708282e89b9959294793eda2149e8c78f0aed2efe247a531f79bcb0f7",
+      "result_chars": 574,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_strategy_quality_system",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "da62bbc9af13b511ceb881a9e87be5c8cd0ec0a90b1044857217e380dbca5f71",
+      "result_chars": 603,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_purchase_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "a43282daf04801f0f16f7d64d197206dfa10185ee100b1a3054935cc73749d1f",
+      "result_chars": 635,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "公司对供应商的完整管理链条可按管理时序梳理为五个环节，形成\"准入—日常管理—监督审核—考核整改—退出\"的闭环：\n\n一、准入阶段（依据《采购管理制度（2025版）》v2.0，供应链中心韩立恒，2025-01-01生效）\n1. 资质审查：核验供应商基本资质；\n2. 现场审核：实地审核生产与管理能力；\n3. 小批量试用：验证实际供货质量；\n4. 协议签署：须同时签署质量协议、廉洁协议与数据安全协议，三项齐备方可纳入合格供应商。\n\n二、日常质量与交付管理（依据《质量管理体系手册》v4.2，质量部潘文博，2025-06-01生效；及《采购管理制度（2025版）》）\n1. 来料检验：从来料到售后实施全过程质量控制，设置IQC、IPQC、FQC、OQC四道检验，来料环节由IQC把关；\n2. 质量目标：供应商来料合格率目标99%；\n3. 交付目标：供应商交付准时率目标96%；\n4. 付款约束：标准供应商月结90天，战略供应商可延长至120天，预付款比例不超过20%，质保金5%-10%，以经济手段约束供应商履约。\n\n三、监督审核（依据《供应商行为准则》v2.0，供应链中心韩立恒，2025-05-01生效；及《质量管理体系手册》）\n1. 覆盖要求：年度审核覆盖率100%，实现全量供应商年度受审；\n2. 现场审核：每年对战略供应商开展一次现场审核；\n3. 行为合规：涵盖劳工与人权（禁用童工、强迫劳动）、健康与安全、环境要求（遵守环保法规、鼓励ISO 14001认证）、商业道德（禁止贿赂、腐败、欺诈与利益冲突，须签署廉洁协议并配合审计）。\n\n四、考核与整改\n1. 质量维度：年度审核覆盖率100%，末位5%启动整改或淘汰（质量管理体系手册）；\n2. 交付维度：年度考核末位5%启动整改（采购管理制度2025版）；\n3. 整改时限：不符合项须在90天内完成整改（行为准则）。\n\n五、退出机制\n1. 绩效退出：末位5%启动整改或淘汰（质量管理体系手册、采购管理制度）；\n2. 合规退出：严重违规直接终止合作（行为准则）。\n\n整体来看，三份文件分工明确又相互衔接：采购管理制度管\"入口与商务约束\"，行为准则管\"过程合规与现场监督\"，质量管理体系手册管\"质量绩效目标与考核淘汰\"，共同构成供应商全生命周期管理闭环。",
+    "citations": [
+      "lantu_policy_purchase_2025",
+      "lantu_strategy_quality_system",
+      "lantu_legal_supplier_code"
+    ],
+    "evidence": [
+      "lantu_policy_purchase_2025#三、供应商准入",
+      "lantu_policy_purchase_2025#二、付款账期",
+      "lantu_policy_purchase_2025#四、库存与交付",
+      "lantu_strategy_quality_system#五、供应商质量",
+      "lantu_strategy_quality_system#三、过程控制",
+      "lantu_legal_supplier_code#五、监督与整改",
+      "lantu_legal_supplier_code#四、商业道德"
+    ]
+  },
+  "status": "answered",
+  "tokens": 18464,
+  "started_at": "2026-11-01T05:38:36",
+  "elapsed_seconds": 49.41,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "供应商"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_legal_supplier_code",
+            "title": "# 澜图智能供应商行为准则"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "质量管理体系手册 供应商审核覆盖率",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_strategy_quality_system",
+            "title": "澜图智能质量管理体系手册",
+            "chunk": 0,
+            "score": 46.79,
+            "snippet": "澜图智能质量管理体系手册\n所属部门：质量部\n作者：潘文博\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v4.2\n文档类型：strategy\n文档族：quality_system\n生效日期：2025-06-01\n一、质量方针\n以客户为中心，以零缺陷为目标，持续改进，追求卓越。公司通过 ISO 9001、IATF 16949 与 ISO 13485\n认证。\n二、质量目标\n2025 年一次交检合格率不低于 98.5%，客户投诉不超过 6 起，MTBF 不低于 12,00"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2024",
+            "title": "# 澜图智能采购管理制度（2024版）",
+            "chunk": 0,
+            "score": 12.008,
+            "snippet": "# 澜图智能采购管理制度（2024版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2024-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。\n\n## 二、付款账期\n\n标准供应商月结 60 天；预付款比例不超过 30%；质保金 5%-10%。\n\n## 三、供应商"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2025",
+            "title": "# 澜图智能采购管理制度（2025版）",
+            "chunk": 0,
+            "score": 11.471,
+            "snippet": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付"
+          },
+          {
+            "doc_id": "lantu_org_department_duties",
+            "title": "# 澜图智能一级部门职责与编制",
+            "chunk": 1,
+            "score": 9.849,
+            "snippet": "| 部门 | 负责人 | 编制（人） | 主要职责 |\n| --- | --- | --- | --- |\n| 研发中心 | 沈亦舟 | 1,286 | 本体/控制器/视觉/具身智能研发 |\n| 产品部 | 孟凡 | 96 | 产品规划与生命周期管理 |\n| 销售中心 | 罗嘉树 | 620 | 区域销售与渠道 |\n| 客户成功部 | 林可 | 86 | 重点客户经营 |\n| 供应链中心 | 韩立恒 | 210 | 采购、计划、物流 |\n| 制造中心 | 韩立恒 | 980 | 三大基地生产 |\n| 质量部 | 潘"
+          },
+          {
+            "doc_id": "lantu_legal_supplier_code",
+            "title": "# 澜图智能供应商行为准则",
+            "chunk": 0,
+            "score": 8.77,
+            "snippet": "# 澜图智能供应商行为准则\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-04-01 09:00\n更新时间：2025-05-01 09:00\n版本号：v2.0\n文档类型：legal\n文档族：supplier_code\n生效日期：2025-05-01\n\n## 一、劳工与人权\n\n供应商不得使用童工、强迫劳动，须保障结社自由与最低工资，工作时间符合当地法律。\n\n## 二、健康与安全\n\n供应商须提供安全的工作环境，配备必要的防护设施，定期开展安全培训与应急演练。\n\n## 三、环境要求\n\n供应商须遵守环保法规，优"
+          },
+          {
+            "doc_id": "lantu_tech_patents",
+            "title": "# 澜图智能知识产权与专利布局",
+            "chunk": 0,
+            "score": 8.486,
+            "snippet": "# 澜图智能知识产权与专利布局\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-04-26 09:00\n更新时间：2025-12-18 15:00\n版本号：v2.8\n文档类型：tech\n文档族：patent_portfolio\n生效日期：2025-12-18\n\n## 一、专利总量\n\n累计有效专利 1,286 件，其中发明专利 412 件、实用新型 726 件、外观设计 148 件；软件著作权 168 项。\n\n## 二、重点布局\n\n运动控制、伺服驱动、机器视觉、力控与具身智能五大方向；PCT 国际专利申请 3"
+          },
+          {
+            "doc_id": "lantu_hr_job_grades",
+            "title": "# 澜图智能职级体系与晋升规则",
+            "chunk": 0,
+            "score": 7.766,
+            "snippet": "# 澜图智能职级体系与晋升规则\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-03-01 09:00\n更新时间：2025-03-01 09:00\n版本号：v3.0\n文档类型：hr\n文档族：job_grades\n生效日期：2025-03-01\n\n## 一、职级序列\n\n设管理序列（M1-M5）、专业序列（P1-P7）与技能序列（T1-T5）。研发、产品、销售、职能分别对应不同通道。\n\n## 二、晋升条件\n\n晋升需满足当前职级任职满 2 年、连续两次绩效 A 及以上、通过晋升评审；破格晋升须总经理审批。\n\n#"
+          },
+          {
+            "doc_id": "lantu_org_executives",
+            "title": "# 澜图智能高级管理人员名单",
+            "chunk": 0,
+            "score": 7.599,
+            "snippet": "# 澜图智能高级管理人员名单\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2024-03-01 09:00\n更新时间：2025-11-28 17:00\n版本号：v4.0\n文档类型：org\n文档族：executives\n生效日期：2025-11-28\n\n## 一、核心管理层\n\n顾承澜，董事长兼总经理，1968 年生，教授级高级工程师，持股 18.6%；沈亦舟，CTO，负责研发体系；周敏仪，CFO，负责财务与资本运作；韩立恒，COO，负责供应链与制造。\n\n## 二、业务分管\n\n罗嘉树，销售副总裁，分管销售中心、客"
+          },
+          {
+            "doc_id": "lantu_hr_training_system",
+            "title": "# 澜图智能培训体系与年度计划",
+            "chunk": 0,
+            "score": 7.523,
+            "snippet": "# 澜图智能培训体系与年度计划\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-02-01 09:00\n更新时间：2025-12-01 10:00\n版本号：v3.6\n文档类型：hr\n文档族：training_system\n生效日期：2025-12-01\n\n## 一、培训体系\n\n分为新员工培训、专业培训、管理培训与领导力培训四大类，覆盖全员全周期。\n\n## 二、年度计划\n\n2025 年计划培训 12,000 人次，人均 32 小时；专业培训占比 55%，管理培训 20%，新员工 15%，合规安全 10%。\n"
+          },
+          {
+            "doc_id": "lantu_org_department_duties",
+            "title": "# 澜图智能一级部门职责与编制",
+            "chunk": 0,
+            "score": 7.048,
+            "snippet": "# 澜图智能一级部门职责与编制\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-10 09:00\n更新时间：2025-09-30 16:00\n版本号：v3.2\n文档类型：org\n文档族：department_duties\n生效日期：2025-09-30\n\n## 一、研发中心\n\n负责机器人本体、控制器、伺服、视觉与具身智能技术研发，编制 1,286 人，下设 5 个研究所与 1 个测试中心。\n\n## 二、销售中心与客户成功部\n\n销售中心负责区域销售与渠道管理，编制 620 人；客户成功部负责重点客户经"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_legal_supplier_code",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_legal_supplier_code",
+        "title": "# 澜图智能供应商行为准则",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 399,
+        "text": "# 澜图智能供应商行为准则\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-04-01 09:00\n更新时间：2025-05-01 09:00\n版本号：v2.0\n文档类型：legal\n文档族：supplier_code\n生效日期：2025-05-01\n\n## 一、劳工与人权\n\n供应商不得使用童工、强迫劳动，须保障结社自由与最低工资，工作时间符合当地法律。\n\n## 二、健康与安全\n\n供应商须提供安全的工作环境，配备必要的防护设施，定期开展安全培训与应急演练。\n\n## 三、环境要求\n\n供应商须遵守环保法规，优先使用可回收材料，限制有害物质，鼓励通过 ISO 14001 认证。\n\n## 四、商业道德\n\n禁止贿赂、腐败、欺诈与利益冲突；供应商须签署廉洁协议并配合审计。\n\n## 五、监督与整改\n\n澜图智能每年对战略供应商开展一次现场审核，不符合项须在 90 天内整改，严重违规终止合作。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_strategy_quality_system",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_strategy_quality_system",
+        "title": "澜图智能质量管理体系手册",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 434,
+        "text": "澜图智能质量管理体系手册\n所属部门：质量部\n作者：潘文博\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v4.2\n文档类型：strategy\n文档族：quality_system\n生效日期：2025-06-01\n一、质量方针\n以客户为中心，以零缺陷为目标，持续改进，追求卓越。公司通过 ISO 9001、IATF 16949 与 ISO 13485\n认证。\n二、质量目标\n2025 年一次交检合格率不低于 98.5%，客户投诉不超过 6 起，MTBF 不低于 12,000\n小时，质量成本率低于 3%。\n三、过程控制\n从来料到售后实施全过程质量控制，设置 IQC、IPQC、FQC、OQC 四道检验，关键工序实施 SPC。\n四、改进机制\n每月召开质量例会，重大问题启动 8D 与跨部门攻关；每年开展管理评审与内审。\n五、供应商质量\n供应商来料合格率目标 99%，年度审核覆盖率 100%，末位 5% 启动整改或淘汰。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_purchase_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_purchase_2025",
+        "title": "# 澜图智能采购管理制度（2025版）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 453,
+        "text": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付款比例不超过 20%；质保金 5%-10%。\n\n## 三、供应商准入\n\n供应商须通过资质审查、现场审核与小批量试用，签署质量协议、廉洁协议与数据安全协议。\n\n## 四、库存与交付\n\n关键物料安全库存 45 天，通用物料 30 天；供应商交付准时率目标 96%，年度考核末位 5% 启动整改。\n\n## 五、生效说明\n\n本制度自 2025 年 1 月 1 日起生效，2024 版同时废止。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 0.75,
+    "cited": [
+      "lantu_policy_purchase_2025",
+      "lantu_strategy_quality_system",
+      "lantu_legal_supplier_code"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.349,
+    "number_recall": 1.0
+  }
+}

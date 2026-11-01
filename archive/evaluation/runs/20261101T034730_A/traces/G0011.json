@@ -1,0 +1,142 @@
+{
+  "qid": "G0011",
+  "question": "v2.4 单条现场总线最多可连接多少个从站？v3.3 是否给出了对应上限？",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=list><parameter=keyword>现场总线</parameter></function></tool_call><tool_call><function=search><parameter=query>单条现场总线 从站 数量 上限</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 90,
+        "prompt_tokens": 369,
+        "total_tokens": 459,
+        "completion_tokens_details": {
+          "reasoning_tokens": 35
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.969
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>单条现场总线 最多 从站 个</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 74,
+        "prompt_tokens": 461,
+        "total_tokens": 535,
+        "completion_tokens_details": {
+          "reasoning_tokens": 37
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 2.515
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>现场总线 从站 上限 v2.4</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 535,
+        "total_tokens": 586,
+        "completion_tokens_details": {
+          "reasoning_tokens": 14
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.891
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>现场总线 从站 数量 上限 v2.4</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 69,
+        "prompt_tokens": 609,
+        "total_tokens": 678,
+        "completion_tokens_details": {
+          "reasoning_tokens": 30
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 2.219
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>现场总线 从站 数量 上限 v2.4 v3.3</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 72,
+        "prompt_tokens": 685,
+        "total_tokens": 757,
+        "completion_tokens_details": {
+          "reasoning_tokens": 29
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 1.672
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>现场总线 从站 数量 上限</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 60,
+        "prompt_tokens": 765,
+        "total_tokens": 825,
+        "completion_tokens_details": {
+          "reasoning_tokens": 25
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 1.625
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"检索工具多次调用均未成功返回任何文档片段，因此无法确认 v2.4 单条现场总线最多可连接的从站数量，也无法确认 v3.3 是否给出对应上限。请重新发起检索，或提供文档 doc_id/关键词（如'从站数量''总线容量''站点上限'及对应版本号）以便进一步查证。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 140,
+        "prompt_tokens": 834,
+        "total_tokens": 974,
+        "completion_tokens_details": {
+          "reasoning_tokens": 37
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 6.406
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "检索工具多次调用均未成功返回任何文档片段，因此无法确认 v2.4 单条现场总线最多可连接的从站数量，也无法确认 v3.3 是否给出对应上限。请重新发起检索，或提供文档 doc_id/关键词（如'从站数量''总线容量''站点上限'及对应版本号）以便进一步查证。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4814,
+  "started_at": "2026-11-01T05:02:33",
+  "elapsed_seconds": 21.3,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.068,
+    "number_recall": 0.0
+  }
+}

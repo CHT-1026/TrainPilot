@@ -1,0 +1,142 @@
+{
+  "qid": "E0034",
+  "question": "单笔 300 万元的采购按 2025 版采购管理制度应采用哪种采购方式？",
+  "question_type": "条件判断与边界",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>采购管理制度 2025 采购方式 金额门槛</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 67,
+        "prompt_tokens": 368,
+        "total_tokens": 435,
+        "completion_tokens_details": {
+          "reasoning_tokens": 29
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.657
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search>{\"query\":\"2025版采购管理制度 采购方式 金额 分散采购 竞争性谈判 公开招标\",\"top_k\":10}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 65,
+        "prompt_tokens": 443,
+        "total_tokens": 508,
+        "completion_tokens_details": {
+          "reasoning_tokens": 19
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.328
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=TOOL name=search args={\"query\": \"采购管理制度 2025 采购方式 金额标准 招标 竞争性谈判 询价\", \"top_k\": 10}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 69,
+        "prompt_tokens": 526,
+        "total_tokens": 595,
+        "completion_tokens_details": {
+          "reasoning_tokens": 14
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 1.906
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>采购管理制度 2025 采购方式 金额标准 招标 竞争性谈判 询价</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 58,
+        "prompt_tokens": 618,
+        "total_tokens": 676,
+        "completion_tokens_details": {
+          "reasoning_tokens": 7
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.5
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>采购管理制度 2025 采购方式 金额标准 招标 竞争性谈判</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 58,
+        "prompt_tokens": 706,
+        "total_tokens": 764,
+        "completion_tokens_details": {
+          "reasoning_tokens": 10
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 2.156
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>采购管理制度 2025 采购方式 金额</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 140,
+        "prompt_tokens": 791,
+        "total_tokens": 931,
+        "completion_tokens_details": {
+          "reasoning_tokens": 103
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 3.235
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"无法回答：检索工具调用未成功返回任何文档内容，我未能获取“2025版采购管理制度”的原文条款，因而无法确认单笔300万元采购对应的采购方式（如公开招标、竞争性谈判、询价或单一来源等的具体金额分档标准）。建议重新发起查询，或提供该制度文件以核对金额门槛与采购方式的对应关系。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 131,
+        "prompt_tokens": 862,
+        "total_tokens": 993,
+        "completion_tokens_details": {
+          "reasoning_tokens": 24
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 4.0
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "无法回答：检索工具调用未成功返回任何文档内容，我未能获取“2025版采购管理制度”的原文条款，因而无法确认单笔300万元采购对应的采购方式（如公开招标、竞争性谈判、询价或单一来源等的具体金额分档标准）。建议重新发起查询，或提供该制度文件以核对金额门槛与采购方式的对应关系。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4902,
+  "started_at": "2026-11-01T04:43:25",
+  "elapsed_seconds": 18.78,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.15,
+    "number_recall": 0.0
+  }
+}

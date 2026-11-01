@@ -1,0 +1,441 @@
+{
+  "qid": "C0101",
+  "question": "半导体方案的对接系统 AMHS、MES、EAP 中，哪些在其他产品文档中也出现过？AMR 手册与光伏方案分别对接什么？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"半导体方案 AMHS MES EAP\", \"top_k\": 5}}",
+      "usage": {
+        "prompt_tokens": 381,
+        "total_tokens": 582,
+        "completion_tokens": 201,
+        "completion_tokens_details": {
+          "reasoning_tokens": 170,
+          "text_tokens": 201
+        }
+      },
+      "seconds": 2.093
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_solution_semiconductor\", \"offset\":0, \"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 1560,
+        "total_tokens": 1935,
+        "completion_tokens": 375,
+        "completion_tokens_details": {
+          "reasoning_tokens": 339,
+          "text_tokens": 375
+        }
+      },
+      "seconds": 3.656
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"AMHS MES EAP\", \"top_k\": 10}}",
+      "usage": {
+        "prompt_tokens": 1949,
+        "total_tokens": 2335,
+        "completion_tokens": 386,
+        "completion_tokens_details": {
+          "reasoning_tokens": 356,
+          "text_tokens": 386
+        }
+      },
+      "seconds": 3.735
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"AMHS EAP\", \"top_k\": 10}}",
+      "usage": {
+        "prompt_tokens": 3561,
+        "total_tokens": 3814,
+        "completion_tokens": 253,
+        "completion_tokens_details": {
+          "reasoning_tokens": 224,
+          "text_tokens": 253
+        }
+      },
+      "seconds": 2.515
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"AMHS\", \"top_k\": 5}}",
+      "usage": {
+        "prompt_tokens": 3831,
+        "total_tokens": 4124,
+        "completion_tokens": 293,
+        "completion_tokens_details": {
+          "reasoning_tokens": 267,
+          "text_tokens": 293
+        }
+      },
+      "seconds": 2.625
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"EAP\", \"top_k\": 5}}",
+      "usage": {
+        "prompt_tokens": 4098,
+        "total_tokens": 5045,
+        "completion_tokens": 947,
+        "completion_tokens_details": {
+          "reasoning_tokens": 921,
+          "text_tokens": 947
+        }
+      },
+      "seconds": 7.0
+    },
+    {
+      "round": 7,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_product_amr\", \"offset\":0, \"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 4365,
+        "total_tokens": 5110,
+        "completion_tokens": 745,
+        "completion_tokens_details": {
+          "reasoning_tokens": 709,
+          "text_tokens": 745
+        }
+      },
+      "seconds": 5.532
+    },
+    {
+      "round": 8,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_solution_photovoltaic\", \"offset\":0, \"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 4825,
+        "total_tokens": 5510,
+        "completion_tokens": 685,
+        "completion_tokens_details": {
+          "reasoning_tokens": 647,
+          "text_tokens": 685
+        }
+      },
+      "seconds": 5.796
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "半导体方案 AMHS MES EAP",
+        "top_k": 5
+      },
+      "result_sha": "93a6c4dbffda01e7c11c817b94c756c0663fc01423f27825ae6b9d3549b49542",
+      "result_chars": 1937,
+      "hits": 5
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_solution_semiconductor",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "1412a79d52a3a7a18ad6b60c366ccc16ea796aea8d2ca03beff34292b9bb49f9",
+      "result_chars": 590,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "AMHS MES EAP",
+        "top_k": 10
+      },
+      "result_sha": "357812dcb7ee5701d011e23569651ee2c96a14ab9c3a3dfb3fdfa830378129ca",
+      "result_chars": 2752,
+      "hits": 7
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "AMHS EAP",
+        "top_k": 10
+      },
+      "result_sha": "d849ce4b426ece39078d67f88d7c3815fbb883873fbb82ba8c54bb684a3f12f7",
+      "result_chars": 402,
+      "hits": 1
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "AMHS",
+        "top_k": 5
+      },
+      "result_sha": "9524bd2698b6f661463e6c52aa037665d41e98735d54c0cea9648476a96357ff",
+      "result_chars": 402,
+      "hits": 1
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "EAP",
+        "top_k": 5
+      },
+      "result_sha": "9524bd2698b6f661463e6c52aa037665d41e98735d54c0cea9648476a96357ff",
+      "result_chars": 402,
+      "hits": 1
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_amr",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "547fc67df7c235bab6fdd7de0529730e0286b17ec46d4ba4b850d306a74ca286",
+      "result_chars": 669,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_solution_photovoltaic",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "8772706ec6205e5148400f958ae3ae80d7202cb29424ef92fba54822f824848c",
+      "result_chars": 597,
+      "hits": 0
+    }
+  ],
+  "answer": null,
+  "status": "unfinished",
+  "tokens": 28455,
+  "started_at": "2026-11-01T04:28:51",
+  "elapsed_seconds": 32.97,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "半导体方案 AMHS MES EAP",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_solution_semiconductor",
+            "title": "# 半导体晶圆搬运洁净解决方案",
+            "chunk": 0,
+            "score": 22.032,
+            "snippet": "# 半导体晶圆搬运洁净解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2025-02-14 09:00\n更新时间：2025-11-11 09:30\n版本号：v2.0\n文档类型：product\n文档族：solution_semiconductor\n生效日期：2025-11-11\n\n## 一、方案概述\n\n面向 8/12 英寸晶圆厂，提供晶圆盒搬运、机台上下料与跨区物流方案，采用 LT-AMR-500 洁净版与 LT-R12 洁净机器人。\n\n## 二、洁净指标\n\n洁净等级 Class 10，颗粒物控制 0.1 μm，"
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 0,
+            "score": 9.873,
+            "snippet": "# 澜图智能产品与解决方案总览\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-02-20 09:00\n更新时间：2025-12-22 10:00\n版本号：v6.0\n文档类型：product\n文档族：product_overview\n生效日期：2025-12-22\n\n## 一、产品矩阵\n\n公司产品覆盖六轴工业机器人、SCARA 机器人、自主移动机器人（AMR）、机器视觉、运动控制器、数字孪生平台与行业工作站，形成“本体+控制器+视觉+软件+工艺”的一体化方案。\n\n## 二、行业方案\n\n重点行业包括汽车及零部件、"
+          },
+          {
+            "doc_id": "lantu_finance_q3_2025",
+            "title": "# 澜图智能 2025 年第三季度经营数据",
+            "chunk": 0,
+            "score": 7.988,
+            "snippet": "# 澜图智能 2025 年第三季度经营数据\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-10-22 09:00\n更新时间：2025-10-26 18:00\n版本号：v1.0\n文档类型：finance\n文档族：quarterly_2025_q3\n生效日期：2025-10-26\n\n## 一、季度业绩\n\n2025 年第三季度营业收入 11.52 亿元，同比增长 17.8%；归母净利润 1.21 亿元，同比增长 22.1%；毛利率 31.4%。\n\n## 二、累计业绩\n\n前三季度累计营业收入 31.36 亿元，归母"
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 1,
+            "score": 7.798,
+            "snippet": "| 产品线 | 代表型号 | 负载 | 典型行业 |\n| --- | --- | --- | --- |\n| 六轴机器人 | LT-R6/R12/R20/R50/R210 | 6-210 kg | 汽车、锂电、金属加工 |\n| SCARA | LT-S4/S10 | 4-10 kg | 3C、光伏、食品 |\n| 移动机器人 | LT-AMR-500/1000/2000 | 500-2,000 kg | 物流、半导体 |\n| 机器视觉 | LT-V3D | — | 装配、检测 |\n| 控制器 | LT-C800 | "
+          },
+          {
+            "doc_id": "lantu_product_amr",
+            "title": "# LT-AMR 自主移动机器人产品手册",
+            "chunk": 0,
+            "score": 7.596,
+            "snippet": "# LT-AMR 自主移动机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-05-10 09:00\n更新时间：2025-08-20 15:00\n版本号：v3.4\n文档类型：product\n文档族：product_amr\n生效日期：2025-08-20\n\n## 一、产品系列\n\nLT-AMR-500 负载 500 kg、速度 1.8 m/s、续航 8 小时；LT-AMR-1000 负载 1,000 kg、速度 1.5 m/s、续航 8 小时；LT-AMR-2000 负载 2,000 kg、速度 1.2"
+          }
+        ]
+      },
+      "seconds": 0.016
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_solution_semiconductor",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_solution_semiconductor",
+        "title": "# 半导体晶圆搬运洁净解决方案",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 414,
+        "text": "# 半导体晶圆搬运洁净解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2025-02-14 09:00\n更新时间：2025-11-11 09:30\n版本号：v2.0\n文档类型：product\n文档族：solution_semiconductor\n生效日期：2025-11-11\n\n## 一、方案概述\n\n面向 8/12 英寸晶圆厂，提供晶圆盒搬运、机台上下料与跨区物流方案，采用 LT-AMR-500 洁净版与 LT-R12 洁净机器人。\n\n## 二、洁净指标\n\n洁净等级 Class 10，颗粒物控制 0.1 μm，防静电等级 <35 V，定位精度 ±5 mm。\n\n## 三、系统集成\n\n与 AMHS、MES、EAP 对接，支持 SECS/GEM 协议，搬运任务响应时间低于 3 秒。\n\n## 四、标杆案例\n\n晶拓微电子 2 座 8 英寸晶圆厂部署 48 台 LT-AMR-500，搬运效率提升 35%，人为污染事件归零。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "AMHS MES EAP",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_solution_semiconductor",
+            "title": "# 半导体晶圆搬运洁净解决方案",
+            "chunk": 0,
+            "score": 13.017,
+            "snippet": "# 半导体晶圆搬运洁净解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2025-02-14 09:00\n更新时间：2025-11-11 09:30\n版本号：v2.0\n文档类型：product\n文档族：solution_semiconductor\n生效日期：2025-11-11\n\n## 一、方案概述\n\n面向 8/12 英寸晶圆厂，提供晶圆盒搬运、机台上下料与跨区物流方案，采用 LT-AMR-500 洁净版与 LT-R12 洁净机器人。\n\n## 二、洁净指标\n\n洁净等级 Class 10，颗粒物控制 0.1 μm，"
+          },
+          {
+            "doc_id": "lantu_strategy_digital_transformation",
+            "title": "# 澜图智能数字化转型规划",
+            "chunk": 0,
+            "score": 4.349,
+            "snippet": "# 澜图智能数字化转型规划\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-08-01 09:00\n更新时间：2025-10-10 14:00\n版本号：v2.3\n文档类型：strategy\n文档族：digital_transformation\n生效日期：2025-10-10\n\n## 一、转型目标\n\n三年内实现研发、供应链、制造、销售与服务的全流程数字化，运营效率提升 20%。\n\n## 二、重点工程\n\nPLM 研发协同、SRM 供应链协同、MES 制造执行、CRM 客户经营与数据中台五大工程。\n\n## 三、技"
+          },
+          {
+            "doc_id": "lantu_product_assembly",
+            "title": "# LT-Assembly 柔性装配工作站方案",
+            "chunk": 0,
+            "score": 3.312,
+            "snippet": "# LT-Assembly 柔性装配工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-07-15 09:00\n更新时间：2025-09-05 11:00\n版本号：v2.5\n文档类型：product\n文档族：solution_assembly\n生效日期：2025-09-05\n\n## 一、方案组成\n\n由 LT-R12/LT-R20 机器人、力控末端、LT-V3D 视觉与快换工装组成，支持多品种混线装配。\n\n## 二、工艺指标\n\n装配节拍 3.2 秒/件，力控精度 ±2 N，视觉定位精度 ±0.05 mm，"
+          },
+          {
+            "doc_id": "lantu_solution_photovoltaic",
+            "title": "# 光伏电池片串焊整线解决方案",
+            "chunk": 0,
+            "score": 3.244,
+            "snippet": "# 光伏电池片串焊整线解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-09-20 09:00\n更新时间：2025-10-16 14:00\n版本号：v3.1\n文档类型：product\n文档族：solution_photovoltaic\n生效日期：2025-10-16\n\n## 一、方案概述\n\n面向 TOPCon/HJT 电池片串焊，提供上料、串焊、EL 检测与下料整线方案，核心设备为 LT-S10 SCARA 与 LT-V3D 视觉。\n\n## 二、产线指标\n\n串焊速度 4,200 片/小时，良率 99.6"
+          },
+          {
+            "doc_id": "lantu_product_digital_twin",
+            "title": "# LantuTwin 数字孪生平台介绍",
+            "chunk": 0,
+            "score": 3.044,
+            "snippet": "# LantuTwin 数字孪生平台介绍\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-09-01 09:00\n更新时间：2025-06-30 16:00\n版本号：v3.0\n文档类型：product\n文档族：product_digital_twin\n生效日期：2025-06-30\n\n## 一、平台定位\n\nLantuTwin 3.0 是面向智能工厂规划、调试与运维的数字孪生平台，支持机器人、产线与物流系统的虚实同步。\n\n## 二、核心能力\n\n单项目支持 500 台设备接入，数据刷新延迟低于 80 ms，仿真"
+          },
+          {
+            "doc_id": "lantu_product_amr",
+            "title": "# LT-AMR 自主移动机器人产品手册",
+            "chunk": 0,
+            "score": 3.027,
+            "snippet": "# LT-AMR 自主移动机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-05-10 09:00\n更新时间：2025-08-20 15:00\n版本号：v3.4\n文档类型：product\n文档族：product_amr\n生效日期：2025-08-20\n\n## 一、产品系列\n\nLT-AMR-500 负载 500 kg、速度 1.8 m/s、续航 8 小时；LT-AMR-1000 负载 1,000 kg、速度 1.5 m/s、续航 8 小时；LT-AMR-2000 负载 2,000 kg、速度 1.2"
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 0,
+            "score": 2.948,
+            "snippet": "# 澜图智能产品与解决方案总览\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-02-20 09:00\n更新时间：2025-12-22 10:00\n版本号：v6.0\n文档类型：product\n文档族：product_overview\n生效日期：2025-12-22\n\n## 一、产品矩阵\n\n公司产品覆盖六轴工业机器人、SCARA 机器人、自主移动机器人（AMR）、机器视觉、运动控制器、数字孪生平台与行业工作站，形成“本体+控制器+视觉+软件+工艺”的一体化方案。\n\n## 二、行业方案\n\n重点行业包括汽车及零部件、"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "AMHS EAP",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_solution_semiconductor",
+            "title": "# 半导体晶圆搬运洁净解决方案",
+            "chunk": 0,
+            "score": 9.832,
+            "snippet": "# 半导体晶圆搬运洁净解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2025-02-14 09:00\n更新时间：2025-11-11 09:30\n版本号：v2.0\n文档类型：product\n文档族：solution_semiconductor\n生效日期：2025-11-11\n\n## 一、方案概述\n\n面向 8/12 英寸晶圆厂，提供晶圆盒搬运、机台上下料与跨区物流方案，采用 LT-AMR-500 洁净版与 LT-R12 洁净机器人。\n\n## 二、洁净指标\n\n洁净等级 Class 10，颗粒物控制 0.1 μm，"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "AMHS",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_solution_semiconductor",
+            "title": "# 半导体晶圆搬运洁净解决方案",
+            "chunk": 0,
+            "score": 4.916,
+            "snippet": "# 半导体晶圆搬运洁净解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2025-02-14 09:00\n更新时间：2025-11-11 09:30\n版本号：v2.0\n文档类型：product\n文档族：solution_semiconductor\n生效日期：2025-11-11\n\n## 一、方案概述\n\n面向 8/12 英寸晶圆厂，提供晶圆盒搬运、机台上下料与跨区物流方案，采用 LT-AMR-500 洁净版与 LT-R12 洁净机器人。\n\n## 二、洁净指标\n\n洁净等级 Class 10，颗粒物控制 0.1 μm，"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "EAP",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_solution_semiconductor",
+            "title": "# 半导体晶圆搬运洁净解决方案",
+            "chunk": 0,
+            "score": 4.916,
+            "snippet": "# 半导体晶圆搬运洁净解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2025-02-14 09:00\n更新时间：2025-11-11 09:30\n版本号：v2.0\n文档类型：product\n文档族：solution_semiconductor\n生效日期：2025-11-11\n\n## 一、方案概述\n\n面向 8/12 英寸晶圆厂，提供晶圆盒搬运、机台上下料与跨区物流方案，采用 LT-AMR-500 洁净版与 LT-R12 洁净机器人。\n\n## 二、洁净指标\n\n洁净等级 Class 10，颗粒物控制 0.1 μm，"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_amr",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_product_amr",
+        "title": "# LT-AMR 自主移动机器人产品手册",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 499,
+        "text": "# LT-AMR 自主移动机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-05-10 09:00\n更新时间：2025-08-20 15:00\n版本号：v3.4\n文档类型：product\n文档族：product_amr\n生效日期：2025-08-20\n\n## 一、产品系列\n\nLT-AMR-500 负载 500 kg、速度 1.8 m/s、续航 8 小时；LT-AMR-1000 负载 1,000 kg、速度 1.5 m/s、续航 8 小时；LT-AMR-2000 负载 2,000 kg、速度 1.2 m/s、续航 10 小时。\n\n## 二、导航与安全\n\n采用激光 SLAM + 视觉融合导航，定位精度 ±10 mm，支持 360° 避障、3D 相机与安全激光，符合 ISO 3691-4 标准。\n\n## 三、调度能力\n\nLantuFleet 调度系统单仓支持 500 台 AMR 协同，任务分配延迟低于 80 ms，支持与 WMS、MES 对接。\n\n## 四、行业应用\n\n已应用于物流仓储、半导体晶圆搬运、锂电物料配送与汽车零部件线边物流，洁净室版本达到 Class 10。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_solution_photovoltaic",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_solution_photovoltaic",
+        "title": "# 光伏电池片串焊整线解决方案",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 422,
+        "text": "# 光伏电池片串焊整线解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-09-20 09:00\n更新时间：2025-10-16 14:00\n版本号：v3.1\n文档类型：product\n文档族：solution_photovoltaic\n生效日期：2025-10-16\n\n## 一、方案概述\n\n面向 TOPCon/HJT 电池片串焊，提供上料、串焊、EL 检测与下料整线方案，核心设备为 LT-S10 SCARA 与 LT-V3D 视觉。\n\n## 二、产线指标\n\n串焊速度 4,200 片/小时，良率 99.6%，碎片率 0.15%，兼容 182/210 尺寸硅片。\n\n## 三、智能检测\n\nEL 检测可识别隐裂、断栅与虚焊等 9 类缺陷，误判率低于 0.5%，检测数据接入 MES。\n\n## 四、标杆案例\n\n曜阳光能 16 条串焊线采用 220 台 LT-S10，组件产能由 4.2GW 提升至 6.5GW，串焊良率 99.6%。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

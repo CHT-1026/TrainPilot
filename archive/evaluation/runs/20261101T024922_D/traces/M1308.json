@@ -1,0 +1,25 @@
+{
+  "qid": "M1308",
+  "question": "公司质量目标里一次交检合格率和客户投诉的年度上限是多少？2025 年实际做到了吗？上半年和全年的口径为什么不一样？",
+  "question_type": "矛盾与例外识别",
+  "rounds": [],
+  "tool_calls": [],
+  "answer": null,
+  "status": "api_error",
+  "tokens": 0,
+  "started_at": "2026-11-01T03:05:28",
+  "error": "HTTPError: HTTP Error 503: Service Unavailable",
+  "elapsed_seconds": 2.05,
+  "tool_calls_detail": [],
+  "model_label": "D",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

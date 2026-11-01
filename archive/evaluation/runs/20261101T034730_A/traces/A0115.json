@@ -1,0 +1,95 @@
+{
+  "qid": "A0115",
+  "question": "董事会每年至少召开几次会议？临时会议需要多少比例董事提议？重大事项几天内披露？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>董事会会议 每年至少 临时会议 提议</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=search><parameter=query>重大事项 披露 交易 日内</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 79,
+        "prompt_tokens": 363,
+        "total_tokens": 442,
+        "completion_tokens_details": {
+          "reasoning_tokens": 10
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 5.157
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>董事会会议 每年至少召开 临时会议 提议</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 56,
+        "prompt_tokens": 469,
+        "total_tokens": 525,
+        "completion_tokens_details": {
+          "reasoning_tokens": 18
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.875
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>董事会 临时会议 提议 每年至少</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 54,
+        "prompt_tokens": 544,
+        "total_tokens": 598,
+        "completion_tokens_details": {
+          "reasoning_tokens": 18
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 5.14
+    },
+    {
+      "round": 4,
+      "text": "{\"name\":\"search\",\"args\":{\"query\":\"董事会会议 临时会议 提议 披露\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 33,
+        "prompt_tokens": 617,
+        "total_tokens": 650,
+        "completion_tokens_details": {
+          "reasoning_tokens": 5
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.297
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "name": "search",
+    "args": {
+      "query": "董事会会议 临时会议 提议 披露",
+      "top_k": 10
+    }
+  },
+  "status": "answered",
+  "tokens": 2215,
+  "started_at": "2026-11-01T03:59:22",
+  "elapsed_seconds": 13.47,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

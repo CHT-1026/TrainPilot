@@ -1,0 +1,242 @@
+{
+  "qid": "C0136",
+  "question": "LT-R20 Pro 白皮书从研发背景到验证计划的完整逻辑链是什么？请按时间与因果顺序串联五章内容。",
+  "question_type": "单文档多跳推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"LT-R20 Pro 白皮书\"}}",
+      "usage": {
+        "prompt_tokens": 376,
+        "total_tokens": 541,
+        "completion_tokens": 165,
+        "completion_tokens_details": {
+          "reasoning_tokens": 141,
+          "text_tokens": 165
+        }
+      },
+      "seconds": 1.625
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_product_r20_pro_whitepaper\",\"offset\":4000,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 2772,
+        "total_tokens": 3042,
+        "completion_tokens": 270,
+        "completion_tokens_details": {
+          "reasoning_tokens": 229,
+          "text_tokens": 270
+        }
+      },
+      "seconds": 2.797
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_product_r20_pro_whitepaper\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 2899,
+        "total_tokens": 3301,
+        "completion_tokens": 402,
+        "completion_tokens_details": {
+          "reasoning_tokens": 364,
+          "text_tokens": 402
+        }
+      },
+      "seconds": 4.031
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"LT-R20 Pro 的研发逻辑遵循“需求驱动—指标定义—技术实现—验证闭环”的完整链条，按时间与因果顺序串联如下：\\n\\n1. **研发背景（需求驱动）**：针对锂电叠片、汽车装配等高频节拍场景的效率痛点，确立了研发新一代中型六轴机器人的战略方向，旨在解决现有设备无法满足的高节奏生产需求。\\n2. **技术指标（目标量化）**：为响应高频节拍需求，设定了具体的性能红线，包括额定负载 22 kg、精度 ±0.02 mm，并明确提出了“本体重量较上一代降低 6%”和“循环节拍提升 15%”的核心优化目标。\\n3. **结构与防护（硬件支撑）**：为实现“减重”与“环境适应性”指标，采用了中空腕部与轻量化铸铝大臂设计，同时将防护等级提升至 IP67，以支持食品级润滑及 -5℃ 至 50℃ 的宽温区作业。\\n4. **控制与智能（核心赋能）**：为保障“高精度”与“高节拍”，底层搭载 LT-C800 Pro 控制器，利用 1 kHz 力控环路、视觉伺服及振动抑制算法（降低 40% 残余振动）来确保动态稳定性。\\n5. **验证计划（质量闭环）**：为确保上述设计与指标达标，制定了 2026 年的时间表：1 月完成 2,000 小时可靠性测试，3 月通过 CE 认证，4 月小批量交付 50 台，以此作为全面量产前的最终验证。\",\"citations\":[\"lantu_product_r20_pro_whitepaper\"],\"evidence\":[\"lantu_product_r20_pro_whitepaper#0\"]}",
+      "usage": {
+        "prompt_tokens": 3367,
+        "total_tokens": 5611,
+        "completion_tokens": 2244,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1856,
+          "text_tokens": 2244
+        }
+      },
+      "seconds": 18.782
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "LT-R20 Pro 白皮书"
+      },
+      "result_sha": "c2e3655f2495cba0a25d087205a8d5efdfda80d3e3d61e475f6f1d3351f6e7f0",
+      "result_chars": 3911,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_r20_pro_whitepaper",
+        "offset": 4000,
+        "limit": 4000
+      },
+      "result_sha": "321b7e01914d27dea0439846f48e16848a50a8c454f2c06241fb5f437315cefd",
+      "result_chars": 161,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_r20_pro_whitepaper",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "e6def2f6e350626d5984e69687b038d9001970a67b847008835af6c75c828bb2",
+      "result_chars": 690,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "LT-R20 Pro 的研发逻辑遵循“需求驱动—指标定义—技术实现—验证闭环”的完整链条，按时间与因果顺序串联如下：\n\n1. **研发背景（需求驱动）**：针对锂电叠片、汽车装配等高频节拍场景的效率痛点，确立了研发新一代中型六轴机器人的战略方向，旨在解决现有设备无法满足的高节奏生产需求。\n2. **技术指标（目标量化）**：为响应高频节拍需求，设定了具体的性能红线，包括额定负载 22 kg、精度 ±0.02 mm，并明确提出了“本体重量较上一代降低 6%”和“循环节拍提升 15%”的核心优化目标。\n3. **结构与防护（硬件支撑）**：为实现“减重”与“环境适应性”指标，采用了中空腕部与轻量化铸铝大臂设计，同时将防护等级提升至 IP67，以支持食品级润滑及 -5℃ 至 50℃ 的宽温区作业。\n4. **控制与智能（核心赋能）**：为保障“高精度”与“高节拍”，底层搭载 LT-C800 Pro 控制器，利用 1 kHz 力控环路、视觉伺服及振动抑制算法（降低 40% 残余振动）来确保动态稳定性。\n5. **验证计划（质量闭环）**：为确保上述设计与指标达标，制定了 2026 年的时间表：1 月完成 2,000 小时可靠性测试，3 月通过 CE 认证，4 月小批量交付 50 台，以此作为全面量产前的最终验证。",
+    "citations": [
+      "lantu_product_r20_pro_whitepaper"
+    ],
+    "evidence": [
+      "lantu_product_r20_pro_whitepaper#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 12495,
+  "started_at": "2026-11-01T04:34:56",
+  "elapsed_seconds": 27.24,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "LT-R20 Pro 白皮书"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_product_r20_pro_whitepaper",
+            "title": "LT-R20 Pro 机器人技术白皮书",
+            "chunk": 0,
+            "score": 20.375,
+            "snippet": "LT-R20 Pro 机器人技术白皮书\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2025-11-20 09:00\n更新时间：2025-11-28 18:00\n版本号：v0.9\n文档类型：product\n文档族：product_r20_pro\n生效日期：2025-11-28\n一、研发背景\n面向锂电叠片、汽车装配等高频节拍场景，澜图智能研发新一代中型六轴机器人 LT-R20 Pro，计划\n2026 年第二季度量产。\n二、技术指标\n额定负载 22 kg，臂展 1,750 mm，重复定位精度 ±0.02 mm，本体重量"
+          },
+          {
+            "doc_id": "lantu_support_system",
+            "title": "# 澜图智能客户服务体系白皮书",
+            "chunk": 0,
+            "score": 11.544,
+            "snippet": "# 澜图智能客户服务体系白皮书\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-03-01 09:00\n更新时间：2025-12-08 10:00\n版本号：v3.2\n文档类型：support\n文档族：service_system\n生效日期：2025-12-08\n\n## 一、服务网络\n\n公司在全国设有 68 个服务网点、12 个备件仓，覆盖 31 个省级行政区；海外设 3 个服务点。售后服务团队 412 人，认证工程师 286 人。\n\n## 二、服务内容\n\n提供安装调试、培训、预防性维护、故障维修、备件供应、"
+          },
+          {
+            "doc_id": "lantu_tech_roadmap",
+            "title": "# 澜图智能技术路线图（2025—2028）",
+            "chunk": 0,
+            "score": 10.101,
+            "snippet": "# 澜图智能技术路线图（2025—2028）\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-11-01 09:00\n更新时间：2025-12-05 16:00\n版本号：v2.2\n文档类型：tech\n文档族：tech_roadmap\n生效日期：2025-12-05\n\n## 一、总体路线\n\n以“本体+控制+视觉+软件”为基础，向具身智能与柔性制造演进，2026 年完成 LT-R20 Pro 与具身智能平台 1.0。\n\n## 二、2025 年\n\nLT-C800 控制器量产、LantuTwin 3.0 发布、LT"
+          },
+          {
+            "doc_id": "lantu_meeting_product_review",
+            "title": "LT-R20 Pro 产品评审会纪要",
+            "chunk": 0,
+            "score": 9.549,
+            "snippet": "LT-R20 Pro 产品评审会纪要\n所属部门：产品部\n作者：孟凡\n创建时间：2025-08-18 09:00\n更新时间：2025-08-18 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_product_review\n生效日期：2025-08-18\n一、会议信息\n时间：2025 年 8 月 18 日；主持：沈亦舟；参会：产品部、研发中心、质量部、销售中心、售后服务部。\n二、评审结论\nLT-R20 Pro 通过概念与计划阶段评审，进入开发阶段。目标负载 22 kg、臂展 1,750"
+          },
+          {
+            "doc_id": "lantu_meeting_rd",
+            "title": "# 2025 年 5 月研发例会纪要",
+            "chunk": 0,
+            "score": 6.943,
+            "snippet": "# 2025 年 5 月研发例会纪要\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2025-05-09 09:00\n更新时间：2025-05-09 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_rd_2025\n生效日期：2025-05-09\n\n## 一、项目进展\n\nLT-C800 控制器完成小批量验证；LantuTwin 3.0 进入客户试点；具身智能操作模型完成抓取数据集 12 万条。\n\n## 二、组织调整\n\n具身智能研究所正式成立，编制 48 人，重点研究视觉-语言-动作模型"
+          },
+          {
+            "doc_id": "lantu_strategy_2026",
+            "title": "# 澜图智能 2026 年度经营计划",
+            "chunk": 0,
+            "score": 6.524,
+            "snippet": "# 澜图智能 2026 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-12-15 09:00\n更新时间：2026-01-12 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2026\n生效日期：2026-01-12\n\n## 一、年度目标\n\n2026 年营业收入 52 亿元，归母净利润 5.2 亿元，新签订单 58 亿元，机器人出货 26,000 台。\n\n## 二、业务策略\n\n锂电保持领先，半导体翻倍增长，海外收入 7.2 亿元；软件与服务收入占比提"
+          },
+          {
+            "doc_id": "lantu_org_rd_system",
+            "title": "# 澜图智能研发体系与投入",
+            "chunk": 0,
+            "score": 6.249,
+            "snippet": "# 澜图智能研发体系与投入\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-02-01 09:00\n更新时间：2026-01-12 10:00\n版本号：v5.0\n文档类型：org\n文档族：rd_system\n生效日期：2026-01-12\n\n## 一、研发架构\n\n研发中心下设机器人本体研究所、控制器研究所、机器视觉研究所、工艺应用研究所、具身智能研究所，另设测试中心与可靠性实验室。\n\n## 二、人员结构\n\n研发人员 1,286 人，其中博士 48 人、硕士 612 人，35 岁以下占比 61%。2025 年"
+          },
+          {
+            "doc_id": "lantu_company_milestones_2025",
+            "title": "# 澜图智能 2025 年度大事记",
+            "chunk": 0,
+            "score": 6.249,
+            "snippet": "# 澜图智能 2025 年度大事记\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-12-31 18:00\n更新时间：2026-01-06 09:00\n版本号：v1.0\n文档类型：company\n文档族：annual_milestones_2025\n生效日期：2026-01-06\n\n## 一、经营里程碑\n\n2025 年营业收入 42.63 亿元，同比增长 19.1%；新签订单 48.90 亿元；机器人出货 21,400 台；第 10 万台机器人于 9 月 12 日下线。\n\n## 二、组织里程碑\n\n3 月"
+          },
+          {
+            "doc_id": "lantu_support_spare_parts_price",
+            "title": "﻿适配机型,备件名称,单价（元）,发货时效,质保期",
+            "chunk": 0,
+            "score": 5.71,
+            "snippet": "﻿适配机型,备件名称,单价（元）,发货时效,质保期\nLT-R20,减速器 RV-40E,\"12,800\",48 小时,12 个月\nLT-R20,伺服驱动器 LT-D4,\"8,600\",48 小时,18 个月\nLT-R20,示教器 LT-Pad3,\"5,200\",48 小时,12 个月\nLT-R12,减速器 RV-20E,\"7,900\",48 小时,12 个月\nLT-R12,伺服电机 750W,\"3,600\",48 小时,18 个月\nLT-R6,谐波减速器 CSF-17,\"6,400\",72 小时,12 个月\nLT-"
+          },
+          {
+            "doc_id": "lantu_solution_lithium",
+            "title": "# 动力电池叠片与物流整体解决方案",
+            "chunk": 0,
+            "score": 5.271,
+            "snippet": "# 动力电池叠片与物流整体解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-10-12 09:00\n更新时间：2025-12-01 10:00\n版本号：v3.6\n文档类型：product\n文档族：solution_lithium\n生效日期：2025-12-01\n\n## 一、方案概述\n\n面向动力电池电芯段，提供叠片、焊接、检测与物料配送一体化方案，核心设备包括 LT-R20 机器人、LT-AMR-1000 与 LT-V3D 视觉。\n\n## 二、产线配置\n\n单条叠片线配置 15-16 台 LT-R20、2 "
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_r20_pro_whitepaper",
+        "offset": 4000,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_product_r20_pro_whitepaper",
+        "title": "LT-R20 Pro 机器人技术白皮书",
+        "offset": 4000,
+        "limit": 4000,
+        "total_chars": 509,
+        "text": "",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_r20_pro_whitepaper",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_product_r20_pro_whitepaper",
+        "title": "LT-R20 Pro 机器人技术白皮书",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 509,
+        "text": "LT-R20 Pro 机器人技术白皮书\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2025-11-20 09:00\n更新时间：2025-11-28 18:00\n版本号：v0.9\n文档类型：product\n文档族：product_r20_pro\n生效日期：2025-11-28\n一、研发背景\n面向锂电叠片、汽车装配等高频节拍场景，澜图智能研发新一代中型六轴机器人 LT-R20 Pro，计划\n2026 年第二季度量产。\n二、技术指标\n额定负载 22 kg，臂展 1,750 mm，重复定位精度 ±0.02 mm，本体重量 268 kg，较上一代降低\n6%；典型循环节拍提升 15%，单位能耗下降 18%。\n三、结构与防护\n采用中空腕部与轻量化铸铝大臂，防护等级提升至 IP67，支持食品级润滑与洁净室选配，适应 -5℃ 至\n50℃ 环境。\n四、控制与智能\n搭载 LT-C800 Pro 控制器，支持 1 kHz\n力控环路、视觉伺服与在线轨迹修正；内置振动抑制算法，末端残余振动降低 40%。\n五、验证计划\n2026 年 1 月完成 2,000 小时可靠性测试，3 月通过 CE 认证，4 月小批量交付首批 50 台。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_product_r20_pro_whitepaper"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.466,
+    "number_recall": 0.667
+  }
+}

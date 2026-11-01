@@ -1,0 +1,166 @@
+{
+  "qid": "D0093",
+  "question": "合同金额 1,000 万元以上的报价要经过哪些评审环节？",
+  "question_type": "条件判断与边界",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"合同金额 1000万 报价 评审环节\",\"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 367,
+        "total_tokens": 511,
+        "completion_tokens": 144,
+        "completion_tokens_details": {
+          "reasoning_tokens": 109,
+          "text_tokens": 144
+        }
+      },
+      "seconds": 1.703
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_sales_quote\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 1567,
+        "total_tokens": 2090,
+        "completion_tokens": 523,
+        "completion_tokens_details": {
+          "reasoning_tokens": 490,
+          "text_tokens": 523
+        }
+      },
+      "seconds": 5.078
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"合同金额 1,000 万元以上的报价须经过**法务合规部与 CFO 联合评审**。此外，若项目涉及非标开发，还须 **CTO 签字**；若涉及海外交付，须**国际业务部确认合规与物流方案**。\",\"citations\":[\"lantu_sales_quote\"],\"evidence\":[\"lantu_sales_quote#1\"]}",
+      "usage": {
+        "prompt_tokens": 1944,
+        "total_tokens": 2354,
+        "completion_tokens": 410,
+        "completion_tokens_details": {
+          "reasoning_tokens": 319,
+          "text_tokens": 410
+        }
+      },
+      "seconds": 3.922
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "合同金额 1000万 报价 评审环节",
+        "top_k": 5
+      },
+      "result_sha": "1420a6e8ff5007d24cd69804b492777842076e6a50a284f60cbd323257ba4740",
+      "result_chars": 1959,
+      "hits": 5
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_sales_quote",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "52fc4d74c342403575fd7324087c719f0b469ee7c9ca39cd052e2030f1960292",
+      "result_chars": 564,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "合同金额 1,000 万元以上的报价须经过**法务合规部与 CFO 联合评审**。此外，若项目涉及非标开发，还须 **CTO 签字**；若涉及海外交付，须**国际业务部确认合规与物流方案**。",
+    "citations": [
+      "lantu_sales_quote"
+    ],
+    "evidence": [
+      "lantu_sales_quote#1"
+    ]
+  },
+  "status": "answered",
+  "tokens": 4955,
+  "started_at": "2026-11-01T04:42:20",
+  "elapsed_seconds": 10.7,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "合同金额 1000万 报价 评审环节",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_sales_quote",
+            "title": "# 澜图智能报价与合同评审流程",
+            "chunk": 0,
+            "score": 16.795,
+            "snippet": "# 澜图智能报价与合同评审流程\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-02-10 09:00\n更新时间：2025-08-08 14:00\n版本号：v2.5\n文档类型：sales\n文档族：sales_quote\n生效日期：2025-08-08\n\n## 一、报价流程\n\n销售工程师在 CRM 创建报价单，系统自动校验标准价；非标项目由售前技术出具配置清单，产品部确认成本，财务部复核税率与汇率。\n\n## 二、评审节点\n\n合同金额 1,000 万元以上须法务合规部与 CFO 联合评审；涉及非标开发须 CTO"
+          },
+          {
+            "doc_id": "lantu_meeting_case_review",
+            "title": "# 恒芯动力电池项目复盘会纪要",
+            "chunk": 0,
+            "score": 8.893,
+            "snippet": "# 恒芯动力电池项目复盘会纪要\n\n所属部门：客户成功部\n作者：林可\n创建时间：2025-03-18 09:00\n更新时间：2025-03-18 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_case_hengxin\n生效日期：2025-03-18\n\n## 一、项目结果\n\n恒芯动力电池 12 条叠片线完成验收，部署 186 台 LT-R20 与 24 台 AMR-1000，合同金额 2.16 亿元。\n\n## 二、成功经验\n\n虚拟调试提前发现 37 处干涉，现场调试周期缩短 12 天；"
+          },
+          {
+            "doc_id": "lantu_legal_nda_template",
+            "title": "澜图智能保密协议模板（NDA）",
+            "chunk": 0,
+            "score": 8.568,
+            "snippet": "澜图智能保密协议模板（NDA）\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-10 09:00\n更新时间：2025-02-01 09:00\n版本号：v3.0\n文档类型：legal\n文档族：nda_template\n生效日期：2025-02-01\n第一条 保密信息\n保密信息包括技术资料、图纸、源代码、算法、客户信息、报价、成本与未公开财务数据。\n第二条 保密义务\n接收方仅可为合作目的使用保密信息，不得披露给第三方；接触人员须签署个人保密承诺。\n第三条 保密期限\n本协议保密期限为签署之日起 3 年，商业秘"
+          },
+          {
+            "doc_id": "lantu_sales_customer_list",
+            "title": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态",
+            "chunk": 0,
+            "score": 7.889,
+            "snippet": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态\n恒芯动力电池,动力电池,常州,电芯叠片与物流,\"21,600\",2025,已验收\n澜岳汽车零部件,汽车零部件,上海,白车身焊装,\"14,800\",2024,已验收\n曜阳光能,光伏,合肥,电池片串焊,\"9,800\",2025,已验收\n星禾电子,3C 电子,昆山,精密组装,\"12,500\",2024,已验收\n海翎家电,家电,顺德,喷涂与打磨,\"6,300\",2025,已验收\n晶拓微电子,半导体,无锡,晶圆搬运,\"7,400\",2025,已验收\n麦丰食品,食品,漯河"
+          },
+          {
+            "doc_id": "lantu_meeting_product_review",
+            "title": "LT-R20 Pro 产品评审会纪要",
+            "chunk": 0,
+            "score": 7.519,
+            "snippet": "LT-R20 Pro 产品评审会纪要\n所属部门：产品部\n作者：孟凡\n创建时间：2025-08-18 09:00\n更新时间：2025-08-18 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_product_review\n生效日期：2025-08-18\n一、会议信息\n时间：2025 年 8 月 18 日；主持：沈亦舟；参会：产品部、研发中心、质量部、销售中心、售后服务部。\n二、评审结论\nLT-R20 Pro 通过概念与计划阶段评审，进入开发阶段。目标负载 22 kg、臂展 1,750"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_sales_quote",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_sales_quote",
+        "title": "# 澜图智能报价与合同评审流程",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 399,
+        "text": "# 澜图智能报价与合同评审流程\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-02-10 09:00\n更新时间：2025-08-08 14:00\n版本号：v2.5\n文档类型：sales\n文档族：sales_quote\n生效日期：2025-08-08\n\n## 一、报价流程\n\n销售工程师在 CRM 创建报价单，系统自动校验标准价；非标项目由售前技术出具配置清单，产品部确认成本，财务部复核税率与汇率。\n\n## 二、评审节点\n\n合同金额 1,000 万元以上须法务合规部与 CFO 联合评审；涉及非标开发须 CTO 签字；涉及海外交付须国际业务部确认合规与物流方案。\n\n## 三、报价有效期\n\n标准产品报价有效期 30 天，非标项目 60 天。原材料价格波动超过 5% 时，销售中心可发起价格重审。\n\n## 四、禁止承诺\n\n未经评审不得承诺交期、定制功能、终身免费服务或超出标准的质保条款。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_sales_quote"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.712,
+    "number_recall": 1.0
+  }
+}

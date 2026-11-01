@@ -1,0 +1,166 @@
+{
+  "qid": "E0092",
+  "question": "办公终端有哪些安全要求？信息安全违规行为会受到什么处罚？",
+  "question_type": "条件判断与边界",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"办公终端 安全要求\",\"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 361,
+        "total_tokens": 488,
+        "completion_tokens": 127,
+        "completion_tokens_details": {
+          "reasoning_tokens": 100,
+          "text_tokens": 127
+        }
+      },
+      "seconds": 1.562
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_infosec\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 1515,
+        "total_tokens": 2043,
+        "completion_tokens": 528,
+        "completion_tokens_details": {
+          "reasoning_tokens": 494,
+          "text_tokens": 528
+        }
+      },
+      "seconds": 5.203
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据《澜图智能信息安全管理制度》，相关要求如下：\\n\\n1. **办公终端安全要求**：\\n   - 办公电脑须安装公司统一的终端防护软件。\\n   - 须开启磁盘加密与屏保锁定。\\n   - 禁止安装未授权软件与私人远程工具。\\n\\n2. **信息安全违规处罚**：\\n   - 违规行为将视情节轻重，给予警告、降级或解除劳动合同。\",\"citations\":[\"lantu_policy_infosec\"],\"evidence\":[\"lantu_policy_infosec#0\"]}",
+      "usage": {
+        "prompt_tokens": 1909,
+        "total_tokens": 2687,
+        "completion_tokens": 778,
+        "completion_tokens_details": {
+          "reasoning_tokens": 649,
+          "text_tokens": 778
+        }
+      },
+      "seconds": 6.922
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "办公终端 安全要求",
+        "top_k": 5
+      },
+      "result_sha": "a9077f2cace636f9e8e4c4a807f2facf5e668c3ddbab5e05432de7b60105ea48",
+      "result_chars": 1953,
+      "hits": 5
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_infosec",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "eb5e872f6bcbc95bcf05a312eba16b5e31169eb6cd7ecb96b297a43f22926927",
+      "result_chars": 624,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《澜图智能信息安全管理制度》，相关要求如下：\n\n1. **办公终端安全要求**：\n   - 办公电脑须安装公司统一的终端防护软件。\n   - 须开启磁盘加密与屏保锁定。\n   - 禁止安装未授权软件与私人远程工具。\n\n2. **信息安全违规处罚**：\n   - 违规行为将视情节轻重，给予警告、降级或解除劳动合同。",
+    "citations": [
+      "lantu_policy_infosec"
+    ],
+    "evidence": [
+      "lantu_policy_infosec#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 5218,
+  "started_at": "2026-11-01T04:52:04",
+  "elapsed_seconds": 13.69,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "办公终端 安全要求",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_policy_infosec",
+            "title": "# 澜图智能信息安全管理制度",
+            "chunk": 0,
+            "score": 10.466,
+            "snippet": "# 澜图智能信息安全管理制度\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-04-01 09:00\n更新时间：2025-08-01 09:00\n版本号：v4.0\n文档类型：policy\n文档族：information_security\n生效日期：2025-08-01\n\n## 一、账号与密码\n\n员工账号一人一号，密码长度不少于 12 位，包含大小写字母、数字与符号，每 90 天更换一次；禁止共享账号。\n\n## 二、终端安全\n\n办公电脑须安装公司统一的终端防护软件，开启磁盘加密与屏保锁定；禁止安装未授权软件与"
+          },
+          {
+            "doc_id": "lantu_product_painting",
+            "title": "# LT-Paint 机器人喷涂工作站方案",
+            "chunk": 0,
+            "score": 8.178,
+            "snippet": "# LT-Paint 机器人喷涂工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-08-01 09:00\n更新时间：2025-04-18 15:00\n版本号：v2.2\n文档类型：product\n文档族：solution_painting\n生效日期：2025-04-18\n\n## 一、方案组成\n\n以 LT-R20 防爆机器人为核心，集成旋杯喷枪、供漆系统、防爆控制柜与 VOC 处理装置。\n\n## 二、工艺指标\n\n换色时间 6 分钟，涂料利用率提升 23%，膜厚均匀性 ±5 μm，VOC 排放下降 19%。"
+          },
+          {
+            "doc_id": "lantu_support_remote_diagnostics",
+            "title": "# 澜图智能远程诊断服务说明",
+            "chunk": 0,
+            "score": 8.043,
+            "snippet": "# 澜图智能远程诊断服务说明\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-05-01 09:00\n更新时间：2025-07-18 15:00\n版本号：v2.6\n文档类型：support\n文档族：remote_diagnostics\n生效日期：2025-07-18\n\n## 一、服务能力\n\n远程诊断中心 7×24 小时值守，通过安全网关接入客户设备，实时读取报警、日志与运行数据。\n\n## 二、解决率\n\n2025 年远程诊断解决率 85%，平均故障定位时间 18 分钟，减少现场出勤 2,100 次。\n\n## "
+          },
+          {
+            "doc_id": "lantu_policy_vehicle",
+            "title": "# 澜图智能公务用车管理办法",
+            "chunk": 0,
+            "score": 4.24,
+            "snippet": "# 澜图智能公务用车管理办法\n\n所属部门：行政部\n作者：陈依然\n创建时间：2024-03-01 09:00\n更新时间：2025-04-02 09:00\n版本号：v2.4\n文档类型：policy\n文档族：vehicle_management\n生效日期：2025-04-02\n\n## 一、用车范围\n\n公务用车用于客户接待、机场接送、跨园区办公与紧急事务；上下班通勤原则上不使用公务车。\n\n## 二、申请流程\n\n用车须提前 1 个工作日在 OA 申请，注明事由、路线、人数与时间；临时用车须部门负责人电话批准后补单。\n\n## "
+          },
+          {
+            "doc_id": "lantu_meeting_board",
+            "title": "# 2025 年第二次临时董事会决议",
+            "chunk": 0,
+            "score": 3.931,
+            "snippet": "# 2025 年第二次临时董事会决议\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-04-25 09:00\n更新时间：2025-04-25 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_board_2025\n生效日期：2025-04-25\n\n## 一、会议信息\n\n时间：2025 年 4 月 25 日；方式：现场加视频；应到董事 9 人，实到 9 人；列席：高管团队。\n\n## 二、审议事项\n\n审议通过《2024 年度利润分配方案》《2025 年度研发投入预算》《苏州二期"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_infosec",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_infosec",
+        "title": "# 澜图智能信息安全管理制度",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 453,
+        "text": "# 澜图智能信息安全管理制度\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-04-01 09:00\n更新时间：2025-08-01 09:00\n版本号：v4.0\n文档类型：policy\n文档族：information_security\n生效日期：2025-08-01\n\n## 一、账号与密码\n\n员工账号一人一号，密码长度不少于 12 位，包含大小写字母、数字与符号，每 90 天更换一次；禁止共享账号。\n\n## 二、终端安全\n\n办公电脑须安装公司统一的终端防护软件，开启磁盘加密与屏保锁定；禁止安装未授权软件与私人远程工具。\n\n## 三、数据外发\n\n涉及 L3、L4 级数据的外发须经部门负责人与信息安全委员会审批；禁止通过个人邮箱、网盘与即时通讯工具传输敏感数据。\n\n## 四、事件响应\n\n安全事件须在 1 小时内上报信息安全委员会，重大事件启动应急预案并在 24 小时内完成初步处置。\n\n## 五、审计与处罚\n\n公司每季度开展权限复核与日志审计；违规行为视情节给予警告、降级或解除劳动合同。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_policy_infosec"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.758,
+    "number_recall": 0.0
+  }
+}

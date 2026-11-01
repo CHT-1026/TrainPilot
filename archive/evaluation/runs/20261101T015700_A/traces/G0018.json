@@ -1,0 +1,76 @@
+{
+  "qid": "G0018",
+  "question": "伺服位置精度 23 位与控制架构 v3.3 的 23 位绝对值编码器是否指同一件事？",
+  "question_type": "矛盾与例外识别",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>23 位 绝对值编码器</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 79,
+        "prompt_tokens": 346,
+        "total_tokens": 425,
+        "completion_tokens_details": {
+          "reasoning_tokens": 44
+        },
+        "prompt_tokens_details": null
+      },
+      "seconds": 2.235
+    },
+    {
+      "round": 2,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"是的，两者指的是同一件事。资料中《编码器基础》明确说明：'在伺服领域，我们常说的23位、24位、26位，指的就是编码器的分辨率'，并给出公式'分辨率 = 2^编码器位数'。而《控制架构 v3.3》中描述的'伺服驱动器采用23位绝对值编码器（约839万脉冲/转）'正是同一指标的具体表述——2^23 = 8,388,608，即约839万脉冲/转。因此，伺服位置精度语境下的'23位'就是控制架构 v3.3 中所述的23位绝对值编码器，均指编码器单圈分辨率为23 bit，两者用词不同但含义一致，不是两个不同的概念。\",\"citations\":[\"DOC_001\",\"DOC_002\",\"DOC_003\",\"DOC_004\"],\"evidence\":[\"DOC_001#片段12\",\"DOC_001#片段18\",\"DOC_002#片段1\",\"DOC_003#片段3\",\"DOC_004#片段14\"]}",
+      "usage": {
+        "completion_tokens": 454,
+        "prompt_tokens": 418,
+        "total_tokens": 872,
+        "completion_tokens_details": {
+          "reasoning_tokens": 177
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 14.328
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "answerable",
+    "answer": "是的，两者指的是同一件事。资料中《编码器基础》明确说明：'在伺服领域，我们常说的23位、24位、26位，指的就是编码器的分辨率'，并给出公式'分辨率 = 2^编码器位数'。而《控制架构 v3.3》中描述的'伺服驱动器采用23位绝对值编码器（约839万脉冲/转）'正是同一指标的具体表述——2^23 = 8,388,608，即约839万脉冲/转。因此，伺服位置精度语境下的'23位'就是控制架构 v3.3 中所述的23位绝对值编码器，均指编码器单圈分辨率为23 bit，两者用词不同但含义一致，不是两个不同的概念。",
+    "citations": [
+      "DOC_001",
+      "DOC_002",
+      "DOC_003",
+      "DOC_004"
+    ],
+    "evidence": [
+      "DOC_001#片段12",
+      "DOC_001#片段18",
+      "DOC_002#片段1",
+      "DOC_003#片段3",
+      "DOC_004#片段14"
+    ]
+  },
+  "status": "answered",
+  "tokens": 1297,
+  "started_at": "2026-11-01T02:06:58",
+  "elapsed_seconds": 16.56,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [
+      "DOC_001",
+      "DOC_002",
+      "DOC_003",
+      "DOC_004"
+    ],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.069,
+    "number_recall": 0.0
+  }
+}

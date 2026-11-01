@@ -1,0 +1,25 @@
+{
+  "qid": "K0010",
+  "question": "产品部负责人孟凡是《LT-R 系列六轴工业机器人产品手册》的作者，而研发中心总经理程知远是《LT-C800 运动控制器产品说明》的作者。LT-R 手册称采用自研 LT-C800 控制器与 23 位绝对值编码器伺服电机，支持 EtherCAT 1 ms 总线周期。请判断：产品手册中的控制器与控制架构文档中的控制器是否为同一产品线？",
+  "question_type": "跨文档推理",
+  "rounds": [],
+  "tool_calls": [],
+  "answer": null,
+  "status": "api_error",
+  "tokens": 0,
+  "started_at": "2026-11-01T03:05:31",
+  "error": "HTTPError: HTTP Error 503: Service Unavailable",
+  "elapsed_seconds": 0.0,
+  "tool_calls_detail": [],
+  "model_label": "D",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

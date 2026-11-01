@@ -1,0 +1,495 @@
+{
+  "qid": "C0120",
+  "question": "参数矩阵中 LT-R 与 LT-S 两条产品线的备件响应是 48 小时，LT-AMR 与 LT-V3D 是 72 小时，这与产品手册中的备件发货时效是否一致？",
+  "question_type": "矛盾与例外识别",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call>\n<function>search</function>\n<parameter>query:备件响应 LT-R LT-S LT-AMR LT-V3D</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 399,
+        "total_tokens": 627,
+        "completion_tokens": 228,
+        "completion_tokens_details": {
+          "reasoning_tokens": 183,
+          "text_tokens": 228
+        }
+      },
+      "seconds": 2.016
+    },
+    {
+      "round": 2,
+      "text": "<tool_call>\n<function>read</function>\n<parameter=doc_id>lantu_product_r_series</parameter>\n<parameter=offset>0</parameter>\n<parameter=limit>4000</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 2705,
+        "total_tokens": 3373,
+        "completion_tokens": 668,
+        "completion_tokens_details": {
+          "reasoning_tokens": 608,
+          "text_tokens": 668
+        }
+      },
+      "seconds": 5.297
+    },
+    {
+      "round": 3,
+      "text": "<tool_call>\n<function>read</function>\n<parameter=doc_id>lantu_support_spare_parts_price</parameter>\n<parameter=offset>0</parameter>\n<parameter=limit>4000</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 2804,
+        "total_tokens": 3431,
+        "completion_tokens": 627,
+        "completion_tokens_details": {
+          "reasoning_tokens": 565,
+          "text_tokens": 627
+        }
+      },
+      "seconds": 5.312
+    },
+    {
+      "round": 4,
+      "text": "<tool_call>\n<function>list</function>\n<parameter=keyword></parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 2905,
+        "total_tokens": 3734,
+        "completion_tokens": 829,
+        "completion_tokens_details": {
+          "reasoning_tokens": 799,
+          "text_tokens": 829
+        }
+      },
+      "seconds": 7.984
+    },
+    {
+      "round": 5,
+      "text": "<tool_call>\n<function>read</function>\n<parameter=doc_id>lantu_product_r_series</parameter>\n<parameter=offset>0</parameter>\n<parameter=limit>4000</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 4050,
+        "total_tokens": 6152,
+        "completion_tokens": 2102,
+        "completion_tokens_details": {
+          "reasoning_tokens": 2042,
+          "text_tokens": 2102
+        }
+      },
+      "seconds": 17.844
+    },
+    {
+      "round": 6,
+      "text": "<tool_call>\n<function>read</function>\n<parameter=doc_id>lantu_product_r_series</parameter>\n<parameter=offset>0</parameter>\n<parameter=limit>4000</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 4149,
+        "total_tokens": 4694,
+        "completion_tokens": 545,
+        "completion_tokens_details": {
+          "reasoning_tokens": 485,
+          "text_tokens": 545
+        }
+      },
+      "seconds": 5.344
+    },
+    {
+      "round": 7,
+      "text": "<tool_call>\n<function>read</function>\n<parameter=doc_id>lantu_support_spare_parts_price</parameter>\n<parameter=offset>0</parameter>\n<parameter=limit>4000</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 4248,
+        "total_tokens": 5002,
+        "completion_tokens": 754,
+        "completion_tokens_details": {
+          "reasoning_tokens": 692,
+          "text_tokens": 754
+        }
+      },
+      "seconds": 6.203
+    },
+    {
+      "round": 8,
+      "text": "<tool_call>\n<function>search</function>\n<parameter=query:LT-R 发货时效 备件</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 4349,
+        "total_tokens": 5772,
+        "completion_tokens": 1423,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1386,
+          "text_tokens": 1423
+        }
+      },
+      "seconds": 12.641
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "备件响应 LT-R LT-S LT-AMR LT-V3D"
+      },
+      "result_sha": "52ed724a01e6ccdab4b49000a6940f19d366b1e93d53cf6682cdd6843148566f",
+      "result_chars": 3856,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {},
+      "result_sha": "0891001a5cc7c8764ea4230b012c537a0dd1ca2a8bf2ce0a1414a84875e8690b",
+      "result_chars": 51,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {},
+      "result_sha": "0891001a5cc7c8764ea4230b012c537a0dd1ca2a8bf2ce0a1414a84875e8690b",
+      "result_chars": 51,
+      "hits": 0
+    },
+    {
+      "name": "list",
+      "args": {},
+      "result_sha": "ee5960dfc8f223ba9ffafd250ac7a048c5a08afb9d85298c7a0ba99417e816f1",
+      "result_chars": 2735,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {},
+      "result_sha": "0891001a5cc7c8764ea4230b012c537a0dd1ca2a8bf2ce0a1414a84875e8690b",
+      "result_chars": 51,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {},
+      "result_sha": "0891001a5cc7c8764ea4230b012c537a0dd1ca2a8bf2ce0a1414a84875e8690b",
+      "result_chars": 51,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {},
+      "result_sha": "0891001a5cc7c8764ea4230b012c537a0dd1ca2a8bf2ce0a1414a84875e8690b",
+      "result_chars": 51,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result_sha": "5fc2d84c83980bdfdb622431503d60a4e21a961fe19252f171944fa6956f91c7",
+      "result_chars": 12,
+      "hits": 0
+    }
+  ],
+  "answer": null,
+  "status": "unfinished",
+  "tokens": 32785,
+  "started_at": "2026-11-01T04:31:10",
+  "elapsed_seconds": 62.64,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "备件响应 LT-R LT-S LT-AMR LT-V3D"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 1,
+            "score": 33.953,
+            "snippet": "0 kg\t1.5 m/s\nLT-AMR-2000\t2,000 kg\t—\t±10 mm\t420 kg\t1.2 m/s\n[工作表] 交付与保修\n产品线\t标准交期\t保修期\t备件响应\nLT-R 系列\t6-8 周\t24 个月/6,000 小时\t48 小时\nLT-S 系列\t4 周\t24 个月/6,000 小时\t48 小时\nLT-AMR 系列\t8 周\t24 个月\t72 小时\nLT-V3D\t4 周\t12 个月\t72 小时"
+          },
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 27.003,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能产品参数矩阵（2025）\n所属部门\t产品部\n作者\t孟凡\n创建时间\t2025-01-20 09:00\n更新时间\t2025-12-15 18:00\n版本号\tv2.0\n文档类型\tproduct\n文档族\tproduct_matrix\n生效日期\t2025-12-15\n[工作表] 六轴与SCARA\n型号\t负载\t臂展\t重复精度\t本体重量\t最大速度\nLT-R6\t6 kg\t1,450 mm\t±0.02 mm\t165 kg\t3.2 m/s\nLT-R12\t12 kg\t1,550 mm\t±0."
+          },
+          {
+            "doc_id": "lantu_support_spare_parts_price",
+            "title": "﻿适配机型,备件名称,单价（元）,发货时效,质保期",
+            "chunk": 0,
+            "score": 17.872,
+            "snippet": "﻿适配机型,备件名称,单价（元）,发货时效,质保期\nLT-R20,减速器 RV-40E,\"12,800\",48 小时,12 个月\nLT-R20,伺服驱动器 LT-D4,\"8,600\",48 小时,18 个月\nLT-R20,示教器 LT-Pad3,\"5,200\",48 小时,12 个月\nLT-R12,减速器 RV-20E,\"7,900\",48 小时,12 个月\nLT-R12,伺服电机 750W,\"3,600\",48 小时,18 个月\nLT-R6,谐波减速器 CSF-17,\"6,400\",72 小时,12 个月\nLT-"
+          },
+          {
+            "doc_id": "lantu_product_r_series",
+            "title": "# LT-R 系列六轴工业机器人产品手册",
+            "chunk": 1,
+            "score": 17.094,
+            "snippet": "| 型号 | 负载 | 臂展 | 重复精度 | 本体重量 | 最大速度 |\n| --- | --- | --- | --- | --- | --- |\n| LT-R6 | 6 kg | 1,450 mm | ±0.02 mm | 165 kg | 3.2 m/s |\n| LT-R12 | 12 kg | 1,550 mm | ±0.03 mm | 210 kg | 3.0 m/s |\n| LT-R20 | 20 kg | 1,700 mm | ±0.03 mm | 285 kg | 2.8 m/s |\n| LT-R"
+          },
+          {
+            "doc_id": "lantu_product_vision",
+            "title": "# LT-V3D 工业视觉系统技术说明",
+            "chunk": 0,
+            "score": 16.678,
+            "snippet": "# LT-V3D 工业视觉系统技术说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-06-18 09:00\n更新时间：2025-07-15 14:00\n版本号：v2.6\n文档类型：product\n文档族：product_vision\n生效日期：2025-07-15\n\n## 一、系统组成\n\nLT-V3D 由结构光相机、视觉控制器与 LantuVision 软件组成，支持 3D 点云、2D 图像与深度学习缺陷检测。\n\n## 二、核心指标\n\n测量精度 0.05 mm，单帧点云 120 万点，帧率 30 fps"
+          },
+          {
+            "doc_id": "lantu_product_s_series",
+            "title": "# LT-S 系列 SCARA 机器人产品说明",
+            "chunk": 0,
+            "score": 16.517,
+            "snippet": "# LT-S 系列 SCARA 机器人产品说明\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-03-01 09:00\n更新时间：2025-09-12 11:00\n版本号：v3.2\n文档类型：product\n文档族：product_s_series\n生效日期：2025-09-12\n\n## 一、产品定位\n\nLT-S 系列 SCARA 机器人面向 3C 组装、光伏串焊、食品包装等高速取放场景，标准循环时间 0.38 秒。\n\n## 二、型号参数\n\nLT-S4 负载 4 kg、臂展 600 mm、重复精度 ±0.02 "
+          },
+          {
+            "doc_id": "lantu_product_amr",
+            "title": "# LT-AMR 自主移动机器人产品手册",
+            "chunk": 0,
+            "score": 15.74,
+            "snippet": "# LT-AMR 自主移动机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-05-10 09:00\n更新时间：2025-08-20 15:00\n版本号：v3.4\n文档类型：product\n文档族：product_amr\n生效日期：2025-08-20\n\n## 一、产品系列\n\nLT-AMR-500 负载 500 kg、速度 1.8 m/s、续航 8 小时；LT-AMR-1000 负载 1,000 kg、速度 1.5 m/s、续航 8 小时；LT-AMR-2000 负载 2,000 kg、速度 1.2"
+          },
+          {
+            "doc_id": "lantu_product_r_series",
+            "title": "# LT-R 系列六轴工业机器人产品手册",
+            "chunk": 0,
+            "score": 15.306,
+            "snippet": "# LT-R 系列六轴工业机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-01-15 09:00\n更新时间：2025-10-30 16:00\n版本号：v4.3\n文档类型：product\n文档族：product_r_series\n生效日期：2025-10-30\n\n## 一、产品定位\n\nLT-R 系列覆盖 6 kg 至 210 kg 负载，适用于搬运、焊接、装配、喷涂、打磨等工序，重复定位精度最高 ±0.02 mm，防护等级 IP54，可选 IP67。\n\n## 二、型号与参数\n\nLT-R6 负载 6"
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 1,
+            "score": 14.085,
+            "snippet": "| 产品线 | 代表型号 | 负载 | 典型行业 |\n| --- | --- | --- | --- |\n| 六轴机器人 | LT-R6/R12/R20/R50/R210 | 6-210 kg | 汽车、锂电、金属加工 |\n| SCARA | LT-S4/S10 | 4-10 kg | 3C、光伏、食品 |\n| 移动机器人 | LT-AMR-500/1000/2000 | 500-2,000 kg | 物流、半导体 |\n| 机器视觉 | LT-V3D | — | 装配、检测 |\n| 控制器 | LT-C800 | "
+          },
+          {
+            "doc_id": "lantu_solution_lithium",
+            "title": "# 动力电池叠片与物流整体解决方案",
+            "chunk": 0,
+            "score": 13.606,
+            "snippet": "# 动力电池叠片与物流整体解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-10-12 09:00\n更新时间：2025-12-01 10:00\n版本号：v3.6\n文档类型：product\n文档族：solution_lithium\n生效日期：2025-12-01\n\n## 一、方案概述\n\n面向动力电池电芯段，提供叠片、焊接、检测与物料配送一体化方案，核心设备包括 LT-R20 机器人、LT-AMR-1000 与 LT-V3D 视觉。\n\n## 二、产线配置\n\n单条叠片线配置 15-16 台 LT-R20、2 "
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {},
+      "result": {
+        "error": "未知 doc_id，请使用 list 或 search 返回的 doc_id"
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {},
+      "result": {
+        "error": "未知 doc_id，请使用 list 或 search 返回的 doc_id"
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "list",
+      "args": {},
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_company_brand",
+            "title": "# 澜图智能品牌视觉与传播规范"
+          },
+          {
+            "doc_id": "lantu_company_campus",
+            "title": "# 澜图智能制造基地与产能布局"
+          },
+          {
+            "doc_id": "lantu_company_global",
+            "title": "# 澜图智能全球化布局与海外业务"
+          },
+          {
+            "doc_id": "lantu_company_history",
+            "title": "# 澜图智能发展历程（2011—2025）"
+          },
+          {
+            "doc_id": "lantu_company_milestones_2025",
+            "title": "# 澜图智能 2025 年度大事记"
+          },
+          {
+            "doc_id": "lantu_company_mission",
+            "title": "# 澜图智能使命、愿景与价值观"
+          },
+          {
+            "doc_id": "lantu_company_profile",
+            "title": "澜图智能装备公司简介"
+          },
+          {
+            "doc_id": "lantu_investor_overview",
+            "title": "# 澜图智能投资者关系概览"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2024",
+            "title": "澜图智能 2024 年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2025",
+            "title": "澜图智能 2025 年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_budget_2026",
+            "title": "# 澜图智能 2026 年度经营预算"
+          },
+          {
+            "doc_id": "lantu_finance_cashflow",
+            "title": "# 澜图智能现金流与资金管理报告"
+          },
+          {
+            "doc_id": "lantu_finance_cost",
+            "title": "# 澜图智能成本管理与降本专项报告"
+          },
+          {
+            "doc_id": "lantu_finance_gross_margin",
+            "title": "# 澜图智能毛利率与成本结构分析"
+          },
+          {
+            "doc_id": "lantu_finance_h1_2025",
+            "title": "# 澜图智能 2025 年半年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_investor_qa",
+            "title": "# 澜图智能投资者常见问题答复"
+          },
+          {
+            "doc_id": "lantu_finance_monthly_2025",
+            "title": "[工作表] 文档信息"
+          },
+          {
+            "doc_id": "lantu_finance_q3_2025",
+            "title": "# 澜图智能 2025 年第三季度经营数据"
+          },
+          {
+            "doc_id": "lantu_finance_revenue_breakdown",
+            "title": "﻿维度,分类,收入（亿元）,占比,同比"
+          },
+          {
+            "doc_id": "lantu_hr_campus",
+            "title": "# 澜图智能 2026 届校园招聘方案"
+          },
+          {
+            "doc_id": "lantu_hr_compensation",
+            "title": "# 澜图智能薪酬与奖金管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_job_grades",
+            "title": "# 澜图智能职级体系与晋升规则"
+          },
+          {
+            "doc_id": "lantu_hr_manager_training",
+            "title": "澜图智能管理者领导力培训方案"
+          },
+          {
+            "doc_id": "lantu_hr_new_hire_training",
+            "title": "澜图智能新员工入职培训大纲"
+          },
+          {
+            "doc_id": "lantu_hr_performance",
+            "title": "# 澜图智能绩效管理制度"
+          },
+          {
+            "doc_id": "lantu_hr_recruitment",
+            "title": "# 澜图智能招聘管理制度"
+          },
+          {
+            "doc_id": "lantu_hr_resignation",
+            "title": "# 澜图智能离职与交接管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_social",
+            "title": "# 澜图智能社会招聘管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_training_system",
+            "title": "# 澜图智能培训体系与年度计划"
+          },
+          {
+            "doc_id": "lantu_legal_anti_bribery",
+            "title": "# 澜图智能反商业贿赂管理规定"
+          },
+          {
+            "doc_id": "lantu_legal_compliance_manual",
+            "title": "# 澜图智能合规管理手册"
+          },
+          {
+            "doc_id": "lantu_legal_data_compliance",
+            "title": "# 澜图智能数据合规与隐私保护规范"
+          },
+          {
+            "doc_id": "lantu_legal_export_control",
+            "title": "# 澜图智能出口管制与制裁合规指引"
+          },
+          {
+            "doc_id": "lantu_legal_nda_template",
+            "title": "澜图智能保密协议模板（NDA）"
+          },
+          {
+            "doc_id": "lantu_legal_purchase_contract_template",
+            "title": "澜图智能采购合同模板（2025版）"
+          },
+          {
+            "doc_id": "lantu_legal_sales_contract_template",
+            "title": "澜图智能设备销售合同模板（2025版）"
+          },
+          {
+            "doc_id": "lantu_legal_supplier_code",
+            "title": "# 澜图智能供应商行为准则"
+          },
+          {
+            "doc_id": "lantu_meeting_board",
+            "title": "# 2025 年第二次临时董事会决议"
+          },
+          {
+            "doc_id": "lantu_meeting_case_review",
+            "title": "# 恒芯动力电池项目复盘会纪要"
+          },
+          {
+            "doc_id": "lantu_meeting_ops_2025q3",
+            "title": "2025 年第三季度经营分析会纪要"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {},
+      "result": {
+        "error": "未知 doc_id，请使用 list 或 search 返回的 doc_id"
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {},
+      "result": {
+        "error": "未知 doc_id，请使用 list 或 search 返回的 doc_id"
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {},
+      "result": {
+        "error": "未知 doc_id，请使用 list 或 search 返回的 doc_id"
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result": {
+        "hits": []
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

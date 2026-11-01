@@ -1,0 +1,142 @@
+{
+  "qid": "A0128",
+  "question": "认证渠道商 186 家与核心渠道 32 家分别来自哪份文档？公司基地布局中核心供应商 186 家的数字与之是否属于同一口径？",
+  "question_type": "矛盾与例外识别",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>认证渠道商 186 家 核心渠道 32 家</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list></function></tool_call>",
+      "usage": {
+        "completion_tokens": 135,
+        "prompt_tokens": 386,
+        "total_tokens": 521,
+        "completion_tokens_details": {
+          "reasoning_tokens": 84
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.594
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>认证渠道商 186 家 核心渠道 32 家</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 61,
+        "prompt_tokens": 474,
+        "total_tokens": 535,
+        "completion_tokens_details": {
+          "reasoning_tokens": 18
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.313
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>认证渠道商 186家 核心渠道 32家</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 554,
+        "total_tokens": 604,
+        "completion_tokens_details": {
+          "reasoning_tokens": 9
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.328
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>认证渠道商 186家 核心渠道 32家</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 55,
+        "prompt_tokens": 632,
+        "total_tokens": 687,
+        "completion_tokens_details": {
+          "reasoning_tokens": 23
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 1.609
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>认证渠道商 186家 核心渠道 32家</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 93,
+        "prompt_tokens": 701,
+        "total_tokens": 794,
+        "completion_tokens_details": {
+          "reasoning_tokens": 52
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 3.281
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>认证渠道商 186家 核心渠道 32家</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 49,
+        "prompt_tokens": 779,
+        "total_tokens": 828,
+        "completion_tokens_details": {
+          "reasoning_tokens": 17
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 1.469
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"未能检索到可核实的原文证据：本轮所有检索调用均未返回有效结果，因此无法确认'认证渠道商186家'与'核心渠道32家'分别出自哪份文档，也无法核实'核心供应商186家'是否为同一统计口径（三处数字可能来自不同文档、不同统计时点或不同定义，186这一数字重复出现并不等于同口径）。如需回答，请补充或重试检索，以便逐份读取原文核对数字与口径定义。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 246,
+        "prompt_tokens": 845,
+        "total_tokens": 1091,
+        "completion_tokens_details": {
+          "reasoning_tokens": 111
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 768
+        }
+      },
+      "seconds": 6.125
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "未能检索到可核实的原文证据：本轮所有检索调用均未返回有效结果，因此无法确认'认证渠道商186家'与'核心渠道32家'分别出自哪份文档，也无法核实'核心供应商186家'是否为同一统计口径（三处数字可能来自不同文档、不同统计时点或不同定义，186这一数字重复出现并不等于同口径）。如需回答，请补充或重试检索，以便逐份读取原文核对数字与口径定义。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 5060,
+  "started_at": "2026-11-01T03:43:09",
+  "elapsed_seconds": 18.72,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": true,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.173,
+    "number_recall": 0.0
+  }
+}

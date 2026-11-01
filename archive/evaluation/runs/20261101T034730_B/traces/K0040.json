@@ -1,0 +1,191 @@
+{
+  "qid": "K0040",
+  "question": "题设规定申请条件按申请发生日、报销额度按费用发生日适用版本，且无其他过渡例外。6月20日申请、8月1日出差，分别适用哪版申请提前天数和一线城市住宿额度？超标谁承担？原文是否要求旧申请一律重批？",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"差旅\"}}",
+      "usage": {
+        "prompt_tokens": 411,
+        "total_tokens": 663,
+        "completion_tokens": 252,
+        "completion_tokens_details": {
+          "reasoning_tokens": 234,
+          "text_tokens": 252
+        }
+      },
+      "seconds": 2.234
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_travel_2025h2\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 564,
+        "total_tokens": 884,
+        "completion_tokens": 320,
+        "completion_tokens_details": {
+          "reasoning_tokens": 280,
+          "text_tokens": 320
+        }
+      },
+      "seconds": 2.766
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_travel_2025\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 1023,
+        "total_tokens": 1810,
+        "completion_tokens": 787,
+        "completion_tokens_details": {
+          "reasoning_tokens": 749,
+          "text_tokens": 787
+        }
+      },
+      "seconds": 6.171
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"6月20日申请适用《澜图智能差旅费用报销标准（2025版）》（v2.0），要求提前2个工作日；8月1日出差适用《澜图智能差旅费用报销标准（2025年7月修订）》（v3.0），一线城市住宿额度为600元/晚。超标部分均由个人承担。原文未要求旧申请一律重批，仅规定新版本生效后旧版本废止。\",\"citations\":[\"lantu_policy_travel_2025\",\"lantu_policy_travel_2025h2\"],\"evidence\":[\"lantu_policy_travel_2025#四、交通标准\",\"lantu_policy_travel_2025h2#一、住宿标准\",\"lantu_policy_travel_2025#一、住宿标准\",\"lantu_policy_travel_2025h2#一、住宿标准\",\"lantu_policy_travel_2025#五、生效说明\",\"lantu_policy_travel_2025h2#五、生效说明\"]}",
+      "usage": {
+        "prompt_tokens": 1460,
+        "total_tokens": 4430,
+        "completion_tokens": 2970,
+        "completion_tokens_details": {
+          "reasoning_tokens": 2731,
+          "text_tokens": 2970
+        }
+      },
+      "seconds": 24.157
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "差旅"
+      },
+      "result_sha": "f6bd4e78035d1f78b6af6f4de6206b6b43fb4933accc232d1fd34fe741731b5a",
+      "result_chars": 238,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_travel_2025h2",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "cd892ed8038ab44deaedda8457a73e71e1401350b20b3259ba550d0bbcdbd0f9",
+      "result_chars": 631,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_travel_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "e29663c4188024bf9d693e3f523d6c8cafadfd85843c0a0ed12ab858fb15459d",
+      "result_chars": 605,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "6月20日申请适用《澜图智能差旅费用报销标准（2025版）》（v2.0），要求提前2个工作日；8月1日出差适用《澜图智能差旅费用报销标准（2025年7月修订）》（v3.0），一线城市住宿额度为600元/晚。超标部分均由个人承担。原文未要求旧申请一律重批，仅规定新版本生效后旧版本废止。",
+    "citations": [
+      "lantu_policy_travel_2025",
+      "lantu_policy_travel_2025h2"
+    ],
+    "evidence": [
+      "lantu_policy_travel_2025#四、交通标准",
+      "lantu_policy_travel_2025h2#一、住宿标准",
+      "lantu_policy_travel_2025#一、住宿标准",
+      "lantu_policy_travel_2025h2#一、住宿标准",
+      "lantu_policy_travel_2025#五、生效说明",
+      "lantu_policy_travel_2025h2#五、生效说明"
+    ]
+  },
+  "status": "answered",
+  "tokens": 7787,
+  "started_at": "2026-11-01T05:58:45",
+  "elapsed_seconds": 35.33,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "差旅"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_policy_travel_2024",
+            "title": "# 澜图智能差旅费用报销标准（2024版）"
+          },
+          {
+            "doc_id": "lantu_policy_travel_2025",
+            "title": "# 澜图智能差旅费用报销标准（2025版）"
+          },
+          {
+            "doc_id": "lantu_policy_travel_2025h2",
+            "title": "# 澜图智能差旅费用报销标准（2025年7月修订）"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_travel_2025h2",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_travel_2025h2",
+        "title": "# 澜图智能差旅费用报销标准（2025年7月修订）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 443,
+        "text": "# 澜图智能差旅费用报销标准（2025年7月修订）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-06-10 09:00\n更新时间：2025-07-01 09:00\n版本号：v3.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2025-07-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 600 元/晚，二线城市 450 元/晚，其他城市 380 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 150 元/天，按自然日计算；客户宴请须提前申请，不得重复领取补贴。\n\n## 三、出差补贴\n\n市内交通与通讯补贴合计 120 元/天，凭票据实报销，无票按标准发放。\n\n## 四、交通标准\n\n高铁二等座、飞机经济舱；总监及以上可乘坐高铁一等座。出差须提前 3 个工作日申请，并同步提交行程与预算。\n\n## 五、生效说明\n\n本版本自 2025 年 7 月 1 日起生效，2025 年 1 月版同时废止。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_travel_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_travel_2025",
+        "title": "# 澜图智能差旅费用报销标准（2025版）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 423,
+        "text": "# 澜图智能差旅费用报销标准（2025版）\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2024-12-15 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：travel_expense\n生效日期：2025-01-01\n\n## 一、住宿标准\n\n一线城市（北京、上海、广州、深圳）住宿标准 550 元/晚，二线城市 420 元/晚，其他城市 350 元/晚。超标部分由个人承担。\n\n## 二、餐饮补贴\n\n出差期间餐饮补贴 120 元/天，按自然日计算；客户宴请须提前申请，不得重复领取补贴。\n\n## 三、出差补贴\n\n市内交通与通讯补贴合计 100 元/天，凭票据实报销，无票按标准发放。\n\n## 四、交通标准\n\n高铁二等座、飞机经济舱；总监及以上可乘坐高铁一等座。出差须提前 2 个工作日申请。\n\n## 五、生效说明\n\n本版本自 2025 年 1 月 1 日起生效，2024 版同时废止。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 0.667,
+    "cited": [
+      "lantu_policy_travel_2025",
+      "lantu_policy_travel_2025h2"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.279,
+    "number_recall": 0.0
+  }
+}

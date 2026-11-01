@@ -1,0 +1,166 @@
+{
+  "qid": "M1524",
+  "question": "用户：客户要 20 公斤负载的六轴机器人，臂展多少？最大速度多少？\n助手：LT-R20 负载 20 kg、臂展 1,700 mm、重复精度 ±0.03 mm、本体重量 285 kg、最大速度 2.8 m/s。\n用户：不对，客户要的是那种小型的 SCARA，10 公斤那款。臂展和最大速度是多少？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"SCARA 10kg 臂展 最大速度\",\"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 450,
+        "total_tokens": 622,
+        "completion_tokens": 172,
+        "completion_tokens_details": {
+          "reasoning_tokens": 138,
+          "text_tokens": 172
+        }
+      },
+      "seconds": 1.781
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_product_s_series\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 1621,
+        "total_tokens": 1861,
+        "completion_tokens": 240,
+        "completion_tokens_details": {
+          "reasoning_tokens": 206,
+          "text_tokens": 240
+        }
+      },
+      "seconds": 2.078
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"您指的是 LT-S10 型号的小型 SCARA 机器人。其臂展为 800 mm，最大速度为 4.0 m/s。\",\"citations\":[\"lantu_product_s_series\"],\"evidence\":[\"lantu_product_s_series#0\"]}",
+      "usage": {
+        "prompt_tokens": 2048,
+        "total_tokens": 2627,
+        "completion_tokens": 579,
+        "completion_tokens_details": {
+          "reasoning_tokens": 509,
+          "text_tokens": 579
+        }
+      },
+      "seconds": 4.656
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "SCARA 10kg 臂展 最大速度",
+        "top_k": 5
+      },
+      "result_sha": "b8dd990dc16428d0e368fc67c34f108f57dbf55602cf6ff43265428d387bfbbb",
+      "result_chars": 1968,
+      "hits": 5
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_s_series",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "823e8028fb29d7e3b4f539bb678dbbb0af1afdafdf9d468262f82bb3c426b1d8",
+      "result_chars": 624,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "您指的是 LT-S10 型号的小型 SCARA 机器人。其臂展为 800 mm，最大速度为 4.0 m/s。",
+    "citations": [
+      "lantu_product_s_series"
+    ],
+    "evidence": [
+      "lantu_product_s_series#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 5110,
+  "started_at": "2026-11-01T06:54:23",
+  "elapsed_seconds": 8.51,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "SCARA 10kg 臂展 最大速度",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_product_s_series",
+            "title": "# LT-S 系列 SCARA 机器人产品说明",
+            "chunk": 0,
+            "score": 18.981,
+            "snippet": "# LT-S 系列 SCARA 机器人产品说明\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-03-01 09:00\n更新时间：2025-09-12 11:00\n版本号：v3.2\n文档类型：product\n文档族：product_s_series\n生效日期：2025-09-12\n\n## 一、产品定位\n\nLT-S 系列 SCARA 机器人面向 3C 组装、光伏串焊、食品包装等高速取放场景，标准循环时间 0.38 秒。\n\n## 二、型号参数\n\nLT-S4 负载 4 kg、臂展 600 mm、重复精度 ±0.02 "
+          },
+          {
+            "doc_id": "lantu_product_r_series",
+            "title": "# LT-R 系列六轴工业机器人产品手册",
+            "chunk": 1,
+            "score": 16.082,
+            "snippet": "| 型号 | 负载 | 臂展 | 重复精度 | 本体重量 | 最大速度 |\n| --- | --- | --- | --- | --- | --- |\n| LT-R6 | 6 kg | 1,450 mm | ±0.02 mm | 165 kg | 3.2 m/s |\n| LT-R12 | 12 kg | 1,550 mm | ±0.03 mm | 210 kg | 3.0 m/s |\n| LT-R20 | 20 kg | 1,700 mm | ±0.03 mm | 285 kg | 2.8 m/s |\n| LT-R"
+          },
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 14.668,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能产品参数矩阵（2025）\n所属部门\t产品部\n作者\t孟凡\n创建时间\t2025-01-20 09:00\n更新时间\t2025-12-15 18:00\n版本号\tv2.0\n文档类型\tproduct\n文档族\tproduct_matrix\n生效日期\t2025-12-15\n[工作表] 六轴与SCARA\n型号\t负载\t臂展\t重复精度\t本体重量\t最大速度\nLT-R6\t6 kg\t1,450 mm\t±0.02 mm\t165 kg\t3.2 m/s\nLT-R12\t12 kg\t1,550 mm\t±0."
+          },
+          {
+            "doc_id": "lantu_product_r_series",
+            "title": "# LT-R 系列六轴工业机器人产品手册",
+            "chunk": 0,
+            "score": 13.086,
+            "snippet": "# LT-R 系列六轴工业机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-01-15 09:00\n更新时间：2025-10-30 16:00\n版本号：v4.3\n文档类型：product\n文档族：product_r_series\n生效日期：2025-10-30\n\n## 一、产品定位\n\nLT-R 系列覆盖 6 kg 至 210 kg 负载，适用于搬运、焊接、装配、喷涂、打磨等工序，重复定位精度最高 ±0.02 mm，防护等级 IP54，可选 IP67。\n\n## 二、型号与参数\n\nLT-R6 负载 6"
+          },
+          {
+            "doc_id": "lantu_solution_photovoltaic",
+            "title": "# 光伏电池片串焊整线解决方案",
+            "chunk": 0,
+            "score": 5.707,
+            "snippet": "# 光伏电池片串焊整线解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-09-20 09:00\n更新时间：2025-10-16 14:00\n版本号：v3.1\n文档类型：product\n文档族：solution_photovoltaic\n生效日期：2025-10-16\n\n## 一、方案概述\n\n面向 TOPCon/HJT 电池片串焊，提供上料、串焊、EL 检测与下料整线方案，核心设备为 LT-S10 SCARA 与 LT-V3D 视觉。\n\n## 二、产线指标\n\n串焊速度 4,200 片/小时，良率 99.6"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_s_series",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_product_s_series",
+        "title": "# LT-S 系列 SCARA 机器人产品说明",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 446,
+        "text": "# LT-S 系列 SCARA 机器人产品说明\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-03-01 09:00\n更新时间：2025-09-12 11:00\n版本号：v3.2\n文档类型：product\n文档族：product_s_series\n生效日期：2025-09-12\n\n## 一、产品定位\n\nLT-S 系列 SCARA 机器人面向 3C 组装、光伏串焊、食品包装等高速取放场景，标准循环时间 0.38 秒。\n\n## 二、型号参数\n\nLT-S4 负载 4 kg、臂展 600 mm、重复精度 ±0.02 mm、本体重量 38 kg；LT-S10 负载 10 kg、臂展 800 mm、重复精度 ±0.02 mm、最大速度 4.0 m/s。\n\n## 三、应用优势\n\n采用直驱电机与低惯量臂体，支持视觉飞拍与传送带跟踪，配套 LT-V3D 视觉可实现 99.8% 识别率。\n\n## 四、交付与服务\n\n标准交期 4 周，保修 24 个月或 6,000 小时，备件 48 小时发货。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.5,
+    "cited": [
+      "lantu_product_s_series"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.05,
+    "number_recall": 0.0
+  }
+}

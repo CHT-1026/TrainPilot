@@ -1,0 +1,102 @@
+{
+  "qid": "D0056",
+  "question": "昇达电梯位于哪个城市？主营什么行业？哪一年启动自动化改造？",
+  "question_type": "事实检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"昇达电梯\",\"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 366,
+        "total_tokens": 456,
+        "completion_tokens": 90,
+        "completion_tokens_details": {
+          "reasoning_tokens": 65,
+          "text_tokens": 90
+        }
+      },
+      "seconds": 0.985
+    },
+    {
+      "round": 2,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"昇达电梯位于**湖州**，主营**电梯业务**。该公司于**2025年**启动自动化改造。\",\"citations\":[\"lantu_case_12_shengda\"],\"evidence\":[\"lantu_case_12_shengda#0\"]}",
+      "usage": {
+        "prompt_tokens": 894,
+        "total_tokens": 1174,
+        "completion_tokens": 280,
+        "completion_tokens_details": {
+          "reasoning_tokens": 210,
+          "text_tokens": 280
+        }
+      },
+      "seconds": 2.687
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "昇达电梯",
+        "top_k": 5
+      },
+      "result_sha": "c0ca977d8ab96cc7eec7ac8ff7b070035cbbf4dc6cf20a209959775ea52fc8f9",
+      "result_chars": 802,
+      "hits": 2
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "昇达电梯位于**湖州**，主营**电梯业务**。该公司于**2025年**启动自动化改造。",
+    "citations": [
+      "lantu_case_12_shengda"
+    ],
+    "evidence": [
+      "lantu_case_12_shengda#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 1630,
+  "started_at": "2026-11-01T04:37:38",
+  "elapsed_seconds": 3.67,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "昇达电梯",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_case_12_shengda",
+            "title": "# 客户案例：昇达电梯门板装配项目",
+            "chunk": 0,
+            "score": 19.201,
+            "snippet": "# 客户案例：昇达电梯门板装配项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_shengda\n生效日期：2025-12-20\n\n## 一、客户背景\n\n昇达电梯位于湖州，主营电梯业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖3 条"
+          },
+          {
+            "doc_id": "lantu_sales_customer_list",
+            "title": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态",
+            "chunk": 0,
+            "score": 14.082,
+            "snippet": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态\n恒芯动力电池,动力电池,常州,电芯叠片与物流,\"21,600\",2025,已验收\n澜岳汽车零部件,汽车零部件,上海,白车身焊装,\"14,800\",2024,已验收\n曜阳光能,光伏,合肥,电池片串焊,\"9,800\",2025,已验收\n星禾电子,3C 电子,昆山,精密组装,\"12,500\",2024,已验收\n海翎家电,家电,顺德,喷涂与打磨,\"6,300\",2025,已验收\n晶拓微电子,半导体,无锡,晶圆搬运,\"7,400\",2025,已验收\n麦丰食品,食品,漯河"
+          }
+        ]
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_case_12_shengda"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.44,
+    "number_recall": 1.0
+  }
+}

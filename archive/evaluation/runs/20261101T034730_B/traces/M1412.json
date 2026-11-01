@@ -1,0 +1,155 @@
+{
+  "qid": "M1412",
+  "question": "资料里“92 天”出现了好几次，分别指什么？口径能混用吗？",
+  "question_type": "矛盾与例外识别",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"92 天\",\"top_k\":10}}",
+      "usage": {
+        "prompt_tokens": 371,
+        "total_tokens": 456,
+        "completion_tokens": 85,
+        "completion_tokens_details": {
+          "reasoning_tokens": 58,
+          "text_tokens": 85
+        }
+      },
+      "seconds": 0.875
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_support_spare_inventory\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 1133,
+        "total_tokens": 2190,
+        "completion_tokens": 1057,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1022,
+          "text_tokens": 1057
+        }
+      },
+      "seconds": 9.75
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"资料中“92 天”共出现两次，分别指代不同的指标，**口径不能混用**。具体如下：\\n\\n1. **苏州中心仓备件周转天数**：出自《澜图智能备件库存分布（2025Q4）》，指苏州中心仓这一特定仓库的备件库存周转天数为 92 天。\\n2. **关键物料库存周转天数**：出自《2025 年供应链韧性专题会纪要》，指公司层面关键物料的库存周转天数为 92 天（文中提及该数值高于目标 75 天）。\\n\\n两者统计对象不同（备件 vs 关键物料），统计范围也不同（单一仓库 vs 整体物料），因此不可混用。\",\"citations\":[\"lantu_support_spare_inventory\",\"lantu_meeting_supply_chain\"],\"evidence\":[\"lantu_support_spare_inventory#0\",\"lantu_meeting_supply_chain#0\"]}",
+      "usage": {
+        "prompt_tokens": 1516,
+        "total_tokens": 2742,
+        "completion_tokens": 1226,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1014,
+          "text_tokens": 1226
+        }
+      },
+      "seconds": 9.766
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "92 天",
+        "top_k": 10
+      },
+      "result_sha": "8fa53e9ba8b4b8017f3ab3a8960a5ed3bae2577ce5e8762cf4d9c3037f8ee288",
+      "result_chars": 1193,
+      "hits": 3
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_spare_inventory",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "79d68b4266003391d23a2df6cf51353edeba7f0f55adf976952ee5b285fc7259",
+      "result_chars": 540,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "资料中“92 天”共出现两次，分别指代不同的指标，**口径不能混用**。具体如下：\n\n1. **苏州中心仓备件周转天数**：出自《澜图智能备件库存分布（2025Q4）》，指苏州中心仓这一特定仓库的备件库存周转天数为 92 天。\n2. **关键物料库存周转天数**：出自《2025 年供应链韧性专题会纪要》，指公司层面关键物料的库存周转天数为 92 天（文中提及该数值高于目标 75 天）。\n\n两者统计对象不同（备件 vs 关键物料），统计范围也不同（单一仓库 vs 整体物料），因此不可混用。",
+    "citations": [
+      "lantu_support_spare_inventory",
+      "lantu_meeting_supply_chain"
+    ],
+    "evidence": [
+      "lantu_support_spare_inventory#0",
+      "lantu_meeting_supply_chain#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 5388,
+  "started_at": "2026-11-01T06:46:39",
+  "elapsed_seconds": 20.39,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "92 天",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_support_spare_inventory",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 4.493,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能备件库存分布（2025Q4）\n所属部门\t售后服务部\n作者\t陆绍\n创建时间\t2025-12-25 09:00\n更新时间\t2026-01-02 10:00\n版本号\tv1.0\n文档类型\tsupport\n文档族\tspare_inventory_2025q4\n生效日期\t2026-01-02\n[工作表] 备件仓库存\n仓库\t所在城市\t库存金额（万元）\tSKU 数\t周转天数\n苏州中心仓\t苏州\t6,200\t4,860\t92\n东莞仓\t东莞\t2,800\t2,240\t105\n成都仓\t成都\t1,"
+          },
+          {
+            "doc_id": "lantu_meeting_supply_chain",
+            "title": "2025 年供应链韧性专题会纪要",
+            "chunk": 0,
+            "score": 3.895,
+            "snippet": "2025 年供应链韧性专题会纪要\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-10-16 09:00\n更新时间：2025-10-16 15:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_supply_chain\n生效日期：2025-10-16\n一、供应形势\n减速器交期由 8 周延长至 12 周，芯片交期 20 周；关键物料库存周转 92 天，高于目标 75 天。\n二、双源策略\n减速器已引入第二供应商，2026 年一季度实现 30% 替代；伺服驱动器自研比例提升至 61%。\n三"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2025",
+            "title": "澜图智能 2025 年度报告摘要",
+            "chunk": 0,
+            "score": 3.652,
+            "snippet": "澜图智能 2025 年度报告摘要\n所属部门：财务部\n作者：周敏仪\n创建时间：2026-01-20 09:00\n更新时间：2026-01-28 18:00\n版本号：v1.0\n文档类型：finance\n文档族：annual_report_2025\n生效日期：2026-01-28\n一、经营概况\n2025 年公司实现营业收入 42.63 亿元，同比增长 19.1%；归属于母公司股东的净利润 4.12\n亿元，同比增长 26.4%；基本每股收益 0.98 元。\n二、收入结构\n机器人本体收入 19.84 亿元（46.5%），智能"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_spare_inventory",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_support_spare_inventory",
+        "title": "[工作表] 文档信息",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 338,
+        "text": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能备件库存分布（2025Q4）\n所属部门\t售后服务部\n作者\t陆绍\n创建时间\t2025-12-25 09:00\n更新时间\t2026-01-02 10:00\n版本号\tv1.0\n文档类型\tsupport\n文档族\tspare_inventory_2025q4\n生效日期\t2026-01-02\n[工作表] 备件仓库存\n仓库\t所在城市\t库存金额（万元）\tSKU 数\t周转天数\n苏州中心仓\t苏州\t6,200\t4,860\t92\n东莞仓\t东莞\t2,800\t2,240\t105\n成都仓\t成都\t1,600\t1,380\t126\n上海仓\t上海\t1,200\t960\t110\n北京仓\t北京\t980\t820\t132\n其他 7 仓\t—\t5,820\t3,640\t141",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.5,
+    "cited": [
+      "lantu_support_spare_inventory",
+      "lantu_meeting_supply_chain"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.103,
+    "number_recall": 0.333
+  }
+}

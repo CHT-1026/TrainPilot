@@ -1,0 +1,62 @@
+{
+  "qid": "I0032",
+  "question": "公司经营原则中对研发投入的承诺是什么？该承诺在 2025 年是否被达成？",
+  "question_type": "条件判断与边界",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>经营原则 研发投入 承诺</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 67,
+        "prompt_tokens": 366,
+        "total_tokens": 433,
+        "completion_tokens_details": {
+          "reasoning_tokens": 32
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.656
+    },
+    {
+      "round": 2,
+      "text": "{\"status\":\"not_in_corpus\",\"answer\":\"无法回答。当前未检索到可验证的资料，因此：(1) 公司经营原则中对研发投入的具体承诺（如比例、金额或增速）无法确认；(2) 该承诺在 2025 年是否达成也无从判断。如需准确结论，请提供公司名称或相关制度文件、年报等资料来源后重新检索。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 125,
+        "prompt_tokens": 438,
+        "total_tokens": 563,
+        "completion_tokens_details": {
+          "reasoning_tokens": 25
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 4.438
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "无法回答。当前未检索到可验证的资料，因此：(1) 公司经营原则中对研发投入的具体承诺（如比例、金额或增速）无法确认；(2) 该承诺在 2025 年是否达成也无从判断。如需准确结论，请提供公司名称或相关制度文件、年报等资料来源后重新检索。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 996,
+  "started_at": "2026-11-01T05:17:38",
+  "elapsed_seconds": 6.09,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.072,
+    "number_recall": 1.0
+  }
+}

@@ -1,0 +1,329 @@
+{
+  "qid": "C0132",
+  "question": "白皮书的负载、臂展、重复精度、防护等级四项，与产品评审会纪要中给出的目标值是否一致？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=list><parameter=keyword>白皮书</parameter></function></tool_call><tool_call><function=search><parameter=query>产品评审会 纪要 目标值 负载 臂展 重复精度 防护等级</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 112,
+        "prompt_tokens": 371,
+        "total_tokens": 483,
+        "completion_tokens_details": {
+          "reasoning_tokens": 52
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 5.297
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=tool>{\"name\": \"list\", \"args\": {\"keyword\": \"白皮书\"}}</function></tool_call>",
+      "usage": {
+        "completion_tokens": 67,
+        "prompt_tokens": 468,
+        "total_tokens": 535,
+        "completion_tokens_details": {
+          "reasoning_tokens": 39
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.437
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"白皮书\"}}",
+      "usage": {
+        "completion_tokens": 32,
+        "prompt_tokens": 533,
+        "total_tokens": 565,
+        "completion_tokens_details": {
+          "reasoning_tokens": 15
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.969
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"产品评审会 纪要 目标值\"}}",
+      "usage": {
+        "completion_tokens": 43,
+        "prompt_tokens": 634,
+        "total_tokens": 677,
+        "completion_tokens_details": {
+          "reasoning_tokens": 18
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.203
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_meeting_product_review\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 53,
+        "prompt_tokens": 3063,
+        "total_tokens": 3116,
+        "completion_tokens_details": {
+          "reasoning_tokens": 21
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 2.391
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_product_r20_pro_whitepaper\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 47,
+        "prompt_tokens": 3524,
+        "total_tokens": 3571,
+        "completion_tokens_details": {
+          "reasoning_tokens": 12
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3008
+        }
+      },
+      "seconds": 1.25
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"一致。四项指标逐项核对如下：1）负载：白皮书「额定负载 22 kg」与评审会目标值「目标负载 22 kg」一致；2）臂展：白皮书「臂展 1,750 mm」与评审会「臂展 1,750 mm」一致；3）重复精度：白皮书「重复定位精度 ±0.02 mm」与评审会「重复精度 ±0.02 mm」一致（仅表述为“重复定位精度/重复精度”差异）；4）防护等级：白皮书「防护等级提升至 IP67」与评审会「防护 IP67」一致。此外两文档在量产节奏（2026 年 Q2/第二季度）和首批 50 台上也相互印证。需注意口径时间：评审会纪要为 2025-08-18 v1.0 的开发阶段目标值，白皮书为 2025-11-28 更新的 v0.9 草案，白皮书尚未定稿（版本号 v0.9）。\",\"citations\":[\"lantu_meeting_product_review\",\"lantu_product_r20_pro_whitepaper\"],\"evidence\":[\"lantu_meeting_product_review#片段0\",\"lantu_product_r20_pro_whitepaper#片段0\"]}",
+      "usage": {
+        "completion_tokens": 373,
+        "prompt_tokens": 4017,
+        "total_tokens": 4390,
+        "completion_tokens_details": {
+          "reasoning_tokens": 59
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3520
+        }
+      },
+      "seconds": 7.062
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "白皮书"
+      },
+      "result_sha": "8bb06c827372c0b662b481109befd17202ab7ad3cb676a1d2ec869299a6390e3",
+      "result_chars": 154,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "产品评审会 纪要 目标值"
+      },
+      "result_sha": "6131e0e548aec2ed51539f389735c7f4c8060f92625caa97bfe7bad79697a1bb",
+      "result_chars": 3861,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_meeting_product_review",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "ea8c7ae2fe3822a2661bfa560b81088d89e490c01367f2d34b94a078a877df05",
+      "result_chars": 656,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_r20_pro_whitepaper",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "e6def2f6e350626d5984e69687b038d9001970a67b847008835af6c75c828bb2",
+      "result_chars": 690,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "一致。四项指标逐项核对如下：1）负载：白皮书「额定负载 22 kg」与评审会目标值「目标负载 22 kg」一致；2）臂展：白皮书「臂展 1,750 mm」与评审会「臂展 1,750 mm」一致；3）重复精度：白皮书「重复定位精度 ±0.02 mm」与评审会「重复精度 ±0.02 mm」一致（仅表述为“重复定位精度/重复精度”差异）；4）防护等级：白皮书「防护等级提升至 IP67」与评审会「防护 IP67」一致。此外两文档在量产节奏（2026 年 Q2/第二季度）和首批 50 台上也相互印证。需注意口径时间：评审会纪要为 2025-08-18 v1.0 的开发阶段目标值，白皮书为 2025-11-28 更新的 v0.9 草案，白皮书尚未定稿（版本号 v0.9）。",
+    "citations": [
+      "lantu_meeting_product_review",
+      "lantu_product_r20_pro_whitepaper"
+    ],
+    "evidence": [
+      "lantu_meeting_product_review#片段0",
+      "lantu_product_r20_pro_whitepaper#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 13337,
+  "started_at": "2026-11-01T04:23:20",
+  "elapsed_seconds": 21.61,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "白皮书"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_product_r20_pro_whitepaper",
+            "title": "LT-R20 Pro 机器人技术白皮书"
+          },
+          {
+            "doc_id": "lantu_support_system",
+            "title": "# 澜图智能客户服务体系白皮书"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "产品评审会 纪要 目标值"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_meeting_product_review",
+            "title": "LT-R20 Pro 产品评审会纪要",
+            "chunk": 0,
+            "score": 25.139,
+            "snippet": "LT-R20 Pro 产品评审会纪要\n所属部门：产品部\n作者：孟凡\n创建时间：2025-08-18 09:00\n更新时间：2025-08-18 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_product_review\n生效日期：2025-08-18\n一、会议信息\n时间：2025 年 8 月 18 日；主持：沈亦舟；参会：产品部、研发中心、质量部、销售中心、售后服务部。\n二、评审结论\nLT-R20 Pro 通过概念与计划阶段评审，进入开发阶段。目标负载 22 kg、臂展 1,750"
+          },
+          {
+            "doc_id": "lantu_tech_rd_process",
+            "title": "# 澜图智能 IPD 研发流程说明",
+            "chunk": 0,
+            "score": 7.168,
+            "snippet": "# 澜图智能 IPD 研发流程说明\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-03-01 09:00\n更新时间：2025-05-15 10:00\n版本号：v3.0\n文档类型：tech\n文档族：ipd_process\n生效日期：2025-05-15\n\n## 一、流程框架\n\n执行 IPD 集成产品开发流程，分为概念、计划、开发、验证、发布、生命周期管理六个阶段。\n\n## 二、决策评审\n\n每个阶段设置决策评审点（DCP），由产品决策委员会评审市场、技术、成本与风险，未通过不得进入下一阶段。\n\n## 三、跨部"
+          },
+          {
+            "doc_id": "lantu_meeting_rd",
+            "title": "# 2025 年 5 月研发例会纪要",
+            "chunk": 0,
+            "score": 6.691,
+            "snippet": "# 2025 年 5 月研发例会纪要\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2025-05-09 09:00\n更新时间：2025-05-09 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_rd_2025\n生效日期：2025-05-09\n\n## 一、项目进展\n\nLT-C800 控制器完成小批量验证；LantuTwin 3.0 进入客户试点；具身智能操作模型完成抓取数据集 12 万条。\n\n## 二、组织调整\n\n具身智能研究所正式成立，编制 48 人，重点研究视觉-语言-动作模型"
+          },
+          {
+            "doc_id": "lantu_sales_quote",
+            "title": "# 澜图智能报价与合同评审流程",
+            "chunk": 0,
+            "score": 6.425,
+            "snippet": "# 澜图智能报价与合同评审流程\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-02-10 09:00\n更新时间：2025-08-08 14:00\n版本号：v2.5\n文档类型：sales\n文档族：sales_quote\n生效日期：2025-08-08\n\n## 一、报价流程\n\n销售工程师在 CRM 创建报价单，系统自动校验标准价；非标项目由售前技术出具配置清单，产品部确认成本，财务部复核税率与汇率。\n\n## 二、评审节点\n\n合同金额 1,000 万元以上须法务合规部与 CFO 联合评审；涉及非标开发须 CTO"
+          },
+          {
+            "doc_id": "lantu_strategy_quality_system",
+            "title": "澜图智能质量管理体系手册",
+            "chunk": 0,
+            "score": 5.965,
+            "snippet": "澜图智能质量管理体系手册\n所属部门：质量部\n作者：潘文博\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v4.2\n文档类型：strategy\n文档族：quality_system\n生效日期：2025-06-01\n一、质量方针\n以客户为中心，以零缺陷为目标，持续改进，追求卓越。公司通过 ISO 9001、IATF 16949 与 ISO 13485\n认证。\n二、质量目标\n2025 年一次交检合格率不低于 98.5%，客户投诉不超过 6 起，MTBF 不低于 12,00"
+          },
+          {
+            "doc_id": "lantu_meeting_supply_chain",
+            "title": "2025 年供应链韧性专题会纪要",
+            "chunk": 0,
+            "score": 5.876,
+            "snippet": "2025 年供应链韧性专题会纪要\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-10-16 09:00\n更新时间：2025-10-16 15:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_supply_chain\n生效日期：2025-10-16\n一、供应形势\n减速器交期由 8 周延长至 12 周，芯片交期 20 周；关键物料库存周转 92 天，高于目标 75 天。\n二、双源策略\n减速器已引入第二供应商，2026 年一季度实现 30% 替代；伺服驱动器自研比例提升至 61%。\n三"
+          },
+          {
+            "doc_id": "lantu_meeting_strategy",
+            "title": "# 2026 年战略研讨会纪要",
+            "chunk": 0,
+            "score": 5.715,
+            "snippet": "# 2026 年战略研讨会纪要\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-11-21 09:00\n更新时间：2025-11-22 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_strategy_2026\n生效日期：2025-11-22\n\n## 一、战略目标\n\n2026 年营业收入 52 亿元，2028 年 80 亿元；海外收入占比 2026 年提升至 17%，2028 年达到 25%。\n\n## 二、业务重点\n\n巩固锂电与汽车基本盘，突破半导体与具身智能；软件与服务收"
+          },
+          {
+            "doc_id": "lantu_meeting_quality",
+            "title": "2025 年第三季度质量专题会纪要",
+            "chunk": 0,
+            "score": 5.639,
+            "snippet": "2025 年第三季度质量专题会纪要\n所属部门：质量部\n作者：潘文博\n创建时间：2025-07-22 09:00\n更新时间：2025-07-22 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_quality_q3\n生效日期：2025-07-22\n一、质量数据\n上半年一次交检合格率 98.4%，客户投诉 1 起；第三季度首月投诉 1 起，为 LT-R12 线束磨损问题。\n二、问题分析\n线束磨损源于走线路径与防护套选型不当，涉及 2025 年 3 月生产的 120 台 LT-R12，已启"
+          },
+          {
+            "doc_id": "lantu_hr_job_grades",
+            "title": "# 澜图智能职级体系与晋升规则",
+            "chunk": 0,
+            "score": 5.208,
+            "snippet": "# 澜图智能职级体系与晋升规则\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-03-01 09:00\n更新时间：2025-03-01 09:00\n版本号：v3.0\n文档类型：hr\n文档族：job_grades\n生效日期：2025-03-01\n\n## 一、职级序列\n\n设管理序列（M1-M5）、专业序列（P1-P7）与技能序列（T1-T5）。研发、产品、销售、职能分别对应不同通道。\n\n## 二、晋升条件\n\n晋升需满足当前职级任职满 2 年、连续两次绩效 A 及以上、通过晋升评审；破格晋升须总经理审批。\n\n#"
+          },
+          {
+            "doc_id": "lantu_org_rd_system",
+            "title": "# 澜图智能研发体系与投入",
+            "chunk": 0,
+            "score": 4.204,
+            "snippet": "# 澜图智能研发体系与投入\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-02-01 09:00\n更新时间：2026-01-12 10:00\n版本号：v5.0\n文档类型：org\n文档族：rd_system\n生效日期：2026-01-12\n\n## 一、研发架构\n\n研发中心下设机器人本体研究所、控制器研究所、机器视觉研究所、工艺应用研究所、具身智能研究所，另设测试中心与可靠性实验室。\n\n## 二、人员结构\n\n研发人员 1,286 人，其中博士 48 人、硕士 612 人，35 岁以下占比 61%。2025 年"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_meeting_product_review",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_meeting_product_review",
+        "title": "LT-R20 Pro 产品评审会纪要",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 485,
+        "text": "LT-R20 Pro 产品评审会纪要\n所属部门：产品部\n作者：孟凡\n创建时间：2025-08-18 09:00\n更新时间：2025-08-18 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_product_review\n生效日期：2025-08-18\n一、会议信息\n时间：2025 年 8 月 18 日；主持：沈亦舟；参会：产品部、研发中心、质量部、销售中心、售后服务部。\n二、评审结论\nLT-R20 Pro 通过概念与计划阶段评审，进入开发阶段。目标负载 22 kg、臂展 1,750 mm、重复精度 ±0.02 mm、防护 IP67。\n三、关键决策\n采用轻量化铸铝大臂与中空腕部；控制器沿用 LT-C800 平台并增加力控环路；2026 年 Q2 量产，首批 50 台优先供应锂电客户。\n四、风险与对策\n轻量化可能影响刚性，需在 10 月底前完成模态分析；IP67 密封工艺需供应商联合开发；成本目标不高于上一代 8%。\n五、行动项\n研发中心 9 月完成详细设计；质量部 10 月启动可靠性测试；产品部 11 月更新报价与配置清单。",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_r20_pro_whitepaper",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_product_r20_pro_whitepaper",
+        "title": "LT-R20 Pro 机器人技术白皮书",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 509,
+        "text": "LT-R20 Pro 机器人技术白皮书\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2025-11-20 09:00\n更新时间：2025-11-28 18:00\n版本号：v0.9\n文档类型：product\n文档族：product_r20_pro\n生效日期：2025-11-28\n一、研发背景\n面向锂电叠片、汽车装配等高频节拍场景，澜图智能研发新一代中型六轴机器人 LT-R20 Pro，计划\n2026 年第二季度量产。\n二、技术指标\n额定负载 22 kg，臂展 1,750 mm，重复定位精度 ±0.02 mm，本体重量 268 kg，较上一代降低\n6%；典型循环节拍提升 15%，单位能耗下降 18%。\n三、结构与防护\n采用中空腕部与轻量化铸铝大臂，防护等级提升至 IP67，支持食品级润滑与洁净室选配，适应 -5℃ 至\n50℃ 环境。\n四、控制与智能\n搭载 LT-C800 Pro 控制器，支持 1 kHz\n力控环路、视觉伺服与在线轨迹修正；内置振动抑制算法，末端残余振动降低 40%。\n五、验证计划\n2026 年 1 月完成 2,000 小时可靠性测试，3 月通过 CE 认证，4 月小批量交付首批 50 台。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_meeting_product_review",
+      "lantu_product_r20_pro_whitepaper"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.427,
+    "number_recall": 1.0
+  }
+}

@@ -1,0 +1,288 @@
+{
+  "qid": "A0006",
+  "question": "罗嘉树的直接上级是谁？该上级在公司担任什么职务？",
+  "question_type": "人物关系推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"罗嘉树\"}}",
+      "usage": {
+        "prompt_tokens": 363,
+        "total_tokens": 430,
+        "completion_tokens": 67,
+        "completion_tokens_details": {
+          "reasoning_tokens": 47,
+          "text_tokens": 67
+        }
+      },
+      "seconds": 0.813
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_org_executives\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 2709,
+        "total_tokens": 3184,
+        "completion_tokens": 475,
+        "completion_tokens_details": {
+          "reasoning_tokens": 440,
+          "text_tokens": 475
+        }
+      },
+      "seconds": 4.562
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_org_reporting_lines\",\"offset\":4000,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 3086,
+        "total_tokens": 3492,
+        "completion_tokens": 406,
+        "completion_tokens_details": {
+          "reasoning_tokens": 369,
+          "text_tokens": 406
+        }
+      },
+      "seconds": 3.922
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_org_reporting_lines\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 3206,
+        "total_tokens": 4025,
+        "completion_tokens": 819,
+        "completion_tokens_details": {
+          "reasoning_tokens": 785,
+          "text_tokens": 819
+        }
+      },
+      "seconds": 7.203
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"罗嘉树的直接上级是顾承澜。顾承澜在公司担任董事长兼总经理。\",\"citations\":[\"lantu_org_reporting_lines\",\"lantu_org_executives\"],\"evidence\":[\"lantu_org_reporting_lines#0\",\"lantu_org_executives#0\"]}",
+      "usage": {
+        "prompt_tokens": 3957,
+        "total_tokens": 4685,
+        "completion_tokens": 728,
+        "completion_tokens_details": {
+          "reasoning_tokens": 658,
+          "text_tokens": 728
+        }
+      },
+      "seconds": 5.172
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "罗嘉树"
+      },
+      "result_sha": "3d2c956ea95c4f9046a592a85b81be935b36ad171b21afab055d1a95028fe1e5",
+      "result_chars": 3870,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_executives",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "93a3b9ad73ee68b6025ae561128b99033899fe0f2eb4e2be66463031a23aa85f",
+      "result_chars": 548,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_reporting_lines",
+        "offset": 4000,
+        "limit": 4000
+      },
+      "result_sha": "54961b8f92d73e30c9318d1651d3443c1ec9c73f3074ddbc5b75d02a1d8913aa",
+      "result_chars": 152,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_reporting_lines",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "945ab253a903017ab88c6d4ebc67cacc27152fd521624427b1fa28a1d107be50",
+      "result_chars": 1155,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "罗嘉树的直接上级是顾承澜。顾承澜在公司担任董事长兼总经理。",
+    "citations": [
+      "lantu_org_reporting_lines",
+      "lantu_org_executives"
+    ],
+    "evidence": [
+      "lantu_org_reporting_lines#0",
+      "lantu_org_executives#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 15816,
+  "started_at": "2026-11-01T03:32:46",
+  "elapsed_seconds": 21.67,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "罗嘉树"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_meeting_ops_2025q3",
+            "title": "2025 年第三季度经营分析会纪要",
+            "chunk": 0,
+            "score": 6.26,
+            "snippet": "2025 年第三季度经营分析会纪要\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-10-10 09:00\n更新时间：2025-10-10 18:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_ops_2025q3\n生效日期：2025-10-10\n一、会议信息\n时间：2025 年 10 月 10 日 09:00-12:00；地点：苏州总部 3 楼会议室；主持：顾承澜；参会：沈亦舟、周敏仪、韩立恒、罗嘉树、陈依然、潘文博、邵岚。\n二、经营回顾\n第三季度营业收入 11.52 亿元，同"
+          },
+          {
+            "doc_id": "lantu_org_reporting_lines",
+            "title": "# 澜图智能员工汇报关系与业务分工",
+            "chunk": 0,
+            "score": 6.222,
+            "snippet": "# 澜图智能员工汇报关系与业务分工\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-02-10 09:00\n更新时间：2025-09-01 10:00\n版本号：v1.2\n文档类型：org\n文档族：org_reporting_lines\n生效日期：2025-09-01\n\n## 一、研发体系汇报链\n\n顾承澜是沈亦舟的上级。沈亦舟是程知远的上级。程知远是周启航的上级。周启航是林晓的上级。林晓是赵一鸣的上级。\n\n沈亦舟担任 CTO，负责研发体系。程知远担任研发中心总经理，负责研发中心整体经营管理。周启航担任控制器"
+          },
+          {
+            "doc_id": "lantu_sales_discount_2024",
+            "title": "# 澜图智能销售折扣审批权限（2024版）",
+            "chunk": 0,
+            "score": 5.575,
+            "snippet": "# 澜图智能销售折扣审批权限（2024版）\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-01-25 09:00\n更新时间：2024-02-01 10:00\n版本号：v1.0\n文档类型：sales\n文档族：sales_discount\n生效日期：2024-01-01\n\n## 一、折扣区间\n\n标准价折扣 10% 以内（含）由销售经理审批；10%-20%（含）由销售副总裁审批；超过 20% 由总经理审批。\n\n## 二、申请材料\n\n折扣申请须说明客户级别、竞争态势、项目毛利与战略价值，并附成本测算表。\n\n## "
+          },
+          {
+            "doc_id": "lantu_org_department_duties",
+            "title": "# 澜图智能一级部门职责与编制",
+            "chunk": 1,
+            "score": 5.539,
+            "snippet": "| 部门 | 负责人 | 编制（人） | 主要职责 |\n| --- | --- | --- | --- |\n| 研发中心 | 沈亦舟 | 1,286 | 本体/控制器/视觉/具身智能研发 |\n| 产品部 | 孟凡 | 96 | 产品规划与生命周期管理 |\n| 销售中心 | 罗嘉树 | 620 | 区域销售与渠道 |\n| 客户成功部 | 林可 | 86 | 重点客户经营 |\n| 供应链中心 | 韩立恒 | 210 | 采购、计划、物流 |\n| 制造中心 | 韩立恒 | 980 | 三大基地生产 |\n| 质量部 | 潘"
+          },
+          {
+            "doc_id": "lantu_sales_discount_2025",
+            "title": "# 澜图智能销售折扣审批权限（2025版）",
+            "chunk": 0,
+            "score": 5.272,
+            "snippet": "# 澜图智能销售折扣审批权限（2025版）\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-12-18 09:00\n更新时间：2025-01-01 10:00\n版本号：v2.0\n文档类型：sales\n文档族：sales_discount\n生效日期：2025-01-01\n\n## 一、折扣区间\n\n标准价折扣 8% 以内（含）由销售经理审批；8%-15%（含）由销售副总裁审批；15%-25%（含）由总经理审批；超过 25% 必须提交董事会审议。\n\n## 二、申请材料\n\n折扣申请须附客户分级、竞品报价、项目毛利测算"
+          },
+          {
+            "doc_id": "lantu_meeting_sales",
+            "title": "2025 年华南大区销售复盘会纪要",
+            "chunk": 0,
+            "score": 5.137,
+            "snippet": "2025 年华南大区销售复盘会纪要\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2025-09-05 09:00\n更新时间：2025-09-05 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_sales_south\n生效日期：2025-09-05\n一、业绩完成\n华南大区前三季度收入 7.42 亿元，年度完成率 108%，位列五大区第一；新签订单 8.6 亿元。\n二、行业机会\n锂电客户扩产带来 3.2 亿元机会；3C 客户自动化改造预算增加；光伏客户资本开支放缓。\n三、渠道问题\n两家"
+          },
+          {
+            "doc_id": "lantu_org_executives",
+            "title": "# 澜图智能高级管理人员名单",
+            "chunk": 0,
+            "score": 5.009,
+            "snippet": "# 澜图智能高级管理人员名单\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2024-03-01 09:00\n更新时间：2025-11-28 17:00\n版本号：v4.0\n文档类型：org\n文档族：executives\n生效日期：2025-11-28\n\n## 一、核心管理层\n\n顾承澜，董事长兼总经理，1968 年生，教授级高级工程师，持股 18.6%；沈亦舟，CTO，负责研发体系；周敏仪，CFO，负责财务与资本运作；韩立恒，COO，负责供应链与制造。\n\n## 二、业务分管\n\n罗嘉树，销售副总裁，分管销售中心、客"
+          },
+          {
+            "doc_id": "lantu_sales_channel",
+            "title": "# 澜图智能渠道管理办法",
+            "chunk": 0,
+            "score": 4.807,
+            "snippet": "# 澜图智能渠道管理办法\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-03-05 09:00\n更新时间：2025-11-06 10:00\n版本号：v2.7\n文档类型：sales\n文档族：sales_channel\n生效日期：2025-11-06\n\n## 一、渠道分级\n\n渠道商分为金牌、银牌、认证三级。金牌渠道年度采购额不低于 3,000 万元，享受 82 折拿货价、优先技术支持与联合市场活动。\n\n## 二、准入与退出\n\n新渠道需具备 3 年以上自动化行业经验、专职技术团队不少于 5 人。连续 12 个月"
+          },
+          {
+            "doc_id": "lantu_sales_quote",
+            "title": "# 澜图智能报价与合同评审流程",
+            "chunk": 0,
+            "score": 4.789,
+            "snippet": "# 澜图智能报价与合同评审流程\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-02-10 09:00\n更新时间：2025-08-08 14:00\n版本号：v2.5\n文档类型：sales\n文档族：sales_quote\n生效日期：2025-08-08\n\n## 一、报价流程\n\n销售工程师在 CRM 创建报价单，系统自动校验标准价；非标项目由售前技术出具配置清单，产品部确认成本，财务部复核税率与汇率。\n\n## 二、评审节点\n\n合同金额 1,000 万元以上须法务合规部与 CFO 联合评审；涉及非标开发须 CTO"
+          },
+          {
+            "doc_id": "lantu_org_sales_regions",
+            "title": "# 澜图智能销售区域与渠道网络",
+            "chunk": 0,
+            "score": 4.746,
+            "snippet": "# 澜图智能销售区域与渠道网络\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-02-15 09:00\n更新时间：2025-12-05 15:00\n版本号：v3.1\n文档类型：org\n文档族：sales_regions\n生效日期：2025-12-05\n\n## 一、区域划分\n\n销售中心下设华东、华南、华北、西部、海外五个大区，覆盖 32 个国家和地区。华东大区总部苏州，华南大区总部东莞，华北大区总部北京，西部大区总部成都。\n\n## 二、团队规模\n\n销售团队 620 人，其中行业销售 280 人、渠道销售 16"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_executives",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_org_executives",
+        "title": "# 澜图智能高级管理人员名单",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 385,
+        "text": "# 澜图智能高级管理人员名单\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2024-03-01 09:00\n更新时间：2025-11-28 17:00\n版本号：v4.0\n文档类型：org\n文档族：executives\n生效日期：2025-11-28\n\n## 一、核心管理层\n\n顾承澜，董事长兼总经理，1968 年生，教授级高级工程师，持股 18.6%；沈亦舟，CTO，负责研发体系；周敏仪，CFO，负责财务与资本运作；韩立恒，COO，负责供应链与制造。\n\n## 二、业务分管\n\n罗嘉树，销售副总裁，分管销售中心、客户成功部与售后服务部；陈依然，人力资源副总裁；潘文博，质量总监；邵岚，法务合规总监。\n\n## 三、任期与考核\n\n高级管理人员任期三年，2025 年换届后任期至 2028 年 5 月。考核指标包括营业收入、净利润、研发投入占比、客户满意度与质量事故。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_reporting_lines",
+        "offset": 4000,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_org_reporting_lines",
+        "title": "# 澜图智能员工汇报关系与业务分工",
+        "offset": 4000,
+        "limit": 4000,
+        "total_chars": 964,
+        "text": "",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_reporting_lines",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_org_reporting_lines",
+        "title": "# 澜图智能员工汇报关系与业务分工",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 964,
+        "text": "# 澜图智能员工汇报关系与业务分工\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-02-10 09:00\n更新时间：2025-09-01 10:00\n版本号：v1.2\n文档类型：org\n文档族：org_reporting_lines\n生效日期：2025-09-01\n\n## 一、研发体系汇报链\n\n顾承澜是沈亦舟的上级。沈亦舟是程知远的上级。程知远是周启航的上级。周启航是林晓的上级。林晓是赵一鸣的上级。\n\n沈亦舟担任 CTO，负责研发体系。程知远担任研发中心总经理，负责研发中心整体经营管理。周启航担任控制器研究所所长，负责控制器产品与技术路线。林晓担任伺服算法组组长，负责伺服控制算法与标定。赵一鸣是伺服控制工程师，负责伺服环参数整定与现场调试。\n\n## 二、销售与客户成功汇报链\n\n顾承澜是罗嘉树的上级。罗嘉树是唐婧的上级。唐婧是许博的上级。许博是陈璐的上级。\n\n罗嘉树担任销售副总裁，分管销售中心、客户成功部与售后服务部。唐婧担任销售中心总经理，负责销售中心整体业务。许博担任华东大区经理，负责华东区域客户与渠道。陈璐担任上海客户经理，负责上海区域重点客户。\n\n## 三、供应链与制造汇报链\n\n顾承澜是韩立恒的上级。韩立恒是方磊的上级。方磊是郭涛的上级。\n\n韩立恒担任 COO，负责供应链与制造。方磊担任制造中心总经理，负责制造中心生产运营。郭涛担任苏州工厂厂长，负责苏州工厂的生产、质量与交付。\n\n## 四、职能体系汇报链\n\n顾承澜是周敏仪的上级。顾承澜是陈依然的上级。顾承澜是邵岚的上级。陈依然是蒋雯的上级。\n\n周敏仪担任 CFO，负责财务与资本运作。陈依然担任人力资源副总裁，负责人力资源体系。蒋雯担任薪酬绩效经理，负责薪酬、绩效与员工关系。邵岚担任法务合规总监，负责法务、合规与知识产权。\n\n## 五、跨部门业务分工\n\n周启航同时担任新一代控制器 LT-C900 项目负责人，项目成员包括林晓与赵一鸣。唐婧负责销售中心，华东区域由许博管理，上海区域重点客户由陈璐维护。方磊负责制造中心，苏州工厂由郭涛管理。\n\n## 六、汇报关系使用说明\n\n本文件中的“上级”均指行政汇报关系中的直接上级；跨部门项目中的项目负责人关系不改变行政汇报关系。需要判断两人关系时，应沿着直接上级链逐级向上查找，不能跳级推断。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_org_reporting_lines",
+      "lantu_org_executives"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.696,
+    "number_recall": 0.0
+  }
+}

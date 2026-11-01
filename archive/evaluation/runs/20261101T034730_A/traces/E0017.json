@@ -1,0 +1,142 @@
+{
+  "qid": "E0017",
+  "question": "每月补卡次数上限在两版考勤制度中有什么变化？",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>补卡 次数 上限 考勤制度</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list><parameter=keyword>考勤</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 79,
+        "prompt_tokens": 357,
+        "total_tokens": 436,
+        "completion_tokens_details": {
+          "reasoning_tokens": 24
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.406
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>补卡 次数 上限 考勤制度</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 449,
+        "total_tokens": 499,
+        "completion_tokens_details": {
+          "reasoning_tokens": 12
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.25
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>补卡 次数 上限</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 37,
+        "prompt_tokens": 524,
+        "total_tokens": 561,
+        "completion_tokens_details": {
+          "reasoning_tokens": 4
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.11
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>补卡 次数 上限 考勤</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 68,
+        "prompt_tokens": 594,
+        "total_tokens": 662,
+        "completion_tokens_details": {
+          "reasoning_tokens": 31
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.828
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>补卡 次数 上限 考勤制度 两版</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 96,
+        "prompt_tokens": 668,
+        "total_tokens": 764,
+        "completion_tokens_details": {
+          "reasoning_tokens": 55
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.797
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>补卡 次数 上限</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 49,
+        "prompt_tokens": 746,
+        "total_tokens": 795,
+        "completion_tokens_details": {
+          "reasoning_tokens": 16
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 1.922
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"检索未能获取到两版考勤制度中关于每月补卡次数上限的原文内容，无法确认其具体变化（如从每月X次调整为Y次）。为准确回答该问题，需要提供或检索到新旧两版考勤/打卡管理制度的原文，特别是涉及'补卡申请次数''每月补卡'等条款的章节。建议补充文件名称或相关条款关键词后再次检索。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 143,
+        "prompt_tokens": 813,
+        "total_tokens": 956,
+        "completion_tokens_details": {
+          "reasoning_tokens": 33
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 6.593
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "检索未能获取到两版考勤制度中关于每月补卡次数上限的原文内容，无法确认其具体变化（如从每月X次调整为Y次）。为准确回答该问题，需要提供或检索到新旧两版考勤/打卡管理制度的原文，特别是涉及'补卡申请次数''每月补卡'等条款的章节。建议补充文件名称或相关条款关键词后再次检索。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4673,
+  "started_at": "2026-11-01T04:41:57",
+  "elapsed_seconds": 17.91,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.038,
+    "number_recall": 0.0
+  }
+}

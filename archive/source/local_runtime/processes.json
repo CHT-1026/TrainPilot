@@ -1,0 +1,8 @@
+{
+  "backend_pid": 8340,
+  "wsl_pid": 32364,
+  "wsl_marker": "oa-local-7d03faac4806",
+  "port": 8080,
+  "url": "http://127.0.0.1:8080",
+  "scope": "Existing MySQL/Redis only. No migrations, ingestion or business writes."
+}

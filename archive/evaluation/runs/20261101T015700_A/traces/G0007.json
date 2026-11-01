@@ -1,0 +1,269 @@
+{
+  "qid": "G0007",
+  "question": "v3.3 相对 v2.4 在安全功能上有何变化？",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=list><parameter=keyword>安全</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 42,
+        "prompt_tokens": 334,
+        "total_tokens": 376,
+        "completion_tokens_details": {
+          "reasoning_tokens": 24
+        },
+        "prompt_tokens_details": null
+      },
+      "seconds": 2.14
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"v3.3 v2.4 安全功能 变化 版本对比\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 84,
+        "prompt_tokens": 389,
+        "total_tokens": 473,
+        "completion_tokens_details": {
+          "reasoning_tokens": 45
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.5
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_tech_control_architecture\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 2607,
+        "total_tokens": 2657,
+        "completion_tokens_details": {
+          "reasoning_tokens": 17
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 2.797
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_tech_control_architecture_v2\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 85,
+        "prompt_tokens": 3334,
+        "total_tokens": 3419,
+        "completion_tokens_details": {
+          "reasoning_tokens": 50
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2560
+        }
+      },
+      "seconds": 2.844
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"在安全功能方面：旧版 v2.4 的安全功能依赖外部安全继电器，控制器（LT-C600）未内置安全限速与碰撞检测；新版 v3.3 的 LT-C800 控制器则内置了安全限速与碰撞检测功能。此外，v3.3 可靠性指标也相应提升（MTBF 由 30,000 小时提升到 50,000 小时，工作温度范围由 0℃~45℃ 扩展到 -10℃~55℃，EMC 由 3 级提升到 4 级），可视为整体安全与可靠性水平的增强。\",\"citations\":[\"lantu_tech_control_architecture\",\"lantu_tech_control_architecture_v2\"],\"evidence\":[\"lantu_tech_control_architecture#片段0\",\"lantu_tech_control_architecture_v2#片段0\"]}",
+      "usage": {
+        "completion_tokens": 273,
+        "prompt_tokens": 3966,
+        "total_tokens": 4239,
+        "completion_tokens_details": {
+          "reasoning_tokens": 57
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3328
+        }
+      },
+      "seconds": 8.031
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "v3.3 v2.4 安全功能 变化 版本对比",
+        "top_k": 10
+      },
+      "result_sha": "0275b5da11db7aaff125b87028524bd8248453c6d6f85f3ba93d9dc7fda491de",
+      "result_chars": 3716,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_control_architecture",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "24de2a6c87ca39a3c2381b94f6200099b7bb75ce6bd516f77f19910064bdca72",
+      "result_chars": 1085,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_control_architecture_v2",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "581bc85faa5be9bad43b62183aef0806a93e437252c90ff8999b75e945a85df3",
+      "result_chars": 913,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "在安全功能方面：旧版 v2.4 的安全功能依赖外部安全继电器，控制器（LT-C600）未内置安全限速与碰撞检测；新版 v3.3 的 LT-C800 控制器则内置了安全限速与碰撞检测功能。此外，v3.3 可靠性指标也相应提升（MTBF 由 30,000 小时提升到 50,000 小时，工作温度范围由 0℃~45℃ 扩展到 -10℃~55℃，EMC 由 3 级提升到 4 级），可视为整体安全与可靠性水平的增强。",
+    "citations": [
+      "lantu_tech_control_architecture",
+      "lantu_tech_control_architecture_v2"
+    ],
+    "evidence": [
+      "lantu_tech_control_architecture#片段0",
+      "lantu_tech_control_architecture_v2#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 11164,
+  "started_at": "2026-11-01T02:06:38",
+  "elapsed_seconds": 19.31,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "v3.3 v2.4 安全功能 变化 版本对比",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_tech_control_architecture_v2",
+            "title": "# 澜图智能机器人控制系统架构（旧版 v2.4）",
+            "chunk": 1,
+            "score": 23.552,
+            "snippet": "本版本于 2024-05-10 生效，2025-10-20 被 v3.3 取代，仅用于历史版本对比与旧项目维护。"
+          },
+          {
+            "doc_id": "lantu_tech_control_architecture_v2",
+            "title": "# 澜图智能机器人控制系统架构（旧版 v2.4）",
+            "chunk": 0,
+            "score": 12.554,
+            "snippet": "# 澜图智能机器人控制系统架构（旧版 v2.4）\n\n所属部门：研发中心\n作者：程知远\n创建时间：2023-08-01 09:00\n更新时间：2024-05-10 18:00\n版本号：v2.4\n文档类型：tech\n文档族：control_architecture\n生效日期：2024-05-10\n\n## 一、总体架构（旧版）\n\n旧版控制系统采用“工控机 + 运动控制卡”的两层结构：上位工控机负责任务调度与人机界面，下位运动控制卡负责插补与伺服闭环。现场总线采用 CANopen，总线周期 2 ms，单条总线最多连接 16"
+          },
+          {
+            "doc_id": "lantu_tech_control_architecture",
+            "title": "# 澜图智能机器人控制系统架构",
+            "chunk": 1,
+            "score": 12.533,
+            "snippet": "与旧版 v2.4 相比，v3.3 的主要变化：现场总线由 CANopen 升级为 EtherCAT，总线周期由 2 ms 缩短到 1 ms；控制器由 LT-C600 单核 ARM + 4 轴运动控制卡升级为 LT-C800 双核 ARM + FPGA，联动轴数由 4 轴增加到 8 轴，插补周期由 1 ms 缩短到 0.5 ms；伺服采样频率由 8 kHz 提升到 16 kHz，编码器由 17 位增量式升级为 23 位绝对值，速度环带宽由 600 Hz 提升到 1.2 kHz；软件栈由 Windows + RTX 迁"
+          },
+          {
+            "doc_id": "lantu_product_controller",
+            "title": "# LT-C800 运动控制器产品说明",
+            "chunk": 0,
+            "score": 10.668,
+            "snippet": "# LT-C800 运动控制器产品说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2025-04-08 09:00\n更新时间：2025-10-10 10:00\n版本号：v1.5\n文档类型：product\n文档族：product_controller\n生效日期：2025-10-10\n\n## 一、产品定位\n\nLT-C800 是澜图智能自研的新一代八轴运动控制器，面向机器人、工作站与小型产线，替代上一代 LT-C600。\n\n## 二、性能指标\n\n支持 8 轴联动，EtherCAT 总线周期 1 ms，插补周期 0.5"
+          },
+          {
+            "doc_id": "lantu_tech_control_architecture",
+            "title": "# 澜图智能机器人控制系统架构",
+            "chunk": 0,
+            "score": 8.01,
+            "snippet": "# 澜图智能机器人控制系统架构\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-06-01 09:00\n更新时间：2025-10-20 14:00\n版本号：v3.3\n文档类型：tech\n文档族：control_architecture\n生效日期：2025-10-20\n\n## 一、总体架构\n\n控制系统分为感知层、决策层、运动控制层与执行层，采用 EtherCAT 总线连接伺服与 I/O，总线周期 1 ms。\n\n## 二、控制器\n\nLT-C800 采用双核 ARM + FPGA 架构，支持 8 轴联动、0.5 "
+          },
+          {
+            "doc_id": "lantu_policy_vehicle",
+            "title": "# 澜图智能公务用车管理办法",
+            "chunk": 0,
+            "score": 4.81,
+            "snippet": "# 澜图智能公务用车管理办法\n\n所属部门：行政部\n作者：陈依然\n创建时间：2024-03-01 09:00\n更新时间：2025-04-02 09:00\n版本号：v2.4\n文档类型：policy\n文档族：vehicle_management\n生效日期：2025-04-02\n\n## 一、用车范围\n\n公务用车用于客户接待、机场接送、跨园区办公与紧急事务；上下班通勤原则上不使用公务车。\n\n## 二、申请流程\n\n用车须提前 1 个工作日在 OA 申请，注明事由、路线、人数与时间；临时用车须部门负责人电话批准后补单。\n\n## "
+          },
+          {
+            "doc_id": "lantu_support_training_certification",
+            "title": "# 澜图智能服务工程师培训与认证体系",
+            "chunk": 0,
+            "score": 4.583,
+            "snippet": "# 澜图智能服务工程师培训与认证体系\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-06-01 09:00\n更新时间：2025-08-08 10:00\n版本号：v2.4\n文档类型：support\n文档族：service_certification\n生效日期：2025-08-08\n\n## 一、认证等级\n\n服务工程师分为 L1 初级、L2 中级、L3 高级三级，分别对应常规维护、故障维修与整线调试。\n\n## 二、培训内容\n\nL1：安全、保养、备件更换（5 天）；L2：电气与控制系统维修（10 天）；L3：整线"
+          },
+          {
+            "doc_id": "lantu_product_r_series",
+            "title": "# LT-R 系列六轴工业机器人产品手册",
+            "chunk": 0,
+            "score": 4.521,
+            "snippet": "# LT-R 系列六轴工业机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-01-15 09:00\n更新时间：2025-10-30 16:00\n版本号：v4.3\n文档类型：product\n文档族：product_r_series\n生效日期：2025-10-30\n\n## 一、产品定位\n\nLT-R 系列覆盖 6 kg 至 210 kg 负载，适用于搬运、焊接、装配、喷涂、打磨等工序，重复定位精度最高 ±0.02 mm，防护等级 IP54，可选 IP67。\n\n## 二、型号与参数\n\nLT-R6 负载 6"
+          },
+          {
+            "doc_id": "lantu_sales_quote",
+            "title": "# 澜图智能报价与合同评审流程",
+            "chunk": 0,
+            "score": 3.466,
+            "snippet": "# 澜图智能报价与合同评审流程\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-02-10 09:00\n更新时间：2025-08-08 14:00\n版本号：v2.5\n文档类型：sales\n文档族：sales_quote\n生效日期：2025-08-08\n\n## 一、报价流程\n\n销售工程师在 CRM 创建报价单，系统自动校验标准价；非标项目由售前技术出具配置清单，产品部确认成本，财务部复核税率与汇率。\n\n## 二、评审节点\n\n合同金额 1,000 万元以上须法务合规部与 CFO 联合评审；涉及非标开发须 CTO"
+          },
+          {
+            "doc_id": "lantu_tech_data_platform",
+            "title": "# 澜图智能工业数据平台建设方案",
+            "chunk": 0,
+            "score": 2.994,
+            "snippet": "# 澜图智能工业数据平台建设方案\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-10-01 09:00\n更新时间：2025-07-30 14:00\n版本号：v2.4\n文档类型：tech\n文档族：data_platform\n生效日期：2025-07-30\n\n## 一、平台定位\n\n构建统一工业数据湖仓，支撑设备运维、质量分析与经营决策，覆盖 3 大基地与客户现场。\n\n## 二、数据架构\n\n采集层支持 OPC UA、Modbus、MQTT；存储层采用数据湖 + 数仓分层；服务层提供 BI、API 与算法服务。\n"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_control_architecture",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_tech_control_architecture",
+        "title": "# 澜图智能机器人控制系统架构",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 898,
+        "text": "# 澜图智能机器人控制系统架构\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-06-01 09:00\n更新时间：2025-10-20 14:00\n版本号：v3.3\n文档类型：tech\n文档族：control_architecture\n生效日期：2025-10-20\n\n## 一、总体架构\n\n控制系统分为感知层、决策层、运动控制层与执行层，采用 EtherCAT 总线连接伺服与 I/O，总线周期 1 ms。\n\n## 二、控制器\n\nLT-C800 采用双核 ARM + FPGA 架构，支持 8 轴联动、0.5 ms 插补周期，内置安全限速与碰撞检测。\n\n## 三、 servo 与编码器\n\n伺服驱动器采样频率 16 kHz，编码器 23 位绝对值，速度环带宽 1.2 kHz，支持振动抑制与重力补偿。\n\n## 四、软件栈\n\n实时内核基于 PREEMPT_RT，运动规划采用 RRT* 与时间最优轨迹，提供 Python/C++ SDK 与 ROS2 驱动。\n\n## 五、可靠性\n\n控制器 MTBF 50,000 小时，工作温度 -10℃ 至 55℃，通过 EMC 4 级测试。\n\n## 六、版本演进（相对旧版 v2.4）\n\n与旧版 v2.4 相比，v3.3 的主要变化：现场总线由 CANopen 升级为 EtherCAT，总线周期由 2 ms 缩短到 1 ms；控制器由 LT-C600 单核 ARM + 4 轴运动控制卡升级为 LT-C800 双核 ARM + FPGA，联动轴数由 4 轴增加到 8 轴，插补周期由 1 ms 缩短到 0.5 ms；伺服采样频率由 8 kHz 提升到 16 kHz，编码器由 17 位增量式升级为 23 位绝对值，速度环带宽由 600 Hz 提升到 1.2 kHz；软件栈由 Windows + RTX 迁移到 PREEMPT_RT，并新增 RRT* 规划、Python/C++ SDK 与 ROS2 驱动；可靠性由 MTBF 30,000 小时、0℃ 至 45℃、EMC 3 级提升到 50,000 小时、-10℃ 至 55℃、EMC 4 级。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_control_architecture_v2",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_tech_control_architecture_v2",
+        "title": "# 澜图智能机器人控制系统架构（旧版 v2.4）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 714,
+        "text": "# 澜图智能机器人控制系统架构（旧版 v2.4）\n\n所属部门：研发中心\n作者：程知远\n创建时间：2023-08-01 09:00\n更新时间：2024-05-10 18:00\n版本号：v2.4\n文档类型：tech\n文档族：control_architecture\n生效日期：2024-05-10\n\n## 一、总体架构（旧版）\n\n旧版控制系统采用“工控机 + 运动控制卡”的两层结构：上位工控机负责任务调度与人机界面，下位运动控制卡负责插补与伺服闭环。现场总线采用 CANopen，总线周期 2 ms，单条总线最多连接 16 个从站，未使用 EtherCAT。\n\n## 二、控制器（旧版）\n\n旧版主控为 LT-C600 工控机，搭载单核 ARM Cortex-A9 处理器，配置 4 轴运动控制卡，支持 4 轴联动，插补周期 1 ms。安全功能依赖外部安全继电器，未内置安全限速与碰撞检测。\n\n## 三、伺服与编码器（旧版）\n\n伺服驱动器采样频率 8 kHz，编码器为 17 位增量式，速度环带宽 600 Hz，支持基础振动抑制，不具备重力补偿。\n\n## 四、软件栈（旧版）\n\n上位机运行 Windows + RTX 实时扩展，运动规划采用梯形加减速与直线插补，提供 C# SDK，未提供 Python/C++ SDK 与 ROS2 驱动。\n\n## 五、可靠性（旧版）\n\n控制器 MTBF 30,000 小时，工作温度 0℃ 至 45℃，通过 EMC 3 级测试，防护等级 IP20。\n\n## 六、版本说明（旧版）\n\n本版本于 2024-05-10 生效，2025-10-20 被 v3.3 取代，仅用于历史版本对比与旧项目维护。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_tech_control_architecture",
+      "lantu_tech_control_architecture_v2"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.443,
+    "number_recall": 0.0
+  }
+}

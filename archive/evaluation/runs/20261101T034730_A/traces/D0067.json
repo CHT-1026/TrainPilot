@@ -1,0 +1,142 @@
+{
+  "qid": "D0067",
+  "question": "12 个客户案例中机器人数量最多的是哪个项目？配置了多少台？",
+  "question_type": "汇总计算",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=list><parameter=keyword>客户案例</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 46,
+        "prompt_tokens": 360,
+        "total_tokens": 406,
+        "completion_tokens_details": {
+          "reasoning_tokens": 27
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.812
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=list><parameter=keyword>案例</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 29,
+        "prompt_tokens": 416,
+        "total_tokens": 445,
+        "completion_tokens_details": {
+          "reasoning_tokens": 11
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.063
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=list><parameter=keyword>案例</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 34,
+        "prompt_tokens": 471,
+        "total_tokens": 505,
+        "completion_tokens_details": {
+          "reasoning_tokens": 16
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.5
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>客户案例 机器人数量</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 37,
+        "prompt_tokens": 526,
+        "total_tokens": 563,
+        "completion_tokens_details": {
+          "reasoning_tokens": 7
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.172
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>客户案例 机器人数量</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 63,
+        "prompt_tokens": 593,
+        "total_tokens": 656,
+        "completion_tokens_details": {
+          "reasoning_tokens": 33
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.125
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>客户案例 机器人数量</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 123,
+        "prompt_tokens": 660,
+        "total_tokens": 783,
+        "completion_tokens_details": {
+          "reasoning_tokens": 93
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 5.5
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"无法检索到资料库中关于 12 个客户案例及各项目机器人配置数量的信息，因此无法确定机器人数量最多的项目及其配置台数。建议提供更多线索（如案例文档标题、项目名称或关键词），以便进一步检索核实。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 84,
+        "prompt_tokens": 724,
+        "total_tokens": 808,
+        "completion_tokens_details": {
+          "reasoning_tokens": 9
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 2.109
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "无法检索到资料库中关于 12 个客户案例及各项目机器人配置数量的信息，因此无法确定机器人数量最多的项目及其配置台数。建议提供更多线索（如案例文档标题、项目名称或关键词），以便进一步检索核实。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4166,
+  "started_at": "2026-11-01T04:33:55",
+  "elapsed_seconds": 17.28,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.074,
+    "number_recall": 0.0
+  }
+}

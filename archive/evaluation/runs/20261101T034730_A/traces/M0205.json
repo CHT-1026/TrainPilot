@@ -1,0 +1,142 @@
+{
+  "qid": "M0205",
+  "question": "仓库里几百台搬运机器人一起跑，靠哪个系统统一调度？一个仓最多能带多少台？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>仓库 搬运机器人 调度系统 最大数量</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list><parameter=keyword>机器人</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 76,
+        "prompt_tokens": 365,
+        "total_tokens": 441,
+        "completion_tokens_details": {
+          "reasoning_tokens": 21
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.531
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>搬运机器人 调度系统 仓库 最大支持台数</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 52,
+        "prompt_tokens": 457,
+        "total_tokens": 509,
+        "completion_tokens_details": {
+          "reasoning_tokens": 13
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.297
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>搬运机器人调度系统 仓库最大机器人数量</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 45,
+        "prompt_tokens": 533,
+        "total_tokens": 578,
+        "completion_tokens_details": {
+          "reasoning_tokens": 11
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.594
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>机器人调度系统 最大支持机器人数 仓库</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 79,
+        "prompt_tokens": 604,
+        "total_tokens": 683,
+        "completion_tokens_details": {
+          "reasoning_tokens": 44
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.547
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>机器人调度系统 最大支持机器人数 仓库</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 676,
+        "total_tokens": 724,
+        "completion_tokens_details": {
+          "reasoning_tokens": 13
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 1.484
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>搬运机器人 调度系统 仓库 最大台数</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 70,
+        "prompt_tokens": 748,
+        "total_tokens": 818,
+        "completion_tokens_details": {
+          "reasoning_tokens": 32
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 1.672
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"在当前可检索的资料库中未能找到关于搬运机器人调度系统名称以及单仓最大支持机器人数量的任何文档或数据，因此无法回答「靠哪个系统统一调度」和「一个仓最多能带多少台」这两个问题。建议补充以下任一信息后重新检索：1) 具体厂商或产品名称（如某品牌调度系统/机器人型号）；2) 相关产品手册或规格文档；3) 更具体的关键词（如系统软件名称、项目案例名称）。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 162,
+        "prompt_tokens": 820,
+        "total_tokens": 982,
+        "completion_tokens_details": {
+          "reasoning_tokens": 32
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 5.0
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "在当前可检索的资料库中未能找到关于搬运机器人调度系统名称以及单仓最大支持机器人数量的任何文档或数据，因此无法回答「靠哪个系统统一调度」和「一个仓最多能带多少台」这两个问题。建议补充以下任一信息后重新检索：1) 具体厂商或产品名称（如某品牌调度系统/机器人型号）；2) 相关产品手册或规格文档；3) 更具体的关键词（如系统软件名称、项目案例名称）。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4735,
+  "started_at": "2026-11-01T05:41:41",
+  "elapsed_seconds": 17.12,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.016,
+    "number_recall": 0.0
+  }
+}

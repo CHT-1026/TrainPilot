@@ -1,0 +1,142 @@
+{
+  "qid": "F0047",
+  "question": "2025 年第四季度的营业收入和归母净利润分别是多少（由年度数与前三季度累计倒推）？",
+  "question_type": "汇总计算",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>2025年 营业收入 归母净利润 年度 前三季度</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 80,
+        "prompt_tokens": 369,
+        "total_tokens": 449,
+        "completion_tokens_details": {
+          "reasoning_tokens": 34
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.078
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search>{\"query\":\"2025年 营业收入 归母净利润 三季报 年报\", \"top_k\":10}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 71,
+        "prompt_tokens": 452,
+        "total_tokens": 523,
+        "completion_tokens_details": {
+          "reasoning_tokens": 28
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.078
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>2025年 营业收入 归母净利润 累计</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 59,
+        "prompt_tokens": 532,
+        "total_tokens": 591,
+        "completion_tokens_details": {
+          "reasoning_tokens": 16
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.0
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>2025年 营业收入 归母净利润 前三季度累计</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 75,
+        "prompt_tokens": 612,
+        "total_tokens": 687,
+        "completion_tokens_details": {
+          "reasoning_tokens": 31
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 2.469
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>2025年 营业收入 归母净利润 三季报</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 142,
+        "prompt_tokens": 693,
+        "total_tokens": 835,
+        "completion_tokens_details": {
+          "reasoning_tokens": 99
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 3.828
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>2025年 营业收入 归母净利润 三季报</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 68,
+        "prompt_tokens": 773,
+        "total_tokens": 841,
+        "completion_tokens_details": {
+          "reasoning_tokens": 25
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 2.343
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"无法回答：在允许的检索尝试中未能成功获取任何包含 2025 年年度营业收入、归母净利润或前三季度累计数的文档片段，因此无法通过『年度数－前三季度累计数』倒推 2025 年第四季度的营业收入和归母净利润。需要提供 2025 年年报（年度数）与 2025 年三季报（1-9 月累计数）的具体数据后才能计算，且需明确两者口径一致（如是否同为合并报表、是否调整上年同期数）。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 169,
+        "prompt_tokens": 850,
+        "total_tokens": 1019,
+        "completion_tokens_details": {
+          "reasoning_tokens": 23
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 4.532
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "无法回答：在允许的检索尝试中未能成功获取任何包含 2025 年年度营业收入、归母净利润或前三季度累计数的文档片段，因此无法通过『年度数－前三季度累计数』倒推 2025 年第四季度的营业收入和归母净利润。需要提供 2025 年年报（年度数）与 2025 年三季报（1-9 月累计数）的具体数据后才能计算，且需明确两者口径一致（如是否同为合并报表、是否调整上年同期数）。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4945,
+  "started_at": "2026-11-01T04:56:19",
+  "elapsed_seconds": 19.33,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.062,
+    "number_recall": 0.0
+  }
+}

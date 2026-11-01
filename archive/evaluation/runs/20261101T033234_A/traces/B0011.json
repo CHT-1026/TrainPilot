@@ -1,0 +1,142 @@
+{
+  "qid": "B0011",
+  "question": "社会招聘适用于哪些岗位？年度社招计划规模是多少？",
+  "question_type": "事实检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>社会招聘 岗位 适用</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=search><parameter=query>年度社会招聘计划规模</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 91,
+        "prompt_tokens": 355,
+        "total_tokens": 446,
+        "completion_tokens_details": {
+          "reasoning_tokens": 30
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 4.234
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search>{\"query\":\"社会招聘 适用岗位 招聘范围\",\"top_k\":10}</function></tool_call>",
+      "usage": {
+        "completion_tokens": 126,
+        "prompt_tokens": 453,
+        "total_tokens": 579,
+        "completion_tokens_details": {
+          "reasoning_tokens": 96
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 5.109
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>社会招聘 适用岗位</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 41,
+        "prompt_tokens": 519,
+        "total_tokens": 560,
+        "completion_tokens_details": {
+          "reasoning_tokens": 11
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 2.469
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>社会招聘 适用岗位</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 586,
+        "total_tokens": 636,
+        "completion_tokens_details": {
+          "reasoning_tokens": 20
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.578
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>社会招聘 适用岗位</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 53,
+        "prompt_tokens": 653,
+        "total_tokens": 706,
+        "completion_tokens_details": {
+          "reasoning_tokens": 23
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 1.797
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>社会招聘 适用岗位</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 65,
+        "prompt_tokens": 720,
+        "total_tokens": 785,
+        "completion_tokens_details": {
+          "reasoning_tokens": 35
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.984
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"多次检索均未成功获取到资料，无法确认社会招聘适用的岗位范围及年度社招计划规模。请提供相关招聘制度文件或调整检索关键词后重试。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 86,
+        "prompt_tokens": 784,
+        "total_tokens": 870,
+        "completion_tokens_details": {
+          "reasoning_tokens": 26
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 4.438
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "多次检索均未成功获取到资料，无法确认社会招聘适用的岗位范围及年度社招计划规模。请提供相关招聘制度文件或调整检索关键词后重试。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4582,
+  "started_at": "2026-11-01T03:44:32",
+  "elapsed_seconds": 21.61,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.103,
+    "number_recall": 0.0
+  }
+}

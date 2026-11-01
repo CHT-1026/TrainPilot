@@ -1,0 +1,290 @@
+{
+  "qid": "K0024",
+  "question": "2026 年预算机器人出货目标 26,000 台、2025 年实际出货 21,400 台；同时 2026 年计划通过苏州二期将总产能从 30,000 台提升至 36,000 台。请计算 2026 年出货量增长率、产能利用率（按出货/产能），并判断产能是否成为瓶颈。",
+  "question_type": "汇总计算",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>2026年 出货目标 26000台 产能</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 69,
+        "prompt_tokens": 449,
+        "total_tokens": 518,
+        "completion_tokens_details": {
+          "reasoning_tokens": 26
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.469
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>2026年 出货目标 产能 苏州二期</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 80,
+        "prompt_tokens": 529,
+        "total_tokens": 609,
+        "completion_tokens_details": {
+          "reasoning_tokens": 40
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 2.406
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"2026年 出货目标 26000台 产能 苏州二期 36000台\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 62,
+        "prompt_tokens": 606,
+        "total_tokens": 668,
+        "completion_tokens_details": {
+          "reasoning_tokens": 13
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 6.204
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_company_campus\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 79,
+        "prompt_tokens": 3161,
+        "total_tokens": 3240,
+        "completion_tokens_details": {
+          "reasoning_tokens": 48
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 2.343
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_strategy_2026\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 62,
+        "prompt_tokens": 3656,
+        "total_tokens": 3718,
+        "completion_tokens_details": {
+          "reasoning_tokens": 28
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3136
+        }
+      },
+      "seconds": 1.891
+    },
+    {
+      "round": 6,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"一、2026 年出货增长率：2026 年预算出货 26,000 台，2025 年实际出货 21,400 台，增长率 = 26,000/21,400 − 1 ≈ +21.5%（增加 4,600 台）。\\n二、产能利用率：2026 年苏州二期扩产后总产能 36,000 台，利用率 = 26,000/36,000 ≈ 72.2%。\\n三、瓶颈判断：产能不构成瓶颈。即使不扩产（沿用 30,000 台现有产能），利用率也仅约 86.7%，仍能覆盖 26,000 台的出货目标；扩产后 72% 的利用率还留有约 10,000 台（约 38%）的富余空间，可支撑订单超预期增长。需要注意的约束更多在需求端（新签订单 58 亿元的达成）和新增编制/研发投入，而非产能上限。另提示口径：苏州二期扩产计划资本开支 3.8 亿元，计划落地时间与产能爬坡节奏若滞后，理论上会影响产能释放，但不影响上述总量结论。\",\"citations\":[\"lantu_strategy_2026\",\"lantu_company_campus\",\"lantu_company_milestones_2025\"],\"evidence\":[\"lantu_strategy_2026#片段0: 2026 年…机器人出货 26,000 台\",\"lantu_company_campus#片段0: 三大基地合计年产能 30,000 台。2026 年计划通过苏州二期扩产将总产能提升至 36,000 台，预计资本开支 3.8 亿元\",\"lantu_company_milestones_2025#片段0: 2025 年…机器人出货 21,400 台\"]}",
+      "usage": {
+        "completion_tokens": 650,
+        "prompt_tokens": 4100,
+        "total_tokens": 4750,
+        "completion_tokens_details": {
+          "reasoning_tokens": 165
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3648
+        }
+      },
+      "seconds": 22.016
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "2026年 出货目标 26000台 产能 苏州二期 36000台",
+        "top_k": 10
+      },
+      "result_sha": "722d23f3a81175ecb9a6d1c8c86179da6f477e0c6a1a833219e493bff65540d0",
+      "result_chars": 3889,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_company_campus",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "b991a0f6e405ada0f7d62138d18172acf9e06f841009be7393e2ef8a9df4b6d3",
+      "result_chars": 695,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_strategy_2026",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "a37ee6af097ea9b158edc058edb9c57ff8b2fa1eec25779779e0d17028b91771",
+      "result_chars": 604,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "一、2026 年出货增长率：2026 年预算出货 26,000 台，2025 年实际出货 21,400 台，增长率 = 26,000/21,400 − 1 ≈ +21.5%（增加 4,600 台）。\n二、产能利用率：2026 年苏州二期扩产后总产能 36,000 台，利用率 = 26,000/36,000 ≈ 72.2%。\n三、瓶颈判断：产能不构成瓶颈。即使不扩产（沿用 30,000 台现有产能），利用率也仅约 86.7%，仍能覆盖 26,000 台的出货目标；扩产后 72% 的利用率还留有约 10,000 台（约 38%）的富余空间，可支撑订单超预期增长。需要注意的约束更多在需求端（新签订单 58 亿元的达成）和新增编制/研发投入，而非产能上限。另提示口径：苏州二期扩产计划资本开支 3.8 亿元，计划落地时间与产能爬坡节奏若滞后，理论上会影响产能释放，但不影响上述总量结论。",
+    "citations": [
+      "lantu_strategy_2026",
+      "lantu_company_campus",
+      "lantu_company_milestones_2025"
+    ],
+    "evidence": [
+      "lantu_strategy_2026#片段0: 2026 年…机器人出货 26,000 台",
+      "lantu_company_campus#片段0: 三大基地合计年产能 30,000 台。2026 年计划通过苏州二期扩产将总产能提升至 36,000 台，预计资本开支 3.8 亿元",
+      "lantu_company_milestones_2025#片段0: 2025 年…机器人出货 21,400 台"
+    ]
+  },
+  "status": "answered",
+  "tokens": 13503,
+  "started_at": "2026-11-01T05:30:20",
+  "elapsed_seconds": 37.33,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "2026年 出货目标 26000台 产能 苏州二期 36000台",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_meeting_board",
+            "title": "# 2025 年第二次临时董事会决议",
+            "chunk": 0,
+            "score": 16.788,
+            "snippet": "# 2025 年第二次临时董事会决议\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-04-25 09:00\n更新时间：2025-04-25 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_board_2025\n生效日期：2025-04-25\n\n## 一、会议信息\n\n时间：2025 年 4 月 25 日；方式：现场加视频；应到董事 9 人，实到 9 人；列席：高管团队。\n\n## 二、审议事项\n\n审议通过《2024 年度利润分配方案》《2025 年度研发投入预算》《苏州二期"
+          },
+          {
+            "doc_id": "lantu_company_campus",
+            "title": "# 澜图智能制造基地与产能布局",
+            "chunk": 0,
+            "score": 15.165,
+            "snippet": "# 澜图智能制造基地与产能布局\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2024-04-12 09:00\n更新时间：2025-11-20 15:00\n版本号：v3.0\n文档类型：company\n文档族：manufacturing_base\n生效日期：2025-11-20\n\n## 一、苏州总部基地\n\n位于苏州工业园区，占地 120 亩，建筑面积 9.6 万平方米，承担六轴机器人总装、控制器生产与研发测试，年产能 18,000 台。\n\n## 二、东莞华南基地\n\n位于东莞松山湖，占地 60 亩，聚焦 SCARA、A"
+          },
+          {
+            "doc_id": "lantu_meeting_ops_2025q3",
+            "title": "2025 年第三季度经营分析会纪要",
+            "chunk": 0,
+            "score": 11.951,
+            "snippet": "2025 年第三季度经营分析会纪要\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-10-10 09:00\n更新时间：2025-10-10 18:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_ops_2025q3\n生效日期：2025-10-10\n一、会议信息\n时间：2025 年 10 月 10 日 09:00-12:00；地点：苏州总部 3 楼会议室；主持：顾承澜；参会：沈亦舟、周敏仪、韩立恒、罗嘉树、陈依然、潘文博、邵岚。\n二、经营回顾\n第三季度营业收入 11.52 亿元，同"
+          },
+          {
+            "doc_id": "lantu_strategy_2025",
+            "title": "# 澜图智能 2025 年度经营计划",
+            "chunk": 0,
+            "score": 11.885,
+            "snippet": "# 澜图智能 2025 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-01-10 09:00\n更新时间：2025-02-10 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2025\n生效日期：2025-02-10\n\n## 一、年度目标\n\n2025 年营业收入目标 41.5 亿元，力争 42.63 亿元；新签订单目标 46 亿元；机器人出货目标 20,000 台。\n\n## 二、重点任务\n\n锂电与半导体行业突破；LT-C800 控制器量产；海外收入占"
+          },
+          {
+            "doc_id": "lantu_finance_budget_2026",
+            "title": "# 澜图智能 2026 年度经营预算",
+            "chunk": 0,
+            "score": 10.249,
+            "snippet": "# 澜图智能 2026 年度经营预算\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-12-20 09:00\n更新时间：2026-01-15 17:00\n版本号：v1.0\n文档类型：finance\n文档族：budget_2026\n生效日期：2026-01-15\n\n## 一、预算目标\n\n2026 年营业收入目标 52 亿元，同比增长 22%；归母净利润目标 5.2 亿元；综合毛利率目标 32.5%。\n\n## 二、收入分解\n\n机器人本体 24.2 亿元，智能产线 18.4 亿元，软件与服务 6.4 亿元，备件及其"
+          },
+          {
+            "doc_id": "lantu_strategy_2026",
+            "title": "# 澜图智能 2026 年度经营计划",
+            "chunk": 0,
+            "score": 8.663,
+            "snippet": "# 澜图智能 2026 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-12-15 09:00\n更新时间：2026-01-12 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2026\n生效日期：2026-01-12\n\n## 一、年度目标\n\n2026 年营业收入 52 亿元，归母净利润 5.2 亿元，新签订单 58 亿元，机器人出货 26,000 台。\n\n## 二、业务策略\n\n锂电保持领先，半导体翻倍增长，海外收入 7.2 亿元；软件与服务收入占比提"
+          },
+          {
+            "doc_id": "lantu_company_profile",
+            "title": "澜图智能装备公司简介",
+            "chunk": 0,
+            "score": 8.518,
+            "snippet": "澜图智能装备公司简介\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2023-03-01 09:00\n更新时间：2026-01-08 10:30\n版本号：v5.2\n文档类型：company\n文档族：company_profile\n生效日期：2026-01-08\n一、公司概况\n澜图智能装备股份有限公司成立于2011-06-18，总部位于江苏省苏州市工业园区星澜路88号，注册资本\n6.8 亿元，2023 年在上海证券交易所科创板上市（股票代码 688719）。公司专注工业机器人、智能产线\n与工业软件，为汽车、锂电、光伏"
+          },
+          {
+            "doc_id": "lantu_hr_campus",
+            "title": "# 澜图智能 2026 届校园招聘方案",
+            "chunk": 0,
+            "score": 7.623,
+            "snippet": "# 澜图智能 2026 届校园招聘方案\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-08-15 09:00\n更新时间：2025-09-20 15:00\n版本号：v1.0\n文档类型：hr\n文档族：campus_recruitment_2026\n生效日期：2025-09-20\n\n## 一、招聘计划\n\n2026 届校招计划 120 人，其中研发 78 人、产品 12 人、销售 18 人、职能 12 人；重点院校 18 所。\n\n## 二、岗位方向\n\n机器人算法、运动控制、机器视觉、嵌入式软件、机械结构、售前技"
+          },
+          {
+            "doc_id": "lantu_company_milestones_2025",
+            "title": "# 澜图智能 2025 年度大事记",
+            "chunk": 0,
+            "score": 7.542,
+            "snippet": "# 澜图智能 2025 年度大事记\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-12-31 18:00\n更新时间：2026-01-06 09:00\n版本号：v1.0\n文档类型：company\n文档族：annual_milestones_2025\n生效日期：2026-01-06\n\n## 一、经营里程碑\n\n2025 年营业收入 42.63 亿元，同比增长 19.1%；新签订单 48.90 亿元；机器人出货 21,400 台；第 10 万台机器人于 9 月 12 日下线。\n\n## 二、组织里程碑\n\n3 月"
+          },
+          {
+            "doc_id": "lantu_finance_monthly_2025",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 7.18,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能 2025 年月度经营数据\n所属部门\t财务部\n作者\t周敏仪\n创建时间\t2026-01-12 09:00\n更新时间\t2026-01-12 18:00\n版本号\tv1.0\n文档类型\tfinance\n文档族\tmonthly_operations_2025\n生效日期\t2026-01-12\n[工作表] 月度经营数据\n月份\t营收（亿元）\t订单（亿元）\t机器人出货（台）\n2025年1月\t2.86\t3.42\t1,380\n2025年2月\t2.61\t3.05\t1,260\n2025年3月\t3."
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_company_campus",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_company_campus",
+        "title": "# 澜图智能制造基地与产能布局",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 523,
+        "text": "# 澜图智能制造基地与产能布局\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2024-04-12 09:00\n更新时间：2025-11-20 15:00\n版本号：v3.0\n文档类型：company\n文档族：manufacturing_base\n生效日期：2025-11-20\n\n## 一、苏州总部基地\n\n位于苏州工业园区，占地 120 亩，建筑面积 9.6 万平方米，承担六轴机器人总装、控制器生产与研发测试，年产能 18,000 台。\n\n## 二、东莞华南基地\n\n位于东莞松山湖，占地 60 亩，聚焦 SCARA、AMR 与焊接工作站，年产能 8,000 台，2025 年产值 11.2 亿元。\n\n## 三、成都西部基地\n\n位于成都天府新区，占地 40 亩，2024 年投产，主要服务西部汽车与电子客户，年产能 4,000 台。\n\n## 四、产能规划\n\n三大基地合计年产能 30,000 台。2026 年计划通过苏州二期扩产将总产能提升至 36,000 台，预计资本开支 3.8 亿元。\n\n## 五、供应链配套\n\n核心供应商 186 家，其中战略供应商 22 家；减速器实现双源供应，伺服驱动器自研比例 61%，关键物料安全库存 45 天。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_strategy_2026",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_strategy_2026",
+        "title": "# 澜图智能 2026 年度经营计划",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 430,
+        "text": "# 澜图智能 2026 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-12-15 09:00\n更新时间：2026-01-12 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2026\n生效日期：2026-01-12\n\n## 一、年度目标\n\n2026 年营业收入 52 亿元，归母净利润 5.2 亿元，新签订单 58 亿元，机器人出货 26,000 台。\n\n## 二、业务策略\n\n锂电保持领先，半导体翻倍增长，海外收入 7.2 亿元；软件与服务收入占比提升至 15%。\n\n## 三、产品策略\n\nLT-R20 Pro 二季度量产；LantuTwin 3.5 发布；具身智能平台在 3 个场景试点。\n\n## 四、组织策略\n\n增设半导体事业部；海外服务网点增至 6 个；研发人员扩充至 1,450 人。\n\n## 五、资源需求\n\n资本开支 3.8 亿元，研发投入 7.2 亿元，新增编制 420 人。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.25,
+    "cited": [
+      "lantu_strategy_2026",
+      "lantu_company_campus",
+      "lantu_company_milestones_2025"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.185,
+    "number_recall": 1.0
+  }
+}

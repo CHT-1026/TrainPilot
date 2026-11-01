@@ -1,0 +1,176 @@
+{
+  "qid": "I0035",
+  "question": "投资者关系概览披露的 2025 年经营数据与研发投入分别是多少？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"投资者关系概览\"}}",
+      "usage": {
+        "prompt_tokens": 369,
+        "total_tokens": 461,
+        "completion_tokens": 92,
+        "completion_tokens_details": {
+          "reasoning_tokens": 71,
+          "text_tokens": 92
+        }
+      },
+      "seconds": 1.156
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_investor_overview\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 441,
+        "total_tokens": 676,
+        "completion_tokens": 235,
+        "completion_tokens_details": {
+          "reasoning_tokens": 199,
+          "text_tokens": 235
+        }
+      },
+      "seconds": 2.234
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"2025年经营数据 研发投入\",\"top_k\":1}}",
+      "usage": {
+        "prompt_tokens": 879,
+        "total_tokens": 1555,
+        "completion_tokens": 676,
+        "completion_tokens_details": {
+          "reasoning_tokens": 645,
+          "text_tokens": 676
+        }
+      },
+      "seconds": 5.641
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据《澜图智能投资者关系概览》披露的数据：\\n\\n1. **2025 年经营数据**：\\n   - 营业收入：42.63 亿元\\n   - 归母净利润：4.12 亿元\\n   - 毛利率：31.6%\\n   - 经营活动现金流净额：5.34 亿元\\n\\n2. **2025 年研发投入**：\\n   - 研发投入金额：5.87 亿元（占营业收入 13.8%）\\n   - 研发人员数量：1,286 人\\n   - 新增授权专利：216 件\\n   - 累计有效专利：1,286 件\",\"citations\":[\"lantu_investor_overview\"],\"evidence\":[\"lantu_investor_overview#0\"]}",
+      "usage": {
+        "prompt_tokens": 1173,
+        "total_tokens": 1709,
+        "completion_tokens": 536,
+        "completion_tokens_details": {
+          "reasoning_tokens": 334,
+          "text_tokens": 536
+        }
+      },
+      "seconds": 3.625
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "投资者关系概览"
+      },
+      "result_sha": "16b56b259382da6fd608b1190aa468aa0bc7d8f978b2f54175857d8b773e30d9",
+      "result_chars": 75,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_investor_overview",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "3a2b7a4e969f9bacd55061747b1caef56ab16a1deef9b11bfe182cbd8f6fc964",
+      "result_chars": 620,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "2025年经营数据 研发投入",
+        "top_k": 1
+      },
+      "result_sha": "72fc474ba1cc5d7c04ed8b242236a1bc4b40483755cfc20f4320fcc52fc59565",
+      "result_chars": 396,
+      "hits": 1
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《澜图智能投资者关系概览》披露的数据：\n\n1. **2025 年经营数据**：\n   - 营业收入：42.63 亿元\n   - 归母净利润：4.12 亿元\n   - 毛利率：31.6%\n   - 经营活动现金流净额：5.34 亿元\n\n2. **2025 年研发投入**：\n   - 研发投入金额：5.87 亿元（占营业收入 13.8%）\n   - 研发人员数量：1,286 人\n   - 新增授权专利：216 件\n   - 累计有效专利：1,286 件",
+    "citations": [
+      "lantu_investor_overview"
+    ],
+    "evidence": [
+      "lantu_investor_overview#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 4401,
+  "started_at": "2026-11-01T05:32:48",
+  "elapsed_seconds": 12.66,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "投资者关系概览"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_investor_overview",
+            "title": "# 澜图智能投资者关系概览"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_investor_overview",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_investor_overview",
+        "title": "# 澜图智能投资者关系概览",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 451,
+        "text": "# 澜图智能投资者关系概览\n\n所属部门：董事会办公室\n作者：周敏仪\n创建时间：2024-03-20 09:00\n更新时间：2026-01-10 17:00\n版本号：v4.1\n文档类型：company\n文档族：investor_overview\n生效日期：2026-01-10\n\n## 一、基本信息\n\n公司股票代码 688719，总股本 4.2 亿股，2025 年末总市值约 168 亿元。2025 年度拟每 10 股派发现金红利 3.2 元（含税）。\n\n## 二、经营数据\n\n2025 年营业收入 42.63 亿元，归母净利润 4.12 亿元，毛利率 31.6%，经营活动现金流净额 5.34 亿元。\n\n## 三、研发投入\n\n2025 年研发投入 5.87 亿元，占营业收入 13.8%；研发人员 1,286 人；新增授权专利 216 件，累计有效专利 1,286 件。\n\n## 四、投资者沟通\n\n公司每季度召开业绩说明会，接待机构调研需提前 3 个工作日预约；未公开信息严格保密，不接受选择性披露。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "2025年经营数据 研发投入",
+        "top_k": 1
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_investor_overview",
+            "title": "# 澜图智能投资者关系概览",
+            "chunk": 0,
+            "score": 15.908,
+            "snippet": "# 澜图智能投资者关系概览\n\n所属部门：董事会办公室\n作者：周敏仪\n创建时间：2024-03-20 09:00\n更新时间：2026-01-10 17:00\n版本号：v4.1\n文档类型：company\n文档族：investor_overview\n生效日期：2026-01-10\n\n## 一、基本信息\n\n公司股票代码 688719，总股本 4.2 亿股，2025 年末总市值约 168 亿元。2025 年度拟每 10 股派发现金红利 3.2 元（含税）。\n\n## 二、经营数据\n\n2025 年营业收入 42.63 亿元，归母"
+          }
+        ]
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_investor_overview"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.688,
+    "number_recall": 1.0
+  }
+}

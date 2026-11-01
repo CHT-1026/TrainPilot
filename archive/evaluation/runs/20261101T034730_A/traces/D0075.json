@@ -1,0 +1,263 @@
+{
+  "qid": "D0075",
+  "question": "客户清单 CSV 中记录了多少家重点客户？客户名称依次是什么？",
+  "question_type": "清单枚举",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=list><parameter=keyword>客户</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 33,
+        "prompt_tokens": 357,
+        "total_tokens": 390,
+        "completion_tokens_details": {
+          "reasoning_tokens": 15
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.844
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"客户\"}}",
+      "usage": {
+        "completion_tokens": 29,
+        "prompt_tokens": 412,
+        "total_tokens": 441,
+        "completion_tokens_details": {
+          "reasoning_tokens": 14
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.906
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_sales_customer_list\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 37,
+        "prompt_tokens": 960,
+        "total_tokens": 997,
+        "completion_tokens_details": {
+          "reasoning_tokens": 6
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.359
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_sales_policy\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 165,
+        "prompt_tokens": 1434,
+        "total_tokens": 1599,
+        "completion_tokens_details": {
+          "reasoning_tokens": 135
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 896
+        }
+      },
+      "seconds": 4.969
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"客户清单 CSV（lantu_sales_customer_list）共记录 12 家客户，按清单顺序依次为：1.恒芯动力电池、2.澜岳汽车零部件、3.曜阳光能、4.星禾电子、5.海翎家电、6.晶拓微电子、7.麦丰食品、8.康泽制药、9.顺捷供应链、10.恒锐精密、11.鼎重机械、12.昇达电梯。注：CSV 本身未标注“重点客户”字样，若按《销售政策》中 S 级战略客户（5,000 万元以上）口径衡量，合同金额达 5,000 万元以上的有 10 家（麦丰食品 3,900 万元、恒锐精密 4,200 万元除外），但该口径基于单份合同金额而非年采购额，仅供参考。\",\"citations\":[\"lantu_sales_customer_list\",\"lantu_sales_policy\"],\"evidence\":[\"lantu_sales_customer_list#片段0\",\"lantu_sales_policy#片段0\"]}",
+      "usage": {
+        "completion_tokens": 501,
+        "prompt_tokens": 1904,
+        "total_tokens": 2405,
+        "completion_tokens_details": {
+          "reasoning_tokens": 255
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 1408
+        }
+      },
+      "seconds": 9.234
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "客户"
+      },
+      "result_sha": "f574dac6f00c0bdb6c2c648a2081fa64b6b0e4fabe98e1aa3619a495dd449eb0",
+      "result_chars": 1107,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_sales_customer_list",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "2d56320f48edb23b6e8d9519055b2d5b8ea746f5a1e35e729eefeae65e5a3aad",
+      "result_chars": 652,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_sales_policy",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "fbf025b76cd00162d0782210aa57f2f7c8b48adc93e7a90ef3a1a773271bf9ee",
+      "result_chars": 633,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "客户清单 CSV（lantu_sales_customer_list）共记录 12 家客户，按清单顺序依次为：1.恒芯动力电池、2.澜岳汽车零部件、3.曜阳光能、4.星禾电子、5.海翎家电、6.晶拓微电子、7.麦丰食品、8.康泽制药、9.顺捷供应链、10.恒锐精密、11.鼎重机械、12.昇达电梯。注：CSV 本身未标注“重点客户”字样，若按《销售政策》中 S 级战略客户（5,000 万元以上）口径衡量，合同金额达 5,000 万元以上的有 10 家（麦丰食品 3,900 万元、恒锐精密 4,200 万元除外），但该口径基于单份合同金额而非年采购额，仅供参考。",
+    "citations": [
+      "lantu_sales_customer_list",
+      "lantu_sales_policy"
+    ],
+    "evidence": [
+      "lantu_sales_customer_list#片段0",
+      "lantu_sales_policy#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 5832,
+  "started_at": "2026-11-01T04:34:25",
+  "elapsed_seconds": 21.31,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "客户"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_case_01_hengxin",
+            "title": "# 客户案例：恒芯动力电池电芯叠片与物流项目"
+          },
+          {
+            "doc_id": "lantu_case_02_lanyue",
+            "title": "# 客户案例：澜岳汽车零部件白车身焊装项目"
+          },
+          {
+            "doc_id": "lantu_case_03_yaoyang",
+            "title": "# 客户案例：曜阳光能电池片串焊项目"
+          },
+          {
+            "doc_id": "lantu_case_04_xinghe",
+            "title": "# 客户案例：星禾电子精密组装项目"
+          },
+          {
+            "doc_id": "lantu_case_05_hailing",
+            "title": "# 客户案例：海翎家电喷涂与打磨项目"
+          },
+          {
+            "doc_id": "lantu_case_06_jingtuo",
+            "title": "# 客户案例：晶拓微电子晶圆搬运项目"
+          },
+          {
+            "doc_id": "lantu_case_07_maifeng",
+            "title": "# 客户案例：麦丰食品后端包装项目"
+          },
+          {
+            "doc_id": "lantu_case_08_kangze",
+            "title": "# 客户案例：康泽制药无菌灌装项目"
+          },
+          {
+            "doc_id": "lantu_case_09_shunjie",
+            "title": "# 客户案例：顺捷供应链仓储拣选项目"
+          },
+          {
+            "doc_id": "lantu_case_10_hengrui",
+            "title": "# 客户案例：恒锐精密机床上下料项目"
+          },
+          {
+            "doc_id": "lantu_case_11_dingzhong",
+            "title": "# 客户案例：鼎重机械结构件焊接项目"
+          },
+          {
+            "doc_id": "lantu_case_12_shengda",
+            "title": "# 客户案例：昇达电梯门板装配项目"
+          },
+          {
+            "doc_id": "lantu_sales_customer_list",
+            "title": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态"
+          },
+          {
+            "doc_id": "lantu_sales_policy",
+            "title": "# 澜图智能销售政策与客户分级管理办法"
+          },
+          {
+            "doc_id": "lantu_support_complaint",
+            "title": "# 澜图智能客户投诉处理管理办法"
+          },
+          {
+            "doc_id": "lantu_support_system",
+            "title": "# 澜图智能客户服务体系白皮书"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_sales_customer_list",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_sales_customer_list",
+        "title": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 456,
+        "text": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态\n恒芯动力电池,动力电池,常州,电芯叠片与物流,\"21,600\",2025,已验收\n澜岳汽车零部件,汽车零部件,上海,白车身焊装,\"14,800\",2024,已验收\n曜阳光能,光伏,合肥,电池片串焊,\"9,800\",2025,已验收\n星禾电子,3C 电子,昆山,精密组装,\"12,500\",2024,已验收\n海翎家电,家电,顺德,喷涂与打磨,\"6,300\",2025,已验收\n晶拓微电子,半导体,无锡,晶圆搬运,\"7,400\",2025,已验收\n麦丰食品,食品,漯河,后端包装,\"3,900\",2024,已验收\n康泽制药,医药,苏州,无菌灌装,\"5,100\",2025,已验收\n顺捷供应链,物流,广州,仓储拣选,\"8,600\",2024,已验收\n恒锐精密,金属加工,宁波,机床上下料,\"4,200\",2023,已验收\n鼎重机械,工程机械,徐州,结构件焊接,\"11,200\",2024,已验收\n昇达电梯,电梯,湖州,门板装配,\"5,800\",2025,已验收\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_sales_policy",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_sales_policy",
+        "title": "# 澜图智能销售政策与客户分级管理办法",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 463,
+        "text": "# 澜图智能销售政策与客户分级管理办法\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-01-20 09:00\n更新时间：2025-09-25 15:00\n版本号：v3.4\n文档类型：sales\n文档族：sales_policy\n生效日期：2025-09-25\n\n## 一、客户分级\n\n客户分为 S、A、B、C 四级。S 级为年采购额 5,000 万元以上战略客户，由客户成功部直管；A 级 1,000-5,000 万元；B 级 300-1,000 万元；C 级 300 万元以下由渠道覆盖。\n\n## 二、价格体系\n\n执行标准价、项目价与战略价三档。标准价按产品价格表执行；项目价需走折扣审批；战略价仅限 S 级客户，须经总经理批准。\n\n## 三、回款要求\n\n标准合同预付款不低于 30%，发货前累计收款不低于 60%，验收后 30 日内支付至 95%，质保金 5% 于质保期满支付。\n\n## 四、客户拜访\n\nS 级客户每月至少 1 次高层拜访，A 级每季度 1 次；拜访记录须在 CRM 中登记，作为销售考核依据。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_sales_customer_list",
+      "lantu_sales_policy"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.333,
+    "number_recall": 0.0
+  }
+}

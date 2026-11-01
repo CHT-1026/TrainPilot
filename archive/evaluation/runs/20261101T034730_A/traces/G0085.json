@@ -1,0 +1,142 @@
+{
+  "qid": "G0085",
+  "question": "把控制架构 v3.3 的关键指标与旧版 v2.4 逐项对照，插补周期与速度环带宽各缩短/提升了多少？",
+  "question_type": "汇总计算",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=list><parameter=keyword>控制架构</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 378,
+        "total_tokens": 428,
+        "completion_tokens_details": {
+          "reasoning_tokens": 31
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.125
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=list><parameter=keyword>控制架构</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 58,
+        "prompt_tokens": 434,
+        "total_tokens": 492,
+        "completion_tokens_details": {
+          "reasoning_tokens": 39
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 5.328
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=list><parameter=keyword>控制架构</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 33,
+        "prompt_tokens": 490,
+        "total_tokens": 523,
+        "completion_tokens_details": {
+          "reasoning_tokens": 14
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.313
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>控制架构 v3.3 插补周期 速度环带宽</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 70,
+        "prompt_tokens": 546,
+        "total_tokens": 616,
+        "completion_tokens_details": {
+          "reasoning_tokens": 39
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.39
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>控制架构 v3.3 插补周期 速度环带宽</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 64,
+        "prompt_tokens": 614,
+        "total_tokens": 678,
+        "completion_tokens_details": {
+          "reasoning_tokens": 24
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 1.907
+    },
+    {
+      "round": 6,
+      "text": "I apologize for the formatting issues. Let me try the XML-style tool invocation.\n\nI don't have access to the internal corpus documentation for the control architecture versions v3.3 and v2.4, so I cannot verify the exact interpolation cycle and velocity loop bandwidth figures.\n\nTo help you compare the key metrics between v3.3 and v2.4, could you:\n\n1. Provide the spec sheets or release notes for both versions, or\n2. Clarify which product/platform these version numbers refer to (e.g., a specific servo drive, CNC controller, or robotics controller line), so I can locate the correct documentation?\n\nWithout the source data I'd only be guessing at the numbers, and precision matters for this kind of engineering comparison.",
+      "usage": {
+        "completion_tokens": 246,
+        "prompt_tokens": 691,
+        "total_tokens": 937,
+        "completion_tokens_details": {
+          "reasoning_tokens": 93
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 8.015
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"语料库中未能检索到控制架构 v3.3 与 v2.4 的规格文档，无法给出插补周期缩短量与速度环带宽提升量的可靠数值。多次工具检索调用均未获得可用证据，且版本号（v3.3 / v2.4）未指明具体产品或平台，无法定位正确文档。建议提供两个版本的规格书/发布说明，或明确产品型号后重新查询，再做逐项对照。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 177,
+        "prompt_tokens": 878,
+        "total_tokens": 1055,
+        "completion_tokens_details": {
+          "reasoning_tokens": 51
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 4.75
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "语料库中未能检索到控制架构 v3.3 与 v2.4 的规格文档，无法给出插补周期缩短量与速度环带宽提升量的可靠数值。多次工具检索调用均未获得可用证据，且版本号（v3.3 / v2.4）未指明具体产品或平台，无法定位正确文档。建议提供两个版本的规格书/发布说明，或明确产品型号后重新查询，再做逐项对照。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4729,
+  "started_at": "2026-11-01T05:08:39",
+  "elapsed_seconds": 25.83,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.054,
+    "number_recall": 0.0
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "qid": "B0062",
+  "question": "2025 年培训人次的四类占比分别是多少？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>2025年 培训人次 占比</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 59,
+        "prompt_tokens": 357,
+        "total_tokens": 416,
+        "completion_tokens_details": {
+          "reasoning_tokens": 21
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.281
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search>{\"query\":\"2025年培训人次四类占比\", \"top_k\":10}</parameter></tool_call>",
+      "usage": {
+        "completion_tokens": 115,
+        "prompt_tokens": 432,
+        "total_tokens": 547,
+        "completion_tokens_details": {
+          "reasoning_tokens": 85
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.875
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>2025年 培训人次 占比</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 45,
+        "prompt_tokens": 499,
+        "total_tokens": 544,
+        "completion_tokens_details": {
+          "reasoning_tokens": 7
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.578
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>2025年 培训人次 占比</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 91,
+        "prompt_tokens": 574,
+        "total_tokens": 665,
+        "completion_tokens_details": {
+          "reasoning_tokens": 53
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 3.781
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>2025年 培训人次 占比</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 84,
+        "prompt_tokens": 649,
+        "total_tokens": 733,
+        "completion_tokens_details": {
+          "reasoning_tokens": 46
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 3.141
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>2025年培训人次占比</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 52,
+        "prompt_tokens": 724,
+        "total_tokens": 776,
+        "completion_tokens_details": {
+          "reasoning_tokens": 19
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 2.859
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"无法检索到所需资料：在本次会话中多次尝试调用检索工具（search）均未成功返回任何文档内容，因此我没有获得任何关于 2025 年培训人次及其四类划分占比的原始资料。根据规则，在没有读到原文、无法核对口径（例如“四类”具体指哪四类：内训/外训、线上/线下、管理/专业/新员工等不同分类标准）的情况下，我不能凭空推测或编造占比数据。如需回答该问题，请提供包含 2025 年培训人次分类统计的文档，或明确“四类”的具体分类口径后重新提问。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 197,
+        "prompt_tokens": 791,
+        "total_tokens": 988,
+        "completion_tokens_details": {
+          "reasoning_tokens": 31
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 7.391
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "无法检索到所需资料：在本次会话中多次尝试调用检索工具（search）均未成功返回任何文档内容，因此我没有获得任何关于 2025 年培训人次及其四类划分占比的原始资料。根据规则，在没有读到原文、无法核对口径（例如“四类”具体指哪四类：内训/外训、线上/线下、管理/专业/新员工等不同分类标准）的情况下，我不能凭空推测或编造占比数据。如需回答该问题，请提供包含 2025 年培训人次分类统计的文档，或明确“四类”的具体分类口径后重新提问。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4669,
+  "started_at": "2026-11-01T04:06:58",
+  "elapsed_seconds": 24.91,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

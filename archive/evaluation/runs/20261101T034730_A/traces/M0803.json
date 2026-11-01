@@ -1,0 +1,111 @@
+{
+  "qid": "M0803",
+  "question": "2025 年下半年几个专题会上定下来的动作，哪些在 2025 年内就能收口，哪些明确排到了下一年？分别由谁负责、截止到什么时候？",
+  "question_type": "时间与因果推断",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=list><parameter=keyword></parameter></tool_call><tool_call><function=search><parameter=query>专题会 定下来的动作 责任人 截止时间</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 112,
+        "prompt_tokens": 386,
+        "total_tokens": 498,
+        "completion_tokens_details": {
+          "reasoning_tokens": 60
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.906
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>2025年下半年 专题会 定下来的动作 责任人 截止时间</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 55,
+        "prompt_tokens": 475,
+        "total_tokens": 530,
+        "completion_tokens_details": {
+          "reasoning_tokens": 9
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.328
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>2025年下半年 专题会议 安排 责任人 完成时限</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 558,
+        "total_tokens": 609,
+        "completion_tokens_details": {
+          "reasoning_tokens": 6
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.484
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>2025年下半年 专题会议 责任人 完成时限</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 95,
+        "prompt_tokens": 640,
+        "total_tokens": 735,
+        "completion_tokens_details": {
+          "reasoning_tokens": 53
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 2.594
+    },
+    {
+      "round": 5,
+      "text": "{\"name\":\"search\",\"args\":{\"query\":\"2025年下半年 专题会议 责任人 完成时限\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 57,
+        "prompt_tokens": 719,
+        "total_tokens": 776,
+        "completion_tokens_details": {
+          "reasoning_tokens": 22
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 1.672
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "name": "search",
+    "args": {
+      "query": "2025年下半年 专题会议 责任人 完成时限",
+      "top_k": 10
+    }
+  },
+  "status": "answered",
+  "tokens": 3148,
+  "started_at": "2026-11-01T05:57:52",
+  "elapsed_seconds": 10.98,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

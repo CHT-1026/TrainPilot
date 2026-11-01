@@ -1,0 +1,137 @@
+{
+  "qid": "E0028",
+  "question": "2024 版采购管理制度的付款账期规定是什么？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call>\n<function>list</function><parameter>keyword:采购管理制度</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 364,
+        "total_tokens": 493,
+        "completion_tokens": 129,
+        "completion_tokens_details": {
+          "reasoning_tokens": 98,
+          "text_tokens": 129
+        }
+      },
+      "seconds": 1.422
+    },
+    {
+      "round": 2,
+      "text": "<tool_call>\n<function>read</function><parameter>doc_id:lantu_policy_purchase_2024</parameter><parameter>offset:0</parameter><parameter>limit:4000</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 486,
+        "total_tokens": 679,
+        "completion_tokens": 193,
+        "completion_tokens_details": {
+          "reasoning_tokens": 136,
+          "text_tokens": 193
+        }
+      },
+      "seconds": 1.562
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据《澜图智能采购管理制度（2024版）》的规定，付款账期要求如下：\\n1. 标准供应商月结 60 天；\\n2. 预付款比例不超过 30%；\\n3. 质保金 5%-10%。\",\"citations\":[\"lantu_policy_purchase_2024\"],\"evidence\":[\"lantu_policy_purchase_2024\"]}",
+      "usage": {
+        "prompt_tokens": 882,
+        "total_tokens": 1929,
+        "completion_tokens": 1047,
+        "completion_tokens_details": {
+          "reasoning_tokens": 939,
+          "text_tokens": 1047
+        }
+      },
+      "seconds": 8.61
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "采购管理制度"
+      },
+      "result_sha": "2f2c36f87e532ad6a5964c618b5b4e133d9052d6ee656e0916feed030e91affc",
+      "result_chars": 158,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_purchase_2024",
+        "offset": "0",
+        "limit": "4000"
+      },
+      "result_sha": "9988bc9676c6a8d622f60972376f11c60c99802984cd5996d26709d8dc203e03",
+      "result_chars": 536,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《澜图智能采购管理制度（2024版）》的规定，付款账期要求如下：\n1. 标准供应商月结 60 天；\n2. 预付款比例不超过 30%；\n3. 质保金 5%-10%。",
+    "citations": [
+      "lantu_policy_purchase_2024"
+    ],
+    "evidence": [
+      "lantu_policy_purchase_2024"
+    ]
+  },
+  "status": "answered",
+  "tokens": 3101,
+  "started_at": "2026-11-01T04:46:27",
+  "elapsed_seconds": 11.59,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "采购管理制度"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_policy_purchase_2024",
+            "title": "# 澜图智能采购管理制度（2024版）"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2025",
+            "title": "# 澜图智能采购管理制度（2025版）"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_purchase_2024",
+        "offset": "0",
+        "limit": "4000"
+      },
+      "result": {
+        "doc_id": "lantu_policy_purchase_2024",
+        "title": "# 澜图智能采购管理制度（2024版）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 358,
+        "text": "# 澜图智能采购管理制度（2024版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2024-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。\n\n## 二、付款账期\n\n标准供应商月结 60 天；预付款比例不超过 30%；质保金 5%-10%。\n\n## 三、供应商准入\n\n供应商须通过资质审查、现场审核与小批量试用，签署质量协议与廉洁协议。\n\n## 四、验收与对账\n\n到货后 3 个工作日内完成数量与外观验收，30 日内完成质量验收；每月 5 日前完成对账。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_policy_purchase_2024"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.786,
+    "number_recall": 0.0
+  }
+}

@@ -1,0 +1,394 @@
+{
+  "qid": "I0012",
+  "question": "董事会决议中的苏州二期项目与制造基地布局文档的产能规划是否相互印证？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=list><parameter=keyword>苏州</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 53,
+        "prompt_tokens": 361,
+        "total_tokens": 414,
+        "completion_tokens_details": {
+          "reasoning_tokens": 35
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.172
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"苏州\"}}",
+      "usage": {
+        "completion_tokens": 29,
+        "prompt_tokens": 416,
+        "total_tokens": 445,
+        "completion_tokens_details": {
+          "reasoning_tokens": 14
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.656
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"\"}}",
+      "usage": {
+        "completion_tokens": 29,
+        "prompt_tokens": 459,
+        "total_tokens": 488,
+        "completion_tokens_details": {
+          "reasoning_tokens": 15
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 1.313
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_meeting_board\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 1637,
+        "total_tokens": 1687,
+        "completion_tokens_details": {
+          "reasoning_tokens": 19
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.984
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_company_campus\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 70,
+        "prompt_tokens": 2086,
+        "total_tokens": 2156,
+        "completion_tokens_details": {
+          "reasoning_tokens": 39
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 1600
+        }
+      },
+      "seconds": 4.937
+    },
+    {
+      "round": 6,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"相互印证，两份文件口径完全一致。董事会决议（2025年4月25日第二次临时董事会）批准《苏州二期扩产项目议案》：投资3.8亿元、新增年产能6,000台、预计2026年四季度投产；制造基地布局文档（v3.0，2025-11-20更新）载明三大基地现有年产能合计30,000台（苏州18,000台、东莞8,000台、成都4,000台），2026年计划通过苏州二期扩产将总产能提升至36,000台，预计资本开支3.8亿元。两者在投资额（3.8亿元）、新增产能（6,000台）、投产时点（2026年）三项关键数据上相互吻合，且6,000台增量与30,000→36,000台的总产能提升逻辑自洽。\",\"citations\":[\"lantu_meeting_board\",\"lantu_company_campus\"],\"evidence\":[\"lantu_meeting_board#四、扩产项目：苏州二期投资 3.8 亿元，新增年产能 6,000 台，预计 2026 年四季度投产\",\"lantu_company_campus#四、产能规划：三大基地合计年产能 30,000 台。2026 年计划通过苏州二期扩产将总产能提升至 36,000 台，预计资本开支 3.8 亿元\"]}",
+      "usage": {
+        "completion_tokens": 424,
+        "prompt_tokens": 2581,
+        "total_tokens": 3005,
+        "completion_tokens_details": {
+          "reasoning_tokens": 57
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 1600
+        }
+      },
+      "seconds": 8.204
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "苏州"
+      },
+      "result_sha": "1290604daacc15212b4f59638c659261007a940d59ae4c9dd916d753b78e21de",
+      "result_chars": 12,
+      "hits": 0
+    },
+    {
+      "name": "list",
+      "args": {
+        "keyword": ""
+      },
+      "result_sha": "ee5960dfc8f223ba9ffafd250ac7a048c5a08afb9d85298c7a0ba99417e816f1",
+      "result_chars": 2735,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_meeting_board",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "5a536b896e28dfdc5fc7a039577552044e472337f7770f2d694166004852b55c",
+      "result_chars": 617,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_company_campus",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "b991a0f6e405ada0f7d62138d18172acf9e06f841009be7393e2ef8a9df4b6d3",
+      "result_chars": 695,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "相互印证，两份文件口径完全一致。董事会决议（2025年4月25日第二次临时董事会）批准《苏州二期扩产项目议案》：投资3.8亿元、新增年产能6,000台、预计2026年四季度投产；制造基地布局文档（v3.0，2025-11-20更新）载明三大基地现有年产能合计30,000台（苏州18,000台、东莞8,000台、成都4,000台），2026年计划通过苏州二期扩产将总产能提升至36,000台，预计资本开支3.8亿元。两者在投资额（3.8亿元）、新增产能（6,000台）、投产时点（2026年）三项关键数据上相互吻合，且6,000台增量与30,000→36,000台的总产能提升逻辑自洽。",
+    "citations": [
+      "lantu_meeting_board",
+      "lantu_company_campus"
+    ],
+    "evidence": [
+      "lantu_meeting_board#四、扩产项目：苏州二期投资 3.8 亿元，新增年产能 6,000 台，预计 2026 年四季度投产",
+      "lantu_company_campus#四、产能规划：三大基地合计年产能 30,000 台。2026 年计划通过苏州二期扩产将总产能提升至 36,000 台，预计资本开支 3.8 亿元"
+    ]
+  },
+  "status": "answered",
+  "tokens": 8195,
+  "started_at": "2026-11-01T05:15:55",
+  "elapsed_seconds": 20.27,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "苏州"
+      },
+      "result": {
+        "docs": []
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "list",
+      "args": {
+        "keyword": ""
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_company_brand",
+            "title": "# 澜图智能品牌视觉与传播规范"
+          },
+          {
+            "doc_id": "lantu_company_campus",
+            "title": "# 澜图智能制造基地与产能布局"
+          },
+          {
+            "doc_id": "lantu_company_global",
+            "title": "# 澜图智能全球化布局与海外业务"
+          },
+          {
+            "doc_id": "lantu_company_history",
+            "title": "# 澜图智能发展历程（2011—2025）"
+          },
+          {
+            "doc_id": "lantu_company_milestones_2025",
+            "title": "# 澜图智能 2025 年度大事记"
+          },
+          {
+            "doc_id": "lantu_company_mission",
+            "title": "# 澜图智能使命、愿景与价值观"
+          },
+          {
+            "doc_id": "lantu_company_profile",
+            "title": "澜图智能装备公司简介"
+          },
+          {
+            "doc_id": "lantu_investor_overview",
+            "title": "# 澜图智能投资者关系概览"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2024",
+            "title": "澜图智能 2024 年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2025",
+            "title": "澜图智能 2025 年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_budget_2026",
+            "title": "# 澜图智能 2026 年度经营预算"
+          },
+          {
+            "doc_id": "lantu_finance_cashflow",
+            "title": "# 澜图智能现金流与资金管理报告"
+          },
+          {
+            "doc_id": "lantu_finance_cost",
+            "title": "# 澜图智能成本管理与降本专项报告"
+          },
+          {
+            "doc_id": "lantu_finance_gross_margin",
+            "title": "# 澜图智能毛利率与成本结构分析"
+          },
+          {
+            "doc_id": "lantu_finance_h1_2025",
+            "title": "# 澜图智能 2025 年半年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_investor_qa",
+            "title": "# 澜图智能投资者常见问题答复"
+          },
+          {
+            "doc_id": "lantu_finance_monthly_2025",
+            "title": "[工作表] 文档信息"
+          },
+          {
+            "doc_id": "lantu_finance_q3_2025",
+            "title": "# 澜图智能 2025 年第三季度经营数据"
+          },
+          {
+            "doc_id": "lantu_finance_revenue_breakdown",
+            "title": "﻿维度,分类,收入（亿元）,占比,同比"
+          },
+          {
+            "doc_id": "lantu_hr_campus",
+            "title": "# 澜图智能 2026 届校园招聘方案"
+          },
+          {
+            "doc_id": "lantu_hr_compensation",
+            "title": "# 澜图智能薪酬与奖金管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_job_grades",
+            "title": "# 澜图智能职级体系与晋升规则"
+          },
+          {
+            "doc_id": "lantu_hr_manager_training",
+            "title": "澜图智能管理者领导力培训方案"
+          },
+          {
+            "doc_id": "lantu_hr_new_hire_training",
+            "title": "澜图智能新员工入职培训大纲"
+          },
+          {
+            "doc_id": "lantu_hr_performance",
+            "title": "# 澜图智能绩效管理制度"
+          },
+          {
+            "doc_id": "lantu_hr_recruitment",
+            "title": "# 澜图智能招聘管理制度"
+          },
+          {
+            "doc_id": "lantu_hr_resignation",
+            "title": "# 澜图智能离职与交接管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_social",
+            "title": "# 澜图智能社会招聘管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_training_system",
+            "title": "# 澜图智能培训体系与年度计划"
+          },
+          {
+            "doc_id": "lantu_legal_anti_bribery",
+            "title": "# 澜图智能反商业贿赂管理规定"
+          },
+          {
+            "doc_id": "lantu_legal_compliance_manual",
+            "title": "# 澜图智能合规管理手册"
+          },
+          {
+            "doc_id": "lantu_legal_data_compliance",
+            "title": "# 澜图智能数据合规与隐私保护规范"
+          },
+          {
+            "doc_id": "lantu_legal_export_control",
+            "title": "# 澜图智能出口管制与制裁合规指引"
+          },
+          {
+            "doc_id": "lantu_legal_nda_template",
+            "title": "澜图智能保密协议模板（NDA）"
+          },
+          {
+            "doc_id": "lantu_legal_purchase_contract_template",
+            "title": "澜图智能采购合同模板（2025版）"
+          },
+          {
+            "doc_id": "lantu_legal_sales_contract_template",
+            "title": "澜图智能设备销售合同模板（2025版）"
+          },
+          {
+            "doc_id": "lantu_legal_supplier_code",
+            "title": "# 澜图智能供应商行为准则"
+          },
+          {
+            "doc_id": "lantu_meeting_board",
+            "title": "# 2025 年第二次临时董事会决议"
+          },
+          {
+            "doc_id": "lantu_meeting_case_review",
+            "title": "# 恒芯动力电池项目复盘会纪要"
+          },
+          {
+            "doc_id": "lantu_meeting_ops_2025q3",
+            "title": "2025 年第三季度经营分析会纪要"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_meeting_board",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_meeting_board",
+        "title": "# 2025 年第二次临时董事会决议",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 443,
+        "text": "# 2025 年第二次临时董事会决议\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-04-25 09:00\n更新时间：2025-04-25 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_board_2025\n生效日期：2025-04-25\n\n## 一、会议信息\n\n时间：2025 年 4 月 25 日；方式：现场加视频；应到董事 9 人，实到 9 人；列席：高管团队。\n\n## 二、审议事项\n\n审议通过《2024 年度利润分配方案》《2025 年度研发投入预算》《苏州二期扩产项目议案》。\n\n## 三、利润分配\n\n每 10 股派发现金红利 3.0 元（含税），合计派现 1.26 亿元，占 2024 年归母净利润 38.7%。\n\n## 四、扩产项目\n\n苏州二期投资 3.8 亿元，新增年产能 6,000 台，预计 2026 年四季度投产。\n\n## 五、风险提示\n\n董事会要求管理层关注行业周期与应收账款风险，每季度报告经营与现金流情况。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_company_campus",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_company_campus",
+        "title": "# 澜图智能制造基地与产能布局",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 523,
+        "text": "# 澜图智能制造基地与产能布局\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2024-04-12 09:00\n更新时间：2025-11-20 15:00\n版本号：v3.0\n文档类型：company\n文档族：manufacturing_base\n生效日期：2025-11-20\n\n## 一、苏州总部基地\n\n位于苏州工业园区，占地 120 亩，建筑面积 9.6 万平方米，承担六轴机器人总装、控制器生产与研发测试，年产能 18,000 台。\n\n## 二、东莞华南基地\n\n位于东莞松山湖，占地 60 亩，聚焦 SCARA、AMR 与焊接工作站，年产能 8,000 台，2025 年产值 11.2 亿元。\n\n## 三、成都西部基地\n\n位于成都天府新区，占地 40 亩，2024 年投产，主要服务西部汽车与电子客户，年产能 4,000 台。\n\n## 四、产能规划\n\n三大基地合计年产能 30,000 台。2026 年计划通过苏州二期扩产将总产能提升至 36,000 台，预计资本开支 3.8 亿元。\n\n## 五、供应链配套\n\n核心供应商 186 家，其中战略供应商 22 家；减速器实现双源供应，伺服驱动器自研比例 61%，关键物料安全库存 45 天。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_meeting_board",
+      "lantu_company_campus"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.421,
+    "number_recall": 1.0
+  }
+}

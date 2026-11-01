@@ -1,0 +1,54 @@
+{"id":"g001","category":"年假","question":"入职满5年有几天年假？","expected_doc":"员工手册","keywords":["5 年","15 天"]}
+{"id":"g002","category":"年假","question":"年假没休完可以结转到什么时候？","expected_doc":"员工手册","keywords":["次年一季度末","清零"]}
+{"id":"g003","category":"年假","question":"年假可以折现吗？","expected_doc":"员工手册","keywords":["不可折现","离职"]}
+{"id":"g004","category":"试用期","question":"社招和校招的试用期分别是多久？","expected_doc":"员工手册","keywords":["3 个月","6 个月"]}
+{"id":"g005","category":"加班","question":"周末加班按几倍计算？","expected_doc":"员工手册","keywords":["周末","2 倍"]}
+{"id":"g006","category":"加班","question":"法定节假日加班工资怎么算？","expected_doc":"员工手册","keywords":["法定节假日","3 倍"]}
+{"id":"g007","category":"离职","question":"离职需要提前多久申请？","expected_doc":"员工手册","keywords":["30 天","试用期 3 天"]}
+{"id":"g008","category":"培训","question":"每人每年的外部培训预算是多少？","expected_doc":"员工手册","keywords":["5000 元"]}
+{"id":"g009","category":"知识库","question":"怎么申请知识库访问权限？","expected_doc":"员工手册","keywords":["IT 服务台","1 个工作日"]}
+{"id":"g010","category":"密码","question":"密码长度和更换周期有什么要求？","expected_doc":"信息安全管理制度","keywords":["12 位","90 天"]}
+{"id":"g011","category":"多因素认证","question":"哪些外部访问必须开启MFA？","expected_doc":"信息安全管理制度","keywords":["VPN","邮箱","核心系统"]}
+{"id":"g012","category":"漏洞","question":"严重漏洞要求多久修复？","expected_doc":"信息安全管理制度","keywords":["24 小时","CVSS"]}
+{"id":"g013","category":"安全事件","question":"数据泄露事件多久内要向监管部门报告？","expected_doc":"信息安全管理制度","keywords":["72 小时"]}
+{"id":"g014","category":"安全事件","question":"P0安全事件多久上报CTO和法务？","expected_doc":"信息安全管理制度","keywords":["1 小时","CTO"]}
+{"id":"g015","category":"绩效","question":"绩效考核的维度和权重是什么？","expected_doc":"绩效考核与晋升制度","keywords":["业绩","60%","能力","20%","价值观"]}
+{"id":"g016","category":"绩效","question":"绩效结果S、A、B、C、D如何分布？","expected_doc":"绩效考核与晋升制度","keywords":["S","10%","C","后 10%"]}
+{"id":"g017","category":"晋升","question":"晋升P4及以上需要任职满多久？","expected_doc":"绩效考核与晋升制度","keywords":["1 年","1.5 年"]}
+{"id":"g018","category":"晋升","question":"晋升答辩的时间和流程是什么？","expected_doc":"绩效考核与晋升制度","keywords":["30 分钟","15 分钟"]}
+{"id":"g019","category":"调薪","question":"P5晋升到P6的调薪幅度是多少？","expected_doc":"绩效考核与晋升制度","keywords":["20%-30%"]}
+{"id":"g020","category":"差旅","question":"普通员工一线城市住宿标准是多少？","expected_doc":"差旅与报销制度","keywords":["普通员工","500 元"]}
+{"id":"g021","category":"差旅","question":"总监级出差住宿标准是多少？","expected_doc":"差旅与报销制度","keywords":["总监级","900 元"]}
+{"id":"g022","category":"报销","question":"报销单需要谁审批，多久打款？","expected_doc":"差旅与报销制度","keywords":["直属主管","2 个工作日","每周五"]}
+{"id":"g023","category":"报销","question":"单笔报销超过5000元需要谁审批？","expected_doc":"差旅与报销制度","keywords":["5000 元","部门总监"]}
+{"id":"g024","category":"差旅补贴","question":"一线城市出差补贴每天多少钱？","expected_doc":"差旅与报销制度","keywords":["80 元/天"]}
+{"id":"g025","category":"发票","question":"报销发票抬头应该写什么？","expected_doc":"财务发票管理制度","keywords":["澜图智能装备股份有限公司","纳税人识别号"]}
+{"id":"g026","category":"发票","question":"日常费用报销的提交时限是多久？","expected_doc":"财务发票管理制度","keywords":["15 个工作日"]}
+{"id":"g027","category":"发票","question":"单张发票超过1万元需要怎么核验？","expected_doc":"财务发票管理制度","keywords":["1 万元","双人复核"]}
+{"id":"g028","category":"发票","question":"跨年发票还能报销吗？","expected_doc":"财务发票管理制度","keywords":["1 月 10 日","跨年"]}
+{"id":"g029","category":"采购","question":"5到20万元的采购需要什么审批和比价？","expected_doc":"供应商与采购管理","keywords":["5-20 万","3 家","采购部"]}
+{"id":"g030","category":"采购","question":"100万元以上的采购由谁审批？","expected_doc":"供应商与采购管理","keywords":["100 万","总裁办公会"]}
+{"id":"g031","category":"供应商","question":"供应商季度评估有哪些维度和权重？","expected_doc":"供应商与采购管理","keywords":["质量","40%","交付","30%","成本","20%"]}
+{"id":"g032","category":"供应商","question":"供应商分级A、B、C、D的标准是什么？","expected_doc":"供应商与采购管理","keywords":["90 分","75-89","60 分以下"]}
+{"id":"g033","category":"付款","question":"采购预付款比例和月结账期是多少？","expected_doc":"供应商与采购管理","keywords":["30%","月结 30-60 天"]}
+{"id":"g034","category":"产品部署","question":"7B模型私有化部署需要什么GPU和显存？","expected_doc":"产品与服务说明","keywords":["16GB","A10","RTX 4090"]}
+{"id":"g035","category":"SLA","question":"SaaS产品的月度可用率承诺是多少？","expected_doc":"产品与服务说明","keywords":["99.9%"]}
+{"id":"g036","category":"SLA","question":"可用率低于95%怎么补偿？","expected_doc":"产品与服务说明","keywords":["95%","100%"]}
+{"id":"g037","category":"客服","question":"实体商品退货期限是多久？","expected_doc":"客户服务与数据安全","keywords":["7 天","无理由退货"]}
+{"id":"g038","category":"退款","question":"年费套餐使用3个月后退款怎么计算？","expected_doc":"客户服务与数据安全","keywords":["12000","3 个月","9000"]}
+{"id":"g039","category":"投诉","question":"客户投诉首次响应和解决时限是多少？","expected_doc":"客户服务与数据安全","keywords":["2 小时","24 小时"]}
+{"id":"g040","category":"数据安全","question":"客户数据存储和传输使用什么加密？","expected_doc":"客户服务与数据安全","keywords":["AES-256","TLS 1.2"]}
+{"id":"g041","category":"IT运维","question":"生产故障分为哪几个等级？","expected_doc":"IT运维与故障响应规范","keywords":["P0","P1","P2","P3"]}
+{"id":"g042","category":"IT运维","question":"P0故障的响应和止血时限是多少？","expected_doc":"IT运维与故障响应规范","keywords":["5 分钟","15 分钟"]}
+{"id":"g043","category":"变更","question":"生产变更窗口是什么时间？","expected_doc":"IT运维与故障响应规范","keywords":["10:00-18:00","周三 0:00-4:00"]}
+{"id":"g044","category":"备份","question":"数据库备份频率和保留时间是多少？","expected_doc":"IT运维与故障响应规范","keywords":["每日全量","每小时增量","30 天","90 天"]}
+{"id":"g045","category":"招聘","question":"内推奖金标准是多少？","expected_doc":"招聘与面试流程","keywords":["2000 元","5000 元","10000 元"]}
+{"id":"g046","category":"招聘","question":"社招面试流程包括哪些环节？","expected_doc":"招聘与面试流程","keywords":["简历筛选","笔试","一面","HR 面"]}
+{"id":"g047","category":"Offer","question":"Offer的有效期是多久？","expected_doc":"招聘与面试流程","keywords":["5 个工作日"]}
+{"id":"g048","category":"项目","question":"50到200万元的项目由谁审批立项？","expected_doc":"项目管理制度","keywords":["50-200 万","副总裁"]}
+{"id":"g049","category":"项目","question":"项目周报什么时候提交？","expected_doc":"项目管理制度","keywords":["每周五 18:00"]}
+{"id":"g050","category":"项目","question":"项目验收由哪些部门联合进行？","expected_doc":"项目管理制度","keywords":["业务方","PMO","质量部"]}
+{"id":"g051","category":"福利","question":"员工年度体检套餐费用是多少？","expected_doc":"福利待遇与补贴说明","keywords":["800 元","1500 元"]}
+{"id":"g052","category":"福利","question":"补充商业医疗险的门诊和住院报销比例是多少？","expected_doc":"福利待遇与补贴说明","keywords":["80%","90%","30 万"]}
+{"id":"g053","category":"补贴","question":"工作日餐补和通讯补是多少？","expected_doc":"福利待遇与补贴说明","keywords":["30 元/天","50 元/月"]}
+{"id":"g054","category":"福利","question":"员工结婚和生育分别有多少礼金？","expected_doc":"福利待遇与补贴说明","keywords":["2000 元","1000 元"]}

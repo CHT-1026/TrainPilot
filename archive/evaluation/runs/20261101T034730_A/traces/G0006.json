@@ -1,0 +1,142 @@
+{
+  "qid": "G0006",
+  "question": "在控制架构 v3.3「版本演进」列出的全部对比项中，哪些指标发生了变化？",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>控制架构 v3.3 版本演进</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 72,
+        "prompt_tokens": 366,
+        "total_tokens": 438,
+        "completion_tokens_details": {
+          "reasoning_tokens": 36
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.469
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search>{\"query\": \"控制架构 v3.3 版本演进\", \"top_k\": 10}</function></tool_call>",
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 439,
+        "total_tokens": 489,
+        "completion_tokens_details": {
+          "reasoning_tokens": 17
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.594
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search>{\"query\": \"控制架构 v3.3 版本演进 对比\", \"top_k\": 10}</function></tool_call>",
+      "usage": {
+        "completion_tokens": 58,
+        "prompt_tokens": 509,
+        "total_tokens": 567,
+        "completion_tokens_details": {
+          "reasoning_tokens": 23
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 1.734
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search>{\"query\": \"控制架构 v3.3 版本演进 对比项\", \"top_k\": 10}</function></tool_call>",
+      "usage": {
+        "completion_tokens": 82,
+        "prompt_tokens": 581,
+        "total_tokens": 663,
+        "completion_tokens_details": {
+          "reasoning_tokens": 46
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.156
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>控制架构 v3.3 版本演进 对比项 指标变化</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 82,
+        "prompt_tokens": 654,
+        "total_tokens": 736,
+        "completion_tokens_details": {
+          "reasoning_tokens": 38
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 3.031
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=TOOL>{\"name\": \"search\", \"args\": {\"query\": \"控制架构 v3.3 版本演进 对比项\", \"top_k\": 10}}</function></tool_call>",
+      "usage": {
+        "completion_tokens": 83,
+        "prompt_tokens": 735,
+        "total_tokens": 818,
+        "completion_tokens_details": {
+          "reasoning_tokens": 36
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.86
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\": \"not_in_corpus\", \"answer\": \"未能在资料库中检索到「控制架构 v3.3」及其「版本演进」章节的对比项内容，因此无法确认哪些指标发生了变化。可能需要提供更准确的文档名称、版本号或关键词（如具体指标名、章节标题）以便进一步检索。\", \"citations\": [], \"evidence\": []}",
+      "usage": {
+        "completion_tokens": 102,
+        "prompt_tokens": 816,
+        "total_tokens": 918,
+        "completion_tokens_details": {
+          "reasoning_tokens": 13
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 3.0
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "未能在资料库中检索到「控制架构 v3.3」及其「版本演进」章节的对比项内容，因此无法确认哪些指标发生了变化。可能需要提供更准确的文档名称、版本号或关键词（如具体指标名、章节标题）以便进一步检索。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4629,
+  "started_at": "2026-11-01T05:01:58",
+  "elapsed_seconds": 15.84,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.004,
+    "number_recall": 0.0
+  }
+}

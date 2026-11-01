@@ -1,0 +1,322 @@
+{
+  "qid": "M1401",
+  "question": "LT-R20 Pro 的臂展是多少？跟 LT-R20 一样吗？",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>LT-R20 Pro 臂展</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list><parameter=keyword>LT-R20</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 86,
+        "prompt_tokens": 361,
+        "total_tokens": 447,
+        "completion_tokens_details": {
+          "reasoning_tokens": 34
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.5
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>LT-R20 Pro 臂展 参数</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 49,
+        "prompt_tokens": 450,
+        "total_tokens": 499,
+        "completion_tokens_details": {
+          "reasoning_tokens": 15
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.265
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>LT-R20 Pro 臂展 参数</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 115,
+        "prompt_tokens": 521,
+        "total_tokens": 636,
+        "completion_tokens_details": {
+          "reasoning_tokens": 81
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 3.172
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>LT-R20 Pro 臂展 参数 规格</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 68,
+        "prompt_tokens": 592,
+        "total_tokens": 660,
+        "completion_tokens_details": {
+          "reasoning_tokens": 31
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 4.125
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"LT-R20 Pro 臂展 参数\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 39,
+        "prompt_tokens": 666,
+        "total_tokens": 705,
+        "completion_tokens_details": {
+          "reasoning_tokens": 10
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 1.235
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_product_r20_pro_whitepaper\",\"offset\":0,\"limit\":2000}}",
+      "usage": {
+        "completion_tokens": 151,
+        "prompt_tokens": 3086,
+        "total_tokens": 3237,
+        "completion_tokens_details": {
+          "reasoning_tokens": 116
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 5.812
+    },
+    {
+      "round": 7,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_product_r_series\",\"offset\":800,\"limit\":1500}}",
+      "usage": {
+        "completion_tokens": 123,
+        "prompt_tokens": 3579,
+        "total_tokens": 3702,
+        "completion_tokens_details": {
+          "reasoning_tokens": 90
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3072
+        }
+      },
+      "seconds": 3.484
+    },
+    {
+      "round": 8,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"LT-R20 Pro 的臂展为 1,750 mm，与 LT-R20 不同。LT-R20 的臂展为 1,700 mm，LT-R20 Pro 增加了 50 mm。同时 LT-R20 Pro 在负载上也有所提升（22 kg vs 20 kg），重复定位精度提升至 ±0.02 mm（LT-R20 为 ±0.03 mm），本体重量降至 268 kg（LT-R20 为 285 kg）。注：LT-R20 Pro 的参数来自技术白皮书 v0.9（草案），产品评审会纪要中确认的目标臂展同为 1,750 mm，计划 2026 年第二季度量产，正式量产规格可能以最终发布版本为准。\",\"citations\":[\"lantu_product_r20_pro_whitepaper\",\"lantu_product_r_series\",\"lantu_meeting_product_review\"],\"evidence\":[\"lantu_product_r20_pro_whitepaper#片段0\",\"lantu_product_r_series#片段1\",\"lantu_meeting_product_review#片段0\"]}",
+      "usage": {
+        "completion_tokens": 368,
+        "prompt_tokens": 3854,
+        "total_tokens": 4222,
+        "completion_tokens_details": {
+          "reasoning_tokens": 106
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3520
+        }
+      },
+      "seconds": 8.704
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "LT-R20 Pro 臂展 参数",
+        "top_k": 10
+      },
+      "result_sha": "189b1cd735125582c871425b168672cce337157c9b8628178be2ab73e89317c6",
+      "result_chars": 3901,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_r20_pro_whitepaper",
+        "offset": 0,
+        "limit": 2000
+      },
+      "result_sha": "84db14a050dbc243912302812e675cfa1e861cd83126efa51bafed8e3a17c50f",
+      "result_chars": 690,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_r_series",
+        "offset": 800,
+        "limit": 1500
+      },
+      "result_sha": "08b26073fefcc2a3226893d9e2ba84723656748ede4cd8942bee824ae52a9204",
+      "result_chars": 384,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "LT-R20 Pro 的臂展为 1,750 mm，与 LT-R20 不同。LT-R20 的臂展为 1,700 mm，LT-R20 Pro 增加了 50 mm。同时 LT-R20 Pro 在负载上也有所提升（22 kg vs 20 kg），重复定位精度提升至 ±0.02 mm（LT-R20 为 ±0.03 mm），本体重量降至 268 kg（LT-R20 为 285 kg）。注：LT-R20 Pro 的参数来自技术白皮书 v0.9（草案），产品评审会纪要中确认的目标臂展同为 1,750 mm，计划 2026 年第二季度量产，正式量产规格可能以最终发布版本为准。",
+    "citations": [
+      "lantu_product_r20_pro_whitepaper",
+      "lantu_product_r_series",
+      "lantu_meeting_product_review"
+    ],
+    "evidence": [
+      "lantu_product_r20_pro_whitepaper#片段0",
+      "lantu_product_r_series#片段1",
+      "lantu_meeting_product_review#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 14108,
+  "started_at": "2026-11-01T06:04:05",
+  "elapsed_seconds": 30.3,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "LT-R20 Pro 臂展 参数",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_product_r20_pro_whitepaper",
+            "title": "LT-R20 Pro 机器人技术白皮书",
+            "chunk": 0,
+            "score": 12.649,
+            "snippet": "LT-R20 Pro 机器人技术白皮书\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2025-11-20 09:00\n更新时间：2025-11-28 18:00\n版本号：v0.9\n文档类型：product\n文档族：product_r20_pro\n生效日期：2025-11-28\n一、研发背景\n面向锂电叠片、汽车装配等高频节拍场景，澜图智能研发新一代中型六轴机器人 LT-R20 Pro，计划\n2026 年第二季度量产。\n二、技术指标\n额定负载 22 kg，臂展 1,750 mm，重复定位精度 ±0.02 mm，本体重量"
+          },
+          {
+            "doc_id": "lantu_meeting_product_review",
+            "title": "LT-R20 Pro 产品评审会纪要",
+            "chunk": 0,
+            "score": 12.533,
+            "snippet": "LT-R20 Pro 产品评审会纪要\n所属部门：产品部\n作者：孟凡\n创建时间：2025-08-18 09:00\n更新时间：2025-08-18 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_product_review\n生效日期：2025-08-18\n一、会议信息\n时间：2025 年 8 月 18 日；主持：沈亦舟；参会：产品部、研发中心、质量部、销售中心、售后服务部。\n二、评审结论\nLT-R20 Pro 通过概念与计划阶段评审，进入开发阶段。目标负载 22 kg、臂展 1,750"
+          },
+          {
+            "doc_id": "lantu_product_r_series",
+            "title": "# LT-R 系列六轴工业机器人产品手册",
+            "chunk": 0,
+            "score": 12.046,
+            "snippet": "# LT-R 系列六轴工业机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-01-15 09:00\n更新时间：2025-10-30 16:00\n版本号：v4.3\n文档类型：product\n文档族：product_r_series\n生效日期：2025-10-30\n\n## 一、产品定位\n\nLT-R 系列覆盖 6 kg 至 210 kg 负载，适用于搬运、焊接、装配、喷涂、打磨等工序，重复定位精度最高 ±0.02 mm，防护等级 IP54，可选 IP67。\n\n## 二、型号与参数\n\nLT-R6 负载 6"
+          },
+          {
+            "doc_id": "lantu_tech_roadmap",
+            "title": "# 澜图智能技术路线图（2025—2028）",
+            "chunk": 0,
+            "score": 10.101,
+            "snippet": "# 澜图智能技术路线图（2025—2028）\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-11-01 09:00\n更新时间：2025-12-05 16:00\n版本号：v2.2\n文档类型：tech\n文档族：tech_roadmap\n生效日期：2025-12-05\n\n## 一、总体路线\n\n以“本体+控制+视觉+软件”为基础，向具身智能与柔性制造演进，2026 年完成 LT-R20 Pro 与具身智能平台 1.0。\n\n## 二、2025 年\n\nLT-C800 控制器量产、LantuTwin 3.0 发布、LT"
+          },
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 9.74,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能产品参数矩阵（2025）\n所属部门\t产品部\n作者\t孟凡\n创建时间\t2025-01-20 09:00\n更新时间\t2025-12-15 18:00\n版本号\tv2.0\n文档类型\tproduct\n文档族\tproduct_matrix\n生效日期\t2025-12-15\n[工作表] 六轴与SCARA\n型号\t负载\t臂展\t重复精度\t本体重量\t最大速度\nLT-R6\t6 kg\t1,450 mm\t±0.02 mm\t165 kg\t3.2 m/s\nLT-R12\t12 kg\t1,550 mm\t±0."
+          },
+          {
+            "doc_id": "lantu_product_s_series",
+            "title": "# LT-S 系列 SCARA 机器人产品说明",
+            "chunk": 0,
+            "score": 9.403,
+            "snippet": "# LT-S 系列 SCARA 机器人产品说明\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-03-01 09:00\n更新时间：2025-09-12 11:00\n版本号：v3.2\n文档类型：product\n文档族：product_s_series\n生效日期：2025-09-12\n\n## 一、产品定位\n\nLT-S 系列 SCARA 机器人面向 3C 组装、光伏串焊、食品包装等高速取放场景，标准循环时间 0.38 秒。\n\n## 二、型号参数\n\nLT-S4 负载 4 kg、臂展 600 mm、重复精度 ±0.02 "
+          },
+          {
+            "doc_id": "lantu_product_r_series",
+            "title": "# LT-R 系列六轴工业机器人产品手册",
+            "chunk": 1,
+            "score": 8.842,
+            "snippet": "| 型号 | 负载 | 臂展 | 重复精度 | 本体重量 | 最大速度 |\n| --- | --- | --- | --- | --- | --- |\n| LT-R6 | 6 kg | 1,450 mm | ±0.02 mm | 165 kg | 3.2 m/s |\n| LT-R12 | 12 kg | 1,550 mm | ±0.03 mm | 210 kg | 3.0 m/s |\n| LT-R20 | 20 kg | 1,700 mm | ±0.03 mm | 285 kg | 2.8 m/s |\n| LT-R"
+          },
+          {
+            "doc_id": "lantu_meeting_rd",
+            "title": "# 2025 年 5 月研发例会纪要",
+            "chunk": 0,
+            "score": 6.943,
+            "snippet": "# 2025 年 5 月研发例会纪要\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2025-05-09 09:00\n更新时间：2025-05-09 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_rd_2025\n生效日期：2025-05-09\n\n## 一、项目进展\n\nLT-C800 控制器完成小批量验证；LantuTwin 3.0 进入客户试点；具身智能操作模型完成抓取数据集 12 万条。\n\n## 二、组织调整\n\n具身智能研究所正式成立，编制 48 人，重点研究视觉-语言-动作模型"
+          },
+          {
+            "doc_id": "lantu_strategy_2026",
+            "title": "# 澜图智能 2026 年度经营计划",
+            "chunk": 0,
+            "score": 6.524,
+            "snippet": "# 澜图智能 2026 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-12-15 09:00\n更新时间：2026-01-12 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2026\n生效日期：2026-01-12\n\n## 一、年度目标\n\n2026 年营业收入 52 亿元，归母净利润 5.2 亿元，新签订单 58 亿元，机器人出货 26,000 台。\n\n## 二、业务策略\n\n锂电保持领先，半导体翻倍增长，海外收入 7.2 亿元；软件与服务收入占比提"
+          },
+          {
+            "doc_id": "lantu_org_rd_system",
+            "title": "# 澜图智能研发体系与投入",
+            "chunk": 0,
+            "score": 6.249,
+            "snippet": "# 澜图智能研发体系与投入\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-02-01 09:00\n更新时间：2026-01-12 10:00\n版本号：v5.0\n文档类型：org\n文档族：rd_system\n生效日期：2026-01-12\n\n## 一、研发架构\n\n研发中心下设机器人本体研究所、控制器研究所、机器视觉研究所、工艺应用研究所、具身智能研究所，另设测试中心与可靠性实验室。\n\n## 二、人员结构\n\n研发人员 1,286 人，其中博士 48 人、硕士 612 人，35 岁以下占比 61%。2025 年"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_r20_pro_whitepaper",
+        "offset": 0,
+        "limit": 2000
+      },
+      "result": {
+        "doc_id": "lantu_product_r20_pro_whitepaper",
+        "title": "LT-R20 Pro 机器人技术白皮书",
+        "offset": 0,
+        "limit": 2000,
+        "total_chars": 509,
+        "text": "LT-R20 Pro 机器人技术白皮书\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2025-11-20 09:00\n更新时间：2025-11-28 18:00\n版本号：v0.9\n文档类型：product\n文档族：product_r20_pro\n生效日期：2025-11-28\n一、研发背景\n面向锂电叠片、汽车装配等高频节拍场景，澜图智能研发新一代中型六轴机器人 LT-R20 Pro，计划\n2026 年第二季度量产。\n二、技术指标\n额定负载 22 kg，臂展 1,750 mm，重复定位精度 ±0.02 mm，本体重量 268 kg，较上一代降低\n6%；典型循环节拍提升 15%，单位能耗下降 18%。\n三、结构与防护\n采用中空腕部与轻量化铸铝大臂，防护等级提升至 IP67，支持食品级润滑与洁净室选配，适应 -5℃ 至\n50℃ 环境。\n四、控制与智能\n搭载 LT-C800 Pro 控制器，支持 1 kHz\n力控环路、视觉伺服与在线轨迹修正；内置振动抑制算法，末端残余振动降低 40%。\n五、验证计划\n2026 年 1 月完成 2,000 小时可靠性测试，3 月通过 CE 认证，4 月小批量交付首批 50 台。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_r_series",
+        "offset": 800,
+        "limit": 1500
+      },
+      "result": {
+        "doc_id": "lantu_product_r_series",
+        "title": "# LT-R 系列六轴工业机器人产品手册",
+        "offset": 800,
+        "limit": 1500,
+        "total_chars": 1028,
+        "text": " | 1,550 mm | ±0.03 mm | 210 kg | 3.0 m/s |\n| LT-R20 | 20 kg | 1,700 mm | ±0.03 mm | 285 kg | 2.8 m/s |\n| LT-R50 | 50 kg | 2,100 mm | ±0.05 mm | 540 kg | 2.2 m/s |\n| LT-R210 | 210 kg | 2,650 mm | ±0.08 mm | 1,180 kg | 1.8 m/s |\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.75,
+    "cited": [
+      "lantu_product_r20_pro_whitepaper",
+      "lantu_product_r_series",
+      "lantu_meeting_product_review"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.129,
+    "number_recall": 1.0
+  }
+}

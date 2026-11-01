@@ -1,0 +1,166 @@
+{
+  "qid": "A0125",
+  "question": "销售团队 620 人由哪几类构成？各类分别多少人？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"销售团队 620\", \"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 367,
+        "total_tokens": 502,
+        "completion_tokens": 135,
+        "completion_tokens_details": {
+          "reasoning_tokens": 106,
+          "text_tokens": 135
+        }
+      },
+      "seconds": 1.672
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_org_sales_regions\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 1574,
+        "total_tokens": 2015,
+        "completion_tokens": 441,
+        "completion_tokens_details": {
+          "reasoning_tokens": 407,
+          "text_tokens": 441
+        }
+      },
+      "seconds": 5.25
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"销售团队共620人，由以下三类构成：\\n1. 行业销售：280人\\n2. 渠道销售：160人\\n3. 售前技术支持：180人\",\"citations\":[\"lantu_org_sales_regions\"],\"evidence\":[\"lantu_org_sales_regions#0\"]}",
+      "usage": {
+        "prompt_tokens": 2026,
+        "total_tokens": 2538,
+        "completion_tokens": 512,
+        "completion_tokens_details": {
+          "reasoning_tokens": 429,
+          "text_tokens": 512
+        }
+      },
+      "seconds": 4.859
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "销售团队 620",
+        "top_k": 5
+      },
+      "result_sha": "7aa361d7d5408059a5b547ea49529b8de6dca74fa55ab2e647ee37c1c200efa1",
+      "result_chars": 1963,
+      "hits": 5
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_sales_regions",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "81b04e045366f95848ec9c820110d650ea992b08b6f99f29ec524902ae1bec71",
+      "result_chars": 644,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "销售团队共620人，由以下三类构成：\n1. 行业销售：280人\n2. 渠道销售：160人\n3. 售前技术支持：180人",
+    "citations": [
+      "lantu_org_sales_regions"
+    ],
+    "evidence": [
+      "lantu_org_sales_regions#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 5055,
+  "started_at": "2026-11-01T04:07:08",
+  "elapsed_seconds": 11.78,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "销售团队 620",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_org_sales_regions",
+            "title": "# 澜图智能销售区域与渠道网络",
+            "chunk": 0,
+            "score": 13.246,
+            "snippet": "# 澜图智能销售区域与渠道网络\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-02-15 09:00\n更新时间：2025-12-05 15:00\n版本号：v3.1\n文档类型：org\n文档族：sales_regions\n生效日期：2025-12-05\n\n## 一、区域划分\n\n销售中心下设华东、华南、华北、西部、海外五个大区，覆盖 32 个国家和地区。华东大区总部苏州，华南大区总部东莞，华北大区总部北京，西部大区总部成都。\n\n## 二、团队规模\n\n销售团队 620 人，其中行业销售 280 人、渠道销售 16"
+          },
+          {
+            "doc_id": "lantu_org_headcount",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 6.154,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能员工分布统计（2025）\n所属部门\t人力资源部\n作者\t陈依然\n创建时间\t2025-12-31 18:00\n更新时间\t2026-01-09 09:30\n版本号\tv1.0\n文档类型\torg\n文档族\theadcount_2025\n生效日期\t2026-01-09\n[工作表] 基地分布\n基地\t员工数\t研发\t销售\t制造\t服务\t职能\n苏州总部\t2,450\t1,120\t310\t560\t250\t210\n东莞华南\t780\t86\t150\t300\t120\t124\n成都西部\t430\t80\t90\t"
+          },
+          {
+            "doc_id": "lantu_org_department_duties",
+            "title": "# 澜图智能一级部门职责与编制",
+            "chunk": 1,
+            "score": 6.075,
+            "snippet": "| 部门 | 负责人 | 编制（人） | 主要职责 |\n| --- | --- | --- | --- |\n| 研发中心 | 沈亦舟 | 1,286 | 本体/控制器/视觉/具身智能研发 |\n| 产品部 | 孟凡 | 96 | 产品规划与生命周期管理 |\n| 销售中心 | 罗嘉树 | 620 | 区域销售与渠道 |\n| 客户成功部 | 林可 | 86 | 重点客户经营 |\n| 供应链中心 | 韩立恒 | 210 | 采购、计划、物流 |\n| 制造中心 | 韩立恒 | 980 | 三大基地生产 |\n| 质量部 | 潘"
+          },
+          {
+            "doc_id": "lantu_org_chart_2025",
+            "title": "# 澜图智能组织架构（2025版）",
+            "chunk": 0,
+            "score": 5.813,
+            "snippet": "# 澜图智能组织架构（2025版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-03-20 09:00\n更新时间：2025-04-10 10:00\n版本号：v2.0\n文档类型：org\n文档族：org_chart\n生效日期：2025-04-01\n\n## 一、一级部门\n\n2025 年 4 月起公司设 12 个一级部门：研发中心、产品部、销售中心、客户成功部、供应链中心、制造中心、质量部、财务部、人力资源部、法务合规部、信息技术部、售后服务部。售后服务部由销售中心下属部门升级为一级部门。\n\n## 二、研发体"
+          },
+          {
+            "doc_id": "lantu_org_department_duties",
+            "title": "# 澜图智能一级部门职责与编制",
+            "chunk": 0,
+            "score": 5.493,
+            "snippet": "# 澜图智能一级部门职责与编制\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-10 09:00\n更新时间：2025-09-30 16:00\n版本号：v3.2\n文档类型：org\n文档族：department_duties\n生效日期：2025-09-30\n\n## 一、研发中心\n\n负责机器人本体、控制器、伺服、视觉与具身智能技术研发，编制 1,286 人，下设 5 个研究所与 1 个测试中心。\n\n## 二、销售中心与客户成功部\n\n销售中心负责区域销售与渠道管理，编制 620 人；客户成功部负责重点客户经"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_sales_regions",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_org_sales_regions",
+        "title": "# 澜图智能销售区域与渠道网络",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 473,
+        "text": "# 澜图智能销售区域与渠道网络\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-02-15 09:00\n更新时间：2025-12-05 15:00\n版本号：v3.1\n文档类型：org\n文档族：sales_regions\n生效日期：2025-12-05\n\n## 一、区域划分\n\n销售中心下设华东、华南、华北、西部、海外五个大区，覆盖 32 个国家和地区。华东大区总部苏州，华南大区总部东莞，华北大区总部北京，西部大区总部成都。\n\n## 二、团队规模\n\n销售团队 620 人，其中行业销售 280 人、渠道销售 160 人、售前技术支持 180 人。认证渠道商 186 家，核心渠道 32 家。\n\n## 三、区域业绩\n\n2025 年华东大区收入 18.42 亿元，华南大区 9.86 亿元，华北大区 6.12 亿元，西部大区 3.37 亿元，海外 4.86 亿元。华南大区年度完成率 108%，位列第一。\n\n## 四、渠道政策\n\n渠道商分为金牌、银牌、认证三级，金牌渠道享受 82 折拿货价与优先技术支持；渠道冲突由销售中心渠道管理组仲裁。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_org_sales_regions"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.611,
+    "number_recall": 0.0
+  }
+}

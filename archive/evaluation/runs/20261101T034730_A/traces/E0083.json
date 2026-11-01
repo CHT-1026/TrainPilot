@@ -1,0 +1,142 @@
+{
+  "qid": "E0083",
+  "question": "违反保密义务会产生什么后果？",
+  "question_type": "条件判断与边界",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>违反保密义务 后果 责任</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list><parameter=keyword>保密</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 67,
+        "prompt_tokens": 349,
+        "total_tokens": 416,
+        "completion_tokens_details": {
+          "reasoning_tokens": 16
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.234
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>违反保密义务 后果 责任</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 437,
+        "total_tokens": 485,
+        "completion_tokens_details": {
+          "reasoning_tokens": 13
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.61
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=args>{\"query\": \"违反保密义务 后果 责任 赔偿\", \"top_k\": 10}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 67,
+        "prompt_tokens": 509,
+        "total_tokens": 576,
+        "completion_tokens_details": {
+          "reasoning_tokens": 26
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.125
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>违反保密义务 后果 责任 赔偿</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 52,
+        "prompt_tokens": 587,
+        "total_tokens": 639,
+        "completion_tokens_details": {
+          "reasoning_tokens": 13
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 1.515
+    },
+    {
+      "round": 5,
+      "text": "请使用 XML 写法。<tool_call><function=search><parameter=query>违反保密义务 后果 责任 赔偿</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 78,
+        "prompt_tokens": 663,
+        "total_tokens": 741,
+        "completion_tokens_details": {
+          "reasoning_tokens": 32
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.922
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>违反保密义务 后果 责任 赔偿 违约金</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 86,
+        "prompt_tokens": 746,
+        "total_tokens": 832,
+        "completion_tokens_details": {
+          "reasoning_tokens": 43
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 3.375
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"语料检索未能完成，无法从资料库中获取关于'违反保密义务的后果'的任何原文依据。为避免臆测，不作答。建议提供相关合同、规章制度或法律文本的文档编号/标题，或允许我重新执行一次关键词检索（如'保密义务 违约责任 赔偿 违约金'），再据此作答。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 141,
+        "prompt_tokens": 823,
+        "total_tokens": 964,
+        "completion_tokens_details": {
+          "reasoning_tokens": 38
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 4.141
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "语料检索未能完成，无法从资料库中获取关于'违反保密义务的后果'的任何原文依据。为避免臆测，不作答。建议提供相关合同、规章制度或法律文本的文档编号/标题，或允许我重新执行一次关键词检索（如'保密义务 违约责任 赔偿 违约金'），再据此作答。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4653,
+  "started_at": "2026-11-01T04:50:24",
+  "elapsed_seconds": 16.92,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

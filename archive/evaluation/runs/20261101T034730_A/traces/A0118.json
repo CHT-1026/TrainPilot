@@ -1,0 +1,95 @@
+{
+  "qid": "A0118",
+  "question": "高管名单中列出的「业务分管」高管人数是多少？哪几位高管同时出现在部门编制表的负责人列中？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=list><parameter=keyword>高管</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 26,
+        "prompt_tokens": 368,
+        "total_tokens": 394,
+        "completion_tokens_details": {
+          "reasoning_tokens": 8
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.047
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>高管名单 业务分管</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 47,
+        "prompt_tokens": 423,
+        "total_tokens": 470,
+        "completion_tokens_details": {
+          "reasoning_tokens": 17
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.328
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>高管名单 业务分管</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 490,
+        "total_tokens": 538,
+        "completion_tokens_details": {
+          "reasoning_tokens": 18
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 130.969
+    },
+    {
+      "round": 4,
+      "text": "{\"name\":\"search\",\"args\":{\"query\":\"高管名单 业务分管\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 557,
+        "total_tokens": 605,
+        "completion_tokens_details": {
+          "reasoning_tokens": 25
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.594
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "name": "search",
+    "args": {
+      "query": "高管名单 业务分管",
+      "top_k": 10
+    }
+  },
+  "status": "answered",
+  "tokens": 2007,
+  "started_at": "2026-11-01T03:59:36",
+  "elapsed_seconds": 135.94,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

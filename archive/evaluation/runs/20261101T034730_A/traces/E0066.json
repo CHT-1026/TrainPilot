@@ -1,0 +1,142 @@
+{
+  "qid": "E0066",
+  "question": "业务招待的人均标准与酒水上限是多少？S 级客户的重要接待能否上浮？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>业务招待 人均标准 酒水</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list><parameter=keyword>招待</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 60,
+        "prompt_tokens": 364,
+        "total_tokens": 424,
+        "completion_tokens_details": {
+          "reasoning_tokens": 10
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 12.843
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>业务招待费 人均标准 酒水上限</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 61,
+        "prompt_tokens": 451,
+        "total_tokens": 512,
+        "completion_tokens_details": {
+          "reasoning_tokens": 25
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 4.469
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>业务招待 人均标准 酒水上限</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 524,
+        "total_tokens": 572,
+        "completion_tokens_details": {
+          "reasoning_tokens": 13
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 4.734
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>业务招待 人均标准 酒水上限</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 46,
+        "prompt_tokens": 596,
+        "total_tokens": 642,
+        "completion_tokens_details": {
+          "reasoning_tokens": 11
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 2.61
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>业务招待 人均标准 酒水上限</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 60,
+        "prompt_tokens": 668,
+        "total_tokens": 728,
+        "completion_tokens_details": {
+          "reasoning_tokens": 25
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 3.719
+    },
+    {
+      "round": 6,
+      "text": "我这边没有可以调用的文档检索工具，无法直接查询贵司的具体规定。以下按一般企业的通用做法说明，供你对照自己公司的制度：\n\n**一、业务招待人均标准（常见区间）**\n- 普通业务接待：一般在 200–500 元/人/餐\n- 中层或重要客户接待：500–1000 元/人/餐\n- 高层/重大合作洽谈：1000–2000 元/人/餐，通常需特批\n- 一线城市标准通常比二三线城市上浮 20%–50%\n\n**二、酒水上限常见规定**\n- 酒水费用一般不超过招待总额的 30%–50%\n- 白酒单价上限常见 500–1500 元/瓶\n- 工作日接待禁酒、禁高档酒是不少单位的红线（尤其国企、事业单位有明确禁令）\n- 有些单位直接规定\"酒水不得单独列支\"或\"陪同人员用酒不得计入人均标准\"\n\n**三、S 级客户重要接待能否上浮**\n多数制度会留有例外通道，常见条件是：\n1. 需事先书面申请，经部门负责人+分管领导（或更高级别）特批；\n2. 上浮幅度通常有上限（例如标准的 1.5 倍或 2 倍封顶）；\n3. 需注明接待事由、参与人员、预期商务成果，事后附接待小结；\n4. 同一客户短期内多次\"重要接待\"会被重点审核，防止拆分规避审批。\n\n**建议**：具体金额和上浮比例请以贵司《业务招待费管理办法》或财务报销制度为准。如果你能贴出制度原文，我可以帮你逐条解读适用条件和审批路径。",
+      "usage": {
+        "completion_tokens": 536,
+        "prompt_tokens": 740,
+        "total_tokens": 1276,
+        "completion_tokens_details": {
+          "reasoning_tokens": 121
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 18.062
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_artificial_corpus\",\"answer\":\"检索工具不可用，无法查询贵司具体制度原文。以下为一般性参考（需以贵司《业务招待费管理办法》为准）：1) 业务招待人均标准常见区间：普通接待200–500元/人/餐，中层或重要客户500–1000元，高层/重大合作1000–2000元并需特批，一线城市通常上浮20%–50%；2) 酒水上限常见规定：酒水不超过招待总额的30%–50%，白酒单价上限常见500–1500元/瓶，部分单位（尤其国企、事业单位）工作日禁酒或禁高档酒；3) S 级客户重要接待上浮：多数制度允许例外，通常需事先书面申请、经分管领导或更高级别特批，上浮幅度一般封顶为标准的1.5–2倍，且需注明事由、人员及商务成果，事后附接待小结。如需精确金额与上浮比例，请提供贵司制度原文以便逐条解读。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 293,
+        "prompt_tokens": 1189,
+        "total_tokens": 1482,
+        "completion_tokens_details": {
+          "reasoning_tokens": 25
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 8.0
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_artificial_corpus",
+    "answer": "检索工具不可用，无法查询贵司具体制度原文。以下为一般性参考（需以贵司《业务招待费管理办法》为准）：1) 业务招待人均标准常见区间：普通接待200–500元/人/餐，中层或重要客户500–1000元，高层/重大合作1000–2000元并需特批，一线城市通常上浮20%–50%；2) 酒水上限常见规定：酒水不超过招待总额的30%–50%，白酒单价上限常见500–1500元/瓶，部分单位（尤其国企、事业单位）工作日禁酒或禁高档酒；3) S 级客户重要接待上浮：多数制度允许例外，通常需事先书面申请、经分管领导或更高级别特批，上浮幅度一般封顶为标准的1.5–2倍，且需注明事由、人员及商务成果，事后附接待小结。如需精确金额与上浮比例，请提供贵司制度原文以便逐条解读。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 5636,
+  "started_at": "2026-11-01T04:47:35",
+  "elapsed_seconds": 54.44,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.293,
+    "number_recall": 0.0
+  }
+}

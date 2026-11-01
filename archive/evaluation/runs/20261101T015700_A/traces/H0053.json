@@ -1,0 +1,156 @@
+{
+  "qid": "H0053",
+  "question": "反商业贿赂管理规定明确禁止哪些行为？",
+  "question_type": "清单枚举",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=list><parameter=keyword>反商业贿赂</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 37,
+        "prompt_tokens": 326,
+        "total_tokens": 363,
+        "completion_tokens_details": {
+          "reasoning_tokens": 17
+        },
+        "prompt_tokens_details": null
+      },
+      "seconds": 1.922
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"反商业贿赂\"}}",
+      "usage": {
+        "completion_tokens": 94,
+        "prompt_tokens": 383,
+        "total_tokens": 477,
+        "completion_tokens_details": {
+          "reasoning_tokens": 77
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.25
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_legal_anti_bribery\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 39,
+        "prompt_tokens": 445,
+        "total_tokens": 484,
+        "completion_tokens_details": {
+          "reasoning_tokens": 5
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.734
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据《澜图智能反商业贿赂管理规定》（v2.4，2025-01-15生效）：明确禁止向客户、政府官员、供应商及其亲属提供现金、购物卡、有价证券、贵重礼品、旅游或娱乐安排。此外，相关规定还要求：商务礼品单价不超过200元并须登记备案，业务招待人均不超过600元，禁止高消费娱乐；礼品、招待与赞助须在OA审批并保留凭证，无审批记录不予报销；违规者解除劳动合同并追偿损失，涉嫌行贿的移交司法机关并追究管理责任。\",\"citations\":[\"lantu_legal_anti_bribery\"],\"evidence\":[\"lantu_legal_anti_bribery#片段1\",\"lantu_legal_anti_bribery#片段2\",\"lantu_legal_anti_bribery#片段4\",\"lantu_legal_anti_bribery#片段5\"]}",
+      "usage": {
+        "completion_tokens": 215,
+        "prompt_tokens": 840,
+        "total_tokens": 1055,
+        "completion_tokens_details": {
+          "reasoning_tokens": 7
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 19.453
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "反商业贿赂"
+      },
+      "result_sha": "88e6ec12f60b447ccf4d28a515d57df077d0bdd111d3a53fbdbc4211e6046bb7",
+      "result_chars": 78,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_legal_anti_bribery",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "57727ab2b35396f8001a9d259562464fb42af6b84a4b7131442e7b5bc59a1316",
+      "result_chars": 584,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《澜图智能反商业贿赂管理规定》（v2.4，2025-01-15生效）：明确禁止向客户、政府官员、供应商及其亲属提供现金、购物卡、有价证券、贵重礼品、旅游或娱乐安排。此外，相关规定还要求：商务礼品单价不超过200元并须登记备案，业务招待人均不超过600元，禁止高消费娱乐；礼品、招待与赞助须在OA审批并保留凭证，无审批记录不予报销；违规者解除劳动合同并追偿损失，涉嫌行贿的移交司法机关并追究管理责任。",
+    "citations": [
+      "lantu_legal_anti_bribery"
+    ],
+    "evidence": [
+      "lantu_legal_anti_bribery#片段1",
+      "lantu_legal_anti_bribery#片段2",
+      "lantu_legal_anti_bribery#片段4",
+      "lantu_legal_anti_bribery#片段5"
+    ]
+  },
+  "status": "answered",
+  "tokens": 2379,
+  "started_at": "2026-11-01T02:05:08",
+  "elapsed_seconds": 26.36,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "反商业贿赂"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_legal_anti_bribery",
+            "title": "# 澜图智能反商业贿赂管理规定"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_legal_anti_bribery",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_legal_anti_bribery",
+        "title": "# 澜图智能反商业贿赂管理规定",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 408,
+        "text": "# 澜图智能反商业贿赂管理规定\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-03-01 09:00\n更新时间：2025-01-15 10:00\n版本号：v2.4\n文档类型：legal\n文档族：anti_bribery\n生效日期：2025-01-15\n\n## 一、禁止行为\n\n禁止向客户、政府官员、供应商及其亲属提供现金、购物卡、有价证券、贵重礼品、旅游或娱乐安排。\n\n## 二、礼品与招待\n\n商务礼品单价不超过 200 元，须登记备案；业务招待人均不超过 600 元，禁止高消费娱乐。\n\n## 三、第三方管理\n\n代理商、渠道商与咨询顾问须签署廉洁协议，发现违规立即终止合作并追究连带责任。\n\n## 四、审批与记录\n\n礼品、招待与赞助须在 OA 审批并保留凭证；财务报销须核对审批记录，无记录不予报销。\n\n## 五、违规处理\n\n违反规定者解除劳动合同并追偿损失；涉嫌行贿的移交司法机关，同时追究管理责任。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_legal_anti_bribery"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 1.0,
+    "number_recall": 0.0
+  }
+}

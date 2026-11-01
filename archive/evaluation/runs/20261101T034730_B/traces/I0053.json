@@ -1,0 +1,242 @@
+{
+  "qid": "I0053",
+  "question": "ESG 报告的 2030 年目标是什么？与 2025 年绿电占比相比还有多大差距？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"ESG 报告 2030 目标 绿电\"}}",
+      "usage": {
+        "prompt_tokens": 379,
+        "total_tokens": 680,
+        "completion_tokens": 301,
+        "completion_tokens_details": {
+          "reasoning_tokens": 270,
+          "text_tokens": 301
+        }
+      },
+      "seconds": 2.86
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_strategy_esg\",\"offset\":4000,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 2803,
+        "total_tokens": 3158,
+        "completion_tokens": 355,
+        "completion_tokens_details": {
+          "reasoning_tokens": 318,
+          "text_tokens": 355
+        }
+      },
+      "seconds": 3.031
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_strategy_esg\",\"offset\":0,\"limit\":10000}}",
+      "usage": {
+        "prompt_tokens": 2922,
+        "total_tokens": 3449,
+        "completion_tokens": 527,
+        "completion_tokens_details": {
+          "reasoning_tokens": 492,
+          "text_tokens": 527
+        }
+      },
+      "seconds": 4.359
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据《澜图智能 ESG 与可持续发展报告》，2030年的目标是碳排放强度较2023年下降40%，绿电占比提升至60%。2025年绿电占比为28%，距离2030年目标还有32个百分点的差距。\",\"citations\":[\"lantu_strategy_esg\"],\"evidence\":[\"lantu_strategy_esg#0\"]}",
+      "usage": {
+        "prompt_tokens": 3300,
+        "total_tokens": 3726,
+        "completion_tokens": 426,
+        "completion_tokens_details": {
+          "reasoning_tokens": 327,
+          "text_tokens": 426
+        }
+      },
+      "seconds": 3.172
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "ESG 报告 2030 目标 绿电"
+      },
+      "result_sha": "6ff70e7c7e21c8c45dadadfeab03bf0494dcff4e6fe3b27647cf521fe43a8587",
+      "result_chars": 3891,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_strategy_esg",
+        "offset": 4000,
+        "limit": 4000
+      },
+      "result_sha": "d6be4ee140e253746fd8a4b3dd3e692612b89fcc1ef34635e606e4a115ec941f",
+      "result_chars": 147,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_strategy_esg",
+        "offset": 0,
+        "limit": 10000
+      },
+      "result_sha": "e1ee79c825f73a3911c0a22ce68d02399f2e630ee06920b0917aaf5a6d446f1d",
+      "result_chars": 533,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《澜图智能 ESG 与可持续发展报告》，2030年的目标是碳排放强度较2023年下降40%，绿电占比提升至60%。2025年绿电占比为28%，距离2030年目标还有32个百分点的差距。",
+    "citations": [
+      "lantu_strategy_esg"
+    ],
+    "evidence": [
+      "lantu_strategy_esg#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 11013,
+  "started_at": "2026-11-01T05:33:38",
+  "elapsed_seconds": 13.42,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "ESG 报告 2030 目标 绿电"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_strategy_esg",
+            "title": "# 澜图智能 ESG 与可持续发展报告",
+            "chunk": 0,
+            "score": 23.051,
+            "snippet": "# 澜图智能 ESG 与可持续发展报告\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2025-04-22 09:00\n更新时间：2025-04-25 10:00\n版本号：v2.0\n文档类型：strategy\n文档族：esg_report\n生效日期：2025-04-25\n\n## 一、环境\n\n2025 年苏州基地光伏装机 6.2MW，绿电占比 28%；单位产值能耗下降 9.6%；危废合规处置率 100%。\n\n## 二、社会\n\n员工培训人均 32 小时；安全生产投入 1,200 万元；公益捐赠 380 万元，支持职业"
+          },
+          {
+            "doc_id": "lantu_finance_cost",
+            "title": "# 澜图智能成本管理与降本专项报告",
+            "chunk": 0,
+            "score": 6.725,
+            "snippet": "# 澜图智能成本管理与降本专项报告\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-09-05 09:00\n更新时间：2025-09-12 17:00\n版本号：v1.3\n文档类型：finance\n文档族：cost_management\n生效日期：2025-09-12\n\n## 一、降本目标\n\n2025 年降本目标 1.8 亿元，前三季度完成 1.48 亿元，完成率 82%。\n\n## 二、主要项目\n\n减速器国产替代降本 4,200 万元，伺服驱动器自研降本 3,800 万元，结构件轻量化降本 2,600 万元，物"
+          },
+          {
+            "doc_id": "lantu_company_mission",
+            "title": "# 澜图智能使命、愿景与价值观",
+            "chunk": 0,
+            "score": 4.264,
+            "snippet": "# 澜图智能使命、愿景与价值观\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2023-05-10 10:00\n更新时间：2025-12-20 16:00\n版本号：v3.1\n文档类型：company\n文档族：company_mission\n生效日期：2025-12-20\n\n## 一、使命\n\n让每一座工厂拥有可靠、易用、可进化的智能生产力。\n\n## 二、愿景\n\n到 2030 年，成为全球工业机器人领域最值得信赖的中国品牌，服务 10,000 家制造企业。\n\n## 三、价值观\n\n客户成功、实事求是、长期主义、协同共赢"
+          },
+          {
+            "doc_id": "lantu_company_milestones_2025",
+            "title": "# 澜图智能 2025 年度大事记",
+            "chunk": 0,
+            "score": 3.875,
+            "snippet": "# 澜图智能 2025 年度大事记\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-12-31 18:00\n更新时间：2026-01-06 09:00\n版本号：v1.0\n文档类型：company\n文档族：annual_milestones_2025\n生效日期：2026-01-06\n\n## 一、经营里程碑\n\n2025 年营业收入 42.63 亿元，同比增长 19.1%；新签订单 48.90 亿元；机器人出货 21,400 台；第 10 万台机器人于 9 月 12 日下线。\n\n## 二、组织里程碑\n\n3 月"
+          },
+          {
+            "doc_id": "lantu_finance_budget_2026",
+            "title": "# 澜图智能 2026 年度经营预算",
+            "chunk": 0,
+            "score": 3.629,
+            "snippet": "# 澜图智能 2026 年度经营预算\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-12-20 09:00\n更新时间：2026-01-15 17:00\n版本号：v1.0\n文档类型：finance\n文档族：budget_2026\n生效日期：2026-01-15\n\n## 一、预算目标\n\n2026 年营业收入目标 52 亿元，同比增长 22%；归母净利润目标 5.2 亿元；综合毛利率目标 32.5%。\n\n## 二、收入分解\n\n机器人本体 24.2 亿元，智能产线 18.4 亿元，软件与服务 6.4 亿元，备件及其"
+          },
+          {
+            "doc_id": "lantu_strategy_2025",
+            "title": "# 澜图智能 2025 年度经营计划",
+            "chunk": 0,
+            "score": 3.597,
+            "snippet": "# 澜图智能 2025 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-01-10 09:00\n更新时间：2025-02-10 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2025\n生效日期：2025-02-10\n\n## 一、年度目标\n\n2025 年营业收入目标 41.5 亿元，力争 42.63 亿元；新签订单目标 46 亿元；机器人出货目标 20,000 台。\n\n## 二、重点任务\n\n锂电与半导体行业突破；LT-C800 控制器量产；海外收入占"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2024",
+            "title": "澜图智能 2024 年度报告摘要",
+            "chunk": 0,
+            "score": 3.472,
+            "snippet": "澜图智能 2024 年度报告摘要\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-01-22 09:00\n更新时间：2025-01-30 18:00\n版本号：v1.0\n文档类型：finance\n文档族：annual_report_2024\n生效日期：2025-01-30\n一、经营概况\n2024 年公司实现营业收入 35.80 亿元，同比增长 16.8%；归母净利润 3.26 亿元，同比增长 14.2%。\n二、收入结构\n机器人本体收入 16.72 亿元（46.7%），智能产线收入 12.36 亿元（34.5%），"
+          },
+          {
+            "doc_id": "lantu_finance_h1_2025",
+            "title": "# 澜图智能 2025 年半年度报告摘要",
+            "chunk": 0,
+            "score": 3.357,
+            "snippet": "# 澜图智能 2025 年半年度报告摘要\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-08-25 09:00\n更新时间：2025-08-28 18:00\n版本号：v1.0\n文档类型：finance\n文档族：semiannual_2025\n生效日期：2025-08-28\n\n## 一、经营数据\n\n2025 年上半年营业收入 19.84 亿元，同比增长 21.3%；归母净利润 1.83 亿元，同比增长 24.6%；毛利率 31.2%。\n\n## 二、订单情况\n\n上半年新签订单 22.7 亿元，同比增长 18.5%"
+          },
+          {
+            "doc_id": "lantu_finance_cashflow",
+            "title": "# 澜图智能现金流与资金管理报告",
+            "chunk": 0,
+            "score": 3.357,
+            "snippet": "# 澜图智能现金流与资金管理报告\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-12-10 09:00\n更新时间：2025-12-15 17:00\n版本号：v1.1\n文档类型：finance\n文档族：cashflow_2025\n生效日期：2025-12-15\n\n## 一、现金流概况\n\n2025 年经营活动现金流净额 5.34 亿元，投资活动现金流净额 -3.86 亿元，筹资活动现金流净额 -0.92 亿元。\n\n## 二、回款管理\n\n应收账款余额 10.24 亿元，周转天数 86 天；逾期账款占比 4.2%，"
+          },
+          {
+            "doc_id": "lantu_strategy_quality_system",
+            "title": "澜图智能质量管理体系手册",
+            "chunk": 0,
+            "score": 3.237,
+            "snippet": "澜图智能质量管理体系手册\n所属部门：质量部\n作者：潘文博\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v4.2\n文档类型：strategy\n文档族：quality_system\n生效日期：2025-06-01\n一、质量方针\n以客户为中心，以零缺陷为目标，持续改进，追求卓越。公司通过 ISO 9001、IATF 16949 与 ISO 13485\n认证。\n二、质量目标\n2025 年一次交检合格率不低于 98.5%，客户投诉不超过 6 起，MTBF 不低于 12,00"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_strategy_esg",
+        "offset": 4000,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_strategy_esg",
+        "title": "# 澜图智能 ESG 与可持续发展报告",
+        "offset": 4000,
+        "limit": 4000,
+        "total_chars": 363,
+        "text": "",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_strategy_esg",
+        "offset": 0,
+        "limit": 10000
+      },
+      "result": {
+        "doc_id": "lantu_strategy_esg",
+        "title": "# 澜图智能 ESG 与可持续发展报告",
+        "offset": 0,
+        "limit": 6000,
+        "total_chars": 363,
+        "text": "# 澜图智能 ESG 与可持续发展报告\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2025-04-22 09:00\n更新时间：2025-04-25 10:00\n版本号：v2.0\n文档类型：strategy\n文档族：esg_report\n生效日期：2025-04-25\n\n## 一、环境\n\n2025 年苏州基地光伏装机 6.2MW，绿电占比 28%；单位产值能耗下降 9.6%；危废合规处置率 100%。\n\n## 二、社会\n\n员工培训人均 32 小时；安全生产投入 1,200 万元；公益捐赠 380 万元，支持职业教育。\n\n## 三、治理\n\n董事会设审计、薪酬、提名与战略委员会；合规培训覆盖率 100%；反腐败零容忍。\n\n## 四、目标\n\n2030 年碳排放强度较 2023 年下降 40%，绿电占比提升至 60%。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_strategy_esg"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.682,
+    "number_recall": 1.0
+  }
+}

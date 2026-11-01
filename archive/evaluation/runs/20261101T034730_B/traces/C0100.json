@@ -1,0 +1,247 @@
+{
+  "qid": "C0100",
+  "question": "半导体方案「搬运任务响应时间低于 3 秒」与 AMR 手册「任务分配延迟低于 80 ms」是同一环节吗？",
+  "question_type": "矛盾与例外识别",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"搬运任务响应时间 3秒 AMR 任务分配延迟 80ms\", \"top_k\": 10}}",
+      "usage": {
+        "prompt_tokens": 382,
+        "total_tokens": 715,
+        "completion_tokens": 333,
+        "completion_tokens_details": {
+          "reasoning_tokens": 291,
+          "text_tokens": 333
+        }
+      },
+      "seconds": 3.031
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_solution_semiconductor\", \"offset\":0, \"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 2771,
+        "total_tokens": 3205,
+        "completion_tokens": 434,
+        "completion_tokens_details": {
+          "reasoning_tokens": 398,
+          "text_tokens": 434
+        }
+      },
+      "seconds": 3.688
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_product_amr\", \"offset\":0, \"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 3160,
+        "total_tokens": 3477,
+        "completion_tokens": 317,
+        "completion_tokens_details": {
+          "reasoning_tokens": 281,
+          "text_tokens": 317
+        }
+      },
+      "seconds": 2.844
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"这两个指标**不是**同一环节，它们分别对应不同的系统层级和测试范围：\\n\\n1.  **搬运任务响应时间（低于 3 秒）**：出自《半导体晶圆搬运洁净解决方案》。这是**系统集成层面**的指标，指在与 AMHS、MES、EAP 等上位系统对接时，完成一次完整任务交互的总耗时。该时间包含了网络传输、SECS/GEM 协议解析、业务逻辑处理以及底层的任务分配等环节。\\n\\n2.  **任务分配延迟（低于 80 ms）**：出自《LT-AMR 自主移动机器人产品手册》。这是**调度系统（LantuFleet）内部**的性能指标，特指调度中心接收到任务后，进行路径规划并将指令下发给具体机器人的耗时。它是构成“搬运任务响应时间”的一个极短的子环节。\\n\\n综上，80 ms 的任务分配延迟是支撑 3 秒整体响应时间的底层能力之一，但两者不等同。\",\"citations\":[\"lantu_solution_semiconductor\",\"lantu_product_amr\"],\"evidence\":[\"lantu_solution_semiconductor#0\",\"lantu_product_amr#0\"]}",
+      "usage": {
+        "prompt_tokens": 3620,
+        "total_tokens": 5110,
+        "completion_tokens": 1490,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1229,
+          "text_tokens": 1490
+        }
+      },
+      "seconds": 13.171
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "搬运任务响应时间 3秒 AMR 任务分配延迟 80ms",
+        "top_k": 10
+      },
+      "result_sha": "84d3a0b88f1d4121a5be6a19757a6146e14beeabed59441897a2af74d694101e",
+      "result_chars": 3862,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_solution_semiconductor",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "1412a79d52a3a7a18ad6b60c366ccc16ea796aea8d2ca03beff34292b9bb49f9",
+      "result_chars": 590,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_amr",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "547fc67df7c235bab6fdd7de0529730e0286b17ec46d4ba4b850d306a74ca286",
+      "result_chars": 669,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "这两个指标**不是**同一环节，它们分别对应不同的系统层级和测试范围：\n\n1.  **搬运任务响应时间（低于 3 秒）**：出自《半导体晶圆搬运洁净解决方案》。这是**系统集成层面**的指标，指在与 AMHS、MES、EAP 等上位系统对接时，完成一次完整任务交互的总耗时。该时间包含了网络传输、SECS/GEM 协议解析、业务逻辑处理以及底层的任务分配等环节。\n\n2.  **任务分配延迟（低于 80 ms）**：出自《LT-AMR 自主移动机器人产品手册》。这是**调度系统（LantuFleet）内部**的性能指标，特指调度中心接收到任务后，进行路径规划并将指令下发给具体机器人的耗时。它是构成“搬运任务响应时间”的一个极短的子环节。\n\n综上，80 ms 的任务分配延迟是支撑 3 秒整体响应时间的底层能力之一，但两者不等同。",
+    "citations": [
+      "lantu_solution_semiconductor",
+      "lantu_product_amr"
+    ],
+    "evidence": [
+      "lantu_solution_semiconductor#0",
+      "lantu_product_amr#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 12507,
+  "started_at": "2026-11-01T04:28:28",
+  "elapsed_seconds": 22.73,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "搬运任务响应时间 3秒 AMR 任务分配延迟 80ms",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_solution_semiconductor",
+            "title": "# 半导体晶圆搬运洁净解决方案",
+            "chunk": 0,
+            "score": 32.738,
+            "snippet": "# 半导体晶圆搬运洁净解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2025-02-14 09:00\n更新时间：2025-11-11 09:30\n版本号：v2.0\n文档类型：product\n文档族：solution_semiconductor\n生效日期：2025-11-11\n\n## 一、方案概述\n\n面向 8/12 英寸晶圆厂，提供晶圆盒搬运、机台上下料与跨区物流方案，采用 LT-AMR-500 洁净版与 LT-R12 洁净机器人。\n\n## 二、洁净指标\n\n洁净等级 Class 10，颗粒物控制 0.1 μm，"
+          },
+          {
+            "doc_id": "lantu_product_amr",
+            "title": "# LT-AMR 自主移动机器人产品手册",
+            "chunk": 0,
+            "score": 29.457,
+            "snippet": "# LT-AMR 自主移动机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-05-10 09:00\n更新时间：2025-08-20 15:00\n版本号：v3.4\n文档类型：product\n文档族：product_amr\n生效日期：2025-08-20\n\n## 一、产品系列\n\nLT-AMR-500 负载 500 kg、速度 1.8 m/s、续航 8 小时；LT-AMR-1000 负载 1,000 kg、速度 1.5 m/s、续航 8 小时；LT-AMR-2000 负载 2,000 kg、速度 1.2"
+          },
+          {
+            "doc_id": "lantu_support_sla_2025",
+            "title": "# 澜图智能服务等级协议（SLA 2025版）",
+            "chunk": 0,
+            "score": 8.168,
+            "snippet": "# 澜图智能服务等级协议（SLA 2025版）\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2025-03-10 09:00\n更新时间：2025-04-01 09:00\n版本号：v3.0\n文档类型：support\n文档族：service_sla\n生效日期：2025-04-01\n\n## 一、故障分级\n\nP1 为产线停机或安全风险；P2 为单机停机但产线可降级运行；P3 为一般故障或咨询。\n\n## 二、响应时效\n\nP1：30 分钟内响应、12 小时内到场；P2：4 小时内响应、48 小时内到场；P3：12 小时内响应"
+          },
+          {
+            "doc_id": "lantu_tech_roadmap",
+            "title": "# 澜图智能技术路线图（2025—2028）",
+            "chunk": 0,
+            "score": 7.953,
+            "snippet": "# 澜图智能技术路线图（2025—2028）\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-11-01 09:00\n更新时间：2025-12-05 16:00\n版本号：v2.2\n文档类型：tech\n文档族：tech_roadmap\n生效日期：2025-12-05\n\n## 一、总体路线\n\n以“本体+控制+视觉+软件”为基础，向具身智能与柔性制造演进，2026 年完成 LT-R20 Pro 与具身智能平台 1.0。\n\n## 二、2025 年\n\nLT-C800 控制器量产、LantuTwin 3.0 发布、LT"
+          },
+          {
+            "doc_id": "lantu_case_06_jingtuo",
+            "title": "# 客户案例：晶拓微电子晶圆搬运项目",
+            "chunk": 0,
+            "score": 7.744,
+            "snippet": "# 客户案例：晶拓微电子晶圆搬运项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_jingtuo\n生效日期：2025-12-20\n\n## 一、客户背景\n\n晶拓微电子位于无锡，主营半导体业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖"
+          },
+          {
+            "doc_id": "lantu_support_sla_2024",
+            "title": "# 澜图智能服务等级协议（SLA 2024版）",
+            "chunk": 0,
+            "score": 7.342,
+            "snippet": "# 澜图智能服务等级协议（SLA 2024版）\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v2.0\n文档类型：support\n文档族：service_sla\n生效日期：2024-01-01\n\n## 一、故障分级\n\nP1 为产线停机或安全风险；P2 为单机停机但产线可降级运行；P3 为一般故障或咨询。\n\n## 二、响应时效\n\nP1：2 小时内响应、24 小时内到场；P2：8 小时内响应、72 小时内到场；P3：24 小时内响应、"
+          },
+          {
+            "doc_id": "lantu_tech_cloud_platform",
+            "title": "# 澜图智能云平台架构设计",
+            "chunk": 0,
+            "score": 6.908,
+            "snippet": "# 澜图智能云平台架构设计\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-09-01 09:00\n更新时间：2025-09-18 16:00\n版本号：v3.0\n文档类型：tech\n文档族：cloud_platform\n生效日期：2025-09-18\n\n## 一、总体架构\n\n云平台采用微服务架构，基于 Kubernetes 部署，分为设备接入、数据服务、应用服务与开放 API 四层。\n\n## 二、接入能力\n\n单集群支持 5,000 台设备接入，MQTT 消息吞吐 20 万条/秒，设备离线缓存 7 天。\n\n#"
+          },
+          {
+            "doc_id": "lantu_strategy_2025",
+            "title": "# 澜图智能 2025 年度经营计划",
+            "chunk": 0,
+            "score": 6.825,
+            "snippet": "# 澜图智能 2025 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-01-10 09:00\n更新时间：2025-02-10 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2025\n生效日期：2025-02-10\n\n## 一、年度目标\n\n2025 年营业收入目标 41.5 亿元，力争 42.63 亿元；新签订单目标 46 亿元；机器人出货目标 20,000 台。\n\n## 二、重点任务\n\n锂电与半导体行业突破；LT-C800 控制器量产；海外收入占"
+          },
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 1,
+            "score": 6.346,
+            "snippet": "0 kg\t1.5 m/s\nLT-AMR-2000\t2,000 kg\t—\t±10 mm\t420 kg\t1.2 m/s\n[工作表] 交付与保修\n产品线\t标准交期\t保修期\t备件响应\nLT-R 系列\t6-8 周\t24 个月/6,000 小时\t48 小时\nLT-S 系列\t4 周\t24 个月/6,000 小时\t48 小时\nLT-AMR 系列\t8 周\t24 个月\t72 小时\nLT-V3D\t4 周\t12 个月\t72 小时"
+          },
+          {
+            "doc_id": "lantu_tech_control_architecture_v2",
+            "title": "# 澜图智能机器人控制系统架构（旧版 v2.4）",
+            "chunk": 0,
+            "score": 6.34,
+            "snippet": "# 澜图智能机器人控制系统架构（旧版 v2.4）\n\n所属部门：研发中心\n作者：程知远\n创建时间：2023-08-01 09:00\n更新时间：2024-05-10 18:00\n版本号：v2.4\n文档类型：tech\n文档族：control_architecture\n生效日期：2024-05-10\n\n## 一、总体架构（旧版）\n\n旧版控制系统采用“工控机 + 运动控制卡”的两层结构：上位工控机负责任务调度与人机界面，下位运动控制卡负责插补与伺服闭环。现场总线采用 CANopen，总线周期 2 ms，单条总线最多连接 16"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_solution_semiconductor",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_solution_semiconductor",
+        "title": "# 半导体晶圆搬运洁净解决方案",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 414,
+        "text": "# 半导体晶圆搬运洁净解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2025-02-14 09:00\n更新时间：2025-11-11 09:30\n版本号：v2.0\n文档类型：product\n文档族：solution_semiconductor\n生效日期：2025-11-11\n\n## 一、方案概述\n\n面向 8/12 英寸晶圆厂，提供晶圆盒搬运、机台上下料与跨区物流方案，采用 LT-AMR-500 洁净版与 LT-R12 洁净机器人。\n\n## 二、洁净指标\n\n洁净等级 Class 10，颗粒物控制 0.1 μm，防静电等级 <35 V，定位精度 ±5 mm。\n\n## 三、系统集成\n\n与 AMHS、MES、EAP 对接，支持 SECS/GEM 协议，搬运任务响应时间低于 3 秒。\n\n## 四、标杆案例\n\n晶拓微电子 2 座 8 英寸晶圆厂部署 48 台 LT-AMR-500，搬运效率提升 35%，人为污染事件归零。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_amr",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_product_amr",
+        "title": "# LT-AMR 自主移动机器人产品手册",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 499,
+        "text": "# LT-AMR 自主移动机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-05-10 09:00\n更新时间：2025-08-20 15:00\n版本号：v3.4\n文档类型：product\n文档族：product_amr\n生效日期：2025-08-20\n\n## 一、产品系列\n\nLT-AMR-500 负载 500 kg、速度 1.8 m/s、续航 8 小时；LT-AMR-1000 负载 1,000 kg、速度 1.5 m/s、续航 8 小时；LT-AMR-2000 负载 2,000 kg、速度 1.2 m/s、续航 10 小时。\n\n## 二、导航与安全\n\n采用激光 SLAM + 视觉融合导航，定位精度 ±10 mm，支持 360° 避障、3D 相机与安全激光，符合 ISO 3691-4 标准。\n\n## 三、调度能力\n\nLantuFleet 调度系统单仓支持 500 台 AMR 协同，任务分配延迟低于 80 ms，支持与 WMS、MES 对接。\n\n## 四、行业应用\n\n已应用于物流仓储、半导体晶圆搬运、锂电物料配送与汽车零部件线边物流，洁净室版本达到 Class 10。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_solution_semiconductor",
+      "lantu_product_amr"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.123,
+    "number_recall": 0.0
+  }
+}

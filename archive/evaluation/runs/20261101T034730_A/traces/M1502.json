@@ -1,0 +1,142 @@
+{
+  "qid": "M1502",
+  "question": "用户：现在标准供应商的月结账期是多少天？战略供应商有没有更长？\n助手：按现行口径，标准供应商月结 90 天，战略供应商可延长至 120 天，预付款比例不超过 20%，质保金 5%-10%。\n用户：我记得以前是 60 天那套，你把 2024 年的版本调出来对一下。",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "我来检索一下账期相关的制度文件，重点找 2024 年的版本。<tool_call><function=search><parameter=query>供应商 账期 月结 天数</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list><parameter=keyword>账期</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 115,
+        "prompt_tokens": 436,
+        "total_tokens": 551,
+        "completion_tokens_details": {
+          "reasoning_tokens": 40
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 7.313
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>供应商 月结账期 战略供应商 天</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 548,
+        "total_tokens": 596,
+        "completion_tokens_details": {
+          "reasoning_tokens": 11
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.187
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>供应商 账期 月结 天数</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 57,
+        "prompt_tokens": 622,
+        "total_tokens": 679,
+        "completion_tokens_details": {
+          "reasoning_tokens": 21
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.859
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>供应商账期 月结 60天 90天 2024</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 65,
+        "prompt_tokens": 695,
+        "total_tokens": 760,
+        "completion_tokens_details": {
+          "reasoning_tokens": 21
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 1.719
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>供应商账期 月结 60天 90天</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 72,
+        "prompt_tokens": 776,
+        "total_tokens": 848,
+        "completion_tokens_details": {
+          "reasoning_tokens": 33
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 2.453
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=TOOL name=search>{\"query\": \"供应商账期 月结 天数 2024\", \"top_k\": 10}</function></tool_call>",
+      "usage": {
+        "completion_tokens": 63,
+        "prompt_tokens": 852,
+        "total_tokens": 915,
+        "completion_tokens_details": {
+          "reasoning_tokens": 23
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 768
+        }
+      },
+      "seconds": 2.328
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"多次检索均未能在资料库中调取到任何关于供应商账期的制度文件，尤其是 2024 年版本的原文。因此无法核对现行口径（90天/120天）与您记忆中的 60 天版本之间是否存在差异或版本更替。此前给出的 90/120 天、预付款 20%、质保金 5%-10% 等数字目前没有可引用的资料支撑，请勿据此对外使用。建议提供该制度的准确名称或文档编号，以便重新检索核对。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 243,
+        "prompt_tokens": 926,
+        "total_tokens": 1169,
+        "completion_tokens_details": {
+          "reasoning_tokens": 92
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 832
+        }
+      },
+      "seconds": 8.875
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "多次检索均未能在资料库中调取到任何关于供应商账期的制度文件，尤其是 2024 年版本的原文。因此无法核对现行口径（90天/120天）与您记忆中的 60 天版本之间是否存在差异或版本更替。此前给出的 90/120 天、预付款 20%、质保金 5%-10% 等数字目前没有可引用的资料支撑，请勿据此对外使用。建议提供该制度的准确名称或文档编号，以便重新检索核对。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 5518,
+  "started_at": "2026-11-01T06:11:01",
+  "elapsed_seconds": 25.73,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.212,
+    "number_recall": 0.5
+  }
+}

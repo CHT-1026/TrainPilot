@@ -1,0 +1,142 @@
+{
+  "qid": "M1518",
+  "question": "用户：客户问我们 LT-R50 的臂展和最大速度是多少？\n助手：按 LT-R 系列手册与产品参数矩阵，LT-R50 负载 50 kg、臂展 2,100 mm、重复精度 ±0.05 mm、本体重量 540 kg、最大速度 2.2 m/s。\n用户：等一下，我要问的不是 50 公斤那台，是 210 公斤那台——它的臂展和最大速度呢？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>LT-R 210 负载 臂展 最大速度</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 62,
+        "prompt_tokens": 460,
+        "total_tokens": 522,
+        "completion_tokens_details": {
+          "reasoning_tokens": 21
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 4.828
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>LT-R 210 负载 臂展 最大速度</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 77,
+        "prompt_tokens": 538,
+        "total_tokens": 615,
+        "completion_tokens_details": {
+          "reasoning_tokens": 36
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.922
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>LT-R 210 负载 臂展 最大速度</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 81,
+        "prompt_tokens": 616,
+        "total_tokens": 697,
+        "completion_tokens_details": {
+          "reasoning_tokens": 40
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 2.203
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>LT-R 210kg 臂展 最大速度 参数</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 43,
+        "prompt_tokens": 694,
+        "total_tokens": 737,
+        "completion_tokens_details": {
+          "reasoning_tokens": 4
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 1.297
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>LT-R 210 负载 臂展 最大速度</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 58,
+        "prompt_tokens": 770,
+        "total_tokens": 828,
+        "completion_tokens_details": {
+          "reasoning_tokens": 17
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 2.36
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>LT-R210 负载 臂展 最大速度 参数</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 82,
+        "prompt_tokens": 848,
+        "total_tokens": 930,
+        "completion_tokens_details": {
+          "reasoning_tokens": 41
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 2.422
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"我需要先说明：关于 210 公斤负载机型（如 LT-R210），我尚未检索到手册或参数矩阵的原文证据，无法给出其臂展和最大速度的具体数值。之前提供的 LT-R50 数据（臂展 2,100 mm、最大速度 2.2 m/s）仅适用于 50 kg 负载机型，不能套用到 210 kg 机型上。请允许我重新检索产品参数矩阵原文，确认 210 kg 机型的臂展与最大速度后再回复客户，以免提供错误规格。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 190,
+        "prompt_tokens": 923,
+        "total_tokens": 1113,
+        "completion_tokens_details": {
+          "reasoning_tokens": 37
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 6.093
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "我需要先说明：关于 210 公斤负载机型（如 LT-R210），我尚未检索到手册或参数矩阵的原文证据，无法给出其臂展和最大速度的具体数值。之前提供的 LT-R50 数据（臂展 2,100 mm、最大速度 2.2 m/s）仅适用于 50 kg 负载机型，不能套用到 210 kg 机型上。请允许我重新检索产品参数矩阵原文，确认 210 kg 机型的臂展与最大速度后再回复客户，以免提供错误规格。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 5442,
+  "started_at": "2026-11-01T06:14:50",
+  "elapsed_seconds": 21.12,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.082,
+    "number_recall": 0.2
+  }
+}

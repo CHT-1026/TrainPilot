@@ -1,0 +1,159 @@
+{
+  "qid": "E0017",
+  "question": "每月补卡次数上限在两版考勤制度中有什么变化？",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"考勤制度\"}}",
+      "usage": {
+        "prompt_tokens": 362,
+        "total_tokens": 486,
+        "completion_tokens": 124,
+        "completion_tokens_details": {
+          "reasoning_tokens": 105,
+          "text_tokens": 124
+        }
+      },
+      "seconds": 1.281
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"考勤制度 补卡\",\"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 406,
+        "total_tokens": 833,
+        "completion_tokens": 427,
+        "completion_tokens_details": {
+          "reasoning_tokens": 400,
+          "text_tokens": 427
+        }
+      },
+      "seconds": 4.281
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"在2024版考勤制度中，每月补卡次数上限为3次；而在2025版考勤制度中，该上限调整为4次。\",\"citations\":[\"lantu_policy_attendance_2024\",\"lantu_policy_attendance_2025\"],\"evidence\":[\"lantu_policy_attendance_2024#0\",\"lantu_policy_attendance_2025#0\"]}",
+      "usage": {
+        "prompt_tokens": 1643,
+        "total_tokens": 2111,
+        "completion_tokens": 468,
+        "completion_tokens_details": {
+          "reasoning_tokens": 363,
+          "text_tokens": 468
+        }
+      },
+      "seconds": 3.547
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "考勤制度"
+      },
+      "result_sha": "1290604daacc15212b4f59638c659261007a940d59ae4c9dd916d753b78e21de",
+      "result_chars": 12,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "考勤制度 补卡",
+        "top_k": 5
+      },
+      "result_sha": "d94e5c48079e7674026d128838dd4b146d40dab54c9456b0e5f784549ad89765",
+      "result_chars": 1977,
+      "hits": 5
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "在2024版考勤制度中，每月补卡次数上限为3次；而在2025版考勤制度中，该上限调整为4次。",
+    "citations": [
+      "lantu_policy_attendance_2024",
+      "lantu_policy_attendance_2025"
+    ],
+    "evidence": [
+      "lantu_policy_attendance_2024#0",
+      "lantu_policy_attendance_2025#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 3430,
+  "started_at": "2026-11-01T04:45:15",
+  "elapsed_seconds": 9.11,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "考勤制度"
+      },
+      "result": {
+        "docs": []
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "考勤制度 补卡",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_policy_attendance_2024",
+            "title": "# 澜图智能考勤管理制度（2024版）",
+            "chunk": 0,
+            "score": 14.87,
+            "snippet": "# 澜图智能考勤管理制度（2024版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：attendance\n生效日期：2024-01-01\n\n## 一、打卡规则\n\n员工每日上下班各打卡一次，漏打卡须在 3 个工作日内提交补卡申请，每月补卡不超过 3 次。\n\n## 二、弹性工作\n\n上班弹性 30 分钟，9:00-9:30 到岗均视为正常；每月可申请远程办公 2 天，须提前 1 个工作日审批"
+          },
+          {
+            "doc_id": "lantu_policy_attendance_2025",
+            "title": "# 澜图智能考勤管理制度（2025版）",
+            "chunk": 0,
+            "score": 14.706,
+            "snippet": "# 澜图智能考勤管理制度（2025版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-12-20 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：attendance\n生效日期：2025-01-01\n\n## 一、打卡规则\n\n员工每日上下班各打卡一次，漏打卡须在 3 个工作日内提交补卡申请，每月补卡不超过 4 次。\n\n## 二、弹性工作\n\n上班弹性 60 分钟，9:00-10:00 到岗均视为正常；每月可申请远程办公 4 天，须提前 1 个工作日审"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2025",
+            "title": "# 澜图智能采购管理制度（2025版）",
+            "chunk": 0,
+            "score": 3.842,
+            "snippet": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付"
+          },
+          {
+            "doc_id": "lantu_hr_performance",
+            "title": "# 澜图智能绩效管理制度",
+            "chunk": 0,
+            "score": 3.58,
+            "snippet": "# 澜图智能绩效管理制度\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v3.4\n文档类型：hr\n文档族：performance\n生效日期：2025-06-01\n\n## 一、考核周期\n\n实行季度考核与年度考核，季度占 40%，年度占 60%。试用期员工参加转正考核。\n\n## 二、考核维度\n\n业绩目标 60%、价值观 20%、能力成长 20%。销售岗位业绩权重 70%。\n\n## 三、绩效分布\n\nS 级 10%、A 级 30%、B "
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2024",
+            "title": "# 澜图智能采购管理制度（2024版）",
+            "chunk": 0,
+            "score": 3.541,
+            "snippet": "# 澜图智能采购管理制度（2024版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2024-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。\n\n## 二、付款账期\n\n标准供应商月结 60 天；预付款比例不超过 30%；质保金 5%-10%。\n\n## 三、供应商"
+          }
+        ]
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_policy_attendance_2024",
+      "lantu_policy_attendance_2025"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.132,
+    "number_recall": 1.0
+  }
+}

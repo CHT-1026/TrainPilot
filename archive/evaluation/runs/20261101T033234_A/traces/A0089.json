@@ -1,0 +1,142 @@
+{
+  "qid": "A0089",
+  "question": "2024 版是否单独披露了「职能」类别的员工人数？2025 版有什么不同？",
+  "question_type": "矛盾与例外识别",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=list><parameter=keyword>职能</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 66,
+        "prompt_tokens": 369,
+        "total_tokens": 435,
+        "completion_tokens_details": {
+          "reasoning_tokens": 48
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.437
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>2024 员工人数 按职能类别 披露</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 82,
+        "prompt_tokens": 424,
+        "total_tokens": 506,
+        "completion_tokens_details": {
+          "reasoning_tokens": 40
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 7.329
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search>{\"query\": \"2024 员工人数 职能 分类\", \"top_k\": 10}</function></tool_call>",
+      "usage": {
+        "completion_tokens": 95,
+        "prompt_tokens": 503,
+        "total_tokens": 598,
+        "completion_tokens_details": {
+          "reasoning_tokens": 58
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 2.781
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>2024 员工人数 职能 分类</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 57,
+        "prompt_tokens": 577,
+        "total_tokens": 634,
+        "completion_tokens_details": {
+          "reasoning_tokens": 17
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 2.765
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=list><parameter=keyword>ESG</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 43,
+        "prompt_tokens": 654,
+        "total_tokens": 697,
+        "completion_tokens_details": {
+          "reasoning_tokens": 24
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 1.969
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>2024 员工人数 职能 分类</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 203,
+        "prompt_tokens": 710,
+        "total_tokens": 913,
+        "completion_tokens_details": {
+          "reasoning_tokens": 163
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 6.313
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"未能在语料库中检索到关于 2024 版与 2025 版报告中『职能』类别员工人数披露情况的任何文档（多轮检索均未能成功执行），因此无法确认 2024 版是否单独披露了按职能划分的员工人数，也无法比较 2025 版的差异。如需回答，请提供具体的报告名称/公司，或允许我重新检索相关文档。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 143,
+        "prompt_tokens": 784,
+        "total_tokens": 927,
+        "completion_tokens_details": {
+          "reasoning_tokens": 23
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 5.625
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "未能在语料库中检索到关于 2024 版与 2025 版报告中『职能』类别员工人数披露情况的任何文档（多轮检索均未能成功执行），因此无法确认 2024 版是否单独披露了按职能划分的员工人数，也无法比较 2025 版的差异。如需回答，请提供具体的报告名称/公司，或允许我重新检索相关文档。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4710,
+  "started_at": "2026-11-01T03:39:02",
+  "elapsed_seconds": 30.22,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.119,
+    "number_recall": 1.0
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "qid": "I0053",
+  "question": "ESG 报告的 2030 年目标是什么？与 2025 年绿电占比相比还有多大差距？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=list><parameter=keyword>ESG</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 375,
+        "total_tokens": 425,
+        "completion_tokens_details": {
+          "reasoning_tokens": 31
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.796
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=list><parameter=keyword>ESG</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 91,
+        "prompt_tokens": 431,
+        "total_tokens": 522,
+        "completion_tokens_details": {
+          "reasoning_tokens": 72
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.86
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=list><parameter=keyword>ESG</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 29,
+        "prompt_tokens": 487,
+        "total_tokens": 516,
+        "completion_tokens_details": {
+          "reasoning_tokens": 10
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 2.172
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=list><parameter=keyword>ESG</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 28,
+        "prompt_tokens": 543,
+        "total_tokens": 571,
+        "completion_tokens_details": {
+          "reasoning_tokens": 9
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 8.281
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>ESG 2030 目标 绿电占比</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 86,
+        "prompt_tokens": 599,
+        "total_tokens": 685,
+        "completion_tokens_details": {
+          "reasoning_tokens": 47
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.984
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>ESG 2030 目标 绿电占比</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 44,
+        "prompt_tokens": 675,
+        "total_tokens": 719,
+        "completion_tokens_details": {
+          "reasoning_tokens": 5
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 1.703
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_in_corpus_placeholder\": \"x\"}\n\nANSWER {\"status\":\"not_in_corpus\",\"answer\":\"无法回答：在本次会话中未能成功检索到 ESG 报告相关文档（多次检索/列举工具调用均未返回有效结果），因此无法确认 2030 年目标的具体内容，也无法计算与 2025 年绿电占比的差距。建议提供 ESG 报告文档或更精确的关键词（如公司名称、报告年份、具体指标名称如‘可再生能源占比’‘范围一/范围二减排目标’等）后重新检索。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 157,
+        "prompt_tokens": 748,
+        "total_tokens": 905,
+        "completion_tokens_details": {
+          "reasoning_tokens": 12
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 4.313
+    },
+    {
+      "round": 8,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"无法回答：本次会话中未能成功获取 ESG 报告相关文档（检索与列表工具调用均未返回有效内容），因此无法确认 2030 年目标的具体指标，也无法对比 2025 年绿电占比、量化两者差距。建议提供 ESG 报告文档，或使用更精确的关键词（如公司名称、报告年份、具体指标如'可再生能源电力占比''范围二减排目标'等）重新检索。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 134,
+        "prompt_tokens": 927,
+        "total_tokens": 1061,
+        "completion_tokens_details": {
+          "reasoning_tokens": 8
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 4.109
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "无法回答：本次会话中未能成功获取 ESG 报告相关文档（检索与列表工具调用均未返回有效内容），因此无法确认 2030 年目标的具体指标，也无法对比 2025 年绿电占比、量化两者差距。建议提供 ESG 报告文档，或使用更精确的关键词（如公司名称、报告年份、具体指标如'可再生能源电力占比''范围二减排目标'等）重新检索。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 5404,
+  "started_at": "2026-11-01T05:19:39",
+  "elapsed_seconds": 27.22,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.152,
+    "number_recall": 0.667
+  }
+}

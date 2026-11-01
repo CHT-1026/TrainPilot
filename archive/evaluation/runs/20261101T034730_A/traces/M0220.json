@@ -1,0 +1,277 @@
+{
+  "qid": "M0220",
+  "question": "我们“售后”这块归哪个部门？现在多少人、负责什么？跟别的部门怎么区分？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>售后 部门 职责</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 70,
+        "prompt_tokens": 364,
+        "total_tokens": 434,
+        "completion_tokens_details": {
+          "reasoning_tokens": 36
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.641
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"售后 部门 职责 人数\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 100,
+        "prompt_tokens": 435,
+        "total_tokens": 535,
+        "completion_tokens_details": {
+          "reasoning_tokens": 69
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.109
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_org_department_duties\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 111,
+        "prompt_tokens": 2883,
+        "total_tokens": 2994,
+        "completion_tokens_details": {
+          "reasoning_tokens": 78
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 2.828
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_support_system\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 112,
+        "prompt_tokens": 3698,
+        "total_tokens": 3810,
+        "completion_tokens_details": {
+          "reasoning_tokens": 82
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2880
+        }
+      },
+      "seconds": 4.297
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"“售后”归**售后服务部**，负责人为**陆绍**。\\n\\n**人数**：编制 412 人，其中认证服务工程师 286 人（分 L1 初级/L2 中级/L3 高级三级，分别对应常规维护、故障维修与整线调试）。\\n\\n**主要职责**：安装调试、培训、预防性维护（维保）、故障维修、备件供应与备件管理、远程诊断与产线优化服务。\\n\\n**与其他部门的区分**：\\n- 销售中心（620 人，罗嘉树）：负责区域销售与渠道管理，即“卖”；售后服务部负责交付后的服务与运维，即“用”。\\n- 客户成功部（86 人，林可）：负责重点客户经营与续约，偏向客户关系与商业经营；售后服务部负责技术性的安装、维修、备件等落地服务。\\n- 质量部（168 人，潘文博）：负责来料、过程与客户质量（产品质量问题的分析与改进）；售后服务部负责面向客户的现场服务执行。\\n- 制造/供应链：负责生产、采购与物流；售后服务部使用备件仓（全国 12 个备件仓、68 个服务网点）支持维修。\\n\\n**补充说明（组织沿革）**：2024 年售后服务部隶属销售中心；自 2025 年 4 月起，组织架构调整，售后服务部由销售中心下属部门升级为公司 12 个一级部门之一，直接向公司汇报。\",\"citations\":[\"lantu_org_department_duties\",\"lantu_support_system\",\"lantu_org_chart_2025\",\"lantu_support_training_certification\"],\"evidence\":[\"lantu_org_department_duties#片段1\",\"lantu_support_system#片段0\",\"lantu_org_chart_2025#片段0\",\"lantu_support_training_certification#片段0\"]}",
+      "usage": {
+        "completion_tokens": 478,
+        "prompt_tokens": 4108,
+        "total_tokens": 4586,
+        "completion_tokens_details": {
+          "reasoning_tokens": 25
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3648
+        }
+      },
+      "seconds": 11.047
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "售后 部门 职责 人数",
+        "top_k": 10
+      },
+      "result_sha": "b958dffc5fce8dacef31a9e601020dc6754437f5a9faf1c12448e4567e03aae1",
+      "result_chars": 3928,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_department_duties",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "b03bf6434f8cf95cb324619ab2059c2ab15c56c1bfc0f84fa5df644197c8c99d",
+      "result_chars": 1136,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_system",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "4317c7b8be8a198991cf48adba22892fbc229f886249ed0a00fb498efafad9a9",
+      "result_chars": 587,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "“售后”归**售后服务部**，负责人为**陆绍**。\n\n**人数**：编制 412 人，其中认证服务工程师 286 人（分 L1 初级/L2 中级/L3 高级三级，分别对应常规维护、故障维修与整线调试）。\n\n**主要职责**：安装调试、培训、预防性维护（维保）、故障维修、备件供应与备件管理、远程诊断与产线优化服务。\n\n**与其他部门的区分**：\n- 销售中心（620 人，罗嘉树）：负责区域销售与渠道管理，即“卖”；售后服务部负责交付后的服务与运维，即“用”。\n- 客户成功部（86 人，林可）：负责重点客户经营与续约，偏向客户关系与商业经营；售后服务部负责技术性的安装、维修、备件等落地服务。\n- 质量部（168 人，潘文博）：负责来料、过程与客户质量（产品质量问题的分析与改进）；售后服务部负责面向客户的现场服务执行。\n- 制造/供应链：负责生产、采购与物流；售后服务部使用备件仓（全国 12 个备件仓、68 个服务网点）支持维修。\n\n**补充说明（组织沿革）**：2024 年售后服务部隶属销售中心；自 2025 年 4 月起，组织架构调整，售后服务部由销售中心下属部门升级为公司 12 个一级部门之一，直接向公司汇报。",
+    "citations": [
+      "lantu_org_department_duties",
+      "lantu_support_system",
+      "lantu_org_chart_2025",
+      "lantu_support_training_certification"
+    ],
+    "evidence": [
+      "lantu_org_department_duties#片段1",
+      "lantu_support_system#片段0",
+      "lantu_org_chart_2025#片段0",
+      "lantu_support_training_certification#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 12359,
+  "started_at": "2026-11-01T05:46:46",
+  "elapsed_seconds": 23.92,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "售后 部门 职责 人数",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_org_department_duties",
+            "title": "# 澜图智能一级部门职责与编制",
+            "chunk": 1,
+            "score": 7.662,
+            "snippet": "| 部门 | 负责人 | 编制（人） | 主要职责 |\n| --- | --- | --- | --- |\n| 研发中心 | 沈亦舟 | 1,286 | 本体/控制器/视觉/具身智能研发 |\n| 产品部 | 孟凡 | 96 | 产品规划与生命周期管理 |\n| 销售中心 | 罗嘉树 | 620 | 区域销售与渠道 |\n| 客户成功部 | 林可 | 86 | 重点客户经营 |\n| 供应链中心 | 韩立恒 | 210 | 采购、计划、物流 |\n| 制造中心 | 韩立恒 | 980 | 三大基地生产 |\n| 质量部 | 潘"
+          },
+          {
+            "doc_id": "lantu_org_department_duties",
+            "title": "# 澜图智能一级部门职责与编制",
+            "chunk": 0,
+            "score": 7.202,
+            "snippet": "# 澜图智能一级部门职责与编制\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-10 09:00\n更新时间：2025-09-30 16:00\n版本号：v3.2\n文档类型：org\n文档族：department_duties\n生效日期：2025-09-30\n\n## 一、研发中心\n\n负责机器人本体、控制器、伺服、视觉与具身智能技术研发，编制 1,286 人，下设 5 个研究所与 1 个测试中心。\n\n## 二、销售中心与客户成功部\n\n销售中心负责区域销售与渠道管理，编制 620 人；客户成功部负责重点客户经"
+          },
+          {
+            "doc_id": "lantu_org_headcount",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 5.618,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能员工分布统计（2025）\n所属部门\t人力资源部\n作者\t陈依然\n创建时间\t2025-12-31 18:00\n更新时间\t2026-01-09 09:30\n版本号\tv1.0\n文档类型\torg\n文档族\theadcount_2025\n生效日期\t2026-01-09\n[工作表] 基地分布\n基地\t员工数\t研发\t销售\t制造\t服务\t职能\n苏州总部\t2,450\t1,120\t310\t560\t250\t210\n东莞华南\t780\t86\t150\t300\t120\t124\n成都西部\t430\t80\t90\t"
+          },
+          {
+            "doc_id": "lantu_support_training_certification",
+            "title": "# 澜图智能服务工程师培训与认证体系",
+            "chunk": 0,
+            "score": 5.265,
+            "snippet": "# 澜图智能服务工程师培训与认证体系\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-06-01 09:00\n更新时间：2025-08-08 10:00\n版本号：v2.4\n文档类型：support\n文档族：service_certification\n生效日期：2025-08-08\n\n## 一、认证等级\n\n服务工程师分为 L1 初级、L2 中级、L3 高级三级，分别对应常规维护、故障维修与整线调试。\n\n## 二、培训内容\n\nL1：安全、保养、备件更换（5 天）；L2：电气与控制系统维修（10 天）；L3：整线"
+          },
+          {
+            "doc_id": "lantu_hr_performance",
+            "title": "# 澜图智能绩效管理制度",
+            "chunk": 0,
+            "score": 3.895,
+            "snippet": "# 澜图智能绩效管理制度\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v3.4\n文档类型：hr\n文档族：performance\n生效日期：2025-06-01\n\n## 一、考核周期\n\n实行季度考核与年度考核，季度占 40%，年度占 60%。试用期员工参加转正考核。\n\n## 二、考核维度\n\n业绩目标 60%、价值观 20%、能力成长 20%。销售岗位业绩权重 70%。\n\n## 三、绩效分布\n\nS 级 10%、A 级 30%、B "
+          },
+          {
+            "doc_id": "lantu_policy_vehicle",
+            "title": "# 澜图智能公务用车管理办法",
+            "chunk": 0,
+            "score": 3.595,
+            "snippet": "# 澜图智能公务用车管理办法\n\n所属部门：行政部\n作者：陈依然\n创建时间：2024-03-01 09:00\n更新时间：2025-04-02 09:00\n版本号：v2.4\n文档类型：policy\n文档族：vehicle_management\n生效日期：2025-04-02\n\n## 一、用车范围\n\n公务用车用于客户接待、机场接送、跨园区办公与紧急事务；上下班通勤原则上不使用公务车。\n\n## 二、申请流程\n\n用车须提前 1 个工作日在 OA 申请，注明事由、路线、人数与时间；临时用车须部门负责人电话批准后补单。\n\n## "
+          },
+          {
+            "doc_id": "lantu_org_chart_2025",
+            "title": "# 澜图智能组织架构（2025版）",
+            "chunk": 0,
+            "score": 2.131,
+            "snippet": "# 澜图智能组织架构（2025版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-03-20 09:00\n更新时间：2025-04-10 10:00\n版本号：v2.0\n文档类型：org\n文档族：org_chart\n生效日期：2025-04-01\n\n## 一、一级部门\n\n2025 年 4 月起公司设 12 个一级部门：研发中心、产品部、销售中心、客户成功部、供应链中心、制造中心、质量部、财务部、人力资源部、法务合规部、信息技术部、售后服务部。售后服务部由销售中心下属部门升级为一级部门。\n\n## 二、研发体"
+          },
+          {
+            "doc_id": "lantu_support_system",
+            "title": "# 澜图智能客户服务体系白皮书",
+            "chunk": 0,
+            "score": 1.956,
+            "snippet": "# 澜图智能客户服务体系白皮书\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-03-01 09:00\n更新时间：2025-12-08 10:00\n版本号：v3.2\n文档类型：support\n文档族：service_system\n生效日期：2025-12-08\n\n## 一、服务网络\n\n公司在全国设有 68 个服务网点、12 个备件仓，覆盖 31 个省级行政区；海外设 3 个服务点。售后服务团队 412 人，认证工程师 286 人。\n\n## 二、服务内容\n\n提供安装调试、培训、预防性维护、故障维修、备件供应、"
+          },
+          {
+            "doc_id": "lantu_support_spare_inventory",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 1.682,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能备件库存分布（2025Q4）\n所属部门\t售后服务部\n作者\t陆绍\n创建时间\t2025-12-25 09:00\n更新时间\t2026-01-02 10:00\n版本号\tv1.0\n文档类型\tsupport\n文档族\tspare_inventory_2025q4\n生效日期\t2026-01-02\n[工作表] 备件仓库存\n仓库\t所在城市\t库存金额（万元）\tSKU 数\t周转天数\n苏州中心仓\t苏州\t6,200\t4,860\t92\n东莞仓\t东莞\t2,800\t2,240\t105\n成都仓\t成都\t1,"
+          },
+          {
+            "doc_id": "lantu_org_chart_2024",
+            "title": "# 澜图智能组织架构（2024版）",
+            "chunk": 0,
+            "score": 1.552,
+            "snippet": "# 澜图智能组织架构（2024版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-05 09:00\n更新时间：2024-01-15 10:00\n版本号：v1.0\n文档类型：org\n文档族：org_chart\n生效日期：2024-01-01\n\n## 一、一级部门\n\n2024 年公司设 11 个一级部门：研发中心、产品部、销售中心、供应链中心、制造中心、质量部、财务部、人力资源部、法务合规部、信息技术部、战略投资部。售后服务部隶属销售中心。\n\n## 二、研发体系\n\n研发中心下设 4 个研究所：机器人本"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_department_duties",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_org_department_duties",
+        "title": "# 澜图智能一级部门职责与编制",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 940,
+        "text": "# 澜图智能一级部门职责与编制\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-10 09:00\n更新时间：2025-09-30 16:00\n版本号：v3.2\n文档类型：org\n文档族：department_duties\n生效日期：2025-09-30\n\n## 一、研发中心\n\n负责机器人本体、控制器、伺服、视觉与具身智能技术研发，编制 1,286 人，下设 5 个研究所与 1 个测试中心。\n\n## 二、销售中心与客户成功部\n\n销售中心负责区域销售与渠道管理，编制 620 人；客户成功部负责重点客户经营与续约，编制 86 人。\n\n## 三、供应链中心与制造中心\n\n供应链中心负责采购、计划与物流，编制 210 人；制造中心负责三大基地生产，编制 980 人。\n\n## 四、质量部与售后服务部\n\n质量部负责来料、过程与客户质量，编制 168 人；售后服务部负责安装、维保、备件与培训，编制 412 人。\n\n## 五、职能体系\n\n财务部 96 人、人力资源部 72 人、法务合规部 28 人、信息技术部 104 人、战略投资部 18 人、董事会办公室 6 人。\n\n## 部门编制表\n\n| 部门 | 负责人 | 编制（人） | 主要职责 |\n| --- | --- | --- | --- |\n| 研发中心 | 沈亦舟 | 1,286 | 本体/控制器/视觉/具身智能研发 |\n| 产品部 | 孟凡 | 96 | 产品规划与生命周期管理 |\n| 销售中心 | 罗嘉树 | 620 | 区域销售与渠道 |\n| 客户成功部 | 林可 | 86 | 重点客户经营 |\n| 供应链中心 | 韩立恒 | 210 | 采购、计划、物流 |\n| 制造中心 | 韩立恒 | 980 | 三大基地生产 |\n| 质量部 | 潘文博 | 168 | 全过程质量管理 |\n| 售后服务部 | 陆绍 | 412 | 安装、维保、备件、培训 |\n| 财务部 | 周敏仪 | 96 | 财务与资金 |\n| 人力资源部 | 陈依然 | 72 | 招聘、薪酬、培训 |\n| 法务合规部 | 邵岚 | 28 | 合同、合规、知识产权 |\n| 信息技术部 | 葛俊 | 104 | 数字化与信息安全 |\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_system",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_support_system",
+        "title": "# 澜图智能客户服务体系白皮书",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 419,
+        "text": "# 澜图智能客户服务体系白皮书\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-03-01 09:00\n更新时间：2025-12-08 10:00\n版本号：v3.2\n文档类型：support\n文档族：service_system\n生效日期：2025-12-08\n\n## 一、服务网络\n\n公司在全国设有 68 个服务网点、12 个备件仓，覆盖 31 个省级行政区；海外设 3 个服务点。售后服务团队 412 人，认证工程师 286 人。\n\n## 二、服务内容\n\n提供安装调试、培训、预防性维护、故障维修、备件供应、远程诊断与产线优化服务。\n\n## 三、服务渠道\n\n客户可通过 400-820-6688 热线、服务邮箱 service@lantu-robot.com 或客户门户报修，系统自动生成工单。\n\n## 四、服务指标\n\n2025 年服务满意度 96.8%，首次修复率 92.4%，备件满足率 96%，远程诊断解决率 85%。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.6,
+    "cited": [
+      "lantu_org_department_duties",
+      "lantu_support_system",
+      "lantu_org_chart_2025",
+      "lantu_support_training_certification"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.227,
+    "number_recall": 1.0
+  }
+}

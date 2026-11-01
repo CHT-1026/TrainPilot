@@ -1,0 +1,331 @@
+{
+  "qid": "A0089",
+  "question": "2024 版是否单独披露了「职能」类别的员工人数？2025 版有什么不同？",
+  "question_type": "矛盾与例外识别",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=list><parameter=keyword>职能</parameter></function></tool_call><tool_call><function=search><parameter=query>职能 员工人数 分类别</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 86,
+        "prompt_tokens": 369,
+        "total_tokens": 455,
+        "completion_tokens_details": {
+          "reasoning_tokens": 37
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 4.125
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>职能 员工人数 类别披露</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 455,
+        "total_tokens": 503,
+        "completion_tokens_details": {
+          "reasoning_tokens": 14
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 5.422
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"职能 员工人数 类别 报告版本\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 44,
+        "prompt_tokens": 526,
+        "total_tokens": 570,
+        "completion_tokens_details": {
+          "reasoning_tokens": 12
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.984
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"组织架构\"}}",
+      "usage": {
+        "completion_tokens": 83,
+        "prompt_tokens": 3003,
+        "total_tokens": 3086,
+        "completion_tokens_details": {
+          "reasoning_tokens": 67
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 2.766
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_org_chart_2024\",\"offset\":0,\"limit\":4000}}<tool_call><function=read><parameter=doc_id>lantu_org_chart_2024</parameter><parameter=offset>0</parameter><parameter=limit>4000</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 102,
+        "prompt_tokens": 3115,
+        "total_tokens": 3217,
+        "completion_tokens_details": {
+          "reasoning_tokens": 23
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2944
+        }
+      },
+      "seconds": 2.703
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_org_chart_2025\",\"offset\":0,\"limit\":4000}}<tool_call><function=read><parameter=doc_id>lantu_org_chart_2025</parameter><parameter=offset>0</parameter><parameter=limit>4000</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 109,
+        "prompt_tokens": 3562,
+        "total_tokens": 3671,
+        "completion_tokens_details": {
+          "reasoning_tokens": 30
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3072
+        }
+      },
+      "seconds": 2.422
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"2024 版组织架构文档没有单独披露「职能」类别的人数：其「员工规模」部分仅列明 2024 年末员工 3,280 人，其中研发 1,020 人、销售 540 人、制造 860 人、服务 260 人（这四类合计仅 2,680 人，未包含职能类别人数）。2025 版则新增披露了职能类别：2025 年末员工 3,860 人，其中研发 1,286 人、销售 620 人、制造 980 人、服务 412 人、职能 562 人。也就是说，「职能」人数是 2025 版相较 2024 版的新增披露项。\",\"citations\":[\"lantu_org_chart_2024\",\"lantu_org_chart_2025\"],\"evidence\":[\"lantu_org_chart_2024#片段0\",\"lantu_org_chart_2025#片段0\"]}",
+      "usage": {
+        "completion_tokens": 326,
+        "prompt_tokens": 4102,
+        "total_tokens": 4428,
+        "completion_tokens_details": {
+          "reasoning_tokens": 59
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3520
+        }
+      },
+      "seconds": 7.687
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "职能 员工人数 类别 报告版本",
+        "top_k": 10
+      },
+      "result_sha": "028e04b4e2d79974993692404d751efe0fe2a913259f953f42e8dbc476e3b6fe",
+      "result_chars": 3919,
+      "hits": 10
+    },
+    {
+      "name": "list",
+      "args": {
+        "keyword": "组织架构"
+      },
+      "result_sha": "093e271524c5b4838ce12678a374b459f60620e84d1f5b441f7391a3cd8ed384",
+      "result_chars": 142,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_chart_2024",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "3298e613b379cefedec88ea877692cc3d927fc392df239622d9a8349140e6699",
+      "result_chars": 539,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_chart_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "69849c6cdde8974b2881b853d84dedf11c9dcbaaeeeea837ecf380ac40280d16",
+      "result_chars": 685,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "2024 版组织架构文档没有单独披露「职能」类别的人数：其「员工规模」部分仅列明 2024 年末员工 3,280 人，其中研发 1,020 人、销售 540 人、制造 860 人、服务 260 人（这四类合计仅 2,680 人，未包含职能类别人数）。2025 版则新增披露了职能类别：2025 年末员工 3,860 人，其中研发 1,286 人、销售 620 人、制造 980 人、服务 412 人、职能 562 人。也就是说，「职能」人数是 2025 版相较 2024 版的新增披露项。",
+    "citations": [
+      "lantu_org_chart_2024",
+      "lantu_org_chart_2025"
+    ],
+    "evidence": [
+      "lantu_org_chart_2024#片段0",
+      "lantu_org_chart_2025#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 15930,
+  "started_at": "2026-11-01T03:53:41",
+  "elapsed_seconds": 28.11,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "职能 员工人数 类别 报告版本",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_org_headcount",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 11.561,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能员工分布统计（2025）\n所属部门\t人力资源部\n作者\t陈依然\n创建时间\t2025-12-31 18:00\n更新时间\t2026-01-09 09:30\n版本号\tv1.0\n文档类型\torg\n文档族\theadcount_2025\n生效日期\t2026-01-09\n[工作表] 基地分布\n基地\t员工数\t研发\t销售\t制造\t服务\t职能\n苏州总部\t2,450\t1,120\t310\t560\t250\t210\n东莞华南\t780\t86\t150\t300\t120\t124\n成都西部\t430\t80\t90\t"
+          },
+          {
+            "doc_id": "lantu_hr_performance",
+            "title": "# 澜图智能绩效管理制度",
+            "chunk": 0,
+            "score": 5.914,
+            "snippet": "# 澜图智能绩效管理制度\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v3.4\n文档类型：hr\n文档族：performance\n生效日期：2025-06-01\n\n## 一、考核周期\n\n实行季度考核与年度考核，季度占 40%，年度占 60%。试用期员工参加转正考核。\n\n## 二、考核维度\n\n业绩目标 60%、价值观 20%、能力成长 20%。销售岗位业绩权重 70%。\n\n## 三、绩效分布\n\nS 级 10%、A 级 30%、B "
+          },
+          {
+            "doc_id": "lantu_strategy_esg",
+            "title": "# 澜图智能 ESG 与可持续发展报告",
+            "chunk": 0,
+            "score": 5.659,
+            "snippet": "# 澜图智能 ESG 与可持续发展报告\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2025-04-22 09:00\n更新时间：2025-04-25 10:00\n版本号：v2.0\n文档类型：strategy\n文档族：esg_report\n生效日期：2025-04-25\n\n## 一、环境\n\n2025 年苏州基地光伏装机 6.2MW，绿电占比 28%；单位产值能耗下降 9.6%；危废合规处置率 100%。\n\n## 二、社会\n\n员工培训人均 32 小时；安全生产投入 1,200 万元；公益捐赠 380 万元，支持职业"
+          },
+          {
+            "doc_id": "lantu_org_chart_2025",
+            "title": "# 澜图智能组织架构（2025版）",
+            "chunk": 0,
+            "score": 5.415,
+            "snippet": "# 澜图智能组织架构（2025版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-03-20 09:00\n更新时间：2025-04-10 10:00\n版本号：v2.0\n文档类型：org\n文档族：org_chart\n生效日期：2025-04-01\n\n## 一、一级部门\n\n2025 年 4 月起公司设 12 个一级部门：研发中心、产品部、销售中心、客户成功部、供应链中心、制造中心、质量部、财务部、人力资源部、法务合规部、信息技术部、售后服务部。售后服务部由销售中心下属部门升级为一级部门。\n\n## 二、研发体"
+          },
+          {
+            "doc_id": "lantu_legal_purchase_contract_template",
+            "title": "澜图智能采购合同模板（2025版）",
+            "chunk": 0,
+            "score": 4.19,
+            "snippet": "澜图智能采购合同模板（2025版）\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-10 09:00\n更新时间：2025-03-01 09:00\n版本号：v3.2\n文档类型：legal\n文档族：purchase_contract_template\n生效日期：2025-03-01\n第一条 采购标的\n甲方向乙方采购原材料/零部件，品名、规格、数量、单价以采购订单为准。\n第二条 付款方式\n标准账期为月结 90 天，战略供应商可约定 120 天；预付款不超过 20%；质保金 5%-10%。\n第三条 质量要求\n乙"
+          },
+          {
+            "doc_id": "lantu_org_reporting_lines",
+            "title": "# 澜图智能员工汇报关系与业务分工",
+            "chunk": 0,
+            "score": 4.139,
+            "snippet": "# 澜图智能员工汇报关系与业务分工\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-02-10 09:00\n更新时间：2025-09-01 10:00\n版本号：v1.2\n文档类型：org\n文档族：org_reporting_lines\n生效日期：2025-09-01\n\n## 一、研发体系汇报链\n\n顾承澜是沈亦舟的上级。沈亦舟是程知远的上级。程知远是周启航的上级。周启航是林晓的上级。林晓是赵一鸣的上级。\n\n沈亦舟担任 CTO，负责研发体系。程知远担任研发中心总经理，负责研发中心整体经营管理。周启航担任控制器"
+          },
+          {
+            "doc_id": "lantu_support_training_certification",
+            "title": "# 澜图智能服务工程师培训与认证体系",
+            "chunk": 0,
+            "score": 3.838,
+            "snippet": "# 澜图智能服务工程师培训与认证体系\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-06-01 09:00\n更新时间：2025-08-08 10:00\n版本号：v2.4\n文档类型：support\n文档族：service_certification\n生效日期：2025-08-08\n\n## 一、认证等级\n\n服务工程师分为 L1 初级、L2 中级、L3 高级三级，分别对应常规维护、故障维修与整线调试。\n\n## 二、培训内容\n\nL1：安全、保养、备件更换（5 天）；L2：电气与控制系统维修（10 天）；L3：整线"
+          },
+          {
+            "doc_id": "lantu_policy_vehicle",
+            "title": "# 澜图智能公务用车管理办法",
+            "chunk": 0,
+            "score": 3.578,
+            "snippet": "# 澜图智能公务用车管理办法\n\n所属部门：行政部\n作者：陈依然\n创建时间：2024-03-01 09:00\n更新时间：2025-04-02 09:00\n版本号：v2.4\n文档类型：policy\n文档族：vehicle_management\n生效日期：2025-04-02\n\n## 一、用车范围\n\n公务用车用于客户接待、机场接送、跨园区办公与紧急事务；上下班通勤原则上不使用公务车。\n\n## 二、申请流程\n\n用车须提前 1 个工作日在 OA 申请，注明事由、路线、人数与时间；临时用车须部门负责人电话批准后补单。\n\n## "
+          },
+          {
+            "doc_id": "lantu_finance_annual_2024",
+            "title": "澜图智能 2024 年度报告摘要",
+            "chunk": 0,
+            "score": 3.554,
+            "snippet": "澜图智能 2024 年度报告摘要\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-01-22 09:00\n更新时间：2025-01-30 18:00\n版本号：v1.0\n文档类型：finance\n文档族：annual_report_2024\n生效日期：2025-01-30\n一、经营概况\n2024 年公司实现营业收入 35.80 亿元，同比增长 16.8%；归母净利润 3.26 亿元，同比增长 14.2%。\n二、收入结构\n机器人本体收入 16.72 亿元（46.7%），智能产线收入 12.36 亿元（34.5%），"
+          },
+          {
+            "doc_id": "lantu_hr_campus",
+            "title": "# 澜图智能 2026 届校园招聘方案",
+            "chunk": 0,
+            "score": 3.476,
+            "snippet": "# 澜图智能 2026 届校园招聘方案\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-08-15 09:00\n更新时间：2025-09-20 15:00\n版本号：v1.0\n文档类型：hr\n文档族：campus_recruitment_2026\n生效日期：2025-09-20\n\n## 一、招聘计划\n\n2026 届校招计划 120 人，其中研发 78 人、产品 12 人、销售 18 人、职能 12 人；重点院校 18 所。\n\n## 二、岗位方向\n\n机器人算法、运动控制、机器视觉、嵌入式软件、机械结构、售前技"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "list",
+      "args": {
+        "keyword": "组织架构"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_org_chart_2024",
+            "title": "# 澜图智能组织架构（2024版）"
+          },
+          {
+            "doc_id": "lantu_org_chart_2025",
+            "title": "# 澜图智能组织架构（2025版）"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_chart_2024",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_org_chart_2024",
+        "title": "# 澜图智能组织架构（2024版）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 373,
+        "text": "# 澜图智能组织架构（2024版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-05 09:00\n更新时间：2024-01-15 10:00\n版本号：v1.0\n文档类型：org\n文档族：org_chart\n生效日期：2024-01-01\n\n## 一、一级部门\n\n2024 年公司设 11 个一级部门：研发中心、产品部、销售中心、供应链中心、制造中心、质量部、财务部、人力资源部、法务合规部、信息技术部、战略投资部。售后服务部隶属销售中心。\n\n## 二、研发体系\n\n研发中心下设 4 个研究所：机器人本体研究所、控制器研究所、机器视觉研究所、工艺应用研究所。研发人员 1,020 人。\n\n## 三、员工规模\n\n2024 年末员工 3,280 人，其中研发 1,020 人、销售 540 人、制造 860 人、服务 260 人。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_chart_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_org_chart_2025",
+        "title": "# 澜图智能组织架构（2025版）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 515,
+        "text": "# 澜图智能组织架构（2025版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-03-20 09:00\n更新时间：2025-04-10 10:00\n版本号：v2.0\n文档类型：org\n文档族：org_chart\n生效日期：2025-04-01\n\n## 一、一级部门\n\n2025 年 4 月起公司设 12 个一级部门：研发中心、产品部、销售中心、客户成功部、供应链中心、制造中心、质量部、财务部、人力资源部、法务合规部、信息技术部、售后服务部。售后服务部由销售中心下属部门升级为一级部门。\n\n## 二、研发体系\n\n研发中心下设 5 个研究所：机器人本体研究所、控制器研究所、机器视觉研究所、工艺应用研究所、具身智能研究所（2025 年 5 月成立）。研发人员 1,286 人。\n\n## 三、员工规模\n\n2025 年末员工 3,860 人，其中研发 1,286 人、销售 620 人、制造 980 人、服务 412 人、职能 562 人。\n\n## 四、汇报关系\n\n部门负责人向总经理汇报；研发中心、产品部由 CTO 分管；销售中心、客户成功部、售后服务部由销售副总裁分管；供应链中心、制造中心、质量部由 COO 分管。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_org_chart_2024",
+      "lantu_org_chart_2025"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.244,
+    "number_recall": 1.0
+  }
+}

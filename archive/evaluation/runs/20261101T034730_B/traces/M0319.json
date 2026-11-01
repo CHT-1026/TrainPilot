@@ -1,0 +1,166 @@
+{
+  "qid": "M0319",
+  "question": "我们各产品线的毛利率差多少？营业成本里占比最大的一块是什么？",
+  "question_type": "单文档多跳推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"产品线 毛利率 营业成本\",\"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 365,
+        "total_tokens": 520,
+        "completion_tokens": 155,
+        "completion_tokens_details": {
+          "reasoning_tokens": 127,
+          "text_tokens": 155
+        }
+      },
+      "seconds": 1.625
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_finance_gross_margin\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 1637,
+        "total_tokens": 1905,
+        "completion_tokens": 268,
+        "completion_tokens_details": {
+          "reasoning_tokens": 232,
+          "text_tokens": 268
+        }
+      },
+      "seconds": 2.219
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"各产品线毛利率分别为：机器人本体 34.8%、智能产线 26.2%、软件与服务 52.4%。其中软件与服务毛利率最高，智能产线最低，两者相差 26.2 个百分点。营业成本中占比最大的是直接材料，占 68.4%。\",\"citations\":[\"lantu_finance_gross_margin\"],\"evidence\":[\"lantu_finance_gross_margin#0\"]}",
+      "usage": {
+        "prompt_tokens": 2051,
+        "total_tokens": 2424,
+        "completion_tokens": 373,
+        "completion_tokens_details": {
+          "reasoning_tokens": 262,
+          "text_tokens": 373
+        }
+      },
+      "seconds": 2.688
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "产品线 毛利率 营业成本",
+        "top_k": 5
+      },
+      "result_sha": "72f13185782f7bf5572039ea7acf150824afab90fa85b65cb8732d9a732eef8a",
+      "result_chars": 1965,
+      "hits": 5
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_finance_gross_margin",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "a5b4f183fbd862086af45cc92247c925098ba2b92f53fd810b2b01734e4c8f07",
+      "result_chars": 601,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "各产品线毛利率分别为：机器人本体 34.8%、智能产线 26.2%、软件与服务 52.4%。其中软件与服务毛利率最高，智能产线最低，两者相差 26.2 个百分点。营业成本中占比最大的是直接材料，占 68.4%。",
+    "citations": [
+      "lantu_finance_gross_margin"
+    ],
+    "evidence": [
+      "lantu_finance_gross_margin#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 4849,
+  "started_at": "2026-11-01T06:28:47",
+  "elapsed_seconds": 6.55,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "产品线 毛利率 营业成本",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_finance_gross_margin",
+            "title": "# 澜图智能毛利率与成本结构分析",
+            "chunk": 0,
+            "score": 20.779,
+            "snippet": "# 澜图智能毛利率与成本结构分析\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-11-15 09:00\n更新时间：2025-11-20 17:00\n版本号：v1.2\n文档类型：finance\n文档族：gross_margin_analysis\n生效日期：2025-11-20\n\n## 一、整体毛利率\n\n2025 年综合毛利率 31.6%，较 2024 年提升 1.2 个百分点。机器人本体毛利率 34.8%，智能产线 26.2%，软件与服务 52.4%。\n\n## 二、成本构成\n\n直接材料占营业成本 68.4%，"
+          },
+          {
+            "doc_id": "lantu_sales_discount_2024",
+            "title": "# 澜图智能销售折扣审批权限（2024版）",
+            "chunk": 0,
+            "score": 9.439,
+            "snippet": "# 澜图智能销售折扣审批权限（2024版）\n\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2024-01-25 09:00\n更新时间：2024-02-01 10:00\n版本号：v1.0\n文档类型：sales\n文档族：sales_discount\n生效日期：2024-01-01\n\n## 一、折扣区间\n\n标准价折扣 10% 以内（含）由销售经理审批；10%-20%（含）由销售副总裁审批；超过 20% 由总经理审批。\n\n## 二、申请材料\n\n折扣申请须说明客户级别、竞争态势、项目毛利与战略价值，并附成本测算表。\n\n## "
+          },
+          {
+            "doc_id": "lantu_finance_annual_2024",
+            "title": "澜图智能 2024 年度报告摘要",
+            "chunk": 0,
+            "score": 9.402,
+            "snippet": "澜图智能 2024 年度报告摘要\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-01-22 09:00\n更新时间：2025-01-30 18:00\n版本号：v1.0\n文档类型：finance\n文档族：annual_report_2024\n生效日期：2025-01-30\n一、经营概况\n2024 年公司实现营业收入 35.80 亿元，同比增长 16.8%；归母净利润 3.26 亿元，同比增长 14.2%。\n二、收入结构\n机器人本体收入 16.72 亿元（46.7%），智能产线收入 12.36 亿元（34.5%），"
+          },
+          {
+            "doc_id": "lantu_finance_q3_2025",
+            "title": "# 澜图智能 2025 年第三季度经营数据",
+            "chunk": 0,
+            "score": 8.277,
+            "snippet": "# 澜图智能 2025 年第三季度经营数据\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-10-22 09:00\n更新时间：2025-10-26 18:00\n版本号：v1.0\n文档类型：finance\n文档族：quarterly_2025_q3\n生效日期：2025-10-26\n\n## 一、季度业绩\n\n2025 年第三季度营业收入 11.52 亿元，同比增长 17.8%；归母净利润 1.21 亿元，同比增长 22.1%；毛利率 31.4%。\n\n## 二、累计业绩\n\n前三季度累计营业收入 31.36 亿元，归母"
+          },
+          {
+            "doc_id": "lantu_finance_revenue_breakdown",
+            "title": "﻿维度,分类,收入（亿元）,占比,同比",
+            "chunk": 0,
+            "score": 8.14,
+            "snippet": "﻿维度,分类,收入（亿元）,占比,同比\n产品线,机器人本体,19.84,46.5%,+18.2%\n产品线,智能产线,14.92,35.0%,+21.6%\n产品线,工业软件与服务,5.21,12.2%,+26.8%\n产品线,备件及其他,2.66,6.3%,+9.4%\n行业,动力电池,13.64,32.0%,+24.1%\n行业,汽车及零部件,10.23,24.0%,+11.5%\n行业,半导体,5.12,12.0%,+38.6%\n行业,光伏,4.26,10.0%,+6.2%\n行业,3C 电子,3.41,8.0%,+14."
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_finance_gross_margin",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_finance_gross_margin",
+        "title": "# 澜图智能毛利率与成本结构分析",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 426,
+        "text": "# 澜图智能毛利率与成本结构分析\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-11-15 09:00\n更新时间：2025-11-20 17:00\n版本号：v1.2\n文档类型：finance\n文档族：gross_margin_analysis\n生效日期：2025-11-20\n\n## 一、整体毛利率\n\n2025 年综合毛利率 31.6%，较 2024 年提升 1.2 个百分点。机器人本体毛利率 34.8%，智能产线 26.2%，软件与服务 52.4%。\n\n## 二、成本构成\n\n直接材料占营业成本 68.4%，直接人工 12.6%，制造费用 11.8%，运费与质保 7.2%。减速器、伺服与芯片为主要成本项。\n\n## 三、降本举措\n\n减速器双源采购降低 6.2%，驱动器自研替代降低 9.8%，标准化工作站减少非标设计工时 18%。\n\n## 四、区域差异\n\n海外项目毛利率 38.6%，高于国内 30.4%；海外服务成本较高但议价能力更强。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_finance_gross_margin"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.287,
+    "number_recall": 0.0
+  }
+}

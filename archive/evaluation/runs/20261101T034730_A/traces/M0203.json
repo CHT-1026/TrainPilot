@@ -1,0 +1,142 @@
+{
+  "qid": "M0203",
+  "question": "客户问我们控制器那套编程环境到底叫什么、能写哪几种程序？我们对外开放了哪些接口？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>控制器 编程环境</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list><parameter=keyword></parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 73,
+        "prompt_tokens": 366,
+        "total_tokens": 439,
+        "completion_tokens_details": {
+          "reasoning_tokens": 29
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.594
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>控制器 编程环境</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 55,
+        "prompt_tokens": 447,
+        "total_tokens": 502,
+        "completion_tokens_details": {
+          "reasoning_tokens": 25
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.265
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>控制器 编程环境</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 514,
+        "total_tokens": 562,
+        "completion_tokens_details": {
+          "reasoning_tokens": 18
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 1.25
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>控制器 编程环境 支持 编程语言</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 74,
+        "prompt_tokens": 581,
+        "total_tokens": 655,
+        "completion_tokens_details": {
+          "reasoning_tokens": 37
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 2.266
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>控制器 编程环境 编程语言</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 60,
+        "prompt_tokens": 655,
+        "total_tokens": 715,
+        "completion_tokens_details": {
+          "reasoning_tokens": 26
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 1.484
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>控制器 编程环境 编程语言 接口</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 80,
+        "prompt_tokens": 726,
+        "total_tokens": 806,
+        "completion_tokens_details": {
+          "reasoning_tokens": 43
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 2.672
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"未能在资料库中检索到关于控制器编程环境名称、可编写程序类型以及对外开放接口的相关文档，无法回答。请补充产品手册或技术规格等资料，或提供更具体的检索关键词（如产品型号、软件名称）。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 84,
+        "prompt_tokens": 797,
+        "total_tokens": 881,
+        "completion_tokens_details": {
+          "reasoning_tokens": 12
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.656
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "未能在资料库中检索到关于控制器编程环境名称、可编写程序类型以及对外开放接口的相关文档，无法回答。请补充产品手册或技术规格等资料，或提供更具体的检索关键词（如产品型号、软件名称）。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4560,
+  "started_at": "2026-11-01T05:41:09",
+  "elapsed_seconds": 13.19,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.009,
+    "number_recall": 0.0
+  }
+}

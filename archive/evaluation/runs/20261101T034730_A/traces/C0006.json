@@ -1,0 +1,142 @@
+{
+  "qid": "C0006",
+  "question": "按总览的产品线概览表，移动机器人与机器视觉两条产品线分别覆盖什么负载和典型行业？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>产品线概览 移动机器人 机器视觉 负载</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 70,
+        "prompt_tokens": 367,
+        "total_tokens": 437,
+        "completion_tokens_details": {
+          "reasoning_tokens": 30
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 4.344
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>总览 产品线概览 移动机器人 机器视觉 负载 典型行业</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 72,
+        "prompt_tokens": 444,
+        "total_tokens": 516,
+        "completion_tokens_details": {
+          "reasoning_tokens": 25
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.391
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>产品线概览</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 49,
+        "prompt_tokens": 528,
+        "total_tokens": 577,
+        "completion_tokens_details": {
+          "reasoning_tokens": 20
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 17.25
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>产品线概览 移动机器人 机器视觉 负载 行业</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 594,
+        "total_tokens": 644,
+        "completion_tokens_details": {
+          "reasoning_tokens": 7
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.828
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>产品线概览 移动机器人 机器视觉 负载 行业</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 57,
+        "prompt_tokens": 674,
+        "total_tokens": 731,
+        "completion_tokens_details": {
+          "reasoning_tokens": 14
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 1.828
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>产品线概览 移动机器人 机器视觉 负载 典型行业</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 52,
+        "prompt_tokens": 754,
+        "total_tokens": 806,
+        "completion_tokens_details": {
+          "reasoning_tokens": 8
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 1.531
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"未能检索到总览文档中的『产品线概览表』，无法确认移动机器人与机器视觉两条产品线各自覆盖的负载范围与典型行业。请提供总览文档名称或关键字段（如产品线名称、负载区间关键词），以便再次检索。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 118,
+        "prompt_tokens": 832,
+        "total_tokens": 950,
+        "completion_tokens_details": {
+          "reasoning_tokens": 39
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 3.25
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "未能检索到总览文档中的『产品线概览表』，无法确认移动机器人与机器视觉两条产品线各自覆盖的负载范围与典型行业。请提供总览文档名称或关键字段（如产品线名称、负载区间关键词），以便再次检索。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4661,
+  "started_at": "2026-11-01T04:09:41",
+  "elapsed_seconds": 32.42,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.051,
+    "number_recall": 0.0
+  }
+}

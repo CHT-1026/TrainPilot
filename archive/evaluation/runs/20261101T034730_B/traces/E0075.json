@@ -1,0 +1,133 @@
+{
+  "qid": "E0075",
+  "question": "只按合同管理制度的金额档位、暂不考虑战略价等其他条件，3000 万元合同需谁审批？是否触发总经理金额门槛？",
+  "question_type": "条件判断与边界",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"合同管理制度\"}}",
+      "usage": {
+        "prompt_tokens": 381,
+        "total_tokens": 483,
+        "completion_tokens": 102,
+        "completion_tokens_details": {
+          "reasoning_tokens": 83,
+          "text_tokens": 102
+        }
+      },
+      "seconds": 1.265
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_contract\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 446,
+        "total_tokens": 630,
+        "completion_tokens": 184,
+        "completion_tokens_details": {
+          "reasoning_tokens": 151,
+          "text_tokens": 184
+        }
+      },
+      "seconds": 1.688
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据《澜图智能合同管理制度》，3000 万元合同需由**法务合规部与 CFO 联合审批**。该金额**未触发**总经理审批门槛，因为制度规定 5,000 万元以上才须总经理审批。\",\"citations\":[\"lantu_policy_contract\"],\"evidence\":[\"lantu_policy_contract#二、审批权限\"]}",
+      "usage": {
+        "prompt_tokens": 861,
+        "total_tokens": 1416,
+        "completion_tokens": 555,
+        "completion_tokens_details": {
+          "reasoning_tokens": 465,
+          "text_tokens": 555
+        }
+      },
+      "seconds": 4.719
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "合同管理制度"
+      },
+      "result_sha": "4fa51a2efd3a001d7fef62eef2f0d9dbf76e0656a7e281859417898d06d409cc",
+      "result_chars": 72,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_contract",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "b7a523207c2ba34d6415d7b2020f81c04aee3ed988ed2c9bb76a1080d9733c5f",
+      "result_chars": 649,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《澜图智能合同管理制度》，3000 万元合同需由**法务合规部与 CFO 联合审批**。该金额**未触发**总经理审批门槛，因为制度规定 5,000 万元以上才须总经理审批。",
+    "citations": [
+      "lantu_policy_contract"
+    ],
+    "evidence": [
+      "lantu_policy_contract#二、审批权限"
+    ]
+  },
+  "status": "answered",
+  "tokens": 2529,
+  "started_at": "2026-11-01T04:50:11",
+  "elapsed_seconds": 7.67,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "合同管理制度"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_policy_contract",
+            "title": "# 澜图智能合同管理制度"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_contract",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_contract",
+        "title": "# 澜图智能合同管理制度",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 479,
+        "text": "# 澜图智能合同管理制度\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-02-01 09:00\n更新时间：2025-05-12 15:00\n版本号：v3.0\n文档类型：policy\n文档族：contract_management\n生效日期：2025-05-12\n\n## 一、合同分类\n\n合同分为销售合同、采购合同、服务合同、保密协议、租赁合同与劳动合同。销售与采购合同须使用公司标准模板，非标条款须法务审核。\n\n## 二、审批权限\n\n合同金额 1,000 万元以上须法务合规部与 CFO 联合审批；5,000 万元以上须总经理审批；涉及知识产权许可的合同须 CTO 会签。\n\n## 三、用印与归档\n\n合同用印须在 OA 提交用印申请，附审批记录与合同终稿；合同正本 15 个工作日内归档，保存期限不少于 10 年。\n\n## 四、履约管理\n\n业务部门负责履约跟踪，法务合规部每季度抽查；逾期交付、质量争议与回款异常须在 3 个工作日内上报。\n\n## 五、违约与争议\n\n违约金按合同约定执行，单方解除须经法务评估；诉讼与仲裁案件由法务合规部统一管理。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_policy_contract"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.239,
+    "number_recall": 1.0
+  }
+}

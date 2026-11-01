@@ -1,0 +1,142 @@
+{
+  "qid": "H0024",
+  "question": "康泽制药 2025 年项目使用了 36 台 LT-R12，能否判断这些设备是否落入本次召回范围？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>LT-R12 召回</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 98,
+        "prompt_tokens": 375,
+        "total_tokens": 473,
+        "completion_tokens_details": {
+          "reasoning_tokens": 66
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.672
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search>{\"query\": \"LT-R12 召回范围\", \"top_k\": 10}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 41,
+        "prompt_tokens": 444,
+        "total_tokens": 485,
+        "completion_tokens_details": {
+          "reasoning_tokens": 9
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.281
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>LT-R12 召回范围</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 41,
+        "prompt_tokens": 513,
+        "total_tokens": 554,
+        "completion_tokens_details": {
+          "reasoning_tokens": 8
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 0.984
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>LT-R12 召回范围</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 583,
+        "total_tokens": 633,
+        "completion_tokens_details": {
+          "reasoning_tokens": 17
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 4.766
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>LT-R12 召回</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 653,
+        "total_tokens": 704,
+        "completion_tokens_details": {
+          "reasoning_tokens": 19
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 1.437
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>LT-R12 召回</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 55,
+        "prompt_tokens": 722,
+        "total_tokens": 777,
+        "completion_tokens_details": {
+          "reasoning_tokens": 23
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 2.0
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"无法判断。根据当前检索情况，资料库中未能检索到关于 LT-R12 设备召回范围的有效信息，也未找到康泽制药 2025 年项目使用这 36 台设备的记录。判断设备是否落入召回范围，通常需要召回公告中的具体信息（如受影响的生产批号、序列号区间、生产日期范围、型号规格等）以及康泽制药所购设备对应的出厂批次/序列号信息。建议向设备供应商或药企质量部门索取本次召回公告原文和设备台账明细后再行核实。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 162,
+        "prompt_tokens": 788,
+        "total_tokens": 950,
+        "completion_tokens_details": {
+          "reasoning_tokens": 18
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 5.188
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "无法判断。根据当前检索情况，资料库中未能检索到关于 LT-R12 设备召回范围的有效信息，也未找到康泽制药 2025 年项目使用这 36 台设备的记录。判断设备是否落入召回范围，通常需要召回公告中的具体信息（如受影响的生产批号、序列号区间、生产日期范围、型号规格等）以及康泽制药所购设备对应的出厂批次/序列号信息。建议向设备供应商或药企质量部门索取本次召回公告原文和设备台账明细后再行核实。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4576,
+  "started_at": "2026-11-01T05:12:16",
+  "elapsed_seconds": 19.33,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.078,
+    "number_recall": 1.0
+  }
+}

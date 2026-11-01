@@ -1,0 +1,157 @@
+{
+  "qid": "B0004",
+  "question": "校招对本科、硕士、博士三类学历分别给出什么年薪区间？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"校招 薪资 本科 硕士 博士 年薪\"}}",
+      "usage": {
+        "prompt_tokens": 364,
+        "total_tokens": 521,
+        "completion_tokens": 157,
+        "completion_tokens_details": {
+          "reasoning_tokens": 129,
+          "text_tokens": 157
+        }
+      },
+      "seconds": 1.593
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_hr_campus\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 1343,
+        "total_tokens": 1737,
+        "completion_tokens": 394,
+        "completion_tokens_details": {
+          "reasoning_tokens": 360,
+          "text_tokens": 394
+        }
+      },
+      "seconds": 4.266
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据《澜图智能 2026 届校园招聘方案》，校招薪资标准如下：\\n- **本科**：年薪 18-24 万元\\n- **硕士**：年薪 25-35 万元\\n- **博士**：年薪 40-60 万元\",\"citations\":[\"lantu_hr_campus\"],\"evidence\":[\"lantu_hr_campus#0\"]}",
+      "usage": {
+        "prompt_tokens": 1771,
+        "total_tokens": 2177,
+        "completion_tokens": 406,
+        "completion_tokens_details": {
+          "reasoning_tokens": 304,
+          "text_tokens": 406
+        }
+      },
+      "seconds": 3.828
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "校招 薪资 本科 硕士 博士 年薪"
+      },
+      "result_sha": "6f9df429246a322c26d1f3842cb4ec28d55bbfea7f2c6272b548d217229ee0ef",
+      "result_chars": 1541,
+      "hits": 4
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_campus",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "415063ec5603af595fd42fb6d2d50495d9ccc3115e76849f00ed281aa6536c68",
+      "result_chars": 584,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《澜图智能 2026 届校园招聘方案》，校招薪资标准如下：\n- **本科**：年薪 18-24 万元\n- **硕士**：年薪 25-35 万元\n- **博士**：年薪 40-60 万元",
+    "citations": [
+      "lantu_hr_campus"
+    ],
+    "evidence": [
+      "lantu_hr_campus#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 4435,
+  "started_at": "2026-11-01T04:07:50",
+  "elapsed_seconds": 9.69,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "校招 薪资 本科 硕士 博士 年薪"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_hr_campus",
+            "title": "# 澜图智能 2026 届校园招聘方案",
+            "chunk": 0,
+            "score": 24.431,
+            "snippet": "# 澜图智能 2026 届校园招聘方案\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-08-15 09:00\n更新时间：2025-09-20 15:00\n版本号：v1.0\n文档类型：hr\n文档族：campus_recruitment_2026\n生效日期：2025-09-20\n\n## 一、招聘计划\n\n2026 届校招计划 120 人，其中研发 78 人、产品 12 人、销售 18 人、职能 12 人；重点院校 18 所。\n\n## 二、岗位方向\n\n机器人算法、运动控制、机器视觉、嵌入式软件、机械结构、售前技"
+          },
+          {
+            "doc_id": "lantu_org_rd_system",
+            "title": "# 澜图智能研发体系与投入",
+            "chunk": 0,
+            "score": 7.75,
+            "snippet": "# 澜图智能研发体系与投入\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-02-01 09:00\n更新时间：2026-01-12 10:00\n版本号：v5.0\n文档类型：org\n文档族：rd_system\n生效日期：2026-01-12\n\n## 一、研发架构\n\n研发中心下设机器人本体研究所、控制器研究所、机器视觉研究所、工艺应用研究所、具身智能研究所，另设测试中心与可靠性实验室。\n\n## 二、人员结构\n\n研发人员 1,286 人，其中博士 48 人、硕士 612 人，35 岁以下占比 61%。2025 年"
+          },
+          {
+            "doc_id": "lantu_hr_social",
+            "title": "# 澜图智能社会招聘管理办法",
+            "chunk": 0,
+            "score": 4.021,
+            "snippet": "# 澜图智能社会招聘管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-02-01 09:00\n更新时间：2025-07-15 11:00\n版本号：v2.5\n文档类型：hr\n文档族：social_recruitment\n生效日期：2025-07-15\n\n## 一、适用岗位\n\n适用于经理级及以上、高级技术专家与紧缺岗位；年度社招计划 200 人。\n\n## 二、渠道管理\n\n使用猎头、招聘平台、内部推荐与行业社群。猎头费用为年薪的 20%-25%，保证期 90 天。\n\n## 三、内部推荐\n\n员工推荐成功入"
+          },
+          {
+            "doc_id": "lantu_hr_job_grades",
+            "title": "# 澜图智能职级体系与晋升规则",
+            "chunk": 0,
+            "score": 3.981,
+            "snippet": "# 澜图智能职级体系与晋升规则\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-03-01 09:00\n更新时间：2025-03-01 09:00\n版本号：v3.0\n文档类型：hr\n文档族：job_grades\n生效日期：2025-03-01\n\n## 一、职级序列\n\n设管理序列（M1-M5）、专业序列（P1-P7）与技能序列（T1-T5）。研发、产品、销售、职能分别对应不同通道。\n\n## 二、晋升条件\n\n晋升需满足当前职级任职满 2 年、连续两次绩效 A 及以上、通过晋升评审；破格晋升须总经理审批。\n\n#"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_campus",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_hr_campus",
+        "title": "# 澜图智能 2026 届校园招聘方案",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 417,
+        "text": "# 澜图智能 2026 届校园招聘方案\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-08-15 09:00\n更新时间：2025-09-20 15:00\n版本号：v1.0\n文档类型：hr\n文档族：campus_recruitment_2026\n生效日期：2025-09-20\n\n## 一、招聘计划\n\n2026 届校招计划 120 人，其中研发 78 人、产品 12 人、销售 18 人、职能 12 人；重点院校 18 所。\n\n## 二、岗位方向\n\n机器人算法、运动控制、机器视觉、嵌入式软件、机械结构、售前技术。硕士及以上占比目标 65%。\n\n## 三、薪酬方案\n\n本科年薪 18-24 万元，硕士 25-35 万元，博士 40-60 万元；提供苏州落户、人才公寓与安家补贴。\n\n## 四、招聘节奏\n\n9 月宣讲、10 月笔试面试、11 月发放 offer、2026 年 7 月入职；实习可提前至 2026 年 3 月。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_hr_campus"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.586,
+    "number_recall": 0.0
+  }
+}

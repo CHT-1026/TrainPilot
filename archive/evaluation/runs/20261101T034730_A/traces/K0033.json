@@ -1,0 +1,142 @@
+{
+  "qid": "K0033",
+  "question": "合同管理制度规定「合同金额 1,000 万元以上须法务合规部与 CFO 联合审批；5,000 万元以上须总经理审批；涉及知识产权许可的合同须 CTO 会签」，报价与合同评审流程规定「合同金额 1,000 万元以上须法务合规部与 CFO 联合评审；涉及非标开发须 CTO 签字；涉及海外交付须国际业务部确认合规与物流方案」。请判断：一份金额 6,000 万元、涉及知识产权许可、且海外交付的设备销售合同需要哪些审批？",
+  "question_type": "条件判断与边界",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>合同金额 审批 法务合规 CFO 总经理</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list><parameter=keyword>合同</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 117,
+        "prompt_tokens": 478,
+        "total_tokens": 595,
+        "completion_tokens_details": {
+          "reasoning_tokens": 63
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 4.187
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>合同审批权限 金额 总经理 CFO 联合审批</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 59,
+        "prompt_tokens": 569,
+        "total_tokens": 628,
+        "completion_tokens_details": {
+          "reasoning_tokens": 20
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.406
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>合同管理制度 审批权限 金额 法务合规 CFO 总经理</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 645,
+        "total_tokens": 696,
+        "completion_tokens_details": {
+          "reasoning_tokens": 10
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.844
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>合同审批权限 金额 法务合规 CFO 总经理</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 141,
+        "prompt_tokens": 723,
+        "total_tokens": 864,
+        "completion_tokens_details": {
+          "reasoning_tokens": 103
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 3.984
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>合同管理制度 审批权限 金额 CFO 总经理 CTO 会签</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 103,
+        "prompt_tokens": 798,
+        "total_tokens": 901,
+        "completion_tokens_details": {
+          "reasoning_tokens": 61
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 3.907
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>合同审批权限 金额 总经理 法务合规 CFO</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 877,
+        "total_tokens": 928,
+        "completion_tokens_details": {
+          "reasoning_tokens": 13
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 768
+        }
+      },
+      "seconds": 1.312
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据题中给出的两份规定，该合同（金额6,000万元、涉及知识产权许可、海外交付的设备销售合同）需要以下审批/会签/确认：\\n\\n一、依据《合同管理制度》：\\n1. 法务合规部与CFO联合审批（合同金额1,000万元以上）\\n2. 总经理审批（合同金额5,000万元以上，本合同6,000万元已超过该门槛）\\n3. CTO会签（涉及知识产权许可）\\n\\n二、依据《报价与合同评审流程》：\\n4. 法务合规部与CFO联合评审（合同金额1,000万元以上）\\n5. 国际业务部确认合规与物流方案（涉及海外交付）\\n\\n补充说明：\\n- 「涉及非标开发须CTO签字」条款不适用于本合同，因为本合同为设备销售合同，题干未说明涉及非标开发；但因涉及知识产权许可，《合同管理制度》中CTO会签的要求仍然适用。\\n- 法务合规部与CFO在两份文件中分别承担「审批」与「评审」两项职责，属于并行要求，均需完成。\\n\\n即最终需：法务合规部+CFO联合审批及联合评审、总经理审批、CTO会签、国际业务部确认合规与物流方案。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 729,
+        "prompt_tokens": 949,
+        "total_tokens": 1678,
+        "completion_tokens_details": {
+          "reasoning_tokens": 401
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 832
+        }
+      },
+      "seconds": 17.469
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据题中给出的两份规定，该合同（金额6,000万元、涉及知识产权许可、海外交付的设备销售合同）需要以下审批/会签/确认：\n\n一、依据《合同管理制度》：\n1. 法务合规部与CFO联合审批（合同金额1,000万元以上）\n2. 总经理审批（合同金额5,000万元以上，本合同6,000万元已超过该门槛）\n3. CTO会签（涉及知识产权许可）\n\n二、依据《报价与合同评审流程》：\n4. 法务合规部与CFO联合评审（合同金额1,000万元以上）\n5. 国际业务部确认合规与物流方案（涉及海外交付）\n\n补充说明：\n- 「涉及非标开发须CTO签字」条款不适用于本合同，因为本合同为设备销售合同，题干未说明涉及非标开发；但因涉及知识产权许可，《合同管理制度》中CTO会签的要求仍然适用。\n- 法务合规部与CFO在两份文件中分别承担「审批」与「评审」两项职责，属于并行要求，均需完成。\n\n即最终需：法务合规部+CFO联合审批及联合评审、总经理审批、CTO会签、国际业务部确认合规与物流方案。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 6290,
+  "started_at": "2026-11-01T05:34:32",
+  "elapsed_seconds": 34.11,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": true,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.385,
+    "number_recall": 1.0
+  }
+}

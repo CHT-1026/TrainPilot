@@ -1,0 +1,350 @@
+{
+  "qid": "B0025",
+  "question": "招聘制度同时要求公开、公平、择优并优先内部推荐与内部转岗，是否足以证明两条原则互相矛盾？说明能确定和未确定的内容。",
+  "question_type": "矛盾与例外识别",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "我先检索企业资料库中关于招聘制度、内部推荐与内部转岗的规范文件。<tool_call><function=list><parameter=keyword>招聘</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 82,
+        "prompt_tokens": 351,
+        "total_tokens": 433,
+        "completion_tokens_details": {
+          "reasoning_tokens": 43
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.672
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"招聘\"}}",
+      "usage": {
+        "completion_tokens": 62,
+        "prompt_tokens": 427,
+        "total_tokens": 489,
+        "completion_tokens_details": {
+          "reasoning_tokens": 47
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.984
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_hr_recruitment\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 535,
+        "total_tokens": 585,
+        "completion_tokens_details": {
+          "reasoning_tokens": 19
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 1.891
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=read><parameter=args>{\"doc_id\": \"lantu_hr_social\", \"offset\": 0, \"limit\": 4000}</parameter><parameter=name>read</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 154,
+        "prompt_tokens": 893,
+        "total_tokens": 1047,
+        "completion_tokens_details": {
+          "reasoning_tokens": 108
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 5.375
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_hr_social\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 36,
+        "prompt_tokens": 976,
+        "total_tokens": 1012,
+        "completion_tokens_details": {
+          "reasoning_tokens": 6
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 832
+        }
+      },
+      "seconds": 1.609
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_hr_campus\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 47,
+        "prompt_tokens": 1338,
+        "total_tokens": 1385,
+        "completion_tokens_details": {
+          "reasoning_tokens": 16
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 960
+        }
+      },
+      "seconds": 3.141
+    },
+    {
+      "round": 7,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"内部\"}}",
+      "usage": {
+        "completion_tokens": 70,
+        "prompt_tokens": 1767,
+        "total_tokens": 1837,
+        "completion_tokens_details": {
+          "reasoning_tokens": 55
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 1280
+        }
+      },
+      "seconds": 2.141
+    },
+    {
+      "round": 8,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"内部转岗 竞聘 调动\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 64,
+        "prompt_tokens": 1799,
+        "total_tokens": 1863,
+        "completion_tokens_details": {
+          "reasoning_tokens": 33
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 1728
+        }
+      },
+      "seconds": 2.328
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "招聘"
+      },
+      "result_sha": "5f577af7fd30e7fce2ab977e918841b26f9125b33948f5f15c6955e8af7c56c0",
+      "result_chars": 192,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_recruitment",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "f7bd1b1e8e9a13590f5dc22f84f571b16280be1b9f77234b039a2072ce222185",
+      "result_chars": 531,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_social",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "e00c79a3977c466da0e80513c23a4438a4111dd6a973eb2997a88a803081cd3e",
+      "result_chars": 523,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_campus",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "415063ec5603af595fd42fb6d2d50495d9ccc3115e76849f00ed281aa6536c68",
+      "result_chars": 584,
+      "hits": 0
+    },
+    {
+      "name": "list",
+      "args": {
+        "keyword": "内部"
+      },
+      "result_sha": "1290604daacc15212b4f59638c659261007a940d59ae4c9dd916d753b78e21de",
+      "result_chars": 12,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "内部转岗 竞聘 调动",
+        "top_k": 10
+      },
+      "result_sha": "6fc2aa30c0cc113c568cb2bab5320954bc79d6fb5c0c6ed48f347c63ee891eb3",
+      "result_chars": 1946,
+      "hits": 5
+    }
+  ],
+  "answer": null,
+  "status": "unfinished",
+  "tokens": 8651,
+  "started_at": "2026-11-01T00:30:59",
+  "elapsed_seconds": 24.14,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "招聘"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_hr_campus",
+            "title": "# 澜图智能 2026 届校园招聘方案"
+          },
+          {
+            "doc_id": "lantu_hr_recruitment",
+            "title": "# 澜图智能招聘管理制度"
+          },
+          {
+            "doc_id": "lantu_hr_social",
+            "title": "# 澜图智能社会招聘管理办法"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_recruitment",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_hr_recruitment",
+        "title": "# 澜图智能招聘管理制度",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 366,
+        "text": "# 澜图智能招聘管理制度\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-05 09:00\n更新时间：2025-06-10 10:00\n版本号：v3.1\n文档类型：hr\n文档族：recruitment\n生效日期：2025-06-10\n\n## 一、招聘原则\n\n坚持公开、公平、择优，优先内部推荐与内部转岗；关键岗位实行背景调查与多轮面试。\n\n## 二、招聘流程\n\n需求审批 → 简历筛选 → 专业面试 → 综合面试 → 薪酬沟通 → 背景调查 → 发放录用通知。研发岗位增加技术笔试与代码评审。\n\n## 三、面试分工\n\nHR 负责价值观与稳定性评估，用人部门负责专业能力，交叉面试官由隔级主管担任。\n\n## 四、录用与入职\n\n录用通知有效期 7 天；入职须提供离职证明、学历证书与体检报告；背景调查异常的可撤销录用。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_social",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_hr_social",
+        "title": "# 澜图智能社会招聘管理办法",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 361,
+        "text": "# 澜图智能社会招聘管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-02-01 09:00\n更新时间：2025-07-15 11:00\n版本号：v2.5\n文档类型：hr\n文档族：social_recruitment\n生效日期：2025-07-15\n\n## 一、适用岗位\n\n适用于经理级及以上、高级技术专家与紧缺岗位；年度社招计划 200 人。\n\n## 二、渠道管理\n\n使用猎头、招聘平台、内部推荐与行业社群。猎头费用为年薪的 20%-25%，保证期 90 天。\n\n## 三、内部推荐\n\n员工推荐成功入职并转正后，奖励 3,000-10,000 元；关键技术岗位奖励 15,000 元。\n\n## 四、定级与薪酬\n\n依据岗位价值与候选人能力定级，薪酬在带宽内浮动；超出带宽须 HRVP 与 CFO 审批。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_campus",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_hr_campus",
+        "title": "# 澜图智能 2026 届校园招聘方案",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 417,
+        "text": "# 澜图智能 2026 届校园招聘方案\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-08-15 09:00\n更新时间：2025-09-20 15:00\n版本号：v1.0\n文档类型：hr\n文档族：campus_recruitment_2026\n生效日期：2025-09-20\n\n## 一、招聘计划\n\n2026 届校招计划 120 人，其中研发 78 人、产品 12 人、销售 18 人、职能 12 人；重点院校 18 所。\n\n## 二、岗位方向\n\n机器人算法、运动控制、机器视觉、嵌入式软件、机械结构、售前技术。硕士及以上占比目标 65%。\n\n## 三、薪酬方案\n\n本科年薪 18-24 万元，硕士 25-35 万元，博士 40-60 万元；提供苏州落户、人才公寓与安家补贴。\n\n## 四、招聘节奏\n\n9 月宣讲、10 月笔试面试、11 月发放 offer、2026 年 7 月入职；实习可提前至 2026 年 3 月。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "list",
+      "args": {
+        "keyword": "内部"
+      },
+      "result": {
+        "docs": []
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "内部转岗 竞聘 调动",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_hr_recruitment",
+            "title": "# 澜图智能招聘管理制度",
+            "chunk": 0,
+            "score": 13.981,
+            "snippet": "# 澜图智能招聘管理制度\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-05 09:00\n更新时间：2025-06-10 10:00\n版本号：v3.1\n文档类型：hr\n文档族：recruitment\n生效日期：2025-06-10\n\n## 一、招聘原则\n\n坚持公开、公平、择优，优先内部推荐与内部转岗；关键岗位实行背景调查与多轮面试。\n\n## 二、招聘流程\n\n需求审批 → 简历筛选 → 专业面试 → 综合面试 → 薪酬沟通 → 背景调查 → 发放录用通知。研发岗位增加技术笔试与代码评审。\n\n## 三"
+          },
+          {
+            "doc_id": "lantu_hr_social",
+            "title": "# 澜图智能社会招聘管理办法",
+            "chunk": 0,
+            "score": 4.74,
+            "snippet": "# 澜图智能社会招聘管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-02-01 09:00\n更新时间：2025-07-15 11:00\n版本号：v2.5\n文档类型：hr\n文档族：social_recruitment\n生效日期：2025-07-15\n\n## 一、适用岗位\n\n适用于经理级及以上、高级技术专家与紧缺岗位；年度社招计划 200 人。\n\n## 二、渠道管理\n\n使用猎头、招聘平台、内部推荐与行业社群。猎头费用为年薪的 20%-25%，保证期 90 天。\n\n## 三、内部推荐\n\n员工推荐成功入"
+          },
+          {
+            "doc_id": "lantu_policy_data_classification",
+            "title": "# 澜图智能数据分级与分类管理规范",
+            "chunk": 0,
+            "score": 4.169,
+            "snippet": "# 澜图智能数据分级与分类管理规范\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-05-20 09:00\n更新时间：2025-09-10 14:00\n版本号：v2.5\n文档类型：policy\n文档族：data_classification\n生效日期：2025-09-10\n\n## 一、分级定义\n\n数据分为 L1 公开、L2 内部、L3 机密、L4 绝密四级。L1 可对外发布；L2 限公司内部；L3 限授权岗位；L4 限特定人员并加密存储。\n\n## 二、典型数据\n\nL1：宣传资料、公开财报；L2：一般制度、会"
+          },
+          {
+            "doc_id": "lantu_hr_training_system",
+            "title": "# 澜图智能培训体系与年度计划",
+            "chunk": 0,
+            "score": 3.533,
+            "snippet": "# 澜图智能培训体系与年度计划\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-02-01 09:00\n更新时间：2025-12-01 10:00\n版本号：v3.6\n文档类型：hr\n文档族：training_system\n生效日期：2025-12-01\n\n## 一、培训体系\n\n分为新员工培训、专业培训、管理培训与领导力培训四大类，覆盖全员全周期。\n\n## 二、年度计划\n\n2025 年计划培训 12,000 人次，人均 32 小时；专业培训占比 55%，管理培训 20%，新员工 15%，合规安全 10%。\n"
+          },
+          {
+            "doc_id": "lantu_finance_cost",
+            "title": "# 澜图智能成本管理与降本专项报告",
+            "chunk": 0,
+            "score": 3.463,
+            "snippet": "# 澜图智能成本管理与降本专项报告\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-09-05 09:00\n更新时间：2025-09-12 17:00\n版本号：v1.3\n文档类型：finance\n文档族：cost_management\n生效日期：2025-09-12\n\n## 一、降本目标\n\n2025 年降本目标 1.8 亿元，前三季度完成 1.48 亿元，完成率 82%。\n\n## 二、主要项目\n\n减速器国产替代降本 4,200 万元，伺服驱动器自研降本 3,800 万元，结构件轻量化降本 2,600 万元，物"
+          }
+        ]
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

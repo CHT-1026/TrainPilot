@@ -1,0 +1,142 @@
+{
+  "qid": "C0101",
+  "question": "半导体方案的对接系统 AMHS、MES、EAP 中，哪些在其他产品文档中也出现过？AMR 手册与光伏方案分别对接什么？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>AMHS MES EAP 对接</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list><parameter=keyword>AMR</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 120,
+        "prompt_tokens": 378,
+        "total_tokens": 498,
+        "completion_tokens_details": {
+          "reasoning_tokens": 71
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 4.266
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search>{\"query\":\"半导体方案 AMHS MES EAP 对接系统\",\"top_k\":10}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 45,
+        "prompt_tokens": 464,
+        "total_tokens": 509,
+        "completion_tokens_details": {
+          "reasoning_tokens": 14
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.766
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>半导体方案 AMHS MES EAP 对接</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 57,
+        "prompt_tokens": 532,
+        "total_tokens": 589,
+        "completion_tokens_details": {
+          "reasoning_tokens": 23
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 2.265
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>半导体 AMHS MES EAP 对接系统</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 69,
+        "prompt_tokens": 603,
+        "total_tokens": 672,
+        "completion_tokens_details": {
+          "reasoning_tokens": 35
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 2.125
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>半导体 AMHS MES EAP 对接</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 85,
+        "prompt_tokens": 674,
+        "total_tokens": 759,
+        "completion_tokens_details": {
+          "reasoning_tokens": 52
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 4.875
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>半导体 AMHS MES EAP 对接系统</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 87,
+        "prompt_tokens": 744,
+        "total_tokens": 831,
+        "completion_tokens_details": {
+          "reasoning_tokens": 53
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 2.203
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"由于本次会话中所有检索调用均未成功返回任何文档内容，我没有任何可核对的资料来回答：(1) 半导体方案中对接的 AMHS、MES、EAP 系统哪些在其他产品文档中也出现过；(2) AMR 手册与光伏方案分别对接什么系统。为避免凭空猜测，需在检索工具正常返回后重新提问，或补充相关文档（如半导体方案书、AMR 手册、光伏方案书）。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 169,
+        "prompt_tokens": 812,
+        "total_tokens": 981,
+        "completion_tokens_details": {
+          "reasoning_tokens": 37
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 4.266
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "由于本次会话中所有检索调用均未成功返回任何文档内容，我没有任何可核对的资料来回答：(1) 半导体方案中对接的 AMHS、MES、EAP 系统哪些在其他产品文档中也出现过；(2) AMR 手册与光伏方案分别对接什么系统。为避免凭空猜测，需在检索工具正常返回后重新提问，或补充相关文档（如半导体方案书、AMR 手册、光伏方案书）。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4839,
+  "started_at": "2026-11-01T04:19:53",
+  "elapsed_seconds": 21.77,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.014,
+    "number_recall": 0.0
+  }
+}

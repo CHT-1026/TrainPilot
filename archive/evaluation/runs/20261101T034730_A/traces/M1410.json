@@ -1,0 +1,142 @@
+{
+  "qid": "M1410",
+  "question": "最新的控制系统架构文档里，旧版 v2.4 用的是什么现场总线、总线周期多少、单条总线最多接几个从站？旧版文档自己是怎么规定时间效力和适用范围的？",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=list><parameter=keyword>控制系统架构</parameter></tool_call>",
+      "usage": {
+        "completion_tokens": 67,
+        "prompt_tokens": 390,
+        "total_tokens": 457,
+        "completion_tokens_details": {
+          "reasoning_tokens": 50
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.187
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search>{\"query\": \"控制系统架构 v2.4 现场总线 总线周期 从站\", \"top_k\": 10}",
+      "usage": {
+        "completion_tokens": 56,
+        "prompt_tokens": 444,
+        "total_tokens": 500,
+        "completion_tokens_details": {
+          "reasoning_tokens": 18
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.047
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>控制系统架构 v2.4 现场总线 总线周期 从站</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 70,
+        "prompt_tokens": 519,
+        "total_tokens": 589,
+        "completion_tokens_details": {
+          "reasoning_tokens": 26
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.438
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>控制系统架构 v2.4 现场总线 总线周期 从站</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 70,
+        "prompt_tokens": 600,
+        "total_tokens": 670,
+        "completion_tokens_details": {
+          "reasoning_tokens": 26
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 2.094
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>控制系统架构 v2.4 现场总线 总线周期 从站</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 72,
+        "prompt_tokens": 681,
+        "total_tokens": 753,
+        "completion_tokens_details": {
+          "reasoning_tokens": 28
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 3.156
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>控制系统架构 现场总线 总线周期 从站</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 86,
+        "prompt_tokens": 762,
+        "total_tokens": 848,
+        "completion_tokens_details": {
+          "reasoning_tokens": 46
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 1.875
+    },
+    {
+      "round": 7,
+      "text": "{\"status\": \"not_in_corpus\", \"answer\": \"未能检索到任何相关文档：本次会话中所有检索/列举工具调用均因输出格式问题失败，没有获取到任何文档片段。因此无法确认最新版控制系统架构文档中关于旧版 v2.4 的现场总线类型、总线周期、单条总线最大从站数量，也无法确认旧版文档自述的时间效力与适用范围。为避免臆测，不予作答；建议重新发起检索或澄清文档名称/关键词后再提问。\", \"citations\": [], \"evidence\": []}",
+      "usage": {
+        "completion_tokens": 250,
+        "prompt_tokens": 836,
+        "total_tokens": 1086,
+        "completion_tokens_details": {
+          "reasoning_tokens": 122
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 6.047
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "未能检索到任何相关文档：本次会话中所有检索/列举工具调用均因输出格式问题失败，没有获取到任何文档片段。因此无法确认最新版控制系统架构文档中关于旧版 v2.4 的现场总线类型、总线周期、单条总线最大从站数量，也无法确认旧版文档自述的时间效力与适用范围。为避免臆测，不予作答；建议重新发起检索或澄清文档名称/关键词后再提问。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4903,
+  "started_at": "2026-11-01T06:07:18",
+  "elapsed_seconds": 18.84,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.023,
+    "number_recall": 0.0
+  }
+}

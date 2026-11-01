@@ -1,0 +1,8 @@
+{
+  "fingerprint": "5c756dc217d6bc534b7f2eacfabaaa96e1c99bc5750d22291db7b648cf4887ef",
+  "ok": true,
+  "model": "deepseek-v4-flash",
+  "checked_at": "2026-10-24T15:54:24.338616+08:00",
+  "status": 200,
+  "message": "模型请求成功。"
+}

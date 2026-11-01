@@ -1,0 +1,349 @@
+{
+  "qid": "C0061",
+  "question": "装配方案的换型时间 10 分钟，与星禾电子案例的换型时间 25 分钟、恒锐精密案例由 45 分钟降至 12 分钟相比处于什么水平？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "我需要检索装配方案、星禾电子和恒锐精密案例中的换型时间数据进行核对比较。<tool_call><function=search><parameter=query>换型时间 装配方案 10分钟</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 99,
+        "prompt_tokens": 364,
+        "total_tokens": 463,
+        "completion_tokens_details": {
+          "reasoning_tokens": 38
+        },
+        "prompt_tokens_details": null
+      },
+      "seconds": 2.578
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"换型时间 装配方案 10分钟\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 61,
+        "prompt_tokens": 462,
+        "total_tokens": 523,
+        "completion_tokens_details": {
+          "reasoning_tokens": 29
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.891
+    },
+    {
+      "round": 3,
+      "text": "需要核对三份文档中的换型时间原文，先读取装配方案全文。<tool_call><function=read><parameter=doc_id>lantu_product_assembly</parameter><parameter=offset>0</parameter><parameter=limit>4000</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 98,
+        "prompt_tokens": 2870,
+        "total_tokens": 2968,
+        "completion_tokens_details": {
+          "reasoning_tokens": 37
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 2.859
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_product_assembly\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 37,
+        "prompt_tokens": 2968,
+        "total_tokens": 3005,
+        "completion_tokens_details": {
+          "reasoning_tokens": 6
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2816
+        }
+      },
+      "seconds": 2.25
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=read><parameter=doc_id>lantu_case_04_xinghe</parameter><parameter=offset>0</parameter><parameter=limit>4000</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 63,
+        "prompt_tokens": 3339,
+        "total_tokens": 3402,
+        "completion_tokens_details": {
+          "reasoning_tokens": 17
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2944
+        }
+      },
+      "seconds": 1.781
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_case_04_xinghe\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 43,
+        "prompt_tokens": 3422,
+        "total_tokens": 3465,
+        "completion_tokens_details": {
+          "reasoning_tokens": 8
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3328
+        }
+      },
+      "seconds": 2.938
+    },
+    {
+      "round": 7,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_case_10_hengrui\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 54,
+        "prompt_tokens": 3960,
+        "total_tokens": 4014,
+        "completion_tokens_details": {
+          "reasoning_tokens": 18
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3392
+        }
+      },
+      "seconds": 1.937
+    },
+    {
+      "round": 8,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"LT-Assembly 柔性装配工作站方案（v2.5，生效日期 2025-09-05）的换型时间为 10 分钟，三者对比：1）优于星禾电子案例的 25 分钟（3C 手机中框组装线，2024 年项目，8 条线）——方案比该案例快 15 分钟，约为其 40%；2）优于恒锐精密案例改善后的 12 分钟（由 45 分钟降至 12 分钟，2023 年机床加工自动上下料项目）——方案再快 2 分钟，处于三个数据中的最优水平；3）相比恒锐改善前的 45 分钟基线，则快 35 分钟，仅为其约 22%。需要说明的口径差异：装配方案的 10 分钟是 3C/家电/汽车电子/医疗器械装配场景的方案设计指标，而星禾电子案例（25 分钟）与恒锐精密案例（改善后 12 分钟）均为实际项目交付后的实测成效数据，且恒锐属于机床加工、星禾属于 3C 组装，工艺场景与产线配置（机器人型号、工装快换形式）不同，横向对比仅供参考，不能直接等同于方案在同类场景下的实测表现。综合来看，10 分钟处于三者中最快水平。\",\"citations\":[\"lantu_product_assembly\",\"lantu_case_04_xinghe\",\"lantu_case_10_hengrui\"],\"evidence\":[\"lantu_product_assembly#片段0\",\"lantu_case_04_xinghe#片段0\",\"lantu_case_10_hengrui#片段0\"]}",
+      "usage": {
+        "completion_tokens": 451,
+        "prompt_tokens": 4507,
+        "total_tokens": 4958,
+        "completion_tokens_details": {
+          "reasoning_tokens": 47
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3904
+        }
+      },
+      "seconds": 14.485
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "换型时间 装配方案 10分钟",
+        "top_k": 10
+      },
+      "result_sha": "67f29327524e9c1a257fb1769e95d13dc84fda80a3b47645ff2a44228bf2081a",
+      "result_chars": 3898,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_assembly",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "b952e1e15024ac725a6dbfe6d6926055ad5c9c7f1f0bb9ba2c7893266ebc91c5",
+      "result_chars": 555,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_case_04_xinghe",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "ade389e4ef7864ddf3bc4886b64ecf806f65fdd075578d396717077e35169133",
+      "result_chars": 785,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_case_10_hengrui",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "c2c04aceae569ccd5c46e3b075aa812b99de357e8540ee5e431d7a9706a102fa",
+      "result_chars": 791,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "LT-Assembly 柔性装配工作站方案（v2.5，生效日期 2025-09-05）的换型时间为 10 分钟，三者对比：1）优于星禾电子案例的 25 分钟（3C 手机中框组装线，2024 年项目，8 条线）——方案比该案例快 15 分钟，约为其 40%；2）优于恒锐精密案例改善后的 12 分钟（由 45 分钟降至 12 分钟，2023 年机床加工自动上下料项目）——方案再快 2 分钟，处于三个数据中的最优水平；3）相比恒锐改善前的 45 分钟基线，则快 35 分钟，仅为其约 22%。需要说明的口径差异：装配方案的 10 分钟是 3C/家电/汽车电子/医疗器械装配场景的方案设计指标，而星禾电子案例（25 分钟）与恒锐精密案例（改善后 12 分钟）均为实际项目交付后的实测成效数据，且恒锐属于机床加工、星禾属于 3C 组装，工艺场景与产线配置（机器人型号、工装快换形式）不同，横向对比仅供参考，不能直接等同于方案在同类场景下的实测表现。综合来看，10 分钟处于三者中最快水平。",
+    "citations": [
+      "lantu_product_assembly",
+      "lantu_case_04_xinghe",
+      "lantu_case_10_hengrui"
+    ],
+    "evidence": [
+      "lantu_product_assembly#片段0",
+      "lantu_case_04_xinghe#片段0",
+      "lantu_case_10_hengrui#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 22798,
+  "started_at": "2026-11-01T02:13:40",
+  "elapsed_seconds": 31.72,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "换型时间 装配方案 10分钟",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_product_assembly",
+            "title": "# LT-Assembly 柔性装配工作站方案",
+            "chunk": 0,
+            "score": 19.058,
+            "snippet": "# LT-Assembly 柔性装配工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-07-15 09:00\n更新时间：2025-09-05 11:00\n版本号：v2.5\n文档类型：product\n文档族：solution_assembly\n生效日期：2025-09-05\n\n## 一、方案组成\n\n由 LT-R12/LT-R20 机器人、力控末端、LT-V3D 视觉与快换工装组成，支持多品种混线装配。\n\n## 二、工艺指标\n\n装配节拍 3.2 秒/件，力控精度 ±2 N，视觉定位精度 ±0.05 mm，"
+          },
+          {
+            "doc_id": "lantu_case_10_hengrui",
+            "title": "# 客户案例：恒锐精密机床上下料项目",
+            "chunk": 0,
+            "score": 10.733,
+            "snippet": "# 客户案例：恒锐精密机床上下料项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2023-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_hengrui\n生效日期：2023-12-20\n\n## 一、客户背景\n\n恒锐精密位于宁波，主营金属加工业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2023 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖"
+          },
+          {
+            "doc_id": "lantu_case_04_xinghe",
+            "title": "# 客户案例：星禾电子精密组装项目",
+            "chunk": 0,
+            "score": 9.916,
+            "snippet": "# 客户案例：星禾电子精密组装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_xinghe\n生效日期：2024-12-20\n\n## 一、客户背景\n\n星禾电子位于昆山，主营3C 电子业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖8"
+          },
+          {
+            "doc_id": "lantu_meeting_board",
+            "title": "# 2025 年第二次临时董事会决议",
+            "chunk": 0,
+            "score": 7.007,
+            "snippet": "# 2025 年第二次临时董事会决议\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-04-25 09:00\n更新时间：2025-04-25 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_board_2025\n生效日期：2025-04-25\n\n## 一、会议信息\n\n时间：2025 年 4 月 25 日；方式：现场加视频；应到董事 9 人，实到 9 人；列席：高管团队。\n\n## 二、审议事项\n\n审议通过《2024 年度利润分配方案》《2025 年度研发投入预算》《苏州二期"
+          },
+          {
+            "doc_id": "lantu_product_painting",
+            "title": "# LT-Paint 机器人喷涂工作站方案",
+            "chunk": 0,
+            "score": 6.578,
+            "snippet": "# LT-Paint 机器人喷涂工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-08-01 09:00\n更新时间：2025-04-18 15:00\n版本号：v2.2\n文档类型：product\n文档族：solution_painting\n生效日期：2025-04-18\n\n## 一、方案组成\n\n以 LT-R20 防爆机器人为核心，集成旋杯喷枪、供漆系统、防爆控制柜与 VOC 处理装置。\n\n## 二、工艺指标\n\n换色时间 6 分钟，涂料利用率提升 23%，膜厚均匀性 ±5 μm，VOC 排放下降 19%。"
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 1,
+            "score": 6.294,
+            "snippet": "| 产品线 | 代表型号 | 负载 | 典型行业 |\n| --- | --- | --- | --- |\n| 六轴机器人 | LT-R6/R12/R20/R50/R210 | 6-210 kg | 汽车、锂电、金属加工 |\n| SCARA | LT-S4/S10 | 4-10 kg | 3C、光伏、食品 |\n| 移动机器人 | LT-AMR-500/1000/2000 | 500-2,000 kg | 物流、半导体 |\n| 机器视觉 | LT-V3D | — | 装配、检测 |\n| 控制器 | LT-C800 | "
+          },
+          {
+            "doc_id": "lantu_case_12_shengda",
+            "title": "# 客户案例：昇达电梯门板装配项目",
+            "chunk": 0,
+            "score": 6.047,
+            "snippet": "# 客户案例：昇达电梯门板装配项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_shengda\n生效日期：2025-12-20\n\n## 一、客户背景\n\n昇达电梯位于湖州，主营电梯业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖3 条"
+          },
+          {
+            "doc_id": "lantu_case_05_hailing",
+            "title": "# 客户案例：海翎家电喷涂与打磨项目",
+            "chunk": 0,
+            "score": 4.67,
+            "snippet": "# 客户案例：海翎家电喷涂与打磨项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_hailing\n生效日期：2025-12-20\n\n## 一、客户背景\n\n海翎家电位于顺德，主营家电业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖4 "
+          },
+          {
+            "doc_id": "lantu_policy_attendance_2025",
+            "title": "# 澜图智能考勤管理制度（2025版）",
+            "chunk": 0,
+            "score": 4.36,
+            "snippet": "# 澜图智能考勤管理制度（2025版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-12-20 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：attendance\n生效日期：2025-01-01\n\n## 一、打卡规则\n\n员工每日上下班各打卡一次，漏打卡须在 3 个工作日内提交补卡申请，每月补卡不超过 4 次。\n\n## 二、弹性工作\n\n上班弹性 60 分钟，9:00-10:00 到岗均视为正常；每月可申请远程办公 4 天，须提前 1 个工作日审"
+          },
+          {
+            "doc_id": "lantu_policy_attendance_2024",
+            "title": "# 澜图智能考勤管理制度（2024版）",
+            "chunk": 0,
+            "score": 3.912,
+            "snippet": "# 澜图智能考勤管理制度（2024版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：attendance\n生效日期：2024-01-01\n\n## 一、打卡规则\n\n员工每日上下班各打卡一次，漏打卡须在 3 个工作日内提交补卡申请，每月补卡不超过 3 次。\n\n## 二、弹性工作\n\n上班弹性 30 分钟，9:00-9:30 到岗均视为正常；每月可申请远程办公 2 天，须提前 1 个工作日审批"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_assembly",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_product_assembly",
+        "title": "# LT-Assembly 柔性装配工作站方案",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 377,
+        "text": "# LT-Assembly 柔性装配工作站方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-07-15 09:00\n更新时间：2025-09-05 11:00\n版本号：v2.5\n文档类型：product\n文档族：solution_assembly\n生效日期：2025-09-05\n\n## 一、方案组成\n\n由 LT-R12/LT-R20 机器人、力控末端、LT-V3D 视觉与快换工装组成，支持多品种混线装配。\n\n## 二、工艺指标\n\n装配节拍 3.2 秒/件，力控精度 ±2 N，视觉定位精度 ±0.05 mm，换型时间 10 分钟。\n\n## 三、质量追溯\n\n每件产品记录扭矩、位移与视觉检测结果，数据保存 5 年，支持 MES 追溯与 SPC 分析。\n\n## 四、适用行业\n\n3C 电子、家电、汽车电子与医疗器械，已交付 180 余套工作站。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_case_04_xinghe",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_case_04_xinghe",
+        "title": "# 客户案例：星禾电子精密组装项目",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 607,
+        "text": "# 客户案例：星禾电子精密组装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2024-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_xinghe\n生效日期：2024-12-20\n\n## 一、客户背景\n\n星禾电子位于昆山，主营3C 电子业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2024 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖8 条手机中框组装线，要求 6 个月内完成交付。\n\n## 三、方案配置\n\n澜图智能提供 340 台 LT-R6 六轴机器人，配套 LT-C800 控制器、LT-V3D 视觉与 LantuTwin 数字孪生仿真，整线合同金额 1.25 亿元。\n\n## 四、实施过程\n\n项目由客户成功部牵头，联合研发、制造、质量与售后服务部组成 26 人项目组。完成现场勘测、虚拟调试、设备安装与 72 小时连续试运行，实际交付周期 5 个月。\n\n## 五、成效数据\n\n组装人力减少 58%，直通率 98.9%，换型时间 25 分钟。项目通过客户验收，并获得客户年度优秀供应商提名。\n\n## 六、客户评价\n\n星禾电子自动化课长 唐睿表示：“澜图团队响应及时，方案在节拍与稳定性上达到预期，后续产线扩产将继续合作。”\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_case_10_hengrui",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_case_10_hengrui",
+        "title": "# 客户案例：恒锐精密机床上下料项目",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 611,
+        "text": "# 客户案例：恒锐精密机床上下料项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2023-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_hengrui\n生效日期：2023-12-20\n\n## 一、客户背景\n\n恒锐精密位于宁波，主营金属加工业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2023 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖32 台数控机床单元，要求 6 个月内完成交付。\n\n## 三、方案配置\n\n澜图智能提供 64 台 LT-R12 六轴机器人，配套 LT-C800 控制器、LT-V3D 视觉与 LantuTwin 数字孪生仿真，整线合同金额 4,200 万元。\n\n## 四、实施过程\n\n项目由客户成功部牵头，联合研发、制造、质量与售后服务部组成 26 人项目组。完成现场勘测、虚拟调试、设备安装与 72 小时连续试运行，实际交付周期 5 个月。\n\n## 五、成效数据\n\n换型时间由 45 分钟降至 12 分钟，良率 99.4%，夜班无人化。项目通过客户验收，并获得客户年度优秀供应商提名。\n\n## 六、客户评价\n\n恒锐精密生产部长 蒋涛表示：“澜图团队响应及时，方案在节拍与稳定性上达到预期，后续产线扩产将继续合作。”\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_product_assembly",
+      "lantu_case_04_xinghe",
+      "lantu_case_10_hengrui"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.068,
+    "number_recall": 0.0
+  }
+}

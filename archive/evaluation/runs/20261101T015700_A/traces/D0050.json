@@ -1,0 +1,58 @@
+{
+  "qid": "D0050",
+  "question": "客户方由谁对恒锐精密的自动化项目作出评价？此人在客户处的职务是什么？",
+  "question_type": "人物关系推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>恒锐精密 自动化项目 客户 评价</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 65,
+        "prompt_tokens": 338,
+        "total_tokens": 403,
+        "completion_tokens_details": {
+          "reasoning_tokens": 28
+        },
+        "prompt_tokens_details": null
+      },
+      "seconds": 2.125
+    },
+    {
+      "round": 2,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"检索未能定位到关于'恒锐精密'自动化项目及客户方评价人的资料，无法确认评价人姓名及其在客户处的职务。如需回答，请提供该资料所属的文档标题或关键词，以便进一步检索。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 90,
+        "prompt_tokens": 412,
+        "total_tokens": 502,
+        "completion_tokens_details": {
+          "reasoning_tokens": 19
+        },
+        "prompt_tokens_details": null
+      },
+      "seconds": 3.969
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "检索未能定位到关于'恒锐精密'自动化项目及客户方评价人的资料，无法确认评价人姓名及其在客户处的职务。如需回答，请提供该资料所属的文档标题或关键词，以便进一步检索。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 905,
+  "started_at": "2026-11-01T02:04:45",
+  "elapsed_seconds": 6.09,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.022,
+    "number_recall": 0.0
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "qid": "M1504",
+  "question": "用户：现在迟到多久以内要扣绩效？一个月最多能补几次卡？\n助手：按现行（2025 年 1 月 1 日起生效）版本，迟到 60 分钟以内每次扣减绩效 0.5 分，漏打卡每月补卡不超过 4 次。\n用户：我想看的是 2024 年那版的旧规定。",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"考勤\"}}",
+      "usage": {
+        "prompt_tokens": 437,
+        "total_tokens": 568,
+        "completion_tokens": 131,
+        "completion_tokens_details": {
+          "reasoning_tokens": 113,
+          "text_tokens": 131
+        }
+      },
+      "seconds": 1.61
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_attendance_2024\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 548,
+        "total_tokens": 774,
+        "completion_tokens": 226,
+        "completion_tokens_details": {
+          "reasoning_tokens": 187,
+          "text_tokens": 226
+        }
+      },
+      "seconds": 2.062
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"按2024版规定，迟到30分钟以内每次扣减绩效0.5分；每月补卡不超过3次。\",\"citations\":[\"lantu_policy_attendance_2024\"],\"evidence\":[\"lantu_policy_attendance_2024#二\",\"lantu_policy_attendance_2024#一\"]}",
+      "usage": {
+        "prompt_tokens": 959,
+        "total_tokens": 1294,
+        "completion_tokens": 335,
+        "completion_tokens_details": {
+          "reasoning_tokens": 247,
+          "text_tokens": 335
+        }
+      },
+      "seconds": 2.813
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "考勤"
+      },
+      "result_sha": "f907e8cd7e4d9d669aeb29b941afff7a229c60220853bc0644cb94543d7f49b2",
+      "result_chars": 162,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_attendance_2024",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "d8ae2dd692b8619f705d570eb462ec3887560eae666dda1cf3f7c2dd5f922147",
+      "result_chars": 575,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "按2024版规定，迟到30分钟以内每次扣减绩效0.5分；每月补卡不超过3次。",
+    "citations": [
+      "lantu_policy_attendance_2024"
+    ],
+    "evidence": [
+      "lantu_policy_attendance_2024#二",
+      "lantu_policy_attendance_2024#一"
+    ]
+  },
+  "status": "answered",
+  "tokens": 2636,
+  "started_at": "2026-11-01T06:50:12",
+  "elapsed_seconds": 6.5,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "考勤"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_policy_attendance_2024",
+            "title": "# 澜图智能考勤管理制度（2024版）"
+          },
+          {
+            "doc_id": "lantu_policy_attendance_2025",
+            "title": "# 澜图智能考勤管理制度（2025版）"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_attendance_2024",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_attendance_2024",
+        "title": "# 澜图智能考勤管理制度（2024版）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 395,
+        "text": "# 澜图智能考勤管理制度（2024版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：attendance\n生效日期：2024-01-01\n\n## 一、打卡规则\n\n员工每日上下班各打卡一次，漏打卡须在 3 个工作日内提交补卡申请，每月补卡不超过 3 次。\n\n## 二、弹性工作\n\n上班弹性 30 分钟，9:00-9:30 到岗均视为正常；每月可申请远程办公 2 天，须提前 1 个工作日审批。\n\n## 三、迟到早退\n\n迟到 30 分钟以内每次扣减绩效 0.5 分；超过 30 分钟按事假半天处理；月度累计迟到 5 次以上通报批评。\n\n## 四、加班与调休\n\n工作日加班按 1.5 倍调休，休息日 2 倍，法定节假日 3 倍工资。加班须提前在 OA 提交申请。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.5,
+    "cited": [
+      "lantu_policy_attendance_2024"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.174,
+    "number_recall": 0.5
+  }
+}

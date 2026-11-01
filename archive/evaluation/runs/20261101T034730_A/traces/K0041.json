@@ -1,0 +1,351 @@
+{
+  "qid": "K0041",
+  "question": "2025 年第三季度经营分析会（10 月 10 日）决议：苏州二期扩产方案于 11 月完成可行性论证；董事会决议（4 月 25 日）已审议通过《苏州二期扩产项目议案》，投资 3.8 亿元、新增年产能 6,000 台、预计 2026 年四季度投产；基地布局文档也写 2026 年通过苏州二期扩产将总产能提升至 36,000 台。请梳理这三份文件的时序与逻辑，指出苏二期项目在 11 月「完成可行性论证」这一动作的定位。",
+  "question_type": "时间与因果推断",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>苏州二期扩产 可行性论证</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list><parameter=keyword>苏州</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 167,
+        "prompt_tokens": 496,
+        "total_tokens": 663,
+        "completion_tokens_details": {
+          "reasoning_tokens": 117
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 4.844
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>苏州二期扩产 可行性论证 经营分析会</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 104,
+        "prompt_tokens": 583,
+        "total_tokens": 687,
+        "completion_tokens_details": {
+          "reasoning_tokens": 65
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 2.406
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>苏州二期扩产 可行性论证 经营分析会</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 49,
+        "prompt_tokens": 659,
+        "total_tokens": 708,
+        "completion_tokens_details": {
+          "reasoning_tokens": 10
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 3.36
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"苏州二期扩产 可行性论证 经营分析会\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 47,
+        "prompt_tokens": 735,
+        "total_tokens": 782,
+        "completion_tokens_details": {
+          "reasoning_tokens": 13
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 1.109
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_meeting_ops_2025q3\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 80,
+        "prompt_tokens": 3176,
+        "total_tokens": 3256,
+        "completion_tokens_details": {
+          "reasoning_tokens": 42
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 3.281
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_meeting_board\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 62,
+        "prompt_tokens": 3706,
+        "total_tokens": 3768,
+        "completion_tokens_details": {
+          "reasoning_tokens": 31
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3136
+        }
+      },
+      "seconds": 1.781
+    },
+    {
+      "round": 7,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_company_campus\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 72,
+        "prompt_tokens": 4155,
+        "total_tokens": 4227,
+        "completion_tokens_details": {
+          "reasoning_tokens": 41
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3648
+        }
+      },
+      "seconds": 3.016
+    },
+    {
+      "round": 8,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"三份文件的时序与逻辑关系如下：\\n\\n**1. 时序梳理（按生效日期）**\\n- 2025-04-25｜董事会决议（lantu_meeting_board）：审议通过《苏州二期扩产项目议案》，确定投资 3.8 亿元、新增年产能 6,000 台、预计 2026 年四季度投产——属于**项目立项与投资决策**节点。\\n- 2025-10-10｜Q3 经营分析会（lantu_meeting_ops_2025q3）：决议事项第 2 条“苏州二期扩产方案于 11 月完成可行性论证”——属于**立项后的方案细化与可行性验证**节点。此时背景是苏州基地产能利用率已达 92%，扩产紧迫性上升。\\n- 2025-11-20｜基地布局文档 v3.0（lantu_company_campus）：产能规划章节写明“2026 年计划通过苏州二期扩产将总产能提升至 36,000 台，预计资本开支 3.8 亿元”——属于**论证后落地更新的规划口径**，与董事会决议数字完全一致（30,000 台现有产能 + 6,000 台新增 = 36,000 台）。\\n\\n**2. 三份文件口径一致性**\\n投资金额 3.8 亿元、新增产能 6,000 台、总产能 36,000 台、2026 年四季度投产，四处关键数字跨文档相互印证，无矛盾。\\n\\n**3. 11 月「完成可行性论证」的定位**\\n该动作是**董事会 4 月立项批复之后、项目正式开工/建设之前的一个中间执行环节**：董事会通过的是《扩产项目议案》（投资方向与总量决策），而 11 月完成的可行性论证是对“扩产方案”（技术路线、选址、设备选型、经济性等）的落地性验证与细化。它是把董事会的原则性批准转化为可执行建设方案的必经步骤，服务于“2026 年四季度投产”这一既定目标——即论证须在 2025 年底前完成，才能为 2026 年的建设周期留出合理窗口。\\n\\n简言之：4 月是“决策批不批”，11 月是“论证怎么建”，11 月 20 日的基地布局文档则是论证推进后对产能规划口径的正式固化。\",\"citations\":[\"lantu_meeting_board\",\"lantu_meeting_ops_2025q3\",\"lantu_company_campus\"],\"evidence\":[\"lantu_meeting_board#审议事项/扩产项目：审议通过《苏州二期扩产项目议案》；苏州二期投资 3.8 亿元，新增年产能 6,000 台，预计 2026 年四季度投产\",\"lantu_meeting_ops_2025q3#四、决议事项2：苏州二期扩产方案于 11 月完成可行性论证；三、问题与风险：苏州基地产能利用率达到 92%\",\"lantu_company_campus#四、产能规划：三大基地合计年产能 30,000 台。2026 年计划通过苏州二期扩产将总产能提升至 36,000 台，预计资本开支 3.8 亿元（v3.0，生效日期 2025-11-20）\"]}",
+      "usage": {
+        "completion_tokens": 1349,
+        "prompt_tokens": 4650,
+        "total_tokens": 5999,
+        "completion_tokens_details": {
+          "reasoning_tokens": 517
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 4096
+        }
+      },
+      "seconds": 29.375
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "苏州二期扩产 可行性论证 经营分析会",
+        "top_k": 10
+      },
+      "result_sha": "d9c16599b0b1139c558cadc223023a96d0e78fd23e17923e311ee253cc3bf754",
+      "result_chars": 3875,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_meeting_ops_2025q3",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "9b5126d850c89312b819a15dbbdfa30aaf6b72b355886f35dbc026e234828a1b",
+      "result_chars": 695,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_meeting_board",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "5a536b896e28dfdc5fc7a039577552044e472337f7770f2d694166004852b55c",
+      "result_chars": 617,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_company_campus",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "b991a0f6e405ada0f7d62138d18172acf9e06f841009be7393e2ef8a9df4b6d3",
+      "result_chars": 695,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "三份文件的时序与逻辑关系如下：\n\n**1. 时序梳理（按生效日期）**\n- 2025-04-25｜董事会决议（lantu_meeting_board）：审议通过《苏州二期扩产项目议案》，确定投资 3.8 亿元、新增年产能 6,000 台、预计 2026 年四季度投产——属于**项目立项与投资决策**节点。\n- 2025-10-10｜Q3 经营分析会（lantu_meeting_ops_2025q3）：决议事项第 2 条“苏州二期扩产方案于 11 月完成可行性论证”——属于**立项后的方案细化与可行性验证**节点。此时背景是苏州基地产能利用率已达 92%，扩产紧迫性上升。\n- 2025-11-20｜基地布局文档 v3.0（lantu_company_campus）：产能规划章节写明“2026 年计划通过苏州二期扩产将总产能提升至 36,000 台，预计资本开支 3.8 亿元”——属于**论证后落地更新的规划口径**，与董事会决议数字完全一致（30,000 台现有产能 + 6,000 台新增 = 36,000 台）。\n\n**2. 三份文件口径一致性**\n投资金额 3.8 亿元、新增产能 6,000 台、总产能 36,000 台、2026 年四季度投产，四处关键数字跨文档相互印证，无矛盾。\n\n**3. 11 月「完成可行性论证」的定位**\n该动作是**董事会 4 月立项批复之后、项目正式开工/建设之前的一个中间执行环节**：董事会通过的是《扩产项目议案》（投资方向与总量决策），而 11 月完成的可行性论证是对“扩产方案”（技术路线、选址、设备选型、经济性等）的落地性验证与细化。它是把董事会的原则性批准转化为可执行建设方案的必经步骤，服务于“2026 年四季度投产”这一既定目标——即论证须在 2025 年底前完成，才能为 2026 年的建设周期留出合理窗口。\n\n简言之：4 月是“决策批不批”，11 月是“论证怎么建”，11 月 20 日的基地布局文档则是论证推进后对产能规划口径的正式固化。",
+    "citations": [
+      "lantu_meeting_board",
+      "lantu_meeting_ops_2025q3",
+      "lantu_company_campus"
+    ],
+    "evidence": [
+      "lantu_meeting_board#审议事项/扩产项目：审议通过《苏州二期扩产项目议案》；苏州二期投资 3.8 亿元，新增年产能 6,000 台，预计 2026 年四季度投产",
+      "lantu_meeting_ops_2025q3#四、决议事项2：苏州二期扩产方案于 11 月完成可行性论证；三、问题与风险：苏州基地产能利用率达到 92%",
+      "lantu_company_campus#四、产能规划：三大基地合计年产能 30,000 台。2026 年计划通过苏州二期扩产将总产能提升至 36,000 台，预计资本开支 3.8 亿元（v3.0，生效日期 2025-11-20）"
+    ]
+  },
+  "status": "answered",
+  "tokens": 20090,
+  "started_at": "2026-11-01T05:37:12",
+  "elapsed_seconds": 49.17,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "苏州二期扩产 可行性论证 经营分析会",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_meeting_ops_2025q3",
+            "title": "2025 年第三季度经营分析会纪要",
+            "chunk": 0,
+            "score": 49.208,
+            "snippet": "2025 年第三季度经营分析会纪要\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-10-10 09:00\n更新时间：2025-10-10 18:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_ops_2025q3\n生效日期：2025-10-10\n一、会议信息\n时间：2025 年 10 月 10 日 09:00-12:00；地点：苏州总部 3 楼会议室；主持：顾承澜；参会：沈亦舟、周敏仪、韩立恒、罗嘉树、陈依然、潘文博、邵岚。\n二、经营回顾\n第三季度营业收入 11.52 亿元，同"
+          },
+          {
+            "doc_id": "lantu_meeting_board",
+            "title": "# 2025 年第二次临时董事会决议",
+            "chunk": 0,
+            "score": 21.765,
+            "snippet": "# 2025 年第二次临时董事会决议\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-04-25 09:00\n更新时间：2025-04-25 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_board_2025\n生效日期：2025-04-25\n\n## 一、会议信息\n\n时间：2025 年 4 月 25 日；方式：现场加视频；应到董事 9 人，实到 9 人；列席：高管团队。\n\n## 二、审议事项\n\n审议通过《2024 年度利润分配方案》《2025 年度研发投入预算》《苏州二期"
+          },
+          {
+            "doc_id": "lantu_company_campus",
+            "title": "# 澜图智能制造基地与产能布局",
+            "chunk": 0,
+            "score": 15.396,
+            "snippet": "# 澜图智能制造基地与产能布局\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2024-04-12 09:00\n更新时间：2025-11-20 15:00\n版本号：v3.0\n文档类型：company\n文档族：manufacturing_base\n生效日期：2025-11-20\n\n## 一、苏州总部基地\n\n位于苏州工业园区，占地 120 亩，建筑面积 9.6 万平方米，承担六轴机器人总装、控制器生产与研发测试，年产能 18,000 台。\n\n## 二、东莞华南基地\n\n位于东莞松山湖，占地 60 亩，聚焦 SCARA、A"
+          },
+          {
+            "doc_id": "lantu_tech_data_platform",
+            "title": "# 澜图智能工业数据平台建设方案",
+            "chunk": 0,
+            "score": 6.027,
+            "snippet": "# 澜图智能工业数据平台建设方案\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-10-01 09:00\n更新时间：2025-07-30 14:00\n版本号：v2.4\n文档类型：tech\n文档族：data_platform\n生效日期：2025-07-30\n\n## 一、平台定位\n\n构建统一工业数据湖仓，支撑设备运维、质量分析与经营决策，覆盖 3 大基地与客户现场。\n\n## 二、数据架构\n\n采集层支持 OPC UA、Modbus、MQTT；存储层采用数据湖 + 数仓分层；服务层提供 BI、API 与算法服务。\n"
+          },
+          {
+            "doc_id": "lantu_meeting_sales",
+            "title": "2025 年华南大区销售复盘会纪要",
+            "chunk": 0,
+            "score": 5.917,
+            "snippet": "2025 年华南大区销售复盘会纪要\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2025-09-05 09:00\n更新时间：2025-09-05 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_sales_south\n生效日期：2025-09-05\n一、业绩完成\n华南大区前三季度收入 7.42 亿元，年度完成率 108%，位列五大区第一；新签订单 8.6 亿元。\n二、行业机会\n锂电客户扩产带来 3.2 亿元机会；3C 客户自动化改造预算增加；光伏客户资本开支放缓。\n三、渠道问题\n两家"
+          },
+          {
+            "doc_id": "lantu_finance_gross_margin",
+            "title": "# 澜图智能毛利率与成本结构分析",
+            "chunk": 0,
+            "score": 3.99,
+            "snippet": "# 澜图智能毛利率与成本结构分析\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-11-15 09:00\n更新时间：2025-11-20 17:00\n版本号：v1.2\n文档类型：finance\n文档族：gross_margin_analysis\n生效日期：2025-11-20\n\n## 一、整体毛利率\n\n2025 年综合毛利率 31.6%，较 2024 年提升 1.2 个百分点。机器人本体毛利率 34.8%，智能产线 26.2%，软件与服务 52.4%。\n\n## 二、成本构成\n\n直接材料占营业成本 68.4%，"
+          },
+          {
+            "doc_id": "lantu_company_profile",
+            "title": "澜图智能装备公司简介",
+            "chunk": 0,
+            "score": 3.843,
+            "snippet": "澜图智能装备公司简介\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2023-03-01 09:00\n更新时间：2026-01-08 10:30\n版本号：v5.2\n文档类型：company\n文档族：company_profile\n生效日期：2026-01-08\n一、公司概况\n澜图智能装备股份有限公司成立于2011-06-18，总部位于江苏省苏州市工业园区星澜路88号，注册资本\n6.8 亿元，2023 年在上海证券交易所科创板上市（股票代码 688719）。公司专注工业机器人、智能产线\n与工业软件，为汽车、锂电、光伏"
+          },
+          {
+            "doc_id": "lantu_company_milestones_2025",
+            "title": "# 澜图智能 2025 年度大事记",
+            "chunk": 0,
+            "score": 3.651,
+            "snippet": "# 澜图智能 2025 年度大事记\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-12-31 18:00\n更新时间：2026-01-06 09:00\n版本号：v1.0\n文档类型：company\n文档族：annual_milestones_2025\n生效日期：2026-01-06\n\n## 一、经营里程碑\n\n2025 年营业收入 42.63 亿元，同比增长 19.1%；新签订单 48.90 亿元；机器人出货 21,400 台；第 10 万台机器人于 9 月 12 日下线。\n\n## 二、组织里程碑\n\n3 月"
+          },
+          {
+            "doc_id": "lantu_case_08_kangze",
+            "title": "# 客户案例：康泽制药无菌灌装项目",
+            "chunk": 0,
+            "score": 3.399,
+            "snippet": "# 客户案例：康泽制药无菌灌装项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_kangze\n生效日期：2025-12-20\n\n## 一、客户背景\n\n康泽制药位于苏州，主营医药业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖3 条无"
+          },
+          {
+            "doc_id": "lantu_org_reporting_lines",
+            "title": "# 澜图智能员工汇报关系与业务分工",
+            "chunk": 0,
+            "score": 3.353,
+            "snippet": "# 澜图智能员工汇报关系与业务分工\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-02-10 09:00\n更新时间：2025-09-01 10:00\n版本号：v1.2\n文档类型：org\n文档族：org_reporting_lines\n生效日期：2025-09-01\n\n## 一、研发体系汇报链\n\n顾承澜是沈亦舟的上级。沈亦舟是程知远的上级。程知远是周启航的上级。周启航是林晓的上级。林晓是赵一鸣的上级。\n\n沈亦舟担任 CTO，负责研发体系。程知远担任研发中心总经理，负责研发中心整体经营管理。周启航担任控制器"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_meeting_ops_2025q3",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_meeting_ops_2025q3",
+        "title": "2025 年第三季度经营分析会纪要",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 529,
+        "text": "2025 年第三季度经营分析会纪要\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-10-10 09:00\n更新时间：2025-10-10 18:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_ops_2025q3\n生效日期：2025-10-10\n一、会议信息\n时间：2025 年 10 月 10 日 09:00-12:00；地点：苏州总部 3 楼会议室；主持：顾承澜；参会：沈亦舟、周敏仪、韩立恒、罗嘉树、陈依然、潘文博、邵岚。\n二、经营回顾\n第三季度营业收入 11.52 亿元，同比增长 17.8%；毛利率 31.4%；新签订单 13.6 亿元；海外收入 1.42 亿元，同比增长 35%。\n三、问题与风险\n锂电客户交付集中，苏州基地产能利用率达到 92%；半导体洁净版本交付周期偏长；应收账款周转天数 86 天，需加强回款。\n四、决议事项\n1. 四季度优先保障锂电与半导体订单交付；2. 苏州二期扩产方案于 11 月完成可行性论证；3. 成立回款专项小组，由 CFO 牵头。\n五、行动项\n韩立恒负责产能爬坡，10 月底前提交排产方案；罗嘉树负责海外渠道拓展，11 月底前新增 3 家认证渠道；周敏仪负责逾期账款清理。",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_meeting_board",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_meeting_board",
+        "title": "# 2025 年第二次临时董事会决议",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 443,
+        "text": "# 2025 年第二次临时董事会决议\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-04-25 09:00\n更新时间：2025-04-25 17:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_board_2025\n生效日期：2025-04-25\n\n## 一、会议信息\n\n时间：2025 年 4 月 25 日；方式：现场加视频；应到董事 9 人，实到 9 人；列席：高管团队。\n\n## 二、审议事项\n\n审议通过《2024 年度利润分配方案》《2025 年度研发投入预算》《苏州二期扩产项目议案》。\n\n## 三、利润分配\n\n每 10 股派发现金红利 3.0 元（含税），合计派现 1.26 亿元，占 2024 年归母净利润 38.7%。\n\n## 四、扩产项目\n\n苏州二期投资 3.8 亿元，新增年产能 6,000 台，预计 2026 年四季度投产。\n\n## 五、风险提示\n\n董事会要求管理层关注行业周期与应收账款风险，每季度报告经营与现金流情况。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_company_campus",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_company_campus",
+        "title": "# 澜图智能制造基地与产能布局",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 523,
+        "text": "# 澜图智能制造基地与产能布局\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2024-04-12 09:00\n更新时间：2025-11-20 15:00\n版本号：v3.0\n文档类型：company\n文档族：manufacturing_base\n生效日期：2025-11-20\n\n## 一、苏州总部基地\n\n位于苏州工业园区，占地 120 亩，建筑面积 9.6 万平方米，承担六轴机器人总装、控制器生产与研发测试，年产能 18,000 台。\n\n## 二、东莞华南基地\n\n位于东莞松山湖，占地 60 亩，聚焦 SCARA、AMR 与焊接工作站，年产能 8,000 台，2025 年产值 11.2 亿元。\n\n## 三、成都西部基地\n\n位于成都天府新区，占地 40 亩，2024 年投产，主要服务西部汽车与电子客户，年产能 4,000 台。\n\n## 四、产能规划\n\n三大基地合计年产能 30,000 台。2026 年计划通过苏州二期扩产将总产能提升至 36,000 台，预计资本开支 3.8 亿元。\n\n## 五、供应链配套\n\n核心供应商 186 家，其中战略供应商 22 家；减速器实现双源供应，伺服驱动器自研比例 61%，关键物料安全库存 45 天。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_meeting_board",
+      "lantu_meeting_ops_2025q3",
+      "lantu_company_campus"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.124,
+    "number_recall": 1.0
+  }
+}

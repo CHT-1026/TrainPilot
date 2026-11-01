@@ -1,0 +1,79 @@
+{
+  "qid": "D0012",
+  "question": "曜阳光能的自动化项目覆盖范围有多大？客户对交付期提出什么要求？实际交付周期是多久？",
+  "question_type": "单文档多跳推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>曜阳光能 自动化项目</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 58,
+        "prompt_tokens": 366,
+        "total_tokens": 424,
+        "completion_tokens_details": {
+          "reasoning_tokens": 26
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.188
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search>{\"query\":\"曜阳光能 自动化\", \"top_k\":10}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 42,
+        "prompt_tokens": 435,
+        "total_tokens": 477,
+        "completion_tokens_details": {
+          "reasoning_tokens": 14
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.359
+    },
+    {
+      "round": 3,
+      "text": "{\"name\":\"search\",\"args\":{\"query\":\"曜阳光能 自动化 项目 交付\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 49,
+        "prompt_tokens": 500,
+        "total_tokens": 549,
+        "completion_tokens_details": {
+          "reasoning_tokens": 21
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.594
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "name": "search",
+    "args": {
+      "query": "曜阳光能 自动化 项目 交付",
+      "top_k": 10
+    }
+  },
+  "status": "answered",
+  "tokens": 1450,
+  "started_at": "2026-11-01T04:30:01",
+  "elapsed_seconds": 6.14,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

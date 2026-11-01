@@ -1,0 +1,142 @@
+{
+  "qid": "K0020",
+  "question": "澜岳汽车零部件案例使用 96 台 LT-R50 六轴机器人 + 12 套 LT-Weld-2000 焊接工作站，焊点合格率 99.7%。焊接工作站方案写明焊点合格率 99.7%、以 LT-R50 为核心。请计算该项目共投入多少台/套自动化设备，并说明「96 台 LT-R50 + 12 套焊接工作站」与「标准焊接工作站 8 周交付、整线 16-20 周交付」这两组交付周期数字是什么关系（能否直接相乘或相加）。",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>澜岳汽车零部件 LT-R50 焊接工作站 案例</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 146,
+        "prompt_tokens": 490,
+        "total_tokens": 636,
+        "completion_tokens_details": {
+          "reasoning_tokens": 104
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.953
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>澜岳汽车零部件 LT-R50 LT-Weld-2000 焊点合格率</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 66,
+        "prompt_tokens": 569,
+        "total_tokens": 635,
+        "completion_tokens_details": {
+          "reasoning_tokens": 19
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.938
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>澜岳 LT-R50 LT-Weld-2000 案例</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 71,
+        "prompt_tokens": 653,
+        "total_tokens": 724,
+        "completion_tokens_details": {
+          "reasoning_tokens": 28
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 7.984
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>澜岳 汽车零部件 焊接工作站 99.7%</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 107,
+        "prompt_tokens": 733,
+        "total_tokens": 840,
+        "completion_tokens_details": {
+          "reasoning_tokens": 65
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 3.078
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>澜岳 汽车零部件 LT-R50 焊接工作站 案例</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 118,
+        "prompt_tokens": 812,
+        "total_tokens": 930,
+        "completion_tokens_details": {
+          "reasoning_tokens": 73
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 3.422
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>澜岳 汽车零部件 LT-R50 LT-Weld-2000 案例</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 68,
+        "prompt_tokens": 894,
+        "total_tokens": 962,
+        "completion_tokens_details": {
+          "reasoning_tokens": 20
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 768
+        }
+      },
+      "seconds": 1.797
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"设备投入总量：96 台 LT-R50 六轴机器人 + 12 套 LT-Weld-2000 焊接工作站 = 共 108 台/套自动化设备（其中机器人按「台」计、焊接工作站按「套」计，两者计量单位不同，合计时应注明口径为 96 台 + 12 套，若统一按「台/套」为单位则合计 108）。关于两组交付周期数字的关系：「8 周（标准焊接工作站交付）」与「16-20 周（整线交付）」是两个不同层级、不同口径的交付周期指标——8 周是单套标准焊接工作站的交付周期，16-20 周是整条产线的交付/达产周期（含设计、集成、联调等），二者不能相乘（12 套×8 周=96 周无实际意义，工作站可并行交付而非串行累计），也不能直接相加（8 周已包含在 16-20 周的整线周期之内，相加会重复计算）。设备数量（96 台、12 套）与交付周期（8 周、16-20 周）属于不同维度的数据，二者之间同样不能交叉相乘或相加来推算工期。建议表述为：该项目共投入 96 台工业机器人及 12 套焊接工作站（合计 108 台/套）；标准工作站交付周期约 8 周，整线交付周期约 16-20 周，后者为含集成调试的整体周期，涵盖前者，不存在叠加或倍数关系。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 638,
+        "prompt_tokens": 976,
+        "total_tokens": 1614,
+        "completion_tokens_details": {
+          "reasoning_tokens": 220
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 14.563
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "answerable",
+    "answer": "设备投入总量：96 台 LT-R50 六轴机器人 + 12 套 LT-Weld-2000 焊接工作站 = 共 108 台/套自动化设备（其中机器人按「台」计、焊接工作站按「套」计，两者计量单位不同，合计时应注明口径为 96 台 + 12 套，若统一按「台/套」为单位则合计 108）。关于两组交付周期数字的关系：「8 周（标准焊接工作站交付）」与「16-20 周（整线交付）」是两个不同层级、不同口径的交付周期指标——8 周是单套标准焊接工作站的交付周期，16-20 周是整条产线的交付/达产周期（含设计、集成、联调等），二者不能相乘（12 套×8 周=96 周无实际意义，工作站可并行交付而非串行累计），也不能直接相加（8 周已包含在 16-20 周的整线周期之内，相加会重复计算）。设备数量（96 台、12 套）与交付周期（8 周、16-20 周）属于不同维度的数据，二者之间同样不能交叉相乘或相加来推算工期。建议表述为：该项目共投入 96 台工业机器人及 12 套焊接工作站（合计 108 台/套）；标准工作站交付周期约 8 周，整线交付周期约 16-20 周，后者为含集成调试的整体周期，涵盖前者，不存在叠加或倍数关系。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 6341,
+  "started_at": "2026-11-01T05:29:21",
+  "elapsed_seconds": 35.74,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.091,
+    "number_recall": 0.0
+  }
+}

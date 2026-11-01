@@ -1,0 +1,133 @@
+{
+  "qid": "G0076",
+  "question": "专利布局文档在风险防控上提出了哪些要求？年度知识产权预算是多少？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"专利布局\"}}",
+      "usage": {
+        "prompt_tokens": 365,
+        "total_tokens": 472,
+        "completion_tokens": 107,
+        "completion_tokens_details": {
+          "reasoning_tokens": 88,
+          "text_tokens": 107
+        }
+      },
+      "seconds": 1.344
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_tech_patents\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 434,
+        "total_tokens": 646,
+        "completion_tokens": 212,
+        "completion_tokens_details": {
+          "reasoning_tokens": 177,
+          "text_tokens": 212
+        }
+      },
+      "seconds": 1.828
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据《澜图智能知识产权与专利布局》文档：\\n1. 风险防控要求：新产品上市前开展 FTO 检索，重点市场进行侵权风险评估。\\n2. 年度知识产权预算：1,200 万元。\",\"citations\":[\"lantu_tech_patents\"],\"evidence\":[\"lantu_tech_patents\"]}",
+      "usage": {
+        "prompt_tokens": 822,
+        "total_tokens": 1294,
+        "completion_tokens": 472,
+        "completion_tokens_details": {
+          "reasoning_tokens": 384,
+          "text_tokens": 472
+        }
+      },
+      "seconds": 3.734
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "专利布局"
+      },
+      "result_sha": "a6e4dc381ba70d63d5cf82ae59445dda008d6023864e76220ec0da34bb674024",
+      "result_chars": 72,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_patents",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "d0a230ea259cc2e27851b1b57ff41bd0aceee4eacf513aa78d205422647f4628",
+      "result_chars": 559,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《澜图智能知识产权与专利布局》文档：\n1. 风险防控要求：新产品上市前开展 FTO 检索，重点市场进行侵权风险评估。\n2. 年度知识产权预算：1,200 万元。",
+    "citations": [
+      "lantu_tech_patents"
+    ],
+    "evidence": [
+      "lantu_tech_patents"
+    ]
+  },
+  "status": "answered",
+  "tokens": 2412,
+  "started_at": "2026-11-01T05:12:52",
+  "elapsed_seconds": 6.91,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "专利布局"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_tech_patents",
+            "title": "# 澜图智能知识产权与专利布局"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_patents",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_tech_patents",
+        "title": "# 澜图智能知识产权与专利布局",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 393,
+        "text": "# 澜图智能知识产权与专利布局\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-04-26 09:00\n更新时间：2025-12-18 15:00\n版本号：v2.8\n文档类型：tech\n文档族：patent_portfolio\n生效日期：2025-12-18\n\n## 一、专利总量\n\n累计有效专利 1,286 件，其中发明专利 412 件、实用新型 726 件、外观设计 148 件；软件著作权 168 项。\n\n## 二、重点布局\n\n运动控制、伺服驱动、机器视觉、力控与具身智能五大方向；PCT 国际专利申请 36 件。\n\n## 三、管理体系\n\n执行《企业知识产权管理规范》GB/T 29490，设专利评审委员会，发明人奖励 5,000-30,000 元。\n\n## 四、风险防控\n\n新产品上市前开展 FTO 检索，重点市场进行侵权风险评估；年度知识产权预算 1,200 万元。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_tech_patents"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.919,
+    "number_recall": 1.0
+  }
+}

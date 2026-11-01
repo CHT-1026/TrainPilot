@@ -1,0 +1,271 @@
+{
+  "qid": "K0047",
+  "question": "研发体系文档写「累计有效专利 1,286 件，其中发明专利 412 件……2025 年新增授权专利 216 件」；专利布局文档写「累计有效专利 1,286 件，其中发明专利 412 件、实用新型 726 件、外观设计 148 件；软件著作权 168 项」「PCT 国际专利申请 36 件」「发明人奖励 5,000-30,000 元」「年度知识产权预算 1,200 万元」；法务合规部由邵岚负责，研发中心由沈亦舟负责。请判断：研发体系文档与专利布局文档在专利总数上是否存在冲突？两份文档在知识产权管理上的分工如何理解？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>累计有效专利 1286 件 发明专利 412</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 76,
+        "prompt_tokens": 527,
+        "total_tokens": 603,
+        "completion_tokens_details": {
+          "reasoning_tokens": 34
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.562
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"专利布局 累计有效专利 实用新型 外观设计 软件著作权 PCT\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 53,
+        "prompt_tokens": 606,
+        "total_tokens": 659,
+        "completion_tokens_details": {
+          "reasoning_tokens": 11
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.578
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_org_rd_system\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 110,
+        "prompt_tokens": 3056,
+        "total_tokens": 3166,
+        "completion_tokens_details": {
+          "reasoning_tokens": 79
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 3.672
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_tech_patents\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 77,
+        "prompt_tokens": 3532,
+        "total_tokens": 3609,
+        "completion_tokens_details": {
+          "reasoning_tokens": 45
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3008
+        }
+      },
+      "seconds": 2.235
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"1）专利总数不存在冲突。两份文档的累计有效专利均为 1,286 件、发明专利均为 412 件、软件著作权均为 168 项，数据完全一致。区别仅在于粒度不同：专利布局文档（法务合规部，v2.8，生效 2025-12-18）给出了完整拆分（实用新型 726 件、外观设计 148 件，412+726+148=1,286，可自洽勾稽）；研发体系文档（研发中心，v5.0，生效 2026-01-12）只列发明专利数，并额外披露了增量数据「2025 年新增授权专利 216 件」。二者是同一统计口径下的「总量快照 vs. 总量+年度增量」关系，非矛盾。需提醒：研发体系文档中「研发人员 1,286 人」与「累计有效专利 1,286 件」数字巧合，引用时勿混淆。\\n2）分工理解：法务合规部（邵岚）是知识产权的归口管理部门，负责专利组合结构与总量口径、PCT 国际申请（36 件）、管理体系（GB/T 29490、专利评审委员会、发明人奖励 5,000-30,000 元）及风险防控（FTO 检索、年度知识产权预算 1,200 万元），即「制度、预算、风险与法定数量口径」；研发中心（沈亦舟）是研发活动与知识产权产出的业务部门，其文档从研发视角概述知识产权成果（累计数、软著、年度新增授权），侧重「产出与项目对应关系」。因此专利总量的权威口径应以法务合规部的专利布局文档为准，研发体系文档中的相关数据为引用性摘要。若两处未来出现差异，也应以法务合规部口径校正。\",\"citations\":[\"lantu_tech_patents\",\"lantu_org_rd_system\"],\"evidence\":[\"lantu_tech_patents#片段0\",\"lantu_org_rd_system#片段0\"]}",
+      "usage": {
+        "completion_tokens": 651,
+        "prompt_tokens": 3934,
+        "total_tokens": 4585,
+        "completion_tokens_details": {
+          "reasoning_tokens": 152
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3520
+        }
+      },
+      "seconds": 17.218
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "专利布局 累计有效专利 实用新型 外观设计 软件著作权 PCT",
+        "top_k": 10
+      },
+      "result_sha": "6558e30c5cd793aa585f1759ce042bb1af4b0050d4fa988b1f67a6836b6256d7",
+      "result_chars": 3876,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_rd_system",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "4f16c99d9331b7a74c227587b61d99cae0d201b89f25fd252dab03b94d5d6fd9",
+      "result_chars": 681,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_patents",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "d0a230ea259cc2e27851b1b57ff41bd0aceee4eacf513aa78d205422647f4628",
+      "result_chars": 559,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "1）专利总数不存在冲突。两份文档的累计有效专利均为 1,286 件、发明专利均为 412 件、软件著作权均为 168 项，数据完全一致。区别仅在于粒度不同：专利布局文档（法务合规部，v2.8，生效 2025-12-18）给出了完整拆分（实用新型 726 件、外观设计 148 件，412+726+148=1,286，可自洽勾稽）；研发体系文档（研发中心，v5.0，生效 2026-01-12）只列发明专利数，并额外披露了增量数据「2025 年新增授权专利 216 件」。二者是同一统计口径下的「总量快照 vs. 总量+年度增量」关系，非矛盾。需提醒：研发体系文档中「研发人员 1,286 人」与「累计有效专利 1,286 件」数字巧合，引用时勿混淆。\n2）分工理解：法务合规部（邵岚）是知识产权的归口管理部门，负责专利组合结构与总量口径、PCT 国际申请（36 件）、管理体系（GB/T 29490、专利评审委员会、发明人奖励 5,000-30,000 元）及风险防控（FTO 检索、年度知识产权预算 1,200 万元），即「制度、预算、风险与法定数量口径」；研发中心（沈亦舟）是研发活动与知识产权产出的业务部门，其文档从研发视角概述知识产权成果（累计数、软著、年度新增授权），侧重「产出与项目对应关系」。因此专利总量的权威口径应以法务合规部的专利布局文档为准，研发体系文档中的相关数据为引用性摘要。若两处未来出现差异，也应以法务合规部口径校正。",
+    "citations": [
+      "lantu_tech_patents",
+      "lantu_org_rd_system"
+    ],
+    "evidence": [
+      "lantu_tech_patents#片段0",
+      "lantu_org_rd_system#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 12622,
+  "started_at": "2026-11-01T05:39:25",
+  "elapsed_seconds": 28.26,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "专利布局 累计有效专利 实用新型 外观设计 软件著作权 PCT",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_tech_patents",
+            "title": "# 澜图智能知识产权与专利布局",
+            "chunk": 0,
+            "score": 85.321,
+            "snippet": "# 澜图智能知识产权与专利布局\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-04-26 09:00\n更新时间：2025-12-18 15:00\n版本号：v2.8\n文档类型：tech\n文档族：patent_portfolio\n生效日期：2025-12-18\n\n## 一、专利总量\n\n累计有效专利 1,286 件，其中发明专利 412 件、实用新型 726 件、外观设计 148 件；软件著作权 168 项。\n\n## 二、重点布局\n\n运动控制、伺服驱动、机器视觉、力控与具身智能五大方向；PCT 国际专利申请 3"
+          },
+          {
+            "doc_id": "lantu_org_rd_system",
+            "title": "# 澜图智能研发体系与投入",
+            "chunk": 0,
+            "score": 36.533,
+            "snippet": "# 澜图智能研发体系与投入\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-02-01 09:00\n更新时间：2026-01-12 10:00\n版本号：v5.0\n文档类型：org\n文档族：rd_system\n生效日期：2026-01-12\n\n## 一、研发架构\n\n研发中心下设机器人本体研究所、控制器研究所、机器视觉研究所、工艺应用研究所、具身智能研究所，另设测试中心与可靠性实验室。\n\n## 二、人员结构\n\n研发人员 1,286 人，其中博士 48 人、硕士 612 人，35 岁以下占比 61%。2025 年"
+          },
+          {
+            "doc_id": "lantu_investor_overview",
+            "title": "# 澜图智能投资者关系概览",
+            "chunk": 0,
+            "score": 23.166,
+            "snippet": "# 澜图智能投资者关系概览\n\n所属部门：董事会办公室\n作者：周敏仪\n创建时间：2024-03-20 09:00\n更新时间：2026-01-10 17:00\n版本号：v4.1\n文档类型：company\n文档族：investor_overview\n生效日期：2026-01-10\n\n## 一、基本信息\n\n公司股票代码 688719，总股本 4.2 亿股，2025 年末总市值约 168 亿元。2025 年度拟每 10 股派发现金红利 3.2 元（含税）。\n\n## 二、经营数据\n\n2025 年营业收入 42.63 亿元，归母"
+          },
+          {
+            "doc_id": "lantu_company_global",
+            "title": "# 澜图智能全球化布局与海外业务",
+            "chunk": 0,
+            "score": 8.885,
+            "snippet": "# 澜图智能全球化布局与海外业务\n\n所属部门：国际业务部\n作者：罗嘉树\n创建时间：2024-06-01 10:00\n更新时间：2025-12-10 14:30\n版本号：v2.2\n文档类型：company\n文档族：global_presence\n生效日期：2025-12-10\n\n## 一、海外机构\n\n公司在德国斯图加特设立欧洲技术中心（2025 年 3 月开业），在越南胡志明市、墨西哥蒙特雷、匈牙利布达佩斯设有服务网点，海外员工 200 人。\n\n## 二、海外业绩\n\n2025 年海外营业收入 4.86 亿元，占总收入"
+          },
+          {
+            "doc_id": "lantu_hr_compensation",
+            "title": "# 澜图智能薪酬与奖金管理办法",
+            "chunk": 0,
+            "score": 7.576,
+            "snippet": "# 澜图智能薪酬与奖金管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-01-01 09:00\n版本号：v3.2\n文档类型：hr\n文档族：compensation\n生效日期：2025-01-01\n\n## 一、薪酬结构\n\n年度薪酬 = 12 个月基本工资 + 1 个月年终双薪 + 绩效奖金（0-6 个月）+ 专项奖励。\n\n## 二、调薪机制\n\n每年 4 月调薪，依据市场分位、绩效与职级；调薪预算为工资总额的 5%-8%。\n\n## 三、绩效奖金\n\n与公司、部"
+          },
+          {
+            "doc_id": "lantu_company_campus",
+            "title": "# 澜图智能制造基地与产能布局",
+            "chunk": 0,
+            "score": 4.914,
+            "snippet": "# 澜图智能制造基地与产能布局\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2024-04-12 09:00\n更新时间：2025-11-20 15:00\n版本号：v3.0\n文档类型：company\n文档族：manufacturing_base\n生效日期：2025-11-20\n\n## 一、苏州总部基地\n\n位于苏州工业园区，占地 120 亩，建筑面积 9.6 万平方米，承担六轴机器人总装、控制器生产与研发测试，年产能 18,000 台。\n\n## 二、东莞华南基地\n\n位于东莞松山湖，占地 60 亩，聚焦 SCARA、A"
+          },
+          {
+            "doc_id": "lantu_support_warranty",
+            "title": "# 澜图智能产品保修政策",
+            "chunk": 0,
+            "score": 4.837,
+            "snippet": "# 澜图智能产品保修政策\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-01-01 09:00\n更新时间：2025-04-01 09:00\n版本号：v3.0\n文档类型：support\n文档族：warranty_policy\n生效日期：2025-04-01\n\n## 一、保修期限\n\n机器人本体保修 24 个月或 6,000 小时，以先到者为准；控制器保修 18 个月；易损件保修 6 个月。\n\n## 二、保修范围\n\n因产品设计、制造或材料缺陷导致的故障免费维修或更换；软件提供 12 个月免费升级。\n\n## 三、"
+          },
+          {
+            "doc_id": "lantu_finance_gross_margin",
+            "title": "# 澜图智能毛利率与成本结构分析",
+            "chunk": 0,
+            "score": 4.687,
+            "snippet": "# 澜图智能毛利率与成本结构分析\n\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-11-15 09:00\n更新时间：2025-11-20 17:00\n版本号：v1.2\n文档类型：finance\n文档族：gross_margin_analysis\n生效日期：2025-11-20\n\n## 一、整体毛利率\n\n2025 年综合毛利率 31.6%，较 2024 年提升 1.2 个百分点。机器人本体毛利率 34.8%，智能产线 26.2%，软件与服务 52.4%。\n\n## 二、成本构成\n\n直接材料占营业成本 68.4%，"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2024",
+            "title": "# 澜图智能采购管理制度（2024版）",
+            "chunk": 0,
+            "score": 4.367,
+            "snippet": "# 澜图智能采购管理制度（2024版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-01-01 09:00\n更新时间：2024-01-01 09:00\n版本号：v1.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2024-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。\n\n## 二、付款账期\n\n标准供应商月结 60 天；预付款比例不超过 30%；质保金 5%-10%。\n\n## 三、供应商"
+          },
+          {
+            "doc_id": "lantu_tech_security",
+            "title": "# 澜图智能产品网络安全设计规范",
+            "chunk": 0,
+            "score": 4.218,
+            "snippet": "# 澜图智能产品网络安全设计规范\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-11-01 09:00\n更新时间：2025-10-01 09:00\n版本号：v2.5\n文档类型：tech\n文档族：product_security\n生效日期：2025-10-01\n\n## 一、安全设计原则\n\n遵循最小权限、默认拒绝、纵深防御与安全默认配置原则，产品通过等保三级与 IEC 62443 评估。\n\n## 二、身份与访问\n\n支持多因素认证、RBAC 权限模型与操作审计；默认密码首次登录强制修改，会话超时 30 分钟。\n"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_org_rd_system",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_org_rd_system",
+        "title": "# 澜图智能研发体系与投入",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 512,
+        "text": "# 澜图智能研发体系与投入\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-02-01 09:00\n更新时间：2026-01-12 10:00\n版本号：v5.0\n文档类型：org\n文档族：rd_system\n生效日期：2026-01-12\n\n## 一、研发架构\n\n研发中心下设机器人本体研究所、控制器研究所、机器视觉研究所、工艺应用研究所、具身智能研究所，另设测试中心与可靠性实验室。\n\n## 二、人员结构\n\n研发人员 1,286 人，其中博士 48 人、硕士 612 人，35 岁以下占比 61%。2025 年研发投入 5.87 亿元，占营业收入 13.8%。\n\n## 三、重点项目\n\nLT-R20 Pro 本体轻量化、LT-C800 控制器、具身智能操作模型 Lantu-VLA、数字孪生平台 LantuTwin 3.0。\n\n## 四、知识产权\n\n累计有效专利 1,286 件，其中发明专利 412 件；软件著作权 168 项；2025 年新增授权专利 216 件。\n\n## 五、研发流程\n\n执行 IPD 集成产品开发流程，分为概念、计划、开发、验证、发布、生命周期管理六个阶段，关键节点由产品决策委员会评审。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_tech_patents",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_tech_patents",
+        "title": "# 澜图智能知识产权与专利布局",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 393,
+        "text": "# 澜图智能知识产权与专利布局\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-04-26 09:00\n更新时间：2025-12-18 15:00\n版本号：v2.8\n文档类型：tech\n文档族：patent_portfolio\n生效日期：2025-12-18\n\n## 一、专利总量\n\n累计有效专利 1,286 件，其中发明专利 412 件、实用新型 726 件、外观设计 148 件；软件著作权 168 项。\n\n## 二、重点布局\n\n运动控制、伺服驱动、机器视觉、力控与具身智能五大方向；PCT 国际专利申请 36 件。\n\n## 三、管理体系\n\n执行《企业知识产权管理规范》GB/T 29490，设专利评审委员会，发明人奖励 5,000-30,000 元。\n\n## 四、风险防控\n\n新产品上市前开展 FTO 检索，重点市场进行侵权风险评估；年度知识产权预算 1,200 万元。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_tech_patents",
+      "lantu_org_rd_system"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.366,
+    "number_recall": 1.0
+  }
+}

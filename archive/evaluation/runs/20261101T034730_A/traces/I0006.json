@@ -1,0 +1,142 @@
+{
+  "qid": "I0006",
+  "question": "品牌主色与辅助色的色值分别是什么？标志的最小使用宽度与安全留白如何规定？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>品牌主色 辅助色 色值</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=search><parameter=query>标志最小使用宽度 安全留白</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 95,
+        "prompt_tokens": 366,
+        "total_tokens": 461,
+        "completion_tokens_details": {
+          "reasoning_tokens": 27
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 6.109
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search>{\"query\":\"品牌主色 辅助色 色值 VI规范\",\"top_k\":10}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 47,
+        "prompt_tokens": 471,
+        "total_tokens": 518,
+        "completion_tokens_details": {
+          "reasoning_tokens": 13
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 8.453
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=TOOL><parameter=name>search</parameter><parameter=args>{\"query\": \"品牌主色 辅助色 色值\", \"top_k\": 10}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 63,
+        "prompt_tokens": 542,
+        "total_tokens": 605,
+        "completion_tokens_details": {
+          "reasoning_tokens": 16
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.454
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>品牌主色 辅助色 色值</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 64,
+        "prompt_tokens": 626,
+        "total_tokens": 690,
+        "completion_tokens_details": {
+          "reasoning_tokens": 28
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.468
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=TOOL></function></tool_call>",
+      "usage": {
+        "completion_tokens": 39,
+        "prompt_tokens": 699,
+        "total_tokens": 738,
+        "completion_tokens_details": {
+          "reasoning_tokens": 27
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 1.266
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>品牌主色 辅助色 色值</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 55,
+        "prompt_tokens": 748,
+        "total_tokens": 803,
+        "completion_tokens_details": {
+          "reasoning_tokens": 19
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 1.75
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"检索工具多次调用均未能成功返回结果，因此无法从企业资料库中核实品牌主色与辅助色的色值、标志最小使用宽度及安全留白的具体规定。建议重新发起检索或提供相关VI/品牌规范文档（如《品牌视觉识别手册》），以便准确作答；在没有原文佐证的情况下不应凭空给出数值，避免误导。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 116,
+        "prompt_tokens": 818,
+        "total_tokens": 934,
+        "completion_tokens_details": {
+          "reasoning_tokens": 13
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 3.406
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "检索工具多次调用均未能成功返回结果，因此无法从企业资料库中核实品牌主色与辅助色的色值、标志最小使用宽度及安全留白的具体规定。建议重新发起检索或提供相关VI/品牌规范文档（如《品牌视觉识别手册》），以便准确作答；在没有原文佐证的情况下不应凭空给出数值，避免误导。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4749,
+  "started_at": "2026-11-01T05:15:07",
+  "elapsed_seconds": 23.91,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.076,
+    "number_recall": 0.0
+  }
+}

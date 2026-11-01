@@ -1,0 +1,155 @@
+{
+  "qid": "C0004",
+  "question": "总览中「开放生态」提到的控制器对外接口有哪些？软件侧提供什么开发资源？",
+  "question_type": "清单枚举",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>开放生态 控制器 对外接口</parameter></function></tool_call><tool_call><function=list><parameter=keyword>总览</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 73,
+        "prompt_tokens": 363,
+        "total_tokens": 436,
+        "completion_tokens_details": {
+          "reasoning_tokens": 32
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.844
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"总览\"}}",
+      "usage": {
+        "completion_tokens": 24,
+        "prompt_tokens": 441,
+        "total_tokens": 465,
+        "completion_tokens_details": {
+          "reasoning_tokens": 8
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 0.984
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_product_overview\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 36,
+        "prompt_tokens": 511,
+        "total_tokens": 547,
+        "completion_tokens_details": {
+          "reasoning_tokens": 5
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 1.047
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"总览「开放生态」一节中，控制器对外接口支持 EtherCAT、Profinet、Modbus TCP 与 OPC UA；软件侧提供的开发资源为 Python/C++ SDK 与 ROS2 驱动，并兼容主流 PLC 与 MES。\",\"citations\":[\"lantu_product_overview\"],\"evidence\":[\"lantu_product_overview#片段3\"]}",
+      "usage": {
+        "completion_tokens": 104,
+        "prompt_tokens": 1140,
+        "total_tokens": 1244,
+        "completion_tokens_details": {
+          "reasoning_tokens": 15
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.859
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "总览"
+      },
+      "result_sha": "79803f080be10620575feddea50998cefb2a72f02d2e5578e581233cf7d1244f",
+      "result_chars": 76,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_overview",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "d7d8f6c4043c4e52922e6d0356cbd030aaed8b53b034333b0b96af5c08508c10",
+      "result_chars": 973,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "总览「开放生态」一节中，控制器对外接口支持 EtherCAT、Profinet、Modbus TCP 与 OPC UA；软件侧提供的开发资源为 Python/C++ SDK 与 ROS2 驱动，并兼容主流 PLC 与 MES。",
+    "citations": [
+      "lantu_product_overview"
+    ],
+    "evidence": [
+      "lantu_product_overview#片段3"
+    ]
+  },
+  "status": "answered",
+  "tokens": 2692,
+  "started_at": "2026-11-01T04:09:35",
+  "elapsed_seconds": 5.73,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "总览"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_product_overview",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_product_overview",
+        "title": "# 澜图智能产品与解决方案总览",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 792,
+        "text": "# 澜图智能产品与解决方案总览\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-02-20 09:00\n更新时间：2025-12-22 10:00\n版本号：v6.0\n文档类型：product\n文档族：product_overview\n生效日期：2025-12-22\n\n## 一、产品矩阵\n\n公司产品覆盖六轴工业机器人、SCARA 机器人、自主移动机器人（AMR）、机器视觉、运动控制器、数字孪生平台与行业工作站，形成“本体+控制器+视觉+软件+工艺”的一体化方案。\n\n## 二、行业方案\n\n重点行业包括汽车及零部件、动力电池、光伏、3C 电子、半导体、家电、食品、医药、物流、金属加工与工程机械。\n\n## 三、交付模式\n\n提供标准产品、工作站、整线交付三种模式。整线项目由客户成功部牵头，研发、制造、质量与售后组成联合项目组。\n\n## 四、开放生态\n\n控制器支持 EtherCAT、Profinet、Modbus TCP 与 OPC UA；提供 Python/C++ SDK 与 ROS2 驱动，兼容主流 PLC 与 MES。\n\n## 产品线概览\n\n| 产品线 | 代表型号 | 负载 | 典型行业 |\n| --- | --- | --- | --- |\n| 六轴机器人 | LT-R6/R12/R20/R50/R210 | 6-210 kg | 汽车、锂电、金属加工 |\n| SCARA | LT-S4/S10 | 4-10 kg | 3C、光伏、食品 |\n| 移动机器人 | LT-AMR-500/1000/2000 | 500-2,000 kg | 物流、半导体 |\n| 机器视觉 | LT-V3D | — | 装配、检测 |\n| 控制器 | LT-C800 | 8 轴 | 全线产品 |\n| 数字孪生 | LantuTwin 3.0 | 500 台设备 | 整厂规划 |\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_product_overview"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.831,
+    "number_recall": 0.0
+  }
+}

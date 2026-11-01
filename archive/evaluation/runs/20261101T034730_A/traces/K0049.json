@@ -1,0 +1,142 @@
+{
+  "qid": "K0049",
+  "question": "12 个客户案例覆盖了哪些行业？各行业分别有几家客户？请指出这些行业与公司产品总览中「重点行业」清单之间的覆盖关系。",
+  "question_type": "汇总计算",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=list><parameter=keyword>客户案例</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 60,
+        "prompt_tokens": 379,
+        "total_tokens": 439,
+        "completion_tokens_details": {
+          "reasoning_tokens": 41
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.641
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=list><parameter=keyword>客户案例</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 55,
+        "prompt_tokens": 435,
+        "total_tokens": 490,
+        "completion_tokens_details": {
+          "reasoning_tokens": 36
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.812
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=list><parameter=keyword>客户案例</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 32,
+        "prompt_tokens": 491,
+        "total_tokens": 523,
+        "completion_tokens_details": {
+          "reasoning_tokens": 13
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 1.032
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=list><parameter=keyword>客户案例</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 74,
+        "prompt_tokens": 547,
+        "total_tokens": 621,
+        "completion_tokens_details": {
+          "reasoning_tokens": 55
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 2.953
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=list><parameter=keyword>客户案例</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 37,
+        "prompt_tokens": 603,
+        "total_tokens": 640,
+        "completion_tokens_details": {
+          "reasoning_tokens": 18
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 1.562
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=list><parameter=keyword>客户案例</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 46,
+        "prompt_tokens": 659,
+        "total_tokens": 705,
+        "completion_tokens_details": {
+          "reasoning_tokens": 27
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 2.266
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"检索未能成功返回任何资料，因此无法确认 12 个客户案例分别所属的行业、各行业的客户数量，也无法对比公司产品总览中的「重点行业」清单。需要您补充或重新提供相关文档（如客户案例列表与产品总览原文），或允许我再次执行检索以获取证据。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 112,
+        "prompt_tokens": 712,
+        "total_tokens": 824,
+        "completion_tokens_details": {
+          "reasoning_tokens": 21
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 4.031
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "检索未能成功返回任何资料，因此无法确认 12 个客户案例分别所属的行业、各行业的客户数量，也无法对比公司产品总览中的「重点行业」清单。需要您补充或重新提供相关文档（如客户案例列表与产品总览原文），或允许我再次执行检索以获取证据。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4242,
+  "started_at": "2026-11-01T05:39:53",
+  "elapsed_seconds": 15.3,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.01,
+    "number_recall": 0.0
+  }
+}

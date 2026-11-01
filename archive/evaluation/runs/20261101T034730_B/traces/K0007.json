@@ -1,0 +1,212 @@
+{
+  "qid": "K0007",
+  "question": "葛俊是信息技术部负责人，同时负责云平台、工业数据平台和产品网络安全规范。数据分级规范中 L4 数据须「分管高管与信息安全委员会双审批」，而信息安全管理制度写 L3、L4 外发须「部门负责人与信息安全委员会审批」。作为这两个制度的作者与信息安全委员会主任，葛俊在两份制度里都出现了。这说明什么？两份制度在 L4 外发审批上是否一致？",
+  "question_type": "矛盾与例外识别",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"葛俊 L4 数据分级规范 信息安全管理制度\",\"top_k\":5}}",
+      "usage": {
+        "prompt_tokens": 439,
+        "total_tokens": 589,
+        "completion_tokens": 150,
+        "completion_tokens_details": {
+          "reasoning_tokens": 117,
+          "text_tokens": 150
+        }
+      },
+      "seconds": 1.578
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_data_classification\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 1614,
+        "total_tokens": 1873,
+        "completion_tokens": 259,
+        "completion_tokens_details": {
+          "reasoning_tokens": 225,
+          "text_tokens": 259
+        }
+      },
+      "seconds": 2.515
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_policy_infosec\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 2060,
+        "total_tokens": 2419,
+        "completion_tokens": 359,
+        "completion_tokens_details": {
+          "reasoning_tokens": 325,
+          "text_tokens": 359
+        }
+      },
+      "seconds": 3.11
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"1. 说明葛俊作为信息技术部负责人及信息安全委员会主任，主导并起草了这两份核心制度。\\n2. 两份制度在 L4 审批要求上不一致。《数据分级规范》要求 L4 数据须由「分管高管与信息安全委员会」双审批；而《信息安全管理制度》规定 L4 外发仅需「部门负责人与信息安全委员会」审批。前者审批层级更高，两者存在冲突。\",\"citations\":[\"lantu_policy_data_classification\", \"lantu_policy_infosec\"], \"evidence\":[\"lantu_policy_data_classification#0\", \"lantu_policy_infosec#0\"]}",
+      "usage": {
+        "prompt_tokens": 2454,
+        "total_tokens": 3493,
+        "completion_tokens": 1039,
+        "completion_tokens_details": {
+          "reasoning_tokens": 897,
+          "text_tokens": 1039
+        }
+      },
+      "seconds": 8.906
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "葛俊 L4 数据分级规范 信息安全管理制度",
+        "top_k": 5
+      },
+      "result_sha": "24286671932fdcd792deb82a4f3aa09856d31816f357b0096081400b51c393e6",
+      "result_chars": 1969,
+      "hits": 5
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_data_classification",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "771741860b42ad3363de125c9966bb920c2bd694a5a17e42d034e8f058400d5d",
+      "result_chars": 684,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_infosec",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "eb5e872f6bcbc95bcf05a312eba16b5e31169eb6cd7ecb96b297a43f22926927",
+      "result_chars": 624,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "1. 说明葛俊作为信息技术部负责人及信息安全委员会主任，主导并起草了这两份核心制度。\n2. 两份制度在 L4 审批要求上不一致。《数据分级规范》要求 L4 数据须由「分管高管与信息安全委员会」双审批；而《信息安全管理制度》规定 L4 外发仅需「部门负责人与信息安全委员会」审批。前者审批层级更高，两者存在冲突。",
+    "citations": [
+      "lantu_policy_data_classification",
+      "lantu_policy_infosec"
+    ],
+    "evidence": [
+      "lantu_policy_data_classification#0",
+      "lantu_policy_infosec#0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 8374,
+  "started_at": "2026-11-01T05:43:30",
+  "elapsed_seconds": 16.11,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "葛俊 L4 数据分级规范 信息安全管理制度",
+        "top_k": 5
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_policy_data_classification",
+            "title": "# 澜图智能数据分级与分类管理规范",
+            "chunk": 0,
+            "score": 35.155,
+            "snippet": "# 澜图智能数据分级与分类管理规范\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-05-20 09:00\n更新时间：2025-09-10 14:00\n版本号：v2.5\n文档类型：policy\n文档族：data_classification\n生效日期：2025-09-10\n\n## 一、分级定义\n\n数据分为 L1 公开、L2 内部、L3 机密、L4 绝密四级。L1 可对外发布；L2 限公司内部；L3 限授权岗位；L4 限特定人员并加密存储。\n\n## 二、典型数据\n\nL1：宣传资料、公开财报；L2：一般制度、会"
+          },
+          {
+            "doc_id": "lantu_policy_infosec",
+            "title": "# 澜图智能信息安全管理制度",
+            "chunk": 0,
+            "score": 32.817,
+            "snippet": "# 澜图智能信息安全管理制度\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-04-01 09:00\n更新时间：2025-08-01 09:00\n版本号：v4.0\n文档类型：policy\n文档族：information_security\n生效日期：2025-08-01\n\n## 一、账号与密码\n\n员工账号一人一号，密码长度不少于 12 位，包含大小写字母、数字与符号，每 90 天更换一次；禁止共享账号。\n\n## 二、终端安全\n\n办公电脑须安装公司统一的终端防护软件，开启磁盘加密与屏保锁定；禁止安装未授权软件与"
+          },
+          {
+            "doc_id": "lantu_org_committees",
+            "title": "# 澜图智能跨部门委员会与运作机制",
+            "chunk": 0,
+            "score": 16.175,
+            "snippet": "# 澜图智能跨部门委员会与运作机制\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2024-05-06 09:00\n更新时间：2025-10-18 11:00\n版本号：v2.1\n文档类型：org\n文档族：committees\n生效日期：2025-10-18\n\n## 一、产品决策委员会\n\n主任由 CTO 担任，成员包括产品部、研发中心、销售中心、质量部负责人，负责产品立项、版本发布与退市决策，每月召开一次。\n\n## 二、质量安全委员会\n\n主任由 COO 担任，负责重大质量事故、召回与安全生产事项，实行 24 小时响"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2025",
+            "title": "# 澜图智能采购管理制度（2025版）",
+            "chunk": 0,
+            "score": 15.153,
+            "snippet": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付"
+          },
+          {
+            "doc_id": "lantu_legal_data_compliance",
+            "title": "# 澜图智能数据合规与隐私保护规范",
+            "chunk": 0,
+            "score": 14.098,
+            "snippet": "# 澜图智能数据合规与隐私保护规范\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-07-01 09:00\n更新时间：2025-09-01 09:00\n版本号：v2.6\n文档类型：legal\n文档族：data_compliance\n生效日期：2025-09-01\n\n## 一、适用法律\n\n遵守《个人信息保护法》《数据安全法》《网络安全法》及欧盟 GDPR，处理个人信息须遵循最小必要与告知同意原则。\n\n## 二、数据出境\n\n向境外提供个人信息或重要数据须开展安全评估或签订标准合同，涉及研发数据的须经信息安全委员"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_data_classification",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_data_classification",
+        "title": "# 澜图智能数据分级与分类管理规范",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 498,
+        "text": "# 澜图智能数据分级与分类管理规范\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-05-20 09:00\n更新时间：2025-09-10 14:00\n版本号：v2.5\n文档类型：policy\n文档族：data_classification\n生效日期：2025-09-10\n\n## 一、分级定义\n\n数据分为 L1 公开、L2 内部、L3 机密、L4 绝密四级。L1 可对外发布；L2 限公司内部；L3 限授权岗位；L4 限特定人员并加密存储。\n\n## 二、典型数据\n\nL1：宣传资料、公开财报；L2：一般制度、会议纪要；L3：客户合同、报价、产品图纸；L4：核心技术源代码、并购方案、未披露财报。\n\n## 三、访问控制\n\n按最小权限原则授权，L3 数据访问须部门负责人审批，L4 数据须分管高管与信息安全委员会双审批，权限每季度复核。\n\n## 四、存储与传输\n\nL3/L4 数据须存储于公司加密服务器，传输使用加密通道；禁止存储于个人设备，确需离线的须申请加密笔记本。\n\n## 五、销毁\n\n数据销毁须采用多次覆写或物理销毁，保留销毁记录；离职人员账号在离职当日禁用，30 日内清理权限。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_policy_infosec",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_policy_infosec",
+        "title": "# 澜图智能信息安全管理制度",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 453,
+        "text": "# 澜图智能信息安全管理制度\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-04-01 09:00\n更新时间：2025-08-01 09:00\n版本号：v4.0\n文档类型：policy\n文档族：information_security\n生效日期：2025-08-01\n\n## 一、账号与密码\n\n员工账号一人一号，密码长度不少于 12 位，包含大小写字母、数字与符号，每 90 天更换一次；禁止共享账号。\n\n## 二、终端安全\n\n办公电脑须安装公司统一的终端防护软件，开启磁盘加密与屏保锁定；禁止安装未授权软件与私人远程工具。\n\n## 三、数据外发\n\n涉及 L3、L4 级数据的外发须经部门负责人与信息安全委员会审批；禁止通过个人邮箱、网盘与即时通讯工具传输敏感数据。\n\n## 四、事件响应\n\n安全事件须在 1 小时内上报信息安全委员会，重大事件启动应急预案并在 24 小时内完成初步处置。\n\n## 五、审计与处罚\n\n公司每季度开展权限复核与日志审计；违规行为视情节给予警告、降级或解除劳动合同。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.5,
+    "cited": [
+      "lantu_policy_data_classification",
+      "lantu_policy_infosec"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.118,
+    "number_recall": 0.0
+  }
+}

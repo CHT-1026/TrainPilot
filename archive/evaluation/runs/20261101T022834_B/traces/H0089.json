@@ -1,0 +1,148 @@
+{
+  "qid": "H0089",
+  "question": "供应商行为准则对健康安全与环境分别提出了什么要求？",
+  "question_type": "事实检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"供应商行为准则\"}}",
+      "usage": {
+        "prompt_tokens": 360,
+        "total_tokens": 498,
+        "completion_tokens": 138,
+        "completion_tokens_details": {
+          "reasoning_tokens": 118,
+          "text_tokens": 138
+        }
+      },
+      "seconds": 1.516
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_legal_supplier_code\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 428,
+        "total_tokens": 599,
+        "completion_tokens": 171,
+        "completion_tokens_details": {
+          "reasoning_tokens": 137,
+          "text_tokens": 171
+        }
+      },
+      "seconds": 1.797
+    },
+    {
+      "round": 3,
+      "text": "{\n\"status\": \"answerable\",\n\"answer\": \"根据《澜图智能供应商行为准则》，对健康安全与环境的要求分别如下：\\n\\n1. **健康与安全**：供应商须提供安全的工作环境，配备必要的防护设施，定期开展安全培训与应急演练。\\n2. **环境要求**：供应商须遵守环保法规，优先使用可回收材料，限制有害物质，鼓励通过 ISO 14001 认证。\",\n\"citations\": [\n\"lantu_legal_supplier_code\"\n],\n\"evidence\": [\n\"lantu_legal_supplier_code#二\",\n\"lantu_legal_supplier_code#三\"\n]\n}",
+      "usage": {
+        "prompt_tokens": 795,
+        "total_tokens": 1493,
+        "completion_tokens": 698,
+        "completion_tokens_details": {
+          "reasoning_tokens": 555,
+          "text_tokens": 698
+        }
+      },
+      "seconds": 6.562
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"根据《澜图智能供应商行为准则》，健康安全与环境的要求如下：\\n\\n1. 健康与安全：供应商须提供安全的工作环境，配备必要的防护设施，定期开展安全培训与应急演练。\\n2. 环境要求：供应商须遵守环保法规，优先使用可回收材料，限制有害物质，鼓励通过 ISO 14001 认证。\",\"citations\":[\"lantu_legal_supplier_code\"],\"evidence\":[\"lantu_legal_supplier_code#二\",\"lantu_legal_supplier_code#三\"]}",
+      "usage": {
+        "prompt_tokens": 972,
+        "total_tokens": 1511,
+        "completion_tokens": 539,
+        "completion_tokens_details": {
+          "reasoning_tokens": 421,
+          "text_tokens": 539
+        }
+      },
+      "seconds": 4.0
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "供应商行为准则"
+      },
+      "result_sha": "3ce56d86d82a6bef1e6aa3eb612cf27d0f0b98e5ae9d685c5f7ab29ab0ccfc45",
+      "result_chars": 77,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_legal_supplier_code",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "fee223a708282e89b9959294793eda2149e8c78f0aed2efe247a531f79bcb0f7",
+      "result_chars": 574,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "根据《澜图智能供应商行为准则》，健康安全与环境的要求如下：\n\n1. 健康与安全：供应商须提供安全的工作环境，配备必要的防护设施，定期开展安全培训与应急演练。\n2. 环境要求：供应商须遵守环保法规，优先使用可回收材料，限制有害物质，鼓励通过 ISO 14001 认证。",
+    "citations": [
+      "lantu_legal_supplier_code"
+    ],
+    "evidence": [
+      "lantu_legal_supplier_code#二",
+      "lantu_legal_supplier_code#三"
+    ]
+  },
+  "status": "answered",
+  "tokens": 4101,
+  "started_at": "2026-11-01T02:40:49",
+  "elapsed_seconds": 13.88,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "供应商行为准则"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_legal_supplier_code",
+            "title": "# 澜图智能供应商行为准则"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_legal_supplier_code",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_legal_supplier_code",
+        "title": "# 澜图智能供应商行为准则",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 399,
+        "text": "# 澜图智能供应商行为准则\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-04-01 09:00\n更新时间：2025-05-01 09:00\n版本号：v2.0\n文档类型：legal\n文档族：supplier_code\n生效日期：2025-05-01\n\n## 一、劳工与人权\n\n供应商不得使用童工、强迫劳动，须保障结社自由与最低工资，工作时间符合当地法律。\n\n## 二、健康与安全\n\n供应商须提供安全的工作环境，配备必要的防护设施，定期开展安全培训与应急演练。\n\n## 三、环境要求\n\n供应商须遵守环保法规，优先使用可回收材料，限制有害物质，鼓励通过 ISO 14001 认证。\n\n## 四、商业道德\n\n禁止贿赂、腐败、欺诈与利益冲突；供应商须签署廉洁协议并配合审计。\n\n## 五、监督与整改\n\n澜图智能每年对战略供应商开展一次现场审核，不符合项须在 90 天内整改，严重违规终止合作。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_legal_supplier_code"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.889,
+    "number_recall": 1.0
+  }
+}

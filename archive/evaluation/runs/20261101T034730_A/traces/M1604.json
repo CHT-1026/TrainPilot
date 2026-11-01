@@ -1,0 +1,142 @@
+{
+  "qid": "M1604",
+  "question": "有位分管副总要出差，能坐高铁一等座吗？",
+  "question_type": "条件判断与边界",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>高铁 一等座 出差 报销 标准</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 64,
+        "prompt_tokens": 357,
+        "total_tokens": 421,
+        "completion_tokens_details": {
+          "reasoning_tokens": 34
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.968
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=tool_search><parameter=query>高铁 一等座 出差 报销 标准</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 52,
+        "prompt_tokens": 424,
+        "total_tokens": 476,
+        "completion_tokens_details": {
+          "reasoning_tokens": 20
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.235
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=TOOL><parameter=name>search</parameter><parameter=args>{\"query\": \"高铁 一等座 出差 乘坐标准 分管副总\"}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 60,
+        "prompt_tokens": 493,
+        "total_tokens": 553,
+        "completion_tokens_details": {
+          "reasoning_tokens": 17
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 1.218
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=TOOL>{\"name\": \"search\", \"args\": {\"query\": \"高铁 一等座 出差 差旅费 乘坐标准\"}}</parameter></tool_call>",
+      "usage": {
+        "completion_tokens": 80,
+        "prompt_tokens": 573,
+        "total_tokens": 653,
+        "completion_tokens_details": {
+          "reasoning_tokens": 39
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.532
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>高铁 一等座 出差 报销 职级 标准</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 54,
+        "prompt_tokens": 651,
+        "total_tokens": 705,
+        "completion_tokens_details": {
+          "reasoning_tokens": 20
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 1.375
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>差旅 高铁 一等座 职级 报销标准</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 70,
+        "prompt_tokens": 722,
+        "total_tokens": 792,
+        "completion_tokens_details": {
+          "reasoning_tokens": 37
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 1.64
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"无法确认。检索未成功返回任何关于差旅座位等级（如高铁一等座）与职级（如分管副总）对应标准的资料，因此不能判断该副总出差是否可以乘坐高铁一等座。需提供公司差旅费管理办法或交通费报销标准文件后再行核实。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 104,
+        "prompt_tokens": 789,
+        "total_tokens": 893,
+        "completion_tokens_details": {
+          "reasoning_tokens": 18
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 1.797
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "无法确认。检索未成功返回任何关于差旅座位等级（如高铁一等座）与职级（如分管副总）对应标准的资料，因此不能判断该副总出差是否可以乘坐高铁一等座。需提供公司差旅费管理办法或交通费报销标准文件后再行核实。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4493,
+  "started_at": "2026-11-01T06:18:22",
+  "elapsed_seconds": 10.76,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.019,
+    "number_recall": 0.0
+  }
+}

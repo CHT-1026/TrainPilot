@@ -1,0 +1,68 @@
+{
+  "qid": "L1301",
+  "question": "只问TARGET当前有效报价，输出amount_wan和source_id。忽略无关产品；以下为全部可用资料：\nD01：产品P01报价201万元，均不是目标产品。\nD02：产品P02报价202万元，均不是目标产品。\nD03：产品P03报价203万元，均不是目标产品。\nD04：产品P04报价204万元，均不是目标产品。\nD05：产品P05报价205万元，均不是目标产品。\nD06：产品P06报价206万元，均不是目标产品。\nD07：产品P07报价207万元，均不是目标产品。\nT1：目标产品TARGET报价74万元；版本v2已生效，明确取代v1。\nD08：产品P08报价208万元，均不是目标产品。\nD09：产品P09报价209万元，均不是目标产品。\nD10：产品P10报价210万元，均不是目标产品。\nD11：产品P11报价211万元，均不是目标产品。\nD12：产品P12报价212万元，均不是目标产品。\nD13：产品P13报价213万元，均不是目标产品。\nD14：产品P14报价214万元，均不是目标产品。\nD15：产品P15报价215万元，均不是目标产品。\nD16：产品P16报价216万元，均不是目标产品。\nD17：产品P17报价217万元，均不是目标产品。\nD18：产品P18报价218万元，均不是目标产品。\nD19：产品P19报价219万元，均不是目标产品。\nD20：产品P20报价220万元，均不是目标产品。\nD21：产品P21报价221万元，均不是目标产品。\nO1：TARGET旧版v1报价9万元，已被v2取代，仅供历史对比。\nD22：产品P22报价222万元，均不是目标产品。\nD23：产品P23报价223万元，均不是目标产品。\nD24：产品P24报价224万元，均不是目标产品。\nD25：产品P25报价225万元，均不是目标产品。\nD26：产品P26报价226万元，均不是目标产品。\nD27：产品P27报价227万元，均不是目标产品。\nD28：产品P28报价228万元，均不是目标产品。\nD29：产品P29报价229万元，均不是目标产品。\nD30：产品P30报价230万元，均不是目标产品。\nD31：产品P31报价231万元，均不是目标产品。\nD32：产品P32报价232万元，均不是目标产品。\n只输出一个JSON对象，不使用代码块或额外解释。键名、数据类型和排列规则按题目；小数四舍五入到两位，整数可保持整数。未知值用null，不得猜测。",
+  "question_type": "context_selection",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "{\"amount_wan\": 74, \"source_id\": \"T1\"}",
+      "usage": {
+        "completion_tokens": 72,
+        "prompt_tokens": 1041,
+        "total_tokens": 1113,
+        "completion_tokens_details": {
+          "reasoning_tokens": 53
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 1024
+        }
+      },
+      "seconds": 11.703
+    },
+    {
+      "round": 2,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"TARGET当前有效报价为74万元（版本v2，已生效并取代v1），来源T1。\",\"citations\":[\"T1\"],\"evidence\":[\"T1#片段1\"]}",
+      "usage": {
+        "completion_tokens": 69,
+        "prompt_tokens": 1097,
+        "total_tokens": 1166,
+        "completion_tokens_details": {
+          "reasoning_tokens": 17
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 1024
+        }
+      },
+      "seconds": 3.25
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "answerable",
+    "answer": "TARGET当前有效报价为74万元（版本v2，已生效并取代v1），来源T1。",
+    "citations": [
+      "T1"
+    ],
+    "evidence": [
+      "T1#片段1"
+    ]
+  },
+  "status": "answered",
+  "tokens": 2279,
+  "started_at": "2026-11-01T00:32:38",
+  "elapsed_seconds": 14.95,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 0.0,
+    "cited": [
+      "T1"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": true,
+    "gold_recall": 1.0,
+    "number_recall": 0.0
+  }
+}

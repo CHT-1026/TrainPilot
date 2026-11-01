@@ -1,0 +1,133 @@
+{
+  "qid": "I0049",
+  "question": "数字化转型的三个年度里程碑分别是什么？",
+  "question_type": "时间与因果推断",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call>\n<function>list</function><parameter>keyword:数字化</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 356,
+        "total_tokens": 601,
+        "completion_tokens": 245,
+        "completion_tokens_details": {
+          "reasoning_tokens": 215,
+          "text_tokens": 245
+        }
+      },
+      "seconds": 2.844
+    },
+    {
+      "round": 2,
+      "text": "<tool_call>\n<function>read</function><parameter>doc_id:lantu_strategy_digital_transformation</parameter><parameter>offset:0</parameter><parameter>limit:4000</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 435,
+        "total_tokens": 569,
+        "completion_tokens": 134,
+        "completion_tokens_details": {
+          "reasoning_tokens": 79,
+          "text_tokens": 134
+        }
+      },
+      "seconds": 1.187
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"数字化转型的三个年度里程碑分别是：\\n1. 2025 年完成 PLM 与 CRM 上线；\\n2. 2026 年完成 MES 全面推广；\\n3. 2027 年实现智能决策。\",\"citations\":[\"lantu_strategy_digital_transformation\"],\"evidence\":[\"lantu_strategy_digital_transformation\"]}",
+      "usage": {
+        "prompt_tokens": 811,
+        "total_tokens": 1254,
+        "completion_tokens": 443,
+        "completion_tokens_details": {
+          "reasoning_tokens": 348,
+          "text_tokens": 443
+        }
+      },
+      "seconds": 3.875
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "数字化"
+      },
+      "result_sha": "c44d9a37f610829cdd4318d6869a301aa534b5366e1c13b7e1b2b87ea7751c8e",
+      "result_chars": 89,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_strategy_digital_transformation",
+        "offset": "0",
+        "limit": "4000"
+      },
+      "result_sha": "7fb8788515840ec6f7759672549ac4d57c5f8680c9a4370dedfff71336627f6f",
+      "result_chars": 550,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "数字化转型的三个年度里程碑分别是：\n1. 2025 年完成 PLM 与 CRM 上线；\n2. 2026 年完成 MES 全面推广；\n3. 2027 年实现智能决策。",
+    "citations": [
+      "lantu_strategy_digital_transformation"
+    ],
+    "evidence": [
+      "lantu_strategy_digital_transformation"
+    ]
+  },
+  "status": "answered",
+  "tokens": 2424,
+  "started_at": "2026-11-01T05:33:30",
+  "elapsed_seconds": 7.91,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "数字化"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_strategy_digital_transformation",
+            "title": "# 澜图智能数字化转型规划"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_strategy_digital_transformation",
+        "offset": "0",
+        "limit": "4000"
+      },
+      "result": {
+        "doc_id": "lantu_strategy_digital_transformation",
+        "title": "# 澜图智能数字化转型规划",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 367,
+        "text": "# 澜图智能数字化转型规划\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-08-01 09:00\n更新时间：2025-10-10 14:00\n版本号：v2.3\n文档类型：strategy\n文档族：digital_transformation\n生效日期：2025-10-10\n\n## 一、转型目标\n\n三年内实现研发、供应链、制造、销售与服务的全流程数字化，运营效率提升 20%。\n\n## 二、重点工程\n\nPLM 研发协同、SRM 供应链协同、MES 制造执行、CRM 客户经营与数据中台五大工程。\n\n## 三、技术底座\n\n统一身份认证、主数据管理、低代码平台与数据湖仓；核心系统云化率 80%。\n\n## 四、里程碑\n\n2025 年完成 PLM 与 CRM 上线；2026 年完成 MES 全面推广；2027 年实现智能决策。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_strategy_digital_transformation"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.875,
+    "number_recall": 1.0
+  }
+}

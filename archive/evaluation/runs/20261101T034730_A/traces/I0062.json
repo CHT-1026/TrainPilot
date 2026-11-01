@@ -1,0 +1,110 @@
+{
+  "qid": "I0062",
+  "question": "安全生产事故的上报时限与调查处理原则是什么？瞒报漏报如何处理？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>安全生产事故 上报时限 报告</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=search><parameter=query>事故调查处理原则 瞒报 漏报</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 99,
+        "prompt_tokens": 360,
+        "total_tokens": 459,
+        "completion_tokens_details": {
+          "reasoning_tokens": 31
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.266
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=TOOL>{\"name\": \"search\", \"args\": {\"query\": \"安全生产事故 上报时限 报告\", \"top_k\": 10}}</function></tool_call>",
+      "usage": {
+        "completion_tokens": 60,
+        "prompt_tokens": 465,
+        "total_tokens": 525,
+        "completion_tokens_details": {
+          "reasoning_tokens": 19
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.531
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=TOOL>{\"name\":\"search\",\"args\":{\"query\":\"安全生产事故 上报时限 报告 瞒报 漏报 调查处理\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 543,
+        "total_tokens": 594,
+        "completion_tokens_details": {
+          "reasoning_tokens": 6
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.687
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>安全生产事故 上报时限 报告 瞒报 漏报 调查处理</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 625,
+        "total_tokens": 676,
+        "completion_tokens_details": {
+          "reasoning_tokens": 5
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.844
+    },
+    {
+      "round": 5,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"多次尝试调用检索工具均未成功，无法获取相关资料，因此无法基于企业资料库回答安全生产事故上报时限、调查处理原则及瞒报漏报处理的问题。建议检查工具调用格式或重试；如需基于《生产安全事故报告和调查处理条例》等外部法规回答，请明确说明可使用外部公开信息。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 165,
+        "prompt_tokens": 708,
+        "total_tokens": 873,
+        "completion_tokens_details": {
+          "reasoning_tokens": 70
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 6.844
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "多次尝试调用检索工具均未成功，无法获取相关资料，因此无法基于企业资料库回答安全生产事故上报时限、调查处理原则及瞒报漏报处理的问题。建议检查工具调用格式或重试；如需基于《生产安全事故报告和调查处理条例》等外部法规回答，请明确说明可使用外部公开信息。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 3127,
+  "started_at": "2026-11-01T05:20:37",
+  "elapsed_seconds": 16.17,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.065,
+    "number_recall": 0.0
+  }
+}

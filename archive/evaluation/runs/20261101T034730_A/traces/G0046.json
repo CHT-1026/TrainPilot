@@ -1,0 +1,142 @@
+{
+  "qid": "G0046",
+  "question": "工业数据平台列出哪四个应用场景？",
+  "question_type": "清单枚举",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>工业数据平台 应用场景</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 41,
+        "prompt_tokens": 350,
+        "total_tokens": 391,
+        "completion_tokens_details": {
+          "reasoning_tokens": 9
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.468
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=TOOL>{\"name\":\"search\",\"args\":{\"query\":\"工业数据平台 应用场景 四个\",\"top_k\":10}}</function></tool_call>",
+      "usage": {
+        "completion_tokens": 55,
+        "prompt_tokens": 419,
+        "total_tokens": 474,
+        "completion_tokens_details": {
+          "reasoning_tokens": 18
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.61
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=TOOL>{\"name\": \"search\", \"args\": {\"query\": \"工业数据平台 应用场景\", \"top_k\": 10}}",
+      "usage": {
+        "completion_tokens": 44,
+        "prompt_tokens": 493,
+        "total_tokens": 537,
+        "completion_tokens_details": {
+          "reasoning_tokens": 7
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.859
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>工业数据平台 应用场景</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 39,
+        "prompt_tokens": 567,
+        "total_tokens": 606,
+        "completion_tokens_details": {
+          "reasoning_tokens": 7
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.063
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>工业数据平台 应用场景</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 55,
+        "prompt_tokens": 636,
+        "total_tokens": 691,
+        "completion_tokens_details": {
+          "reasoning_tokens": 23
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.312
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>工业数据平台 四个应用场景</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 57,
+        "prompt_tokens": 705,
+        "total_tokens": 762,
+        "completion_tokens_details": {
+          "reasoning_tokens": 25
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 3.531
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corp us\",\"answer\":\"未能检索到关于'工业数据平台列出四个应用场景'的相关资料，无法给出具体答案。建议提供该平台名称或相关文档关键词，以便进一步检索确认。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 68,
+        "prompt_tokens": 771,
+        "total_tokens": 839,
+        "completion_tokens_details": {
+          "reasoning_tokens": 9
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 3.313
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corp us",
+    "answer": "未能检索到关于'工业数据平台列出四个应用场景'的相关资料，无法给出具体答案。建议提供该平台名称或相关文档关键词，以便进一步检索确认。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4300,
+  "started_at": "2026-11-01T05:04:59",
+  "elapsed_seconds": 14.16,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

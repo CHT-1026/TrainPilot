@@ -1,0 +1,442 @@
+{
+  "qid": "I0022",
+  "question": "2025 年公司在扩张上有哪几项标志性事件？",
+  "question_type": "时间与因果推断",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>2025 扩张</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list><parameter=keyword>2025</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 72,
+        "prompt_tokens": 357,
+        "total_tokens": 429,
+        "completion_tokens_details": {
+          "reasoning_tokens": 21
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.078
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"list\",\"keyword\":\"2025\"}",
+      "usage": {
+        "completion_tokens": 26,
+        "prompt_tokens": 445,
+        "total_tokens": 471,
+        "completion_tokens_details": {
+          "reasoning_tokens": 10
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.531
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_company_milestones_2025\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 1328,
+        "total_tokens": 1376,
+        "completion_tokens_details": {
+          "reasoning_tokens": 11
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 2.719
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"欧洲技术中心 斯图加特 具身智能研究所 海外 扩张\",\"top_k\":8}}",
+      "usage": {
+        "completion_tokens": 148,
+        "prompt_tokens": 1864,
+        "total_tokens": 2012,
+        "completion_tokens_details": {
+          "reasoning_tokens": 110
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 1280
+        }
+      },
+      "seconds": 5.141
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_company_global\",\"offset\":0,\"limit\":3000}}",
+      "usage": {
+        "completion_tokens": 88,
+        "prompt_tokens": 3874,
+        "total_tokens": 3962,
+        "completion_tokens_details": {
+          "reasoning_tokens": 58
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 1856
+        }
+      },
+      "seconds": 3.719
+    },
+    {
+      "round": 6,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_company_history\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 137,
+        "prompt_tokens": 4321,
+        "total_tokens": 4458,
+        "completion_tokens_details": {
+          "reasoning_tokens": 107
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3840
+        }
+      },
+      "seconds": 5.546
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"2025 年公司在扩张上的标志性事件主要有：1）2025 年 3 月，德国斯图加特欧洲技术中心开业，海外布局进一步落子（海外员工达 200 人，另有越南胡志明市、墨西哥蒙特雷、匈牙利布达佩斯服务网点；全年海外营收 4.86 亿元、占比 11.4%，同比增长 31.2%）；2）2025 年 5 月，具身智能研究所成立，研发中心下属研究所增至 5 个（编制 48 人），研发组织扩张；3）2025 年 7 月，售后服务部由销售中心下属部门升级为一级部门，一级部门增至 12 个；4）2025 年 9 月 12 日，第 10 万台机器人下线，规模化能力跨上新台阶；5）规模扩张成果：全年营业收入 42.63 亿元、同比增长 19.1%，新签订单 48.90 亿元，机器人出货 21,400 台。\",\"citations\":[\"lantu_company_milestones_2025\",\"lantu_company_global\",\"lantu_company_history\",\"lantu_org_chart_2025\"],\"evidence\":[\"lantu_company_milestones_2025#片段0\",\"lantu_company_global#片段0\",\"lantu_company_history#片段0\",\"lantu_org_chart_2025#片段0\"]}",
+      "usage": {
+        "completion_tokens": 465,
+        "prompt_tokens": 4967,
+        "total_tokens": 5432,
+        "completion_tokens_details": {
+          "reasoning_tokens": 113
+        },
+        "prompt_tokens_details": null
+      },
+      "seconds": 8.079
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "2025"
+      },
+      "result_sha": "431a21eaeb01df9c30648502ef4699b2c3f6c199c5c61864f32e17d0df900efe",
+      "result_chars": 1794,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_company_milestones_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "fac97c0e47b6d6d81123d76a7034642beea3457a1816142a549c5be6fa957afe",
+      "result_chars": 734,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "欧洲技术中心 斯图加特 具身智能研究所 海外 扩张",
+        "top_k": 8
+      },
+      "result_sha": "f984a29f0bee23e6f68b3e1fa034e944f7ce4c4a6ae02d356338fbd4481f04b8",
+      "result_chars": 3093,
+      "hits": 8
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_company_global",
+        "offset": 0,
+        "limit": 3000
+      },
+      "result_sha": "2c2a615f769a29c9aa9e65727a476c1dc4f587c81957835ddc845928d72ba34e",
+      "result_chars": 633,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_company_history",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "7324cc889068a794d60ff8abbd22176c09ad9b26d53c33036b65e3c7c3fd68d3",
+      "result_chars": 873,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "2025 年公司在扩张上的标志性事件主要有：1）2025 年 3 月，德国斯图加特欧洲技术中心开业，海外布局进一步落子（海外员工达 200 人，另有越南胡志明市、墨西哥蒙特雷、匈牙利布达佩斯服务网点；全年海外营收 4.86 亿元、占比 11.4%，同比增长 31.2%）；2）2025 年 5 月，具身智能研究所成立，研发中心下属研究所增至 5 个（编制 48 人），研发组织扩张；3）2025 年 7 月，售后服务部由销售中心下属部门升级为一级部门，一级部门增至 12 个；4）2025 年 9 月 12 日，第 10 万台机器人下线，规模化能力跨上新台阶；5）规模扩张成果：全年营业收入 42.63 亿元、同比增长 19.1%，新签订单 48.90 亿元，机器人出货 21,400 台。",
+    "citations": [
+      "lantu_company_milestones_2025",
+      "lantu_company_global",
+      "lantu_company_history",
+      "lantu_org_chart_2025"
+    ],
+    "evidence": [
+      "lantu_company_milestones_2025#片段0",
+      "lantu_company_global#片段0",
+      "lantu_company_history#片段0",
+      "lantu_org_chart_2025#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 18140,
+  "started_at": "2026-11-01T02:31:05",
+  "elapsed_seconds": 28.81,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "2025"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_company_history",
+            "title": "# 澜图智能发展历程（2011—2025）"
+          },
+          {
+            "doc_id": "lantu_company_milestones_2025",
+            "title": "# 澜图智能 2025 年度大事记"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2025",
+            "title": "澜图智能 2025 年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_h1_2025",
+            "title": "# 澜图智能 2025 年半年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_monthly_2025",
+            "title": "[工作表] 文档信息"
+          },
+          {
+            "doc_id": "lantu_finance_q3_2025",
+            "title": "# 澜图智能 2025 年第三季度经营数据"
+          },
+          {
+            "doc_id": "lantu_legal_purchase_contract_template",
+            "title": "澜图智能采购合同模板（2025版）"
+          },
+          {
+            "doc_id": "lantu_legal_sales_contract_template",
+            "title": "澜图智能设备销售合同模板（2025版）"
+          },
+          {
+            "doc_id": "lantu_meeting_board",
+            "title": "# 2025 年第二次临时董事会决议"
+          },
+          {
+            "doc_id": "lantu_meeting_ops_2025q3",
+            "title": "2025 年第三季度经营分析会纪要"
+          },
+          {
+            "doc_id": "lantu_meeting_quality",
+            "title": "2025 年第三季度质量专题会纪要"
+          },
+          {
+            "doc_id": "lantu_meeting_rd",
+            "title": "# 2025 年 5 月研发例会纪要"
+          },
+          {
+            "doc_id": "lantu_meeting_safety",
+            "title": "# 2025 年安全生产委员会会议纪要"
+          },
+          {
+            "doc_id": "lantu_meeting_sales",
+            "title": "2025 年华南大区销售复盘会纪要"
+          },
+          {
+            "doc_id": "lantu_meeting_supply_chain",
+            "title": "2025 年供应链韧性专题会纪要"
+          },
+          {
+            "doc_id": "lantu_org_chart_2025",
+            "title": "# 澜图智能组织架构（2025版）"
+          },
+          {
+            "doc_id": "lantu_policy_attendance_2025",
+            "title": "# 澜图智能考勤管理制度（2025版）"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2025",
+            "title": "# 澜图智能采购管理制度（2025版）"
+          },
+          {
+            "doc_id": "lantu_policy_travel_2025",
+            "title": "# 澜图智能差旅费用报销标准（2025版）"
+          },
+          {
+            "doc_id": "lantu_policy_travel_2025h2",
+            "title": "# 澜图智能差旅费用报销标准（2025年7月修订）"
+          },
+          {
+            "doc_id": "lantu_sales_discount_2025",
+            "title": "# 澜图智能销售折扣审批权限（2025版）"
+          },
+          {
+            "doc_id": "lantu_strategy_2025",
+            "title": "# 澜图智能 2025 年度经营计划"
+          },
+          {
+            "doc_id": "lantu_support_recall_2025",
+            "title": "# LT-R12 线束磨损召回通知"
+          },
+          {
+            "doc_id": "lantu_support_sla_2025",
+            "title": "# 澜图智能服务等级协议（SLA 2025版）"
+          },
+          {
+            "doc_id": "lantu_tech_roadmap",
+            "title": "# 澜图智能技术路线图（2025—2028）"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_company_milestones_2025",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_company_milestones_2025",
+        "title": "# 澜图智能 2025 年度大事记",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 551,
+        "text": "# 澜图智能 2025 年度大事记\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-12-31 18:00\n更新时间：2026-01-06 09:00\n版本号：v1.0\n文档类型：company\n文档族：annual_milestones_2025\n生效日期：2026-01-06\n\n## 一、经营里程碑\n\n2025 年营业收入 42.63 亿元，同比增长 19.1%；新签订单 48.90 亿元；机器人出货 21,400 台；第 10 万台机器人于 9 月 12 日下线。\n\n## 二、组织里程碑\n\n3 月德国欧洲技术中心在斯图加特开业；5 月具身智能研究所成立，研发中心下属研究所增至 5 个；7 月售后服务部升级为一级部门。\n\n## 三、产品里程碑\n\n4 月发布 LT-C800 控制器；6 月发布 LantuTwin 3.0 数字孪生平台；11 月 LT-R20 Pro 完成样机验证，计划 2026 年第二季度量产。\n\n## 四、质量与合规\n\n全年客户投诉 3 起，同比下降 62%；通过 ISO 27001 复审；完成欧盟 CE 与北美 UL 认证换版。\n\n## 五、社会责任\n\n苏州基地光伏装机 6.2MW，绿电占比 28%；全年安全培训 4,120 人次，未发生重伤事故。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "欧洲技术中心 斯图加特 具身智能研究所 海外 扩张",
+        "top_k": 8
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_company_milestones_2025",
+            "title": "# 澜图智能 2025 年度大事记",
+            "chunk": 0,
+            "score": 37.821,
+            "snippet": "# 澜图智能 2025 年度大事记\n\n所属部门：董事会办公室\n作者：文梓萱\n创建时间：2025-12-31 18:00\n更新时间：2026-01-06 09:00\n版本号：v1.0\n文档类型：company\n文档族：annual_milestones_2025\n生效日期：2026-01-06\n\n## 一、经营里程碑\n\n2025 年营业收入 42.63 亿元，同比增长 19.1%；新签订单 48.90 亿元；机器人出货 21,400 台；第 10 万台机器人于 9 月 12 日下线。\n\n## 二、组织里程碑\n\n3 月"
+          },
+          {
+            "doc_id": "lantu_company_global",
+            "title": "# 澜图智能全球化布局与海外业务",
+            "chunk": 0,
+            "score": 30.026,
+            "snippet": "# 澜图智能全球化布局与海外业务\n\n所属部门：国际业务部\n作者：罗嘉树\n创建时间：2024-06-01 10:00\n更新时间：2025-12-10 14:30\n版本号：v2.2\n文档类型：company\n文档族：global_presence\n生效日期：2025-12-10\n\n## 一、海外机构\n\n公司在德国斯图加特设立欧洲技术中心（2025 年 3 月开业），在越南胡志明市、墨西哥蒙特雷、匈牙利布达佩斯设有服务网点，海外员工 200 人。\n\n## 二、海外业绩\n\n2025 年海外营业收入 4.86 亿元，占总收入"
+          },
+          {
+            "doc_id": "lantu_company_history",
+            "title": "# 澜图智能发展历程（2011—2025）",
+            "chunk": 0,
+            "score": 27.325,
+            "snippet": "# 澜图智能发展历程（2011—2025）\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2023-03-01 09:00\n更新时间：2026-01-05 14:00\n版本号：v4.0\n文档类型：company\n文档族：company_history\n生效日期：2026-01-05\n\n## 一、创业阶段（2011—2015）\n\n2011 年 6 月 18 日，公司在苏州工业园区成立，创始团队来自高校机器人实验室，首款产品为 LT-R6 六轴工业机器人，2012 年实现小批量交付 120 台。2014 年建成首条机"
+          },
+          {
+            "doc_id": "lantu_meeting_rd",
+            "title": "# 2025 年 5 月研发例会纪要",
+            "chunk": 0,
+            "score": 21.997,
+            "snippet": "# 2025 年 5 月研发例会纪要\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2025-05-09 09:00\n更新时间：2025-05-09 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_rd_2025\n生效日期：2025-05-09\n\n## 一、项目进展\n\nLT-C800 控制器完成小批量验证；LantuTwin 3.0 进入客户试点；具身智能操作模型完成抓取数据集 12 万条。\n\n## 二、组织调整\n\n具身智能研究所正式成立，编制 48 人，重点研究视觉-语言-动作模型"
+          },
+          {
+            "doc_id": "lantu_org_rd_system",
+            "title": "# 澜图智能研发体系与投入",
+            "chunk": 0,
+            "score": 21.643,
+            "snippet": "# 澜图智能研发体系与投入\n\n所属部门：研发中心\n作者：沈亦舟\n创建时间：2024-02-01 09:00\n更新时间：2026-01-12 10:00\n版本号：v5.0\n文档类型：org\n文档族：rd_system\n生效日期：2026-01-12\n\n## 一、研发架构\n\n研发中心下设机器人本体研究所、控制器研究所、机器视觉研究所、工艺应用研究所、具身智能研究所，另设测试中心与可靠性实验室。\n\n## 二、人员结构\n\n研发人员 1,286 人，其中博士 48 人、硕士 612 人，35 岁以下占比 61%。2025 年"
+          },
+          {
+            "doc_id": "lantu_company_profile",
+            "title": "澜图智能装备公司简介",
+            "chunk": 0,
+            "score": 20.342,
+            "snippet": "澜图智能装备公司简介\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2023-03-01 09:00\n更新时间：2026-01-08 10:30\n版本号：v5.2\n文档类型：company\n文档族：company_profile\n生效日期：2026-01-08\n一、公司概况\n澜图智能装备股份有限公司成立于2011-06-18，总部位于江苏省苏州市工业园区星澜路88号，注册资本\n6.8 亿元，2023 年在上海证券交易所科创板上市（股票代码 688719）。公司专注工业机器人、智能产线\n与工业软件，为汽车、锂电、光伏"
+          },
+          {
+            "doc_id": "lantu_org_chart_2025",
+            "title": "# 澜图智能组织架构（2025版）",
+            "chunk": 0,
+            "score": 20.148,
+            "snippet": "# 澜图智能组织架构（2025版）\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2025-03-20 09:00\n更新时间：2025-04-10 10:00\n版本号：v2.0\n文档类型：org\n文档族：org_chart\n生效日期：2025-04-01\n\n## 一、一级部门\n\n2025 年 4 月起公司设 12 个一级部门：研发中心、产品部、销售中心、客户成功部、供应链中心、制造中心、质量部、财务部、人力资源部、法务合规部、信息技术部、售后服务部。售后服务部由销售中心下属部门升级为一级部门。\n\n## 二、研发体"
+          },
+          {
+            "doc_id": "lantu_strategy_2025",
+            "title": "# 澜图智能 2025 年度经营计划",
+            "chunk": 0,
+            "score": 16.34,
+            "snippet": "# 澜图智能 2025 年度经营计划\n\n所属部门：战略投资部\n作者：顾承澜\n创建时间：2025-01-10 09:00\n更新时间：2025-02-10 10:00\n版本号：v1.0\n文档类型：strategy\n文档族：annual_plan_2025\n生效日期：2025-02-10\n\n## 一、年度目标\n\n2025 年营业收入目标 41.5 亿元，力争 42.63 亿元；新签订单目标 46 亿元；机器人出货目标 20,000 台。\n\n## 二、重点任务\n\n锂电与半导体行业突破；LT-C800 控制器量产；海外收入占"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_company_global",
+        "offset": 0,
+        "limit": 3000
+      },
+      "result": {
+        "doc_id": "lantu_company_global",
+        "title": "# 澜图智能全球化布局与海外业务",
+        "offset": 0,
+        "limit": 3000,
+        "total_chars": 464,
+        "text": "# 澜图智能全球化布局与海外业务\n\n所属部门：国际业务部\n作者：罗嘉树\n创建时间：2024-06-01 10:00\n更新时间：2025-12-10 14:30\n版本号：v2.2\n文档类型：company\n文档族：global_presence\n生效日期：2025-12-10\n\n## 一、海外机构\n\n公司在德国斯图加特设立欧洲技术中心（2025 年 3 月开业），在越南胡志明市、墨西哥蒙特雷、匈牙利布达佩斯设有服务网点，海外员工 200 人。\n\n## 二、海外业绩\n\n2025 年海外营业收入 4.86 亿元，占总收入 11.4%，同比增长 31.2%；欧洲收入 3.20 亿元，东南亚收入 0.98 亿元，北美收入 0.68 亿元。\n\n## 三、重点市场\n\n欧洲聚焦汽车零部件与新能源，东南亚聚焦 3C 与家电，北美聚焦物流自动化。2025 年海外新签订单 6.1 亿元。\n\n## 四、合规要求\n\n出口业务须执行两用物项筛查，涉及加密、视觉算法等敏感技术的项目须经法务合规部审批；欧盟项目须满足 CE 与 GDPR 要求。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_company_history",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_company_history",
+        "title": "# 澜图智能发展历程（2011—2025）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 694,
+        "text": "# 澜图智能发展历程（2011—2025）\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2023-03-01 09:00\n更新时间：2026-01-05 14:00\n版本号：v4.0\n文档类型：company\n文档族：company_history\n生效日期：2026-01-05\n\n## 一、创业阶段（2011—2015）\n\n2011 年 6 月 18 日，公司在苏州工业园区成立，创始团队来自高校机器人实验室，首款产品为 LT-R6 六轴工业机器人，2012 年实现小批量交付 120 台。2014 年建成首条机器人装配线，年产能 1,500 台。\n\n## 二、成长阶段（2016—2020）\n\n2016 年发布 LT-C600 控制器，实现核心部件自研；2018 年营收突破 10 亿元；2019 年东莞华南基地投产，年产能提升至 8,000 台；2020 年推出 AMR 移动机器人产品线。\n\n## 三、扩张阶段（2021—2023）\n\n2021 年完成股份制改造；2022 年成都基地开工；2023 年 9 月 28 日在科创板上市，募集资金 12.6 亿元，用于年产 18,000 台智能装备产业化项目。\n\n## 四、规模化阶段（2024—2025）\n\n2024 年营业收入 35.80 亿元；2025 年 3 月德国欧洲技术中心开业，5 月具身智能研究所成立，9 月第 10 万台机器人下线，全年营业收入 42.63 亿元。\n\n## 五、未来展望\n\n公司计划 2028 年实现营业收入 80 亿元，海外收入占比提升至 25%，并建成以具身智能为核心的下一代机器人平台。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_company_milestones_2025",
+      "lantu_company_global",
+      "lantu_company_history",
+      "lantu_org_chart_2025"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.714,
+    "number_recall": 1.0
+  }
+}

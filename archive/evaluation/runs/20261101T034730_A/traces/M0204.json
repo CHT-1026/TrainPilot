@@ -1,0 +1,142 @@
+{
+  "qid": "M0204",
+  "question": "产线边上那台做视觉推理的盒子叫什么？里面预装的是什么？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>视觉推理 边缘盒子 产线</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 81,
+        "prompt_tokens": 361,
+        "total_tokens": 442,
+        "completion_tokens_details": {
+          "reasoning_tokens": 47
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 4.172
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>视觉推理 盒子</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 61,
+        "prompt_tokens": 432,
+        "total_tokens": 493,
+        "completion_tokens_details": {
+          "reasoning_tokens": 31
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.39
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>视觉推理 边缘盒子 产线 预装</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 49,
+        "prompt_tokens": 499,
+        "total_tokens": 548,
+        "completion_tokens_details": {
+          "reasoning_tokens": 11
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.61
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>视觉推理 边缘盒子 产线</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 64,
+        "prompt_tokens": 574,
+        "total_tokens": 638,
+        "completion_tokens_details": {
+          "reasoning_tokens": 30
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 2.812
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>视觉推理 边缘盒子 产线</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 41,
+        "prompt_tokens": 645,
+        "total_tokens": 686,
+        "completion_tokens_details": {
+          "reasoning_tokens": 7
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 1.516
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>视觉推理 边缘盒子 产线</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 57,
+        "prompt_tokens": 716,
+        "total_tokens": 773,
+        "completion_tokens_details": {
+          "reasoning_tokens": 23
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 1.89
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_in_corpus\",\"answer\":\"无法确认：我尝试检索资料库中关于产线旁视觉推理设备（名称及预装软件/系统）的信息，但多次检索均未成功返回结果，因此无法给出设备名称和预装内容。建议提供设备型号、厂商或相关文档标题等线索后重新查询，或人工核对设备铭牌与系统镜像说明。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 111,
+        "prompt_tokens": 784,
+        "total_tokens": 895,
+        "completion_tokens_details": {
+          "reasoning_tokens": 13
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 4.36
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_in_corpus",
+    "answer": "无法确认：我尝试检索资料库中关于产线旁视觉推理设备（名称及预装软件/系统）的信息，但多次检索均未成功返回结果，因此无法给出设备名称和预装内容。建议提供设备型号、厂商或相关文档标题等线索后重新查询，或人工核对设备铭牌与系统镜像说明。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4475,
+  "started_at": "2026-11-01T05:41:22",
+  "elapsed_seconds": 18.75,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.005,
+    "number_recall": 0.0
+  }
+}

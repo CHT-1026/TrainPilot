@@ -1,0 +1,318 @@
+{
+  "qid": "K0019",
+  "question": "2025 年 4 月 8 日凌晨恒芯动力电池 3 号叠片线因伺服过载停机，远程诊断 12 分钟定位、备件 6 小时送达、工程师到场 2 小时完成更换、48 小时恢复满产。但恒芯动力电池在售合同案例记载的实际交付周期是 5 个月。请区分「故障修复 48 小时」与「项目交付 5 个月」这两个时间概念，并说明为什么二者不矛盾。",
+  "question_type": "时间与因果推断",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>恒芯动力电池 叠片线 伺服过载 停机</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 88,
+        "prompt_tokens": 433,
+        "total_tokens": 521,
+        "completion_tokens_details": {
+          "reasoning_tokens": 48
+        },
+        "prompt_tokens_details": null
+      },
+      "seconds": 2.0
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"恒芯动力电池 叠片线 伺服过载 停机\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 61,
+        "prompt_tokens": 510,
+        "total_tokens": 571,
+        "completion_tokens_details": {
+          "reasoning_tokens": 26
+        },
+        "prompt_tokens_details": null
+      },
+      "seconds": 2.141
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_support_case_hengxin\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 57,
+        "prompt_tokens": 3012,
+        "total_tokens": 3069,
+        "completion_tokens_details": {
+          "reasoning_tokens": 24
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 2.594
+    },
+    {
+      "round": 4,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_case_01_hengxin\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 66,
+        "prompt_tokens": 3445,
+        "total_tokens": 3511,
+        "completion_tokens_details": {
+          "reasoning_tokens": 31
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3008
+        }
+      },
+      "seconds": 2.39
+    },
+    {
+      "round": 5,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_meeting_case_review\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "completion_tokens": 93,
+        "prompt_tokens": 4015,
+        "total_tokens": 4108,
+        "completion_tokens_details": {
+          "reasoning_tokens": 61
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3392
+        }
+      },
+      "seconds": 3.875
+    },
+    {
+      "round": 6,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"两个时间概念的口径完全不同，并不矛盾：\\n\\n1）「48 小时」是售后服务口径的故障修复时间（停机→复产），对象是 2025 年 4 月 8 日凌晨已投运的 3 号叠片线单点故障（伺服过载，实际定位为驱动器散热风扇故障）。链条为：400 热线报修→远程诊断中心 12 分钟定位并指导降载运行→苏州中心仓备件 6 小时送达→工程师到场 2 小时完成更换与参数校准→48 小时内恢复满产、未造成批量报废。衡量的是售后响应与备件履约能力。\\n\\n2）「5 个月」是项目交付口径的合同履约周期（启动→验收），对象是恒芯动力电池 12 条叠片线的整体自动化改造，范围包括 186 台 LT-R20 机器人、24 台 LT-AMR-1000 及控制器/视觉/数字孪生，需经现场勘测、虚拟调试、设备安装与 72 小时连续试运行后才能交付验收，合同要求 6 个月内完成、实际 5 个月达成。衡量的是新建产线的工程交付能力。\\n\\n3）二者不矛盾的原因：时间轴上，5 个月的项目交付发生在先（2025 年 3 月 18 日项目复盘会已记载 12 条线完成验收），48 小时的故障修复发生在后（4 月 8 日，产线已验收投产后的一次运行期故障）；事件性质上，前者是大批量设备的制造+安装+调试过程，后者是已交付设备的单点备件更换；且备件 48 小时发货时效、12 条线调试周期缩短 12 天、停机控制在 4 小时内等记录，均说明两种能力（交付能力与服务能力）是并列而非互斥的指标。\",\"citations\":[\"lantu_support_case_hengxin\",\"lantu_case_01_hengxin\",\"lantu_meeting_case_review\",\"lantu_support_spare_parts_price\"],\"evidence\":[\"lantu_support_case_hengxin#片段0\",\"lantu_case_01_hengxin#片段0\",\"lantu_meeting_case_review#片段0\",\"lantu_support_spare_parts_price#片段0\"]}",
+      "usage": {
+        "completion_tokens": 632,
+        "prompt_tokens": 4407,
+        "total_tokens": 5039,
+        "completion_tokens_details": {
+          "reasoning_tokens": 78
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 3968
+        }
+      },
+      "seconds": 19.453
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "恒芯动力电池 叠片线 伺服过载 停机",
+        "top_k": 10
+      },
+      "result_sha": "91521e63a6dcc7980fe029a4e52337b987d2b8354029efb8c9475fae2eb9abc5",
+      "result_chars": 3937,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_case_hengxin",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "79af6ed8c1af9d1d452de2a8271a64de9b7fca17effd4c61d63500788d875f89",
+      "result_chars": 618,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_case_01_hengxin",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "e1955426cc1bf895d641ea6f16e59d38427653ee0ffa3501c90b4e965cb8f3a2",
+      "result_chars": 829,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_meeting_case_review",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "781cb1d9ab97d872698b46a889850dc345c0f3f211952a4bd3e830c5fd3db88c",
+      "result_chars": 566,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "两个时间概念的口径完全不同，并不矛盾：\n\n1）「48 小时」是售后服务口径的故障修复时间（停机→复产），对象是 2025 年 4 月 8 日凌晨已投运的 3 号叠片线单点故障（伺服过载，实际定位为驱动器散热风扇故障）。链条为：400 热线报修→远程诊断中心 12 分钟定位并指导降载运行→苏州中心仓备件 6 小时送达→工程师到场 2 小时完成更换与参数校准→48 小时内恢复满产、未造成批量报废。衡量的是售后响应与备件履约能力。\n\n2）「5 个月」是项目交付口径的合同履约周期（启动→验收），对象是恒芯动力电池 12 条叠片线的整体自动化改造，范围包括 186 台 LT-R20 机器人、24 台 LT-AMR-1000 及控制器/视觉/数字孪生，需经现场勘测、虚拟调试、设备安装与 72 小时连续试运行后才能交付验收，合同要求 6 个月内完成、实际 5 个月达成。衡量的是新建产线的工程交付能力。\n\n3）二者不矛盾的原因：时间轴上，5 个月的项目交付发生在先（2025 年 3 月 18 日项目复盘会已记载 12 条线完成验收），48 小时的故障修复发生在后（4 月 8 日，产线已验收投产后的一次运行期故障）；事件性质上，前者是大批量设备的制造+安装+调试过程，后者是已交付设备的单点备件更换；且备件 48 小时发货时效、12 条线调试周期缩短 12 天、停机控制在 4 小时内等记录，均说明两种能力（交付能力与服务能力）是并列而非互斥的指标。",
+    "citations": [
+      "lantu_support_case_hengxin",
+      "lantu_case_01_hengxin",
+      "lantu_meeting_case_review",
+      "lantu_support_spare_parts_price"
+    ],
+    "evidence": [
+      "lantu_support_case_hengxin#片段0",
+      "lantu_case_01_hengxin#片段0",
+      "lantu_meeting_case_review#片段0",
+      "lantu_support_spare_parts_price#片段0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 16819,
+  "started_at": "2026-11-01T02:14:37",
+  "elapsed_seconds": 32.45,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "恒芯动力电池 叠片线 伺服过载 停机",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_support_case_hengxin",
+            "title": "# 恒芯动力电池 48 小时复产服务案例",
+            "chunk": 0,
+            "score": 42.026,
+            "snippet": "# 恒芯动力电池 48 小时复产服务案例\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2025-04-10 09:00\n更新时间：2025-04-12 18:00\n版本号：v1.0\n文档类型：support\n文档族：service_case_hengxin\n生效日期：2025-04-12\n\n## 一、事件经过\n\n2025 年 4 月 8 日凌晨，恒芯动力电池 3 号叠片线报伺服过载停机，影响两条线体。客户通过 400 热线报修。\n\n## 二、响应过程\n\n远程诊断中心 12 分钟内定位为驱动器散热风扇故障，指导客户"
+          },
+          {
+            "doc_id": "lantu_meeting_case_review",
+            "title": "# 恒芯动力电池项目复盘会纪要",
+            "chunk": 0,
+            "score": 34.869,
+            "snippet": "# 恒芯动力电池项目复盘会纪要\n\n所属部门：客户成功部\n作者：林可\n创建时间：2025-03-18 09:00\n更新时间：2025-03-18 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_case_hengxin\n生效日期：2025-03-18\n\n## 一、项目结果\n\n恒芯动力电池 12 条叠片线完成验收，部署 186 台 LT-R20 与 24 台 AMR-1000，合同金额 2.16 亿元。\n\n## 二、成功经验\n\n虚拟调试提前发现 37 处干涉，现场调试周期缩短 12 天；"
+          },
+          {
+            "doc_id": "lantu_solution_lithium",
+            "title": "# 动力电池叠片与物流整体解决方案",
+            "chunk": 0,
+            "score": 31.413,
+            "snippet": "# 动力电池叠片与物流整体解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-10-12 09:00\n更新时间：2025-12-01 10:00\n版本号：v3.6\n文档类型：product\n文档族：solution_lithium\n生效日期：2025-12-01\n\n## 一、方案概述\n\n面向动力电池电芯段，提供叠片、焊接、检测与物料配送一体化方案，核心设备包括 LT-R20 机器人、LT-AMR-1000 与 LT-V3D 视觉。\n\n## 二、产线配置\n\n单条叠片线配置 15-16 台 LT-R20、2 "
+          },
+          {
+            "doc_id": "lantu_case_01_hengxin",
+            "title": "# 客户案例：恒芯动力电池电芯叠片与物流项目",
+            "chunk": 0,
+            "score": 30.55,
+            "snippet": "# 客户案例：恒芯动力电池电芯叠片与物流项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_hengxin\n生效日期：2025-12-20\n\n## 一、客户背景\n\n恒芯动力电池位于常州，主营动力电池业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追"
+          },
+          {
+            "doc_id": "lantu_sales_customer_list",
+            "title": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态",
+            "chunk": 0,
+            "score": 21.8,
+            "snippet": "﻿客户,行业,城市,项目,合同金额（万元）,年份,状态\n恒芯动力电池,动力电池,常州,电芯叠片与物流,\"21,600\",2025,已验收\n澜岳汽车零部件,汽车零部件,上海,白车身焊装,\"14,800\",2024,已验收\n曜阳光能,光伏,合肥,电池片串焊,\"9,800\",2025,已验收\n星禾电子,3C 电子,昆山,精密组装,\"12,500\",2024,已验收\n海翎家电,家电,顺德,喷涂与打磨,\"6,300\",2025,已验收\n晶拓微电子,半导体,无锡,晶圆搬运,\"7,400\",2025,已验收\n麦丰食品,食品,漯河"
+          },
+          {
+            "doc_id": "lantu_finance_revenue_breakdown",
+            "title": "﻿维度,分类,收入（亿元）,占比,同比",
+            "chunk": 0,
+            "score": 10.888,
+            "snippet": "﻿维度,分类,收入（亿元）,占比,同比\n产品线,机器人本体,19.84,46.5%,+18.2%\n产品线,智能产线,14.92,35.0%,+21.6%\n产品线,工业软件与服务,5.21,12.2%,+26.8%\n产品线,备件及其他,2.66,6.3%,+9.4%\n行业,动力电池,13.64,32.0%,+24.1%\n行业,汽车及零部件,10.23,24.0%,+11.5%\n行业,半导体,5.12,12.0%,+38.6%\n行业,光伏,4.26,10.0%,+6.2%\n行业,3C 电子,3.41,8.0%,+14."
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 0,
+            "score": 8.168,
+            "snippet": "# 澜图智能产品与解决方案总览\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-02-20 09:00\n更新时间：2025-12-22 10:00\n版本号：v6.0\n文档类型：product\n文档族：product_overview\n生效日期：2025-12-22\n\n## 一、产品矩阵\n\n公司产品覆盖六轴工业机器人、SCARA 机器人、自主移动机器人（AMR）、机器视觉、运动控制器、数字孪生平台与行业工作站，形成“本体+控制器+视觉+软件+工艺”的一体化方案。\n\n## 二、行业方案\n\n重点行业包括汽车及零部件、"
+          },
+          {
+            "doc_id": "lantu_tech_servo",
+            "title": "# 澜图智能伺服驱动与关节模组技术说明",
+            "chunk": 0,
+            "score": 7.862,
+            "snippet": "# 澜图智能伺服驱动与关节模组技术说明\n\n所属部门：研发中心\n作者：程知远\n创建时间：2024-07-01 09:00\n更新时间：2025-08-25 10:00\n版本号：v2.6\n文档类型：tech\n文档族：servo_drive\n生效日期：2025-08-25\n\n## 一、产品范围\n\n自研 400W-7.5kW 伺服驱动器与关节模组，覆盖 LT-R 与 LT-S 全系列，自研比例 61%。\n\n## 二、关键指标\n\n电流环带宽 2.5 kHz，速度环 1.2 kHz，位置精度 23 位，过载能力 300% 持续 "
+          },
+          {
+            "doc_id": "lantu_finance_investor_qa",
+            "title": "# 澜图智能投资者常见问题答复",
+            "chunk": 0,
+            "score": 7.682,
+            "snippet": "# 澜图智能投资者常见问题答复\n\n所属部门：董事会办公室\n作者：周敏仪\n创建时间：2025-11-01 09:00\n更新时间：2025-12-30 16:00\n版本号：v2.0\n文档类型：finance\n文档族：investor_qa\n生效日期：2025-12-30\n\n## 一、增长来源\n\n2025 年增长主要来自动力电池与半导体行业，两项合计贡献收入增量的 61%；海外市场贡献 22%。\n\n## 二、毛利率趋势\n\n随着自研控制器与驱动器比例提升、标准工作站放量，预计 2026 年毛利率提升至 32.5% 左右。\n"
+          },
+          {
+            "doc_id": "lantu_support_spare_parts_price",
+            "title": "﻿适配机型,备件名称,单价（元）,发货时效,质保期",
+            "chunk": 0,
+            "score": 5.99,
+            "snippet": "﻿适配机型,备件名称,单价（元）,发货时效,质保期\nLT-R20,减速器 RV-40E,\"12,800\",48 小时,12 个月\nLT-R20,伺服驱动器 LT-D4,\"8,600\",48 小时,18 个月\nLT-R20,示教器 LT-Pad3,\"5,200\",48 小时,12 个月\nLT-R12,减速器 RV-20E,\"7,900\",48 小时,12 个月\nLT-R12,伺服电机 750W,\"3,600\",48 小时,18 个月\nLT-R6,谐波减速器 CSF-17,\"6,400\",72 小时,12 个月\nLT-"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_support_case_hengxin",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_support_case_hengxin",
+        "title": "# 恒芯动力电池 48 小时复产服务案例",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 435,
+        "text": "# 恒芯动力电池 48 小时复产服务案例\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2025-04-10 09:00\n更新时间：2025-04-12 18:00\n版本号：v1.0\n文档类型：support\n文档族：service_case_hengxin\n生效日期：2025-04-12\n\n## 一、事件经过\n\n2025 年 4 月 8 日凌晨，恒芯动力电池 3 号叠片线报伺服过载停机，影响两条线体。客户通过 400 热线报修。\n\n## 二、响应过程\n\n远程诊断中心 12 分钟内定位为驱动器散热风扇故障，指导客户临时降载运行；备件从苏州中心仓 6 小时送达。\n\n## 三、恢复结果\n\n工程师到场后 2 小时完成更换与参数校准，产线在 48 小时内恢复满产，未造成批量报废。\n\n## 四、客户反馈\n\n客户生产总监邵宏对响应速度表示认可，并将澜图列为年度优秀服务供应商。\n\n## 五、改进措施\n\n将该型号驱动器风扇纳入预防性更换清单，每 8,000 小时更换一次。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_case_01_hengxin",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_case_01_hengxin",
+        "title": "# 客户案例：恒芯动力电池电芯叠片与物流项目",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 645,
+        "text": "# 客户案例：恒芯动力电池电芯叠片与物流项目\n\n所属部门：客户成功部\n作者：林可\n创建时间：2024-06-01 09:00\n更新时间：2025-12-20 16:00\n版本号：v1.0\n文档类型：sales\n文档族：case_hengxin\n生效日期：2025-12-20\n\n## 一、客户背景\n\n恒芯动力电池位于常州，主营动力电池业务。随着产能扩张，客户面临用工紧张、节拍瓶颈与质量一致性挑战，于 2025 年启动自动化改造。\n\n## 二、项目需求\n\n客户要求在不低于现有良率的前提下提升产能，并实现关键工序数据可追溯。项目覆盖12 条叠片线，要求 6 个月内完成交付。\n\n## 三、方案配置\n\n澜图智能提供 186 台 LT-R20 六轴机器人 + 24 台 LT-AMR-1000，配套 LT-C800 控制器、LT-V3D 视觉与 LantuTwin 数字孪生仿真，整线合同金额 2.16 亿元。\n\n## 四、实施过程\n\n项目由客户成功部牵头，联合研发、制造、质量与售后服务部组成 26 人项目组。完成现场勘测、虚拟调试、设备安装与 72 小时连续试运行，实际交付周期 5 个月。\n\n## 五、成效数据\n\n产线节拍提升 42%，叠片良率由 98.1% 提升至 99.3%，投资回收期 18 个月。项目通过客户验收，并获得客户年度优秀供应商提名。\n\n## 六、客户评价\n\n恒芯动力电池生产总监 邵宏表示：“澜图团队响应及时，方案在节拍与稳定性上达到预期，后续产线扩产将继续合作。”\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_meeting_case_review",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_meeting_case_review",
+        "title": "# 恒芯动力电池项目复盘会纪要",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 393,
+        "text": "# 恒芯动力电池项目复盘会纪要\n\n所属部门：客户成功部\n作者：林可\n创建时间：2025-03-18 09:00\n更新时间：2025-03-18 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_case_hengxin\n生效日期：2025-03-18\n\n## 一、项目结果\n\n恒芯动力电池 12 条叠片线完成验收，部署 186 台 LT-R20 与 24 台 AMR-1000，合同金额 2.16 亿元。\n\n## 二、成功经验\n\n虚拟调试提前发现 37 处干涉，现场调试周期缩短 12 天；备件提前铺货，停机时间控制在 4 小时内。\n\n## 三、问题不足\n\n初期节拍未达标，原因是视觉节拍与机器人节拍不匹配，后续通过轨迹优化提升 8%。\n\n## 四、复用建议\n\n形成锂电叠片标准包，固化 12 条线配置与调试 checklist；将视觉节拍纳入方案仿真。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.667,
+    "cited": [
+      "lantu_support_case_hengxin",
+      "lantu_case_01_hengxin",
+      "lantu_meeting_case_review",
+      "lantu_support_spare_parts_price"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.076,
+    "number_recall": 0.0
+  }
+}

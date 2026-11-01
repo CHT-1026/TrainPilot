@@ -1,0 +1,400 @@
+{
+  "qid": "F0092",
+  "question": "投资者问答列出的四项主要风险因素是什么？公司如何应对？",
+  "question_type": "清单枚举",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call>\n<function>list</function><parameter>keyword:投资者问答</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 362,
+        "total_tokens": 464,
+        "completion_tokens": 102,
+        "completion_tokens_details": {
+          "reasoning_tokens": 71,
+          "text_tokens": 102
+        }
+      },
+      "seconds": 1.125
+    },
+    {
+      "round": 2,
+      "text": "<tool_call>\n<function>list</function><parameter>keyword:</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 418,
+        "total_tokens": 586,
+        "completion_tokens": 168,
+        "completion_tokens_details": {
+          "reasoning_tokens": 140,
+          "text_tokens": 168
+        }
+      },
+      "seconds": 1.828
+    },
+    {
+      "round": 3,
+      "text": "<tool_call>\n<function>read</function><parameter=doc_id>lantu_finance_investor_qa</parameter><parameter=offset>0</parameter><parameter=limit>4000</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 1561,
+        "total_tokens": 1806,
+        "completion_tokens": 245,
+        "completion_tokens_details": {
+          "reasoning_tokens": 187,
+          "text_tokens": 245
+        }
+      },
+      "seconds": 2.609
+    },
+    {
+      "round": 4,
+      "text": "<tool_call>\n<function>search</function><parameter=query>投资者问答 风险因素</parameter><parameter=top_k>10</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 1658,
+        "total_tokens": 2009,
+        "completion_tokens": 351,
+        "completion_tokens_details": {
+          "reasoning_tokens": 309,
+          "text_tokens": 351
+        }
+      },
+      "seconds": 3.313
+    },
+    {
+      "round": 5,
+      "text": "<tool_call>\n<function>read</function><parameter=doc_id>lantu_finance_investor_qa</parameter><parameter=offset>0</parameter><parameter=limit>4000</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 1725,
+        "total_tokens": 2195,
+        "completion_tokens": 470,
+        "completion_tokens_details": {
+          "reasoning_tokens": 412,
+          "text_tokens": 470
+        }
+      },
+      "seconds": 4.031
+    },
+    {
+      "round": 6,
+      "text": "<tool_call>\n<function>search</function><parameter=query>风险因素</parameter><parameter=top_k>10</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 1822,
+        "total_tokens": 2312,
+        "completion_tokens": 490,
+        "completion_tokens_details": {
+          "reasoning_tokens": 451,
+          "text_tokens": 490
+        }
+      },
+      "seconds": 4.766
+    },
+    {
+      "round": 7,
+      "text": "<tool_call>\n<function>search</function><parameter=query>风险</parameter><parameter=top_k>10</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 1886,
+        "total_tokens": 2224,
+        "completion_tokens": 338,
+        "completion_tokens_details": {
+          "reasoning_tokens": 300,
+          "text_tokens": 338
+        }
+      },
+      "seconds": 3.453
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "投资者问答"
+      },
+      "result_sha": "1290604daacc15212b4f59638c659261007a940d59ae4c9dd916d753b78e21de",
+      "result_chars": 12,
+      "hits": 0
+    },
+    {
+      "name": "list",
+      "args": {
+        "keyword": ""
+      },
+      "result_sha": "ee5960dfc8f223ba9ffafd250ac7a048c5a08afb9d85298c7a0ba99417e816f1",
+      "result_chars": 2735,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {},
+      "result_sha": "0891001a5cc7c8764ea4230b012c537a0dd1ca2a8bf2ce0a1414a84875e8690b",
+      "result_chars": 51,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result_sha": "5fc2d84c83980bdfdb622431503d60a4e21a961fe19252f171944fa6956f91c7",
+      "result_chars": 12,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {},
+      "result_sha": "0891001a5cc7c8764ea4230b012c537a0dd1ca2a8bf2ce0a1414a84875e8690b",
+      "result_chars": 51,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result_sha": "5fc2d84c83980bdfdb622431503d60a4e21a961fe19252f171944fa6956f91c7",
+      "result_chars": 12,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result_sha": "5fc2d84c83980bdfdb622431503d60a4e21a961fe19252f171944fa6956f91c7",
+      "result_chars": 12,
+      "hits": 0
+    }
+  ],
+  "answer": null,
+  "status": "api_error",
+  "tokens": 11596,
+  "started_at": "2026-11-01T05:01:25",
+  "error": "TimeoutError: The read operation timed out",
+  "elapsed_seconds": 321.16,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "投资者问答"
+      },
+      "result": {
+        "docs": []
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "list",
+      "args": {
+        "keyword": ""
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_company_brand",
+            "title": "# 澜图智能品牌视觉与传播规范"
+          },
+          {
+            "doc_id": "lantu_company_campus",
+            "title": "# 澜图智能制造基地与产能布局"
+          },
+          {
+            "doc_id": "lantu_company_global",
+            "title": "# 澜图智能全球化布局与海外业务"
+          },
+          {
+            "doc_id": "lantu_company_history",
+            "title": "# 澜图智能发展历程（2011—2025）"
+          },
+          {
+            "doc_id": "lantu_company_milestones_2025",
+            "title": "# 澜图智能 2025 年度大事记"
+          },
+          {
+            "doc_id": "lantu_company_mission",
+            "title": "# 澜图智能使命、愿景与价值观"
+          },
+          {
+            "doc_id": "lantu_company_profile",
+            "title": "澜图智能装备公司简介"
+          },
+          {
+            "doc_id": "lantu_investor_overview",
+            "title": "# 澜图智能投资者关系概览"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2024",
+            "title": "澜图智能 2024 年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2025",
+            "title": "澜图智能 2025 年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_budget_2026",
+            "title": "# 澜图智能 2026 年度经营预算"
+          },
+          {
+            "doc_id": "lantu_finance_cashflow",
+            "title": "# 澜图智能现金流与资金管理报告"
+          },
+          {
+            "doc_id": "lantu_finance_cost",
+            "title": "# 澜图智能成本管理与降本专项报告"
+          },
+          {
+            "doc_id": "lantu_finance_gross_margin",
+            "title": "# 澜图智能毛利率与成本结构分析"
+          },
+          {
+            "doc_id": "lantu_finance_h1_2025",
+            "title": "# 澜图智能 2025 年半年度报告摘要"
+          },
+          {
+            "doc_id": "lantu_finance_investor_qa",
+            "title": "# 澜图智能投资者常见问题答复"
+          },
+          {
+            "doc_id": "lantu_finance_monthly_2025",
+            "title": "[工作表] 文档信息"
+          },
+          {
+            "doc_id": "lantu_finance_q3_2025",
+            "title": "# 澜图智能 2025 年第三季度经营数据"
+          },
+          {
+            "doc_id": "lantu_finance_revenue_breakdown",
+            "title": "﻿维度,分类,收入（亿元）,占比,同比"
+          },
+          {
+            "doc_id": "lantu_hr_campus",
+            "title": "# 澜图智能 2026 届校园招聘方案"
+          },
+          {
+            "doc_id": "lantu_hr_compensation",
+            "title": "# 澜图智能薪酬与奖金管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_job_grades",
+            "title": "# 澜图智能职级体系与晋升规则"
+          },
+          {
+            "doc_id": "lantu_hr_manager_training",
+            "title": "澜图智能管理者领导力培训方案"
+          },
+          {
+            "doc_id": "lantu_hr_new_hire_training",
+            "title": "澜图智能新员工入职培训大纲"
+          },
+          {
+            "doc_id": "lantu_hr_performance",
+            "title": "# 澜图智能绩效管理制度"
+          },
+          {
+            "doc_id": "lantu_hr_recruitment",
+            "title": "# 澜图智能招聘管理制度"
+          },
+          {
+            "doc_id": "lantu_hr_resignation",
+            "title": "# 澜图智能离职与交接管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_social",
+            "title": "# 澜图智能社会招聘管理办法"
+          },
+          {
+            "doc_id": "lantu_hr_training_system",
+            "title": "# 澜图智能培训体系与年度计划"
+          },
+          {
+            "doc_id": "lantu_legal_anti_bribery",
+            "title": "# 澜图智能反商业贿赂管理规定"
+          },
+          {
+            "doc_id": "lantu_legal_compliance_manual",
+            "title": "# 澜图智能合规管理手册"
+          },
+          {
+            "doc_id": "lantu_legal_data_compliance",
+            "title": "# 澜图智能数据合规与隐私保护规范"
+          },
+          {
+            "doc_id": "lantu_legal_export_control",
+            "title": "# 澜图智能出口管制与制裁合规指引"
+          },
+          {
+            "doc_id": "lantu_legal_nda_template",
+            "title": "澜图智能保密协议模板（NDA）"
+          },
+          {
+            "doc_id": "lantu_legal_purchase_contract_template",
+            "title": "澜图智能采购合同模板（2025版）"
+          },
+          {
+            "doc_id": "lantu_legal_sales_contract_template",
+            "title": "澜图智能设备销售合同模板（2025版）"
+          },
+          {
+            "doc_id": "lantu_legal_supplier_code",
+            "title": "# 澜图智能供应商行为准则"
+          },
+          {
+            "doc_id": "lantu_meeting_board",
+            "title": "# 2025 年第二次临时董事会决议"
+          },
+          {
+            "doc_id": "lantu_meeting_case_review",
+            "title": "# 恒芯动力电池项目复盘会纪要"
+          },
+          {
+            "doc_id": "lantu_meeting_ops_2025q3",
+            "title": "2025 年第三季度经营分析会纪要"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {},
+      "result": {
+        "error": "未知 doc_id，请使用 list 或 search 返回的 doc_id"
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result": {
+        "hits": []
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {},
+      "result": {
+        "error": "未知 doc_id，请使用 list 或 search 返回的 doc_id"
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result": {
+        "hits": []
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result": {
+        "hits": []
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

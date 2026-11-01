@@ -1,0 +1,205 @@
+{
+  "qid": "M1307",
+  "question": "公司说的安全库存是多少天？供应链会上说的库存周转 92 天又是什么口径？它跟备件仓库存表里的周转天数是一回事吗？",
+  "question_type": "矛盾与例外识别",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"安全库存 库存周转 92 天 备件仓\"}}",
+      "usage": {
+        "prompt_tokens": 383,
+        "total_tokens": 535,
+        "completion_tokens": 152,
+        "completion_tokens_details": {
+          "reasoning_tokens": 122,
+          "text_tokens": 152
+        }
+      },
+      "seconds": 1.485
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_strategy_supply_chain_resilience\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 2759,
+        "total_tokens": 3210,
+        "completion_tokens": 451,
+        "completion_tokens_details": {
+          "reasoning_tokens": 414,
+          "text_tokens": 451
+        }
+      },
+      "seconds": 3.625
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"1. **安全库存**：根据《澜图智能供应链韧性建设方案》，通用物料的安全库存标准为 **30 天**。\\n\\n2. **供应链会上的 92 天**：根据《2025 年供应链韧性专题会纪要》，这指的是 **关键物料**（如减速器、芯片等）的库存周转天数，当时该指标高于 75 天的目标值。\\n\\n3. **与备件仓库存表的关系**：**不是一回事**。虽然数值均为 92 天，但口径不同：\\n   - 供应链会提及的是生产端的“关键物料”周转；\\n   - 备件仓库存表（苏州中心仓）中的 92 天是售后服务部的“备件”周转天数。\\n   - 两者属于不同的业务场景（生产 vs 售后），数值相同仅为特定时间点的巧合。\", \"citations\": [\"lantu_strategy_supply_chain_resilience\", \"lantu_meeting_supply_chain\", \"lantu_support_spare_inventory\"], \"evidence\": [\"lantu_strategy_supply_chain_resilience#chunk 0\", \"lantu_meeting_supply_chain#chunk 0\", \"lantu_support_spare_inventory#chunk 0\"]}",
+      "usage": {
+        "prompt_tokens": 3121,
+        "total_tokens": 4157,
+        "completion_tokens": 1036,
+        "completion_tokens_details": {
+          "reasoning_tokens": 760,
+          "text_tokens": 1036
+        }
+      },
+      "seconds": 8.734
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "安全库存 库存周转 92 天 备件仓"
+      },
+      "result_sha": "2d26052ecea2e962ddc5bb94d18854402c8af882f87a25565f58a940bcbba670",
+      "result_chars": 3910,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_strategy_supply_chain_resilience",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "657f58f593d970ba6d0ca6280091be2f33636d9c5498553fd6d2f355354d66f4",
+      "result_chars": 548,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "1. **安全库存**：根据《澜图智能供应链韧性建设方案》，通用物料的安全库存标准为 **30 天**。\n\n2. **供应链会上的 92 天**：根据《2025 年供应链韧性专题会纪要》，这指的是 **关键物料**（如减速器、芯片等）的库存周转天数，当时该指标高于 75 天的目标值。\n\n3. **与备件仓库存表的关系**：**不是一回事**。虽然数值均为 92 天，但口径不同：\n   - 供应链会提及的是生产端的“关键物料”周转；\n   - 备件仓库存表（苏州中心仓）中的 92 天是售后服务部的“备件”周转天数。\n   - 两者属于不同的业务场景（生产 vs 售后），数值相同仅为特定时间点的巧合。",
+    "citations": [
+      "lantu_strategy_supply_chain_resilience",
+      "lantu_meeting_supply_chain",
+      "lantu_support_spare_inventory"
+    ],
+    "evidence": [
+      "lantu_strategy_supply_chain_resilience#chunk 0",
+      "lantu_meeting_supply_chain#chunk 0",
+      "lantu_support_spare_inventory#chunk 0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 7902,
+  "started_at": "2026-11-01T06:39:43",
+  "elapsed_seconds": 13.84,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "安全库存 库存周转 92 天 备件仓"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_support_spare_inventory",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 26.488,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能备件库存分布（2025Q4）\n所属部门\t售后服务部\n作者\t陆绍\n创建时间\t2025-12-25 09:00\n更新时间\t2026-01-02 10:00\n版本号\tv1.0\n文档类型\tsupport\n文档族\tspare_inventory_2025q4\n生效日期\t2026-01-02\n[工作表] 备件仓库存\n仓库\t所在城市\t库存金额（万元）\tSKU 数\t周转天数\n苏州中心仓\t苏州\t6,200\t4,860\t92\n东莞仓\t东莞\t2,800\t2,240\t105\n成都仓\t成都\t1,"
+          },
+          {
+            "doc_id": "lantu_meeting_supply_chain",
+            "title": "2025 年供应链韧性专题会纪要",
+            "chunk": 0,
+            "score": 26.435,
+            "snippet": "2025 年供应链韧性专题会纪要\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-10-16 09:00\n更新时间：2025-10-16 15:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_supply_chain\n生效日期：2025-10-16\n一、供应形势\n减速器交期由 8 周延长至 12 周，芯片交期 20 周；关键物料库存周转 92 天，高于目标 75 天。\n二、双源策略\n减速器已引入第二供应商，2026 年一季度实现 30% 替代；伺服驱动器自研比例提升至 61%。\n三"
+          },
+          {
+            "doc_id": "lantu_policy_purchase_2025",
+            "title": "# 澜图智能采购管理制度（2025版）",
+            "chunk": 0,
+            "score": 13.542,
+            "snippet": "# 澜图智能采购管理制度（2025版）\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2024-12-22 09:00\n更新时间：2025-01-01 09:00\n版本号：v2.0\n文档类型：policy\n文档族：purchase_payment\n生效日期：2025-01-01\n\n## 一、采购分级\n\n单笔 500 万元以上须公开招标；100-500 万元须三家比价；100 万元以下须两家比价。单一来源采购须经 COO 审批。\n\n## 二、付款账期\n\n标准供应商月结 90 天；战略供应商可延长至 120 天；预付"
+          },
+          {
+            "doc_id": "lantu_strategy_supply_chain_resilience",
+            "title": "# 澜图智能供应链韧性建设方案",
+            "chunk": 0,
+            "score": 11.396,
+            "snippet": "# 澜图智能供应链韧性建设方案\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-02-01 09:00\n更新时间：2025-09-30 16:00\n版本号：v1.5\n文档类型：strategy\n文档族：supply_chain_resilience\n生效日期：2025-09-30\n\n## 一、风险识别\n\n关键物料包括减速器、伺服电机、芯片与视觉相机，其中芯片与减速器存在单一来源风险。\n\n## 二、双源与备库\n\n减速器 2026 年实现 30% 第二来源；关键芯片备库 6 个月；通用物料安全库存 30 天。"
+          },
+          {
+            "doc_id": "lantu_company_campus",
+            "title": "# 澜图智能制造基地与产能布局",
+            "chunk": 0,
+            "score": 10.209,
+            "snippet": "# 澜图智能制造基地与产能布局\n\n所属部门：制造中心\n作者：韩立恒\n创建时间：2024-04-12 09:00\n更新时间：2025-11-20 15:00\n版本号：v3.0\n文档类型：company\n文档族：manufacturing_base\n生效日期：2025-11-20\n\n## 一、苏州总部基地\n\n位于苏州工业园区，占地 120 亩，建筑面积 9.6 万平方米，承担六轴机器人总装、控制器生产与研发测试，年产能 18,000 台。\n\n## 二、东莞华南基地\n\n位于东莞松山湖，占地 60 亩，聚焦 SCARA、A"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2025",
+            "title": "澜图智能 2025 年度报告摘要",
+            "chunk": 0,
+            "score": 9.743,
+            "snippet": "澜图智能 2025 年度报告摘要\n所属部门：财务部\n作者：周敏仪\n创建时间：2026-01-20 09:00\n更新时间：2026-01-28 18:00\n版本号：v1.0\n文档类型：finance\n文档族：annual_report_2025\n生效日期：2026-01-28\n一、经营概况\n2025 年公司实现营业收入 42.63 亿元，同比增长 19.1%；归属于母公司股东的净利润 4.12\n亿元，同比增长 26.4%；基本每股收益 0.98 元。\n二、收入结构\n机器人本体收入 19.84 亿元（46.5%），智能"
+          },
+          {
+            "doc_id": "lantu_support_system",
+            "title": "# 澜图智能客户服务体系白皮书",
+            "chunk": 0,
+            "score": 7.671,
+            "snippet": "# 澜图智能客户服务体系白皮书\n\n所属部门：售后服务部\n作者：陆绍\n创建时间：2024-03-01 09:00\n更新时间：2025-12-08 10:00\n版本号：v3.2\n文档类型：support\n文档族：service_system\n生效日期：2025-12-08\n\n## 一、服务网络\n\n公司在全国设有 68 个服务网点、12 个备件仓，覆盖 31 个省级行政区；海外设 3 个服务点。售后服务团队 412 人，认证工程师 286 人。\n\n## 二、服务内容\n\n提供安装调试、培训、预防性维护、故障维修、备件供应、"
+          },
+          {
+            "doc_id": "lantu_meeting_sales",
+            "title": "2025 年华南大区销售复盘会纪要",
+            "chunk": 0,
+            "score": 6.208,
+            "snippet": "2025 年华南大区销售复盘会纪要\n所属部门：销售中心\n作者：罗嘉树\n创建时间：2025-09-05 09:00\n更新时间：2025-09-05 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_sales_south\n生效日期：2025-09-05\n一、业绩完成\n华南大区前三季度收入 7.42 亿元，年度完成率 108%，位列五大区第一；新签订单 8.6 亿元。\n二、行业机会\n锂电客户扩产带来 3.2 亿元机会；3C 客户自动化改造预算增加；光伏客户资本开支放缓。\n三、渠道问题\n两家"
+          },
+          {
+            "doc_id": "lantu_meeting_quality",
+            "title": "2025 年第三季度质量专题会纪要",
+            "chunk": 0,
+            "score": 5.884,
+            "snippet": "2025 年第三季度质量专题会纪要\n所属部门：质量部\n作者：潘文博\n创建时间：2025-07-22 09:00\n更新时间：2025-07-22 16:00\n版本号：v1.0\n文档类型：meeting\n文档族：meeting_quality_q3\n生效日期：2025-07-22\n一、质量数据\n上半年一次交检合格率 98.4%，客户投诉 1 起；第三季度首月投诉 1 起，为 LT-R12 线束磨损问题。\n二、问题分析\n线束磨损源于走线路径与防护套选型不当，涉及 2025 年 3 月生产的 120 台 LT-R12，已启"
+          },
+          {
+            "doc_id": "lantu_finance_annual_2024",
+            "title": "澜图智能 2024 年度报告摘要",
+            "chunk": 0,
+            "score": 5.56,
+            "snippet": "澜图智能 2024 年度报告摘要\n所属部门：财务部\n作者：周敏仪\n创建时间：2025-01-22 09:00\n更新时间：2025-01-30 18:00\n版本号：v1.0\n文档类型：finance\n文档族：annual_report_2024\n生效日期：2025-01-30\n一、经营概况\n2024 年公司实现营业收入 35.80 亿元，同比增长 16.8%；归母净利润 3.26 亿元，同比增长 14.2%。\n二、收入结构\n机器人本体收入 16.72 亿元（46.7%），智能产线收入 12.36 亿元（34.5%），"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_strategy_supply_chain_resilience",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_strategy_supply_chain_resilience",
+        "title": "# 澜图智能供应链韧性建设方案",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 362,
+        "text": "# 澜图智能供应链韧性建设方案\n\n所属部门：供应链中心\n作者：韩立恒\n创建时间：2025-02-01 09:00\n更新时间：2025-09-30 16:00\n版本号：v1.5\n文档类型：strategy\n文档族：supply_chain_resilience\n生效日期：2025-09-30\n\n## 一、风险识别\n\n关键物料包括减速器、伺服电机、芯片与视觉相机，其中芯片与减速器存在单一来源风险。\n\n## 二、双源与备库\n\n减速器 2026 年实现 30% 第二来源；关键芯片备库 6 个月；通用物料安全库存 30 天。\n\n## 三、供应商协同\n\n与 22 家战略供应商签订年度框架协议，建立联合预测与产能预留机制。\n\n## 四、应急机制\n\n建立断供应急预案，缺料 48 小时内启动替代方案；每季度开展一次供应链压力测试。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.6,
+    "cited": [
+      "lantu_strategy_supply_chain_resilience",
+      "lantu_meeting_supply_chain",
+      "lantu_support_spare_inventory"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.088,
+    "number_recall": 0.5
+  }
+}

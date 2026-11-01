@@ -1,0 +1,142 @@
+{
+  "qid": "F0070",
+  "question": "2025 年末应收账款余额、周转天数与逾期账款占比分别是多少？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>2025年末应收账款余额</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 63,
+        "prompt_tokens": 363,
+        "total_tokens": 426,
+        "completion_tokens_details": {
+          "reasoning_tokens": 31
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 6.469
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>2025年末应收账款余额 周转天数 逾期账款占比</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 55,
+        "prompt_tokens": 432,
+        "total_tokens": 487,
+        "completion_tokens_details": {
+          "reasoning_tokens": 12
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 6.5
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>应收账款余额 周转天数 逾期账款占比 2025</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 512,
+        "total_tokens": 563,
+        "completion_tokens_details": {
+          "reasoning_tokens": 8
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 3.25
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=query>应收账款 2025 年报 余额 周转天数 逾期</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 73,
+        "prompt_tokens": 592,
+        "total_tokens": 665,
+        "completion_tokens_details": {
+          "reasoning_tokens": 29
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.438
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>应收账款 2025年末 余额 周转天数 逾期账款</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 77,
+        "prompt_tokens": 673,
+        "total_tokens": 750,
+        "completion_tokens_details": {
+          "reasoning_tokens": 33
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 2.125
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=search><parameter=query>应收账款 2025年末 余额 周转天数 逾期账款</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 71,
+        "prompt_tokens": 754,
+        "total_tokens": 825,
+        "completion_tokens_details": {
+          "reasoning_tokens": 27
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 2.109
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"未能获取相关资料：本次会话中检索工具调用未成功返回任何文档，因此无法给出 2025 年末应收账款余额、应收账款周转天数及逾期账款占比的具体数值。为回答该问题，需要可检索到的 2025 年年度报告（或财务报表附注、应收账款账龄及逾期分析章节）等资料，建议确认资料库中是否已上传对应文件后重新提问。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 141,
+        "prompt_tokens": 832,
+        "total_tokens": 973,
+        "completion_tokens_details": {
+          "reasoning_tokens": 23
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 640
+        }
+      },
+      "seconds": 4.172
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "未能获取相关资料：本次会话中检索工具调用未成功返回任何文档，因此无法给出 2025 年末应收账款余额、应收账款周转天数及逾期账款占比的具体数值。为回答该问题，需要可检索到的 2025 年年度报告（或财务报表附注、应收账款账龄及逾期分析章节）等资料，建议确认资料库中是否已上传对应文件后重新提问。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4689,
+  "started_at": "2026-11-01T04:58:33",
+  "elapsed_seconds": 27.06,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.179,
+    "number_recall": 0.0
+  }
+}

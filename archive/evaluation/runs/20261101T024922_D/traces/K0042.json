@@ -1,0 +1,25 @@
+{
+  "qid": "K0042",
+  "question": "质量专题会纪要（2025 年 7 月 22 日）记录「上半年一次交检合格率 98.4%，客户投诉 1 起」，「第三季度首月投诉 1 起，为 LT-R12 线束磨损问题」，并要求质量部 8 月底完成召回、研发中心更新设计规范、售后服务部同步客户通知与现场更换；召回通知本身生效日为 2025 年 7 月 28 日。请梳理这起质量事件的完整时间线与因果链。",
+  "question_type": "时间与因果推断",
+  "rounds": [],
+  "tool_calls": [],
+  "answer": null,
+  "status": "api_error",
+  "tokens": 0,
+  "started_at": "2026-11-01T03:05:31",
+  "error": "HTTPError: HTTP Error 503: Service Unavailable",
+  "elapsed_seconds": 0.0,
+  "tool_calls_detail": [],
+  "model_label": "D",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

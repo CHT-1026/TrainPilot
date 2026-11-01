@@ -1,0 +1,76 @@
+{
+  "qid": "K0047",
+  "question": "研发体系文档写「累计有效专利 1,286 件，其中发明专利 412 件……2025 年新增授权专利 216 件」；专利布局文档写「累计有效专利 1,286 件，其中发明专利 412 件、实用新型 726 件、外观设计 148 件；软件著作权 168 项」「PCT 国际专利申请 36 件」「发明人奖励 5,000-30,000 元」「年度知识产权预算 1,200 万元」；法务合规部由邵岚负责，研发中心由沈亦舟负责。请判断：研发体系文档与专利布局文档在专利总数上是否存在冲突？两份文档在知识产权管理上的分工如何理解？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>累计有效专利 1286 发明专利 412</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list><parameter=keyword>专利</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 208,
+        "prompt_tokens": 501,
+        "total_tokens": 709,
+        "completion_tokens_details": {
+          "reasoning_tokens": 152
+        },
+        "prompt_tokens_details": null
+      },
+      "seconds": 7.172
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>法务合规部 知识产权 分工 专利管理</parameter><parameter=top_k>8</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 79,
+        "prompt_tokens": 594,
+        "total_tokens": 673,
+        "completion_tokens_details": {
+          "reasoning_tokens": 42
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 3.687
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"1) 专利总数不存在冲突：研发体系文档与专利布局文档均记载「累计有效专利 1,286 件，其中发明专利 412 件」，总数与发明专利数完全一致；研发体系文档补充「2025 年新增授权专利 216 件」是当年增量口径，与累计存量口径不矛盾（216 件已包含在累计数的形成过程中）。专利布局文档提供了更细的结构拆分：发明 412 件、实用新型 726 件、外观设计 148 件，合计恰为 1,286 件，与总数自洽，可视为对研发体系文档的细化而非冲突。2) 分工理解：两份文档是同一体系的不同视角——研发体系文档侧重创新产出（专利数量、年度新增等技术成果指标），由研发中心（沈亦舟）负责的研发口径产出；专利布局文档侧重知识产权资产的结构与管理（发明/实用新型/外观分类、软件著作权、PCT 国际申请、发明人奖励 5,000-30,000 元、年度预算 1,200 万元），属知识产权运营管理范畴，由法务合规部（邵岚）牵头管理。即：研发中心负责「创造与产出」，法务合规部负责「布局、保护与激励制度」，两者数据口径一致、职责互补，无实质冲突。建议在文档中统一注明「累计有效」的统计时点（如截至 2025 年末），以避免后续更新时产生歧义。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 410,
+        "prompt_tokens": 668,
+        "total_tokens": 1078,
+        "completion_tokens_details": {
+          "reasoning_tokens": 38
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 12.594
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "answerable",
+    "answer": "1) 专利总数不存在冲突：研发体系文档与专利布局文档均记载「累计有效专利 1,286 件，其中发明专利 412 件」，总数与发明专利数完全一致；研发体系文档补充「2025 年新增授权专利 216 件」是当年增量口径，与累计存量口径不矛盾（216 件已包含在累计数的形成过程中）。专利布局文档提供了更细的结构拆分：发明 412 件、实用新型 726 件、外观设计 148 件，合计恰为 1,286 件，与总数自洽，可视为对研发体系文档的细化而非冲突。2) 分工理解：两份文档是同一体系的不同视角——研发体系文档侧重创新产出（专利数量、年度新增等技术成果指标），由研发中心（沈亦舟）负责的研发口径产出；专利布局文档侧重知识产权资产的结构与管理（发明/实用新型/外观分类、软件著作权、PCT 国际申请、发明人奖励 5,000-30,000 元、年度预算 1,200 万元），属知识产权运营管理范畴，由法务合规部（邵岚）牵头管理。即：研发中心负责「创造与产出」，法务合规部负责「布局、保护与激励制度」，两者数据口径一致、职责互补，无实质冲突。建议在文档中统一注明「累计有效」的统计时点（如截至 2025 年末），以避免后续更新时产生歧义。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 2460,
+  "started_at": "2026-11-01T02:09:07",
+  "elapsed_seconds": 23.45,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.208,
+    "number_recall": 0.8
+  }
+}

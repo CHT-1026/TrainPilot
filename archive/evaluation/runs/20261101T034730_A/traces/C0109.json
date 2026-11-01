@@ -1,0 +1,142 @@
+{
+  "qid": "C0109",
+  "question": "产品参数矩阵（2025）六轴与 SCARA 表中，LT-AMR-500 的负载、臂展、重复精度、本体重量与最大速度分别是多少？",
+  "question_type": "数值参数检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>LT-AMR-500 产品参数矩阵</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 87,
+        "prompt_tokens": 386,
+        "total_tokens": 473,
+        "completion_tokens_details": {
+          "reasoning_tokens": 50
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.531
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>LT-AMR-500 产品参数矩阵 六轴 SCARA</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 63,
+        "prompt_tokens": 460,
+        "total_tokens": 523,
+        "completion_tokens_details": {
+          "reasoning_tokens": 21
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.328
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>LT-AMR-500 参数 负载 臂展 重复精度</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 93,
+        "prompt_tokens": 539,
+        "total_tokens": 632,
+        "completion_tokens_details": {
+          "reasoning_tokens": 49
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 2.516
+    },
+    {
+      "round": 4,
+      "text": "<tool_call><function=search><parameter=args>{\"query\": \"LT-AMR-500 产品参数矩阵 六轴 SCARA 负载 臂展 重复精度\", \"top_k\": 10}</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 99,
+        "prompt_tokens": 620,
+        "total_tokens": 719,
+        "completion_tokens_details": {
+          "reasoning_tokens": 45
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 2.297
+    },
+    {
+      "round": 5,
+      "text": "<tool_call><function=search><parameter=query>产品参数矩阵 2025 六轴 SCARA LT-AMR-500</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 53,
+        "prompt_tokens": 711,
+        "total_tokens": 764,
+        "completion_tokens_details": {
+          "reasoning_tokens": 7
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 576
+        }
+      },
+      "seconds": 1.547
+    },
+    {
+      "round": 6,
+      "text": "<tool_call><function=list><parameter=keyword>参数</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 21,
+        "prompt_tokens": 794,
+        "total_tokens": 815,
+        "completion_tokens_details": {
+          "reasoning_tokens": 3
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 704
+        }
+      },
+      "seconds": 1.218
+    },
+    {
+      "round": 7,
+      "text": "ANSWER {\"status\":\"not_in_corpus\",\"answer\":\"检索工具多次调用均未能返回有效结果，因此无法从资料库中核实 LT-AMR-500 在《产品参数矩阵（2025）》六轴与 SCARA 表中的负载、臂展、重复精度、本体重量与最大速度等具体参数。建议提供该参数矩阵文档或明确文档名称/编号后重新检索。\",\"citations\":[],\"evidence\":[]}",
+      "usage": {
+        "completion_tokens": 122,
+        "prompt_tokens": 846,
+        "total_tokens": 968,
+        "completion_tokens_details": {
+          "reasoning_tokens": 20
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 768
+        }
+      },
+      "seconds": 4.141
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_corpus",
+    "answer": "检索工具多次调用均未能返回有效结果，因此无法从资料库中核实 LT-AMR-500 在《产品参数矩阵（2025）》六轴与 SCARA 表中的负载、臂展、重复精度、本体重量与最大速度等具体参数。建议提供该参数矩阵文档或明确文档名称/编号后重新检索。",
+    "citations": [],
+    "evidence": []
+  },
+  "status": "answered",
+  "tokens": 4894,
+  "started_at": "2026-11-01T04:20:30",
+  "elapsed_seconds": 17.58,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.172,
+    "number_recall": 0.0
+  }
+}

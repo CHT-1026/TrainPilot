@@ -1,0 +1,133 @@
+{
+  "qid": "B0011",
+  "question": "社会招聘适用于哪些岗位？年度社招计划规模是多少？",
+  "question_type": "事实检索",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"社会招聘\"}}",
+      "usage": {
+        "prompt_tokens": 362,
+        "total_tokens": 473,
+        "completion_tokens": 111,
+        "completion_tokens_details": {
+          "reasoning_tokens": 92,
+          "text_tokens": 111
+        }
+      },
+      "seconds": 1.454
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_hr_social\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 428,
+        "total_tokens": 549,
+        "completion_tokens": 121,
+        "completion_tokens_details": {
+          "reasoning_tokens": 88,
+          "text_tokens": 121
+        }
+      },
+      "seconds": 1.5
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"社会招聘适用于经理级及以上、高级技术专家与紧缺岗位。年度社招计划规模为200人。\",\"citations\":[\"lantu_hr_social\"],\"evidence\":[\"lantu_hr_social\"]}",
+      "usage": {
+        "prompt_tokens": 790,
+        "total_tokens": 1180,
+        "completion_tokens": 390,
+        "completion_tokens_details": {
+          "reasoning_tokens": 334,
+          "text_tokens": 390
+        }
+      },
+      "seconds": 4.14
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "社会招聘"
+      },
+      "result_sha": "2f26bc80647cdcbf539ff0b91e7781f5e01bc9c3058fa183b6b6b39aadd5787d",
+      "result_chars": 68,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_social",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "e00c79a3977c466da0e80513c23a4438a4111dd6a973eb2997a88a803081cd3e",
+      "result_chars": 523,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "社会招聘适用于经理级及以上、高级技术专家与紧缺岗位。年度社招计划规模为200人。",
+    "citations": [
+      "lantu_hr_social"
+    ],
+    "evidence": [
+      "lantu_hr_social"
+    ]
+  },
+  "status": "answered",
+  "tokens": 2202,
+  "started_at": "2026-11-01T04:08:26",
+  "elapsed_seconds": 7.09,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "社会招聘"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_hr_social",
+            "title": "# 澜图智能社会招聘管理办法"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_hr_social",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_hr_social",
+        "title": "# 澜图智能社会招聘管理办法",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 361,
+        "text": "# 澜图智能社会招聘管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-02-01 09:00\n更新时间：2025-07-15 11:00\n版本号：v2.5\n文档类型：hr\n文档族：social_recruitment\n生效日期：2025-07-15\n\n## 一、适用岗位\n\n适用于经理级及以上、高级技术专家与紧缺岗位；年度社招计划 200 人。\n\n## 二、渠道管理\n\n使用猎头、招聘平台、内部推荐与行业社群。猎头费用为年薪的 20%-25%，保证期 90 天。\n\n## 三、内部推荐\n\n员工推荐成功入职并转正后，奖励 3,000-10,000 元；关键技术岗位奖励 15,000 元。\n\n## 四、定级与薪酬\n\n依据岗位价值与候选人能力定级，薪酬在带宽内浮动；超出带宽须 HRVP 与 CFO 审批。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": true,
+    "evidence_supported": true,
+    "coverage": 1.0,
+    "cited": [
+      "lantu_hr_social"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.733,
+    "number_recall": 0.0
+  }
+}

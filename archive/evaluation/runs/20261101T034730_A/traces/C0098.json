@@ -1,0 +1,94 @@
+{
+  "qid": "C0098",
+  "question": "半导体方案面向 8/12 英寸晶圆厂，晶拓微电子案例却是 8 英寸厂，这是否构成方案覆盖范围的偏差？",
+  "question_type": "矛盾与例外识别",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>晶拓微电子 8英寸 晶圆厂 案例</parameter></function></tool_call><tool_call><function=list><parameter=keyword>半导体</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 96,
+        "prompt_tokens": 379,
+        "total_tokens": 475,
+        "completion_tokens_details": {
+          "reasoning_tokens": 49
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.422
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>晶拓微电子 晶圆厂 半导体方案</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 56,
+        "prompt_tokens": 463,
+        "total_tokens": 519,
+        "completion_tokens_details": {
+          "reasoning_tokens": 18
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.359
+    },
+    {
+      "round": 3,
+      "text": "<tool_call><function=search><parameter=query>晶拓微电子 8英寸 晶圆厂 半导体方案</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 43,
+        "prompt_tokens": 538,
+        "total_tokens": 581,
+        "completion_tokens_details": {
+          "reasoning_tokens": 11
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 1.172
+    },
+    {
+      "round": 4,
+      "text": "{\"name\":\"search\",\"args\":{\"query\":\"晶拓微电子 8英寸 晶圆厂 半导体方案\"}}",
+      "usage": {
+        "completion_tokens": 40,
+        "prompt_tokens": 607,
+        "total_tokens": 647,
+        "completion_tokens_details": {
+          "reasoning_tokens": 12
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        }
+      },
+      "seconds": 1.984
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "name": "search",
+    "args": {
+      "query": "晶拓微电子 8英寸 晶圆厂 半导体方案"
+    }
+  },
+  "status": "answered",
+  "tokens": 2222,
+  "started_at": "2026-11-01T04:19:08",
+  "elapsed_seconds": 6.94,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

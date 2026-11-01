@@ -1,0 +1,272 @@
+{
+  "qid": "E0022",
+  "question": "2025 版考勤管理制度何时生效？2024 版是否仍然有效？",
+  "question_type": "时间与因果推断",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call>\n<function>list</function><parameter>keyword>考勤管理</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 370,
+        "total_tokens": 481,
+        "completion_tokens": 111,
+        "completion_tokens_details": {
+          "reasoning_tokens": 80,
+          "text_tokens": 111
+        }
+      },
+      "seconds": 1.359
+    },
+    {
+      "round": 2,
+      "text": "<tool_call>\n<function>read</function><parameter=doc_id>lantu_policy_attendance_2025</parameter><parameter=offset>0</parameter><parameter=limit>4000</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 494,
+        "total_tokens": 856,
+        "completion_tokens": 362,
+        "completion_tokens_details": {
+          "reasoning_tokens": 303,
+          "text_tokens": 362
+        }
+      },
+      "seconds": 3.25
+    },
+    {
+      "round": 3,
+      "text": "<tool_call>\n<function>search</function><parameter=query>2025版考勤管理制度 生效日期</parameter>\n<parameter=top_k>5</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 592,
+        "total_tokens": 935,
+        "completion_tokens": 343,
+        "completion_tokens_details": {
+          "reasoning_tokens": 295,
+          "text_tokens": 343
+        }
+      },
+      "seconds": 3.75
+    },
+    {
+      "round": 4,
+      "text": "<tool_call>\n<function>read</function><parameter=doc_id>lantu_policy_attendance_2025</parameter><parameter=offset>0</parameter><parameter=limit>4000</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 665,
+        "total_tokens": 1077,
+        "completion_tokens": 412,
+        "completion_tokens_details": {
+          "reasoning_tokens": 353,
+          "text_tokens": 412
+        }
+      },
+      "seconds": 3.828
+    },
+    {
+      "round": 5,
+      "text": "<tool_call>\n<function>search</function><parameter=query>考勤管理制度 生效</parameter>\n<parameter=top_k>10</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 763,
+        "total_tokens": 1210,
+        "completion_tokens": 447,
+        "completion_tokens_details": {
+          "reasoning_tokens": 404,
+          "text_tokens": 447
+        }
+      },
+      "seconds": 3.969
+    },
+    {
+      "round": 6,
+      "text": "<tool_call>\n<function>search</function><parameter=query>2025版 考勤</parameter>\n<parameter=top_k>5</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 831,
+        "total_tokens": 1348,
+        "completion_tokens": 517,
+        "completion_tokens_details": {
+          "reasoning_tokens": 472,
+          "text_tokens": 517
+        }
+      },
+      "seconds": 4.484
+    },
+    {
+      "round": 7,
+      "text": "<tool_call>\n<function>read</function><parameter=doc_id>lantu_policy_attendance_2025</parameter><parameter=offset>0</parameter><parameter=limit>4000</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 901,
+        "total_tokens": 1876,
+        "completion_tokens": 975,
+        "completion_tokens_details": {
+          "reasoning_tokens": 916,
+          "text_tokens": 975
+        }
+      },
+      "seconds": 9.141
+    },
+    {
+      "round": 8,
+      "text": "<tool_call>\n<function>read</function><parameter=doc_id>lantu_policy_attendance_2024</parameter><parameter=offset>0</parameter><parameter=limit>4000</parameter>\n</tool_call>",
+      "usage": {
+        "prompt_tokens": 999,
+        "total_tokens": 2683,
+        "completion_tokens": 1684,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1625,
+          "text_tokens": 1684
+        }
+      },
+      "seconds": 14.641
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "考勤管理"
+      },
+      "result_sha": "f907e8cd7e4d9d669aeb29b941afff7a229c60220853bc0644cb94543d7f49b2",
+      "result_chars": 162,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {},
+      "result_sha": "0891001a5cc7c8764ea4230b012c537a0dd1ca2a8bf2ce0a1414a84875e8690b",
+      "result_chars": 51,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result_sha": "5fc2d84c83980bdfdb622431503d60a4e21a961fe19252f171944fa6956f91c7",
+      "result_chars": 12,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {},
+      "result_sha": "0891001a5cc7c8764ea4230b012c537a0dd1ca2a8bf2ce0a1414a84875e8690b",
+      "result_chars": 51,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result_sha": "5fc2d84c83980bdfdb622431503d60a4e21a961fe19252f171944fa6956f91c7",
+      "result_chars": 12,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result_sha": "5fc2d84c83980bdfdb622431503d60a4e21a961fe19252f171944fa6956f91c7",
+      "result_chars": 12,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {},
+      "result_sha": "0891001a5cc7c8764ea4230b012c537a0dd1ca2a8bf2ce0a1414a84875e8690b",
+      "result_chars": 51,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {},
+      "result_sha": "0891001a5cc7c8764ea4230b012c537a0dd1ca2a8bf2ce0a1414a84875e8690b",
+      "result_chars": 51,
+      "hits": 0
+    }
+  ],
+  "answer": null,
+  "status": "unfinished",
+  "tokens": 10466,
+  "started_at": "2026-11-01T04:45:24",
+  "elapsed_seconds": 44.42,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "考勤管理"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_policy_attendance_2024",
+            "title": "# 澜图智能考勤管理制度（2024版）"
+          },
+          {
+            "doc_id": "lantu_policy_attendance_2025",
+            "title": "# 澜图智能考勤管理制度（2025版）"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {},
+      "result": {
+        "error": "未知 doc_id，请使用 list 或 search 返回的 doc_id"
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result": {
+        "hits": []
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {},
+      "result": {
+        "error": "未知 doc_id，请使用 list 或 search 返回的 doc_id"
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result": {
+        "hits": []
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {},
+      "result": {
+        "hits": []
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {},
+      "result": {
+        "error": "未知 doc_id，请使用 list 或 search 返回的 doc_id"
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {},
+      "result": {
+        "error": "未知 doc_id，请使用 list 或 search 返回的 doc_id"
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

@@ -1,0 +1,249 @@
+{
+  "qid": "M0221",
+  "question": "客户要签的那份“NDA”，公司内部对应哪份模板？保密期多长、违约金怎么算？跟员工离职时的保密义务是一回事吗？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"list\",\"args\":{\"keyword\":\"NDA\"}}",
+      "usage": {
+        "prompt_tokens": 383,
+        "total_tokens": 475,
+        "completion_tokens": 92,
+        "completion_tokens_details": {
+          "reasoning_tokens": 73,
+          "text_tokens": 92
+        }
+      },
+      "seconds": 0.859
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_legal_nda_template\",\"offset\":0,\"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 522,
+        "total_tokens": 735,
+        "completion_tokens": 213,
+        "completion_tokens_details": {
+          "reasoning_tokens": 178,
+          "text_tokens": 213
+        }
+      },
+      "seconds": 1.86
+    },
+    {
+      "round": 3,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"员工离职 保密\"}}",
+      "usage": {
+        "prompt_tokens": 874,
+        "total_tokens": 2545,
+        "completion_tokens": 1671,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1650,
+          "text_tokens": 1671
+        }
+      },
+      "seconds": 13.531
+    },
+    {
+      "round": 4,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"客户要签的 NDA 对应内部模板为《澜图智能保密协议模板（NDA）》。\\n\\n1. **保密期**：协议约定保密期限为签署之日起 **3 年**，但商业秘密不受期限限制。\\n2. **违约金**：违反保密义务的，需赔偿对方全部损失，并支付 **合同金额 20%** 的违约金。\\n3. **与员工离职保密义务的关系**：**不是一回事**。虽然两者保密期限均为 3 年（员工离职后 3 年内不得披露，依据《商业秘密与保密管理规范》），但适用对象不同：NDA 是针对外部客户/合作方的商业法律约束，包含明确的违约金条款；而员工离职保密义务是基于劳动关系和公司制度的合规要求，员工入职时已签署相关保密协议，离职时主要遵循工作交接及保密规范，不涉及此类商业合同的违约金计算。\",\"citations\":[\"lantu_legal_nda_template\",\"lantu_policy_confidentiality\"],\"evidence\":[\"lantu_legal_nda_template#3\",\"lantu_legal_nda_template#4\",\"lantu_policy_confidentiality#2\"]}",
+      "usage": {
+        "prompt_tokens": 3162,
+        "total_tokens": 4891,
+        "completion_tokens": 1729,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1480,
+          "text_tokens": 1729
+        }
+      },
+      "seconds": 14.297
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "NDA"
+      },
+      "result_sha": "25928809f045fa52f30911bc40682a1b89123b8dd090a1738274baeb1a3d7aab",
+      "result_chars": 230,
+      "hits": 0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_legal_nda_template",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "06dcd36b43ef1c4072b0bddcb43f808cfae26a1992d718b0f3a9c346ed1648a2",
+      "result_chars": 535,
+      "hits": 0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "员工离职 保密"
+      },
+      "result_sha": "3379dba9a7410a0df01e00390bd107b73c2b401cdc777c433d8858f321c827f2",
+      "result_chars": 3917,
+      "hits": 10
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "客户要签的 NDA 对应内部模板为《澜图智能保密协议模板（NDA）》。\n\n1. **保密期**：协议约定保密期限为签署之日起 **3 年**，但商业秘密不受期限限制。\n2. **违约金**：违反保密义务的，需赔偿对方全部损失，并支付 **合同金额 20%** 的违约金。\n3. **与员工离职保密义务的关系**：**不是一回事**。虽然两者保密期限均为 3 年（员工离职后 3 年内不得披露，依据《商业秘密与保密管理规范》），但适用对象不同：NDA 是针对外部客户/合作方的商业法律约束，包含明确的违约金条款；而员工离职保密义务是基于劳动关系和公司制度的合规要求，员工入职时已签署相关保密协议，离职时主要遵循工作交接及保密规范，不涉及此类商业合同的违约金计算。",
+    "citations": [
+      "lantu_legal_nda_template",
+      "lantu_policy_confidentiality"
+    ],
+    "evidence": [
+      "lantu_legal_nda_template#3",
+      "lantu_legal_nda_template#4",
+      "lantu_policy_confidentiality#2"
+    ]
+  },
+  "status": "answered",
+  "tokens": 8646,
+  "started_at": "2026-11-01T06:23:51",
+  "elapsed_seconds": 30.56,
+  "tool_calls_detail": [
+    {
+      "name": "list",
+      "args": {
+        "keyword": "NDA"
+      },
+      "result": {
+        "docs": [
+          {
+            "doc_id": "lantu_legal_nda_template",
+            "title": "澜图智能保密协议模板（NDA）"
+          },
+          {
+            "doc_id": "lantu_policy_attendance_2024",
+            "title": "# 澜图智能考勤管理制度（2024版）"
+          },
+          {
+            "doc_id": "lantu_policy_attendance_2025",
+            "title": "# 澜图智能考勤管理制度（2025版）"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_legal_nda_template",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_legal_nda_template",
+        "title": "澜图智能保密协议模板（NDA）",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 371,
+        "text": "澜图智能保密协议模板（NDA）\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-10 09:00\n更新时间：2025-02-01 09:00\n版本号：v3.0\n文档类型：legal\n文档族：nda_template\n生效日期：2025-02-01\n第一条 保密信息\n保密信息包括技术资料、图纸、源代码、算法、客户信息、报价、成本与未公开财务数据。\n第二条 保密义务\n接收方仅可为合作目的使用保密信息，不得披露给第三方；接触人员须签署个人保密承诺。\n第三条 保密期限\n本协议保密期限为签署之日起 3 年，商业秘密不受期限限制。\n第四条 违约责任\n违反保密义务的，赔偿对方全部损失，并支付合同金额 20% 的违约金；涉嫌犯罪的追究刑事责任。\n第五条 返还与销毁\n合作终止后 30 日内，接收方须返还或销毁全部保密信息，并出具书面确认。",
+        "truncated": false
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "search",
+      "args": {
+        "query": "员工离职 保密"
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_hr_resignation",
+            "title": "# 澜图智能离职与交接管理办法",
+            "chunk": 0,
+            "score": 11.695,
+            "snippet": "# 澜图智能离职与交接管理办法\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-15 09:00\n更新时间：2025-05-20 09:00\n版本号：v2.4\n文档类型：hr\n文档族：resignation\n生效日期：2025-05-20\n\n## 一、离职申请\n\n正式员工提前 30 日、试用期员工提前 3 日提交书面离职申请；关键岗位须提前 60 日。\n\n## 二、离职面谈\n\nHR 在收到申请后 3 个工作日内安排面谈，了解离职原因并记录改进建议；核心人才可启动挽留。\n\n## 三、工作交接\n\n交接内"
+          },
+          {
+            "doc_id": "lantu_policy_employee_handbook",
+            "title": "# 澜图智能员工手册",
+            "chunk": 0,
+            "score": 10.351,
+            "snippet": "# 澜图智能员工手册\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-01 09:00\n更新时间：2025-07-01 09:00\n版本号：v6.0\n文档类型：policy\n文档族：employee_handbook\n生效日期：2025-07-01\n\n## 一、适用范围\n\n本手册适用于澜图智能装备股份有限公司及下属子公司全体正式员工、试用期员工与实习生。劳务派遣与外包人员参照执行。\n\n## 二、入职与试用\n\n新员工入职当日签署劳动合同、保密协议与廉洁承诺书，试用期 3-6 个月。试用期内需完成入职培"
+          },
+          {
+            "doc_id": "lantu_policy_confidentiality",
+            "title": "# 澜图智能商业秘密与保密管理规范",
+            "chunk": 0,
+            "score": 10.191,
+            "snippet": "# 澜图智能商业秘密与保密管理规范\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-15 09:00\n更新时间：2025-03-28 11:00\n版本号：v3.1\n文档类型：policy\n文档族：confidentiality\n生效日期：2025-03-28\n\n## 一、保密范围\n\n技术秘密（源代码、算法、图纸、工艺参数）、经营秘密（客户名单、报价、成本、未披露财务数据）与人事秘密均属保密信息。\n\n## 二、保密义务\n\n员工在职期间及离职后 3 年内不得披露、使用或允许他人使用公司保密信息；竞业限制人"
+          },
+          {
+            "doc_id": "lantu_legal_nda_template",
+            "title": "澜图智能保密协议模板（NDA）",
+            "chunk": 0,
+            "score": 5.856,
+            "snippet": "澜图智能保密协议模板（NDA）\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-01-10 09:00\n更新时间：2025-02-01 09:00\n版本号：v3.0\n文档类型：legal\n文档族：nda_template\n生效日期：2025-02-01\n第一条 保密信息\n保密信息包括技术资料、图纸、源代码、算法、客户信息、报价、成本与未公开财务数据。\n第二条 保密义务\n接收方仅可为合作目的使用保密信息，不得披露给第三方；接触人员须签署个人保密承诺。\n第三条 保密期限\n本协议保密期限为签署之日起 3 年，商业秘"
+          },
+          {
+            "doc_id": "lantu_legal_compliance_manual",
+            "title": "# 澜图智能合规管理手册",
+            "chunk": 0,
+            "score": 4.902,
+            "snippet": "# 澜图智能合规管理手册\n\n所属部门：法务合规部\n作者：邵岚\n创建时间：2024-02-01 09:00\n更新时间：2025-06-01 09:00\n版本号：v3.1\n文档类型：legal\n文档族：compliance_manual\n生效日期：2025-06-01\n\n## 一、合规组织\n\n公司设合规委员会，主任由法务合规总监担任，成员包括财务、销售、采购、人力与信息技术负责人。\n\n## 二、重点领域\n\n反商业贿赂、出口管制、数据保护、反垄断、劳动用工与环境保护。各领域每年至少开展一次风险评估。\n\n## 三、培训与举"
+          },
+          {
+            "doc_id": "lantu_policy_data_classification",
+            "title": "# 澜图智能数据分级与分类管理规范",
+            "chunk": 0,
+            "score": 4.169,
+            "snippet": "# 澜图智能数据分级与分类管理规范\n\n所属部门：信息技术部\n作者：葛俊\n创建时间：2024-05-20 09:00\n更新时间：2025-09-10 14:00\n版本号：v2.5\n文档类型：policy\n文档族：data_classification\n生效日期：2025-09-10\n\n## 一、分级定义\n\n数据分为 L1 公开、L2 内部、L3 机密、L4 绝密四级。L1 可对外发布；L2 限公司内部；L3 限授权岗位；L4 限特定人员并加密存储。\n\n## 二、典型数据\n\nL1：宣传资料、公开财报；L2：一般制度、会"
+          },
+          {
+            "doc_id": "lantu_hr_recruitment",
+            "title": "# 澜图智能招聘管理制度",
+            "chunk": 0,
+            "score": 3.363,
+            "snippet": "# 澜图智能招聘管理制度\n\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-01-05 09:00\n更新时间：2025-06-10 10:00\n版本号：v3.1\n文档类型：hr\n文档族：recruitment\n生效日期：2025-06-10\n\n## 一、招聘原则\n\n坚持公开、公平、择优，优先内部推荐与内部转岗；关键岗位实行背景调查与多轮面试。\n\n## 二、招聘流程\n\n需求审批 → 简历筛选 → 专业面试 → 综合面试 → 薪酬沟通 → 背景调查 → 发放录用通知。研发岗位增加技术笔试与代码评审。\n\n## 三"
+          },
+          {
+            "doc_id": "lantu_hr_new_hire_training",
+            "title": "澜图智能新员工入职培训大纲",
+            "chunk": 0,
+            "score": 3.177,
+            "snippet": "澜图智能新员工入职培训大纲\n所属部门：人力资源部\n作者：陈依然\n创建时间：2024-03-01 09:00\n更新时间：2025-08-01 10:00\n版本号：v2.3\n文档类型：hr\n文档族：new_hire_training\n生效日期：2025-08-01\n一、培训目标\n帮助新员工了解公司战略、文化、制度与岗位要求，在 30 天内完成从入职到独立工作的过渡。\n二、课程安排\n第 1 天：公司介绍与企业文化；第 2 天：制度与信息安全；第 3 天：产品与业务；第 4 天：质量意识与安全生产；第 5 天：岗位实践与导"
+          },
+          {
+            "doc_id": "lantu_investor_overview",
+            "title": "# 澜图智能投资者关系概览",
+            "chunk": 0,
+            "score": 3.05,
+            "snippet": "# 澜图智能投资者关系概览\n\n所属部门：董事会办公室\n作者：周敏仪\n创建时间：2024-03-20 09:00\n更新时间：2026-01-10 17:00\n版本号：v4.1\n文档类型：company\n文档族：investor_overview\n生效日期：2026-01-10\n\n## 一、基本信息\n\n公司股票代码 688719，总股本 4.2 亿股，2025 年末总市值约 168 亿元。2025 年度拟每 10 股派发现金红利 3.2 元（含税）。\n\n## 二、经营数据\n\n2025 年营业收入 42.63 亿元，归母"
+          },
+          {
+            "doc_id": "lantu_org_headcount",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 2.809,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能员工分布统计（2025）\n所属部门\t人力资源部\n作者\t陈依然\n创建时间\t2025-12-31 18:00\n更新时间\t2026-01-09 09:30\n版本号\tv1.0\n文档类型\torg\n文档族\theadcount_2025\n生效日期\t2026-01-09\n[工作表] 基地分布\n基地\t员工数\t研发\t销售\t制造\t服务\t职能\n苏州总部\t2,450\t1,120\t310\t560\t250\t210\n东莞华南\t780\t86\t150\t300\t120\t124\n成都西部\t430\t80\t90\t"
+          }
+        ]
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.667,
+    "cited": [
+      "lantu_legal_nda_template",
+      "lantu_policy_confidentiality"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.177,
+    "number_recall": 0.0
+  }
+}

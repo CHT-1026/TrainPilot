@@ -1,0 +1,59 @@
+{
+  "qid": "M1403",
+  "question": "差旅费用报销标准改过好几版。餐饮补贴、出差补贴（市内交通与通讯）和出差申请提前期，现行口径分别是多少？跟 2024 版比有什么变化？",
+  "question_type": "版本对比",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>差旅费用报销标准 餐饮补贴 出差补贴</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list><parameter=keyword>差旅</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 96,
+        "prompt_tokens": 388,
+        "total_tokens": 484,
+        "completion_tokens_details": {
+          "reasoning_tokens": 40
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.266
+    },
+    {
+      "round": 2,
+      "text": "ANSWER {\"status\":\"not_in_clarification_needed\"}",
+      "usage": {
+        "completion_tokens": 61,
+        "prompt_tokens": 481,
+        "total_tokens": 542,
+        "completion_tokens_details": {
+          "reasoning_tokens": 47
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 2.016
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "status": "not_in_clarification_needed"
+  },
+  "status": "answered",
+  "tokens": 1026,
+  "started_at": "2026-11-01T06:04:51",
+  "elapsed_seconds": 4.28,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

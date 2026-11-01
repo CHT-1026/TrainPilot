@@ -1,0 +1,79 @@
+{
+  "qid": "C0054",
+  "question": "数字孪生平台单项目支持 500 台设备接入，AMR 手册称 LantuFleet 单仓支持 500 台 AMR 协同，两个 500 台之间是什么关系？",
+  "question_type": "矛盾与例外识别",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>数字孪生平台 单项目 500台 设备接入</parameter><parameter=top_k>10</parameter></function></tool_call><tool_call><function=list><parameter=keyword>数字孪生</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 108,
+        "prompt_tokens": 395,
+        "total_tokens": 503,
+        "completion_tokens_details": {
+          "reasoning_tokens": 50
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 3.468
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>数字孪生平台 单项目 设备接入 数量上限</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 112,
+        "prompt_tokens": 490,
+        "total_tokens": 602,
+        "completion_tokens_details": {
+          "reasoning_tokens": 74
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 2.969
+    },
+    {
+      "round": 3,
+      "text": "{\"name\": \"search\", \"args\": {\"query\": \"数字孪生平台 单项目 500台设备接入\", \"top_k\": 10}}",
+      "usage": {
+        "completion_tokens": 104,
+        "prompt_tokens": 565,
+        "total_tokens": 669,
+        "completion_tokens_details": {
+          "reasoning_tokens": 66
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 448
+        }
+      },
+      "seconds": 2.578
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "name": "search",
+    "args": {
+      "query": "数字孪生平台 单项目 500台设备接入",
+      "top_k": 10
+    }
+  },
+  "status": "answered",
+  "tokens": 1774,
+  "started_at": "2026-11-01T04:15:14",
+  "elapsed_seconds": 9.01,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}

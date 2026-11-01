@@ -1,0 +1,127 @@
+#对话时 Agent 工作流主图模块
+import logging
+import os
+
+from langchain_openai import ChatOpenAI
+from langgraph.checkpoint.redis import RedisSaver
+from langgraph.constants import END
+from langgraph.graph import StateGraph
+from langgraph.store.redis import RedisStore
+
+from app.database.connection import get_redis_client
+from app.workflows.chat_nodes_factory import create_all_nodes
+from app.workflows.chat_state import ChatState
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='[%(levelname)s] %(message)s]',
+    datefmt='%H:%M:%S',
+)
+
+logger = logging.getLogger(__name__)
+
+#主图构建函数
+def create_chat_graph(redis_url:str):
+    """创建对话时 Agent 工作流主图"""
+
+    logger.info("开始创建对话Agent工作流图")
+
+    logger.info("初始化LLM模型：qwen3.5-plus")
+    llm = ChatOpenAI(
+        model=os.getenv("OPENAI_MODEL","qwen3.5-plus"),
+        temperature=0.7
+    )
+    logger.info("LLM模型初始化完成")
+
+    tavily_api_key = os.getenv("TAVILY_API_KEY","")
+
+    logger.info("创建节点函数")
+
+    nodes = create_all_nodes(llm, tavily_api_key)
+
+    logger.info("节点函数创建完成")
+
+    redis_client = get_redis_client()
+
+    #初始化 长记忆
+    store = RedisStore(redis_client)
+    store.setup()
+    logger.info("RedisStore初始化完成")
+
+    #初始化 检查点
+    checkpointer = RedisSaver(redis_client=redis_client)
+    checkpointer.setup()
+    logger.info("RedisSaver检查点初始化完成")
+
+    #创建图的构建器
+    builder = StateGraph(ChatState)
+
+    for node_name,node_func in nodes.items():
+        if node_name != "route_task_execution":
+            builder.add_node(node_name,node_func)
+
+    logger.info("节点添加完成")
+
+    logger.info("添加边和路由")
+    builder.add_edge("intent_recognition","search")
+    builder.add_edge("search","task_router")
+    builder.add_edge("task_router","task_executor")
+
+    route_func = nodes["route_task_execution"]
+
+    builder.add_conditional_edges(
+        "task_executor",
+        route_func,
+        #路由映射表
+        {
+            #提交请假申请
+            "submit_application":"submit_leave",
+            #审批
+            "approve_application":"approve",
+            #查询我的申请
+            "query":"query",
+            #查看待审批列表
+            "query_pending":"query_pending",
+            #删除申请
+            "delete_application":"delete",
+            #获取审批建议
+            "suggestion":"suggestion",
+            #日常对话
+            "general_chat":"general_chat"
+        }
+    )
+
+    builder.add_edge("submit_leave","response_generator")
+    builder.add_edge("approve","response_generator")
+    builder.add_edge("query", "response_generator")
+    builder.add_edge("query_pending","response_generator")
+    builder.add_edge("delete","response_generator")
+    builder.add_edge("suggestion","response_generator")
+    builder.add_edge("general_chat","response_generator")
+
+    builder.add_edge("response_generator",END)
+    logger.info("边添加完成")
+
+    builder.set_entry_point("intent_recognition")
+    logger.info("设置入口点：intent_recognition ")
+
+    logger.info("编译工作流图")
+
+    graph = builder.compile(checkpointer=checkpointer, store=store)
+
+    logger.info("工作流图拆功能键完成")
+
+    return graph,store
+
+
+_chat_graph = None
+_chat_store = None
+
+def get_chat_graph():
+    global _chat_graph,_chat_store
+    if _chat_graph is None:
+        redis_url = os.getenv("REDIS_URL","redis://localhost:6379/0")
+        _chat_graph,_chat_store = create_chat_graph(redis_url)
+
+    return _chat_graph
+

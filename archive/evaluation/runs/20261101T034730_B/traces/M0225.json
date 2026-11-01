@@ -1,0 +1,207 @@
+{
+  "qid": "M0225",
+  "question": "客户合同上写“AMR”，这个缩写正式对应什么产品线？都有哪些型号？半导体洁净场景用的是哪款、洁净等级到什么级别？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "TOOL {\"name\":\"search\",\"args\":{\"query\":\"AMR 产品线 缩写\", \"top_k\":10}}",
+      "usage": {
+        "prompt_tokens": 379,
+        "total_tokens": 494,
+        "completion_tokens": 115,
+        "completion_tokens_details": {
+          "reasoning_tokens": 85,
+          "text_tokens": 115
+        }
+      },
+      "seconds": 1.329
+    },
+    {
+      "round": 2,
+      "text": "TOOL {\"name\":\"read\",\"args\":{\"doc_id\":\"lantu_solution_semiconductor\", \"offset\":0, \"limit\":4000}}",
+      "usage": {
+        "prompt_tokens": 2721,
+        "total_tokens": 3358,
+        "completion_tokens": 637,
+        "completion_tokens_details": {
+          "reasoning_tokens": 601,
+          "text_tokens": 637
+        }
+      },
+      "seconds": 5.625
+    },
+    {
+      "round": 3,
+      "text": "ANSWER {\"status\":\"answerable\",\"answer\":\"客户合同上的“AMR”正式对应**自主移动机器人**（LT-AMR 系列）。\\n\\n该系列主要包含以下型号：\\n1. **LT-AMR-500**\\n2. **LT-AMR-1000**\\n3. **LT-AMR-2000**\\n\\n针对半导体洁净场景，使用的是 **LT-AMR-500 洁净版**。其洁净等级达到 **Class 10**（颗粒物控制 0.1 μm），并具备防静电等级 <35 V 及定位精度 ±5 mm 等指标。\",\"citations\":[\"lantu_product_overview\",\"lantu_product_amr\",\"lantu_solution_semiconductor\"],\"evidence\":[\"lantu_product_overview#chunk 1\",\"lantu_product_amr#chunk 0\",\"lantu_solution_semiconductor#chunk 0\"]}",
+      "usage": {
+        "prompt_tokens": 3110,
+        "total_tokens": 3768,
+        "completion_tokens": 658,
+        "completion_tokens_details": {
+          "reasoning_tokens": 451,
+          "text_tokens": 658
+        }
+      },
+      "seconds": 4.515
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "AMR 产品线 缩写",
+        "top_k": 10
+      },
+      "result_sha": "2727cf304a89d04cd66c95256b1efce58e493991247f93b654546864389030ec",
+      "result_chars": 3847,
+      "hits": 10
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_solution_semiconductor",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result_sha": "1412a79d52a3a7a18ad6b60c366ccc16ea796aea8d2ca03beff34292b9bb49f9",
+      "result_chars": 590,
+      "hits": 0
+    }
+  ],
+  "answer": {
+    "status": "answerable",
+    "answer": "客户合同上的“AMR”正式对应**自主移动机器人**（LT-AMR 系列）。\n\n该系列主要包含以下型号：\n1. **LT-AMR-500**\n2. **LT-AMR-1000**\n3. **LT-AMR-2000**\n\n针对半导体洁净场景，使用的是 **LT-AMR-500 洁净版**。其洁净等级达到 **Class 10**（颗粒物控制 0.1 μm），并具备防静电等级 <35 V 及定位精度 ±5 mm 等指标。",
+    "citations": [
+      "lantu_product_overview",
+      "lantu_product_amr",
+      "lantu_solution_semiconductor"
+    ],
+    "evidence": [
+      "lantu_product_overview#chunk 1",
+      "lantu_product_amr#chunk 0",
+      "lantu_solution_semiconductor#chunk 0"
+    ]
+  },
+  "status": "answered",
+  "tokens": 7620,
+  "started_at": "2026-11-01T06:25:15",
+  "elapsed_seconds": 11.47,
+  "tool_calls_detail": [
+    {
+      "name": "search",
+      "args": {
+        "query": "AMR 产品线 缩写",
+        "top_k": 10
+      },
+      "result": {
+        "hits": [
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 1,
+            "score": 9.732,
+            "snippet": "0 kg\t1.5 m/s\nLT-AMR-2000\t2,000 kg\t—\t±10 mm\t420 kg\t1.2 m/s\n[工作表] 交付与保修\n产品线\t标准交期\t保修期\t备件响应\nLT-R 系列\t6-8 周\t24 个月/6,000 小时\t48 小时\nLT-S 系列\t4 周\t24 个月/6,000 小时\t48 小时\nLT-AMR 系列\t8 周\t24 个月\t72 小时\nLT-V3D\t4 周\t12 个月\t72 小时"
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 1,
+            "score": 9.265,
+            "snippet": "| 产品线 | 代表型号 | 负载 | 典型行业 |\n| --- | --- | --- | --- |\n| 六轴机器人 | LT-R6/R12/R20/R50/R210 | 6-210 kg | 汽车、锂电、金属加工 |\n| SCARA | LT-S4/S10 | 4-10 kg | 3C、光伏、食品 |\n| 移动机器人 | LT-AMR-500/1000/2000 | 500-2,000 kg | 物流、半导体 |\n| 机器视觉 | LT-V3D | — | 装配、检测 |\n| 控制器 | LT-C800 | "
+          },
+          {
+            "doc_id": "lantu_product_matrix",
+            "title": "[工作表] 文档信息",
+            "chunk": 0,
+            "score": 8.38,
+            "snippet": "[工作表] 文档信息\n字段\t值\n标题\t澜图智能产品参数矩阵（2025）\n所属部门\t产品部\n作者\t孟凡\n创建时间\t2025-01-20 09:00\n更新时间\t2025-12-15 18:00\n版本号\tv2.0\n文档类型\tproduct\n文档族\tproduct_matrix\n生效日期\t2025-12-15\n[工作表] 六轴与SCARA\n型号\t负载\t臂展\t重复精度\t本体重量\t最大速度\nLT-R6\t6 kg\t1,450 mm\t±0.02 mm\t165 kg\t3.2 m/s\nLT-R12\t12 kg\t1,550 mm\t±0."
+          },
+          {
+            "doc_id": "lantu_finance_revenue_breakdown",
+            "title": "﻿维度,分类,收入（亿元）,占比,同比",
+            "chunk": 0,
+            "score": 8.14,
+            "snippet": "﻿维度,分类,收入（亿元）,占比,同比\n产品线,机器人本体,19.84,46.5%,+18.2%\n产品线,智能产线,14.92,35.0%,+21.6%\n产品线,工业软件与服务,5.21,12.2%,+26.8%\n产品线,备件及其他,2.66,6.3%,+9.4%\n行业,动力电池,13.64,32.0%,+24.1%\n行业,汽车及零部件,10.23,24.0%,+11.5%\n行业,半导体,5.12,12.0%,+38.6%\n行业,光伏,4.26,10.0%,+6.2%\n行业,3C 电子,3.41,8.0%,+14."
+          },
+          {
+            "doc_id": "lantu_product_overview",
+            "title": "# 澜图智能产品与解决方案总览",
+            "chunk": 0,
+            "score": 7.64,
+            "snippet": "# 澜图智能产品与解决方案总览\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-02-20 09:00\n更新时间：2025-12-22 10:00\n版本号：v6.0\n文档类型：product\n文档族：product_overview\n生效日期：2025-12-22\n\n## 一、产品矩阵\n\n公司产品覆盖六轴工业机器人、SCARA 机器人、自主移动机器人（AMR）、机器视觉、运动控制器、数字孪生平台与行业工作站，形成“本体+控制器+视觉+软件+工艺”的一体化方案。\n\n## 二、行业方案\n\n重点行业包括汽车及零部件、"
+          },
+          {
+            "doc_id": "lantu_product_amr",
+            "title": "# LT-AMR 自主移动机器人产品手册",
+            "chunk": 0,
+            "score": 6.305,
+            "snippet": "# LT-AMR 自主移动机器人产品手册\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-05-10 09:00\n更新时间：2025-08-20 15:00\n版本号：v3.4\n文档类型：product\n文档族：product_amr\n生效日期：2025-08-20\n\n## 一、产品系列\n\nLT-AMR-500 负载 500 kg、速度 1.8 m/s、续航 8 小时；LT-AMR-1000 负载 1,000 kg、速度 1.5 m/s、续航 8 小时；LT-AMR-2000 负载 2,000 kg、速度 1.2"
+          },
+          {
+            "doc_id": "lantu_company_history",
+            "title": "# 澜图智能发展历程（2011—2025）",
+            "chunk": 0,
+            "score": 5.99,
+            "snippet": "# 澜图智能发展历程（2011—2025）\n\n所属部门：战略投资部\n作者：文梓萱\n创建时间：2023-03-01 09:00\n更新时间：2026-01-05 14:00\n版本号：v4.0\n文档类型：company\n文档族：company_history\n生效日期：2026-01-05\n\n## 一、创业阶段（2011—2015）\n\n2011 年 6 月 18 日，公司在苏州工业园区成立，创始团队来自高校机器人实验室，首款产品为 LT-R6 六轴工业机器人，2012 年实现小批量交付 120 台。2014 年建成首条机"
+          },
+          {
+            "doc_id": "lantu_solution_lithium",
+            "title": "# 动力电池叠片与物流整体解决方案",
+            "chunk": 0,
+            "score": 4.944,
+            "snippet": "# 动力电池叠片与物流整体解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2024-10-12 09:00\n更新时间：2025-12-01 10:00\n版本号：v3.6\n文档类型：product\n文档族：solution_lithium\n生效日期：2025-12-01\n\n## 一、方案概述\n\n面向动力电池电芯段，提供叠片、焊接、检测与物料配送一体化方案，核心设备包括 LT-R20 机器人、LT-AMR-1000 与 LT-V3D 视觉。\n\n## 二、产线配置\n\n单条叠片线配置 15-16 台 LT-R20、2 "
+          },
+          {
+            "doc_id": "lantu_solution_semiconductor",
+            "title": "# 半导体晶圆搬运洁净解决方案",
+            "chunk": 0,
+            "score": 4.621,
+            "snippet": "# 半导体晶圆搬运洁净解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2025-02-14 09:00\n更新时间：2025-11-11 09:30\n版本号：v2.0\n文档类型：product\n文档族：solution_semiconductor\n生效日期：2025-11-11\n\n## 一、方案概述\n\n面向 8/12 英寸晶圆厂，提供晶圆盒搬运、机台上下料与跨区物流方案，采用 LT-AMR-500 洁净版与 LT-R12 洁净机器人。\n\n## 二、洁净指标\n\n洁净等级 Class 10，颗粒物控制 0.1 μm，"
+          },
+          {
+            "doc_id": "lantu_support_spare_parts_price",
+            "title": "﻿适配机型,备件名称,单价（元）,发货时效,质保期",
+            "chunk": 0,
+            "score": 3.462,
+            "snippet": "﻿适配机型,备件名称,单价（元）,发货时效,质保期\nLT-R20,减速器 RV-40E,\"12,800\",48 小时,12 个月\nLT-R20,伺服驱动器 LT-D4,\"8,600\",48 小时,18 个月\nLT-R20,示教器 LT-Pad3,\"5,200\",48 小时,12 个月\nLT-R12,减速器 RV-20E,\"7,900\",48 小时,12 个月\nLT-R12,伺服电机 750W,\"3,600\",48 小时,18 个月\nLT-R6,谐波减速器 CSF-17,\"6,400\",72 小时,12 个月\nLT-"
+          }
+        ]
+      },
+      "seconds": 0.0
+    },
+    {
+      "name": "read",
+      "args": {
+        "doc_id": "lantu_solution_semiconductor",
+        "offset": 0,
+        "limit": 4000
+      },
+      "result": {
+        "doc_id": "lantu_solution_semiconductor",
+        "title": "# 半导体晶圆搬运洁净解决方案",
+        "offset": 0,
+        "limit": 4000,
+        "total_chars": 414,
+        "text": "# 半导体晶圆搬运洁净解决方案\n\n所属部门：产品部\n作者：孟凡\n创建时间：2025-02-14 09:00\n更新时间：2025-11-11 09:30\n版本号：v2.0\n文档类型：product\n文档族：solution_semiconductor\n生效日期：2025-11-11\n\n## 一、方案概述\n\n面向 8/12 英寸晶圆厂，提供晶圆盒搬运、机台上下料与跨区物流方案，采用 LT-AMR-500 洁净版与 LT-R12 洁净机器人。\n\n## 二、洁净指标\n\n洁净等级 Class 10，颗粒物控制 0.1 μm，防静电等级 <35 V，定位精度 ±5 mm。\n\n## 三、系统集成\n\n与 AMHS、MES、EAP 对接，支持 SECS/GEM 协议，搬运任务响应时间低于 3 秒。\n\n## 四、标杆案例\n\n晶拓微电子 2 座 8 英寸晶圆厂部署 48 台 LT-AMR-500，搬运效率提升 35%，人为污染事件归零。\n",
+        "truncated": false
+      },
+      "seconds": 0.0
+    }
+  ],
+  "model_label": "B",
+  "grade": {
+    "correct": false,
+    "evidence_supported": true,
+    "coverage": 0.75,
+    "cited": [
+      "lantu_product_overview",
+      "lantu_product_amr",
+      "lantu_solution_semiconductor"
+    ],
+    "cited_all_retrieved": true,
+    "structured_gold": false,
+    "gold_recall": 0.102,
+    "number_recall": 0.667
+  }
+}

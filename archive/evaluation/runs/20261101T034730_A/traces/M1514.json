@@ -1,0 +1,79 @@
+{
+  "qid": "M1514",
+  "question": "用户：去年公司海外收入多少？占总收入多少？\n助手：2025 年海外营业收入 4.86 亿元，占总收入 11.4%，同比增长 31.2%；欧洲 3.20 亿元、东南亚 0.98 亿元、北美 0.68 亿元。\n用户：明年的目标是多少？占比要提到多少？",
+  "question_type": "跨文档推理",
+  "rounds": [
+    {
+      "round": 1,
+      "text": "<tool_call><function=search><parameter=query>海外收入 目标 2027</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 97,
+        "prompt_tokens": 427,
+        "total_tokens": 524,
+        "completion_tokens_details": {
+          "reasoning_tokens": 62
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 2.218
+    },
+    {
+      "round": 2,
+      "text": "<tool_call><function=search><parameter=query>海外收入 目标 占比 提升</parameter><parameter=top_k>10</parameter></function></tool_call>",
+      "usage": {
+        "completion_tokens": 104,
+        "prompt_tokens": 499,
+        "total_tokens": 603,
+        "completion_tokens_details": {
+          "reasoning_tokens": 69
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        }
+      },
+      "seconds": 3.391
+    },
+    {
+      "round": 3,
+      "text": "{\"name\":\"search\",\"args\":{\"query\":\"海外收入 目标 占比 提升 明年\",\"top_k\":10}}",
+      "usage": {
+        "completion_tokens": 52,
+        "prompt_tokens": 571,
+        "total_tokens": 623,
+        "completion_tokens_details": {
+          "reasoning_tokens": 21
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 320
+        }
+      },
+      "seconds": 1.266
+    }
+  ],
+  "tool_calls": [],
+  "answer": {
+    "name": "search",
+    "args": {
+      "query": "海外收入 目标 占比 提升 明年",
+      "top_k": 10
+    }
+  },
+  "status": "answered",
+  "tokens": 1750,
+  "started_at": "2026-11-01T06:13:56",
+  "elapsed_seconds": 6.88,
+  "tool_calls_detail": [],
+  "model_label": "A",
+  "grade": {
+    "correct": false,
+    "evidence_supported": false,
+    "coverage": 0.0,
+    "cited": [],
+    "cited_all_retrieved": false,
+    "structured_gold": false,
+    "gold_recall": 0.0,
+    "number_recall": 0.0
+  }
+}
