@@ -5336,6 +5336,11 @@
       "sha256": "40343d8067124c4d3060108eb991b512862309fcff0260cc275fdcdd434ee992"
     },
     {
+      "path": "evaluation/scan_archive_secrets.py",
+      "bytes": 9021,
+      "sha256": "a27e15d3ff374836c9a999d544e7b517921dc2c9beb0b982622d7d201d8fa98f"
+    },
+    {
       "path": "evaluation/人工抽审清单.md",
       "bytes": 14384,
       "sha256": "780ff7a98713af792b751c598e999740163464fa48c0bb36084f934f50d1ac5d"
@@ -7824,6 +7829,11 @@
       "path": "source/scripts/run_reasoning_suite.py",
       "bytes": 12886,
       "sha256": "0254d2913f2e27ed9ec2d5815b304da83e208fbdf39fed2746d0e55b73902b3a"
+    },
+    {
+      "path": "source/scripts/scan_archive_secrets.py",
+      "bytes": 9021,
+      "sha256": "a27e15d3ff374836c9a999d544e7b517921dc2c9beb0b982622d7d201d8fa98f"
     },
     {
       "path": "source/scripts/seal_retrieval_repair.py",
