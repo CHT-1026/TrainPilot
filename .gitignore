@@ -14,13 +14,13 @@ __pycache__/
 .vscode/
 # Datasets, model weights and experiment artifacts
 data/
-dataset/datasets/processed/
-dataset/cache/
-dataset/datasets/cache/
-dataset/datasets/sft_t2t_mini.jsonl
-dataset/datasets/pretrain_t2t.jsonl
-dataset/datasets/sft_t2t.jsonl
-dataset/datasets/alpaca_gpt4_zh/
+model/dataset/datasets/processed/
+model/dataset/cache/
+model/dataset/datasets/cache/
+model/dataset/datasets/sft_t2t_mini.jsonl
+model/dataset/datasets/pretrain_t2t.jsonl
+model/dataset/datasets/sft_t2t.jsonl
+model/dataset/datasets/alpaca_gpt4_zh/
 /datasets/
 checkpoints/
 weights/
@@ -41,4 +41,18 @@ Thumbs.db
 .DS_Store
 
 # Interrupted corpus downloads
-dataset/datasets/*.part
+model/dataset/datasets/*.part
+
+# Integrated Agent local state, private corpus and independent environment
+.venv-agent/
+agent/data/
+agent/enterprise_rag/corpus/
+agent/enterprise_rag/data/
+agent/enterprise_rag/graph/data/
+agent/enterprise_rag/eval/reports/
+agent/eval/reports/
+agent/local_runtime/logs/
+agent/local_runtime/processes.json
+agent/local_runtime/model_check.json
+agent/local_runtime/verification*.json
+agent/local_runtime/requirements-installed.txt

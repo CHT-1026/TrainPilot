@@ -1,0 +1,166 @@
+{
+  "date": "2026-10-30",
+  "model": "Qwen3-1.7B Full SFT + V6 LoRA",
+  "decision": {
+    "recommendation": "keep_strict_reward",
+    "checks": {
+      "42": {
+        "finished": true,
+        "development_improves": true,
+        "old_business_preserved": false,
+        "no_extra_severe_errors": true,
+        "protocol_preserved": false
+      },
+      "43": {
+        "finished": true,
+        "development_improves": false,
+        "old_business_preserved": true,
+        "no_extra_severe_errors": false,
+        "protocol_preserved": true
+      }
+    },
+    "deployed_model_changed": false,
+    "note": "不自动部署；即使业务门槛通过，仍需逐条检查RAG与自然回答退化。两seed是小试，不证明统计显著或普遍泛化。"
+  },
+  "recomputed": {
+    "eval": 1345,
+    "rollout_answers": 964
+  },
+  "checks": {
+    "grading_mismatches": 0,
+    "all_four_trials_finished_50_updates": true,
+    "local_code_data_signatures_match": true,
+    "exported_adapter_hashes_match": true
+  },
+  "business": {
+    "v6": {
+      "development": {
+        "total": 70,
+        "strict_correct": 56,
+        "severe_errors": 6,
+        "invalid_protocol": 0
+      },
+      "old_regression": {
+        "total": 63,
+        "strict_correct": 63,
+        "severe_errors": 0,
+        "invalid_protocol": 0
+      }
+    },
+    "strict_42": {
+      "development": {
+        "total": 70,
+        "strict_correct": 59,
+        "severe_errors": 5,
+        "invalid_protocol": 1
+      },
+      "old_regression": {
+        "total": 63,
+        "strict_correct": 56,
+        "severe_errors": 0,
+        "invalid_protocol": 7
+      }
+    },
+    "graded_42": {
+      "development": {
+        "total": 70,
+        "strict_correct": 60,
+        "severe_errors": 5,
+        "invalid_protocol": 0
+      },
+      "old_regression": {
+        "total": 63,
+        "strict_correct": 60,
+        "severe_errors": 0,
+        "invalid_protocol": 3
+      }
+    },
+    "strict_43": {
+      "development": {
+        "total": 70,
+        "strict_correct": 57,
+        "severe_errors": 5,
+        "invalid_protocol": 0
+      },
+      "old_regression": {
+        "total": 63,
+        "strict_correct": 63,
+        "severe_errors": 0,
+        "invalid_protocol": 0
+      }
+    },
+    "graded_43": {
+      "development": {
+        "total": 70,
+        "strict_correct": 56,
+        "severe_errors": 6,
+        "invalid_protocol": 0
+      },
+      "old_regression": {
+        "total": 63,
+        "strict_correct": 63,
+        "severe_errors": 0,
+        "invalid_protocol": 0
+      }
+    }
+  },
+  "trial_budgets": {
+    "strict_42": {
+      "global_step": 50,
+      "groups": 56,
+      "mixed_groups": 25,
+      "cycle": 0,
+      "cursor": 56,
+      "skipped_groups": 31,
+      "finished": true,
+      "method": "strict",
+      "seed": 42,
+      "scope": "只训练75条训练侧业务提示；没有RAG RL或最终测试训练"
+    },
+    "graded_42": {
+      "global_step": 50,
+      "groups": 54,
+      "mixed_groups": 25,
+      "cycle": 0,
+      "cursor": 54,
+      "skipped_groups": 29,
+      "finished": true,
+      "method": "graded",
+      "seed": 42,
+      "scope": "只训练75条训练侧业务提示；没有RAG RL或最终测试训练"
+    },
+    "strict_43": {
+      "global_step": 50,
+      "groups": 66,
+      "mixed_groups": 25,
+      "cycle": 0,
+      "cursor": 66,
+      "skipped_groups": 41,
+      "finished": true,
+      "method": "strict",
+      "seed": 43,
+      "scope": "只训练75条训练侧业务提示；没有RAG RL或最终测试训练"
+    },
+    "graded_43": {
+      "global_step": 50,
+      "groups": 65,
+      "mixed_groups": 25,
+      "cycle": 0,
+      "cursor": 65,
+      "skipped_groups": 40,
+      "finished": true,
+      "method": "graded",
+      "seed": 43,
+      "scope": "只训练75条训练侧业务提示；没有RAG RL或最终测试训练"
+    }
+  },
+  "manual_rag_changes": 16,
+  "limits": [
+    "两个训练seed、各50次有效更新，不证明普遍结论",
+    "开发集已用于诊断，不是独立最终测试",
+    "严格和分层奖励的实际采样组数不同，固定的是共同更新上限和采样上限",
+    "严重错误是规则识别的动作提案错误，不包含全部语义错误，也未执行数据库操作",
+    "RAG参考一致不等于事实准确率；本次RL没有训练RAG",
+    "未自动替换或部署任何模型"
+  ]
+}

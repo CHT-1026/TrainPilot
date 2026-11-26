@@ -1,0 +1,1550 @@
+{
+  "status": "pending_user_review",
+  "trajectories": [
+    {
+      "id": "confirm_none",
+      "coverage": "确认状态矩阵",
+      "current_date": "2026-11-02",
+      "initial_state": {},
+      "note": "",
+      "turns": [
+        {
+          "id": "confirm_none",
+          "user": "核对过了，就按当前待办执行。",
+          "expected": {
+            "intent": "clarify",
+            "extracted_info": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "cancel_none",
+      "coverage": "取消状态矩阵",
+      "current_date": "2026-11-02",
+      "initial_state": {},
+      "note": "",
+      "turns": [
+        {
+          "id": "cancel_none",
+          "user": "当前准备的这项操作先不办了。",
+          "expected": {
+            "intent": "clarify",
+            "extracted_info": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "confirm_submit_leave",
+      "coverage": "确认状态矩阵",
+      "current_date": "2026-11-02",
+      "initial_state": {
+        "pending_action": {
+          "action_id": "act_preview",
+          "action_type": "submit_leave",
+          "draft": {
+            "leave_type": "事假",
+            "start_date": "2026-11-16",
+            "end_date": "2026-11-17",
+            "reason": "办理证件"
+          }
+        },
+        "messages": [
+          {
+            "role": "assistant",
+            "content": "当前请假草稿：事假，2026-11-16至2026-11-17，原因办理证件，尚未提交。"
+          }
+        ],
+        "conversation_context": {
+          "accumulated_extracted_info": {
+            "leave_type": "事假",
+            "start_date": "2026-11-16",
+            "end_date": "2026-11-17",
+            "reason": "办理证件"
+          }
+        }
+      },
+      "note": "",
+      "turns": [
+        {
+          "id": "confirm_submit_leave",
+          "user": "核对过了，就按当前待办执行。",
+          "expected": {
+            "intent": "confirm_action",
+            "extracted_info": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "cancel_submit_leave",
+      "coverage": "取消状态矩阵",
+      "current_date": "2026-11-02",
+      "initial_state": {
+        "pending_action": {
+          "action_id": "act_preview",
+          "action_type": "submit_leave",
+          "draft": {
+            "leave_type": "事假",
+            "start_date": "2026-11-16",
+            "end_date": "2026-11-17",
+            "reason": "办理证件"
+          }
+        },
+        "messages": [
+          {
+            "role": "assistant",
+            "content": "当前请假草稿：事假，2026-11-16至2026-11-17，原因办理证件，尚未提交。"
+          }
+        ],
+        "conversation_context": {
+          "accumulated_extracted_info": {
+            "leave_type": "事假",
+            "start_date": "2026-11-16",
+            "end_date": "2026-11-17",
+            "reason": "办理证件"
+          }
+        }
+      },
+      "note": "",
+      "turns": [
+        {
+          "id": "cancel_submit_leave",
+          "user": "当前准备的这项操作先不办了。",
+          "expected": {
+            "intent": "cancel_action",
+            "extracted_info": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "confirm_approve",
+      "coverage": "确认状态矩阵",
+      "current_date": "2026-11-02",
+      "initial_state": {
+        "pending_action": {
+          "action_id": "act_preview",
+          "action_type": "approve",
+          "draft": {
+            "app_id": "leave_preview_1701",
+            "decision": "approved",
+            "decision_label": "通过",
+            "comments": "证明已核对"
+          }
+        },
+        "messages": [
+          {
+            "role": "assistant",
+            "content": "待确认审批：leave_preview_1701，拟通过，意见证明已核对，尚未执行。"
+          }
+        ],
+        "conversation_context": {
+          "accumulated_extracted_info": {}
+        }
+      },
+      "note": "",
+      "turns": [
+        {
+          "id": "confirm_approve",
+          "user": "核对过了，就按当前待办执行。",
+          "expected": {
+            "intent": "confirm_action",
+            "extracted_info": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "cancel_approve",
+      "coverage": "取消状态矩阵",
+      "current_date": "2026-11-02",
+      "initial_state": {
+        "pending_action": {
+          "action_id": "act_preview",
+          "action_type": "approve",
+          "draft": {
+            "app_id": "leave_preview_1701",
+            "decision": "approved",
+            "decision_label": "通过",
+            "comments": "证明已核对"
+          }
+        },
+        "messages": [
+          {
+            "role": "assistant",
+            "content": "待确认审批：leave_preview_1701，拟通过，意见证明已核对，尚未执行。"
+          }
+        ],
+        "conversation_context": {
+          "accumulated_extracted_info": {}
+        }
+      },
+      "note": "",
+      "turns": [
+        {
+          "id": "cancel_approve",
+          "user": "当前准备的这项操作先不办了。",
+          "expected": {
+            "intent": "cancel_action",
+            "extracted_info": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "confirm_cancel_leave",
+      "coverage": "确认状态矩阵",
+      "current_date": "2026-11-02",
+      "initial_state": {
+        "pending_action": {
+          "action_id": "act_preview",
+          "action_type": "cancel_leave",
+          "draft": {
+            "app_id": "leave_preview_1702"
+          }
+        },
+        "messages": [
+          {
+            "role": "assistant",
+            "content": "待确认撤回申请leave_preview_1702，尚未执行撤回。"
+          }
+        ],
+        "conversation_context": {
+          "accumulated_extracted_info": {}
+        }
+      },
+      "note": "",
+      "turns": [
+        {
+          "id": "confirm_cancel_leave",
+          "user": "核对过了，就按当前待办执行。",
+          "expected": {
+            "intent": "confirm_action",
+            "extracted_info": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "cancel_cancel_leave",
+      "coverage": "取消状态矩阵",
+      "current_date": "2026-11-02",
+      "initial_state": {
+        "pending_action": {
+          "action_id": "act_preview",
+          "action_type": "cancel_leave",
+          "draft": {
+            "app_id": "leave_preview_1702"
+          }
+        },
+        "messages": [
+          {
+            "role": "assistant",
+            "content": "待确认撤回申请leave_preview_1702，尚未执行撤回。"
+          }
+        ],
+        "conversation_context": {
+          "accumulated_extracted_info": {}
+        }
+      },
+      "note": "",
+      "turns": [
+        {
+          "id": "cancel_cancel_leave",
+          "user": "当前准备的这项操作先不办了。",
+          "expected": {
+            "intent": "cancel_action",
+            "extracted_info": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "withdraw_confirm",
+      "coverage": "撤回与放弃撤回",
+      "current_date": "2026-11-02",
+      "initial_state": {
+        "pending_action": {
+          "action_id": "act_preview",
+          "action_type": "cancel_leave",
+          "draft": {
+            "app_id": "leave_preview_1702"
+          }
+        },
+        "messages": [
+          {
+            "role": "assistant",
+            "content": "待确认撤回申请leave_preview_1702，尚未执行撤回。"
+          }
+        ],
+        "conversation_context": {
+          "accumulated_extracted_info": {}
+        }
+      },
+      "note": "",
+      "turns": [
+        {
+          "id": "withdraw_confirm",
+          "user": "这张申请确定要撤回，现在执行待确认的撤回操作。",
+          "expected": {
+            "intent": "confirm_action",
+            "extracted_info": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "withdraw_abandon",
+      "coverage": "撤回与放弃撤回",
+      "current_date": "2026-11-02",
+      "initial_state": {
+        "pending_action": {
+          "action_id": "act_preview",
+          "action_type": "cancel_leave",
+          "draft": {
+            "app_id": "leave_preview_1702"
+          }
+        },
+        "messages": [
+          {
+            "role": "assistant",
+            "content": "待确认撤回申请leave_preview_1702，尚未执行撤回。"
+          }
+        ],
+        "conversation_context": {
+          "accumulated_extracted_info": {}
+        }
+      },
+      "note": "",
+      "turns": [
+        {
+          "id": "withdraw_abandon",
+          "user": "保留原申请，放弃刚准备的撤回动作。",
+          "expected": {
+            "intent": "cancel_action",
+            "extracted_info": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "approve_confirm",
+      "coverage": "审批与确认",
+      "current_date": "2026-11-02",
+      "initial_state": {
+        "pending_action": {
+          "action_id": "act_preview",
+          "action_type": "approve",
+          "draft": {
+            "app_id": "leave_preview_1701",
+            "decision": "approved",
+            "decision_label": "通过",
+            "comments": "证明已核对"
+          }
+        },
+        "messages": [
+          {
+            "role": "assistant",
+            "content": "待确认审批：leave_preview_1701，拟通过，意见证明已核对，尚未执行。"
+          }
+        ],
+        "conversation_context": {
+          "accumulated_extracted_info": {}
+        }
+      },
+      "note": "",
+      "turns": [
+        {
+          "id": "approve_confirm",
+          "user": "审批意见都已检查，照待确认版本执行，不用重拟。",
+          "expected": {
+            "intent": "confirm_action",
+            "extracted_info": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "modify_start",
+      "coverage": "完整已知字段",
+      "current_date": "2026-11-02",
+      "initial_state": {
+        "pending_action": {
+          "action_id": "act_preview",
+          "action_type": "submit_leave",
+          "draft": {
+            "leave_type": "事假",
+            "start_date": "2026-11-16",
+            "end_date": "2026-11-17",
+            "reason": "办理证件"
+          }
+        },
+        "messages": [
+          {
+            "role": "assistant",
+            "content": "当前请假草稿：事假，2026-11-16至2026-11-17，原因办理证件，尚未提交。"
+          }
+        ],
+        "conversation_context": {
+          "accumulated_extracted_info": {
+            "leave_type": "事假",
+            "start_date": "2026-11-16",
+            "end_date": "2026-11-17",
+            "reason": "办理证件"
+          }
+        }
+      },
+      "note": "",
+      "turns": [
+        {
+          "id": "modify_start",
+          "user": "开始日期往后改一天到2026年11月17日，其余字段照旧。",
+          "expected": {
+            "intent": "submit_leave",
+            "extracted_info": {
+              "leave_type": "事假",
+              "start_date": "2026-11-17",
+              "end_date": "2026-11-17",
+              "reason": "办理证件"
+            }
+          },
+          "expected_draft": {
+            "leave_type": "事假",
+            "start_date": "2026-11-17",
+            "end_date": "2026-11-17",
+            "reason": "办理证件"
+          }
+        }
+      ]
+    },
+    {
+      "id": "modify_end",
+      "coverage": "完整已知字段",
+      "current_date": "2026-11-02",
+      "initial_state": {
+        "pending_action": {
+          "action_id": "act_preview",
+          "action_type": "submit_leave",
+          "draft": {
+            "leave_type": "事假",
+            "start_date": "2026-11-16",
+            "end_date": "2026-11-17",
+            "reason": "办理证件"
+          }
+        },
+        "messages": [
+          {
+            "role": "assistant",
+            "content": "当前请假草稿：事假，2026-11-16至2026-11-17，原因办理证件，尚未提交。"
+          }
+        ],
+        "conversation_context": {
+          "accumulated_extracted_info": {
+            "leave_type": "事假",
+            "start_date": "2026-11-16",
+            "end_date": "2026-11-17",
+            "reason": "办理证件"
+          }
+        }
+      },
+      "note": "",
+      "turns": [
+        {
+          "id": "modify_end",
+          "user": "这份草稿的最后一天改成2026年11月18日，别的保留。",
+          "expected": {
+            "intent": "submit_leave",
+            "extracted_info": {
+              "leave_type": "事假",
+              "start_date": "2026-11-16",
+              "end_date": "2026-11-18",
+              "reason": "办理证件"
+            }
+          },
+          "expected_draft": {
+            "leave_type": "事假",
+            "start_date": "2026-11-16",
+            "end_date": "2026-11-18",
+            "reason": "办理证件"
+          }
+        }
+      ]
+    },
+    {
+      "id": "modify_both",
+      "coverage": "完整已知字段",
+      "current_date": "2026-11-02",
+      "initial_state": {
+        "pending_action": {
+          "action_id": "act_preview",
+          "action_type": "submit_leave",
+          "draft": {
+            "leave_type": "事假",
+            "start_date": "2026-11-16",
+            "end_date": "2026-11-17",
+            "reason": "办理证件"
+          }
+        },
+        "messages": [
+          {
+            "role": "assistant",
+            "content": "当前请假草稿：事假，2026-11-16至2026-11-17，原因办理证件，尚未提交。"
+          }
+        ],
+        "conversation_context": {
+          "accumulated_extracted_info": {
+            "leave_type": "事假",
+            "start_date": "2026-11-16",
+            "end_date": "2026-11-17",
+            "reason": "办理证件"
+          }
+        }
+      },
+      "note": "",
+      "turns": [
+        {
+          "id": "modify_both",
+          "user": "整段时间换为2026年11月23日至11月24日，假别和事由沿用。",
+          "expected": {
+            "intent": "submit_leave",
+            "extracted_info": {
+              "leave_type": "事假",
+              "start_date": "2026-11-23",
+              "end_date": "2026-11-24",
+              "reason": "办理证件"
+            }
+          },
+          "expected_draft": {
+            "leave_type": "事假",
+            "start_date": "2026-11-23",
+            "end_date": "2026-11-24",
+            "reason": "办理证件"
+          }
+        }
+      ]
+    },
+    {
+      "id": "modify_type",
+      "coverage": "完整已知字段",
+      "current_date": "2026-11-02",
+      "initial_state": {
+        "pending_action": {
+          "action_id": "act_preview",
+          "action_type": "submit_leave",
+          "draft": {
+            "leave_type": "事假",
+            "start_date": "2026-11-16",
+            "end_date": "2026-11-17",
+            "reason": "办理证件"
+          }
+        },
+        "messages": [
+          {
+            "role": "assistant",
+            "content": "当前请假草稿：事假，2026-11-16至2026-11-17，原因办理证件，尚未提交。"
+          }
+        ],
+        "conversation_context": {
+          "accumulated_extracted_info": {
+            "leave_type": "事假",
+            "start_date": "2026-11-16",
+            "end_date": "2026-11-17",
+            "reason": "办理证件"
+          }
+        }
+      },
+      "note": "",
+      "turns": [
+        {
+          "id": "modify_type",
+          "user": "日期和事由没变，假别改选年假。",
+          "expected": {
+            "intent": "submit_leave",
+            "extracted_info": {
+              "leave_type": "年假",
+              "start_date": "2026-11-16",
+              "end_date": "2026-11-17",
+              "reason": "办理证件"
+            }
+          },
+          "expected_draft": {
+            "leave_type": "年假",
+            "start_date": "2026-11-16",
+            "end_date": "2026-11-17",
+            "reason": "办理证件"
+          }
+        }
+      ]
+    },
+    {
+      "id": "modify_reason",
+      "coverage": "完整已知字段",
+      "current_date": "2026-11-02",
+      "initial_state": {
+        "pending_action": {
+          "action_id": "act_preview",
+          "action_type": "submit_leave",
+          "draft": {
+            "leave_type": "事假",
+            "start_date": "2026-11-16",
+            "end_date": "2026-11-17",
+            "reason": "办理证件"
+          }
+        },
+        "messages": [
+          {
+            "role": "assistant",
+            "content": "当前请假草稿：事假，2026-11-16至2026-11-17，原因办理证件，尚未提交。"
+          }
+        ],
+        "conversation_context": {
+          "accumulated_extracted_info": {
+            "leave_type": "事假",
+            "start_date": "2026-11-16",
+            "end_date": "2026-11-17",
+            "reason": "办理证件"
+          }
+        }
+      },
+      "note": "",
+      "turns": [
+        {
+          "id": "modify_reason",
+          "user": "事由不再写办理证件，改写成家中设备检修，其他项不动。",
+          "expected": {
+            "intent": "submit_leave",
+            "extracted_info": {
+              "leave_type": "事假",
+              "start_date": "2026-11-16",
+              "end_date": "2026-11-17",
+              "reason": "家中设备检修"
+            }
+          },
+          "expected_draft": {
+            "leave_type": "事假",
+            "start_date": "2026-11-16",
+            "end_date": "2026-11-17",
+            "reason": "家中设备检修"
+          }
+        }
+      ]
+    },
+    {
+      "id": "modify_negation",
+      "coverage": "完整已知字段",
+      "current_date": "2026-11-02",
+      "initial_state": {
+        "pending_action": {
+          "action_id": "act_preview",
+          "action_type": "submit_leave",
+          "draft": {
+            "leave_type": "事假",
+            "start_date": "2026-11-16",
+            "end_date": "2026-11-17",
+            "reason": "办理证件"
+          }
+        },
+        "messages": [
+          {
+            "role": "assistant",
+            "content": "当前请假草稿：事假，2026-11-16至2026-11-17，原因办理证件，尚未提交。"
+          }
+        ],
+        "conversation_context": {
+          "accumulated_extracted_info": {
+            "leave_type": "事假",
+            "start_date": "2026-11-16",
+            "end_date": "2026-11-17",
+            "reason": "办理证件"
+          }
+        }
+      },
+      "note": "",
+      "turns": [
+        {
+          "id": "modify_negation",
+          "user": "暂不提交，也不是取消草稿，只把事由换成办理房屋交接。",
+          "expected": {
+            "intent": "submit_leave",
+            "extracted_info": {
+              "leave_type": "事假",
+              "start_date": "2026-11-16",
+              "end_date": "2026-11-17",
+              "reason": "办理房屋交接"
+            }
+          },
+          "expected_draft": {
+            "leave_type": "事假",
+            "start_date": "2026-11-16",
+            "end_date": "2026-11-17",
+            "reason": "办理房屋交接"
+          }
+        }
+      ]
+    },
+    {
+      "id": "history_only",
+      "coverage": "旧简化历史回归",
+      "current_date": "2026-11-02",
+      "initial_state": {
+        "messages": [
+          {
+            "role": "user",
+            "content": "请整理事假，2026-11-16至2026-11-17，办理证件用。"
+          },
+          {
+            "role": "assistant",
+            "content": "已记录这些信息，请继续核对。"
+          }
+        ]
+      },
+      "note": "",
+      "turns": [
+        {
+          "id": "history_only",
+          "user": "两天都往后顺延一周，假别和事由不变。",
+          "expected": {
+            "intent": "submit_leave",
+            "extracted_info": {
+              "leave_type": "事假",
+              "start_date": "2026-11-23",
+              "end_date": "2026-11-24",
+              "reason": "办理证件"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "summary_only",
+      "coverage": "可见摘要恢复",
+      "current_date": "2026-11-02",
+      "initial_state": {
+        "summary": "当前仅有一份未提交事假草稿：2026-11-16至2026-11-17，事由办理证件。"
+      },
+      "note": "仅使用模型输入中确实可见的摘要；不训练从被裁掉且未摘要的历史恢复隐藏信息。",
+      "turns": [
+        {
+          "id": "summary_only",
+          "user": "结束日延至2026-11-18，其余按照摘要中这份申请。",
+          "expected": {
+            "intent": "submit_leave",
+            "extracted_info": {
+              "leave_type": "事假",
+              "start_date": "2026-11-16",
+              "end_date": "2026-11-18",
+              "reason": "办理证件"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "approval_comment",
+      "coverage": "审批字段正文",
+      "current_date": "2026-11-02",
+      "initial_state": {},
+      "note": "",
+      "turns": [
+        {
+          "id": "approval_comment",
+          "user": "请将leave_preview_1801拟为通过，审批意见填写“已补齐必要材料”。",
+          "expected": {
+            "intent": "approve",
+            "extracted_info": {
+              "app_id": "leave_preview_1801",
+              "decision": "通过",
+              "comments": "已补齐必要材料"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "approval_missing_id",
+      "coverage": "缺失字段",
+      "current_date": "2026-11-02",
+      "initial_state": {},
+      "note": "数据库节点未接入，只检查模型不编造app_id及正确路由。",
+      "turns": [
+        {
+          "id": "approval_missing_id",
+          "user": "这项我打算驳回，意见写请补齐日期，编号还没拿到。",
+          "expected": {
+            "intent": "approve",
+            "extracted_info": {
+              "decision": "驳回",
+              "comments": "请补齐日期"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "approval_missing_decision",
+      "coverage": "缺失字段",
+      "current_date": "2026-11-02",
+      "initial_state": {},
+      "note": "",
+      "turns": [
+        {
+          "id": "approval_missing_decision",
+          "user": "先准备审批leave_preview_1802，决定我还没有选。",
+          "expected": {
+            "intent": "approve",
+            "extracted_info": {
+              "app_id": "leave_preview_1802"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "approval_edit",
+      "coverage": "审批完整已知字段",
+      "current_date": "2026-11-02",
+      "initial_state": {
+        "pending_action": {
+          "action_id": "act_preview",
+          "action_type": "approve",
+          "draft": {
+            "app_id": "leave_preview_1701",
+            "decision": "approved",
+            "decision_label": "通过",
+            "comments": "证明已核对"
+          }
+        },
+        "messages": [
+          {
+            "role": "assistant",
+            "content": "待确认审批：leave_preview_1701，拟通过，意见证明已核对，尚未执行。"
+          }
+        ],
+        "conversation_context": {
+          "accumulated_extracted_info": {}
+        }
+      },
+      "note": "",
+      "turns": [
+        {
+          "id": "approval_edit",
+          "user": "原意见保留，结论改成驳回。",
+          "expected": {
+            "intent": "approve",
+            "extracted_info": {
+              "app_id": "leave_preview_1701",
+              "decision": "驳回",
+              "comments": "证明已核对"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "advice",
+      "coverage": "建议与执行",
+      "current_date": "2026-11-02",
+      "initial_state": {},
+      "note": "",
+      "turns": [
+        {
+          "id": "advice",
+          "user": "对leave_preview_1803先给出审批建议，不要批准或驳回。",
+          "expected": {
+            "intent": "get_suggestion",
+            "extracted_info": {
+              "app_id": "leave_preview_1803"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "advice_missing_id",
+      "coverage": "缺失字段",
+      "current_date": "2026-11-02",
+      "initial_state": {},
+      "note": "",
+      "turns": [
+        {
+          "id": "advice_missing_id",
+          "user": "我需要一份具体申请的审批建议，但还没找到单号。",
+          "expected": {
+            "intent": "get_suggestion",
+            "extracted_info": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "policy_not_approve",
+      "coverage": "建议与执行",
+      "current_date": "2026-11-02",
+      "initial_state": {},
+      "note": "",
+      "turns": [
+        {
+          "id": "policy_not_approve",
+          "user": "审批中通常什么情形应该驳回？我是在咨询流程，不是在处理某张单。",
+          "expected": {
+            "intent": "policy_qa",
+            "extracted_info": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "quoted_command",
+      "coverage": "引用不执行",
+      "current_date": "2026-11-02",
+      "initial_state": {},
+      "note": "",
+      "turns": [
+        {
+          "id": "quoted_command",
+          "user": "操作说明里的“撤回申请”指的是什么流程？只是问含义。",
+          "expected": {
+            "intent": "policy_qa",
+            "extracted_info": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "other_only",
+      "coverage": "操作对象与干扰编号",
+      "current_date": "2026-11-02",
+      "initial_state": {
+        "pending_action": {
+          "action_id": "act_preview",
+          "action_type": "approve",
+          "draft": {
+            "app_id": "leave_preview_1701",
+            "decision": "approved",
+            "decision_label": "通过",
+            "comments": "证明已核对"
+          }
+        },
+        "messages": [
+          {
+            "role": "assistant",
+            "content": "待确认审批：leave_preview_1701，拟通过，意见证明已核对，尚未执行。"
+          }
+        ],
+        "conversation_context": {
+          "accumulated_extracted_info": {}
+        }
+      },
+      "note": "",
+      "turns": [
+        {
+          "id": "other_only",
+          "user": "当前审批先挂着，我要撤回的是自己已提交的leave_preview_1901。",
+          "expected": {
+            "intent": "delete_application",
+            "extracted_info": {
+              "app_id": "leave_preview_1901"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "other_negative",
+      "coverage": "操作对象与干扰编号",
+      "current_date": "2026-11-02",
+      "initial_state": {
+        "pending_action": {
+          "action_id": "act_preview",
+          "action_type": "approve",
+          "draft": {
+            "app_id": "leave_preview_1701",
+            "decision": "approved",
+            "decision_label": "通过",
+            "comments": "证明已核对"
+          }
+        },
+        "messages": [
+          {
+            "role": "assistant",
+            "content": "待确认审批：leave_preview_1701，拟通过，意见证明已核对，尚未执行。"
+          }
+        ],
+        "conversation_context": {
+          "accumulated_extracted_info": {}
+        }
+      },
+      "note": "",
+      "turns": [
+        {
+          "id": "other_negative",
+          "user": "撤回leave_preview_1901，不是待确认审批里的leave_preview_1701。",
+          "expected": {
+            "intent": "delete_application",
+            "extracted_info": {
+              "app_id": "leave_preview_1901"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "other_reverse",
+      "coverage": "操作对象与干扰编号",
+      "current_date": "2026-11-02",
+      "initial_state": {
+        "pending_action": {
+          "action_id": "act_preview",
+          "action_type": "approve",
+          "draft": {
+            "app_id": "leave_preview_1701",
+            "decision": "approved",
+            "decision_label": "通过",
+            "comments": "证明已核对"
+          }
+        },
+        "messages": [
+          {
+            "role": "assistant",
+            "content": "待确认审批：leave_preview_1701，拟通过，意见证明已核对，尚未执行。"
+          }
+        ],
+        "conversation_context": {
+          "accumulated_extracted_info": {}
+        }
+      },
+      "note": "",
+      "turns": [
+        {
+          "id": "other_reverse",
+          "user": "leave_preview_1701不要动，真正要撤回的是leave_preview_1901。",
+          "expected": {
+            "intent": "delete_application",
+            "extracted_info": {
+              "app_id": "leave_preview_1901"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "delete_missing_id",
+      "coverage": "缺失字段",
+      "current_date": "2026-11-02",
+      "initial_state": {},
+      "note": "",
+      "turns": [
+        {
+          "id": "delete_missing_id",
+          "user": "我准备撤销已经提交的请假申请，单号稍后给你。",
+          "expected": {
+            "intent": "delete_application",
+            "extracted_info": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "ambiguous_object",
+      "coverage": "对象歧义",
+      "current_date": "2026-11-02",
+      "initial_state": {
+        "messages": [
+          {
+            "role": "assistant",
+            "content": "上一轮提到两个申请：leave_preview_1902和leave_preview_1903；尚未确定本次操作对象。"
+          }
+        ]
+      },
+      "note": "",
+      "turns": [
+        {
+          "id": "ambiguous_object",
+          "user": "把它撤回吧。",
+          "expected": {
+            "intent": "clarify",
+            "extracted_info": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "mine",
+      "coverage": "查询本人申请",
+      "current_date": "2026-11-02",
+      "initial_state": {},
+      "note": "",
+      "turns": [
+        {
+          "id": "mine",
+          "user": "打开我已提交的请假申请列表让我看看。",
+          "expected": {
+            "intent": "query_status",
+            "extracted_info": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "pending_list",
+      "coverage": "查询待审批",
+      "current_date": "2026-11-02",
+      "initial_state": {},
+      "note": "",
+      "turns": [
+        {
+          "id": "pending_list",
+          "user": "看看有哪些申请正等我来审批。",
+          "expected": {
+            "intent": "query_pending",
+            "extracted_info": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "policy",
+      "coverage": "企业制度检索",
+      "current_date": "2026-11-02",
+      "initial_state": {},
+      "note": "训练的是送到知识检索节点，不编造制度答案；当前没有知识库内容。",
+      "turns": [
+        {
+          "id": "policy",
+          "user": "病假申请需要附哪些证明，按现有制度查一下。",
+          "expected": {
+            "intent": "policy_qa",
+            "extracted_info": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "multi_task",
+      "coverage": "多任务先澄清",
+      "current_date": "2026-11-02",
+      "initial_state": {},
+      "note": "用户已确认单轮先澄清；现有Agent只返回统一澄清文案，专门询问任务顺序留待集成。",
+      "turns": [
+        {
+          "id": "multi_task",
+          "user": "帮我新建请假申请，再把等待我审批的列表查出来。",
+          "expected": {
+            "intent": "clarify",
+            "extracted_info": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "unclear",
+      "coverage": "意图歧义",
+      "current_date": "2026-11-02",
+      "initial_state": {},
+      "note": "",
+      "turns": [
+        {
+          "id": "unclear",
+          "user": "把那个事情处理一下，具体是哪件我还没想好。",
+          "expected": {
+            "intent": "clarify",
+            "extracted_info": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "missing_all",
+      "coverage": "缺失字段",
+      "current_date": "2026-11-02",
+      "initial_state": {},
+      "note": "",
+      "turns": [
+        {
+          "id": "missing_all",
+          "user": "我打算请假，具体信息接着再填。",
+          "expected": {
+            "intent": "submit_leave",
+            "extracted_info": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "missing_dates",
+      "coverage": "缺失字段",
+      "current_date": "2026-11-02",
+      "initial_state": {},
+      "note": "",
+      "turns": [
+        {
+          "id": "missing_dates",
+          "user": "申请事假办理证件，起止日期还定不下来。",
+          "expected": {
+            "intent": "submit_leave",
+            "extracted_info": {
+              "leave_type": "事假",
+              "reason": "办理证件"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "missing_reason",
+      "coverage": "缺失字段",
+      "current_date": "2026-11-02",
+      "initial_state": {},
+      "note": "",
+      "turns": [
+        {
+          "id": "missing_reason",
+          "user": "2026-11-23到2026-11-24申请年假，原因我还没写。",
+          "expected": {
+            "intent": "submit_leave",
+            "extracted_info": {
+              "leave_type": "年假",
+              "start_date": "2026-11-23",
+              "end_date": "2026-11-24"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "missing_type",
+      "coverage": "缺失字段",
+      "current_date": "2026-11-02",
+      "initial_state": {},
+      "note": "",
+      "turns": [
+        {
+          "id": "missing_type",
+          "user": "2026年11月23日至24日需要请假，原因为办理房屋交接，假别还没选。",
+          "expected": {
+            "intent": "submit_leave",
+            "extracted_info": {
+              "start_date": "2026-11-23",
+              "end_date": "2026-11-24",
+              "reason": "办理房屋交接"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "invalid_dates",
+      "coverage": "提取与业务校验分开",
+      "current_date": "2026-11-02",
+      "initial_state": {},
+      "note": "忠实提取用户给出的顺序，日期合法性由现有业务校验拒绝，不擅自调换。",
+      "turns": [
+        {
+          "id": "invalid_dates",
+          "user": "事假从2026-11-24到2026-11-23，原因办理证件。",
+          "expected": {
+            "intent": "submit_leave",
+            "extracted_info": {
+              "leave_type": "事假",
+              "start_date": "2026-11-24",
+              "end_date": "2026-11-23",
+              "reason": "办理证件"
+            }
+          },
+          "response_contains": [
+            "未通过校验"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "relative_month",
+      "coverage": "相对日期跨边界",
+      "current_date": "2026-11-30",
+      "initial_state": {},
+      "note": "",
+      "turns": [
+        {
+          "id": "relative_month",
+          "user": "明天到后天请事假，事由为办理证件。",
+          "expected": {
+            "intent": "submit_leave",
+            "extracted_info": {
+              "leave_type": "事假",
+              "start_date": "2026-12-01",
+              "end_date": "2026-12-02",
+              "reason": "办理证件"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "relative_year",
+      "coverage": "相对日期跨边界",
+      "current_date": "2026-12-31",
+      "initial_state": {},
+      "note": "",
+      "turns": [
+        {
+          "id": "relative_year",
+          "user": "明天当天请年假，原因安排休息。",
+          "expected": {
+            "intent": "submit_leave",
+            "extracted_info": {
+              "leave_type": "年假",
+              "start_date": "2027-01-01",
+              "end_date": "2027-01-01",
+              "reason": "安排休息"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "uncertain_dates",
+      "coverage": "不猜测日期",
+      "current_date": "2026-11-02",
+      "initial_state": {},
+      "note": "",
+      "turns": [
+        {
+          "id": "uncertain_dates",
+          "user": "下个月找两天请事假办证，具体哪两天还没定。",
+          "expected": {
+            "intent": "submit_leave",
+            "extracted_info": {
+              "leave_type": "事假",
+              "reason": "办证"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "collect_update_confirm",
+      "coverage": "连续多轮办理",
+      "current_date": "2026-11-02",
+      "turns": [
+        {
+          "id": "flow_a1",
+          "user": "先开一份年假草稿，其他内容我接着说。",
+          "expected": {
+            "intent": "submit_leave",
+            "extracted_info": {
+              "leave_type": "年假"
+            }
+          }
+        },
+        {
+          "id": "flow_a2",
+          "user": "日期填2026-11-23到2026-11-24，事由填返乡探亲。",
+          "expected": {
+            "intent": "submit_leave",
+            "extracted_info": {
+              "leave_type": "年假",
+              "start_date": "2026-11-23",
+              "end_date": "2026-11-24",
+              "reason": "返乡探亲"
+            }
+          }
+        },
+        {
+          "id": "flow_a3",
+          "user": "改用2026-11-30到2026-12-01，之前的假别和事由照旧。",
+          "expected": {
+            "intent": "submit_leave",
+            "extracted_info": {
+              "leave_type": "年假",
+              "start_date": "2026-11-30",
+              "end_date": "2026-12-01",
+              "reason": "返乡探亲"
+            }
+          }
+        },
+        {
+          "id": "flow_a4",
+          "user": "这份内容没问题，执行待确认提交。",
+          "expected": {
+            "intent": "confirm_action",
+            "extracted_info": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "cancel_then_new",
+      "coverage": "取消后开启新任务",
+      "current_date": "2026-11-02",
+      "initial_state": {
+        "pending_action": {
+          "action_id": "act_preview",
+          "action_type": "submit_leave",
+          "draft": {
+            "leave_type": "事假",
+            "start_date": "2026-11-16",
+            "end_date": "2026-11-17",
+            "reason": "办理证件"
+          }
+        },
+        "messages": [
+          {
+            "role": "assistant",
+            "content": "当前请假草稿：事假，2026-11-16至2026-11-17，原因办理证件，尚未提交。"
+          }
+        ],
+        "conversation_context": {
+          "accumulated_extracted_info": {
+            "leave_type": "事假",
+            "start_date": "2026-11-16",
+            "end_date": "2026-11-17",
+            "reason": "办理证件"
+          }
+        }
+      },
+      "turns": [
+        {
+          "id": "flow_b1",
+          "user": "办理证件这份先作废，不提交这份草稿。",
+          "expected": {
+            "intent": "cancel_action",
+            "extracted_info": {}
+          }
+        },
+        {
+          "id": "flow_b2",
+          "user": "另开一份病假，日期和事由等我重新提供。",
+          "expected": {
+            "intent": "submit_leave",
+            "extracted_info": {
+              "leave_type": "病假"
+            }
+          }
+        },
+        {
+          "id": "flow_b3",
+          "user": "2026-11-23当天，事由写门诊复查。",
+          "expected": {
+            "intent": "submit_leave",
+            "extracted_info": {
+              "leave_type": "病假",
+              "start_date": "2026-11-23",
+              "end_date": "2026-11-23",
+              "reason": "门诊复查"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "identity_name",
+      "coverage": "身份与实际回复模式",
+      "current_date": "2026-11-02",
+      "initial_state": {},
+      "note": "",
+      "turns": [
+        {
+          "id": "identity_name",
+          "user": "请告诉我你在这个终端里的称呼。",
+          "expected": {
+            "intent": "general_chat",
+            "extracted_info": {}
+          },
+          "response": "我叫 TrainPilot，是一名企业业务助手。"
+        }
+      ]
+    },
+    {
+      "id": "identity_role",
+      "coverage": "身份与实际回复模式",
+      "current_date": "2026-11-02",
+      "initial_state": {},
+      "note": "",
+      "turns": [
+        {
+          "id": "identity_role",
+          "user": "初次见面，介绍一下你的身份和分工吧。",
+          "expected": {
+            "intent": "general_chat",
+            "extracted_info": {}
+          },
+          "response": "我是 TrainPilot，负责理解业务需求、整理信息和组织回答；实际业务操作由系统执行。"
+        }
+      ]
+    },
+    {
+      "id": "greeting",
+      "coverage": "身份与实际回复模式",
+      "current_date": "2026-11-02",
+      "initial_state": {},
+      "note": "",
+      "turns": [
+        {
+          "id": "greeting",
+          "user": "第一次来用，先向你打个招呼。",
+          "expected": {
+            "intent": "general_chat",
+            "extracted_info": {}
+          },
+          "response": "你好，我是 TrainPilot。你可以直接告诉我想办理的事项。"
+        }
+      ]
+    },
+    {
+      "id": "identity_correction",
+      "coverage": "身份与实际回复模式",
+      "current_date": "2026-11-02",
+      "initial_state": {},
+      "note": "",
+      "turns": [
+        {
+          "id": "identity_correction",
+          "user": "这位助手也叫MiniMind吗？",
+          "expected": {
+            "intent": "general_chat",
+            "extracted_info": {}
+          },
+          "response": "我叫 TrainPilot，是这里的企业业务助手。"
+        }
+      ]
+    },
+    {
+      "id": "missing_information",
+      "coverage": "身份与实际回复模式",
+      "current_date": "2026-11-02",
+      "initial_state": {},
+      "note": "",
+      "turns": [
+        {
+          "id": "missing_information",
+          "user": "如果我没说清必要信息，你会补出一个答案吗？",
+          "expected": {
+            "intent": "general_chat",
+            "extracted_info": {}
+          },
+          "response": "不会。我会询问缺少的信息，不会编造日期、原因或申请编号。"
+        }
+      ]
+    },
+    {
+      "id": "execution_claim",
+      "coverage": "身份与实际回复模式",
+      "current_date": "2026-11-02",
+      "initial_state": {},
+      "note": "",
+      "turns": [
+        {
+          "id": "execution_claim",
+          "user": "没有系统执行结果，你能直接告诉我已经办好了吗？",
+          "expected": {
+            "intent": "general_chat",
+            "extracted_info": {}
+          },
+          "response": "不能。只有获得实际执行结果后，才能说明办理结果；业务操作还需要相应的确认和权限校验。"
+        }
+      ]
+    }
+  ]
+}

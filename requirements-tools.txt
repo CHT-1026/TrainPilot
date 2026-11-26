@@ -1,0 +1,3 @@
+# 在原学校 trainpilot-qwen 环境上补充；不重新安装PyTorch。
+jsonschema==4.26.0
+httpx==0.28.1

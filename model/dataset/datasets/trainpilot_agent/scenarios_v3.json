@@ -1,0 +1,144 @@
+{
+  "version": "v3",
+  "approval": "扩展用户已确认的五类多轮场景；仍使用完整已知字段协议。",
+  "families": [
+    {
+      "id": "stepwise_edit",
+      "split": "train",
+      "collect_modify_confirm": [
+        "我想申请{leave_type}，先帮我整理一下。",
+        "日期是{start_date}到{end_date}，原因填写“{reason}”。",
+        "结束日期调整为{new_end}，开始日期、假别和原因都不变。",
+        "内容已经核对完毕，就按现在这份提交。"
+      ],
+      "cancel_then_new": [
+        "请帮我整理{start_date}到{end_date}的{leave_type}，原因为“{reason}”。",
+        "先别提交了，刚才这份{leave_type}草稿我不要了。",
+        "另起一份{new_type}申请，日期和原因我稍后补充，不沿用上次的。"
+      ],
+      "pending_confirm": "刚才的{action_label}内容不用改，确认执行当前待办。",
+      "pending_cancel": "刚才的{action_label}草稿先作废，我不执行这项操作了。",
+      "other_object": "先暂停刚才的{action_label}。我要撤回自己另一份已提交申请{other_id}，这次操作对象不是{pending_id}。",
+      "side_query_resume": [
+        "这份草稿先留着。我想先查一下公司关于{policy_topic}的制度。",
+        "回到那份{leave_type}草稿，把结束日期改为{new_end}，其他信息沿用。",
+        "现在草稿没问题了，确认办理当前这份。"
+      ]
+    },
+    {
+      "id": "fill_then_correct",
+      "split": "train",
+      "collect_modify_confirm": [
+        "先记下假别：{leave_type}。其余申请信息我接着说。",
+        "起止时间填{start_date}至{end_date}；事由是“{reason}”。",
+        "刚才的结束时间需要更正，改成{new_end}。只改这一项。",
+        "核对结束，请执行这份待确认申请。"
+      ],
+      "cancel_then_new": [
+        "我要请{leave_type}，从{start_date}开始，{end_date}结束，因为“{reason}”。",
+        "这一版还没提交的请假单丢弃，不用继续办理。",
+        "重新发起{new_type}，这是另一件事，时间和理由都还没定。"
+      ],
+      "pending_confirm": "我已核对上面的{action_label}，请按照待确认内容执行。",
+      "pending_cancel": "放弃待确认的{action_label}，不要把它执行出去。",
+      "other_object": "当前待办{pending_id}先搁置；我另有已提交的{other_id}需要撤回，请处理后面这个编号。",
+      "side_query_resume": [
+        "请假草稿稍后再处理。先告诉我{policy_topic}要遵守哪些公司规定。",
+        "接着修改原来的休假申请：结束时间延至{new_end}，其他项目保持原样。",
+        "调整后的版本已经看过，请正式执行当前待办。"
+      ]
+    },
+    {
+      "id": "conversation_revision",
+      "split": "train",
+      "collect_modify_confirm": [
+        "准备请{leave_type}，还没把日期和理由告诉你，先记录类型。",
+        "现在补齐：{start_date}—{end_date}，理由写“{reason}”。",
+        "末日写错了，应该到{new_end}，假别、首日和事由维持刚才的值。",
+        "已经全部检查过，可以落实上面这份草稿。"
+      ],
+      "cancel_then_new": [
+        "假别选{leave_type}；起日{start_date}，止日{end_date}；事由“{reason}”。请先拟草稿。",
+        "不用继续这份申请了，把正在确认的草稿清掉。",
+        "我换成一项全新的{new_type}申请。先不要填日期或事由，等我另行提供。"
+      ],
+      "pending_confirm": "这项{action_label}已经审核无误，现在执行待确认操作。",
+      "pending_cancel": "终止目前这项{action_label}，我不再确认执行它。",
+      "other_object": "这次不是处理眼前{pending_id}的待办，而是要撤销已提交的{other_id}。",
+      "side_query_resume": [
+        "先打断一下，保留现有申请，我想了解{policy_topic}的相关规定。",
+        "制度问题先到这里；继续原申请，把终止日设为{new_end}，其余照旧。",
+        "修改后的草稿符合我的意思，就按这一版执行。"
+      ]
+    },
+    {
+      "id": "review_and_resume",
+      "split": "train",
+      "collect_modify_confirm": [
+        "帮我准备一份{leave_type}申请，我会分几次把内容说完。",
+        "这次从{start_date}休到{end_date}，请假原因是“{reason}”。",
+        "补一个修正：只将截止日期替换为{new_end}，其余已填内容保留。",
+        "已填信息无需再调整，执行眼前待确认的这一项。"
+      ],
+      "cancel_then_new": [
+        "拟申请{start_date}至{end_date}的{leave_type}，理由“{reason}”，先让我确认。",
+        "这份草稿整个放弃，不要提交。",
+        "下面说的是新申请：{new_type}。日期、事由暂缺，别带入刚才的内容。"
+      ],
+      "pending_confirm": "同意当前列出的{action_label}操作，请执行这份待办。",
+      "pending_cancel": "不做当前拟定的{action_label}了，丢弃待确认内容。",
+      "other_object": "当前{pending_id}的操作暂缓；请替我撤回已发起的另一个单子{other_id}。",
+      "side_query_resume": [
+        "申请内容暂时别动，插问一下{policy_topic}的公司流程。",
+        "把刚才暂停的请假接回来：截至{new_end}，其他字段不用变化。",
+        "这一版我认可了，请执行当前待确认内容。"
+      ]
+    },
+    {
+      "id": "heldout_supplement",
+      "split": "val",
+      "collect_modify_confirm": [
+        "这会儿先发起{leave_type}，请等我补充时间和事由。",
+        "补报申请信息：始于{start_date}，截至{end_date}，缘由为“{reason}”。",
+        "最后一天改填{new_end}即可，不必调整另外三项。",
+        "我检查完了，待确认单请按修订结果办理。"
+      ],
+      "cancel_then_new": [
+        "先拟{leave_type}单，时间区间{start_date}—{end_date}，填写事由“{reason}”。",
+        "上面待我确认的整份内容不要了，到此停止。",
+        "现在换一个独立需求：请{new_type}，起止和缘由稍后再讲，旧申请不作参考。"
+      ],
+      "pending_confirm": "对现有{action_label}我没有异议，执行已列明的待办就行。",
+      "pending_cancel": "这项待确认{action_label}我放弃，请清掉它而不是继续执行。",
+      "other_object": "刚才的{pending_id}不是要撤回的单子。我已提交的{other_id}才是这次撤回目标。",
+      "side_query_resume": [
+        "原请假内容保留不办，我先问问单位的{policy_topic}规定。",
+        "再说原来那份草稿，截止改为{new_end}即可，其余信息请保留。",
+        "这一轮修订已核验，请办理眼前这份待确认单。"
+      ]
+    },
+    {
+      "id": "heldout_workflow",
+      "split": "test",
+      "collect_modify_confirm": [
+        "先替我开一份{leave_type}草稿，时间和原因待我接着提供。",
+        "把日期登记为{start_date}起到{end_date}止，申请缘由注明“{reason}”。",
+        "收尾日期应当是{new_end}；已登记的开始日期、类型和缘由继续有效。",
+        "这一稿可以定下来了，请落实当前待确认的申请。"
+      ],
+      "cancel_then_new": [
+        "请准备休假草稿：{leave_type}，{start_date}至{end_date}，事由注明“{reason}”。",
+        "暂不申请了，眼前这份未执行的内容全部撤掉。",
+        "与上文无关，我另要申请{new_type}，尚未给出具体日期和理由。"
+      ],
+      "pending_confirm": "上述待办{action_label}与我的意愿一致，现在可以落实施行。",
+      "pending_cancel": "我改变主意了，尚待执行的这项{action_label}不再继续。",
+      "other_object": "待办里的{pending_id}留待之后处理，本次要撤掉的是我已提交的{other_id}，请勿混用编号。",
+      "side_query_resume": [
+        "先将这份请假放一放，我另想咨询{policy_topic}有哪些制度要求。",
+        "回到原先的假单，末日更新为{new_end}，保留先前的其余内容。",
+        "原假单现在这版已经核实，可以执行当前待办了。"
+      ]
+    }
+  ]
+}

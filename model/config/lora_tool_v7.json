@@ -1,0 +1,21 @@
+{
+  "data_path": "model/dataset/datasets/trainpilot_agent/tool_v7/train.jsonl",
+  "validation_data_path": "model/dataset/datasets/trainpilot_agent/tool_v7/val.jsonl",
+  "output_dir": "runs/trainpilot_tool_lora_v7",
+  "epochs": 1,
+  "batch_size": 1,
+  "accumulation_steps": 8,
+  "max_length": 2048,
+  "learning_rate": 0.00001,
+  "weight_decay": 0.01,
+  "optimizer": "adamw",
+  "grad_clip": 1.0,
+  "device": "cuda",
+  "dtype": "bfloat16",
+  "seed": 42,
+  "cpu_threads": 4,
+  "log_steps": 10,
+  "save_steps": 20,
+  "save_training_state": true,
+  "save_epoch_adapters": true
+}

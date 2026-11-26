@@ -1,0 +1,8 @@
+{
+  "repository": "https://github.com/CHT-1026/TrainPilot",
+  "branch": "lantu-platform",
+  "commit": "7d15fd90315f327f8db8ed1094978bc3997b038c",
+  "local_integration_source": "E:\\agent项目\\TrainPilot-Agent-Tools",
+  "original_directories_preserved": true,
+  "notes": "Includes existing TrainPilot intent/prompt, ACL and search/read/list integration. Archive question/answer banks not copied."
+}

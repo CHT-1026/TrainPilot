@@ -1,0 +1,20 @@
+{
+  "train": {
+    "rows": 600,
+    "max_prompt_tokens": 801,
+    "max_reference_completion_tokens": 52,
+    "truncated": 0
+  },
+  "val": {
+    "rows": 90,
+    "max_prompt_tokens": 796,
+    "max_reference_completion_tokens": 53,
+    "truncated": 0
+  },
+  "test": {
+    "rows": 150,
+    "max_prompt_tokens": 798,
+    "max_reference_completion_tokens": 52,
+    "truncated": 0
+  }
+}

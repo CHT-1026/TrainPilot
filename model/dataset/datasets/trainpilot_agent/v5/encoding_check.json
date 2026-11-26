@@ -1,0 +1,56 @@
+{
+  "max_length": 2048,
+  "structural": {
+    "rows": 9679,
+    "groups": 530,
+    "split_overlap": 0,
+    "citation_range_errors": 0
+  },
+  "splits": {
+    "train": {
+      "records": 8266,
+      "max_tokens": 1733,
+      "p95_tokens": 1294,
+      "supervised_tokens": 315809,
+      "supervised_tokens_by_mode": {
+        "intent_parse": 150833,
+        "oa_rag": 24336,
+        "enterprise_rag": 138276,
+        "direct_reply": 1808,
+        "agent_reply": 556
+      },
+      "truncated": 0,
+      "zero_targets": 0
+    },
+    "val": {
+      "records": 718,
+      "max_tokens": 1123,
+      "p95_tokens": 992,
+      "supervised_tokens": 27275,
+      "supervised_tokens_by_mode": {
+        "enterprise_rag": 12079,
+        "intent_parse": 11458,
+        "oa_rag": 3321,
+        "direct_reply": 278,
+        "agent_reply": 139
+      },
+      "truncated": 0,
+      "zero_targets": 0
+    },
+    "test": {
+      "records": 695,
+      "max_tokens": 1454,
+      "p95_tokens": 1308,
+      "supervised_tokens": 23818,
+      "supervised_tokens_by_mode": {
+        "oa_rag": 3279,
+        "intent_parse": 11418,
+        "enterprise_rag": 8704,
+        "direct_reply": 278,
+        "agent_reply": 139
+      },
+      "truncated": 0,
+      "zero_targets": 0
+    }
+  }
+}

@@ -5,47 +5,35 @@
 ## 项目结构如下
 
 ```text
-TrainPilot/
-├── config/                  # 配置类、模型与训练 JSON 配置
-│   ├── config.py
-│   ├── pretrain.json
-│   └── smoke.json
-├── dataset/                 # 数据预处理、分词器、语料与来源说明
-│   ├── dataset.py
-│   ├── tokenizer.json
-│   ├── tokenizer_config.json # SFT 聊天模板与特殊 token 配置
-│   ├── SOURCE.json
-│   ├── datasets/            # 语料与样例统一存放
-│   │   ├── pretrain_t2t_mini.jsonl
-│   │   ├── sft_t2t_mini.jsonl
-│   │   ├── fixtures/        # 小型管线验证数据
-│   │   └── processed/       # 生成的训练/验证划分，Git 忽略
-│   └── SFT_SOURCE.json      # SFT 数据来源与校验记录
-├── images/                  # 图片目录，待补充
-├── model/                   # 模型与基础层
-│   ├── layers.py
-│   ├── model.py
-│   └── minimind.LICENSE
-├── trainer/                 # 训练函数、epoch/验证/保存、启动入口
-│   ├── pretrain.py
-│   ├── trainer.py
-│   └── train.py
-├── test/
-│   ├── test_code/           # 单元检查、交互测试与实验复现脚本
-│   └── test_log/            # 测试日志与数值结果 JSON
-├── runs/                    # 本地权重与运行产物，Git 忽略
-├── requirements.txt
-├── THIRD_PARTY_NOTICES.md
-└── README.md
+trainpilot/
+├─ model/                   # 模型训练与评测
+│  ├─ network/              # 自行实现的 Dense Transformer
+│  ├─ config/               # 训练与模型配置
+│  ├─ dataset/              # 数据处理与训练语料
+│  ├─ trainer/              # 预训练、Full SFT、LoRA、GRPO
+│  ├─ serving/              # 本机权重加载与工具兼容 API
+│  └─ test/                 # 模型测试代码与历史测试日志
+├─ agent/                   # Agent 搭建与本地演示
+│  ├─ app/                  # LangGraph、业务服务、权限和 HTTP 接口
+│  ├─ enterprise_rag/       # 企业语料、索引、检索与证据校验
+│  ├─ local_runtime/        # 本地页面、服务编排与诊断
+│  ├─ config/               # 固定 V7 的部署配置
+│  ├─ sql/                  # 演示数据库结构及迁移
+│  └─ tests/                # Agent 测试
+├─ runs/                    # 原权重与实验路径保持不变（不提交）
+├─ images/
+├─ 启动项目.cmd
+└─ 停止项目.cmd
 ```
 
 重排后的命令（在仓库根目录执行）：
 
 ```bash
-python -m trainer.train --config config/smoke.json
-python -m trainer.train --config config/pretrain.json
-python -m test.test_code.base_model_test --checkpoint runs/pre_train1-20261012/checkpoint.pt
-python -m unittest discover -s test/test_code -p "test_*.py" -v
+python -m agent
+python -m model.trainer.train --config model/config/smoke.json
+python -m model.trainer.train --config model/config/pretrain.json
+python -m model.test.test_code.base_model_test --checkpoint runs/pre_train1-20261012/checkpoint.pt
+python -m unittest discover -s model/test/test_code -p "test_*.py" -v
 ```
 
 ## 10.10
@@ -79,4 +67,10 @@ python -m unittest discover -s test/test_code -p "test_*.py" -v
 ## 10.21
 
 测评full sft qwen3模型，发现效果良好，与原本的自训小模型有本质的差别。一是数据集官方规范的更标准，二是qwen3-1.5b使用了28层block来进行训练和生成，能够理解并且处理更加复杂的任务，训练相关的数据已经进行了保存，训练时随着loss减少的速度变缓逐步的减小学习率，避免模型在优解附近震荡。接下来将进行工具调用与思考的lora训练，需要根据agent端产出的小demo运行完整的闭环。
+
+## 10.30
+
+基于Qwen3-1.7B完成企业业务LoRA SFT与V6修复训练，统一Agent提示词，通过状态对照、字段保留和固定证据RAG评测定位错误。发现旧业务修复不等于新表达泛化，进一步用多次采样区分“不能生成正确答案”和“能够答对但输出不稳定”。
+
+从同一V6起点完成严格／分层奖励GRPO对照，两种奖励各运行两个seed、50次有效更新，以严格任务成功率、协议合法性和严重错误验收。分层奖励未稳定通过旧业务回归门槛，保留严格奖励和原V6，不以训练reward上涨判定改进。调试过程与结果见[测试记录](model/test/test_log/test_grpo_reward_ab_2026-10-30.md)。
 

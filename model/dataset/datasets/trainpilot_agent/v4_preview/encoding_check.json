@@ -1,0 +1,13 @@
+{
+  "samples": 66,
+  "max_tokens": 1092,
+  "min_supervised_tokens": 16,
+  "total_supervised_tokens": 1858,
+  "max_length": 1536,
+  "truncated": 0,
+  "assistant_end_token": "<|im_end|>",
+  "assistant_end_id": 151645,
+  "base_eos_token": "<|endoftext|>",
+  "note": "仅编码完整性与assistant结束符检查，不是模型效果测试。Qwen模板自动添加空think前缀，不含人工思维链。",
+  "samples_sha256": "beee2b9582167fe211b99ae7a4886c1c6cbc67ffd4478126d5cdc8f6e9335269"
+}

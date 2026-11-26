@@ -1,0 +1,20 @@
+{
+  "status": "pending_user_review",
+  "records": 20,
+  "families": 19,
+  "candidate_sha256": "777b815e2c8210575489731b29f742cdaf047656201b28a6bd531b9bbba0ece9",
+  "prompt_sha256": "d27a4b1560a3a1c9532fb592028bb1acd8c86f659167db0f10d8d436fc1308eb",
+  "exact_old_question_overlap": 0,
+  "exact_old_prompt_overlap": 0,
+  "protocol_checks_passed": 20,
+  "wrong_intent_controls_rejected": 20,
+  "model_evaluated": false,
+  "difficulty_verified": false,
+  "formal_splits_generated": false,
+  "scope": "11意图/7字段；严格正确性奖励不变；不训练字段清空、多任务执行或角色授权",
+  "agent_limits": [
+    "general_chat/clarify当前会清空待办；不把保留待办作为这些标签的验收承诺",
+    "policy_qa只标意图，未评检索结果；身份题只标意图，不等于自然回复身份训练",
+    "样例是开发设计材料，不作独立验收题；尚不能宣称V5在这些题上会出错"
+  ]
+}

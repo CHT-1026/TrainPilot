@@ -1,0 +1,8 @@
+{
+  "status": "user_approved",
+  "date": "2026-10-23",
+  "user_reply": "按这份规范扩展正式数据（推荐）",
+  "scope": "覆盖表及66条人工预览；允许扩展正式V4数据，不包含启动服务器训练。",
+  "confirmed_multi_task": "clarify",
+  "confirmed_clear_field": "接口暂不支持，不训练执行清空"
+}

@@ -1,0 +1,178 @@
+{
+  "version": "v1",
+  "seed": 20261022,
+  "assistant_name": "TrainPilot",
+  "source": "本会话助手编写场景与标签，程序确定性组合上下文和字段；未调用外部模型API。",
+  "generator_sha256": "c6ab0bd052bb6c0ee589a4283c29ea6df3d68e304cf9c3ef990c23c40f55f67d",
+  "prompt_source": {
+    "reference": "lantu-enterprise-agent-platform-main",
+    "recognition_sha256": "2153ecedfe3d8426834a1efe6be2bcab66c4c3b595a8d9681a47b50d6429d229",
+    "routing_sha256": "5ed4c0d6de6da28fc7b005140f2d91aceda13377dcb97079cc6e4d5309f40715",
+    "capture": "原 recognition 节点的实际提示词快照，仅把动态上下文换成 format 占位符；未修改业务规则。",
+    "license": "MIT",
+    "license_file": "prompt_reference.LICENSE"
+  },
+  "inputs_sha256": {
+    "scenarios_v1.json": "aae1462e49706030c3b43ccc503f53ba3216ec7e49484b1aa0da4d825e8a6e61",
+    "intent_prompt_v1.txt": "a8973efa4d89c6876df77dddba789905bfc905a022e1a7705039ca6e0b76245c"
+  },
+  "outputs": {
+    "train": {
+      "file": "train.jsonl",
+      "records": 1200,
+      "sha256": "f780ebf86fa4a65cb5f2ca9ac8ebbd5ec85a2ee774a8b47f893158a3b0c4f941",
+      "categories": {
+        "general_chat": 40,
+        "delete_application": 50,
+        "cancel_action": 50,
+        "pending_other_task": 50,
+        "query_status": 50,
+        "natural": 60,
+        "policy_qa": 90,
+        "approve": 70,
+        "cancel_missing_id": 30,
+        "query_pending": 40,
+        "missing_all": 30,
+        "history_fill": 50,
+        "clarify": 40,
+        "leave_relative": 40,
+        "missing_type": 30,
+        "missing_reason": 30,
+        "approve_missing_id": 30,
+        "confirm_action": 50,
+        "leave_full": 80,
+        "identity": 60,
+        "pending_cancel_existing": 50,
+        "history_modify": 50,
+        "get_suggestion": 40,
+        "missing_dates": 30,
+        "approve_missing_decision": 30,
+        "suggest_missing_id": 30
+      },
+      "groups": 104
+    },
+    "val": {
+      "file": "val.jsonl",
+      "records": 150,
+      "sha256": "7272a31c45aaeb2e5900a9638d56a438aab75abdfab139a3383e955a3626b11a",
+      "categories": {
+        "missing_dates": 4,
+        "policy_qa": 11,
+        "confirm_action": 7,
+        "missing_reason": 4,
+        "general_chat": 5,
+        "leave_relative": 5,
+        "natural": 7,
+        "leave_full": 10,
+        "get_suggestion": 5,
+        "approve": 8,
+        "missing_type": 4,
+        "history_modify": 7,
+        "missing_all": 4,
+        "identity": 8,
+        "history_fill": 7,
+        "approve_missing_id": 4,
+        "pending_cancel_existing": 6,
+        "delete_application": 6,
+        "cancel_missing_id": 3,
+        "clarify": 4,
+        "query_pending": 5,
+        "query_status": 6,
+        "pending_other_task": 6,
+        "suggest_missing_id": 3,
+        "cancel_action": 7,
+        "approve_missing_decision": 4
+      },
+      "groups": 26
+    },
+    "test": {
+      "file": "test.jsonl",
+      "records": 150,
+      "sha256": "b17a6cbec882d99fea9c99ecc2313779cbdeb7978da708b8717c620119fb08b3",
+      "categories": {
+        "cancel_missing_id": 3,
+        "policy_qa": 11,
+        "leave_relative": 5,
+        "confirm_action": 7,
+        "delete_application": 6,
+        "missing_type": 4,
+        "pending_other_task": 6,
+        "get_suggestion": 5,
+        "approve": 8,
+        "leave_full": 10,
+        "missing_reason": 4,
+        "query_status": 6,
+        "missing_all": 4,
+        "approve_missing_decision": 4,
+        "approve_missing_id": 4,
+        "history_modify": 7,
+        "general_chat": 5,
+        "clarify": 4,
+        "cancel_action": 7,
+        "query_pending": 5,
+        "pending_cancel_existing": 6,
+        "history_fill": 7,
+        "identity": 8,
+        "natural": 7,
+        "suggest_missing_id": 3,
+        "missing_dates": 4
+      },
+      "groups": 26
+    }
+  },
+  "checks": {
+    "exact_dialogues_unique": true,
+    "template_groups_disjoint": true,
+    "schema_and_literal_fields_checked": true,
+    "existing_12_baseline_questions_excluded": true,
+    "original_agent_prompt_parity_records": 1350,
+    "pending_action_types": [
+      "approve",
+      "cancel_leave",
+      "submit_leave"
+    ],
+    "critical_scenario_tests_passed": 4,
+    "qwen_training_pipeline_tests_passed": 8
+  },
+  "scope": "身份、简单指令保持、11种业务意图、缺失字段和多轮状态；不训练自由工具调用或广泛推理。",
+  "limits": [
+    "由有限人工编写模板构造，1500条不等于1500种独立自然表达；需用新收集问题复测。",
+    "同一表达模板及其参数变体不跨划分，但场景概念和协议仍共享，未证明语义完全不重合。",
+    "标签由构造规则核验，未经过独立人工逐条标注或教师模型复核。",
+    "工作日、权限和申请有效性由业务程序校验；模型只提取用户表达，不假定操作已执行。",
+    "test.jsonl禁止传入训练入口；保留旧12题基线作额外回归。"
+  ],
+  "encoding_check": {
+    "max_length": 1536,
+    "splits": {
+      "train": {
+        "records": 1200,
+        "min_tokens": 28,
+        "max_tokens": 886,
+        "supervised_tokens": 34147,
+        "zero_target_samples": 0,
+        "truncated_samples": 0
+      },
+      "val": {
+        "records": 150,
+        "min_tokens": 28,
+        "max_tokens": 892,
+        "supervised_tokens": 4372,
+        "zero_target_samples": 0,
+        "truncated_samples": 0
+      },
+      "test": {
+        "records": 150,
+        "min_tokens": 36,
+        "max_tokens": 889,
+        "supervised_tokens": 4467,
+        "zero_target_samples": 0,
+        "truncated_samples": 0
+      }
+    },
+    "assistant_answers_preserved": true
+  },
+  "integration_note": "原意图解析提示词保留澜图平台角色；部署最终回复时需将助手名称统一为TrainPilot，避免身份提示冲突。",
+  "status": "superseded_pending_dataset_review",
+  "superseded_reason": "用户要求统一TrainPilot身份、删除无关姓名和原公司身份，并先审核新版规范与样例。"
+}

@@ -1,0 +1,2646 @@
+{
+  "version": "v5",
+  "assistant_name": "TrainPilot",
+  "seed": 20261024,
+  "training_start": "original_full_sft_with_fresh_lora",
+  "epochs": 2,
+  "max_length": 2048,
+  "sources_sha256": "a758fab9561cdeb4d855eed2f2a60b06dc7dc71b35107108bc4630d562ad82ce",
+  "v4_source_sha256": {
+    "train": "39887a650c2a071db3ee15364fd9994a5a580f96a8bc454155a625dfc62b3c17",
+    "val": "83e2483c31d2bfc583abdd94c197b6b801690f4273d9bbc389dcd799eafe7449",
+    "test": "12b1d69f87df35c681a7be870c77e735ced582ea648461e3fdc4af22384f465d"
+  },
+  "outputs": {
+    "train": {
+      "file": "train.jsonl",
+      "records": 8266,
+      "sha256": "034a25c63611ac9aaec4aca41567c69763acd5cd6703d885665fe2d6c296a09c",
+      "modes": {
+        "intent_parse": 4746,
+        "oa_rag": 628,
+        "enterprise_rag": 2796,
+        "direct_reply": 72,
+        "agent_reply": 24
+      },
+      "categories": {
+        "leave_subset": 766,
+        "empty": 128,
+        "query_pending": 44,
+        "history_modify": 56,
+        "approval_comment": 48,
+        "injection": 128,
+        "irrelevant": 128,
+        "suggest_missing_id": 30,
+        "identity_execution": 16,
+        "policy_qa": 90,
+        "section_extract": 1484,
+        "clarify": 40,
+        "distractor": 128,
+        "confirm": 156,
+        "missing_premise": 128,
+        "approval_subset": 381,
+        "cancel": 156,
+        "side_query_resume": 312,
+        "cancel_then_new": 312,
+        "pending_cancel_existing": 56,
+        "advice": 48,
+        "two_hop": 128,
+        "table_lookup": 776,
+        "modify_reason": 48,
+        "collect_modify_confirm": 416,
+        "fact_query": 76,
+        "pending_other_task": 56,
+        "relative": 24,
+        "modify_type": 46,
+        "approve": 70,
+        "partial": 64,
+        "modify_end": 48,
+        "calculation": 128,
+        "modify_start": 48,
+        "confirm_action": 56,
+        "conflict": 128,
+        "approve_missing_id": 30,
+        "approval_edit": 48,
+        "general_chat": 40,
+        "cancel_action": 56,
+        "missing_dates": 30,
+        "cancel_missing_id": 30,
+        "ambiguous_object": 48,
+        "policy": 48,
+        "get_suggestion": 40,
+        "history_fill": 56,
+        "identity_role": 16,
+        "identity_greeting": 16,
+        "identity": 24,
+        "query_status": 54,
+        "other_object": 176,
+        "negated_modification": 48,
+        "invalid_range": 48,
+        "withdraw_abandon": 48,
+        "modify_both": 48,
+        "identity_correction": 16,
+        "identity_name": 16,
+        "pending_decision": 80,
+        "delete_missing": 4,
+        "delete_application": 50,
+        "uncertain_dates": 48,
+        "leave_relative": 40,
+        "leave_full": 80,
+        "missing_type": 23,
+        "ambiguous_intent": 4,
+        "multi_task": 48,
+        "approve_missing_decision": 30,
+        "withdraw_confirm": 48,
+        "missing_all": 30,
+        "quoted_policy": 48,
+        "missing_reason": 30,
+        "identity_missing": 16,
+        "advice_missing": 4
+      }
+    },
+    "val": {
+      "file": "val.jsonl",
+      "records": 718,
+      "sha256": "04ba3072982d84584a175010a1791be45dc78ef25137c0d54646b84e6515ee03",
+      "modes": {
+        "enterprise_rag": 239,
+        "intent_parse": 357,
+        "oa_rag": 104,
+        "direct_reply": 12,
+        "agent_reply": 6
+      },
+      "categories": {
+        "section_extract": 115,
+        "confirm": 21,
+        "table_lookup": 19,
+        "approval_subset": 48,
+        "partial": 12,
+        "empty": 24,
+        "missing_premise": 24,
+        "irrelevant": 24,
+        "injection": 24,
+        "calculation": 24,
+        "collect_modify_confirm": 16,
+        "modify_both": 6,
+        "distractor": 24,
+        "negated_modification": 6,
+        "two_hop": 24,
+        "approval_comment": 6,
+        "policy": 6,
+        "leave_subset": 96,
+        "withdraw_abandon": 6,
+        "cancel": 21,
+        "modify_type": 6,
+        "advice": 6,
+        "ambiguous_intent": 1,
+        "conflict": 24,
+        "identity_role": 4,
+        "cancel_then_new": 12,
+        "withdraw_confirm": 6,
+        "multi_task": 6,
+        "approval_edit": 6,
+        "query_pending": 1,
+        "side_query_resume": 12,
+        "invalid_range": 6,
+        "modify_reason": 6,
+        "modify_end": 6,
+        "relative": 6,
+        "ambiguous_object": 6,
+        "uncertain_dates": 6,
+        "identity_missing": 4,
+        "identity_greeting": 4,
+        "other_object": 12,
+        "quoted_policy": 6,
+        "modify_start": 6,
+        "identity_correction": 4,
+        "identity_execution": 4,
+        "fact_query": 5,
+        "advice_missing": 1,
+        "delete_missing": 1,
+        "identity_name": 4,
+        "query_status": 1
+      }
+    },
+    "test": {
+      "file": "test.jsonl",
+      "records": 695,
+      "sha256": "e86721358290956e17628b620a382e9999ab8fbacd0c991f71e52575914ca933",
+      "modes": {
+        "oa_rag": 101,
+        "intent_parse": 355,
+        "enterprise_rag": 221,
+        "direct_reply": 12,
+        "agent_reply": 6
+      },
+      "categories": {
+        "injection": 24,
+        "other_object": 12,
+        "quoted_policy": 6,
+        "collect_modify_confirm": 16,
+        "uncertain_dates": 6,
+        "withdraw_abandon": 6,
+        "advice": 6,
+        "distractor": 24,
+        "approval_subset": 48,
+        "negated_modification": 6,
+        "leave_subset": 94,
+        "modify_reason": 6,
+        "cancel_then_new": 12,
+        "missing_premise": 24,
+        "ambiguous_object": 6,
+        "two_hop": 24,
+        "multi_task": 6,
+        "section_extract": 52,
+        "identity_correction": 4,
+        "conflict": 24,
+        "modify_start": 6,
+        "table_lookup": 62,
+        "empty": 24,
+        "approval_edit": 6,
+        "cancel": 21,
+        "irrelevant": 24,
+        "fact_query": 4,
+        "side_query_resume": 12,
+        "calculation": 24,
+        "relative": 6,
+        "identity_execution": 4,
+        "policy": 6,
+        "modify_both": 6,
+        "identity_role": 4,
+        "partial": 12,
+        "query_status": 1,
+        "withdraw_confirm": 6,
+        "approval_comment": 6,
+        "identity_greeting": 4,
+        "invalid_range": 6,
+        "confirm": 21,
+        "modify_type": 6,
+        "identity_missing": 4,
+        "identity_name": 4,
+        "delete_missing": 1,
+        "modify_end": 6,
+        "ambiguous_intent": 1,
+        "advice_missing": 1,
+        "query_pending": 1
+      }
+    }
+  },
+  "corpus_family_split": {
+    "enterprise:lantu_case_02_lanyue#c000": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_02_lanyue#c001": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_02_lanyue#c002": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_02_lanyue#c003": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_02_lanyue#c004": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_02_lanyue#c005": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_03_yaoyang#c000": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_03_yaoyang#c001": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_03_yaoyang#c002": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_03_yaoyang#c003": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_03_yaoyang#c004": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_03_yaoyang#c005": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_04_xinghe#c000": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_04_xinghe#c001": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_04_xinghe#c002": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_04_xinghe#c003": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_04_xinghe#c004": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_04_xinghe#c005": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_05_hailing#c000": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_05_hailing#c001": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_05_hailing#c002": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_05_hailing#c003": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_05_hailing#c004": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_05_hailing#c005": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_06_jingtuo#c000": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_06_jingtuo#c001": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_06_jingtuo#c002": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_06_jingtuo#c003": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_06_jingtuo#c004": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_06_jingtuo#c005": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_07_maifeng#c000": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_07_maifeng#c001": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_07_maifeng#c002": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_07_maifeng#c003": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_07_maifeng#c004": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_07_maifeng#c005": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_08_kangze#c000": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_08_kangze#c001": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_08_kangze#c002": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_08_kangze#c003": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_08_kangze#c004": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_08_kangze#c005": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_09_shunjie#c000": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_09_shunjie#c001": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_09_shunjie#c002": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_09_shunjie#c003": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_09_shunjie#c004": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_09_shunjie#c005": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_10_hengrui#c000": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_10_hengrui#c001": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_10_hengrui#c002": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_10_hengrui#c003": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_10_hengrui#c004": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_10_hengrui#c005": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_11_dingzhong#c000": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_11_dingzhong#c001": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_11_dingzhong#c002": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_11_dingzhong#c003": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_11_dingzhong#c004": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_11_dingzhong#c005": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_12_shengda#c000": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_12_shengda#c001": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_12_shengda#c002": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_12_shengda#c003": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_12_shengda#c004": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_case_12_shengda#c005": {
+      "group": "corpus/enterprise/case_lanyue",
+      "split": "val"
+    },
+    "enterprise:lantu_company_brand#c000": {
+      "group": "corpus/enterprise/brand_manual",
+      "split": "test"
+    },
+    "enterprise:lantu_company_brand#c001": {
+      "group": "corpus/enterprise/brand_manual",
+      "split": "test"
+    },
+    "enterprise:lantu_company_brand#c002": {
+      "group": "corpus/enterprise/brand_manual",
+      "split": "test"
+    },
+    "enterprise:lantu_company_brand#c003": {
+      "group": "corpus/enterprise/brand_manual",
+      "split": "test"
+    },
+    "enterprise:lantu_company_campus#c000": {
+      "group": "corpus/enterprise/manufacturing_base",
+      "split": "test"
+    },
+    "enterprise:lantu_company_campus#c001": {
+      "group": "corpus/enterprise/manufacturing_base",
+      "split": "test"
+    },
+    "enterprise:lantu_company_campus#c002": {
+      "group": "corpus/enterprise/manufacturing_base",
+      "split": "test"
+    },
+    "enterprise:lantu_company_campus#c003": {
+      "group": "corpus/enterprise/manufacturing_base",
+      "split": "test"
+    },
+    "enterprise:lantu_company_campus#c004": {
+      "group": "corpus/enterprise/manufacturing_base",
+      "split": "test"
+    },
+    "enterprise:lantu_company_global#c000": {
+      "group": "corpus/enterprise/global_presence",
+      "split": "train"
+    },
+    "enterprise:lantu_company_global#c001": {
+      "group": "corpus/enterprise/global_presence",
+      "split": "train"
+    },
+    "enterprise:lantu_company_global#c002": {
+      "group": "corpus/enterprise/global_presence",
+      "split": "train"
+    },
+    "enterprise:lantu_company_global#c003": {
+      "group": "corpus/enterprise/global_presence",
+      "split": "train"
+    },
+    "enterprise:lantu_company_history#c000": {
+      "group": "corpus/enterprise/company_history",
+      "split": "train"
+    },
+    "enterprise:lantu_company_history#c001": {
+      "group": "corpus/enterprise/company_history",
+      "split": "train"
+    },
+    "enterprise:lantu_company_history#c002": {
+      "group": "corpus/enterprise/company_history",
+      "split": "train"
+    },
+    "enterprise:lantu_company_history#c003": {
+      "group": "corpus/enterprise/company_history",
+      "split": "train"
+    },
+    "enterprise:lantu_company_history#c004": {
+      "group": "corpus/enterprise/company_history",
+      "split": "train"
+    },
+    "enterprise:lantu_company_milestones_2025#c000": {
+      "group": "corpus/enterprise/annual_milestones_2025",
+      "split": "val"
+    },
+    "enterprise:lantu_company_milestones_2025#c001": {
+      "group": "corpus/enterprise/annual_milestones_2025",
+      "split": "val"
+    },
+    "enterprise:lantu_company_milestones_2025#c002": {
+      "group": "corpus/enterprise/annual_milestones_2025",
+      "split": "val"
+    },
+    "enterprise:lantu_company_milestones_2025#c003": {
+      "group": "corpus/enterprise/annual_milestones_2025",
+      "split": "val"
+    },
+    "enterprise:lantu_company_milestones_2025#c004": {
+      "group": "corpus/enterprise/annual_milestones_2025",
+      "split": "val"
+    },
+    "enterprise:lantu_finance_annual_2024#c000": {
+      "group": "corpus/enterprise/annual_report_2024",
+      "split": "val"
+    },
+    "enterprise:lantu_finance_annual_2024#c001": {
+      "group": "corpus/enterprise/annual_report_2024",
+      "split": "val"
+    },
+    "enterprise:lantu_finance_annual_2024#c002": {
+      "group": "corpus/enterprise/annual_report_2024",
+      "split": "val"
+    },
+    "enterprise:lantu_finance_annual_2024#c003": {
+      "group": "corpus/enterprise/annual_report_2024",
+      "split": "val"
+    },
+    "enterprise:lantu_finance_annual_2024#c004": {
+      "group": "corpus/enterprise/annual_report_2024",
+      "split": "val"
+    },
+    "enterprise:lantu_finance_annual_2025#c000": {
+      "group": "corpus/enterprise/annual_report_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_finance_annual_2025#c001": {
+      "group": "corpus/enterprise/annual_report_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_finance_annual_2025#c002": {
+      "group": "corpus/enterprise/annual_report_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_finance_annual_2025#c003": {
+      "group": "corpus/enterprise/annual_report_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_finance_annual_2025#c004": {
+      "group": "corpus/enterprise/annual_report_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_finance_annual_2025#c005": {
+      "group": "corpus/enterprise/annual_report_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_finance_budget_2026#c000": {
+      "group": "corpus/enterprise/budget_2026",
+      "split": "test"
+    },
+    "enterprise:lantu_finance_budget_2026#c001": {
+      "group": "corpus/enterprise/budget_2026",
+      "split": "test"
+    },
+    "enterprise:lantu_finance_budget_2026#c002": {
+      "group": "corpus/enterprise/budget_2026",
+      "split": "test"
+    },
+    "enterprise:lantu_finance_budget_2026#c003": {
+      "group": "corpus/enterprise/budget_2026",
+      "split": "test"
+    },
+    "enterprise:lantu_finance_cashflow#c000": {
+      "group": "corpus/enterprise/cashflow_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_finance_cashflow#c001": {
+      "group": "corpus/enterprise/cashflow_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_finance_cashflow#c002": {
+      "group": "corpus/enterprise/cashflow_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_finance_cashflow#c003": {
+      "group": "corpus/enterprise/cashflow_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_finance_cost#c000": {
+      "group": "corpus/enterprise/cost_management",
+      "split": "train"
+    },
+    "enterprise:lantu_finance_cost#c001": {
+      "group": "corpus/enterprise/cost_management",
+      "split": "train"
+    },
+    "enterprise:lantu_finance_cost#c002": {
+      "group": "corpus/enterprise/cost_management",
+      "split": "train"
+    },
+    "enterprise:lantu_finance_cost#c003": {
+      "group": "corpus/enterprise/cost_management",
+      "split": "train"
+    },
+    "enterprise:lantu_finance_gross_margin#c000": {
+      "group": "corpus/enterprise/gross_margin_analysis",
+      "split": "train"
+    },
+    "enterprise:lantu_finance_gross_margin#c001": {
+      "group": "corpus/enterprise/gross_margin_analysis",
+      "split": "train"
+    },
+    "enterprise:lantu_finance_gross_margin#c002": {
+      "group": "corpus/enterprise/gross_margin_analysis",
+      "split": "train"
+    },
+    "enterprise:lantu_finance_gross_margin#c003": {
+      "group": "corpus/enterprise/gross_margin_analysis",
+      "split": "train"
+    },
+    "enterprise:lantu_finance_h1_2025#c000": {
+      "group": "corpus/enterprise/semiannual_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_finance_h1_2025#c001": {
+      "group": "corpus/enterprise/semiannual_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_finance_h1_2025#c002": {
+      "group": "corpus/enterprise/semiannual_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_finance_h1_2025#c003": {
+      "group": "corpus/enterprise/semiannual_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_finance_investor_qa#c000": {
+      "group": "corpus/enterprise/investor_qa",
+      "split": "train"
+    },
+    "enterprise:lantu_finance_investor_qa#c001": {
+      "group": "corpus/enterprise/investor_qa",
+      "split": "train"
+    },
+    "enterprise:lantu_finance_investor_qa#c002": {
+      "group": "corpus/enterprise/investor_qa",
+      "split": "train"
+    },
+    "enterprise:lantu_finance_investor_qa#c003": {
+      "group": "corpus/enterprise/investor_qa",
+      "split": "train"
+    },
+    "enterprise:lantu_finance_investor_qa#c004": {
+      "group": "corpus/enterprise/investor_qa",
+      "split": "train"
+    },
+    "enterprise:lantu_finance_monthly_2025#c000": {
+      "group": "corpus/enterprise/monthly_operations_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_finance_monthly_2025#c001": {
+      "group": "corpus/enterprise/monthly_operations_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_finance_monthly_2025#c002": {
+      "group": "corpus/enterprise/monthly_operations_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_finance_q3_2025#c000": {
+      "group": "corpus/enterprise/quarterly_2025_q3",
+      "split": "train"
+    },
+    "enterprise:lantu_finance_q3_2025#c001": {
+      "group": "corpus/enterprise/quarterly_2025_q3",
+      "split": "train"
+    },
+    "enterprise:lantu_finance_q3_2025#c002": {
+      "group": "corpus/enterprise/quarterly_2025_q3",
+      "split": "train"
+    },
+    "enterprise:lantu_finance_q3_2025#c003": {
+      "group": "corpus/enterprise/quarterly_2025_q3",
+      "split": "train"
+    },
+    "enterprise:lantu_finance_revenue_breakdown#c000": {
+      "group": "corpus/enterprise/revenue_breakdown_2025",
+      "split": "test"
+    },
+    "enterprise:lantu_hr_campus#c000": {
+      "group": "corpus/enterprise/campus_recruitment_2026",
+      "split": "train"
+    },
+    "enterprise:lantu_hr_campus#c001": {
+      "group": "corpus/enterprise/campus_recruitment_2026",
+      "split": "train"
+    },
+    "enterprise:lantu_hr_campus#c002": {
+      "group": "corpus/enterprise/campus_recruitment_2026",
+      "split": "train"
+    },
+    "enterprise:lantu_hr_campus#c003": {
+      "group": "corpus/enterprise/campus_recruitment_2026",
+      "split": "train"
+    },
+    "enterprise:lantu_hr_compensation#c000": {
+      "group": "corpus/enterprise/compensation",
+      "split": "train"
+    },
+    "enterprise:lantu_hr_compensation#c001": {
+      "group": "corpus/enterprise/compensation",
+      "split": "train"
+    },
+    "enterprise:lantu_hr_compensation#c002": {
+      "group": "corpus/enterprise/compensation",
+      "split": "train"
+    },
+    "enterprise:lantu_hr_compensation#c003": {
+      "group": "corpus/enterprise/compensation",
+      "split": "train"
+    },
+    "enterprise:lantu_hr_job_grades#c000": {
+      "group": "corpus/enterprise/job_grades",
+      "split": "test"
+    },
+    "enterprise:lantu_hr_job_grades#c001": {
+      "group": "corpus/enterprise/job_grades",
+      "split": "test"
+    },
+    "enterprise:lantu_hr_job_grades#c002": {
+      "group": "corpus/enterprise/job_grades",
+      "split": "test"
+    },
+    "enterprise:lantu_hr_job_grades#c003": {
+      "group": "corpus/enterprise/job_grades",
+      "split": "test"
+    },
+    "enterprise:lantu_hr_manager_training#c000": {
+      "group": "corpus/enterprise/manager_training",
+      "split": "train"
+    },
+    "enterprise:lantu_hr_manager_training#c001": {
+      "group": "corpus/enterprise/manager_training",
+      "split": "train"
+    },
+    "enterprise:lantu_hr_manager_training#c002": {
+      "group": "corpus/enterprise/manager_training",
+      "split": "train"
+    },
+    "enterprise:lantu_hr_manager_training#c003": {
+      "group": "corpus/enterprise/manager_training",
+      "split": "train"
+    },
+    "enterprise:lantu_hr_manager_training#c004": {
+      "group": "corpus/enterprise/manager_training",
+      "split": "train"
+    },
+    "enterprise:lantu_hr_new_hire_training#c000": {
+      "group": "corpus/enterprise/new_hire_training",
+      "split": "train"
+    },
+    "enterprise:lantu_hr_new_hire_training#c001": {
+      "group": "corpus/enterprise/new_hire_training",
+      "split": "train"
+    },
+    "enterprise:lantu_hr_new_hire_training#c002": {
+      "group": "corpus/enterprise/new_hire_training",
+      "split": "train"
+    },
+    "enterprise:lantu_hr_new_hire_training#c003": {
+      "group": "corpus/enterprise/new_hire_training",
+      "split": "train"
+    },
+    "enterprise:lantu_hr_new_hire_training#c004": {
+      "group": "corpus/enterprise/new_hire_training",
+      "split": "train"
+    },
+    "enterprise:lantu_hr_performance#c000": {
+      "group": "corpus/enterprise/performance",
+      "split": "test"
+    },
+    "enterprise:lantu_hr_performance#c001": {
+      "group": "corpus/enterprise/performance",
+      "split": "test"
+    },
+    "enterprise:lantu_hr_performance#c002": {
+      "group": "corpus/enterprise/performance",
+      "split": "test"
+    },
+    "enterprise:lantu_hr_performance#c003": {
+      "group": "corpus/enterprise/performance",
+      "split": "test"
+    },
+    "enterprise:lantu_hr_recruitment#c000": {
+      "group": "corpus/enterprise/recruitment",
+      "split": "train"
+    },
+    "enterprise:lantu_hr_recruitment#c001": {
+      "group": "corpus/enterprise/recruitment",
+      "split": "train"
+    },
+    "enterprise:lantu_hr_recruitment#c002": {
+      "group": "corpus/enterprise/recruitment",
+      "split": "train"
+    },
+    "enterprise:lantu_hr_recruitment#c003": {
+      "group": "corpus/enterprise/recruitment",
+      "split": "train"
+    },
+    "enterprise:lantu_hr_resignation#c000": {
+      "group": "corpus/enterprise/resignation",
+      "split": "train"
+    },
+    "enterprise:lantu_hr_resignation#c001": {
+      "group": "corpus/enterprise/resignation",
+      "split": "train"
+    },
+    "enterprise:lantu_hr_resignation#c002": {
+      "group": "corpus/enterprise/resignation",
+      "split": "train"
+    },
+    "enterprise:lantu_hr_resignation#c003": {
+      "group": "corpus/enterprise/resignation",
+      "split": "train"
+    },
+    "enterprise:lantu_hr_resignation#c004": {
+      "group": "corpus/enterprise/resignation",
+      "split": "train"
+    },
+    "enterprise:lantu_hr_social#c000": {
+      "group": "corpus/enterprise/social_recruitment",
+      "split": "train"
+    },
+    "enterprise:lantu_hr_social#c001": {
+      "group": "corpus/enterprise/social_recruitment",
+      "split": "train"
+    },
+    "enterprise:lantu_hr_social#c002": {
+      "group": "corpus/enterprise/social_recruitment",
+      "split": "train"
+    },
+    "enterprise:lantu_hr_social#c003": {
+      "group": "corpus/enterprise/social_recruitment",
+      "split": "train"
+    },
+    "enterprise:lantu_hr_training_system#c000": {
+      "group": "corpus/enterprise/training_system",
+      "split": "train"
+    },
+    "enterprise:lantu_hr_training_system#c001": {
+      "group": "corpus/enterprise/training_system",
+      "split": "train"
+    },
+    "enterprise:lantu_hr_training_system#c002": {
+      "group": "corpus/enterprise/training_system",
+      "split": "train"
+    },
+    "enterprise:lantu_hr_training_system#c003": {
+      "group": "corpus/enterprise/training_system",
+      "split": "train"
+    },
+    "enterprise:lantu_investor_overview#c000": {
+      "group": "corpus/enterprise/investor_overview",
+      "split": "train"
+    },
+    "enterprise:lantu_investor_overview#c001": {
+      "group": "corpus/enterprise/investor_overview",
+      "split": "train"
+    },
+    "enterprise:lantu_investor_overview#c002": {
+      "group": "corpus/enterprise/investor_overview",
+      "split": "train"
+    },
+    "enterprise:lantu_investor_overview#c003": {
+      "group": "corpus/enterprise/investor_overview",
+      "split": "train"
+    },
+    "enterprise:lantu_legal_anti_bribery#c000": {
+      "group": "corpus/enterprise/anti_bribery",
+      "split": "train"
+    },
+    "enterprise:lantu_legal_anti_bribery#c001": {
+      "group": "corpus/enterprise/anti_bribery",
+      "split": "train"
+    },
+    "enterprise:lantu_legal_anti_bribery#c002": {
+      "group": "corpus/enterprise/anti_bribery",
+      "split": "train"
+    },
+    "enterprise:lantu_legal_anti_bribery#c003": {
+      "group": "corpus/enterprise/anti_bribery",
+      "split": "train"
+    },
+    "enterprise:lantu_legal_anti_bribery#c004": {
+      "group": "corpus/enterprise/anti_bribery",
+      "split": "train"
+    },
+    "enterprise:lantu_legal_compliance_manual#c000": {
+      "group": "corpus/enterprise/compliance_manual",
+      "split": "test"
+    },
+    "enterprise:lantu_legal_compliance_manual#c001": {
+      "group": "corpus/enterprise/compliance_manual",
+      "split": "test"
+    },
+    "enterprise:lantu_legal_compliance_manual#c002": {
+      "group": "corpus/enterprise/compliance_manual",
+      "split": "test"
+    },
+    "enterprise:lantu_legal_compliance_manual#c003": {
+      "group": "corpus/enterprise/compliance_manual",
+      "split": "test"
+    },
+    "enterprise:lantu_legal_data_compliance#c000": {
+      "group": "corpus/enterprise/data_compliance",
+      "split": "train"
+    },
+    "enterprise:lantu_legal_data_compliance#c001": {
+      "group": "corpus/enterprise/data_compliance",
+      "split": "train"
+    },
+    "enterprise:lantu_legal_data_compliance#c002": {
+      "group": "corpus/enterprise/data_compliance",
+      "split": "train"
+    },
+    "enterprise:lantu_legal_data_compliance#c003": {
+      "group": "corpus/enterprise/data_compliance",
+      "split": "train"
+    },
+    "enterprise:lantu_legal_data_compliance#c004": {
+      "group": "corpus/enterprise/data_compliance",
+      "split": "train"
+    },
+    "enterprise:lantu_legal_export_control#c000": {
+      "group": "corpus/enterprise/export_control",
+      "split": "train"
+    },
+    "enterprise:lantu_legal_export_control#c001": {
+      "group": "corpus/enterprise/export_control",
+      "split": "train"
+    },
+    "enterprise:lantu_legal_export_control#c002": {
+      "group": "corpus/enterprise/export_control",
+      "split": "train"
+    },
+    "enterprise:lantu_legal_export_control#c003": {
+      "group": "corpus/enterprise/export_control",
+      "split": "train"
+    },
+    "enterprise:lantu_legal_export_control#c004": {
+      "group": "corpus/enterprise/export_control",
+      "split": "train"
+    },
+    "enterprise:lantu_legal_nda_template#c000": {
+      "group": "corpus/enterprise/nda_template",
+      "split": "test"
+    },
+    "enterprise:lantu_legal_nda_template#c001": {
+      "group": "corpus/enterprise/nda_template",
+      "split": "test"
+    },
+    "enterprise:lantu_legal_nda_template#c002": {
+      "group": "corpus/enterprise/nda_template",
+      "split": "test"
+    },
+    "enterprise:lantu_legal_nda_template#c003": {
+      "group": "corpus/enterprise/nda_template",
+      "split": "test"
+    },
+    "enterprise:lantu_legal_nda_template#c004": {
+      "group": "corpus/enterprise/nda_template",
+      "split": "test"
+    },
+    "enterprise:lantu_legal_nda_template#c005": {
+      "group": "corpus/enterprise/nda_template",
+      "split": "test"
+    },
+    "enterprise:lantu_legal_purchase_contract_template#c000": {
+      "group": "corpus/enterprise/purchase_contract_template",
+      "split": "train"
+    },
+    "enterprise:lantu_legal_purchase_contract_template#c001": {
+      "group": "corpus/enterprise/purchase_contract_template",
+      "split": "train"
+    },
+    "enterprise:lantu_legal_purchase_contract_template#c002": {
+      "group": "corpus/enterprise/purchase_contract_template",
+      "split": "train"
+    },
+    "enterprise:lantu_legal_purchase_contract_template#c003": {
+      "group": "corpus/enterprise/purchase_contract_template",
+      "split": "train"
+    },
+    "enterprise:lantu_legal_purchase_contract_template#c004": {
+      "group": "corpus/enterprise/purchase_contract_template",
+      "split": "train"
+    },
+    "enterprise:lantu_legal_purchase_contract_template#c005": {
+      "group": "corpus/enterprise/purchase_contract_template",
+      "split": "train"
+    },
+    "enterprise:lantu_legal_supplier_code#c000": {
+      "group": "corpus/enterprise/supplier_code",
+      "split": "test"
+    },
+    "enterprise:lantu_legal_supplier_code#c001": {
+      "group": "corpus/enterprise/supplier_code",
+      "split": "test"
+    },
+    "enterprise:lantu_legal_supplier_code#c002": {
+      "group": "corpus/enterprise/supplier_code",
+      "split": "test"
+    },
+    "enterprise:lantu_legal_supplier_code#c003": {
+      "group": "corpus/enterprise/supplier_code",
+      "split": "test"
+    },
+    "enterprise:lantu_legal_supplier_code#c004": {
+      "group": "corpus/enterprise/supplier_code",
+      "split": "test"
+    },
+    "enterprise:lantu_meeting_board#c000": {
+      "group": "corpus/enterprise/meeting_board_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_board#c001": {
+      "group": "corpus/enterprise/meeting_board_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_board#c002": {
+      "group": "corpus/enterprise/meeting_board_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_board#c003": {
+      "group": "corpus/enterprise/meeting_board_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_board#c004": {
+      "group": "corpus/enterprise/meeting_board_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_ops_2025q3#c000": {
+      "group": "corpus/enterprise/meeting_ops_2025q3",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_ops_2025q3#c001": {
+      "group": "corpus/enterprise/meeting_ops_2025q3",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_ops_2025q3#c002": {
+      "group": "corpus/enterprise/meeting_ops_2025q3",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_ops_2025q3#c003": {
+      "group": "corpus/enterprise/meeting_ops_2025q3",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_ops_2025q3#c004": {
+      "group": "corpus/enterprise/meeting_ops_2025q3",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_ops_2025q3#c005": {
+      "group": "corpus/enterprise/meeting_ops_2025q3",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_product_review#c000": {
+      "group": "corpus/enterprise/meeting_product_review",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_product_review#c001": {
+      "group": "corpus/enterprise/meeting_product_review",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_product_review#c002": {
+      "group": "corpus/enterprise/meeting_product_review",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_product_review#c003": {
+      "group": "corpus/enterprise/meeting_product_review",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_product_review#c004": {
+      "group": "corpus/enterprise/meeting_product_review",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_product_review#c005": {
+      "group": "corpus/enterprise/meeting_product_review",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_quality#c000": {
+      "group": "corpus/enterprise/meeting_quality_q3",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_quality#c001": {
+      "group": "corpus/enterprise/meeting_quality_q3",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_quality#c002": {
+      "group": "corpus/enterprise/meeting_quality_q3",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_quality#c003": {
+      "group": "corpus/enterprise/meeting_quality_q3",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_quality#c004": {
+      "group": "corpus/enterprise/meeting_quality_q3",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_quality#c005": {
+      "group": "corpus/enterprise/meeting_quality_q3",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_rd#c000": {
+      "group": "corpus/enterprise/meeting_rd_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_rd#c001": {
+      "group": "corpus/enterprise/meeting_rd_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_rd#c002": {
+      "group": "corpus/enterprise/meeting_rd_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_rd#c003": {
+      "group": "corpus/enterprise/meeting_rd_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_safety#c000": {
+      "group": "corpus/enterprise/meeting_safety_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_safety#c001": {
+      "group": "corpus/enterprise/meeting_safety_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_safety#c002": {
+      "group": "corpus/enterprise/meeting_safety_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_safety#c003": {
+      "group": "corpus/enterprise/meeting_safety_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_sales#c000": {
+      "group": "corpus/enterprise/meeting_sales_south",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_sales#c001": {
+      "group": "corpus/enterprise/meeting_sales_south",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_sales#c002": {
+      "group": "corpus/enterprise/meeting_sales_south",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_sales#c003": {
+      "group": "corpus/enterprise/meeting_sales_south",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_sales#c004": {
+      "group": "corpus/enterprise/meeting_sales_south",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_strategy#c000": {
+      "group": "corpus/enterprise/meeting_strategy_2026",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_strategy#c001": {
+      "group": "corpus/enterprise/meeting_strategy_2026",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_strategy#c002": {
+      "group": "corpus/enterprise/meeting_strategy_2026",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_strategy#c003": {
+      "group": "corpus/enterprise/meeting_strategy_2026",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_strategy#c004": {
+      "group": "corpus/enterprise/meeting_strategy_2026",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_supply_chain#c000": {
+      "group": "corpus/enterprise/meeting_supply_chain",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_supply_chain#c001": {
+      "group": "corpus/enterprise/meeting_supply_chain",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_supply_chain#c002": {
+      "group": "corpus/enterprise/meeting_supply_chain",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_supply_chain#c003": {
+      "group": "corpus/enterprise/meeting_supply_chain",
+      "split": "train"
+    },
+    "enterprise:lantu_meeting_supply_chain#c004": {
+      "group": "corpus/enterprise/meeting_supply_chain",
+      "split": "train"
+    },
+    "enterprise:lantu_org_board#c000": {
+      "group": "corpus/enterprise/board_structure",
+      "split": "val"
+    },
+    "enterprise:lantu_org_board#c001": {
+      "group": "corpus/enterprise/board_structure",
+      "split": "val"
+    },
+    "enterprise:lantu_org_board#c002": {
+      "group": "corpus/enterprise/board_structure",
+      "split": "val"
+    },
+    "enterprise:lantu_org_board#c003": {
+      "group": "corpus/enterprise/board_structure",
+      "split": "val"
+    },
+    "enterprise:lantu_org_chart_2024#c000": {
+      "group": "corpus/enterprise/org_chart",
+      "split": "train"
+    },
+    "enterprise:lantu_org_chart_2024#c001": {
+      "group": "corpus/enterprise/org_chart",
+      "split": "train"
+    },
+    "enterprise:lantu_org_chart_2024#c002": {
+      "group": "corpus/enterprise/org_chart",
+      "split": "train"
+    },
+    "enterprise:lantu_org_chart_2025#c000": {
+      "group": "corpus/enterprise/org_chart",
+      "split": "train"
+    },
+    "enterprise:lantu_org_chart_2025#c001": {
+      "group": "corpus/enterprise/org_chart",
+      "split": "train"
+    },
+    "enterprise:lantu_org_chart_2025#c002": {
+      "group": "corpus/enterprise/org_chart",
+      "split": "train"
+    },
+    "enterprise:lantu_org_chart_2025#c003": {
+      "group": "corpus/enterprise/org_chart",
+      "split": "train"
+    },
+    "enterprise:lantu_org_committees#c000": {
+      "group": "corpus/enterprise/committees",
+      "split": "train"
+    },
+    "enterprise:lantu_org_committees#c001": {
+      "group": "corpus/enterprise/committees",
+      "split": "train"
+    },
+    "enterprise:lantu_org_committees#c002": {
+      "group": "corpus/enterprise/committees",
+      "split": "train"
+    },
+    "enterprise:lantu_org_committees#c003": {
+      "group": "corpus/enterprise/committees",
+      "split": "train"
+    },
+    "enterprise:lantu_org_department_duties#c000": {
+      "group": "corpus/enterprise/department_duties",
+      "split": "train"
+    },
+    "enterprise:lantu_org_department_duties#c001": {
+      "group": "corpus/enterprise/department_duties",
+      "split": "train"
+    },
+    "enterprise:lantu_org_department_duties#c002": {
+      "group": "corpus/enterprise/department_duties",
+      "split": "train"
+    },
+    "enterprise:lantu_org_department_duties#c003": {
+      "group": "corpus/enterprise/department_duties",
+      "split": "train"
+    },
+    "enterprise:lantu_org_department_duties#c004": {
+      "group": "corpus/enterprise/department_duties",
+      "split": "train"
+    },
+    "enterprise:lantu_org_department_duties#c005": {
+      "group": "corpus/enterprise/department_duties",
+      "split": "train"
+    },
+    "enterprise:lantu_org_department_duties#c006": {
+      "group": "corpus/enterprise/department_duties",
+      "split": "train"
+    },
+    "enterprise:lantu_org_executives#c000": {
+      "group": "corpus/enterprise/executives",
+      "split": "train"
+    },
+    "enterprise:lantu_org_executives#c001": {
+      "group": "corpus/enterprise/executives",
+      "split": "train"
+    },
+    "enterprise:lantu_org_executives#c002": {
+      "group": "corpus/enterprise/executives",
+      "split": "train"
+    },
+    "enterprise:lantu_org_headcount#c000": {
+      "group": "corpus/enterprise/headcount_2025",
+      "split": "test"
+    },
+    "enterprise:lantu_org_headcount#c001": {
+      "group": "corpus/enterprise/headcount_2025",
+      "split": "test"
+    },
+    "enterprise:lantu_org_rd_system#c000": {
+      "group": "corpus/enterprise/rd_system",
+      "split": "train"
+    },
+    "enterprise:lantu_org_rd_system#c001": {
+      "group": "corpus/enterprise/rd_system",
+      "split": "train"
+    },
+    "enterprise:lantu_org_rd_system#c002": {
+      "group": "corpus/enterprise/rd_system",
+      "split": "train"
+    },
+    "enterprise:lantu_org_rd_system#c003": {
+      "group": "corpus/enterprise/rd_system",
+      "split": "train"
+    },
+    "enterprise:lantu_org_rd_system#c004": {
+      "group": "corpus/enterprise/rd_system",
+      "split": "train"
+    },
+    "enterprise:lantu_org_sales_regions#c000": {
+      "group": "corpus/enterprise/sales_regions",
+      "split": "train"
+    },
+    "enterprise:lantu_org_sales_regions#c001": {
+      "group": "corpus/enterprise/sales_regions",
+      "split": "train"
+    },
+    "enterprise:lantu_org_sales_regions#c002": {
+      "group": "corpus/enterprise/sales_regions",
+      "split": "train"
+    },
+    "enterprise:lantu_org_sales_regions#c003": {
+      "group": "corpus/enterprise/sales_regions",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_attendance_2024#c000": {
+      "group": "corpus/enterprise/attendance",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_attendance_2024#c001": {
+      "group": "corpus/enterprise/attendance",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_attendance_2024#c002": {
+      "group": "corpus/enterprise/attendance",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_attendance_2024#c003": {
+      "group": "corpus/enterprise/attendance",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_attendance_2025#c000": {
+      "group": "corpus/enterprise/attendance",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_attendance_2025#c001": {
+      "group": "corpus/enterprise/attendance",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_attendance_2025#c002": {
+      "group": "corpus/enterprise/attendance",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_attendance_2025#c003": {
+      "group": "corpus/enterprise/attendance",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_attendance_2025#c004": {
+      "group": "corpus/enterprise/attendance",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_confidentiality#c000": {
+      "group": "corpus/enterprise/confidentiality",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_confidentiality#c001": {
+      "group": "corpus/enterprise/confidentiality",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_confidentiality#c002": {
+      "group": "corpus/enterprise/confidentiality",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_confidentiality#c003": {
+      "group": "corpus/enterprise/confidentiality",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_confidentiality#c004": {
+      "group": "corpus/enterprise/confidentiality",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_contract#c000": {
+      "group": "corpus/enterprise/contract_management",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_contract#c001": {
+      "group": "corpus/enterprise/contract_management",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_contract#c002": {
+      "group": "corpus/enterprise/contract_management",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_contract#c003": {
+      "group": "corpus/enterprise/contract_management",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_contract#c004": {
+      "group": "corpus/enterprise/contract_management",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_data_classification#c000": {
+      "group": "corpus/enterprise/data_classification",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_data_classification#c001": {
+      "group": "corpus/enterprise/data_classification",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_data_classification#c002": {
+      "group": "corpus/enterprise/data_classification",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_data_classification#c003": {
+      "group": "corpus/enterprise/data_classification",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_data_classification#c004": {
+      "group": "corpus/enterprise/data_classification",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_employee_handbook#c000": {
+      "group": "corpus/enterprise/employee_handbook",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_employee_handbook#c001": {
+      "group": "corpus/enterprise/employee_handbook",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_employee_handbook#c002": {
+      "group": "corpus/enterprise/employee_handbook",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_employee_handbook#c003": {
+      "group": "corpus/enterprise/employee_handbook",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_employee_handbook#c004": {
+      "group": "corpus/enterprise/employee_handbook",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_employee_handbook#c005": {
+      "group": "corpus/enterprise/employee_handbook",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_entertainment#c000": {
+      "group": "corpus/enterprise/business_entertainment",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_entertainment#c001": {
+      "group": "corpus/enterprise/business_entertainment",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_entertainment#c002": {
+      "group": "corpus/enterprise/business_entertainment",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_entertainment#c003": {
+      "group": "corpus/enterprise/business_entertainment",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_entertainment#c004": {
+      "group": "corpus/enterprise/business_entertainment",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_purchase_2024#c000": {
+      "group": "corpus/enterprise/purchase_payment",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_purchase_2024#c001": {
+      "group": "corpus/enterprise/purchase_payment",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_purchase_2024#c002": {
+      "group": "corpus/enterprise/purchase_payment",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_purchase_2024#c003": {
+      "group": "corpus/enterprise/purchase_payment",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_purchase_2025#c000": {
+      "group": "corpus/enterprise/purchase_payment",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_purchase_2025#c001": {
+      "group": "corpus/enterprise/purchase_payment",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_purchase_2025#c002": {
+      "group": "corpus/enterprise/purchase_payment",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_purchase_2025#c003": {
+      "group": "corpus/enterprise/purchase_payment",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_purchase_2025#c004": {
+      "group": "corpus/enterprise/purchase_payment",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_reimbursement#c000": {
+      "group": "corpus/enterprise/reimbursement",
+      "split": "test"
+    },
+    "enterprise:lantu_policy_reimbursement#c001": {
+      "group": "corpus/enterprise/reimbursement",
+      "split": "test"
+    },
+    "enterprise:lantu_policy_reimbursement#c002": {
+      "group": "corpus/enterprise/reimbursement",
+      "split": "test"
+    },
+    "enterprise:lantu_policy_reimbursement#c003": {
+      "group": "corpus/enterprise/reimbursement",
+      "split": "test"
+    },
+    "enterprise:lantu_policy_reimbursement#c004": {
+      "group": "corpus/enterprise/reimbursement",
+      "split": "test"
+    },
+    "enterprise:lantu_policy_seal#c000": {
+      "group": "corpus/enterprise/seal_management",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_seal#c001": {
+      "group": "corpus/enterprise/seal_management",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_seal#c002": {
+      "group": "corpus/enterprise/seal_management",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_seal#c003": {
+      "group": "corpus/enterprise/seal_management",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_vehicle#c000": {
+      "group": "corpus/enterprise/vehicle_management",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_vehicle#c001": {
+      "group": "corpus/enterprise/vehicle_management",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_vehicle#c002": {
+      "group": "corpus/enterprise/vehicle_management",
+      "split": "train"
+    },
+    "enterprise:lantu_policy_vehicle#c003": {
+      "group": "corpus/enterprise/vehicle_management",
+      "split": "train"
+    },
+    "enterprise:lantu_product_amr#c000": {
+      "group": "corpus/enterprise/product_amr",
+      "split": "train"
+    },
+    "enterprise:lantu_product_amr#c001": {
+      "group": "corpus/enterprise/product_amr",
+      "split": "train"
+    },
+    "enterprise:lantu_product_amr#c002": {
+      "group": "corpus/enterprise/product_amr",
+      "split": "train"
+    },
+    "enterprise:lantu_product_amr#c003": {
+      "group": "corpus/enterprise/product_amr",
+      "split": "train"
+    },
+    "enterprise:lantu_product_assembly#c000": {
+      "group": "corpus/enterprise/solution_assembly",
+      "split": "train"
+    },
+    "enterprise:lantu_product_assembly#c001": {
+      "group": "corpus/enterprise/solution_assembly",
+      "split": "train"
+    },
+    "enterprise:lantu_product_assembly#c002": {
+      "group": "corpus/enterprise/solution_assembly",
+      "split": "train"
+    },
+    "enterprise:lantu_product_assembly#c003": {
+      "group": "corpus/enterprise/solution_assembly",
+      "split": "train"
+    },
+    "enterprise:lantu_product_digital_twin#c000": {
+      "group": "corpus/enterprise/product_digital_twin",
+      "split": "val"
+    },
+    "enterprise:lantu_product_digital_twin#c001": {
+      "group": "corpus/enterprise/product_digital_twin",
+      "split": "val"
+    },
+    "enterprise:lantu_product_digital_twin#c002": {
+      "group": "corpus/enterprise/product_digital_twin",
+      "split": "val"
+    },
+    "enterprise:lantu_product_digital_twin#c003": {
+      "group": "corpus/enterprise/product_digital_twin",
+      "split": "val"
+    },
+    "enterprise:lantu_product_matrix#c000": {
+      "group": "corpus/enterprise/product_matrix",
+      "split": "train"
+    },
+    "enterprise:lantu_product_matrix#c001": {
+      "group": "corpus/enterprise/product_matrix",
+      "split": "train"
+    },
+    "enterprise:lantu_product_overview#c000": {
+      "group": "corpus/enterprise/product_overview",
+      "split": "train"
+    },
+    "enterprise:lantu_product_overview#c001": {
+      "group": "corpus/enterprise/product_overview",
+      "split": "train"
+    },
+    "enterprise:lantu_product_overview#c002": {
+      "group": "corpus/enterprise/product_overview",
+      "split": "train"
+    },
+    "enterprise:lantu_product_overview#c003": {
+      "group": "corpus/enterprise/product_overview",
+      "split": "train"
+    },
+    "enterprise:lantu_product_overview#c004": {
+      "group": "corpus/enterprise/product_overview",
+      "split": "train"
+    },
+    "enterprise:lantu_product_painting#c000": {
+      "group": "corpus/enterprise/solution_painting",
+      "split": "train"
+    },
+    "enterprise:lantu_product_painting#c001": {
+      "group": "corpus/enterprise/solution_painting",
+      "split": "train"
+    },
+    "enterprise:lantu_product_painting#c002": {
+      "group": "corpus/enterprise/solution_painting",
+      "split": "train"
+    },
+    "enterprise:lantu_product_painting#c003": {
+      "group": "corpus/enterprise/solution_painting",
+      "split": "train"
+    },
+    "enterprise:lantu_product_r20_pro_whitepaper#c000": {
+      "group": "corpus/enterprise/product_r20_pro",
+      "split": "train"
+    },
+    "enterprise:lantu_product_r20_pro_whitepaper#c001": {
+      "group": "corpus/enterprise/product_r20_pro",
+      "split": "train"
+    },
+    "enterprise:lantu_product_r20_pro_whitepaper#c002": {
+      "group": "corpus/enterprise/product_r20_pro",
+      "split": "train"
+    },
+    "enterprise:lantu_product_r20_pro_whitepaper#c003": {
+      "group": "corpus/enterprise/product_r20_pro",
+      "split": "train"
+    },
+    "enterprise:lantu_product_r20_pro_whitepaper#c004": {
+      "group": "corpus/enterprise/product_r20_pro",
+      "split": "train"
+    },
+    "enterprise:lantu_product_r20_pro_whitepaper#c005": {
+      "group": "corpus/enterprise/product_r20_pro",
+      "split": "train"
+    },
+    "enterprise:lantu_product_s_series#c000": {
+      "group": "corpus/enterprise/product_s_series",
+      "split": "train"
+    },
+    "enterprise:lantu_product_s_series#c001": {
+      "group": "corpus/enterprise/product_s_series",
+      "split": "train"
+    },
+    "enterprise:lantu_product_s_series#c002": {
+      "group": "corpus/enterprise/product_s_series",
+      "split": "train"
+    },
+    "enterprise:lantu_product_s_series#c003": {
+      "group": "corpus/enterprise/product_s_series",
+      "split": "train"
+    },
+    "enterprise:lantu_product_vision#c000": {
+      "group": "corpus/enterprise/product_vision",
+      "split": "train"
+    },
+    "enterprise:lantu_product_vision#c001": {
+      "group": "corpus/enterprise/product_vision",
+      "split": "train"
+    },
+    "enterprise:lantu_product_vision#c002": {
+      "group": "corpus/enterprise/product_vision",
+      "split": "train"
+    },
+    "enterprise:lantu_product_vision#c003": {
+      "group": "corpus/enterprise/product_vision",
+      "split": "train"
+    },
+    "enterprise:lantu_product_welding#c000": {
+      "group": "corpus/enterprise/solution_welding",
+      "split": "train"
+    },
+    "enterprise:lantu_product_welding#c001": {
+      "group": "corpus/enterprise/solution_welding",
+      "split": "train"
+    },
+    "enterprise:lantu_product_welding#c002": {
+      "group": "corpus/enterprise/solution_welding",
+      "split": "train"
+    },
+    "enterprise:lantu_product_welding#c003": {
+      "group": "corpus/enterprise/solution_welding",
+      "split": "train"
+    },
+    "enterprise:lantu_sales_channel#c000": {
+      "group": "corpus/enterprise/sales_channel",
+      "split": "val"
+    },
+    "enterprise:lantu_sales_channel#c001": {
+      "group": "corpus/enterprise/sales_channel",
+      "split": "val"
+    },
+    "enterprise:lantu_sales_channel#c002": {
+      "group": "corpus/enterprise/sales_channel",
+      "split": "val"
+    },
+    "enterprise:lantu_sales_channel#c003": {
+      "group": "corpus/enterprise/sales_channel",
+      "split": "val"
+    },
+    "enterprise:lantu_sales_customer_list#c000": {
+      "group": "corpus/enterprise/customer_list_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_sales_customer_list#c001": {
+      "group": "corpus/enterprise/customer_list_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_sales_discount_2024#c000": {
+      "group": "corpus/enterprise/sales_discount",
+      "split": "train"
+    },
+    "enterprise:lantu_sales_discount_2024#c001": {
+      "group": "corpus/enterprise/sales_discount",
+      "split": "train"
+    },
+    "enterprise:lantu_sales_discount_2024#c002": {
+      "group": "corpus/enterprise/sales_discount",
+      "split": "train"
+    },
+    "enterprise:lantu_sales_discount_2025#c000": {
+      "group": "corpus/enterprise/sales_discount",
+      "split": "train"
+    },
+    "enterprise:lantu_sales_discount_2025#c001": {
+      "group": "corpus/enterprise/sales_discount",
+      "split": "train"
+    },
+    "enterprise:lantu_sales_discount_2025#c002": {
+      "group": "corpus/enterprise/sales_discount",
+      "split": "train"
+    },
+    "enterprise:lantu_sales_discount_2025#c003": {
+      "group": "corpus/enterprise/sales_discount",
+      "split": "train"
+    },
+    "enterprise:lantu_sales_policy#c000": {
+      "group": "corpus/enterprise/sales_policy",
+      "split": "train"
+    },
+    "enterprise:lantu_sales_policy#c001": {
+      "group": "corpus/enterprise/sales_policy",
+      "split": "train"
+    },
+    "enterprise:lantu_sales_policy#c002": {
+      "group": "corpus/enterprise/sales_policy",
+      "split": "train"
+    },
+    "enterprise:lantu_sales_policy#c003": {
+      "group": "corpus/enterprise/sales_policy",
+      "split": "train"
+    },
+    "enterprise:lantu_sales_quote#c000": {
+      "group": "corpus/enterprise/sales_quote",
+      "split": "val"
+    },
+    "enterprise:lantu_sales_quote#c001": {
+      "group": "corpus/enterprise/sales_quote",
+      "split": "val"
+    },
+    "enterprise:lantu_sales_quote#c002": {
+      "group": "corpus/enterprise/sales_quote",
+      "split": "val"
+    },
+    "enterprise:lantu_sales_quote#c003": {
+      "group": "corpus/enterprise/sales_quote",
+      "split": "val"
+    },
+    "enterprise:lantu_solution_lithium#c000": {
+      "group": "corpus/enterprise/solution_lithium",
+      "split": "train"
+    },
+    "enterprise:lantu_solution_lithium#c001": {
+      "group": "corpus/enterprise/solution_lithium",
+      "split": "train"
+    },
+    "enterprise:lantu_solution_lithium#c002": {
+      "group": "corpus/enterprise/solution_lithium",
+      "split": "train"
+    },
+    "enterprise:lantu_solution_lithium#c003": {
+      "group": "corpus/enterprise/solution_lithium",
+      "split": "train"
+    },
+    "enterprise:lantu_solution_photovoltaic#c000": {
+      "group": "corpus/enterprise/solution_photovoltaic",
+      "split": "val"
+    },
+    "enterprise:lantu_solution_photovoltaic#c001": {
+      "group": "corpus/enterprise/solution_photovoltaic",
+      "split": "val"
+    },
+    "enterprise:lantu_solution_photovoltaic#c002": {
+      "group": "corpus/enterprise/solution_photovoltaic",
+      "split": "val"
+    },
+    "enterprise:lantu_solution_photovoltaic#c003": {
+      "group": "corpus/enterprise/solution_photovoltaic",
+      "split": "val"
+    },
+    "enterprise:lantu_solution_semiconductor#c000": {
+      "group": "corpus/enterprise/solution_semiconductor",
+      "split": "train"
+    },
+    "enterprise:lantu_solution_semiconductor#c001": {
+      "group": "corpus/enterprise/solution_semiconductor",
+      "split": "train"
+    },
+    "enterprise:lantu_solution_semiconductor#c002": {
+      "group": "corpus/enterprise/solution_semiconductor",
+      "split": "train"
+    },
+    "enterprise:lantu_solution_semiconductor#c003": {
+      "group": "corpus/enterprise/solution_semiconductor",
+      "split": "train"
+    },
+    "enterprise:lantu_strategy_2025#c000": {
+      "group": "corpus/enterprise/annual_plan_2025",
+      "split": "test"
+    },
+    "enterprise:lantu_strategy_2025#c001": {
+      "group": "corpus/enterprise/annual_plan_2025",
+      "split": "test"
+    },
+    "enterprise:lantu_strategy_2025#c002": {
+      "group": "corpus/enterprise/annual_plan_2025",
+      "split": "test"
+    },
+    "enterprise:lantu_strategy_2025#c003": {
+      "group": "corpus/enterprise/annual_plan_2025",
+      "split": "test"
+    },
+    "enterprise:lantu_strategy_2026#c000": {
+      "group": "corpus/enterprise/annual_plan_2026",
+      "split": "train"
+    },
+    "enterprise:lantu_strategy_2026#c001": {
+      "group": "corpus/enterprise/annual_plan_2026",
+      "split": "train"
+    },
+    "enterprise:lantu_strategy_2026#c002": {
+      "group": "corpus/enterprise/annual_plan_2026",
+      "split": "train"
+    },
+    "enterprise:lantu_strategy_2026#c003": {
+      "group": "corpus/enterprise/annual_plan_2026",
+      "split": "train"
+    },
+    "enterprise:lantu_strategy_2026#c004": {
+      "group": "corpus/enterprise/annual_plan_2026",
+      "split": "train"
+    },
+    "enterprise:lantu_strategy_digital_transformation#c000": {
+      "group": "corpus/enterprise/digital_transformation",
+      "split": "val"
+    },
+    "enterprise:lantu_strategy_digital_transformation#c001": {
+      "group": "corpus/enterprise/digital_transformation",
+      "split": "val"
+    },
+    "enterprise:lantu_strategy_digital_transformation#c002": {
+      "group": "corpus/enterprise/digital_transformation",
+      "split": "val"
+    },
+    "enterprise:lantu_strategy_digital_transformation#c003": {
+      "group": "corpus/enterprise/digital_transformation",
+      "split": "val"
+    },
+    "enterprise:lantu_strategy_esg#c000": {
+      "group": "corpus/enterprise/esg_report",
+      "split": "train"
+    },
+    "enterprise:lantu_strategy_esg#c001": {
+      "group": "corpus/enterprise/esg_report",
+      "split": "train"
+    },
+    "enterprise:lantu_strategy_esg#c002": {
+      "group": "corpus/enterprise/esg_report",
+      "split": "train"
+    },
+    "enterprise:lantu_strategy_esg#c003": {
+      "group": "corpus/enterprise/esg_report",
+      "split": "train"
+    },
+    "enterprise:lantu_strategy_quality_system#c000": {
+      "group": "corpus/enterprise/quality_system",
+      "split": "train"
+    },
+    "enterprise:lantu_strategy_quality_system#c001": {
+      "group": "corpus/enterprise/quality_system",
+      "split": "train"
+    },
+    "enterprise:lantu_strategy_quality_system#c002": {
+      "group": "corpus/enterprise/quality_system",
+      "split": "train"
+    },
+    "enterprise:lantu_strategy_quality_system#c003": {
+      "group": "corpus/enterprise/quality_system",
+      "split": "train"
+    },
+    "enterprise:lantu_strategy_quality_system#c004": {
+      "group": "corpus/enterprise/quality_system",
+      "split": "train"
+    },
+    "enterprise:lantu_strategy_quality_system#c005": {
+      "group": "corpus/enterprise/quality_system",
+      "split": "train"
+    },
+    "enterprise:lantu_strategy_safety#c000": {
+      "group": "corpus/enterprise/safety_production",
+      "split": "test"
+    },
+    "enterprise:lantu_strategy_safety#c001": {
+      "group": "corpus/enterprise/safety_production",
+      "split": "test"
+    },
+    "enterprise:lantu_strategy_safety#c002": {
+      "group": "corpus/enterprise/safety_production",
+      "split": "test"
+    },
+    "enterprise:lantu_strategy_safety#c003": {
+      "group": "corpus/enterprise/safety_production",
+      "split": "test"
+    },
+    "enterprise:lantu_strategy_supply_chain_resilience#c000": {
+      "group": "corpus/enterprise/supply_chain_resilience",
+      "split": "train"
+    },
+    "enterprise:lantu_strategy_supply_chain_resilience#c001": {
+      "group": "corpus/enterprise/supply_chain_resilience",
+      "split": "train"
+    },
+    "enterprise:lantu_strategy_supply_chain_resilience#c002": {
+      "group": "corpus/enterprise/supply_chain_resilience",
+      "split": "train"
+    },
+    "enterprise:lantu_strategy_supply_chain_resilience#c003": {
+      "group": "corpus/enterprise/supply_chain_resilience",
+      "split": "train"
+    },
+    "enterprise:lantu_support_case_hengxin#c000": {
+      "group": "corpus/enterprise/service_case_hengxin",
+      "split": "train"
+    },
+    "enterprise:lantu_support_case_hengxin#c001": {
+      "group": "corpus/enterprise/service_case_hengxin",
+      "split": "train"
+    },
+    "enterprise:lantu_support_case_hengxin#c002": {
+      "group": "corpus/enterprise/service_case_hengxin",
+      "split": "train"
+    },
+    "enterprise:lantu_support_case_hengxin#c003": {
+      "group": "corpus/enterprise/service_case_hengxin",
+      "split": "train"
+    },
+    "enterprise:lantu_support_case_hengxin#c004": {
+      "group": "corpus/enterprise/service_case_hengxin",
+      "split": "train"
+    },
+    "enterprise:lantu_support_complaint#c000": {
+      "group": "corpus/enterprise/complaint_management",
+      "split": "train"
+    },
+    "enterprise:lantu_support_complaint#c001": {
+      "group": "corpus/enterprise/complaint_management",
+      "split": "train"
+    },
+    "enterprise:lantu_support_complaint#c002": {
+      "group": "corpus/enterprise/complaint_management",
+      "split": "train"
+    },
+    "enterprise:lantu_support_complaint#c003": {
+      "group": "corpus/enterprise/complaint_management",
+      "split": "train"
+    },
+    "enterprise:lantu_support_field_service#c000": {
+      "group": "corpus/enterprise/field_service",
+      "split": "train"
+    },
+    "enterprise:lantu_support_field_service#c001": {
+      "group": "corpus/enterprise/field_service",
+      "split": "train"
+    },
+    "enterprise:lantu_support_field_service#c002": {
+      "group": "corpus/enterprise/field_service",
+      "split": "train"
+    },
+    "enterprise:lantu_support_field_service#c003": {
+      "group": "corpus/enterprise/field_service",
+      "split": "train"
+    },
+    "enterprise:lantu_support_recall_2025#c000": {
+      "group": "corpus/enterprise/recall_lt_r12_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_support_recall_2025#c001": {
+      "group": "corpus/enterprise/recall_lt_r12_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_support_recall_2025#c002": {
+      "group": "corpus/enterprise/recall_lt_r12_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_support_recall_2025#c003": {
+      "group": "corpus/enterprise/recall_lt_r12_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_support_recall_2025#c004": {
+      "group": "corpus/enterprise/recall_lt_r12_2025",
+      "split": "train"
+    },
+    "enterprise:lantu_support_remote_diagnostics#c000": {
+      "group": "corpus/enterprise/remote_diagnostics",
+      "split": "train"
+    },
+    "enterprise:lantu_support_remote_diagnostics#c001": {
+      "group": "corpus/enterprise/remote_diagnostics",
+      "split": "train"
+    },
+    "enterprise:lantu_support_remote_diagnostics#c002": {
+      "group": "corpus/enterprise/remote_diagnostics",
+      "split": "train"
+    },
+    "enterprise:lantu_support_remote_diagnostics#c003": {
+      "group": "corpus/enterprise/remote_diagnostics",
+      "split": "train"
+    },
+    "enterprise:lantu_support_spare_inventory#c000": {
+      "group": "corpus/enterprise/spare_inventory_2025q4",
+      "split": "val"
+    },
+    "enterprise:lantu_support_system#c000": {
+      "group": "corpus/enterprise/service_system",
+      "split": "val"
+    },
+    "enterprise:lantu_support_system#c001": {
+      "group": "corpus/enterprise/service_system",
+      "split": "val"
+    },
+    "enterprise:lantu_support_system#c002": {
+      "group": "corpus/enterprise/service_system",
+      "split": "val"
+    },
+    "enterprise:lantu_support_system#c003": {
+      "group": "corpus/enterprise/service_system",
+      "split": "val"
+    },
+    "enterprise:lantu_support_training_certification#c000": {
+      "group": "corpus/enterprise/service_certification",
+      "split": "train"
+    },
+    "enterprise:lantu_support_training_certification#c001": {
+      "group": "corpus/enterprise/service_certification",
+      "split": "train"
+    },
+    "enterprise:lantu_support_training_certification#c002": {
+      "group": "corpus/enterprise/service_certification",
+      "split": "train"
+    },
+    "enterprise:lantu_support_training_certification#c003": {
+      "group": "corpus/enterprise/service_certification",
+      "split": "train"
+    },
+    "enterprise:lantu_support_warranty#c000": {
+      "group": "corpus/enterprise/warranty_policy",
+      "split": "val"
+    },
+    "enterprise:lantu_support_warranty#c001": {
+      "group": "corpus/enterprise/warranty_policy",
+      "split": "val"
+    },
+    "enterprise:lantu_support_warranty#c002": {
+      "group": "corpus/enterprise/warranty_policy",
+      "split": "val"
+    },
+    "enterprise:lantu_support_warranty#c003": {
+      "group": "corpus/enterprise/warranty_policy",
+      "split": "val"
+    },
+    "enterprise:lantu_tech_cloud_platform#c000": {
+      "group": "corpus/enterprise/cloud_platform",
+      "split": "val"
+    },
+    "enterprise:lantu_tech_cloud_platform#c001": {
+      "group": "corpus/enterprise/cloud_platform",
+      "split": "val"
+    },
+    "enterprise:lantu_tech_cloud_platform#c002": {
+      "group": "corpus/enterprise/cloud_platform",
+      "split": "val"
+    },
+    "enterprise:lantu_tech_cloud_platform#c003": {
+      "group": "corpus/enterprise/cloud_platform",
+      "split": "val"
+    },
+    "enterprise:lantu_tech_control_architecture#c000": {
+      "group": "corpus/enterprise/control_architecture",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_control_architecture#c001": {
+      "group": "corpus/enterprise/control_architecture",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_control_architecture#c002": {
+      "group": "corpus/enterprise/control_architecture",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_control_architecture#c003": {
+      "group": "corpus/enterprise/control_architecture",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_control_architecture#c004": {
+      "group": "corpus/enterprise/control_architecture",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_data_platform#c000": {
+      "group": "corpus/enterprise/data_platform",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_data_platform#c001": {
+      "group": "corpus/enterprise/data_platform",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_data_platform#c002": {
+      "group": "corpus/enterprise/data_platform",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_data_platform#c003": {
+      "group": "corpus/enterprise/data_platform",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_edge#c000": {
+      "group": "corpus/enterprise/edge_computing",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_edge#c001": {
+      "group": "corpus/enterprise/edge_computing",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_edge#c002": {
+      "group": "corpus/enterprise/edge_computing",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_edge#c003": {
+      "group": "corpus/enterprise/edge_computing",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_patents#c000": {
+      "group": "corpus/enterprise/patent_portfolio",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_patents#c001": {
+      "group": "corpus/enterprise/patent_portfolio",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_patents#c002": {
+      "group": "corpus/enterprise/patent_portfolio",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_patents#c003": {
+      "group": "corpus/enterprise/patent_portfolio",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_rd_process#c000": {
+      "group": "corpus/enterprise/ipd_process",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_rd_process#c001": {
+      "group": "corpus/enterprise/ipd_process",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_rd_process#c002": {
+      "group": "corpus/enterprise/ipd_process",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_rd_process#c003": {
+      "group": "corpus/enterprise/ipd_process",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_roadmap#c000": {
+      "group": "corpus/enterprise/tech_roadmap",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_roadmap#c001": {
+      "group": "corpus/enterprise/tech_roadmap",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_roadmap#c002": {
+      "group": "corpus/enterprise/tech_roadmap",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_roadmap#c003": {
+      "group": "corpus/enterprise/tech_roadmap",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_security#c000": {
+      "group": "corpus/enterprise/product_security",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_security#c001": {
+      "group": "corpus/enterprise/product_security",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_security#c002": {
+      "group": "corpus/enterprise/product_security",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_security#c003": {
+      "group": "corpus/enterprise/product_security",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_servo#c000": {
+      "group": "corpus/enterprise/servo_drive",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_servo#c001": {
+      "group": "corpus/enterprise/servo_drive",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_servo#c002": {
+      "group": "corpus/enterprise/servo_drive",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_servo#c003": {
+      "group": "corpus/enterprise/servo_drive",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_vision#c000": {
+      "group": "corpus/enterprise/vision_algorithm",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_vision#c001": {
+      "group": "corpus/enterprise/vision_algorithm",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_vision#c002": {
+      "group": "corpus/enterprise/vision_algorithm",
+      "split": "train"
+    },
+    "enterprise:lantu_tech_vision#c003": {
+      "group": "corpus/enterprise/vision_algorithm",
+      "split": "train"
+    },
+    "oa:doc_306671875745#c000": {
+      "group": "corpus/oa/doc_306671875745",
+      "split": "train"
+    },
+    "oa:doc_306671875745#c001": {
+      "group": "corpus/oa/doc_306671875745",
+      "split": "train"
+    },
+    "oa:doc_306671875745#c002": {
+      "group": "corpus/oa/doc_306671875745",
+      "split": "train"
+    },
+    "oa:doc_306671875745#c003": {
+      "group": "corpus/oa/doc_306671875745",
+      "split": "train"
+    },
+    "oa:doc_306671875745#c004": {
+      "group": "corpus/oa/doc_306671875745",
+      "split": "train"
+    },
+    "oa:doc_306671875745#c005": {
+      "group": "corpus/oa/doc_306671875745",
+      "split": "train"
+    },
+    "oa:doc_c5dba4ca5261#c000": {
+      "group": "corpus/oa/doc_c5dba4ca5261",
+      "split": "test"
+    },
+    "oa:doc_c5dba4ca5261#c001": {
+      "group": "corpus/oa/doc_c5dba4ca5261",
+      "split": "test"
+    },
+    "oa:doc_c5dba4ca5261#c002": {
+      "group": "corpus/oa/doc_c5dba4ca5261",
+      "split": "test"
+    },
+    "oa:doc_c5dba4ca5261#c003": {
+      "group": "corpus/oa/doc_c5dba4ca5261",
+      "split": "test"
+    },
+    "oa:doc_c19692fc4a58#c000": {
+      "group": "corpus/oa/doc_c19692fc4a58",
+      "split": "val"
+    },
+    "oa:doc_c19692fc4a58#c001": {
+      "group": "corpus/oa/doc_c19692fc4a58",
+      "split": "val"
+    },
+    "oa:doc_c19692fc4a58#c002": {
+      "group": "corpus/oa/doc_c19692fc4a58",
+      "split": "val"
+    },
+    "oa:doc_c19692fc4a58#c003": {
+      "group": "corpus/oa/doc_c19692fc4a58",
+      "split": "val"
+    },
+    "oa:doc_c19692fc4a58#c004": {
+      "group": "corpus/oa/doc_c19692fc4a58",
+      "split": "val"
+    },
+    "oa:doc_c19692fc4a58#c005": {
+      "group": "corpus/oa/doc_c19692fc4a58",
+      "split": "val"
+    },
+    "oa:doc_508c650784cc#c000": {
+      "group": "corpus/oa/doc_508c650784cc",
+      "split": "train"
+    },
+    "oa:doc_508c650784cc#c001": {
+      "group": "corpus/oa/doc_508c650784cc",
+      "split": "train"
+    },
+    "oa:doc_508c650784cc#c002": {
+      "group": "corpus/oa/doc_508c650784cc",
+      "split": "train"
+    },
+    "oa:doc_508c650784cc#c003": {
+      "group": "corpus/oa/doc_508c650784cc",
+      "split": "train"
+    },
+    "oa:doc_9cc4a4f12f9d#c000": {
+      "group": "corpus/oa/doc_9cc4a4f12f9d",
+      "split": "val"
+    },
+    "oa:doc_9cc4a4f12f9d#c001": {
+      "group": "corpus/oa/doc_9cc4a4f12f9d",
+      "split": "val"
+    },
+    "oa:doc_9cc4a4f12f9d#c002": {
+      "group": "corpus/oa/doc_9cc4a4f12f9d",
+      "split": "val"
+    },
+    "oa:doc_9cc4a4f12f9d#c003": {
+      "group": "corpus/oa/doc_9cc4a4f12f9d",
+      "split": "val"
+    },
+    "oa:doc_4abf2e4fc123#c000": {
+      "group": "corpus/oa/doc_4abf2e4fc123",
+      "split": "train"
+    },
+    "oa:doc_4abf2e4fc123#c001": {
+      "group": "corpus/oa/doc_4abf2e4fc123",
+      "split": "train"
+    },
+    "oa:doc_4abf2e4fc123#c002": {
+      "group": "corpus/oa/doc_4abf2e4fc123",
+      "split": "train"
+    },
+    "oa:doc_4abf2e4fc123#c003": {
+      "group": "corpus/oa/doc_4abf2e4fc123",
+      "split": "train"
+    },
+    "oa:doc_4abf2e4fc123#c004": {
+      "group": "corpus/oa/doc_4abf2e4fc123",
+      "split": "train"
+    },
+    "oa:doc_4abf2e4fc123#c005": {
+      "group": "corpus/oa/doc_4abf2e4fc123",
+      "split": "train"
+    },
+    "oa:doc_462ade1d80d0#c000": {
+      "group": "corpus/oa/doc_462ade1d80d0",
+      "split": "train"
+    },
+    "oa:doc_462ade1d80d0#c001": {
+      "group": "corpus/oa/doc_462ade1d80d0",
+      "split": "train"
+    },
+    "oa:doc_462ade1d80d0#c002": {
+      "group": "corpus/oa/doc_462ade1d80d0",
+      "split": "train"
+    },
+    "oa:doc_462ade1d80d0#c003": {
+      "group": "corpus/oa/doc_462ade1d80d0",
+      "split": "train"
+    },
+    "oa:doc_c327bc565b83#c000": {
+      "group": "corpus/oa/doc_c327bc565b83",
+      "split": "train"
+    },
+    "oa:doc_c327bc565b83#c001": {
+      "group": "corpus/oa/doc_c327bc565b83",
+      "split": "train"
+    },
+    "oa:doc_c327bc565b83#c002": {
+      "group": "corpus/oa/doc_c327bc565b83",
+      "split": "train"
+    },
+    "oa:doc_c327bc565b83#c003": {
+      "group": "corpus/oa/doc_c327bc565b83",
+      "split": "train"
+    },
+    "oa:doc_c327bc565b83#c004": {
+      "group": "corpus/oa/doc_c327bc565b83",
+      "split": "train"
+    },
+    "oa:doc_c327bc565b83#c005": {
+      "group": "corpus/oa/doc_c327bc565b83",
+      "split": "train"
+    },
+    "oa:doc_a78ddeff7e3b#c000": {
+      "group": "corpus/oa/doc_a78ddeff7e3b",
+      "split": "train"
+    },
+    "oa:doc_a78ddeff7e3b#c001": {
+      "group": "corpus/oa/doc_a78ddeff7e3b",
+      "split": "train"
+    },
+    "oa:doc_a78ddeff7e3b#c002": {
+      "group": "corpus/oa/doc_a78ddeff7e3b",
+      "split": "train"
+    },
+    "oa:doc_a78ddeff7e3b#c003": {
+      "group": "corpus/oa/doc_a78ddeff7e3b",
+      "split": "train"
+    },
+    "oa:doc_a78ddeff7e3b#c004": {
+      "group": "corpus/oa/doc_a78ddeff7e3b",
+      "split": "train"
+    },
+    "oa:doc_a78ddeff7e3b#c005": {
+      "group": "corpus/oa/doc_a78ddeff7e3b",
+      "split": "train"
+    },
+    "oa:doc_aee2588b8f11#c000": {
+      "group": "corpus/oa/doc_aee2588b8f11",
+      "split": "train"
+    },
+    "oa:doc_aee2588b8f11#c001": {
+      "group": "corpus/oa/doc_aee2588b8f11",
+      "split": "train"
+    },
+    "oa:doc_aee2588b8f11#c002": {
+      "group": "corpus/oa/doc_aee2588b8f11",
+      "split": "train"
+    },
+    "oa:doc_aee2588b8f11#c003": {
+      "group": "corpus/oa/doc_aee2588b8f11",
+      "split": "train"
+    },
+    "oa:doc_aee2588b8f11#c004": {
+      "group": "corpus/oa/doc_aee2588b8f11",
+      "split": "train"
+    },
+    "oa:doc_731128f067fc#c000": {
+      "group": "corpus/oa/doc_731128f067fc",
+      "split": "test"
+    },
+    "oa:doc_731128f067fc#c001": {
+      "group": "corpus/oa/doc_731128f067fc",
+      "split": "test"
+    },
+    "oa:doc_731128f067fc#c002": {
+      "group": "corpus/oa/doc_731128f067fc",
+      "split": "test"
+    },
+    "oa:doc_731128f067fc#c003": {
+      "group": "corpus/oa/doc_731128f067fc",
+      "split": "test"
+    },
+    "oa:doc_731128f067fc#c004": {
+      "group": "corpus/oa/doc_731128f067fc",
+      "split": "test"
+    },
+    "oa:doc_731128f067fc#c005": {
+      "group": "corpus/oa/doc_731128f067fc",
+      "split": "test"
+    },
+    "oa:doc_42da4b0a3c12#c000": {
+      "group": "corpus/oa/doc_42da4b0a3c12",
+      "split": "train"
+    },
+    "oa:doc_42da4b0a3c12#c001": {
+      "group": "corpus/oa/doc_42da4b0a3c12",
+      "split": "train"
+    },
+    "oa:doc_42da4b0a3c12#c002": {
+      "group": "corpus/oa/doc_42da4b0a3c12",
+      "split": "train"
+    },
+    "oa:doc_42da4b0a3c12#c003": {
+      "group": "corpus/oa/doc_42da4b0a3c12",
+      "split": "train"
+    },
+    "oa:doc_42da4b0a3c12#c004": {
+      "group": "corpus/oa/doc_42da4b0a3c12",
+      "split": "train"
+    },
+    "oa:doc_42da4b0a3c12#c005": {
+      "group": "corpus/oa/doc_42da4b0a3c12",
+      "split": "train"
+    },
+    "oa:doc_42da4b0a3c12#c006": {
+      "group": "corpus/oa/doc_42da4b0a3c12",
+      "split": "train"
+    }
+  },
+  "scope": [
+    "业务路由与完整字段回放",
+    "真实资料摘录和表格查找",
+    "引用和拒答",
+    "合成证据下的简单计算与两跳关联"
+  ],
+  "limitations": [
+    "主要为规则生成标签；未声称独立人工验收",
+    "文档族隔离不等于所有实体和语义事实完全隔离",
+    "业务执行与权限仍由Agent负责；不训练原生function calling",
+    "不监督内部思维链，不保证可靠复杂推理",
+    "历史评测是开发回归；本轮test也是合成题，另需用户真实问题验收"
+  ],
+  "status": "encoding_checked_pending_server_smoke",
+  "encoding_check_sha256": "5babe175cea070d14cd9eabaa6101d2eb16bbc572fd9226227b5708d62e6e699"
+}

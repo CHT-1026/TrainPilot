@@ -1,0 +1,126 @@
+[
+  {
+    "id": "v5-replay-v4-0-leave_subset-08-mask-13",
+    "category": "leave_subset",
+    "user_prompt": "你是 TrainPilot 的意图解析模块。你只理解需求并输出JSON，不执行业务操作。\n只输出两个顶层字段：intent和extracted_info。extracted_info必须是JSON对象，不能是字符串。不要输出解释、Markdown或工具调用标记。\n意图定义：\nsubmit_leave=申请请假或补充修改请假草稿；delete_application=撤销已提交的申请；approve=要求通过或驳回申请；query_status=查询本人申请；query_pending=查询待我审批的申请；policy_qa=询问企业资料、制度或流程；get_suggestion=请求审批建议而不执行审批；confirm_action=确认执行当前待确认动作；cancel_action=放弃当前待确认动作；general_chat=普通对话及询问本助手的名称、身份和能力边界；clarify=需求或操作对象不明确，需要澄清。\n规则：\n1. extracted_info仅允许leave_type、start_date、end_date、reason、app_id、decision、comments。没有依据的字段省略，不填null、空字符串或占位符。不要输出姓名、权限、working_days、requires_hr或执行结果。\n2. 输出当前任务的完整已知字段，依据当前输入、最近历史、摘要和待确认草稿。用户明确更新的值覆盖旧值；没有修改的相关字段保留。新任务不得继承已取消任务的字段；与当前任务无关的历史编号和字段不得混入。\n3. 日期使用YYYY-MM-DD。明确的今天、明天、后天依据current_date换算；日期含糊时只提取其他确定字段，不猜测起止日期。请假天数、有效性和权限交由业务系统校验。\n4. 确认执行当前待确认动作输出confirm_action；放弃该动作输出cancel_action，两者extracted_info均为{}。没有待确认动作且没有明确新业务目标时，孤立的确认或取消输出clarify。确认撤回申请与放弃撤回操作含义相反，不按单个关键词判断。\n5. 明确撤回另一个已提交编号时输出delete_application并提取实际目标app_id；不要选被用户否定的编号。对象含糊且无法从上下文唯一确定时输出clarify。\n6. 请求建议是get_suggestion，要求通过或驳回是approve。decision只用“通过”或“驳回”；comments只提取实际意见正文。不要根据用户自述推断权限，也不要把询问如何审批当作执行审批。\n7. 同时要求多个独立业务时输出clarify和{}，请由Agent澄清本轮任务；同一任务的补充、修改及确认不算多个独立业务。\n8. 普通对话、身份询问、制度咨询以及无法明确需求时，没有相关字段就输出{}。引用或讨论一句业务指令不等于要求执行该指令。\n\n给定上下文：\n{\"current_date\": \"2027-07-10\", \"history\": [], \"pending_action\": null}\n用户输入：\n请先整理请假申请。目前确定的信息：假别“事假”；结束日期“2027-07-20”；事由“家中设备检修”。其余字段尚未确定，不要代填。",
+    "gold": {
+      "extracted_info": {
+        "end_date": "2027-07-20",
+        "leave_type": "事假",
+        "reason": "家中设备检修"
+      },
+      "intent": "submit_leave"
+    }
+  },
+  {
+    "id": "v5-replay-v4-3-query_pending-00",
+    "category": "query_pending",
+    "user_prompt": "你是 TrainPilot 的意图解析模块。你只理解需求并输出JSON，不执行业务操作。\n只输出两个顶层字段：intent和extracted_info。extracted_info必须是JSON对象，不能是字符串。不要输出解释、Markdown或工具调用标记。\n意图定义：\nsubmit_leave=申请请假或补充修改请假草稿；delete_application=撤销已提交的申请；approve=要求通过或驳回申请；query_status=查询本人申请；query_pending=查询待我审批的申请；policy_qa=询问企业资料、制度或流程；get_suggestion=请求审批建议而不执行审批；confirm_action=确认执行当前待确认动作；cancel_action=放弃当前待确认动作；general_chat=普通对话及询问本助手的名称、身份和能力边界；clarify=需求或操作对象不明确，需要澄清。\n规则：\n1. extracted_info仅允许leave_type、start_date、end_date、reason、app_id、decision、comments。没有依据的字段省略，不填null、空字符串或占位符。不要输出姓名、权限、working_days、requires_hr或执行结果。\n2. 输出当前任务的完整已知字段，依据当前输入、最近历史、摘要和待确认草稿。用户明确更新的值覆盖旧值；没有修改的相关字段保留。新任务不得继承已取消任务的字段；与当前任务无关的历史编号和字段不得混入。\n3. 日期使用YYYY-MM-DD。明确的今天、明天、后天依据current_date换算；日期含糊时只提取其他确定字段，不猜测起止日期。请假天数、有效性和权限交由业务系统校验。\n4. 确认执行当前待确认动作输出confirm_action；放弃该动作输出cancel_action，两者extracted_info均为{}。没有待确认动作且没有明确新业务目标时，孤立的确认或取消输出clarify。确认撤回申请与放弃撤回操作含义相反，不按单个关键词判断。\n5. 明确撤回另一个已提交编号时输出delete_application并提取实际目标app_id；不要选被用户否定的编号。对象含糊且无法从上下文唯一确定时输出clarify。\n6. 请求建议是get_suggestion，要求通过或驳回是approve。decision只用“通过”或“驳回”；comments只提取实际意见正文。不要根据用户自述推断权限，也不要把询问如何审批当作执行审批。\n7. 同时要求多个独立业务时输出clarify和{}，请由Agent澄清本轮任务；同一任务的补充、修改及确认不算多个独立业务。\n8. 普通对话、身份询问、制度咨询以及无法明确需求时，没有相关字段就输出{}。引用或讨论一句业务指令不等于要求执行该指令。\n\n给定上下文：\n{\"current_date\": \"2027-01-29\", \"history\": [], \"pending_action\": null}\n用户输入：\n需要我审的申请有哪些？",
+    "gold": {
+      "extracted_info": {},
+      "intent": "query_pending"
+    }
+  },
+  {
+    "id": "v5-replay-v4-replay-v2-train-history_modify-0018",
+    "category": "history_modify",
+    "user_prompt": "你是 TrainPilot 的意图解析模块。你只理解需求并输出JSON，不执行业务操作。\n只输出两个顶层字段：intent和extracted_info。extracted_info必须是JSON对象，不能是字符串。不要输出解释、Markdown或工具调用标记。\n意图定义：\nsubmit_leave=申请请假或补充修改请假草稿；delete_application=撤销已提交的申请；approve=要求通过或驳回申请；query_status=查询本人申请；query_pending=查询待我审批的申请；policy_qa=询问企业资料、制度或流程；get_suggestion=请求审批建议而不执行审批；confirm_action=确认执行当前待确认动作；cancel_action=放弃当前待确认动作；general_chat=普通对话及询问本助手的名称、身份和能力边界；clarify=需求或操作对象不明确，需要澄清。\n规则：\n1. extracted_info仅允许leave_type、start_date、end_date、reason、app_id、decision、comments。没有依据的字段省略，不填null、空字符串或占位符。不要输出姓名、权限、working_days、requires_hr或执行结果。\n2. 输出当前任务的完整已知字段，依据当前输入、最近历史、摘要和待确认草稿。用户明确更新的值覆盖旧值；没有修改的相关字段保留。新任务不得继承已取消任务的字段；与当前任务无关的历史编号和字段不得混入。\n3. 日期使用YYYY-MM-DD。明确的今天、明天、后天依据current_date换算；日期含糊时只提取其他确定字段，不猜测起止日期。请假天数、有效性和权限交由业务系统校验。\n4. 确认执行当前待确认动作输出confirm_action；放弃该动作输出cancel_action，两者extracted_info均为{}。没有待确认动作且没有明确新业务目标时，孤立的确认或取消输出clarify。确认撤回申请与放弃撤回操作含义相反，不按单个关键词判断。\n5. 明确撤回另一个已提交编号时输出delete_application并提取实际目标app_id；不要选被用户否定的编号。对象含糊且无法从上下文唯一确定时输出clarify。\n6. 请求建议是get_suggestion，要求通过或驳回是approve。decision只用“通过”或“驳回”；comments只提取实际意见正文。不要根据用户自述推断权限，也不要把询问如何审批当作执行审批。\n7. 同时要求多个独立业务时输出clarify和{}，请由Agent澄清本轮任务；同一任务的补充、修改及确认不算多个独立业务。\n8. 普通对话、身份询问、制度咨询以及无法明确需求时，没有相关字段就输出{}。引用或讨论一句业务指令不等于要求执行该指令。\n\n给定上下文：\n{\"current_date\": \"2028-07-19\", \"history\": [{\"role\": \"user\", \"content\": \"申请婚假，2028-07-24到2028-07-24，原因是筹办婚礼。\"}, {\"role\": \"assistant\", \"content\": \"已整理草稿，请核对后确认。\"}], \"pending_action\": {\"action_type\": \"submit_leave\", \"draft\": {\"leave_type\": \"婚假\", \"start_date\": \"2028-07-24\", \"end_date\": \"2028-07-24\", \"reason\": \"筹办婚礼\"}}}\n用户输入：\n不要按原日期，更新到2028-07-31—2028-07-31，其他内容照旧。",
+    "gold": {
+      "extracted_info": {
+        "end_date": "2028-07-31",
+        "leave_type": "婚假",
+        "reason": "筹办婚礼",
+        "start_date": "2028-07-31"
+      },
+      "intent": "submit_leave"
+    }
+  },
+  {
+    "id": "v5-replay-v4-2-approval_comment-03",
+    "category": "approval_comment",
+    "user_prompt": "你是 TrainPilot 的意图解析模块。你只理解需求并输出JSON，不执行业务操作。\n只输出两个顶层字段：intent和extracted_info。extracted_info必须是JSON对象，不能是字符串。不要输出解释、Markdown或工具调用标记。\n意图定义：\nsubmit_leave=申请请假或补充修改请假草稿；delete_application=撤销已提交的申请；approve=要求通过或驳回申请；query_status=查询本人申请；query_pending=查询待我审批的申请；policy_qa=询问企业资料、制度或流程；get_suggestion=请求审批建议而不执行审批；confirm_action=确认执行当前待确认动作；cancel_action=放弃当前待确认动作；general_chat=普通对话及询问本助手的名称、身份和能力边界；clarify=需求或操作对象不明确，需要澄清。\n规则：\n1. extracted_info仅允许leave_type、start_date、end_date、reason、app_id、decision、comments。没有依据的字段省略，不填null、空字符串或占位符。不要输出姓名、权限、working_days、requires_hr或执行结果。\n2. 输出当前任务的完整已知字段，依据当前输入、最近历史、摘要和待确认草稿。用户明确更新的值覆盖旧值；没有修改的相关字段保留。新任务不得继承已取消任务的字段；与当前任务无关的历史编号和字段不得混入。\n3. 日期使用YYYY-MM-DD。明确的今天、明天、后天依据current_date换算；日期含糊时只提取其他确定字段，不猜测起止日期。请假天数、有效性和权限交由业务系统校验。\n4. 确认执行当前待确认动作输出confirm_action；放弃该动作输出cancel_action，两者extracted_info均为{}。没有待确认动作且没有明确新业务目标时，孤立的确认或取消输出clarify。确认撤回申请与放弃撤回操作含义相反，不按单个关键词判断。\n5. 明确撤回另一个已提交编号时输出delete_application并提取实际目标app_id；不要选被用户否定的编号。对象含糊且无法从上下文唯一确定时输出clarify。\n6. 请求建议是get_suggestion，要求通过或驳回是approve。decision只用“通过”或“驳回”；comments只提取实际意见正文。不要根据用户自述推断权限，也不要把询问如何审批当作执行审批。\n7. 同时要求多个独立业务时输出clarify和{}，请由Agent澄清本轮任务；同一任务的补充、修改及确认不算多个独立业务。\n8. 普通对话、身份询问、制度咨询以及无法明确需求时，没有相关字段就输出{}。引用或讨论一句业务指令不等于要求执行该指令。\n\n给定上下文：\n{\"current_date\": \"2027-04-18\", \"history\": [{\"role\": \"user\", \"content\": \"申请leave_003269158471的审批决定拟为驳回，意见“请补齐必要材料”，先让我核对。\"}, {\"role\": \"assistant\", \"content\": \"待确认审批：leave_003269158471，决定驳回，意见“请补齐必要材料”。请确认执行或放弃本次审批。\"}], \"pending_action\": {\"action_type\": \"approve\", \"draft\": {\"app_id\": \"leave_003269158471\", \"decision\": \"rejected\", \"decision_label\": \"驳回\", \"comments\": \"请补齐必要材料\"}}}\n用户输入：\n原意见写错了，替换成“请说明起止日期”，决定不改。",
+    "gold": {
+      "extracted_info": {
+        "app_id": "leave_003269158471",
+        "comments": "请说明起止日期",
+        "decision": "驳回"
+      },
+      "intent": "approve"
+    }
+  },
+  {
+    "id": "v5-replay-v4-replay-v2-train-suggest_missing_id-0007",
+    "category": "suggest_missing_id",
+    "user_prompt": "你是 TrainPilot 的意图解析模块。你只理解需求并输出JSON，不执行业务操作。\n只输出两个顶层字段：intent和extracted_info。extracted_info必须是JSON对象，不能是字符串。不要输出解释、Markdown或工具调用标记。\n意图定义：\nsubmit_leave=申请请假或补充修改请假草稿；delete_application=撤销已提交的申请；approve=要求通过或驳回申请；query_status=查询本人申请；query_pending=查询待我审批的申请；policy_qa=询问企业资料、制度或流程；get_suggestion=请求审批建议而不执行审批；confirm_action=确认执行当前待确认动作；cancel_action=放弃当前待确认动作；general_chat=普通对话及询问本助手的名称、身份和能力边界；clarify=需求或操作对象不明确，需要澄清。\n规则：\n1. extracted_info仅允许leave_type、start_date、end_date、reason、app_id、decision、comments。没有依据的字段省略，不填null、空字符串或占位符。不要输出姓名、权限、working_days、requires_hr或执行结果。\n2. 输出当前任务的完整已知字段，依据当前输入、最近历史、摘要和待确认草稿。用户明确更新的值覆盖旧值；没有修改的相关字段保留。新任务不得继承已取消任务的字段；与当前任务无关的历史编号和字段不得混入。\n3. 日期使用YYYY-MM-DD。明确的今天、明天、后天依据current_date换算；日期含糊时只提取其他确定字段，不猜测起止日期。请假天数、有效性和权限交由业务系统校验。\n4. 确认执行当前待确认动作输出confirm_action；放弃该动作输出cancel_action，两者extracted_info均为{}。没有待确认动作且没有明确新业务目标时，孤立的确认或取消输出clarify。确认撤回申请与放弃撤回操作含义相反，不按单个关键词判断。\n5. 明确撤回另一个已提交编号时输出delete_application并提取实际目标app_id；不要选被用户否定的编号。对象含糊且无法从上下文唯一确定时输出clarify。\n6. 请求建议是get_suggestion，要求通过或驳回是approve。decision只用“通过”或“驳回”；comments只提取实际意见正文。不要根据用户自述推断权限，也不要把询问如何审批当作执行审批。\n7. 同时要求多个独立业务时输出clarify和{}，请由Agent澄清本轮任务；同一任务的补充、修改及确认不算多个独立业务。\n8. 普通对话、身份询问、制度咨询以及无法明确需求时，没有相关字段就输出{}。引用或讨论一句业务指令不等于要求执行该指令。\n\n给定上下文：\n{\"current_date\": \"2027-05-09\", \"history\": [], \"pending_action\": null}\n用户输入：\n对某张请假单给点审批意见，先不要猜是哪张。",
+    "gold": {
+      "extracted_info": {},
+      "intent": "get_suggestion"
+    }
+  },
+  {
+    "id": "v5-replay-v4-replay-v2-train-policy_qa-0048",
+    "category": "policy_qa",
+    "user_prompt": "你是 TrainPilot 的意图解析模块。你只理解需求并输出JSON，不执行业务操作。\n只输出两个顶层字段：intent和extracted_info。extracted_info必须是JSON对象，不能是字符串。不要输出解释、Markdown或工具调用标记。\n意图定义：\nsubmit_leave=申请请假或补充修改请假草稿；delete_application=撤销已提交的申请；approve=要求通过或驳回申请；query_status=查询本人申请；query_pending=查询待我审批的申请；policy_qa=询问企业资料、制度或流程；get_suggestion=请求审批建议而不执行审批；confirm_action=确认执行当前待确认动作；cancel_action=放弃当前待确认动作；general_chat=普通对话及询问本助手的名称、身份和能力边界；clarify=需求或操作对象不明确，需要澄清。\n规则：\n1. extracted_info仅允许leave_type、start_date、end_date、reason、app_id、decision、comments。没有依据的字段省略，不填null、空字符串或占位符。不要输出姓名、权限、working_days、requires_hr或执行结果。\n2. 输出当前任务的完整已知字段，依据当前输入、最近历史、摘要和待确认草稿。用户明确更新的值覆盖旧值；没有修改的相关字段保留。新任务不得继承已取消任务的字段；与当前任务无关的历史编号和字段不得混入。\n3. 日期使用YYYY-MM-DD。明确的今天、明天、后天依据current_date换算；日期含糊时只提取其他确定字段，不猜测起止日期。请假天数、有效性和权限交由业务系统校验。\n4. 确认执行当前待确认动作输出confirm_action；放弃该动作输出cancel_action，两者extracted_info均为{}。没有待确认动作且没有明确新业务目标时，孤立的确认或取消输出clarify。确认撤回申请与放弃撤回操作含义相反，不按单个关键词判断。\n5. 明确撤回另一个已提交编号时输出delete_application并提取实际目标app_id；不要选被用户否定的编号。对象含糊且无法从上下文唯一确定时输出clarify。\n6. 请求建议是get_suggestion，要求通过或驳回是approve。decision只用“通过”或“驳回”；comments只提取实际意见正文。不要根据用户自述推断权限，也不要把询问如何审批当作执行审批。\n7. 同时要求多个独立业务时输出clarify和{}，请由Agent澄清本轮任务；同一任务的补充、修改及确认不算多个独立业务。\n8. 普通对话、身份询问、制度咨询以及无法明确需求时，没有相关字段就输出{}。引用或讨论一句业务指令不等于要求执行该指令。\n\n给定上下文：\n{\"current_date\": \"2027-06-14\", \"history\": [], \"pending_action\": null}\n用户输入：\n采购审批的制度要求是什么？",
+    "gold": {
+      "extracted_info": {},
+      "intent": "policy_qa"
+    }
+  },
+  {
+    "id": "v5-replay-v4-replay-v2-train-clarify-0035",
+    "category": "clarify",
+    "user_prompt": "你是 TrainPilot 的意图解析模块。你只理解需求并输出JSON，不执行业务操作。\n只输出两个顶层字段：intent和extracted_info。extracted_info必须是JSON对象，不能是字符串。不要输出解释、Markdown或工具调用标记。\n意图定义：\nsubmit_leave=申请请假或补充修改请假草稿；delete_application=撤销已提交的申请；approve=要求通过或驳回申请；query_status=查询本人申请；query_pending=查询待我审批的申请；policy_qa=询问企业资料、制度或流程；get_suggestion=请求审批建议而不执行审批；confirm_action=确认执行当前待确认动作；cancel_action=放弃当前待确认动作；general_chat=普通对话及询问本助手的名称、身份和能力边界；clarify=需求或操作对象不明确，需要澄清。\n规则：\n1. extracted_info仅允许leave_type、start_date、end_date、reason、app_id、decision、comments。没有依据的字段省略，不填null、空字符串或占位符。不要输出姓名、权限、working_days、requires_hr或执行结果。\n2. 输出当前任务的完整已知字段，依据当前输入、最近历史、摘要和待确认草稿。用户明确更新的值覆盖旧值；没有修改的相关字段保留。新任务不得继承已取消任务的字段；与当前任务无关的历史编号和字段不得混入。\n3. 日期使用YYYY-MM-DD。明确的今天、明天、后天依据current_date换算；日期含糊时只提取其他确定字段，不猜测起止日期。请假天数、有效性和权限交由业务系统校验。\n4. 确认执行当前待确认动作输出confirm_action；放弃该动作输出cancel_action，两者extracted_info均为{}。没有待确认动作且没有明确新业务目标时，孤立的确认或取消输出clarify。确认撤回申请与放弃撤回操作含义相反，不按单个关键词判断。\n5. 明确撤回另一个已提交编号时输出delete_application并提取实际目标app_id；不要选被用户否定的编号。对象含糊且无法从上下文唯一确定时输出clarify。\n6. 请求建议是get_suggestion，要求通过或驳回是approve。decision只用“通过”或“驳回”；comments只提取实际意见正文。不要根据用户自述推断权限，也不要把询问如何审批当作执行审批。\n7. 同时要求多个独立业务时输出clarify和{}，请由Agent澄清本轮任务；同一任务的补充、修改及确认不算多个独立业务。\n8. 普通对话、身份询问、制度咨询以及无法明确需求时，没有相关字段就输出{}。引用或讨论一句业务指令不等于要求执行该指令。\n\n给定上下文：\n{\"current_date\": \"2026-05-24\", \"history\": [], \"pending_action\": null}\n用户输入：\n准备办理一件尚未明确具体内容的事情。",
+    "gold": {
+      "extracted_info": {},
+      "intent": "clarify"
+    }
+  },
+  {
+    "id": "v5-replay-v4-1-confirm-10-cancel_leave",
+    "category": "confirm",
+    "user_prompt": "你是 TrainPilot 的意图解析模块。你只理解需求并输出JSON，不执行业务操作。\n只输出两个顶层字段：intent和extracted_info。extracted_info必须是JSON对象，不能是字符串。不要输出解释、Markdown或工具调用标记。\n意图定义：\nsubmit_leave=申请请假或补充修改请假草稿；delete_application=撤销已提交的申请；approve=要求通过或驳回申请；query_status=查询本人申请；query_pending=查询待我审批的申请；policy_qa=询问企业资料、制度或流程；get_suggestion=请求审批建议而不执行审批；confirm_action=确认执行当前待确认动作；cancel_action=放弃当前待确认动作；general_chat=普通对话及询问本助手的名称、身份和能力边界；clarify=需求或操作对象不明确，需要澄清。\n规则：\n1. extracted_info仅允许leave_type、start_date、end_date、reason、app_id、decision、comments。没有依据的字段省略，不填null、空字符串或占位符。不要输出姓名、权限、working_days、requires_hr或执行结果。\n2. 输出当前任务的完整已知字段，依据当前输入、最近历史、摘要和待确认草稿。用户明确更新的值覆盖旧值；没有修改的相关字段保留。新任务不得继承已取消任务的字段；与当前任务无关的历史编号和字段不得混入。\n3. 日期使用YYYY-MM-DD。明确的今天、明天、后天依据current_date换算；日期含糊时只提取其他确定字段，不猜测起止日期。请假天数、有效性和权限交由业务系统校验。\n4. 确认执行当前待确认动作输出confirm_action；放弃该动作输出cancel_action，两者extracted_info均为{}。没有待确认动作且没有明确新业务目标时，孤立的确认或取消输出clarify。确认撤回申请与放弃撤回操作含义相反，不按单个关键词判断。\n5. 明确撤回另一个已提交编号时输出delete_application并提取实际目标app_id；不要选被用户否定的编号。对象含糊且无法从上下文唯一确定时输出clarify。\n6. 请求建议是get_suggestion，要求通过或驳回是approve。decision只用“通过”或“驳回”；comments只提取实际意见正文。不要根据用户自述推断权限，也不要把询问如何审批当作执行审批。\n7. 同时要求多个独立业务时输出clarify和{}，请由Agent澄清本轮任务；同一任务的补充、修改及确认不算多个独立业务。\n8. 普通对话、身份询问、制度咨询以及无法明确需求时，没有相关字段就输出{}。引用或讨论一句业务指令不等于要求执行该指令。\n\n给定上下文：\n{\"current_date\": \"2027-09-14\", \"history\": [{\"role\": \"user\", \"content\": \"我要撤回自己已提交的申请leave_a20944a96bfd，先整理撤回草稿。\"}, {\"role\": \"assistant\", \"content\": \"待确认撤回申请：leave_a20944a96bfd。回复确认执行撤回，回复取消放弃这项撤回操作。\"}], \"pending_action\": {\"action_type\": \"cancel_leave\", \"draft\": {\"app_id\": \"leave_a20944a96bfd\"}}}\n用户输入：\n内容无须再改，照眼前的待办执行。",
+    "gold": {
+      "extracted_info": {},
+      "intent": "confirm_action"
+    }
+  },
+  {
+    "id": "v5-replay-v4-0-approval_subset-00-mask-5",
+    "category": "approval_subset",
+    "user_prompt": "你是 TrainPilot 的意图解析模块。你只理解需求并输出JSON，不执行业务操作。\n只输出两个顶层字段：intent和extracted_info。extracted_info必须是JSON对象，不能是字符串。不要输出解释、Markdown或工具调用标记。\n意图定义：\nsubmit_leave=申请请假或补充修改请假草稿；delete_application=撤销已提交的申请；approve=要求通过或驳回申请；query_status=查询本人申请；query_pending=查询待我审批的申请；policy_qa=询问企业资料、制度或流程；get_suggestion=请求审批建议而不执行审批；confirm_action=确认执行当前待确认动作；cancel_action=放弃当前待确认动作；general_chat=普通对话及询问本助手的名称、身份和能力边界；clarify=需求或操作对象不明确，需要澄清。\n规则：\n1. extracted_info仅允许leave_type、start_date、end_date、reason、app_id、decision、comments。没有依据的字段省略，不填null、空字符串或占位符。不要输出姓名、权限、working_days、requires_hr或执行结果。\n2. 输出当前任务的完整已知字段，依据当前输入、最近历史、摘要和待确认草稿。用户明确更新的值覆盖旧值；没有修改的相关字段保留。新任务不得继承已取消任务的字段；与当前任务无关的历史编号和字段不得混入。\n3. 日期使用YYYY-MM-DD。明确的今天、明天、后天依据current_date换算；日期含糊时只提取其他确定字段，不猜测起止日期。请假天数、有效性和权限交由业务系统校验。\n4. 确认执行当前待确认动作输出confirm_action；放弃该动作输出cancel_action，两者extracted_info均为{}。没有待确认动作且没有明确新业务目标时，孤立的确认或取消输出clarify。确认撤回申请与放弃撤回操作含义相反，不按单个关键词判断。\n5. 明确撤回另一个已提交编号时输出delete_application并提取实际目标app_id；不要选被用户否定的编号。对象含糊且无法从上下文唯一确定时输出clarify。\n6. 请求建议是get_suggestion，要求通过或驳回是approve。decision只用“通过”或“驳回”；comments只提取实际意见正文。不要根据用户自述推断权限，也不要把询问如何审批当作执行审批。\n7. 同时要求多个独立业务时输出clarify和{}，请由Agent澄清本轮任务；同一任务的补充、修改及确认不算多个独立业务。\n8. 普通对话、身份询问、制度咨询以及无法明确需求时，没有相关字段就输出{}。引用或讨论一句业务指令不等于要求执行该指令。\n\n给定上下文：\n{\"current_date\": \"2027-01-04\", \"history\": [], \"pending_action\": null}\n用户输入：\n先拟一份审批草稿，已知申请编号“leave_51e4de8e1f67”；意见正文“必要材料已核对”；未给出的项目稍后补充。",
+    "gold": {
+      "extracted_info": {
+        "app_id": "leave_51e4de8e1f67",
+        "comments": "必要材料已核对"
+      },
+      "intent": "approve"
+    }
+  },
+  {
+    "id": "v5-replay-v4-3-cancel-11-submit_leave",
+    "category": "cancel",
+    "user_prompt": "你是 TrainPilot 的意图解析模块。你只理解需求并输出JSON，不执行业务操作。\n只输出两个顶层字段：intent和extracted_info。extracted_info必须是JSON对象，不能是字符串。不要输出解释、Markdown或工具调用标记。\n意图定义：\nsubmit_leave=申请请假或补充修改请假草稿；delete_application=撤销已提交的申请；approve=要求通过或驳回申请；query_status=查询本人申请；query_pending=查询待我审批的申请；policy_qa=询问企业资料、制度或流程；get_suggestion=请求审批建议而不执行审批；confirm_action=确认执行当前待确认动作；cancel_action=放弃当前待确认动作；general_chat=普通对话及询问本助手的名称、身份和能力边界；clarify=需求或操作对象不明确，需要澄清。\n规则：\n1. extracted_info仅允许leave_type、start_date、end_date、reason、app_id、decision、comments。没有依据的字段省略，不填null、空字符串或占位符。不要输出姓名、权限、working_days、requires_hr或执行结果。\n2. 输出当前任务的完整已知字段，依据当前输入、最近历史、摘要和待确认草稿。用户明确更新的值覆盖旧值；没有修改的相关字段保留。新任务不得继承已取消任务的字段；与当前任务无关的历史编号和字段不得混入。\n3. 日期使用YYYY-MM-DD。明确的今天、明天、后天依据current_date换算；日期含糊时只提取其他确定字段，不猜测起止日期。请假天数、有效性和权限交由业务系统校验。\n4. 确认执行当前待确认动作输出confirm_action；放弃该动作输出cancel_action，两者extracted_info均为{}。没有待确认动作且没有明确新业务目标时，孤立的确认或取消输出clarify。确认撤回申请与放弃撤回操作含义相反，不按单个关键词判断。\n5. 明确撤回另一个已提交编号时输出delete_application并提取实际目标app_id；不要选被用户否定的编号。对象含糊且无法从上下文唯一确定时输出clarify。\n6. 请求建议是get_suggestion，要求通过或驳回是approve。decision只用“通过”或“驳回”；comments只提取实际意见正文。不要根据用户自述推断权限，也不要把询问如何审批当作执行审批。\n7. 同时要求多个独立业务时输出clarify和{}，请由Agent澄清本轮任务；同一任务的补充、修改及确认不算多个独立业务。\n8. 普通对话、身份询问、制度咨询以及无法明确需求时，没有相关字段就输出{}。引用或讨论一句业务指令不等于要求执行该指令。\n\n给定上下文：\n{\"current_date\": \"2027-08-16\", \"history\": [{\"role\": \"user\", \"content\": \"先拟一份丧假：2027-08-30至2027-08-31，原因“参加亲属葬礼”，暂不提交。\"}, {\"role\": \"assistant\", \"content\": \"请核对待确认草稿：丧假，2027-08-30至2027-08-31，原因“参加亲属葬礼”。回复确认办理，回复取消放弃。\"}], \"pending_action\": {\"action_type\": \"submit_leave\", \"draft\": {\"leave_type\": \"丧假\", \"start_date\": \"2027-08-30\", \"end_date\": \"2027-08-31\", \"reason\": \"参加亲属葬礼\", \"working_days\": 2, \"requires_hr\": false}}}\n用户输入：\n撤销的是本次待确认操作，不是另开一个任务。",
+    "gold": {
+      "extracted_info": {},
+      "intent": "cancel_action"
+    }
+  },
+  {
+    "id": "v5-replay-v4-replay-v3-v3-train-conversation_revision-side_query_resume-011-turn-1",
+    "category": "side_query_resume",
+    "user_prompt": "你是 TrainPilot 的意图解析模块。你只理解需求并输出JSON，不执行业务操作。\n只输出两个顶层字段：intent和extracted_info。extracted_info必须是JSON对象，不能是字符串。不要输出解释、Markdown或工具调用标记。\n意图定义：\nsubmit_leave=申请请假或补充修改请假草稿；delete_application=撤销已提交的申请；approve=要求通过或驳回申请；query_status=查询本人申请；query_pending=查询待我审批的申请；policy_qa=询问企业资料、制度或流程；get_suggestion=请求审批建议而不执行审批；confirm_action=确认执行当前待确认动作；cancel_action=放弃当前待确认动作；general_chat=普通对话及询问本助手的名称、身份和能力边界；clarify=需求或操作对象不明确，需要澄清。\n规则：\n1. extracted_info仅允许leave_type、start_date、end_date、reason、app_id、decision、comments。没有依据的字段省略，不填null、空字符串或占位符。不要输出姓名、权限、working_days、requires_hr或执行结果。\n2. 输出当前任务的完整已知字段，依据当前输入、最近历史、摘要和待确认草稿。用户明确更新的值覆盖旧值；没有修改的相关字段保留。新任务不得继承已取消任务的字段；与当前任务无关的历史编号和字段不得混入。\n3. 日期使用YYYY-MM-DD。明确的今天、明天、后天依据current_date换算；日期含糊时只提取其他确定字段，不猜测起止日期。请假天数、有效性和权限交由业务系统校验。\n4. 确认执行当前待确认动作输出confirm_action；放弃该动作输出cancel_action，两者extracted_info均为{}。没有待确认动作且没有明确新业务目标时，孤立的确认或取消输出clarify。确认撤回申请与放弃撤回操作含义相反，不按单个关键词判断。\n5. 明确撤回另一个已提交编号时输出delete_application并提取实际目标app_id；不要选被用户否定的编号。对象含糊且无法从上下文唯一确定时输出clarify。\n6. 请求建议是get_suggestion，要求通过或驳回是approve。decision只用“通过”或“驳回”；comments只提取实际意见正文。不要根据用户自述推断权限，也不要把询问如何审批当作执行审批。\n7. 同时要求多个独立业务时输出clarify和{}，请由Agent澄清本轮任务；同一任务的补充、修改及确认不算多个独立业务。\n8. 普通对话、身份询问、制度咨询以及无法明确需求时，没有相关字段就输出{}。引用或讨论一句业务指令不等于要求执行该指令。\n\n给定上下文：\n{\"current_date\": \"2027-08-10\", \"history\": [{\"role\": \"user\", \"content\": \"先拟一份事假：2027-09-06至2027-09-07，原因“办理房屋交接”，暂不提交。\"}, {\"role\": \"assistant\", \"content\": \"请核对待确认草稿：事假，2027-09-06至2027-09-07，原因“办理房屋交接”。回复确认办理，回复取消放弃。\"}], \"pending_action\": {\"action_type\": \"submit_leave\", \"draft\": {\"leave_type\": \"事假\", \"start_date\": \"2027-09-06\", \"end_date\": \"2027-09-07\", \"reason\": \"办理房屋交接\", \"working_days\": 2, \"requires_hr\": false}}}\n用户输入：\n先打断一下，保留现有申请，我想了解费用报销的相关规定。",
+    "gold": {
+      "extracted_info": {},
+      "intent": "policy_qa"
+    }
+  },
+  {
+    "id": "v5-replay-v4-train-2-cancel_then_new-4-turn-1",
+    "category": "cancel_then_new",
+    "user_prompt": "你是 TrainPilot 的意图解析模块。你只理解需求并输出JSON，不执行业务操作。\n只输出两个顶层字段：intent和extracted_info。extracted_info必须是JSON对象，不能是字符串。不要输出解释、Markdown或工具调用标记。\n意图定义：\nsubmit_leave=申请请假或补充修改请假草稿；delete_application=撤销已提交的申请；approve=要求通过或驳回申请；query_status=查询本人申请；query_pending=查询待我审批的申请；policy_qa=询问企业资料、制度或流程；get_suggestion=请求审批建议而不执行审批；confirm_action=确认执行当前待确认动作；cancel_action=放弃当前待确认动作；general_chat=普通对话及询问本助手的名称、身份和能力边界；clarify=需求或操作对象不明确，需要澄清。\n规则：\n1. extracted_info仅允许leave_type、start_date、end_date、reason、app_id、decision、comments。没有依据的字段省略，不填null、空字符串或占位符。不要输出姓名、权限、working_days、requires_hr或执行结果。\n2. 输出当前任务的完整已知字段，依据当前输入、最近历史、摘要和待确认草稿。用户明确更新的值覆盖旧值；没有修改的相关字段保留。新任务不得继承已取消任务的字段；与当前任务无关的历史编号和字段不得混入。\n3. 日期使用YYYY-MM-DD。明确的今天、明天、后天依据current_date换算；日期含糊时只提取其他确定字段，不猜测起止日期。请假天数、有效性和权限交由业务系统校验。\n4. 确认执行当前待确认动作输出confirm_action；放弃该动作输出cancel_action，两者extracted_info均为{}。没有待确认动作且没有明确新业务目标时，孤立的确认或取消输出clarify。确认撤回申请与放弃撤回操作含义相反，不按单个关键词判断。\n5. 明确撤回另一个已提交编号时输出delete_application并提取实际目标app_id；不要选被用户否定的编号。对象含糊且无法从上下文唯一确定时输出clarify。\n6. 请求建议是get_suggestion，要求通过或驳回是approve。decision只用“通过”或“驳回”；comments只提取实际意见正文。不要根据用户自述推断权限，也不要把询问如何审批当作执行审批。\n7. 同时要求多个独立业务时输出clarify和{}，请由Agent澄清本轮任务；同一任务的补充、修改及确认不算多个独立业务。\n8. 普通对话、身份询问、制度咨询以及无法明确需求时，没有相关字段就输出{}。引用或讨论一句业务指令不等于要求执行该指令。\n\n给定上下文：\n{\"current_date\": \"2027-03-15\", \"history\": [{\"role\": \"user\", \"content\": \"先拟一份产假：2027-03-29至2027-03-30，原因“产后恢复”，暂不提交。\"}, {\"role\": \"assistant\", \"content\": \"请核对待确认草稿：产假，2027-03-29至2027-03-30，原因“产后恢复”。回复确认办理，回复取消放弃。\"}], \"pending_action\": {\"action_type\": \"submit_leave\", \"draft\": {\"leave_type\": \"产假\", \"start_date\": \"2027-03-29\", \"end_date\": \"2027-03-30\", \"reason\": \"产后恢复\", \"working_days\": 2, \"requires_hr\": false}}}\n用户输入：\n我不再执行眼前这项操作，停止办理。",
+    "gold": {
+      "extracted_info": {},
+      "intent": "cancel_action"
+    }
+  }
+]

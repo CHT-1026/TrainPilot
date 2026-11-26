@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "counts": {
+    "intent_prompt_structural": 805,
+    "enterprise_prompt_and_citations": 260,
+    "oa_prompt_and_citations": 160,
+    "live_agent_reply_prompt": 23
+  },
+  "total_runtime_contract_checks": 1248,
+  "agent_source_sha256": {
+    "enterprise_rag/prompts.py": "3591f5e7bf769de48ed414300e127baa946396caa7a29177ce4ca17a42272811",
+    "enterprise_rag/citations.py": "2447d944b5be3c630a2e0ea0a7a1a1ed09f7b278fc425e16fbcdc09c2bc4b130",
+    "app/capabilities/retrieval/answer.py": "96846451c81b09c27127c4ff85fa965730b6dff0104aa6ae349038fe3ba4fe4e",
+    "app/capabilities/retrieval/search.py": "662f8bd88a297062471cbad6c475d383008366c8a0eb4aa12d2a7d8ec2a72e28",
+    "app/workflows/chat_nodes/response.py": "e957b9435fa0ac485603f2f2cba1a9215000ab895c5e1494dc2a3be4494569db"
+  },
+  "method": "real prompt builders; intent context JSON compared structurally (object key order ignored); other prompt text exact; response node with fake LLM; real OA citation validator",
+  "limits": "no model generation, live retrieval, business tool execution or database writes"
+}

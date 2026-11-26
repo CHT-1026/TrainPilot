@@ -1,0 +1,129 @@
+{
+  "scope": "scripted expected labels through real prompt formatter, parser and router; no model or business service calls",
+  "records": [
+    {
+      "id": "grpo-v2-design-01",
+      "raw_label": "confirm_action",
+      "routed_label": "confirm_action",
+      "matches": true
+    },
+    {
+      "id": "grpo-v2-design-02",
+      "raw_label": "clarify",
+      "routed_label": "clarify",
+      "matches": true
+    },
+    {
+      "id": "grpo-v2-design-03",
+      "raw_label": "policy_qa",
+      "routed_label": "policy_qa",
+      "matches": true
+    },
+    {
+      "id": "grpo-v2-design-04",
+      "raw_label": "general_chat",
+      "routed_label": "general_chat",
+      "matches": true
+    },
+    {
+      "id": "grpo-v2-design-05",
+      "raw_label": "submit_leave",
+      "routed_label": "submit_leave",
+      "matches": true
+    },
+    {
+      "id": "grpo-v2-design-06",
+      "raw_label": "submit_leave",
+      "routed_label": "submit_leave",
+      "matches": true
+    },
+    {
+      "id": "grpo-v2-design-07",
+      "raw_label": "submit_leave",
+      "routed_label": "submit_leave",
+      "matches": true
+    },
+    {
+      "id": "grpo-v2-design-08",
+      "raw_label": "delete_application",
+      "routed_label": "delete_application",
+      "matches": true
+    },
+    {
+      "id": "grpo-v2-design-09",
+      "raw_label": "clarify",
+      "routed_label": "clarify",
+      "matches": true
+    },
+    {
+      "id": "grpo-v2-design-10",
+      "raw_label": "approve",
+      "routed_label": "approve",
+      "matches": true
+    },
+    {
+      "id": "grpo-v2-design-11",
+      "raw_label": "approve",
+      "routed_label": "approve",
+      "matches": true
+    },
+    {
+      "id": "grpo-v2-design-12",
+      "raw_label": "get_suggestion",
+      "routed_label": "get_suggestion",
+      "matches": true
+    },
+    {
+      "id": "grpo-v2-design-13",
+      "raw_label": "query_status",
+      "routed_label": "query_status",
+      "matches": true
+    },
+    {
+      "id": "grpo-v2-design-14",
+      "raw_label": "query_pending",
+      "routed_label": "query_pending",
+      "matches": true
+    },
+    {
+      "id": "grpo-v2-design-15",
+      "raw_label": "clarify",
+      "routed_label": "clarify",
+      "matches": true
+    },
+    {
+      "id": "grpo-v2-design-16",
+      "raw_label": "policy_qa",
+      "routed_label": "policy_qa",
+      "matches": true
+    },
+    {
+      "id": "grpo-v2-design-17",
+      "raw_label": "general_chat",
+      "routed_label": "general_chat",
+      "matches": true
+    },
+    {
+      "id": "grpo-v2-design-18",
+      "raw_label": "submit_leave",
+      "routed_label": "submit_leave",
+      "matches": true
+    },
+    {
+      "id": "grpo-v2-design-19",
+      "raw_label": "submit_leave",
+      "routed_label": "submit_leave",
+      "matches": true
+    },
+    {
+      "id": "grpo-v2-design-20",
+      "raw_label": "submit_leave",
+      "routed_label": "submit_leave",
+      "matches": true
+    }
+  ],
+  "prompt_formatter_matches": 20,
+  "labels_route_consistently": 20,
+  "model_accuracy": null,
+  "pending_state_persistence_tested": false
+}

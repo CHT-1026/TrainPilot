@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-02",
+  "all_splits_encoded_with_real_v6_tokenizer": true,
+  "source_tools_replayed_and_citations_checked": true,
+  "train_val_test_groups_and_sandbox_docs_disjoint": true,
+  "tool_response_tokens_masked": true,
+  "assistant_tool_call_tokens_supervised": true,
+  "max_length": 2048,
+  "observed_max_tokens": {
+    "train": 1543,
+    "val": 1077,
+    "test": 1075
+  },
+  "supervised_tokens": {
+    "train": 141954,
+    "val": 17578,
+    "test": 17514
+  },
+  "native_prepare_only_passed": true,
+  "tiny_lora_continuation_resume_tests_passed": true,
+  "full_1_7b_server_gpu_training_run_locally": false
+}

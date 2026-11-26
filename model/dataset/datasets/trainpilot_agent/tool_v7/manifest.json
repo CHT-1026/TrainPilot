@@ -1,0 +1,56 @@
+{
+  "version": "tool_v7",
+  "initial_adapter_sha256": "4d89275137bee224b724f06b2ff9990ab784d19e3ded9e570499b9abfd6407b8",
+  "split": "separate synthetic entities/documents/wordings; existing V6 split retained for replay",
+  "limitations": "templated synthetic sandbox, not proof of real-corpus generalization; peer benchmark excluded",
+  "outputs": {
+    "train": {
+      "records": 1280,
+      "tool_trajectories": 960,
+      "v6_replay": 320,
+      "sha256": "b30ce6eca4711fbbfbc3af6fa73c341b58818098f286af564f5821a6dc974761",
+      "categories": {
+        "conflict": 120,
+        "time": 120,
+        "missing": 120,
+        "empty_retry": 120,
+        "pagination": 120,
+        "lookup": 120,
+        "two_hop": 120,
+        "clarify": 120
+      }
+    },
+    "val": {
+      "records": 160,
+      "tool_trajectories": 120,
+      "v6_replay": 40,
+      "sha256": "1d31d5f6622836c6942d1db2422ba25e881e7122ff14c338ae7ad24bbb5b83d2",
+      "categories": {
+        "clarify": 15,
+        "pagination": 15,
+        "lookup": 15,
+        "time": 15,
+        "empty_retry": 15,
+        "missing": 15,
+        "two_hop": 15,
+        "conflict": 15
+      }
+    },
+    "test": {
+      "records": 160,
+      "tool_trajectories": 120,
+      "v6_replay": 40,
+      "sha256": "b92d49f5690fc72c0bdc04e871ea1ba24ce97758e6d26c96dd72774301628e39",
+      "categories": {
+        "time": 15,
+        "missing": 15,
+        "pagination": 15,
+        "clarify": 15,
+        "lookup": 15,
+        "two_hop": 15,
+        "empty_retry": 15,
+        "conflict": 15
+      }
+    }
+  }
+}

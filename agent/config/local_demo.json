@@ -1,0 +1,13 @@
+{
+  "model_version": "V7",
+  "adapter_sha256": "72349b5e60f55702bfbf94307d9f31bfc9b4d9804863007ebd1926c6566eb961",
+  "checkpoint": "runs/qwen-fullsft/checkpoint.pt",
+  "config_dir": "runs/qwen-base-reference",
+  "adapter_dir": "runs/tool_v7_eval_20261105/snapshot/runs/trainpilot_tool_lora_v7/adapter",
+  "model_python": ".venv/Scripts/python.exe",
+  "agent_python": ".venv-agent/Scripts/python.exe",
+  "model_port": 8011,
+  "web_port": 8081,
+  "max_new_tokens": 512,
+  "wsl_distribution": "Ubuntu-24.04"
+}

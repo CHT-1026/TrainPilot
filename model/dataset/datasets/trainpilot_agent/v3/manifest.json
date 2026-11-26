@@ -1,0 +1,217 @@
+{
+  "version": "v3",
+  "status": "ready_for_server_check",
+  "assistant_name": "TrainPilot",
+  "training_start": "original_full_sft_with_fresh_lora",
+  "output_policy": "complete_known_fields",
+  "seed": 20261022,
+  "generator_sha256": "de61ea1cf2094fc7875a38aa3b5c98883067c4196971370dbaf55354fa7f950e",
+  "inputs_sha256": {
+    "spec_v3.json": "141aa196817ecf255772b0956b7f561712aa8f9b460e7719752aaec4d68952f8",
+    "scenarios_v3.json": "3646ac81247a03de5d15e9192ea95e48e4ad662f656feda6760bf2084025b777",
+    "intent_prompt_v2.txt": "8fb4326d4b429a778e68a036dd048e9e1a6e6468b9761c6d9150045f78fb4210",
+    "v2/train.jsonl": "523d456c97c41bd71b2337da52326e778c5d7cf3a8623a42b893db30ea75030d",
+    "v2/val.jsonl": "804ebabac2bd8f33d97562b5e3820885702687ae4728b0204a0ce8c13673acdc",
+    "v2/test.jsonl": "632d5b09534721e69e668b004c5493c773b321296375c9620c1129b7dea702a0",
+    "v3_preview/spec.json": "dce5e32b15e0ef25ea9cc70bacc4cbc6dbe251b60109cbd6363ae445ccaf078d",
+    "v3_preview/samples.json": "2b67d7002b8f0ec17d0167981fa5d5db5818325ca0ff1a93006914bf9901eb61"
+  },
+  "agent_sources_sha256": {
+    "app/workflows/intent_protocol.py": "5c122d2624b2f2713b7e8f505c19f7527f6c7e4d3f2d40e82c7ad3f53468f60a",
+    "app/workflows/intent_protocol.txt": "8fb4326d4b429a778e68a036dd048e9e1a6e6468b9761c6d9150045f78fb4210",
+    "app/workflows/chat_agent.py": "094bff057a6663350773cdd4c38b71a25c33ec1eced203ef283ba271951c19c7",
+    "app/workflows/chat_state.py": "eec136ddc450d7792aa75f029e337e9c5daf383152494fdfa9baadc3df636f17",
+    "app/workflows/chat_nodes/recognition.py": "d092f97166c8c091c88a882955b9e10df3a8639d94aecb4853a977b5d04742bd",
+    "app/workflows/chat_nodes/routing.py": "5ed4c0d6de6da28fc7b005140f2d91aceda13377dcb97079cc6e4d5309f40715",
+    "app/workflows/chat_nodes/leave.py": "19beb981d88e3af6ec8f484e34d106d0cb0fb5c3f8242ad0cf56d6a2bad61b1d",
+    "app/workflows/chat_nodes/response.py": "a3efcae0b52ccf97989f5eeb825ad15eb8a1aef202e3335e625530f31d0ebe63",
+    "app/workflows/chat_nodes/execute.py": "afb553070105df34e77a95b099943e91a832fe9bf5dad36b75c383edd4a4158a",
+    "app/workflows/chat_nodes/summarize.py": "011c1fa62b197d25a0b2ea0ab2fe9ec11e12921ab53d680debc10bfef40aaa39",
+    "app/routes/chat.py": "f15321e894ed50eef7eb3d874cb6581388d459b7575b655d3a6008407d144597",
+    "app/capabilities/policy_engine.py": "af465406fc2a542d9e36d57872765016780af7067b6e833b17269df2ea5224ce",
+    "app/domain/leave/presenter.py": "4bd070764ce57dfad783fa5ec67473144736e73c4a2a0885a7ee5385bebeb42c",
+    "local_runtime/chat_cli.py": "25eca980742d3721ae6d12d115cf585927c7ff75f8df07ef3136093ab9d03590"
+  },
+  "outputs": {
+    "train": {
+      "file": "train.jsonl",
+      "records": 1757,
+      "sha256": "2035116cb91ba9a723565073b5bb36cb9471c5f28a8f5b6a184c3122c2460ac5",
+      "origins": {
+        "agent_runtime_v3": 960,
+        "v2_train_replay": 797
+      },
+      "categories": {
+        "side_query_resume": 240,
+        "pending_decision": 80,
+        "missing_type": 23,
+        "delete_application": 50,
+        "collect_modify_confirm": 320,
+        "leave_full": 80,
+        "cancel_then_new": 240,
+        "general_chat": 40,
+        "query_status": 50,
+        "other_object": 80,
+        "query_pending": 40,
+        "leave_relative": 40,
+        "missing_all": 30,
+        "policy_qa": 90,
+        "cancel_missing_id": 30,
+        "clarify": 40,
+        "approve_missing_id": 30,
+        "approve": 70,
+        "missing_reason": 30,
+        "identity": 24,
+        "get_suggestion": 40,
+        "missing_dates": 30,
+        "suggest_missing_id": 30,
+        "approve_missing_decision": 30
+      },
+      "intents": {
+        "submit_leave": 713,
+        "cancel_action": 120,
+        "delete_application": 160,
+        "confirm_action": 200,
+        "general_chat": 40,
+        "policy_qa": 170,
+        "query_status": 50,
+        "query_pending": 40,
+        "clarify": 40,
+        "approve": 130,
+        "get_suggestion": 70
+      },
+      "groups": 79,
+      "trajectories": 400
+    },
+    "val": {
+      "file": "val.jsonl",
+      "records": 144,
+      "sha256": "d154d890f4cf49dbda906e5aba46e1c5326952cd8b1e5952f06b1facbb3dc69f",
+      "origins": {
+        "agent_runtime_v3": 144
+      },
+      "categories": {
+        "other_object": 12,
+        "collect_modify_confirm": 48,
+        "cancel_then_new": 36,
+        "side_query_resume": 36,
+        "pending_decision": 12
+      },
+      "intents": {
+        "delete_application": 12,
+        "confirm_action": 30,
+        "submit_leave": 72,
+        "cancel_action": 18,
+        "policy_qa": 12
+      },
+      "groups": 1,
+      "trajectories": 60
+    },
+    "test": {
+      "file": "test.jsonl",
+      "records": 144,
+      "sha256": "f69c88e992e6ab637edd6fa92a0979ccb7cabe610cb06063f63d282887b94a0b",
+      "origins": {
+        "agent_runtime_v3": 144
+      },
+      "categories": {
+        "collect_modify_confirm": 48,
+        "cancel_then_new": 36,
+        "other_object": 12,
+        "side_query_resume": 36,
+        "pending_decision": 12
+      },
+      "intents": {
+        "submit_leave": 72,
+        "delete_application": 12,
+        "confirm_action": 30,
+        "cancel_action": 18,
+        "policy_qa": 12
+      },
+      "groups": 1,
+      "trajectories": 60
+    }
+  },
+  "evidence": {
+    "trajectories": {
+      "file": "trajectories.jsonl",
+      "sha256": "48689b8301ea61145ca35f3b75f8362dad19f20bd6981e8b5394db693eae1791",
+      "records": 520
+    },
+    "replay_selection": {
+      "file": "replay_selection.json",
+      "sha256": "dd1ce705cec11291a16b43525951aa6188736a933db0f7152902e6878fee2c8b"
+    }
+  },
+  "replay_selection_counts": {
+    "retained_business_training": 797,
+    "replaced_by_runtime_trajectories": 396,
+    "ambiguous_reason_boundary": 7
+  },
+  "checks": {
+    "unique_inputs": true,
+    "template_families_disjoint": true,
+    "whole_trajectories_disjoint": true,
+    "v2_val_test_excluded": true,
+    "approved_preview_excluded_from_val_test": true,
+    "runtime_prompt_parity": true,
+    "schema_and_field_evidence": true,
+    "scripted_runtime_state_checks": 1248,
+    "external_model_calls": 0,
+    "database_writes": 0,
+    "same_seed_rebuild_byte_identical": [
+      "train.jsonl",
+      "val.jsonl",
+      "test.jsonl",
+      "trajectories.jsonl",
+      "replay_selection.json"
+    ],
+    "training_entry_prepare_only": true
+  },
+  "regression_files": {
+    "validation": "../v2/val.jsonl",
+    "test": "../v2/test.jsonl"
+  },
+  "validation_scope": "V3 val/test只针对新增多轮任务；另用未改动的V2 val/test检查其余旧业务。",
+  "split_policy": "一条轨迹的全部轮次保持同一划分；当前用户表达的模板族不跨划分。协议、状态结构和Agent固定回复共用，不宣称语义完全独立。",
+  "limits": [
+    "合成模板和参数变体不等于同等数量的独立人工自然对话。",
+    "确认、审批及撤销的数据库写入与权限结果尚未验证；只覆盖意图、路由、本地草稿和状态。",
+    "按参考正确标签推进的轨迹未覆盖模型错误导致的所有偏离状态，后续需补充训练侧运行难例。",
+    "不训练原生function calling或隐藏思维链，不声称提高通用推理能力。"
+  ],
+  "encoding_check": {
+    "max_length": 1536,
+    "splits": {
+      "train": {
+        "records": 1757,
+        "min_tokens": 67,
+        "max_tokens": 915,
+        "supervised_tokens": 54371,
+        "with_history": 800,
+        "zero_target_samples": 0,
+        "truncated_samples": 0
+      },
+      "val": {
+        "records": 144,
+        "min_tokens": 460,
+        "max_tokens": 902,
+        "supervised_tokens": 4535,
+        "with_history": 120,
+        "zero_target_samples": 0,
+        "truncated_samples": 0
+      },
+      "test": {
+        "records": 144,
+        "min_tokens": 462,
+        "max_tokens": 920,
+        "supervised_tokens": 4539,
+        "with_history": 120,
+        "zero_target_samples": 0,
+        "truncated_samples": 0
+      }
+    },
+    "assistant_answers_and_eos_preserved": true,
+    "training_json_reader": "passed"
+  }
+}

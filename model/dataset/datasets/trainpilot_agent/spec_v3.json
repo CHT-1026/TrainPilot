@@ -1,0 +1,36 @@
+{
+  "version": "v3",
+  "status": "approved_for_generation",
+  "assistant_name": "TrainPilot",
+  "output_policy": "complete_known_fields",
+  "approval": "用户认可12条预览，并确认从原Full SFT新建LoRA，使用筛选后的V2训练数据及新增多轮业务数据。",
+  "training_start": "original_full_sft_with_fresh_lora",
+  "v2_replay": {
+    "source": "v2/train.jsonl",
+    "excluded_categories": ["natural", "history_fill", "history_modify", "confirm_action", "cancel_action", "pending_other_task", "pending_cancel_existing"],
+    "reason": "移除无关通用练习；旧简化历史和孤立待办样本由原Agent产生的连续状态样本替换。",
+    "excluded_template_groups": ["missing_type/template-3"],
+    "template_reason": "该模板把原因放在‘要…’之后，截取事由的边界不如明确字段句清楚；第一轮仅保留其他明确表达。",
+    "heldout": "V2 val/test不复制入V3，仍单独作旧业务回归；不修改V2原文件。"
+  },
+  "new_trajectories": {
+    "types": ["collect_modify_confirm", "cancel_then_new", "pending_decision", "other_object", "side_query_resume"],
+    "variants_per_family": {"train": 20, "val": 12, "test": 12},
+    "seed": 20261022,
+    "scope": "审批及撤销待办为注明来源的模拟初始状态；未连接数据库，不产生已提交或已审批成功的虚假回执。",
+    "clock": "每条轨迹独立固定current_date，包含跨月和跨年的参数变体。",
+    "prompt": "复用原Agent意图提示词、最近6条历史及每条120字符限制。",
+    "label_source": "人工定义状态转换与预期标签，程序代入参数；脚本化识别只用于取得原Agent运行上下文。"
+  },
+  "split_policy": "一条轨迹的全部轮次保持同一划分；当前用户表达的模板族不跨划分。协议、状态结构和Agent固定回复共用，不宣称语义完全独立。",
+  "validation_scope": "V3 val/test只针对新增多轮任务；另用未改动的V2 val/test检查其余旧业务。",
+  "preview_policy": "已审核预览属于训练设计依据，不作为独立测试。",
+  "training_format": "每个实际识别请求是一条messages记录：user为包含原始历史及待办的完整提示词，assistant仅为当前轮正确JSON；历史中的Agent模板回复不作监督答案。",
+  "max_length": 1536,
+  "limits": [
+    "合成模板和参数变体不等于同等数量的独立人工自然对话。",
+    "确认、审批及撤销的数据库写入与权限结果尚未验证；只覆盖意图、路由、本地草稿和状态。",
+    "按参考正确标签推进的轨迹未覆盖模型错误导致的所有偏离状态，后续需补充训练侧运行难例。",
+    "不训练原生function calling或隐藏思维链，不声称提高通用推理能力。"
+  ]
+}

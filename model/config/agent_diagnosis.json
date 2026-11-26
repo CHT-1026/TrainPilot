@@ -1,0 +1,23 @@
+{
+  "data_directory": "runs/agent-diagnosis-20261030",
+  "adapters": {
+    "v5": {
+      "path": "runs/trainpilot_agent_lora_v5/adapter",
+      "sha256": "2c6d865c84c8b1f432250e69ab9d72217263fda4a8811e15ca341abc0d830eb1"
+    },
+    "v6": {
+      "path": "runs/trainpilot_agent_lora_v6/adapter",
+      "sha256": "4d89275137bee224b724f06b2ff9990ab784d19e3ded9e570499b9abfd6407b8"
+    }
+  },
+  "base_config_sha256": "60ec90f5c9b44d9e5c4f2d95a33b871fd55a6e4ccba1d356a54ee51769b02a8e",
+  "base_weight_sha256": {
+    "model-00001-of-00002.safetensors": "d3bdfa44abdc93efc5e83b3aefcbe841c9bf61c2ae009b95e7236ab4590a8518",
+    "model-00002-of-00002.safetensors": "06272448065c6c642bf515d92c9ce86e47150189ecf658c3d96b1f60c046df90"
+  },
+  "group_size": 4,
+  "seeds": [42, 43],
+  "max_prompt_tokens": 3072,
+  "rag_completion_tokens": 512,
+  "other_completion_tokens": 256
+}

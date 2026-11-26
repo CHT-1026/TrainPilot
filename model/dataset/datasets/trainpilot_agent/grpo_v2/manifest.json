@@ -1,0 +1,64 @@
+{
+  "version": "grpo_v2",
+  "status": "candidate_data_ready_pending_v5_probe",
+  "approval": "2026-10-29 three reviewed categories and 600/90/150 plan",
+  "splits": {
+    "train": {
+      "records": 600,
+      "categories": {
+        "hypothetical_policy": 200,
+        "state_confirmation": 200,
+        "decision_comment": 200
+      },
+      "expression_families": 60,
+      "sha256": "0faed7e324c1a5351be4f540918722e913afd2096cd6ace814e54e73af3938b5"
+    },
+    "val": {
+      "records": 90,
+      "categories": {
+        "hypothetical_policy": 30,
+        "decision_comment": 30,
+        "state_confirmation": 30
+      },
+      "expression_families": 9,
+      "sha256": "fcca235d842fc6f61c2b16b784939e40e78e2e02a3d0526c40ddc14137c5904c"
+    },
+    "test": {
+      "records": 150,
+      "categories": {
+        "hypothetical_policy": 50,
+        "state_confirmation": 50,
+        "decision_comment": 50
+      },
+      "expression_families": 15,
+      "sha256": "495117684a317d33ace35a76cfad71ec0d485bfa2b0517ee8201d5c4fa7eb279"
+    }
+  },
+  "sources_sha256": {
+    "v2\\train.jsonl": "523d456c97c41bd71b2337da52326e778c5d7cf3a8623a42b893db30ea75030d",
+    "v2\\val.jsonl": "804ebabac2bd8f33d97562b5e3820885702687ae4728b0204a0ce8c13673acdc",
+    "v2\\test.jsonl": "632d5b09534721e69e668b004c5493c773b321296375c9620c1129b7dea702a0",
+    "v3\\train.jsonl": "2035116cb91ba9a723565073b5bb36cb9471c5f28a8f5b6a184c3122c2460ac5",
+    "v3\\val.jsonl": "d154d890f4cf49dbda906e5aba46e1c5326952cd8b1e5952f06b1facbb3dc69f",
+    "v3\\test.jsonl": "f69c88e992e6ab637edd6fa92a0979ccb7cabe610cb06063f63d282887b94a0b",
+    "v4\\train.jsonl": "39887a650c2a071db3ee15364fd9994a5a580f96a8bc454155a625dfc62b3c17",
+    "v4\\val.jsonl": "83e2483c31d2bfc583abdd94c197b6b801690f4273d9bbc389dcd799eafe7449",
+    "v4\\test.jsonl": "12b1d69f87df35c681a7be870c77e735ced582ea648461e3fdc4af22384f465d",
+    "v5\\train.jsonl": "034a25c63611ac9aaec4aca41567c69763acd5cd6703d885665fe2d6c296a09c",
+    "v5\\val.jsonl": "04ba3072982d84584a175010a1791be45dc78ef25137c0d54646b84e6515ee03",
+    "v5\\test.jsonl": "e86721358290956e17628b620a382e9999ab8fbacd0c991f71e52575914ca933"
+  },
+  "prompt_sha256": "d27a4b1560a3a1c9532fb592028bb1acd8c86f659167db0f10d8d436fc1308eb",
+  "group_overlap": 0,
+  "prompt_overlap": 0,
+  "exact_old_question_overlap": 0,
+  "approval_comment_text_overlap_between_splits": 0,
+  "model_evaluated": false,
+  "effective_rl_train_count": null,
+  "limitations": [
+    "84措辞家族，每家族10个状态/字段实例，840条不等于840种独立语义",
+    "同一业务语义在各划分共有；表达族留出不是业务语义完全隔离，也不是真实用户独立验收",
+    "训练候选是否适合GRPO须由采样验证；不因凑数量把正确回答改判为错",
+    "不更改Agent权限/确认机制；这里只验证原始意图和字段，不承诺咨询后待办持久化"
+  ]
+}

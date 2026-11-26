@@ -1,0 +1,151 @@
+"""Knowledge nodes: shared enterprise reasoning, current-user retrieval, verified output."""
+import asyncio
+import logging
+
+from langgraph.config import get_stream_writer
+
+from agent.app.capabilities.retrieval.answer import REFUSAL_TEXT, build_prompt, format_with_sources, verify_answer
+from agent.app.capabilities.retrieval.search import retrieve, to_citations
+from agent.app.core.config import get_settings
+from agent.app.core.metrics import inc
+from agent.app.workflows.chat_nodes.common import actor_from_state
+from agent.app.workflows.chat_nodes.enterprise_scope import looks_enterprise, looks_oa_policy
+from agent.app.workflows.chat_state import ChatState
+from agent.app.workflows.dialog_state import apply_context, update_dialog_state
+from agent.app.workflows.source_policy import SOURCE_PUBLIC, classify_source
+from agent.enterprise_rag.query import contextualize
+
+logger = logging.getLogger(__name__)
+
+
+def create_policy_nodes(llm):
+    def _emit_status(stage: str, phase: str = "progress") -> None:
+        try:
+            get_stream_writer()({"type": "status", "stage": stage, "phase": phase})
+        except RuntimeError:
+            pass
+
+    def retrieve_node(state: ChatState):
+        original = state.get("user_message", "")
+        dialog_state = update_dialog_state(
+            state.get("dialog_state"), original,
+            state.get("extracted_info"), state.get("intent", ""),
+        )
+        question, inherited_as_of = apply_context(original, state.get("messages", []), dialog_state)
+        actor = actor_from_state(state)
+        settings = get_settings()
+        source = classify_source(original)
+        base = {"retrieval_question": question, "citations": [], "task_result": "", "grounded": False,
+                "dialog_state": dialog_state, "source_kind": source["kind"]}
+        _emit_status("retrieving", source["kind"])
+        if source["kind"] == SOURCE_PUBLIC:
+            return {**base, "retrieved_chunks": [], "knowledge_namespace": "public_blocked",
+                    "retrieval_meta": {"source": source}}
+        from agent.app.capabilities.retrieval.catalog import is_catalog_question, visible_catalog
+        if is_catalog_question(original):
+            examples, meta = visible_catalog(actor)
+            return {**base, "retrieved_chunks": examples, "knowledge_namespace": "catalog",
+                    "retrieval_meta": meta}
+        if settings.rag_tool_calls:
+            # No pre-retrieval: V6 must choose queries and document reads itself.
+            return {**base, "retrieved_chunks": [], "knowledge_namespace": "tools",
+                    "retrieval_meta": {"as_of": inherited_as_of}}
+        enterprise_intent = looks_enterprise(question)
+        # 非 OA 制度问题先尝试企业知识库；明确的企业问题即使无命中也不混用 OA 语料。
+        if enterprise_intent or not looks_oa_policy(question):
+            from agent.enterprise_rag import config as rag_config
+            from agent.enterprise_rag.retrieval import retrieve as enterprise_retrieve
+            result = enterprise_retrieve(question, user=actor, top_k=settings.kb_top_k,
+                                         as_of=inherited_as_of)
+            _emit_status("retrieved", "enterprise")
+            if result.get("chunks") and result["debug"].get("top_score", 0) >= rag_config.MIN_SCORE:
+                return {**base, "retrieved_chunks": result["chunks"], "knowledge_namespace": "enterprise",
+                        "retrieval_meta": result["debug"]}
+            if enterprise_intent:
+                return {**base, "retrieved_chunks": [], "knowledge_namespace": "enterprise",
+                        "retrieval_meta": result.get("debug", {})}
+        candidates = retrieve(question, actor, top_k=settings.kb_top_k)
+        chunks = [c for c in candidates if c.get("score", 0) >= settings.kb_min_score]
+        inc("retrieval_hits_total" if chunks else "retrieval_empty_total")
+        _emit_status("retrieved", "oa")
+        return {**base, "retrieved_chunks": chunks, "knowledge_namespace": "oa", "retrieval_meta": {}}
+
+    async def answer_node(state: ChatState):
+        chunks = state.get("retrieved_chunks") or []
+        question = state.get("retrieval_question") or state.get("user_message", "")
+        method = "refusal"
+        _emit_status("verifying", "answer")
+        if state.get("knowledge_namespace") == "catalog":
+            from agent.app.capabilities.retrieval.catalog import render_catalog
+            text = render_catalog(chunks, state["retrieval_meta"])
+            citations, grounded, method = to_citations(chunks), bool(chunks), "knowledge_catalog"
+        elif state.get("knowledge_namespace") == "tools":
+            from agent.app.capabilities.retrieval.index_tools import IndexTools
+            from agent.app.capabilities.retrieval.tool_chat import LocalCompletion, run_tool_chat
+            settings = get_settings()
+            backend = IndexTools(actor_from_state(state), as_of=state["retrieval_meta"].get("as_of"))
+            complete = LocalCompletion(settings.openai_api_base, settings.openai_model,
+                                       settings.openai_api_key, settings.llm_timeout_seconds)
+            history = [{"role": m["role"], "content": m["content"]} for m in state.get("messages", [])[-7:-1]
+                       if m["role"] in {"user", "assistant"}]
+            outcome = await asyncio.to_thread(run_tool_chat, question, backend, complete,
+                                             timeout=settings.llm_timeout_seconds, history=history)
+            final = outcome["final"]
+            text = final["answer"] if final else "本轮工具问答未完成（" + outcome["status"] + "），请查看工具调用记录。"
+            citations = [{"index": i, **c} for i, c in enumerate(final["citations"], 1)] if final else []
+            # This means checked citation links, not independent semantic verification.
+            grounded = bool(final and final["status"] == "answerable" and citations)
+            method = "model_tool_loop"
+            _emit_status("tools_completed", outcome["status"])
+            return {"task_result": text, "response": text, "citations": citations,
+                    "grounded": grounded, "answer_method": method, "knowledge_tool_trace": outcome}
+        elif not chunks:
+            if state.get("source_kind") == SOURCE_PUBLIC:
+                text = "公开信息检索默认关闭，请提供内部资料或明确可公开的信息需求。"
+            else:
+                text = REFUSAL_TEXT
+            citations, grounded = [], False
+        elif state.get("knowledge_namespace") == "enterprise":
+            from agent.enterprise_rag.answer import generate_answer
+            from agent.enterprise_rag.citations import to_citations as enterprise_citations, source_summary
+            meta = state.get("retrieval_meta", {})
+            graph_paths = ((meta.get("graph") or {}).get("paths") or [])
+            generated = await asyncio.to_thread(
+                generate_answer, question, chunks, None,
+                meta.get("evidence_budget_complete", True), graph_paths)
+            citations = enterprise_citations(generated["citations"])
+            text = generated["answer"]
+            if generated["citations"]:
+                text += "\n\n" + source_summary(generated["citations"])
+            grounded, method = generated["grounded"], generated["method"]
+        else:
+            answer, cited, grounded = REFUSAL_TEXT, [], False
+            base_prompt = build_prompt(question, chunks)
+            for attempt in range(2):
+                prompt = base_prompt
+                if attempt:
+                    prompt += (
+                        "\n\n严格要求：每个事实句末尾必须带 [编号]，编号只能来自【资料】；"
+                        "没有引用编号的回答无效。"
+                    )
+                try:
+                    response = await llm.ainvoke(prompt)
+                    raw = response.content if hasattr(response, "content") else str(response)
+                except Exception as exc:
+                    logger.warning("知识问答生成失败（第 %s 次）: %s", attempt + 1, type(exc).__name__)
+                    raw = REFUSAL_TEXT
+                answer, cited, grounded = verify_answer(raw, chunks)
+                if grounded:
+                    break
+            citations, text = to_citations(cited), format_with_sources(answer, cited)
+            method = "llm_verified" if cited else "refusal"
+        _emit_status("verified", "answer")
+        try:
+            get_stream_writer()({"type": "token", "delta": text, "mode": "verified"})
+        except RuntimeError:
+            pass
+        inc("policy_answers_total")
+        return {"task_result": text, "response": text, "citations": citations,
+                "grounded": grounded, "answer_method": method}
+
+    return {"retrieve": retrieve_node, "answer": answer_node}

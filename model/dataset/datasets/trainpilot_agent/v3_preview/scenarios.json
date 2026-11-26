@@ -1,0 +1,345 @@
+{
+  "status": "user_approved",
+  "current_date": "2026-11-02",
+  "trajectories": [
+    {
+      "id": "leave_collect_modify_confirm",
+      "description": "实际追问、补齐、修改及确认；不把当前草稿重新当作申请。",
+      "turns": [
+        {
+          "id": "a1",
+          "user": "我想申请事假，先帮我整理一下。",
+          "expected": {
+            "intent": "submit_leave",
+            "extracted_info": {
+              "leave_type": "事假"
+            }
+          },
+          "expected_nodes": [
+            "submit_leave"
+          ],
+          "expected_pending_type": null,
+          "expected_accumulated": {
+            "leave_type": "事假"
+          },
+          "response_contains": [
+            "请假时间",
+            "请假原因"
+          ]
+        },
+        {
+          "id": "a2",
+          "user": "日期是2026年11月9日到11月10日，原因填写家中设备维修。",
+          "expected": {
+            "intent": "submit_leave",
+            "extracted_info": {
+              "leave_type": "事假",
+              "start_date": "2026-11-09",
+              "end_date": "2026-11-10",
+              "reason": "家中设备维修"
+            }
+          },
+          "expected_nodes": [
+            "submit_leave"
+          ],
+          "expected_pending_type": "submit_leave",
+          "expected_draft": {
+            "leave_type": "事假",
+            "start_date": "2026-11-09",
+            "end_date": "2026-11-10",
+            "reason": "家中设备维修"
+          }
+        },
+        {
+          "id": "a3",
+          "user": "结束日期调整为2026年11月11日，开始日期、假别和原因都不变。",
+          "expected": {
+            "intent": "submit_leave",
+            "extracted_info": {
+              "leave_type": "事假",
+              "start_date": "2026-11-09",
+              "end_date": "2026-11-11",
+              "reason": "家中设备维修"
+            }
+          },
+          "expected_nodes": [
+            "submit_leave"
+          ],
+          "expected_pending_type": "submit_leave",
+          "expected_draft": {
+            "leave_type": "事假",
+            "start_date": "2026-11-09",
+            "end_date": "2026-11-11",
+            "reason": "家中设备维修"
+          }
+        },
+        {
+          "id": "a4",
+          "user": "内容已经核对完毕，就按现在这份提交。",
+          "expected": {
+            "intent": "confirm_action",
+            "extracted_info": {}
+          },
+          "expected_nodes": [
+            "execute_pending"
+          ],
+          "expected_pending_type": "submit_leave",
+          "response_contains": [
+            "没有执行数据库操作"
+          ],
+          "execution_scope": "仅验证进入确认执行节点；未连接数据库，草稿在当前终端保留，不声称已提交。"
+        }
+      ]
+    },
+    {
+      "id": "cancel_draft_then_new_request",
+      "description": "明确放弃当前草稿，再发起另一份信息不完整的新申请；不借用旧日期与原因。",
+      "turns": [
+        {
+          "id": "b1",
+          "user": "请帮我整理2026年11月16日到11月17日的年假，原因为安排休息。",
+          "expected": {
+            "intent": "submit_leave",
+            "extracted_info": {
+              "leave_type": "年假",
+              "start_date": "2026-11-16",
+              "end_date": "2026-11-17",
+              "reason": "安排休息"
+            }
+          },
+          "expected_nodes": [
+            "submit_leave"
+          ],
+          "expected_pending_type": "submit_leave"
+        },
+        {
+          "id": "b2",
+          "user": "先别提交了，刚才这份年假草稿我不要了。",
+          "expected": {
+            "intent": "cancel_action",
+            "extracted_info": {}
+          },
+          "expected_nodes": [
+            "clear_pending"
+          ],
+          "expected_pending_type": null,
+          "expected_accumulated": {},
+          "response_contains": [
+            "已取消"
+          ]
+        },
+        {
+          "id": "b3",
+          "user": "另起一份病假申请，日期和原因我稍后补充，不沿用上次的。",
+          "expected": {
+            "intent": "submit_leave",
+            "extracted_info": {
+              "leave_type": "病假"
+            }
+          },
+          "expected_nodes": [
+            "submit_leave"
+          ],
+          "expected_pending_type": null,
+          "expected_accumulated": {
+            "leave_type": "病假"
+          },
+          "response_contains": [
+            "请假时间",
+            "请假原因"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "confirm_existing_approval",
+      "description": "确认待审批草稿是确认执行，不是再发起一次approve。",
+      "role": "manager",
+      "seed_note": "以下申请编号与待审批状态均为人工预设示意，不代表已从数据库读取或完成权限检查。",
+      "initial_state": {
+        "messages": [
+          {
+            "role": "user",
+            "content": "把申请leave_2d85c91b6af0的审批结果拟为驳回，意见是请补充必要材料，先让我核对。"
+          },
+          {
+            "role": "assistant",
+            "content": "待确认审批草稿：leave_2d85c91b6af0；决定为驳回；意见为请补充必要材料。请确认或放弃。"
+          }
+        ],
+        "pending_action": {
+          "action_id": "act_preview_approval",
+          "action_type": "approve",
+          "draft": {
+            "app_id": "leave_2d85c91b6af0",
+            "decision": "rejected",
+            "decision_label": "驳回",
+            "comments": "请补充必要材料"
+          }
+        }
+      },
+      "turns": [
+        {
+          "id": "c1",
+          "user": "这份驳回意见不用改，确认执行刚才的审批。",
+          "expected": {
+            "intent": "confirm_action",
+            "extracted_info": {}
+          },
+          "expected_nodes": [
+            "execute_pending"
+          ],
+          "expected_pending_type": "approve",
+          "response_contains": [
+            "没有执行数据库操作"
+          ],
+          "execution_scope": "仅验证确认路由，不执行审批落库。"
+        }
+      ]
+    },
+    {
+      "id": "cancel_other_submitted_request",
+      "description": "有另一份审批草稿时，仍准确提取用户明确撤回的已提交申请编号。",
+      "role": "manager",
+      "seed_note": "两个编号均为模拟对象；只验证理解与路由，申请存在性、归属和撤销权限由业务系统另行校验。",
+      "initial_state": {
+        "messages": [
+          {
+            "role": "user",
+            "content": "申请leave_83c04e5ab129拟通过，意见写材料已核对，先保留待确认草稿。"
+          },
+          {
+            "role": "assistant",
+            "content": "当前待确认审批对象是leave_83c04e5ab129，决定为通过，意见为材料已核对。"
+          }
+        ],
+        "pending_action": {
+          "action_id": "act_preview_other",
+          "action_type": "approve",
+          "draft": {
+            "app_id": "leave_83c04e5ab129",
+            "decision": "approved",
+            "decision_label": "通过",
+            "comments": "材料已核对"
+          }
+        }
+      },
+      "turns": [
+        {
+          "id": "d1",
+          "user": "先暂停刚才的审批。我现在要撤回自己已提交的leave_52f7b0e649ad，这次操作对象不是刚才那条。",
+          "expected": {
+            "intent": "delete_application",
+            "extracted_info": {
+              "app_id": "leave_52f7b0e649ad"
+            }
+          },
+          "expected_nodes": [
+            "delete"
+          ],
+          "expected_pending_type": "approve",
+          "response_contains": [
+            "没有执行数据库操作"
+          ],
+          "execution_scope": "终端delete节点为数据库不可用提示；生产环境如何替换原待确认动作需与Agent端确认，不将当前保留旧草稿当作生产规范。"
+        }
+      ]
+    },
+    {
+      "id": "side_query_then_resume_draft",
+      "description": "已有请假草稿时临时问制度，再回到原草稿修改并确认；覆盖实际长回复与完整状态。",
+      "seed_note": "初始草稿是模拟上下文；工作日和HR标记只作为给定业务状态，不要求模型计算或输出。",
+      "initial_state": {
+        "messages": [
+          {
+            "role": "user",
+            "content": "我要请2026年11月23日到11月24日的事假，原因是处理搬家事项。"
+          },
+          {
+            "role": "assistant",
+            "content": "请核对草稿：事假；2026-11-23至2026-11-24；2个工作日；原因为处理搬家事项。回复确认提交，回复取消放弃。"
+          }
+        ],
+        "pending_action": {
+          "action_id": "act_preview_resume",
+          "action_type": "submit_leave",
+          "draft": {
+            "leave_type": "事假",
+            "start_date": "2026-11-23",
+            "end_date": "2026-11-24",
+            "working_days": 2,
+            "reason": "处理搬家事项",
+            "requires_hr": false
+          }
+        },
+        "conversation_context": {
+          "accumulated_extracted_info": {
+            "leave_type": "事假",
+            "start_date": "2026-11-23",
+            "end_date": "2026-11-24",
+            "reason": "处理搬家事项"
+          }
+        }
+      },
+      "turns": [
+        {
+          "id": "e1",
+          "user": "这份草稿先留着。我想先查一下公司关于年假申请的制度。",
+          "expected": {
+            "intent": "policy_qa",
+            "extracted_info": {}
+          },
+          "expected_nodes": [
+            "retrieve",
+            "answer"
+          ],
+          "expected_pending_type": "submit_leave",
+          "expected_accumulated": {},
+          "response_contains": [
+            "没有执行数据库操作"
+          ],
+          "execution_scope": "未连接知识库，回复明确不可用；不编造制度内容，也不声称已完成检索。"
+        },
+        {
+          "id": "e2",
+          "user": "回到那份事假草稿，把结束日期改为2026年11月25日，其他信息沿用。",
+          "expected": {
+            "intent": "submit_leave",
+            "extracted_info": {
+              "leave_type": "事假",
+              "start_date": "2026-11-23",
+              "end_date": "2026-11-25",
+              "reason": "处理搬家事项"
+            }
+          },
+          "expected_nodes": [
+            "submit_leave"
+          ],
+          "expected_pending_type": "submit_leave",
+          "expected_draft": {
+            "leave_type": "事假",
+            "start_date": "2026-11-23",
+            "end_date": "2026-11-25",
+            "reason": "处理搬家事项"
+          }
+        },
+        {
+          "id": "e3",
+          "user": "现在草稿没问题了，确认提交当前这份。",
+          "expected": {
+            "intent": "confirm_action",
+            "extracted_info": {}
+          },
+          "expected_nodes": [
+            "execute_pending"
+          ],
+          "expected_pending_type": "submit_leave",
+          "response_contains": [
+            "没有执行数据库操作"
+          ],
+          "execution_scope": "仅验证确认路由，不执行提交落库。"
+        }
+      ]
+    }
+  ]
+}

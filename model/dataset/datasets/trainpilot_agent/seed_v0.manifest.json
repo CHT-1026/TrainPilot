@@ -1,0 +1,36 @@
+{
+  "status": "draft_for_label_review_not_formal_training_set",
+  "source": "本会话助手人工编写的合成种子样本，标签未经过独立人工复核；没有外部模型API生成",
+  "reference_project": "lantu-enterprise-agent-platform-main",
+  "reference_files": {
+    "app/workflows/chat_nodes/recognition.py": "2153ecedfe3d8426834a1efe6be2bcab66c4c3b595a8d9681a47b50d6429d229",
+    "app/workflows/chat_nodes/routing.py": "5ed4c0d6de6da28fc7b005140f2d91aceda13377dcb97079cc6e4d5309f40715"
+  },
+  "prompt_capture": "调用原 recognition 节点捕获实际提示词，不手工复制意图模板；固定案例当前日期为2026-10-22",
+  "assistant_name": "TrainPilot",
+  "records": 36,
+  "categories": {
+    "identity": 6,
+    "recognition": 18,
+    "missing_information": 6,
+    "stateful": 6
+  },
+  "file": "seed_v0.jsonl",
+  "sha256": "ad6a5198ffbc3cec8156c4d0d1e2931a0415399905b83fb7a920113f171d5658",
+  "evaluation_overlap": "已排除当前12条意图基线的相同用户输入；未证明语义不重合；评测集禁止加入训练",
+  "limits": [
+    "少量种子只能用于检查编码与训练链路，不能据此声称业务泛化能力",
+    "训练前需核对标签，扩充不同表达和状态边界，并按场景分组划分训练验证集",
+    "未执行工具，目标为原框架的意图与字段协议，不是自由工具调用",
+    "种子内暂无用于正式训练的独立验证划分"
+  ],
+  "encoding_check": {
+    "records": 36,
+    "min_tokens": 25,
+    "max_tokens": 841,
+    "proposed_max_length": 1536,
+    "all_assistant_answers_preserved": true,
+    "validation_by_existing_hash": 8,
+    "note": "这只是编码检查；未训练。36条种子不作为正式训练集，正式划分需按场景分组。"
+  }
+}

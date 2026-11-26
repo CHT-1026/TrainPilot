@@ -1,0 +1,8 @@
+{
+  "reference": "lantu-enterprise-agent-platform-main",
+  "recognition_sha256": "2153ecedfe3d8426834a1efe6be2bcab66c4c3b595a8d9681a47b50d6429d229",
+  "routing_sha256": "5ed4c0d6de6da28fc7b005140f2d91aceda13377dcb97079cc6e4d5309f40715",
+  "capture": "原 recognition 节点的实际提示词快照，仅把动态上下文换成 format 占位符；未修改业务规则。",
+  "license": "MIT",
+  "license_file": "prompt_reference.LICENSE"
+}

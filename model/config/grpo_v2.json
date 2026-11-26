@@ -1,0 +1,15 @@
+{
+  "group_size": 4,
+  "updates_per_group": 2,
+  "max_updates": 50,
+  "save_steps": 10,
+  "learning_rate": 0.000001,
+  "beta": 0.02,
+  "clip": 0.2,
+  "max_prompt_tokens": 1792,
+  "max_completion_tokens": 256,
+  "probe_prompts": 64,
+  "eval_limit": 90,
+  "seed": 42,
+  "train_on_probed_mixed": true
+}

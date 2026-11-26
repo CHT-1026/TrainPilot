@@ -1,0 +1,388 @@
+{
+  "prompt_parser_checks": 840,
+  "router_matches": 786,
+  "router_mismatches": [
+    {
+      "id": "rl2-train-hypothetical_policy-13-09",
+      "user": "请从业务步骤解释“取消当前待办”。即使有当前待办，也别把这次解释当确认。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-08-08",
+      "user": "培训材料提到“放弃这次撤回操作”，请解释其业务后果，不要操作我的申请。",
+      "raw_expected": "policy_qa",
+      "routed": "query_status",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-05-04",
+      "user": "当前先不办理。帮我理解一下，用户说“取消当前待办”时系统应怎样处理？",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-05-09",
+      "user": "当前先不办理。帮我理解一下，用户说“取消当前待办”时系统应怎样处理？",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-09-09",
+      "user": "如果把“取消当前待办”作为确认回复，会怎样？这是条件假设，不是我的真实确认。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-13-07",
+      "user": "请从业务步骤解释“按当前草稿提交”。即使有当前待办，也别把这次解释当确认。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-08-03",
+      "user": "培训材料提到“放弃这次撤回操作”，请解释其业务后果，不要操作我的申请。",
+      "raw_expected": "policy_qa",
+      "routed": "query_status",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-02-09",
+      "user": "请解释“取消当前待办”这句业务用语；我尚未确认任何实际动作。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-13-05",
+      "user": "请从业务步骤解释“确认执行当前审批”。即使有当前待办，也别把这次解释当确认。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-03-09",
+      "user": "假设以后我说“取消当前待办”，届时会发生什么？现在我只咨询它的含义。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-08-06",
+      "user": "培训材料提到“确认撤回这张申请”，请解释其业务后果，不要操作我的申请。",
+      "raw_expected": "policy_qa",
+      "routed": "query_status",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-13-08",
+      "user": "请从业务步骤解释“放弃这次撤回操作”。即使有当前待办，也别把这次解释当确认。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-17-09",
+      "user": "我的问题是“取消当前待办”为何会触发业务动作，并不是要触发它。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-08-09",
+      "user": "培训材料提到“取消当前待办”，请解释其业务后果，不要操作我的申请。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-08-01",
+      "user": "培训材料提到“确认撤回这张申请”，请解释其业务后果，不要操作我的申请。",
+      "raw_expected": "policy_qa",
+      "routed": "query_status",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-08-00",
+      "user": "培训材料提到“确认执行当前审批”，请解释其业务后果，不要操作我的申请。",
+      "raw_expected": "policy_qa",
+      "routed": "query_status",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-03-04",
+      "user": "假设以后我说“取消当前待办”，届时会发生什么？现在我只咨询它的含义。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-06-09",
+      "user": "文案“取消当前待办”里的确认针对哪一步？这轮讨论文案，不能实际执行。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-12-04",
+      "user": "我还没有决定办理，只想知道“取消当前待办”这种回复意味着什么。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-13-06",
+      "user": "请从业务步骤解释“确认撤回这张申请”。即使有当前待办，也别把这次解释当确认。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-08-04",
+      "user": "培训材料提到“取消当前待办”，请解释其业务后果，不要操作我的申请。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-12-09",
+      "user": "我还没有决定办理，只想知道“取消当前待办”这种回复意味着什么。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-14-04",
+      "user": "我是在复述材料中的“取消当前待办”，想了解它的作用；当前没有让你实际执行。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-13-03",
+      "user": "请从业务步骤解释“放弃这次撤回操作”。即使有当前待办，也别把这次解释当确认。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-08-07",
+      "user": "培训材料提到“按当前草稿提交”，请解释其业务后果，不要操作我的申请。",
+      "raw_expected": "policy_qa",
+      "routed": "query_status",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-13-01",
+      "user": "请从业务步骤解释“确认撤回这张申请”。即使有当前待办，也别把这次解释当确认。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-10-04",
+      "user": "先停留在说明阶段，解释“取消当前待办”与实际执行之间是什么关系。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-18-04",
+      "user": "“取消当前待办”是被解释的句子。说明其含义即可，当前业务不执行。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-13-04",
+      "user": "请从业务步骤解释“取消当前待办”。即使有当前待办，也别把这次解释当确认。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-14-09",
+      "user": "我是在复述材料中的“取消当前待办”，想了解它的作用；当前没有让你实际执行。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-13-00",
+      "user": "请从业务步骤解释“确认执行当前审批”。即使有当前待办，也别把这次解释当确认。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-18-09",
+      "user": "“取消当前待办”是被解释的句子。说明其含义即可，当前业务不执行。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-10-09",
+      "user": "先停留在说明阶段，解释“取消当前待办”与实际执行之间是什么关系。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-08-02",
+      "user": "培训材料提到“按当前草稿提交”，请解释其业务后果，不要操作我的申请。",
+      "raw_expected": "policy_qa",
+      "routed": "query_status",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-02-04",
+      "user": "请解释“取消当前待办”这句业务用语；我尚未确认任何实际动作。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-13-02",
+      "user": "请从业务步骤解释“按当前草稿提交”。即使有当前待办，也别把这次解释当确认。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-09-04",
+      "user": "如果把“取消当前待办”作为确认回复，会怎样？这是条件假设，不是我的真实确认。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-06-04",
+      "user": "文案“取消当前待办”里的确认针对哪一步？这轮讨论文案，不能实际执行。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-17-04",
+      "user": "我的问题是“取消当前待办”为何会触发业务动作，并不是要触发它。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-train-hypothetical_policy-08-05",
+      "user": "培训材料提到“确认执行当前审批”，请解释其业务后果，不要操作我的申请。",
+      "raw_expected": "policy_qa",
+      "routed": "query_status",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-val-hypothetical_policy-22-04",
+      "user": "我是在提出一个假设：日后说“取消当前待办”会怎样？当前只咨询。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-val-hypothetical_policy-22-09",
+      "user": "我是在提出一个假设：日后说“取消当前待办”会怎样？当前只咨询。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-test-hypothetical_policy-23-07",
+      "user": "解释对象是引号里的“按当前草稿提交”，本轮并未授权执行待办。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-test-hypothetical_policy-23-08",
+      "user": "解释对象是引号里的“放弃这次撤回操作”，本轮并未授权执行待办。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-test-hypothetical_policy-23-01",
+      "user": "解释对象是引号里的“确认撤回这张申请”，本轮并未授权执行待办。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-test-hypothetical_policy-23-06",
+      "user": "解释对象是引号里的“确认撤回这张申请”，本轮并未授权执行待办。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-test-hypothetical_policy-23-02",
+      "user": "解释对象是引号里的“按当前草稿提交”，本轮并未授权执行待办。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-test-hypothetical_policy-26-04",
+      "user": "帮我讲解一下回复“取消当前待办”之后的业务步骤，别把讲解当成操作许可。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-test-hypothetical_policy-23-05",
+      "user": "解释对象是引号里的“确认执行当前审批”，本轮并未授权执行待办。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-test-hypothetical_policy-23-04",
+      "user": "解释对象是引号里的“取消当前待办”，本轮并未授权执行待办。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-test-hypothetical_policy-23-09",
+      "user": "解释对象是引号里的“取消当前待办”，本轮并未授权执行待办。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-test-hypothetical_policy-23-03",
+      "user": "解释对象是引号里的“放弃这次撤回操作”，本轮并未授权执行待办。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-test-hypothetical_policy-23-00",
+      "user": "解释对象是引号里的“确认执行当前审批”，本轮并未授权执行待办。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    },
+    {
+      "id": "rl2-test-hypothetical_policy-26-09",
+      "user": "帮我讲解一下回复“取消当前待办”之后的业务步骤，别把讲解当成操作许可。",
+      "raw_expected": "policy_qa",
+      "routed": "query_pending",
+      "source_kind": "business_record"
+    }
+  ],
+  "opinion_overlap": 0,
+  "model_called": false,
+  "business_services_called": false,
+  "note": "保留正确的原始模型标签；不能用source-policy程序误判倒改标签。这些场景的端到端路由需另行修复。"
+}

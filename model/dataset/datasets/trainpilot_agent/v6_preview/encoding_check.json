@@ -1,0 +1,168 @@
+{
+  "tokenizer": "E:\\agent项目\\trainpilot\\runs\\trainpilot_agent_lora_v5\\adapter",
+  "tokenizer_sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+  "samples": 26,
+  "max_total_tokens": 887,
+  "min_supervised_targets": 14,
+  "max_length_checked": 2048,
+  "no_truncation": true,
+  "training_performed": false,
+  "cases": [
+    {
+      "id": "v6-preview-confirm-none",
+      "total_tokens": 695,
+      "supervised_targets": 17,
+      "truncated": false
+    },
+    {
+      "id": "v6-preview-cancel-none",
+      "total_tokens": 695,
+      "supervised_targets": 17,
+      "truncated": false
+    },
+    {
+      "id": "v6-preview-confirm-leave",
+      "total_tokens": 730,
+      "supervised_targets": 17,
+      "truncated": false
+    },
+    {
+      "id": "v6-preview-cancel-leave",
+      "total_tokens": 730,
+      "supervised_targets": 17,
+      "truncated": false
+    },
+    {
+      "id": "v6-preview-confirm-approval",
+      "total_tokens": 717,
+      "supervised_targets": 17,
+      "truncated": false
+    },
+    {
+      "id": "v6-preview-cancel-approval",
+      "total_tokens": 717,
+      "supervised_targets": 17,
+      "truncated": false
+    },
+    {
+      "id": "v6-preview-confirm-withdrawal",
+      "total_tokens": 695,
+      "supervised_targets": 17,
+      "truncated": false
+    },
+    {
+      "id": "v6-preview-cancel-withdrawal",
+      "total_tokens": 695,
+      "supervised_targets": 17,
+      "truncated": false
+    },
+    {
+      "id": "v6-preview-quoted-submit",
+      "total_tokens": 742,
+      "supervised_targets": 18,
+      "truncated": false
+    },
+    {
+      "id": "v6-preview-actual-submit",
+      "total_tokens": 736,
+      "supervised_targets": 17,
+      "truncated": false
+    },
+    {
+      "id": "v6-preview-quoted-withdraw",
+      "total_tokens": 707,
+      "supervised_targets": 18,
+      "truncated": false
+    },
+    {
+      "id": "v6-preview-actual-withdraw",
+      "total_tokens": 713,
+      "supervised_targets": 26,
+      "truncated": false
+    },
+    {
+      "id": "v6-preview-capability",
+      "total_tokens": 675,
+      "supervised_targets": 17,
+      "truncated": false
+    },
+    {
+      "id": "v6-preview-company-policy",
+      "total_tokens": 673,
+      "supervised_targets": 18,
+      "truncated": false
+    },
+    {
+      "id": "v6-preview-abandon-withdrawal",
+      "total_tokens": 695,
+      "supervised_targets": 17,
+      "truncated": false
+    },
+    {
+      "id": "v6-preview-execute-withdrawal",
+      "total_tokens": 699,
+      "supervised_targets": 17,
+      "truncated": false
+    },
+    {
+      "id": "v6-preview-edit-leave",
+      "total_tokens": 789,
+      "supervised_targets": 56,
+      "truncated": false
+    },
+    {
+      "id": "v6-preview-edit-approval",
+      "total_tokens": 758,
+      "supervised_targets": 43,
+      "truncated": false
+    },
+    {
+      "id": "v6-preview-enterprise-partial",
+      "total_tokens": 870,
+      "supervised_targets": 47,
+      "truncated": false
+    },
+    {
+      "id": "v6-preview-enterprise-unsupported",
+      "total_tokens": 837,
+      "supervised_targets": 14,
+      "truncated": false
+    },
+    {
+      "id": "v6-preview-oa-partial",
+      "total_tokens": 284,
+      "supervised_targets": 34,
+      "truncated": false
+    },
+    {
+      "id": "v6-preview-oa-unsupported",
+      "total_tokens": 270,
+      "supervised_targets": 20,
+      "truncated": false
+    },
+    {
+      "id": "v6-preview-table-ambiguous",
+      "total_tokens": 864,
+      "supervised_targets": 14,
+      "truncated": false
+    },
+    {
+      "id": "v6-preview-table-specific",
+      "total_tokens": 887,
+      "supervised_targets": 40,
+      "truncated": false
+    },
+    {
+      "id": "v6-preview-role-direct",
+      "total_tokens": 78,
+      "supervised_targets": 53,
+      "truncated": false
+    },
+    {
+      "id": "v6-preview-role-agent",
+      "total_tokens": 260,
+      "supervised_targets": 53,
+      "truncated": false
+    }
+  ]
+}
